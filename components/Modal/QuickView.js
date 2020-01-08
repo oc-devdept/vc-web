@@ -70,7 +70,7 @@ class QuickView extends Component {
 
                             <div className="col-lg-6 col-md-6">
                                 <div className="product-content">
-                                    <h3>{this.props.title}</h3>
+                                    <h3><a href="#">Belted chino trousers polo</a></h3>
 
                                     <div className="price">
                                         <span className="new-price">${this.props.price}</span>

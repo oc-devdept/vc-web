@@ -11,7 +11,7 @@ class Banner extends Component {
                             <div className="main-banner-content white-color">
                                 <span>HONDA FIT</span>
                                 <h1>EVERYONE'S FAVOURITE FAMILY HATCHBACK</h1>                           
-                                <Link href="/contact.js">
+                                <Link href="/contact-us">
                                     <a className="btn btn-primary"><span>Enquire Now</span></a>
                                 </Link>
                             </div>

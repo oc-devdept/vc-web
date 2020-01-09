@@ -3,23 +3,20 @@ import Default from "Components/Layout/PageTemplates/Default";
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 const Model = props => {
-
-  console.log('Model Rendered')
   return (
-  <Default>
-     <section className="contact-area pb-60">
-                    <div className="container">
-                        <div className="section-title">
-                            {/* <Step1 {...props}/>       */}
-                            <h2>{props.show.name}</h2>
-                            <Link class="btn-primary" href="/product/:id" as={`/product/${(props.show.id)}`}> 
-                              Customize
-                            </Link>             
-                        </div>
-                       </div>
-      </section>                  
-    <p></p>
-  </Default>
+    <Default>
+      <section className="contact-area pb-60">
+        <div className="container">
+          <div className="section-title">
+            {/* <Step1 {...props}/>       */}
+            <h2>{props.show.name}</h2>
+            <Link class="btn-primary" href={`/product/grade/${(props.show.id)}`}> 
+              <a>Customize</a>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </Default>
   )
 };
 

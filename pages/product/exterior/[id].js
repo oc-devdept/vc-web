@@ -30,7 +30,7 @@ class Product extends Component {
           <div className="container">
             <div className="section-title">
               <p>02 Exterior</p>
-                <ul className="p-0 list-unstyled">
+                {/* <ul className="p-0 list-unstyled">
                   {this.props.data.fields.Color.objects.map(( item, id ) => (
                     <li 
                       key= { id }
@@ -42,7 +42,8 @@ class Product extends Component {
                       ${ item.price }
                     </li>
                   ))}
-                </ul>
+                </ul> */}
+                
               <button>
                 Back
               </button>

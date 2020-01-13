@@ -7,6 +7,7 @@ class Product extends Component {
     constructor(props) {
       super(props)
       this.state = {
+        // selectedModelId:
         selectedGradeId: "",
       }
 
@@ -42,9 +43,9 @@ class Product extends Component {
                     </li>
                   ))}
                 </ul>
-              <button>
-                Back
-              </button>
+              <Link href="#">
+                <button>Back</button>
+              </Link>
               <Link href={`/product/exterior/${this.state.selectedGradeId}`}>
                 <button disabled={!(!!this.state.selectedGradeId)}>02 Exterior</button>
               </Link>

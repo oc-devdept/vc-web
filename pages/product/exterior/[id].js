@@ -7,7 +7,8 @@ class Product extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        // selectedGradeId: this.props.data.fields.Color.objects[0].productId,
+        // selectedModelId:
+        selectedGradeId: this.props.data.fields.Paintwork.objects[0].productId, // need to pull off global state
         selectedExteriorId: "",
       }
 
@@ -30,20 +31,19 @@ class Product extends Component {
           <div className="container">
             <div className="section-title">
               <p>02 Exterior</p>
-                {/* <ul className="p-0 list-unstyled">
-                  {this.props.data.fields.Color.objects.map(( item, id ) => (
-                    <li 
-                      key= { id }
-                      id={ item.id }
-                      style={ item.id == this.state.selectedExteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
-                      onClick={ this.handleClick }
-                    >
-                      { item.name }<br/>
-                      ${ item.price }
-                    </li>
-                  ))}
-                </ul> */}
-                
+              <ul className="p-0 list-unstyled">
+                {this.props.data.fields.Paintwork.objects.map(( item, id ) => (
+                  <li 
+                    key= { id }
+                    id={ item.id }
+                    style={ item.id == this.state.selectedExteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
+                    onClick={ this.handleClick }
+                  >
+                    { item.name }<br/>
+                    ${ item.price }
+                  </li>
+                ))}
+              </ul>
               <button>
                 Back
               </button>

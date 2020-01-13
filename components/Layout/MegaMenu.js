@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Link from 'next/link';
-import MegaTab from './MegaTab';
 import Cart from '../Modal/Cart';
-/*iconify*/
-import { Icon, InlineIcon } from "@iconify/react";
-import accountCircleOutline from '@iconify/icons-mdi/account-circle-outline';
 
 class MegaMenu extends Component {
 
@@ -57,7 +53,7 @@ class MegaMenu extends Component {
         let { products } = this.props;
         return (
             <React.Fragment>
-            <div className="navbar-area fixed-top">
+            <div className="navbar-area">
                 <div id="navbar" className="comero-nav">
                     <div className="container">
                         <nav className="navbar navbar-expand-md navbar-light">
@@ -78,60 +74,203 @@ class MegaMenu extends Component {
                             >
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+
                             <div className={classOne} id="navbarSupportedContent">
                                 <ul className="navbar-nav">                                  
-                                <li className="nav-item megamenu">
+                                    <li className="nav-item megamenu">
                                         <Link href="#">
                                             <a className="nav-link">
-                                                New <i className="fas fa-chevron-down"></i>
+                                                Cars <i className="fas fa-chevron-down"></i>
                                             </a>
                                         </Link>
                                         <ul className="dropdown-menu">
                                             <li className="nav-item">
                                                 <div className="container">
-                                                    <div className="row">                                                   
-                                                        <div className="col-12 megaTab">
-                                                            {/* <ul className="megamenu-submenu top-brands">
-                                                            {makes.map((make, id) => (    
-                                                                <li key={id}>
-                                                                    <Link href={`/make/${make.id}`}>
+                                                    <div className="row">
+                                                        <div className="col">
+                                                            <h6 className="submenu-title">Collection Layouts</h6>
+
+                                                            <ul className="megamenu-submenu">
+                                                                <li>
+                                                                    <Link href="/collections-style-one">
+                                                                        <a>Collections Type 1</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/collections-style-two">
+                                                                        <a>Collections Type 2</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-left-sidebar">
+                                                                        <a>Left Sidebar</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-left-sidebar-with-block">
+                                                                        <a>Left Sidebar With HTML Block</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-right-sidebar">
+                                                                        <a>Right Sidebar</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-right-sidebar-with-block">
+                                                                        <a>Right Sidebar With HTML Block</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-without-sidebar">
+                                                                        <a>Without Sidebar</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/category-sidebar-fullwidth">
+                                                                        <a>With Sidebar Full Width</a>
+                                                                    </Link>
+                                                                </li>
+                                                                
+                                                                <li>
+                                                                    <Link href="/category-without-sidebar-fullwidth">
+                                                                        <a>Without Sidebar Full Width</a>
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div className="col">
+                                                            <h6 className="submenu-title">Other Pages</h6>
+
+                                                            <ul className="megamenu-submenu">
+                                                                <li>
+                                                                    <Link href="/cart">
+                                                                        <a>Cart</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/checkout">
+                                                                        <a>Checkout</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/compare">
+                                                                        <a>Compare</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/login">
+                                                                        <a>Login</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/signup">
+                                                                        <a>Signup</a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="/customer-service">
+                                                                        <a>Customer Service</a>
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div className="col">
+                                                            <h6 className="submenu-title">Top Brands</h6>
+
+                                                            <ul className="megamenu-submenu top-brands">
+                                                                <li>
+                                                                    <Link href="#">
                                                                         <a>
-                                                                                <img src={make.image} alt="image" />
+                                                                            <img src={require("../../images/partner1.png")} alt="image" />
                                                                         </a>
                                                                     </Link>
                                                                 </li>
-                                                                ))}
-                                                            </ul> */}
-                                                            
-                                                                <MegaTab />
-                                                            
-                                                        </div>                                                       
+
+                                                                <li>
+                                                                    <Link href="#">
+                                                                        <a>
+                                                                            <img src={require("../../images/partner2.png")} alt="image" />
+                                                                        </a>
+                                                                    </Link>
+                                                                </li>
+                                                                
+                                                                <li>
+                                                                    <Link href="#">
+                                                                        <a>
+                                                                            <img src={require("../../images/partner3.png")} alt="image" />
+                                                                        </a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="#">
+                                                                        <a>
+                                                                            <img src={require("../../images/partner4.png")} alt="image" />
+                                                                        </a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="#">
+                                                                        <a>
+                                                                            <img src={require("../../images/partner5.png")} alt="image" />
+                                                                        </a>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link href="#">
+                                                                        <a>
+                                                                            <img src={require("../../images/partner6.png")} alt="image" />
+                                                                        </a>
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </li>                                           
+                                            </li>
                                         </ul>
                                     </li>
                                     <li className="nav-item p-relative">
                                         <Link href="#">
-                                            <a className="nav-link">Used</a>
+                                            <a className="nav-link">
+                                                Services <i className="fas fa-chevron-down"></i>
+                                            </a>
                                         </Link>
-                                    </li>
 
-                                    <li className="nav-item p-relative">
-                                        <Link href="#">
-                                            <a className="nav-link">Rent</a>
-                                        </Link>
+                                        <ul className="dropdown-menu">
+                                            <li className="nav-item">
+                                                <Link href="/contact-us">
+                                                    <a className="nav-link">Contact Us</a>
+                                                </Link>
+                                            </li>
+                                        </ul>
                                     </li>
-
-                                    <li className="nav-item p-relative">
-                                        <Link href="#">
-                                            <a className="nav-link">Services</a>
-                                        </Link>
-                                    </li>
-
                                     <li className="nav-item p-relative">
                                         <Link href="/about">
                                             <a className="nav-link">About Us</a>
+                                        </Link>
+                                    </li>
+
+                                    <li className="nav-item p-relative">
+                                        <Link href="#">
+                                            <a className="nav-link">Blog</a>
                                         </Link>
                                     </li>
 
@@ -143,11 +282,7 @@ class MegaMenu extends Component {
                                 </ul>
 
                                 <div className="others-option">
-                                    <div className="option-item">
-                                        <Link href="/compare">
-                                            <a>Compare <i className="fas fa-balance-scale"></i></a>
-                                        </Link>
-                                    </div>
+
                                     <div className="option-item">
                                         
                                        {/* <i 
@@ -176,9 +311,9 @@ class MegaMenu extends Component {
                                                     <button className="search-button" type="submit"><i className="fas fa-search"></i></button>
                                                 </form>
                                             </div>
-                                        </div> */}  
+                                        </div> */} 
                                         <Link href="/contact.js">
-                                             <a className="btn btn-primary"><span>Get Quote</span></a>
+                                             <a className="btn btn-primary"><span>Book Test Drive</span></a>
                                         </Link>
                                     </div>
 
@@ -187,16 +322,12 @@ class MegaMenu extends Component {
                                              <a className="btn btn-light"><span>Book A Service</span></a>
                                         </Link>
                                     </div>
-                                    <div className="option-item">
-                                        <Link href="/login">
-                                            <a><Icon className="medIcon" icon={accountCircleOutline} /></a>
-                                        </Link>
-                                    </div>        
+
                                 </div>
                             </div>
                         </nav>
+                    </div>
                 </div>
-            </div>
             </div>
             {this.state.display ? <Cart onClick={this.handleCart} /> : ''}
             </React.Fragment>
@@ -206,7 +337,7 @@ class MegaMenu extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        products: []
+        products: state.addedItems
     }
 }
 

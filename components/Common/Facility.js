@@ -7,7 +7,7 @@ class Facility extends Component {
                 <div className="container">
                     <div className="row">
                         <h2>SHOP YOUR NEW RIDE WITH US TODAY!</h2>
-                        <p className="lead">Venture Cars was established in 2009 to meet the rise in demand for brand new cars in brands such as Toyota and Honda hybrid models.
+                        <p class="lead">Venture Cars was established in 2009 to meet the rise in demand for brand new cars in brands such as Toyota and Honda hybrid models.
 As a Casetrust Accredited Parallel Importer, we're proud to have delivered over 1000 cars since the inception of Venture Cars. More than 10 years in the business,
 we are familiar with buying, selling, insurance, financing, rental, leasing, limousine, workshop and accident claims.</p>
                         <div className="col-lg-3 col-sm-6">
@@ -45,8 +45,8 @@ we are familiar with buying, selling, insurance, financing, rental, leasing, lim
                                 <h3>1 Year Free Servicing</h3>
                             </div>
                         </div>
-                        <div className="text-center"> 
-                            <button type="button" className="btn btn-primary">Book A Test Drive With Us!</button>
+                        <div class="text-center"> 
+                            <button type="button" class="btn btn-primary">Book A Test Drive With Us!</button>
                         </div>
                     </div>
                 </div>

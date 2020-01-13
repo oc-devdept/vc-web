@@ -57,123 +57,23 @@ This files table contents are outlined below>>>>>
 Default CSS
 =================================================*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap");
-@media (min-width:1200px){.container{max-width:90%;}}
-/*icon*/
-.medIcon {font-size:30px;}
+@media (min-width:1200px){.container{max-width:1250px;}}
+
+.jumbotron {margin-bottom:0;}
+.text-center { display:block; width: 100%; margin: 2% auto;}
 body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
 }
-.megaTab .tab-content {padding: 20px 0;}
-.stepper {margin-top:80px;}
-.progtrckr {text-align:center;}
+
 p {
   color: #666666;
   line-height: 1.8;
   font-size: 14px;
   margin-bottom: 15px;
 }
-
-/*stepzilla*/
-ol.progtrckr {
-  list-style-type: none;
-  padding: 0;
-}
-
-ol.progtrckr li {
-  display: inline-block;
-  text-align: center;
-  line-height: 4.5rem;
-  cursor: pointer;
-}
-
-ol.progtrckr li span {
-  padding: 0 1.5rem;
-}
-
-@media (max-width: 650px) {
-  .progtrckr li span {
-    display: none;
-  }
-}
-.progtrckr em {
-  display: none;
-  font-weight: 700;
-  padding-left: 1rem;
-}
-
-@media (max-width: 650px) {
-  .progtrckr em {
-    display: inline;
-  }
-}
-
-ol.progtrckr li.progtrckr-todo {
-  color: silver;
-  border-bottom: 4px solid silver;
-}
-
-ol.progtrckr li.progtrckr-doing {
-  color: black;
-  border-bottom: 4px solid #CCCCCC;
-}
-
-ol.progtrckr li.progtrckr-done {
-  color: black;
-  border-bottom: 4px solid #5cb85c;
-}
-
-ol.progtrckr li:after {
-  content: "\00a0\00a0";
-}
-
-ol.progtrckr li:before {
-  position: relative;
-  bottom: -3.7rem;
-  float: left;
-  left: 50%;
-}
-
-ol.progtrckr li.progtrckr-todo:before {
-  content: "\039F";
-  color: silver;
-  background-color: white;
-  width: 1.2em;
-  line-height: 1.4em;
-}
-
-ol.progtrckr li.progtrckr-todo:hover:before {
-  color: #ff4500;
-}
-
-ol.progtrckr li.progtrckr-doing:before {
-  content: "\2022";
-  color: white;
-  background-color: #CCCCCC;
-  width: 1.2em;
-  line-height: 1.2em;
-  border-radius: 1.2em;
-}
-
-ol.progtrckr li.progtrckr-doing:hover:before {
-  color: #ff4500;
-}
-
-ol.progtrckr li.progtrckr-done:before {
-  content: "\2713";
-  color: white;
-  background-color: #5cb85c;
-  width: 1.2em;
-  line-height: 1.2em;
-  border-radius: 1.2em;
-}
-
-ol.progtrckr li.progtrckr-done:hover:before {
-  color: #333;
-}
-
 
 p:last-child {
   margin-bottom: 0;
@@ -184,7 +84,6 @@ a {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   text-decoration: none;
-  color: #F29D30;
 }
 
 a:hover, a:focus {
@@ -206,7 +105,7 @@ a:hover, a:focus {
 }
 
 .pb-60 {
-  padding: 90px 0;
+  padding-bottom: 60px;
 }
 
 .pt-60 {
@@ -221,32 +120,13 @@ img {
   max-width: 100%;
 }
 
-/*section-title*/
-.section-title {
-  margin-bottom: 40px;
-  text-align: center;
-  /* background-color: #fcfbfb; */
-  padding: 15px;
-}
+h1,h2,h3,h4,h5,h6{text-transform:uppercase;}
 
-.section-title h2 {
-  margin-bottom: 0;
-  display: inline-block;
-  font-size: 18px;
-  position: relative;
-  padding-left: 20px;
-}
-
-
-.section-title.without-bg {
-  padding: 0;
-  background-color: transparent;
-}
-
+h2 {font-size: 30px; margin: 2% 0 !important;}
 /*btn(primary&light)*/
 .btn {
   border: 1px solid transparent;
-  padding: 11px 30px;
+  padding: 11px 25px;
   line-height: initial;
   border-radius: 0;
   -webkit-transition: 0.5s;
@@ -254,24 +134,21 @@ img {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 14px;
-  -webkit-transform: skew(-12deg);
-  transform: skew(-12deg);
-  /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
-}
-.btn span {
-  display: block;
-  -webkit-transform: skew(12deg) !important;
-  transform: skew(12deg) !important;
 }
 .btn.disabled, .btn:disabled {
   opacity: 1;
 }
-
 .btn-primary {
-  color: #ffffff !important;
-  background-color: #F29D30;
-  border: 1px solid #F29D30;
+  color: #ffffff;
+  background-color: #e89e49;
+  border-color: #e89e49;
+  transform: skew(-10deg);
+  -webkit-transform: skew(-10deg); /* Safari */
+}
+
+.btn-primary span, .btn-light span{
+  transform: skew(10deg) !important;
+  -webkit-transform: skew(10deg); /* Safari */
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -279,60 +156,32 @@ img {
   background-color: #222222;
   border-color: #222222;
 }
-
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+.btn-primary:hover, .btn-primary:focus {
   -webkit-box-shadow: unset;
-          box-shadow: unset;
+  box-shadow: unset;
+  background-color: #fff;
+  color: #e89e49;
+  border-color: #e89e49;
+}
+
+.btn-primary:hover span, .btn-primary:focus span, .main-banner-content.white-color .btn-primary:hover span{ 
+  color: #e89e49;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #e89e49;
+  border-color: #e89e49;
+  transform: skew(-10deg);
+}
+
+.btn-light.disabled, .btn-light:disabled {
   background-color: transparent;
   color: #222222;
   border-color: #222222;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-  background-color: transparent;
-  color: #F29D30 !important;
-  border: 1px solid #F29D30;
-}
-
-.btn-light {
-  background-color: #ffffff;
-  color: #F29D30 !important;
-  border-color: #F29D30;
-}
-
-.btn-light.disabled, .btn-light:disabled {
-  background-color: transparent;
-  color: #F29D30;
-  border-color: #F29D30;
-}
-
-.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show > .btn-light.dropdown-toggle {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-  color: #ffffff;
-  background-color: #222222;
-  border-color: #222222;
-}
-
-.btn-light:not(:disabled):not(.disabled).active:focus, .btn-light:not(:disabled):not(.disabled):active:focus, .show > .btn-light.dropdown-toggle:focus {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-}
-
-.btn-light:hover, .btn-light:focus {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-  color: #ffffff !important;
-  background-color: #F29D30;
-  border-color: #F29D30;
-}
+.btn-light span{ color: #e89e49; }
 
 /*owl-carousel-btn*/
 .owl-theme .owl-nav.disabled + .owl-dots {
@@ -497,7 +346,7 @@ Top Panel Area CSS
 Top Header Area CSS
 =================================================*/
 .top-header {
-  background-color: #f1f1f1;
+  background-color: #284859;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -516,7 +365,7 @@ Top Header Area CSS
 }
 
 .top-header-nav li a {
-  color: #222222;
+  color: #fff;
   font-size: 13px;
   line-height: initial;
   position: relative;
@@ -575,7 +424,7 @@ Top Header Area CSS
 }
 
 .top-header-right-nav li a {
-  color: #222222;
+  color: #fff;
   font-size: 13px;
   line-height: initial;
   position: relative;
@@ -598,7 +447,7 @@ Top Header Area CSS
 }
 
 .top-header-right-nav li a:hover, .top-header-right-nav li a:focus {
-  color: #222222;
+  color: #e89e49;
 }
 
 .top-header-right-nav li a:hover::before, .top-header-right-nav li a:focus::before {
@@ -642,7 +491,7 @@ Navbar Area CSS
   z-index: 999;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
           box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-  background-color: #ffffff !important;
+  background-color: #284859 !important;
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
@@ -655,7 +504,7 @@ Navbar Area CSS
 }
 
 .comero-nav {
-  background-color: #4B6674;
+  background-color: #284859;
   padding-top: 3px;
   padding-bottom: 3px;
 }
@@ -703,7 +552,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item a:hover, .comero-nav .navbar .navbar-nav .nav-item a:focus, .comero-nav .navbar .navbar-nav .nav-item a.active {
-  color: #F29D30;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item a i {
@@ -711,13 +560,13 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item:hover a, .comero-nav .navbar .navbar-nav .nav-item:focus a, .comero-nav .navbar .navbar-nav .nav-item.active a {
-  color: #F29D30;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+  background: #284859;
   position: absolute;
   border: none;
   top: 80px;
@@ -746,12 +595,12 @@ Navbar Area CSS
   padding: 8px 15px;
   margin: 0;
   display: block;
-  color: #666666;
+  color: #fff;
   font-size: 14px;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #222222;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -762,12 +611,12 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a {
-  color: #666666;
+  color: #fff;
   text-transform: capitalize;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
-  color: #222222;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li {
@@ -780,12 +629,12 @@ Navbar Area CSS
   padding: 8px 15px;
   margin: 0;
   display: block;
-  color: #666666;
+  color: #fff;
   font-size: 14px;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
-  color: #222222;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -797,16 +646,16 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
-  color: #222222;
+  color: #fff;
   text-transform: capitalize;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #222222;
+  color: #fff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li.active a {
-  color: #222222;
+  color: #e89e49;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -816,7 +665,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li.active a {
-  color: #222222;
+  color: #e89e49;;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li:hover .dropdown-menu {
@@ -846,7 +695,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title {
-  color: #222222;
+  color: #e89e49;
   font-size: 15px;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -973,6 +822,15 @@ Navbar Area CSS
 }
 
 
+.comero-nav .others-option .option-item a:hover, .comero-nav .others-option .option-item a:focus {
+  color: #e89e49;
+}
+
+.comero-nav .others-option .option-item a:hover::before, .comero-nav .others-option .option-item a:focus::before {
+  width: 100%;
+}
+
+
 .comero-nav .others-option .option-item:last-child {
   margin-right: 0;
 }
@@ -1056,7 +914,7 @@ Modal CSS
 }
 
 .shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content h3 {
-  font-size: 13px;
+  font-size: 22px;
   text-transform: initial;
   margin-bottom: 5px;
 }
@@ -1173,7 +1031,7 @@ Modal CSS
   border: none;
   width: 40px;
   outline: 0;
-  color: #666666;
+  color: #e89e49;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -1520,7 +1378,7 @@ Main Banner Area CSS
 }
 
 .main-banner-content {
-  max-width: 520px;
+  /*max-width: 520px;*/
 }
 
 .main-banner-content span {
@@ -1558,6 +1416,12 @@ Main Banner Area CSS
 
 .main-banner-content.white-color p {
   color: #ffffff;
+}
+
+.main-banner-content.white-color .btn-primary:hover, .main-banner-content.white-color .btn-primary:focus {
+  background-color: #fff;
+  color: #e89e49;
+  border-color: #e89e49; 
 }
 
 .home-slides.owl-theme .owl-nav {
@@ -2114,7 +1978,8 @@ All Products Area CSS
 .single-product-box {
   margin-bottom: 30px;
   position: relative;
-  text-align: center;
+  background-color: #fafafa;
+  padding: 2%;
 }
 
 .single-product-box .product-image {
@@ -2224,8 +2089,10 @@ All Products Area CSS
 }
 
 .single-product-box .product-content h3 {
-  font-size: 15px;
+  font-weight:500;
+  font-size: 16px;
   margin-bottom: 0;
+  height: 50px;
 }
 
 .single-product-box .product-content h3 a {
@@ -2242,8 +2109,11 @@ All Products Area CSS
 }
 
 .single-product-box .product-content .product-price span {
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
+  color: #e89e49;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .single-product-box .product-content .product-price .old-price {
@@ -2261,10 +2131,13 @@ All Products Area CSS
 .single-product-box .product-content .rating i {
   margin: 0 2px;
 }
+dt.product-desc-terms {float:left; font-weight: 500; padding-right:2%;}
 
 .single-product-box .product-content .btn {
   display: block;
-  width: 100%;
+  width: 70%;
+  float:right;
+  box-shadow:1px -1px 4px 0px rgba(0,0,0,0.5);
 }
 
 .single-product-box:hover .product-image img:nth-child(2), .single-product-box:focus .product-image img:nth-child(2) {
@@ -7799,3 +7672,6 @@ Go Top CSS
   outline: 0;
 }
 /*# sourceMappingURL=style.css.map */
+
+/*new*/
+h2 {font-size: 30px; }

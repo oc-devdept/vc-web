@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
+import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
 
 class Index extends Component {
@@ -10,7 +11,7 @@ class Index extends Component {
             <React.Fragment>
                 <Navbar />
                 <Breadcrumb title="Login" />
-                <section className="login-area pb-60">
+                <section className="login-area ptb-60">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 col-md-12">
@@ -55,6 +56,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </section>
+                <Facility />
                 <Footer />
             </React.Fragment>
         );

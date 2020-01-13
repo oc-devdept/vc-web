@@ -1,16 +1,18 @@
-import React from "react";
-// import TopPanel from "./TopPanel";
-import TopHeader from "./TopHeader";
-import MegaMenu from "./MegaMenu";
+import React, { Component } from 'react';
+import TopPanel from './TopPanel';
+import TopHeader from './TopHeader';
+import MegaMenu from './MegaMenu';
 
-function NavBar(props) {
-  return (
-    <React.Fragment>
-      {/* <TopPanel /> */}
-      {/* <TopHeader /> */}
-      <MegaMenu />
-    </React.Fragment>
-  );
+class Navbar extends Component {
+    render() {
+        return (
+            <React.Fragment>
+               {/* <TopPanel /> */ }
+                <TopHeader />
+                <MegaMenu />
+            </React.Fragment>
+        );
+    }
 }
 
-export default NavBar;
+export default Navbar;

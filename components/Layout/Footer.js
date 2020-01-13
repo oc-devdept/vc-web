@@ -7,20 +7,34 @@ class Footer extends Component {
             <footer className="footer-area">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <div className="single-footer-widget">
-                                <h3>Venture Cars</h3>
+                                <div className="logo">
+                                    <Link href="index.html">
+                                        <a>
+                                            <img src={require("../../images/logo.png")} alt="logo" />
+                                        </a>
+                                    </Link>
+                                </div>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                            </div>
+                        </div>
+
+                        <div className="col-lg-3 col-md-6">
+                            <div className="single-footer-widget">
+                                <h3>Quick Links</h3>
 
                                 <ul className="quick-links">
-                                    <li><Link href="/about"><a>About Us</a></Link></li>
-                                    <li><Link href="/blog"><a>Blog</a></Link></li>
-                                    <li><Link href="/faq"><a>FAQS</a></Link></li>
-                                    <li><Link href="/contact-us"><a>Contact Us</a></Link></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="#">Customer Services</a></li>
+                                    <li><a href="#">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <div className="single-footer-widget">
                                 <h3>Sales Hours</h3>
                                 <p className="information-links">
@@ -34,7 +48,7 @@ class Footer extends Component {
                             </div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <div className="single-footer-widget">
                                 <h3>Contact Us</h3>
 
@@ -53,7 +67,14 @@ class Footer extends Component {
                     <div className="container">
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-6">
-                                <p>Copyright @ 2019 Venture Cars. All Rights Reserved</p>
+                                <p>Copyrite @ 2019 Venture Cars. All Rights Reserved</p>
+                            </div>
+
+                            <div className="col-lg-6 col-md-6">
+                                <ul className="payment-card">
+                                    <li>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

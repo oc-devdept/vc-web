@@ -1,26 +1,33 @@
 import React, { Component } from "react";
+import { connect } from "react-redux"
 import Default from "Components/Layout/PageTemplates/Default";
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 
-class Product extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        // selectedModelId:
-        selectedGradeId: this.props.data.fields.Paintwork.objects[0].productId, // need to pull off global state
-        selectedExteriorId: "",
-      }
+import { getExteriorList } from "../../../redux/ducks/product/ProductActions.js"
 
-      this.handleClick = this.handleClick.bind(this)
+class Product extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedExteriorId: this.props.ProductState.productExteriorId,
     }
-    handleClick(event) {
-      const { id } = event.target
-      this.setState({
-        ...this.state,
-        selectedExteriorId: id
-      })
-    }
+
+    this.handleOptionChange = this.handleOptionChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.getExteriorList(this.props.ProductState.productGradeId)
+  }
+
+  handleOptionChange(event) {
+    const { id } = event.target
+    this.setState({
+      ...this.state,
+      selectedExteriorId: id
+    })
+  }
+  
   render(){
     console.log("props: ", this.props)
     console.log("state: ", this.state)
@@ -32,7 +39,7 @@ class Product extends Component {
             <div className="section-title">
               <p>02 Exterior</p>
               <ul className="p-0 list-unstyled">
-                {this.props.data.fields.Paintwork.objects.map(( item, id ) => (
+                {/* {this.props.data.fields.Paintwork.objects.map(( item, id ) => (
                   <li 
                     key= { id }
                     id={ item.id }
@@ -42,11 +49,11 @@ class Product extends Component {
                     { item.name }<br/>
                     ${ item.price }
                   </li>
-                ))}
+                ))} */}
               </ul>
-              <button>
-                Back
-              </button>
+              <Link href="#">
+                <button>Back</button>
+              </Link>
               <Link href={`/product/interior/${this.state.selectedGradeId}`}>
                 <button disabled={!(!!this.state.selectedExteriorId)}>03 Interior</button>
               </Link>
@@ -58,28 +65,23 @@ class Product extends Component {
   }
 }
 
-Product.getInitialProps = async function({ctx}) {
-  const { id } = ctx.query
-  const res = await fetch(`http://159.65.14.175:3001/api/products/specificVariantExterior/${id}`)
-  const data = await res.json()
-  return {data}
+// Product.getInitialProps = async function({ctx}) {
+//   const { id } = ctx.query
+//   const res = await fetch(`http://159.65.14.175:3001/api/products/specificVariantExterior/${id}`)
+//   const data = await res.json()
+//   return {data}
+// }
+
+// export default Product;
+
+const mapStateToProps = state => {
+  const { ProductState } = state
+  return { ProductState }
 }
 
-export default Product;
-
-// function mapStateToProps({TestState}) {
-//     console.log('product mapStateToProps')
-//     const{ProductState} = TestState
-//     console.log(ProductState)
-//     // const pId = ownProps.match.params.id;
-//     // const product = state.posts[pId];
-//     return {
-//         ProductState
-//     };
-// }
-// export default connect(
-// mapStateToProps,
-// {
-//     getProductList
-// }
-// )(product);
+export default connect(
+mapStateToProps,
+{
+    getExteriorList
+}
+)(Product)

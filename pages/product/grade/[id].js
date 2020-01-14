@@ -1,28 +1,45 @@
-import React, { Component } from "react";
-import Default from "Components/Layout/PageTemplates/Default";
-import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import Default from "Components/Layout/PageTemplates/Default"
+import Link from 'next/link'
+
+import { getProductGrades, selectedProductGrade } from "../../../redux/ducks/product/ProductActions.js"
 
 class Product extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        // selectedModelId:
-        selectedGradeId: "",
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedGradeId: this.props.ProductState.productGradeId
+    }
 
-      this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick(event) {
-      const { id } = event.target
-      this.setState({
-        selectedGradeId: id
-      })
-    }
+    this.handleOptionChange = this.handleOptionChange.bind(this)
+    this.selectedGrade = this.selectedGrade.bind(this)
+  }
+  
+  componentDidMount() {
+    this.props.getProductGrades(this.props.selectedModelid)
+  }
+
+  //TODO: convert to update global state instead of local state
+  handleOptionChange(event) {
+    const { id } = event.target
+    this.setState({
+      selectedGradeId: id
+    })
+    this.props.selectedProductGrade(id)
+  }
+
+  selectedGrade(event) {
+    // event.preventDefault()
+    this.props.selectedProductGrade(this.state.selectedGradeId)
+  }
+
   render(){
     console.log("props: ", this.props)
-    console.log("state: ", this.state)
-    console.log(this.props.data.fields)
+    // console.log("state: ", this.state)
+
+    const { data } = this.props.ProductState
+    // console.log("data= ", data)
 
     return (
       <Default>
@@ -31,23 +48,28 @@ class Product extends Component {
             <div className="section-title">
               <p>01 Grade</p>
                 <ul className="p-0 list-unstyled">
-                  {this.props.data.fields.map(( item, id ) => (
-                    <li
-                      key={ id }
-                      id= { item.id }
-                      style={ item.id == this.state.selectedGradeId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
-                      onClick={ this.handleClick }
-                    >
-                      {item.name}<br/>
-                      {item.selling_Price}
-                    </li>
-                  ))}
+                  {!!data &&
+                    data.fields.map(( item, id ) => (
+                      <li
+                        key={ id }
+                        id= { item.id }
+                        style={ item.id == this.state.selectedGradeId ? 
+                          {border: "2px solid orange"} : 
+                          {border: "1px solid #DEE2E6"}
+                        }
+                        onClick={ this.handleOptionChange }
+                      >
+                        {item.name}<br/>
+                        {item.selling_Price}
+                      </li>
+                    ))
+                  }
                 </ul>
-              <Link href="#">
-                <button>Back</button>
+              <Link href={`/model/${this.props.selectedModelid}`}>
+                <a>Back</a>
               </Link>
               <Link href={`/product/exterior/${this.state.selectedGradeId}`}>
-                <button disabled={!(!!this.state.selectedGradeId)}>02 Exterior</button>
+                <a disabled={!(!!this.state.selectedGradeId)}>02 Exterior</a>
               </Link>
             </div>
           </div>
@@ -57,28 +79,21 @@ class Product extends Component {
   }
 }
 
+// This can be removed after wiring model page to redux store
 Product.getInitialProps = async function({ctx}) {
   const { id } = ctx.query
-  const res = await fetch(`http://159.65.14.175:3001/api/products/specificGrades/${id}`)
-  const data = await res.json()
-  return {data}
+  return { selectedModelid: id }
 }
 
-export default Product;
+const mapStateToProps = state => {
+  const { ProductState } = state
+  return { ProductState }
+}
 
-// function mapStateToProps({TestState}) {
-//     console.log('product mapStateToProps')
-//     const{ProductState} = TestState
-//     console.log(ProductState)
-//     // const pId = ownProps.match.params.id;
-//     // const product = state.posts[pId];
-//     return {
-//         ProductState
-//     };
-// }
-// export default connect(
-// mapStateToProps,
-// {
-//     getProductList
-// }
-// )(product);
+export default connect(
+  mapStateToProps,
+  {
+    getProductGrades,
+    selectedProductGrade
+  }
+)(Product)

@@ -1,15 +1,12 @@
 /**
  * App Reducers
  */
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"
 
-//import { LeadReducer } from "Ducks/lead";
-import { TestReducer } from "Ducks/lead/test";
+import { ProductReducer } from "Ducks/product"
 
 const reducers = combineReducers({
-  // reducers
-  // leadState: LeadReducer,
-  TestState: TestReducer
-});
+  ProductState: ProductReducer
+})
 
-export default reducers;
+export default reducers

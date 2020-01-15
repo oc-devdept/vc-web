@@ -1,51 +1,37 @@
-import React, { Component } from 'react';
-import Navbar from '../components/Layout/Navbar';
-import Footer from '../components/Layout/Footer';
-import Facility from '../components/Common/Facility';
-import Breadcrumb from '../components/Common/Breadcrumb';
+import React, { Component } from "react";
+// Page Layout
+import Default from "Components/Layout/PageTemplates/Default";
 
-class Index extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <Breadcrumb title="Contact Us" />
-                <section className="contact-area ptb-60">
+class contactUs extends Component {
+  render() {
+    return <Default>
+      <section className="contact-area pb-60">
                     <div className="container">
                         <div className="section-title">
-                            <h2><span className="dot"></span> Contact Us</h2>
+                            <h2>Contact Us</h2>
                         </div>
 
                         <div className="row">
                             <div className="col-lg-5 col-md-12">
                                 <div className="contact-info">
                                     <h3>Here to Help</h3>
-                                    <p>Have a question? You may find an answer in our FAQs. But you can also contact us.</p>
-
                                     <ul className="contact-list">
-                                        <li><i className="fas fa-map-marker-alt"></i> Location: 2750 Quadra Street Victoria, Canada</li>
-                                        <li><i className="fas fa-phone"></i> Call Us: <a href="#">(+123) 456-7898</a></li>
-                                        <li><i className="far fa-envelope"></i> Email Us: <a href="#">support@comero.com</a></li>
-                                        <li><i className="fas fa-fax"></i> Fax: <a href="#">+123456</a></li>
+                                        <li><i className="fas fa-map-marker-alt"></i> 33 Ubi Ave , #01-47/48 Vertex Singapore 408868</li>
+                                        <li><i className="fas fa-phone"></i> <a href="tel:6565528800">(+65) 6552-8800</a></li>
+                                        <li><i className="far fa-envelope"></i> <a href="mailto:sales@bw.com.sg">sales@bw.com.sg</a></li>
+                                        <li><i className="fas fa-fax"></i> <a href="#">(+65) 6858 2120</a></li>
                                     </ul>
 
                                     <h3>Opening Hours:</h3>
                                     <ul className="opening-hours">
-                                        <li><span>Monday:</span> 8AM - 6AM</li>
-                                        <li><span>Tuesday:</span> 8AM - 6AM</li>
-                                        <li><span>Wednesday:</span> 8AM - 6AM</li>
-                                        <li><span>Thursday - Friday:</span> 8AM - 6AM</li>
-                                        <li><span>Sunday:</span> Closed</li>
+                                        <li><strong>Monday, Friday, Saturday and Sunday:</strong> <ul className="sub-opening-hours"><li>09:00AM – 07:00PM</li></ul></li>
+                                        <li><strong>Tuesday – Thursday:</strong> <ul className="sub-opening-hours"><li>09:00AM – 08:00PM</li></ul></li>
                                     </ul>
 
                                     <h3>Follow Us:</h3>
                                     <ul className="social">
                                         <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-behance"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-skype"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-pinterest-p"></i></a></li>
                                         <li><a href="#"><i className="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
@@ -53,9 +39,8 @@ class Index extends Component {
 
                             <div className="col-lg-7 col-md-12">
                                 <div className="contact-form">
-                                    <h3>Drop Us A Line</h3>
-                                    <p>We’re happy to answer any questions you have or provide you with an estimate. Just send us a message in the form below with any questions you may have.</p>
-
+                                    <h3>Have a question?</h3>
+                                    <p>You may find an answer in our <a href="/faq">FAQs</a> or drop us an enquiry!</p>
                                     <form id="contactForm">
                                         <div className="row">
                                             <div className="col-lg-12 col-md-12">
@@ -102,11 +87,9 @@ class Index extends Component {
                         </div>
                     </div>
                 </section>
-                <Facility />
-                <Footer />
-            </React.Fragment>
-        );
-    }
+                <style jsx>{` a {display:inline !important; } .sub-opening-hours {padding:0} .sub-opening-hours li {list-style-type:none;}`}</style>
+    </Default>;
+  }
 }
 
-export default Index;
+export default contactUs;

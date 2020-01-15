@@ -7,18 +7,18 @@ class Product extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        // selectedGradeId: this.props.data.fields.Color.objects[0].productId,
-        // selectedExteriorId: "",
+        selectedGradeId: this.props.data.fields["Seating Fabrics"].objects[0].productId, // need to pull off global state
+        selectedInteriorId: "",
       }
 
       this.handleClick = this.handleClick.bind(this)
     }
     handleClick(event) {
       const { id } = event.target
-      // this.setState({
-      //   ...this.state,
-      //   selectedExteriorId: id
-      // })
+      this.setState({
+        ...this.state,
+        selectedInteriorId: id
+      })
     }
   render(){
     console.log("props: ", this.props)
@@ -30,24 +30,24 @@ class Product extends Component {
           <div className="container">
             <div className="section-title">
               <p>03 Interior</p>
-                {/* <ul className="p-0 list-unstyled">
-                  {this.props.data.fields.Color.objects.map(( item, id ) => (
+                <ul className="p-0 list-unstyled">
+                  {this.props.data.fields["Seating Fabrics"].objects.map(( item, id ) => (
                     <li 
                       key= { id }
                       id={ item.id }
-                      style={ item.id == this.state.selectedExteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
+                      style={ item.id == this.state.selectedInteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
                       onClick={ this.handleClick }
                     >
                       { item.name }<br/>
                       ${ item.price }
                     </li>
                   ))}
-                </ul> */}
-              <button>
-                Back
-              </button>
-              <Link href={`/product/interior/${this.state.selectedGradeId}`}>
-                <button disabled={!(!!this.state.selectedExteriorId)}>04 Rims</button>
+                </ul>
+              <Link href={`/product/exterior/${this.state.selectedGradeId}`}>
+                <button>Back</button>
+              </Link>
+              <Link href={`/product/rims/${this.state.selectedGradeId}`}>
+                <button disabled={!(!!this.state.selectedInteriorId)}>04 Rims</button>
               </Link>
             </div>
           </div>

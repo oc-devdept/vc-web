@@ -1,28 +1,30 @@
-import React, { Component } from "react";
-import Default from "Components/Layout/PageTemplates/Default";
-import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import Link from 'next/link'
+
+import Default from "Components/Layout/PageTemplates/Default"
+
+import { getExteriorList, selectedProductExterior } from "../../../redux/ducks/product/ProductActions.js"
 
 class Product extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        // selectedGradeId: this.props.data.fields.Color.objects[0].productId,
-        selectedExteriorId: "",
-      }
+  constructor(props) {
+    super(props)
+    
+    this.handleOptionChange = this.handleOptionChange.bind(this)
+  }
 
-      this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick(event) {
-      const { id } = event.target
-      this.setState({
-        ...this.state,
-        selectedExteriorId: id
-      })
-    }
+  componentDidMount() {
+    this.props.getExteriorList(this.props.ProductState.productGradeId)
+  }
+
+  handleOptionChange(event) {
+    const { id } = event.target
+    this.props.selectedProductExterior(id)
+  }
+  
   render(){
     console.log("props: ", this.props)
-    console.log("state: ", this.state)
+    const { data } = this.props.ProductState
 
     return (
       <Default>
@@ -30,25 +32,24 @@ class Product extends Component {
           <div className="container">
             <div className="section-title">
               <p>02 Exterior</p>
-                {/* <ul className="p-0 list-unstyled">
-                  {this.props.data.fields.Color.objects.map(( item, id ) => (
-                    <li 
-                      key= { id }
-                      id={ item.id }
-                      style={ item.id == this.state.selectedExteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
-                      onClick={ this.handleClick }
-                    >
-                      { item.name }<br/>
-                      ${ item.price }
-                    </li>
-                  ))}
-                </ul> */}
-                
-              <button>
-                Back
-              </button>
-              <Link href={`/product/interior/${this.state.selectedGradeId}`}>
-                <button disabled={!(!!this.state.selectedExteriorId)}>03 Interior</button>
+              <ul className="p-0 list-unstyled">
+                {/* {this.props.data.fields.Paintwork.objects.map(( item, id ) => (
+                  <li 
+                    key= { id }
+                    id={ item.id }
+                    style={ item.id == this.state.selectedExteriorId ? {border: "2px solid orange"} : {border: "1px solid #DEE2E6"}}
+                    onClick={ this.handleClick }
+                  >
+                    { item.name }<br/>
+                    ${ item.price }
+                  </li>
+                ))} */}
+              </ul>
+              <Link href="/product/grade/[id]" as={`/product/grade/${this.props.ProductState.productGradeId}`}>
+                <button>Back</button>
+              </Link>
+              <Link href="/product/interior/[id]" as={`/product/interior/${this.props.ProductState.productGradeId}`}>
+                <button disabled={!(!!this.props.ProductState.selectedExteriorId)}>03 Interior</button>
               </Link>
             </div>
           </div>
@@ -58,28 +59,15 @@ class Product extends Component {
   }
 }
 
-Product.getInitialProps = async function({ctx}) {
-  const { id } = ctx.query
-  const res = await fetch(`http://159.65.14.175:3001/api/products/specificVariantExterior/${id}`)
-  const data = await res.json()
-  return {data}
+const mapStateToProps = state => {
+  const { ProductState } = state
+  return { ProductState }
 }
 
-export default Product;
-
-// function mapStateToProps({TestState}) {
-//     console.log('product mapStateToProps')
-//     const{ProductState} = TestState
-//     console.log(ProductState)
-//     // const pId = ownProps.match.params.id;
-//     // const product = state.posts[pId];
-//     return {
-//         ProductState
-//     };
-// }
-// export default connect(
-// mapStateToProps,
-// {
-//     getProductList
-// }
-// )(product);
+export default connect(
+mapStateToProps,
+{
+    getExteriorList,
+    selectedProductExterior
+}
+)(Product)

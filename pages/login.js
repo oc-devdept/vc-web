@@ -4,7 +4,37 @@ import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Breadcrumb from '../components/Common/Breadcrumb';
 
+import api from 'axios';
+
 class Index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            form: {
+                email: 'igc14.gianjie@gmail.com',
+                password: '1234',
+            }
+        }
+      }
+
+      
+    _handleSubmitForm = async(e) => {
+        try {
+            const item = await api.post('http://localhost:3001/api/basecustomerusers/login', this.state.form)
+            console.log(item.data)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    _handleForm = (e, element) => {
+        let form = {...this.state.form}
+        form[element] = e
+        this.setState({form:form})
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -19,23 +49,23 @@ class Index extends Component {
                                         <h2><span className="dot"></span> Login</h2>
                                     </div>
 
-                                    <form className="login-form">
+                                    <div className="login-form">
                                         <div className="form-group">
                                             <label>Email</label>
-                                            <input type="email" className="form-control" placeholder="Enter your name" id="name" name="name" />
+                                            <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this._handleForm(e.target.value, 'email')} placeholder="Enter your email" id="email" name="email" />
                                         </div>
 
                                         <div className="form-group">
                                             <label>Password</label>
-                                            <input type="password" className="form-control" placeholder="Enter your password" id="password" name="password" />
+                                            <input type="password" className="form-control" value={this.state.form.password} onChange={(e) => this._handleForm(e.target.value, 'password')}  placeholder="Enter your password" id="password" name="password" />
                                         </div>
 
-                                        <button type="submit" className="btn btn-primary">Login</button>
+                                        <button onClick={this._handleSubmitForm} className="btn btn-primary">Login</button>
                                         
                                         <Link href="#">
                                             <a className="forgot-password">Lost your password?</a>
                                         </Link>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
 

@@ -5,7 +5,42 @@ import Footer from '../components/Layout/Footer';
 import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
 
+import api from 'axios'
+
 class Index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            form: {
+                name: 'gianjie',
+                email: 'igc14.gianjie@gmail.com',
+                password: '123',
+            }
+        }
+      }
+
+      
+    _handleSubmitForm = async(e) => {
+
+        try {
+
+            const item = await api.post('http://localhost:3001/api/basecustomerusers/signup', {data: this.state.form})
+            console.log(item)
+
+        } catch (e) {
+
+            console.log(e)
+        }
+     
+    }
+
+    _handleForm = (e, element) => {
+        let form = {...this.state.form}
+        form[element] = e
+        this.setState({form:form})
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -18,37 +53,34 @@ class Index extends Component {
                                 <h2><span className="dot"></span> Create an Account</h2>
                             </div>
 
-                            <form className="signup-form">
-                                <div className="form-group">
-                                    <label>First Name</label>
-                                    <input type="text" className="form-control" placeholder="Enter your name" id="fname" name="fname" />
-                                </div>
+                            <div className="signup-form">
 
                                 <div className="form-group">
-                                    <label>Last Name</label>
-                                    <input type="text" className="form-control" placeholder="Enter your name" id="lname" name="lname" />
+                                    <label>Name</label>
+                                    <input type="text" value={this.state.form.name} onChange={(e) => this._handleForm(e.target.value, 'name')} className="form-control" placeholder="Enter your name" id="fname" name="fname" />
                                 </div>
 
                                 <div className="form-group">
                                     <label>Email</label>
-                                    <input type="email" className="form-control" placeholder="Enter your name" id="name" name="name" />
+                                    <input type="email" value={this.state.form.email} onChange={(e) => this._handleForm(e.target.value, 'email')}  className="form-control" placeholder="Enter your name" id="name" name="name" />
                                 </div>
 
                                 <div className="form-group">
                                     <label>Password</label>
-                                    <input type="password" className="form-control" placeholder="Enter your password" id="password" name="password" />
+                                    <input type="password" value={this.state.form.password} onChange={(e) => this._handleForm(e.target.value, 'password')} className="form-control" placeholder="Enter your password" id="password" name="password" />
                                 </div>
 
-                                <button type="submit" className="btn btn-primary">Signup</button>
-                                <Link href="/">
-                                    <a className="return-store">or Return to Store</a>
+                                <button onClick={this._handleSubmitForm} className="btn btn-primary">Signup</button>
+
+                                <Link href="/login">
+                                    <a className="return-store">Have an account, login here</a>
                                 </Link>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </section>
-                <Facility />
-                <Footer />
+
+
             </React.Fragment>
         );
     }

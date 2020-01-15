@@ -1,76 +1,44 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import Default from "Components/Layout/PageTemplates/Default"
-import Link from 'next/link'
 
-import { getProductGrades, selectedProductGrade } from "../../../redux/ducks/product/ProductActions.js"
+import Default from "Components/Layout/PageTemplates/Default"
+import StepZilla from "react-stepzilla"
+import Grade from "./Grade"
+import Exterior from "./Exterior"
+import Interior from "./Interior"
+import Rims from "./Rims"
+import Accessories from "./Accessories"
+
+import { getProductGrades } from "../../../redux/ducks/product/ProductActions.js"
 
 class Product extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      selectedGradeId: this.props.ProductState.productGradeId
-    }
-
-    this.handleOptionChange = this.handleOptionChange.bind(this)
-    this.selectedGrade = this.selectedGrade.bind(this)
   }
   
   componentDidMount() {
-    this.props.getProductGrades(this.props.selectedModelid)
+    this.props.getProductGrades(this.props.selectedModelId)
   }
-
-  //TODO: convert to update global state instead of local state
-  handleOptionChange(event) {
-    const { id } = event.target
-    this.setState({
-      selectedGradeId: id
-    })
-    this.props.selectedProductGrade(id)
-  }
-
-  selectedGrade(event) {
-    // event.preventDefault()
-    this.props.selectedProductGrade(this.state.selectedGradeId)
-  }
-
+  
   render(){
-    console.log("props: ", this.props)
-    // console.log("state: ", this.state)
-
-    const { data } = this.props.ProductState
-    // console.log("data= ", data)
-
+    console.log("props= ", this.props)
+    const { ProductState } = this.props
+    const steps = [
+      {name: "Grade", component:<Grade productGrade={ProductState.productGrade} />},
+      {name: "Exterior", component: <Exterior productExterior={ProductState.productExterior} />},
+      {name: "Interior", component: <Interior productInterior={ProductState.productInterior} /> },
+      {name: "Rims", component: <Rims productRims={ProductState.productRims} /> },
+      {name: "Accessories", component: <Accessories productAccessories={ProductState.productAccessories} /> }
+    ]
+    
     return (
       <Default>
         <section className="contact-area pb-60">
           <div className="container">
             <div className="section-title">
-              <p>01 Grade</p>
-                <ul className="p-0 list-unstyled">
-                  {!!data &&
-                    data.fields.map(( item, id ) => (
-                      <li
-                        key={ id }
-                        id= { item.id }
-                        style={ item.id == this.state.selectedGradeId ? 
-                          {border: "2px solid orange"} : 
-                          {border: "1px solid #DEE2E6"}
-                        }
-                        onClick={ this.handleOptionChange }
-                      >
-                        {item.name}<br/>
-                        {item.selling_Price}
-                      </li>
-                    ))
-                  }
-                </ul>
-              <Link href={`/model/${this.props.selectedModelid}`}>
-                <a>Back</a>
-              </Link>
-              <Link href={`/product/exterior/${this.state.selectedGradeId}`}>
-                <a disabled={!(!!this.state.selectedGradeId)}>02 Exterior</a>
-              </Link>
+              <div className="step-process">
+                <StepZilla steps={steps} />
+              </div>
             </div>
           </div>
         </section>
@@ -82,7 +50,7 @@ class Product extends Component {
 // This can be removed after wiring model page to redux store
 Product.getInitialProps = async function({ctx}) {
   const { id } = ctx.query
-  return { selectedModelid: id }
+  return { selectedModelId: id }
 }
 
 const mapStateToProps = state => {
@@ -94,6 +62,5 @@ export default connect(
   mapStateToProps,
   {
     getProductGrades,
-    selectedProductGrade
   }
 )(Product)

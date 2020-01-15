@@ -16,6 +16,22 @@ export const getProductGradesFailure = e => ({
   payload: e
 })
 
+// Retrieve data of selected grade
+export const getProductGradeData = e => ({
+  type: types.GET_PRODUCT_GRADE_DATA,
+  payload: e
+})
+
+export const getProductGradeDataSuccess = e => ({
+  type: types.GET_PRODUCT_GRADE_DATA_SUCCESS,
+  payload: e
+})
+
+export const getProductGradeDataFailure = e => ({
+  type: types.GET_PRODUCT_GRADE_DATA_FAILURE,
+  payload: e
+})
+
 // Update selected grade
 export const selectedProductGrade = e => ({
   type: types.SELECTED_PRODUCT_GRADE,
@@ -35,6 +51,12 @@ export const getExteriorListSuccess = e => ({
 
 export const getExteriorListFailure = e => ({
   type: types.GET_EXTERIOR_LIST_FAILURE,
+  payload: e
+})
+
+// Update selected exterior
+export const selectedProductExterior = e => ({
+  type: types.SELECTED_PRODUCT_EXTERIOR,
   payload: e
 })
 

@@ -17,10 +17,20 @@ import api from "Api"
 // REQUESTS
 //=========================
 const getProductGradesRequest = async(payload) => {
-  // console.log("in ProductSaga.js getProductGradesRequest")
-  // console.log("payload= ", payload)
+  console.log("payload= ", payload)
   const data = await api.get(`/products/specificGrades/${payload.payload}`)
-  // console.log("data= ", data)
+  return data
+}
+
+const getProductGradeDataRequest = async(payload) => {
+  const exteriorData = await api.get(`/products/specificVariantExterior/${payload.payload}`)
+  const interiorData = await api.get(`/products/specificVariantInterior/${payload.payload}`)
+  const accessoriesData = await api.get(`/products/specificGradeProductOption/${payload.payload}`)
+  const data = {
+    exteriorData: exteriorData,
+    interiorData: interiorData,
+    accessoriesData: accessoriesData
+  }
   return data
 }
 
@@ -28,13 +38,20 @@ const getProductGradesRequest = async(payload) => {
 // CALL(GENERATOR) ACTIONS
 //=========================
 function* getProductGrades(e) {
-  // console.log("in ProductSaga.js getProductGrades")
   try {
     const data = yield call(getProductGradesRequest, e)
-    // console.log("last step, data= ", data)
     yield put(actions.getProductGradesSuccess(data))
   } catch (error) {
     yield put(actions.getProductGradesFailure(data))
+  }
+}
+
+function* getProductGradeData(e) {
+  try {
+    const data = yield call(getProductGradeDataRequest, e)
+    yield put(actions.getProductGradeDataSuccess(data))
+  } catch (error) {
+    yield put(actions.getProductGradeDataFailure(data))
     console.log("Error!")
   }
 }
@@ -46,11 +63,16 @@ export function* getProductGradesWatcher() {
   yield takeEvery(types.GET_PRODUCT_GRADES, getProductGrades)
 }
 
+export function* getProductGradeDataWatcher() {
+  yield takeEvery(types.GET_PRODUCT_GRADE_DATA, getProductGradeData)
+}
+
 //=======================
 // FORK SAGAS TO STORE
 //=======================
 export default function* productSaga() {
   yield all([
     fork(getProductGradesWatcher),
+    fork(getProductGradeDataWatcher)
   ])
 }

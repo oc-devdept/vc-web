@@ -19,16 +19,24 @@ const INIT_STATE = {
     data: { }
   },
   productAccessories: {
-    selectedIds: [ ],
+    selectedIds: { },
     data: { }
   }
 }
 
 export default (state = INIT_STATE, action) => {
+  // console.log("redux state= ", state)
   switch(action.type){
+    
+    // TEMPORARY
+    case types.SELECTED_PRODUCT_MODEL:
+      return {
+        ...state
+      }
+
     case types.GET_PRODUCT_GRADES:
       return {
-        ...state,
+        ...state
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
@@ -60,8 +68,18 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
-      console.log("redux state= ", state)
-      console.log("redux action= ", action)
+      let accessoriesIdList = { }
+      const populateAccessoriesIds = action => {
+        action.payload.accessoriesData.data.fields.map(item => {
+          Object.values(item).map(key => {
+            key.map(item => {
+              accessoriesIdList[item.id] = false
+            })
+          })
+        })
+      }
+      populateAccessoriesIds(action)
+
       return {
         ...state,
         productExterior: {
@@ -77,7 +95,7 @@ export default (state = INIT_STATE, action) => {
           data: action.payload.interiorData.data
         },
         productAccessories: {
-          ...state.productAccessories,
+          selectedIds: accessoriesIdList,
           data: action.payload.accessoriesData.data
         }
       }
@@ -87,55 +105,44 @@ export default (state = INIT_STATE, action) => {
         ...state
       }
 
-    case types.GET_EXTERIOR_LIST:
-      return {
-        ...state
-      }
-
-    case types.GET_EXTERIOR_LIST_SUCCESS:
-      return {
-        ...state
-      }
-
-    case types.GET_EXTERIOR_LIST_FAILURE:
-      return {
-        ...state
-      }
-
     case types.SELECTED_PRODUCT_EXTERIOR:
       return {
         ...state,
-        productExteriorId: action.payload
+        productExterior: {
+          ...state.productExterior,
+          id: action.payload
+        }
       }
 
-    case types.GET_INTERIOR_LIST:
+    case types.SELECTED_PRODUCT_INTERIOR:
       return {
-        ...state
+        ...state,
+        productInterior: {
+          ...state.productInterior,
+          id: action.payload
+        }
       }
 
-    case types.GET_INTERIOR_LIST_SUCCESS:
+    case types.SELECTED_PRODUCT_RIMS:
       return {
-        ...state
+        ...state,
+        productRims: {
+          ...state.productRims,
+          id: action.payload
+        }
       }
 
-    case types.GET_INTERIOR_LIST_FAILURE:
+    case types.SELECTED_PRODUCT_ACCESSORIES:
+      const newValue = !state.productAccessories.selectedIds[action.payload]
       return {
-        ...state
-      }
-
-    case types.GET_PRODUCT_OPTIONS:
-      return {
-        ...state
-      }
-
-    case types.GET_PRODUCT_OPTIONS_SUCCESS:
-      return {
-        ...state
-      }
-
-    case types.GET_PRODUCT_OPTIONS_FAILURE:
-      return {
-        ...state
+        ...state,
+        productAccessories: {
+          ...state.productAccessories,
+          selectedIds: {
+            ...state.productAccessories.selectedIds,
+            [action.payload]: newValue
+          }
+        }
       }
 
     default:

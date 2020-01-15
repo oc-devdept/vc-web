@@ -17,7 +17,6 @@ import api from "Api"
 // REQUESTS
 //=========================
 const getProductGradesRequest = async(payload) => {
-  console.log("payload= ", payload)
   const data = await api.get(`/products/specificGrades/${payload.payload}`)
   return data
 }
@@ -43,6 +42,7 @@ function* getProductGrades(e) {
     yield put(actions.getProductGradesSuccess(data))
   } catch (error) {
     yield put(actions.getProductGradesFailure(data))
+    console.log("Error!")
   }
 }
 

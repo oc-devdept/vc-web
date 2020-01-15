@@ -1,5 +1,11 @@
 import * as types from "./ProductTypes";
 
+// TEMPORARY: Update selected model
+export const selectedProductModel = e => ({
+  type: types.SELECTED_PRODUCT_MODEL,
+  payload: e
+})
+
 // Retrieve grades of selected model
 export const getProductGrades = e => ({
   type: types.GET_PRODUCT_GRADES,
@@ -13,6 +19,12 @@ export const getProductGradesSuccess = e => ({
 
 export const getProductGradesFailure = e => ({
   type: types.GET_PRODUCT_GRADES_FAILURE,
+  payload: e
+})
+
+// Update selected grade
+export const selectedProductGrade = e => ({
+  type: types.SELECTED_PRODUCT_GRADE,
   payload: e
 })
 
@@ -32,62 +44,26 @@ export const getProductGradeDataFailure = e => ({
   payload: e
 })
 
-// Update selected grade
-export const selectedProductGrade = e => ({
-  type: types.SELECTED_PRODUCT_GRADE,
-  payload: e
-})
-
-// Retrieve exterior product variants of a selected grade
-export const getExteriorList = e => ({
-  type: types.GET_EXTERIOR_LIST,
-  payload: e
-})
-
-export const getExteriorListSuccess = e => ({
-  type: types.GET_EXTERIOR_LIST_SUCCESS,
-  payload: e
-})
-
-export const getExteriorListFailure = e => ({
-  type: types.GET_EXTERIOR_LIST_FAILURE,
-  payload: e
-})
-
 // Update selected exterior
 export const selectedProductExterior = e => ({
   type: types.SELECTED_PRODUCT_EXTERIOR,
   payload: e
 })
 
-// Retrieve interior product variants of a selected grade
-export const getInteriorList = e => ({
-  type: types.GET_INTERIOR_LIST,
+// Update selected interior
+export const selectedProductInterior = e => ({
+  type: types.SELECTED_PRODUCT_INTERIOR,
   payload: e
 })
 
-export const getInteriorListSuccess = e => ({
-  type: types.GET_INTERIOR_LIST_SUCCESS,
+// Update selected rims
+export const selectedProductRims = e => ({
+  type: types.SELECTED_PRODUCT_RIMS,
   payload: e
 })
 
-export const getInteriorListFailure = e => ({
-  type: types.GET_INTERIOR_LIST_FAILURE,
-  payload: e
-})
-
-// Retrieve product options of a selected grade
-export const getProductOptions = e => ({
-  type: types.GET_PRODUCT_OPTIONS,
-  payload: e
-})
-
-export const getProductOptionsSuccess = e => ({
-  type: types.GET_PRODUCT_OPTIONS_SUCCESS,
-  payload: e
-})
-
-export const getProductOptionsFailure = e => ({
-  type: types.GET_PRODUCT_OPTIONS_FAILURE,
+// Update selected accessories
+export const selectedProductAccessories = e => ({
+  type: types.SELECTED_PRODUCT_ACCESSORIES,
   payload: e
 })

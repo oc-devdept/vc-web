@@ -11,10 +11,10 @@ const Exterior = props => {
   }
 
   const { objects } = props.productExterior.data.fields["Car Colors"]
-  console.log("exterior props: ", props)
+  // console.log("exterior props: ", props)
   return(
     <div>
-      <p>02 Grade</p>
+      <p>02 Exterior</p>
       <ul className="p-0 list-unstyled">
         {!!objects &&
           objects.map(( item, id ) => (

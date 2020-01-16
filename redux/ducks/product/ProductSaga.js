@@ -3,10 +3,7 @@ import {
   call, 
   fork, 
   put, 
-  takeEvery, 
-  takeLatest, 
-  select, 
-  delay 
+  takeEvery,
 } from "redux-saga/effects"
 
 import * as types from "./ProductTypes"
@@ -16,6 +13,11 @@ import api from "Api"
 //=========================
 // REQUESTS
 //=========================
+const getProductModelDataRequest = async(payload) => {
+  const data = await api.get(`/categories/${payload.payload}`)
+  return data
+}
+
 const getProductGradesRequest = async(payload) => {
   const data = await api.get(`/products/specificGrades/${payload.payload}`)
   return data
@@ -36,6 +38,16 @@ const getProductGradeDataRequest = async(payload) => {
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
+function* getProductModelData(e) {
+  try {
+    const data = yield call(getProductModelDataRequest, e)
+    yield put(actions.getProductModelDataSuccess(data))
+  } catch (error) {
+    yield put(actions.getProductModelDataFailure(data))
+    console.log("Error!")
+  }
+}
+
 function* getProductGrades(e) {
   try {
     const data = yield call(getProductGradesRequest, e)
@@ -59,6 +71,10 @@ function* getProductGradeData(e) {
 //=======================
 // WATCHER FUNCTIONS
 //=======================
+export function* getProductModelDataWatcher() {
+  yield takeEvery(types.GET_PRODUCT_MODEL_DATA, getProductModelData)
+}
+
 export function* getProductGradesWatcher() {
   yield takeEvery(types.GET_PRODUCT_GRADES, getProductGrades)
 }
@@ -72,7 +88,8 @@ export function* getProductGradeDataWatcher() {
 //=======================
 export default function* productSaga() {
   yield all([
+    fork(getProductModelDataWatcher),
     fork(getProductGradesWatcher),
-    fork(getProductGradeDataWatcher)
+    fork(getProductGradeDataWatcher),
   ])
 }

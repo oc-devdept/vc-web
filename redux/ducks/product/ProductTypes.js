@@ -1,5 +1,7 @@
-// TEMPORARY: Update selected model
-export const SELECTED_PRODUCT_MODEL = "SELECTED_PRODUCT_MODEL"
+// Get data of selected model
+export const GET_PRODUCT_MODEL_DATA = "GET_PRODUCT_MODEL_DATA"
+export const GET_PRODUCT_MODEL_DATA_SUCCESS = "GET_PRODUCT_MODEL_DATA_SUCCESS"
+export const GET_PRODUCT_MODEL_DATA_FAILURE = "GET_PRODUCT_MODEL_DATA_FAILURE"
 
 // Retrieve grades of selected model
 export const GET_PRODUCT_GRADES = "GET_PRODUCT_GRADES"
@@ -9,7 +11,7 @@ export const GET_PRODUCT_GRADES_FAILURE = "GET_PRODUCT_GRADES_FAILURE"
 // Update selected grade
 export const SELECTED_PRODUCT_GRADE = "SELECTED_PRODUCT_GRADE"
 
-// Retrieve data of selected grade
+// Get data of selected grade
 export const GET_PRODUCT_GRADE_DATA = "GET_PRODUCT_GRADE_DATA"
 export const GET_PRODUCT_GRADE_DATA_SUCCESS = "GET_PRODUCT_GRADE_DATA_SUCCESS"
 export const GET_PRODUCT_GRADE_DATA_FAILURE = "GET_PRODUCT_GRADE_DATA_FAILURE"

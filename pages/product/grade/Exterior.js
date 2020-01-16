@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { selectedProductExterior } from "../../../redux/ducks/product/ProductActions.js"
+import { selectedProductExterior } from "Ducks/product/ProductActions"
 
 const Exterior = props => {
   

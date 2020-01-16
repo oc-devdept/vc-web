@@ -1,12 +1,22 @@
 import * as types from "./ProductTypes";
 
-// TEMPORARY: Update selected model
-export const selectedProductModel = e => ({
-  type: types.SELECTED_PRODUCT_MODEL,
+// Get data of selected model
+export const getProductModelData = e => ({
+  type: types.GET_PRODUCT_MODEL_DATA,
   payload: e
 })
 
-// Retrieve grades of selected model
+export const getProductModelDataSuccess = e => ({
+  type: types.GET_PRODUCT_MODEL_DATA_SUCCESS,
+  payload: e
+})
+
+export const getProductModelDataFailure = e => ({
+  type: types.GET_PRODUCT_MODEL_DATA_FAILURE,
+  payload: e
+})
+
+// Get grades of selected model
 export const getProductGrades = e => ({
   type: types.GET_PRODUCT_GRADES,
   payload: e
@@ -28,7 +38,7 @@ export const selectedProductGrade = e => ({
   payload: e
 })
 
-// Retrieve data of selected grade
+// Get data of selected grade
 export const getProductGradeData = e => ({
   type: types.GET_PRODUCT_GRADE_DATA,
   payload: e

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { selectedProductGrade, getProductGradeData } from "../../../redux/ducks/product/ProductActions.js"
+import { selectedProductGrade, getProductGradeData } from "Ducks/product/ProductActions"
 
 const Grade = props => {
   

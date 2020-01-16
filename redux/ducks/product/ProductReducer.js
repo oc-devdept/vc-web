@@ -1,21 +1,32 @@
 import * as types from "./ProductTypes"
 
 const INIT_STATE = {
-  productModelId: null,
+  productModel: {
+    id: null,
+    name: null,
+  },
   productGrade: {
     id: null,
+    name: null,
+    price: 0,
     data: { }
   },
   productExterior: {
     id: null,
+    name: null,
+    price: 0,
     data: { }
   },
   productInterior: {
     id: null,
+    name: null,
+    price: 0,
     data: { }
   },
   productRims: {
     id: null,
+    name: null,
+    price: 0,
     data: { }
   },
   productAccessories: {
@@ -27,9 +38,22 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
   // console.log("redux state= ", state)
   switch(action.type){
-    
-    // TEMPORARY
-    case types.SELECTED_PRODUCT_MODEL:
+    case types.GET_PRODUCT_MODEL_DATA:
+      return {
+        ...state
+      }
+
+    case types.GET_PRODUCT_MODEL_DATA_SUCCESS:
+      const { data } = action.payload
+      return {
+        ...state,
+        productModel: {
+          id: data.id,
+          name: data.name
+        }
+      }
+
+    case types.GET_PRODUCT_MODEL_DATA_FAILURE:
       return {
         ...state
       }
@@ -54,11 +78,17 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.SELECTED_PRODUCT_GRADE:
+      var id = action.payload
+      var { fields } = state.productGrade.data
+      var object = fields.find(element => element.id === id)
+
       return {
         ...state,
         productGrade: {
           ...state.productGrade,
-          id: action.payload
+          id: object.id,
+          name: object.name,
+          price: object.selling_Price
         }
       }
 
@@ -106,29 +136,47 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.SELECTED_PRODUCT_EXTERIOR:
+      var id = action.payload
+      var { objects } = state.productExterior.data.fields["Car Colors"]
+      var object = objects.find(element => element.id === id)
+
       return {
         ...state,
         productExterior: {
           ...state.productExterior,
-          id: action.payload
+          id: object.id,
+          name: object.name,
+          price: object.price
         }
       }
 
     case types.SELECTED_PRODUCT_INTERIOR:
+      var id = action.payload
+      var { objects } = state.productInterior.data.fields["Seating Fabrics"]
+      var object = objects.find(element => element.id === id)
+
       return {
         ...state,
         productInterior: {
           ...state.productInterior,
-          id: action.payload
+          id: object.id,
+          name: object.name,
+          price: object.price
         }
       }
 
     case types.SELECTED_PRODUCT_RIMS:
+      var id = action.payload
+      var { objects } = state.productInterior.data.fields["Rims"]
+      var object = objects.find(element => element.id === id)
+
       return {
         ...state,
         productRims: {
           ...state.productRims,
-          id: action.payload
+          id: object.id,
+          name: object.name,
+          price: object.price
         }
       }
 

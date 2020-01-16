@@ -1,3 +1,3 @@
-# Chan's Car Rental Website
+# Venture Cars Website
 
 Project by OC Digital

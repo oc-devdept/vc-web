@@ -1,19 +1,22 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://159.65.14.175:3001/api"
-    // process.env.NODE_ENV === "production"
-    //   ? "http://localhost:3001/api"
-    //   : "http://localhost:3001/api"
-});
 
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem("accessKey");
-  if (token) {
-    config.headers = { Authorization: `${token}` };
-  }
-  return config;
-});
+let api
+
+switch(process.env.NODE_ENV){
+  case 'development':
+    api = axios.create({
+      baseURL: "http://localhost:3001/api"
+    });
+    break
+  default:
+    api = axios.create({
+      baseURL: "http://159.65.14.175:3001/api"
+    });
+    break
+}
+
+
 
 api.interceptors.response.use(
   response => {

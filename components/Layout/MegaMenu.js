@@ -140,6 +140,13 @@ class MegaMenu extends Component {
                                             <a className="nav-link">Contact Us</a>
                                         </Link>
                                     </li>
+
+                                    <li className="nav-item p-relative">
+                                        <Link href="/home">
+                                            <a className="nav-link">Account</a>
+                                        </Link>
+                                    </li>
+
                                 </ul>
 
                                 <div className="others-option">

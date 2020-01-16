@@ -3,8 +3,13 @@ import Link from 'next/link';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Breadcrumb from '../components/Common/Breadcrumb';
+import Router from 'next/router'
 
-import api from 'axios';
+import api from 'Api'
+
+import { connect } from "react-redux"
+import {saveAccessTokenSuccess } from "Ducks/user/UserActions"
+
 
 class Index extends Component {
 
@@ -13,21 +18,44 @@ class Index extends Component {
         this.state = {
             form: {
                 email: 'igc14.gianjie@gmail.com',
-                password: '1234',
-            }
+                password: '123',
+            },
+            passwordEmail: 'igc14.gianjie@gmail.com',
+            restartPassword: false,
+            restartPasswordDone: false,
         }
-      }
+    }
 
+    componentDidUpdate(){
+        if(this.props.accessToken){
+            Router.push('/home')                
+        }
+    }
       
+
     _handleSubmitForm = async(e) => {
         try {
-            const item = await api.post('http://localhost:3001/api/basecustomerusers/login', this.state.form)
-            console.log(item.data)
+            const item = await api.post('/basecustomerusers/login', this.state.form)
+            await this.props.saveAccessTokenSuccess(item.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+
+    _handlePasswordForm = async(e) => {
+        try {
+            const email = this.state.passwordEmail
+
+            await api.post(`/basecustomerusers/reset`, { email: email });
+
+            this.setState({restartPassword: false, restartPasswordDone: true})
 
         } catch (e) {
             console.log(e)
         }
     }
+
 
     _handleForm = (e, element) => {
         let form = {...this.state.form}
@@ -36,6 +64,7 @@ class Index extends Component {
     }
 
     render() {
+
         return (
             <React.Fragment>
                 <Navbar />
@@ -62,9 +91,46 @@ class Index extends Component {
 
                                         <button onClick={this._handleSubmitForm} className="btn btn-primary">Login</button>
                                         
-                                        <Link href="#">
-                                            <a className="forgot-password">Lost your password?</a>
-                                        </Link>
+                                    
+                                        {!this.state.restartPassword && !this.state.restartPasswordDone &&
+                                            <button onClick={()=>this.setState({restartPassword: true})} className="forgot-password">Lost your password?</button>
+                                        }
+
+                                        {this.state.restartPassword && !this.state.restartPasswordDone &&
+                                            <div>
+                                                <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                <div className="login-form" style={{marginTop: 50}}>
+                                                    
+                                                    <div className="form-group">
+                                                        <label>Account Email</label>
+                                                        <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
+                                                    </div>
+
+                                                    <button onClick={this._handlePasswordForm} className="btn btn-primary">Reset my password</button>
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                        {this.state.restartPasswordDone && 
+                                            <div>
+                                                <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                <div className="login-form" style={{marginTop: 50}}>
+                                                    
+                                                    <div className="form-group">
+                                                        <label>A reset password link has sent to your emaill</label>
+                                                    </div>
+
+                                                    <button onClick={() => this.setState({restartPasswordDone: false})} className="btn btn-primary">Back to menu</button>
+
+                                                </div>
+                                            </div>
+                                        }
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -91,4 +157,16 @@ class Index extends Component {
     }
 }
 
-export default Index;
+
+const mapStateToProps = state => {
+    const { UserState } = state
+    const {accessToken} = UserState
+    return { accessToken }
+}
+  
+export default connect(
+  mapStateToProps,
+  {
+    saveAccessTokenSuccess,
+  }
+)(Index)

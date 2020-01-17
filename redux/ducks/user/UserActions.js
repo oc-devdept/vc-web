@@ -33,3 +33,21 @@ export const handleAccountLogout_failure = e => ({
   payload: e
 })
 
+
+
+export const retrieveUserProfile = e => ({
+  type: types.RETRIEVE_USER_PROFILE,
+  payload: e
+})
+
+
+export const retrieveUserProfileSuccess = e => ({
+  type: types.RETRIEVE_USER_PROFILE_SUCCESS,
+  payload: e
+})
+
+export const retrieveUserProfileFailure = e => ({
+  type: types.RETRIEVE_USER_PROFILE_FAILURE,
+  payload: e
+})
+

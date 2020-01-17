@@ -4,7 +4,8 @@ import api from 'Api'
 
 const INIT_STATE = {
   user: null,
-  accessToken: null
+  accessToken: null,
+  profile: null
 }
 
 export default (state = INIT_STATE, action) => {
@@ -30,8 +31,6 @@ export default (state = INIT_STATE, action) => {
 
     case types.LOGOUT_ACCOUNT_SUCCESS:
     
-          console.log('LOGOUT_ACCOUNT_SUCCESS')
-
           api.interceptors.request.use(config => {
             config.headers = { Authorization: `` };
             return config
@@ -44,12 +43,22 @@ export default (state = INIT_STATE, action) => {
           }
 
     case types.LOGOUT_ACCOUNT_FAILURE:
-
-          console.log('LOGOUT_ACCOUNT_FAILURE')
-
           return {
             ...state,
           }
+        
+    case types.RETRIEVE_USER_PROFILE_SUCCESS:
+          return {
+            ...state,
+            profile: action.payload
+          }
+
+ 
+    case types.RETRIEVE_USER_PROFILE_FAILURE:
+          return {
+            ...state,
+          }
+
           
     default:
       return {...state}

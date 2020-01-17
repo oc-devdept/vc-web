@@ -17,12 +17,14 @@ class Index extends Component {
         super(props);
         this.state = {
             form: {
-                email: 'igc14.gianjie@gmail.com',
+                email: 'gianjie@ocdigitalnetwork.com',
                 password: '123',
             },
-            passwordEmail: 'igc14.gianjie@gmail.com',
+            passwordEmail: 'gianjie@ocdigitalnetwork.com',
             restartPassword: false,
             restartPasswordDone: false,
+            resendLink: false,
+            resendLinkDone: false,
         }
     }
 
@@ -50,6 +52,19 @@ class Index extends Component {
             await api.post(`/basecustomerusers/reset`, { email: email });
 
             this.setState({restartPassword: false, restartPasswordDone: true})
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    _handleVerificationLink = async(e) => {
+        try {
+            const email = this.state.passwordEmail
+
+            await api.post(`/basecustomerusers/verify`, { email: email });
+
+            this.setState({resendLink: false, resendLinkDone: true})
 
         } catch (e) {
             console.log(e)
@@ -91,12 +106,33 @@ class Index extends Component {
 
                                         <button onClick={this._handleSubmitForm} className="btn btn-primary">Login</button>
                                         
-                                    
-                                        {!this.state.restartPassword && !this.state.restartPasswordDone &&
-                                            <button onClick={()=>this.setState({restartPassword: true})} className="forgot-password">Lost your password?</button>
+                                        <div style={{display:'flex', justifyContent:"space-evenly"}}>
+                                            
+                                                <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false})} className="forgot-password">Lost your password?</button>
+                                            
+
+                                                <button onClick={()=>this.setState({resendLink: true, restartPassword: false, resendLinkDone: false})} className="forgot-password">Resend verification link</button>
+                                            
+                                        </div>
+
+                                        {this.state.resendLink && 
+                                            <div>
+                                                <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                <div className="login-form" style={{marginTop: 50}}>
+                                                    
+                                                    <div className="form-group">
+                                                        <label>Account Email</label>
+                                                        <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
+                                                    </div>
+
+                                                    <button onClick={this._handleVerificationLink} className="btn btn-primary">Send me verification link</button>
+
+                                                </div>
+                                            </div>
                                         }
 
-                                        {this.state.restartPassword && !this.state.restartPasswordDone &&
+                                        {this.state.restartPassword &&
                                             <div>
                                                 <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
 
@@ -129,6 +165,21 @@ class Index extends Component {
                                             </div>
                                         }
 
+                                        {this.state.resendLinkDone && 
+                                            <div>
+                                                <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                <div className="login-form" style={{marginTop: 50}}>
+                                                    
+                                                    <div className="form-group">
+                                                        <label>You will receive a new verification link in your email, if you have registered with us previously</label>
+                                                    </div>
+
+                                                    <button onClick={() => this.setState({resendLinkDone: false})} className="btn btn-primary">Back to menu</button>
+
+                                                </div>
+                                            </div>
+                                        }
 
 
                                     </div>

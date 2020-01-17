@@ -15,7 +15,7 @@ class Index extends Component {
         this.state = {
             form: {
                 name: 'gianjie',
-                email: 'igc14.gianjie@gmail.com',
+                email: 'gianjie@ocdigitalnetwork.com',
                 password: '123',
             },
             success: false,
@@ -27,7 +27,8 @@ class Index extends Component {
 
         try {
 
-            const item = await api.post('/basecustomerusers/signup', {data: this.state.form})
+            await api.post('/basecustomerusers/signup', {data: this.state.form})
+            
             this.setState({success: true})
 
         } catch (e) {

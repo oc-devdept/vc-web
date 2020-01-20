@@ -4,7 +4,6 @@ const INIT_STATE = {
   ModelData: {
     id: null,
     name: null,
-    description: null,
     ProductGradeData: { }
   },
 }
@@ -23,7 +22,6 @@ export default (state = INIT_STATE, action) => {
       return {
         id: data.id,
         name: data.name,
-        description: data.description,
         ProductGradeData: data
       }
 

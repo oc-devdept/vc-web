@@ -15,6 +15,7 @@ class MegaTab extends Component {
       ModelLoading : true
     }
   }
+
   async componentDidMount() {
     //component will mount with an empty state this.state... After mounting, we populate the state with data from AllMakeSource
     let AllMakeSource = [...this.state.AllMakeSource]
@@ -22,6 +23,7 @@ class MegaTab extends Component {
       const Make = await api.get(`http://159.65.14.175:3001/api/products/getMake`);
       const MakeSource = Make.data.fields
       const Model = await api.get(`http://159.65.14.175:3001/api/products/getModel`);
+      const Tags = await api.get(`http://159.65.14.175:3001/api/tags/getAllTags`);
       const ModelSource = Model.data.fields
       this.setState({AllModelSource: ModelSource, AllMakeSource: AllMakeSource.concat(MakeSource), ModelLoading: false})
     } catch (e){
@@ -68,26 +70,41 @@ class MegaTab extends Component {
       })
     )
   }
-
   _RenderModel = () => {
+    var modelImage = {
+      objectFit: 'cover',
+      borderRadius: '20px',
+      // wdith: '150px',
+      height: '100px',
+      padding: "5px"
+    };
+     
     return (  
-      this.state.AllModelSource.map((model, index) => {
-        return ( 
-          // <div key={index} className="col-3">
-              // <Link key={index} href={`/model?model=${(model.id).replace(/ /g,"-")}`} as={`/model/${(model.id).replace(/ /g,"-")}`}> 
-              // <Link key={index} href="/model/[id]" as={`/model/${(model.name).replace(/ /g,"-")}`}>
-              <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
-                {model.name}
-              </Link>
-             
-          // </div> 
-        )
+      this.state.AllModelSource.map((model, index) => {            
+        return (
+          <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}>  
+              <div className="col-3 my-2 px-2"> 
+                {
+                  model.files.map(image => { 
+                    return ( 
+                      <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
+                        <img style={modelImage} src={image.url} />
+                      </Link>
+                      )
+                  } )
+                }
+                <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
+                  {model.name}
+                </Link>
+              </div>    
+          </Link>             
+        )      
       })
     )
   }
 
   render() {
-    return (  <div>
+    return (  <div className="text-uppercase">
       <ul className="nav nav-tabs">  
               {this.state.AllMakeSource.length > 0 &&
                   this._RenderMake()

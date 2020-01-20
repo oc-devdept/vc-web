@@ -13,26 +13,31 @@ const Exterior = props => {
   const { objects } = props.productExterior.data.fields["Car Colors"]
   // console.log("exterior props: ", props)
   return(
-    <div>
-      <p>02 Exterior</p>
-      <ul className="p-0 list-unstyled">
+  <div className="configure-sect row">  
+    <div className="configure-gall col-9">
+          tetstes
+    </div>
+    <div className="configure-opt">
+      <h2 className="configure-opt-title">02 Exterior</h2>
+      <ul className="list-unstyled">
         {!!objects &&
           objects.map(( item, id ) => (
-            <li
+            <li className="configure-list"
               key={ id }
               id= { item.id }
               style={ item.id == props.productExterior.id ? 
-                {border: "2px solid orange"} : 
+                {border: "2px solid #F29D30", color: "#F29D30"} : 
                 {border: "1px solid #DEE2E6"}
               }
               onClick={ handleOptionChange }
             >
               {item.name}<br/>
-              {item.price}
+              ${item.price}
             </li>
           ))
         }
       </ul>
+    </div>
     </div>
   )
 }

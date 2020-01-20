@@ -34,9 +34,9 @@ class Product extends Component {
     
     return (
       <Default>
-        <section className="contact-area pb-60">
+        <section className="configure-area pb-60">
           <div className="container">
-            <div className="section-title">
+            <div>
               {/* need to validate steps to prevent user from skipping steps */}
               <div className="step-process">
                 <StepZilla steps={steps} />

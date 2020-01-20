@@ -75,7 +75,7 @@ p {
   font-size: 14px;
   margin-bottom: 15px;
 }
-
+h3{ font-size: 20px;}
 /*stepzilla*/
 ol.progtrckr {
   list-style-type: none;
@@ -223,23 +223,18 @@ img {
 
 /*section-title*/
 .section-title {
-  margin-bottom: 40px;
-  text-align: center;
-  /* background-color: #fcfbfb; */
-  padding: 15px;
+  padding: 20px 0;
 }
 
 .section-title h2 {
   margin-bottom: 0;
-  display: inline-block;
-  font-size: 18px;
-  position: relative;
-  padding-left: 20px;
+  text-transform: uppercase;
+  font-size: 24px;
 }
 
 
 .section-title.without-bg {
-  padding: 0;
+  padding: 20px 0;
   background-color: transparent;
 }
 
@@ -642,7 +637,7 @@ Navbar Area CSS
   z-index: 999;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
           box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-  background-color: #ffffff !important;
+  /* background-color: #ffffff !important; */
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
@@ -742,7 +737,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding: 8px 15px;
   margin: 0;
   display: block;
@@ -1031,7 +1026,7 @@ Modal CSS
 }
 
 .shoppingCartModal .modal-content .modal-body h3 {
-  font-size: 17px;
+  font-size: 20px;
   text-transform: uppercase;
   margin-bottom: 25px;
 }
@@ -2114,7 +2109,7 @@ All Products Area CSS
 .single-product-box {
   margin-bottom: 30px;
   position: relative;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .single-product-box .product-image {
@@ -2224,16 +2219,16 @@ All Products Area CSS
 }
 
 .single-product-box .product-content h3 {
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 0;
 }
 
 .single-product-box .product-content h3 a {
-  color: #222222;
+  color: #4B6674;
 }
 
 .single-product-box .product-content h3 a:hover, .single-product-box .product-content h3 a:focus {
-  color: #222222;
+  color: #F29D30;
 }
 
 .single-product-box .product-content .product-price {
@@ -2242,8 +2237,10 @@ All Products Area CSS
 }
 
 .single-product-box .product-content .product-price span {
+  color: #F29D30;
   font-size: 18px;
   display: inline-block;
+  font-style: italic;
 }
 
 .single-product-box .product-content .product-price .old-price {
@@ -2379,7 +2376,7 @@ Products QuickView Modal Area CSS
 }
 
 .productQuickView .modal-content .product-content h3 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
@@ -7798,4 +7795,56 @@ Go Top CSS
 .accordion__button:focus {
   outline: 0;
 }
+
+.step {
+  background-color: #f0f0f0;
+  width: 31%;
+  margin: 1%;
+  padding: 1%;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color:#4B6674;
+}
+
+.carousel-caption{
+  position: absolute !important;
+  width: 100% !important;
+  top: 0px !important;
+  margin-top: 202px !important; 
+  text-align: left !important;
+  right: 0 !important;
+  left: 0 !important;
+}
+
+.btn-slider:hover, .btn-slider:focus{
+  background-color: #fff;
+  color: #F29D30 !important;
+  border: 1px solid #F29D30;
+}
+
+.product-desc dl{
+  width: 33%;
+  display: inline-block;
+}
+
+#navbar .container { max-width: 100% !important;}
+
+.comero-nav .navbar .navbar-nav {margin:0;}
+
+/* ol.progtrckr,.configure-opt{display:inline-block;} */
+ol.progtrckr{width:66%; text-align:left;}
+ol.progtrckr, .configure-opt-title{text-transform: uppercase; font-weight: 600;}
+.configure-opt{background:#f0f0f0; padding: 2%;}
+.footer-buttons{width:33%;}
+.footer-buttons{float:right; margin: 2% 0 0;}
+ol.progtrckr li.progtrckr-doing:before{background-color:#F29D30;}
+ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30;}
+.configure-opt-title{color:#4B6674;}
+.configure-list{padding: 2%; margin: 2% 0;}
+.pull-right {float:right;}
+.configure-total{text-transform: uppercase;}
+.configure-total dt{display:inline-block;}
+.configure-total dl dt:nth-child(2){float:right;}
+.configure-total-header {background:#4B6674; color: #fff; text-transform: uppercase;}
 /*# sourceMappingURL=style.css.map */

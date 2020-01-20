@@ -9,7 +9,7 @@ import Interior from "./Interior"
 import Rims from "./Rims"
 import Accessories from "./Accessories"
 
-import { getProductGrades } from "../../../redux/ducks/product/ProductActions.js"
+import { getProductGrades, getProductModelData } from "Ducks/product/ProductActions"
 
 class Product extends Component {
   constructor(props) {
@@ -18,24 +18,26 @@ class Product extends Component {
   
   componentDidMount() {
     this.props.getProductGrades(this.props.selectedModelId)
+    this.props.getProductModelData(this.props.selectedModelId)
   }
   
   render(){
     console.log("props= ", this.props)
-    const { ProductState } = this.props
+    const { ProductState } = this.props    
     const steps = [
       {name: "Grade", component:<Grade productGrade={ProductState.productGrade} />},
       {name: "Exterior", component: <Exterior productExterior={ProductState.productExterior} />},
       {name: "Interior", component: <Interior productInterior={ProductState.productInterior} /> },
       {name: "Rims", component: <Rims productRims={ProductState.productRims} /> },
-      {name: "Accessories", component: <Accessories productAccessories={ProductState.productAccessories} /> }
+      {name: "Accessories", component: <Accessories ProductState={ProductState} /> }
     ]
     
     return (
       <Default>
-        <section className="contact-area pb-60">
+        <section className="configure-area pb-60">
           <div className="container">
-            <div className="section-title">
+            <div>
+              {/* need to validate steps to prevent user from skipping steps */}
               <div className="step-process">
                 <StepZilla steps={steps} />
               </div>
@@ -62,5 +64,6 @@ export default connect(
   mapStateToProps,
   {
     getProductGrades,
+    getProductModelData
   }
 )(Product)

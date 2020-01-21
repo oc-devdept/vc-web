@@ -20,30 +20,26 @@ const Accessories = props => {
       <h2 className="configure-opt-title">05 Accessories</h2>
       <ul className="p-0 list-unstyled">
         {!!fields &&        
-          fields.map(( item, id ) => (
-            <li className="product-option-group" key={ id }>
-              { Object.entries(item).map(([key, value], id) => (
-                <div key={ id }>
-                  <p><strong>Product Option Group: { key }</strong></p>
-                  <ul className="p-0">
-                    { value.map(( item, id ) => (
-                      <li
-                        key={ id }
-                        id= { item.id }
-                        className="product-option list-unstyled configure-list" 
-                        style={ !!props.ProductState.productAccessories.selectedIds[item.id] ? 
-                          {border: "2px solid orange", color: "#F29D30"} : {border: "1px solid #DEE2E6"}
-                        }
-                        onClick={ handleOptionChange }
-                      >
-                        { item.productOption.name }<br/>
-                        ${ item.productOption.price }
-                      </li>                              
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </li>
+          Object.entries(fields).map(([key, value], id) => (
+            <div className="product-option-group" key={ id }>
+              <p><strong>Product Option Group: { key }</strong></p>
+              <ul className="p-0">
+                { value.map(( item, id ) => (
+                  <li
+                    key={ id }
+                    id={ item.id }
+                    className="product-option list-unstyled configure-list" 
+                    style={ !!props.ProductState.productAccessories.selectedIds[item.id] ? 
+                      {border: "2px solid orange", color: "#F29D30"} : {border: "1px solid #DEE2E6"}
+                    }
+                    onClick={ handleOptionChange }
+                  >
+                    { item.productOption.name }<br/>
+                    ${ item.productOption.price }
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </ul>

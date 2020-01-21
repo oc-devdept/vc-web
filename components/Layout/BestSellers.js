@@ -73,7 +73,7 @@ class BestSeller extends Component {
                 <div className="single-product-box">
                   <div className="product-image">
                     {grade.images.map((gradeImg, idx) => (
-                      <Link href={`/product/grade/${grade.id}`}>
+                      <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
                         <a>
                           <img
                             style={modelImage}
@@ -87,7 +87,7 @@ class BestSeller extends Component {
 
                   <div className="product-content">
                     <h3 className="text-uppercase">
-                      <Link href={`/product/grade/${grade.modelId}`}>
+                      <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
                         <a>{grade.name}</a>
                       </Link>
                     </h3>
@@ -131,7 +131,7 @@ class BestSeller extends Component {
                       )}
                     </div>
 
-                    <Link href={`/product/grade/${grade.modelId}`}>
+                    <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
                       <a className="btn btn-primary">Explore</a>
                     </Link>
                   </div>

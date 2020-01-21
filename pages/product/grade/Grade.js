@@ -12,10 +12,11 @@ const Grade = props => {
   }
 
   const { fields } = props.productGrade.data
+  console.log("grade props= ", props)
   return(
     <div className="configure-sect row">
       <div className="configure-gall col-9">
-          tetstes
+        { props.productGrade.description }
       </div>
     <div className="configure-opt col-3">
       <h2 className="configure-opt-title">01 Grade</h2>
@@ -31,10 +32,6 @@ const Grade = props => {
               }
               onClick={ handleOptionChange }
             >
-              {/* <ul className="p-0 list-unstyled">
-                <li>{item.name}</li>
-                <li>${item.selling_Price}</li>
-              </ul> */}
               {item.name}<br/>
               ${item.selling_Price}
             </li>

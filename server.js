@@ -18,29 +18,29 @@ app.prepare().then(() => {
   // https://github.com/zeit/next.js/tree/4.2.3#user-content-static-file-serving-eg-images
   server.use(cors());
   server.use(
-    "/images",
+    "/assets/images",
     express.static(path.join(__dirname, "images"), {
       maxAge: dev ? "0" : "365d"
     })
   );
 
   server.use(bodyParser.json());
-  
-  server.get('/model/:id', (req, res) => {
-    const link = req.params.id
-    console.log('link')
-    console.log(link)
 
-    return app.render(req, res, `/model/${link}`, { id: link })
-  })
+  server.get("/model/:id", (req, res) => {
+    const link = req.params.id;
+    console.log("link");
+    console.log(link);
 
-  server.get('/product/:id', (req, res) => {
-    const link = req.params.id
-    console.log('link')
-    console.log(link)
+    return app.render(req, res, `/model/${link}`, { id: link });
+  });
 
-    return app.render(req, res, `/product`, { id: link })
-  })
+  server.get("/product/:id", (req, res) => {
+    const link = req.params.id;
+    console.log("link");
+    console.log(link);
+
+    return app.render(req, res, `/product`, { id: link });
+  });
 
   server.get("*", (req, res) => {
     return handle(req, res);

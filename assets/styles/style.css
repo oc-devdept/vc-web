@@ -1499,19 +1499,19 @@ Main Banner Area CSS
 }
 
 .main-banner.item-bg1 {
-  background-image: url(../../images/main-banner1.jpg);
+  background-image: url(../../assets/images/main-banner1.jpg);
 }
 
 .main-banner.item-bg2 {
-  background-image: url(../../images/main-banner2.jpg);
+  background-image: url(../../assets/images/main-banner2.jpg);
 }
 
 .main-banner.item-bg3 {
-  background-image: url(../../images/main-banner3.jpg);
+  background-image: url(../../assets/images/main-banner3.jpg);
 }
 
 .main-banner.item-bg4 {
-  background-image: url(../../images/main-banner4.jpg);
+  background-image: url(../../assets/images/main-banner4.jpg);
 }
 
 .main-banner-content {
@@ -2997,7 +2997,7 @@ Testimonials Area CSS
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(../../images/testimonials-bg.jpg);
+  /* background-image: url(../../assets/images/testimonials-bg.jpg); */
 }
 
 .single-testimonials {
@@ -3063,7 +3063,7 @@ Products Offer Area CSS
 .products-offer-area {
   position: relative;
   z-index: 1;
-  background-image: url(../../images/offer-bg.jpg);
+  /* background-image: url(../../assets/images/offer-bg.jpg); */
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
@@ -6670,17 +6670,17 @@ Sidebar Area CSS
   background-position: center center !important;
 }
 
-.widget-area .widget_comero_posts_thumb .item .thumb .fullimage.bg1 {
-  background-image: url(../../images/blog1.jpg);
+/* .widget-area .widget_comero_posts_thumb .item .thumb .fullimage.bg1 {
+  background-image: url(../../assets/images/blog1.jpg);
 }
 
 .widget-area .widget_comero_posts_thumb .item .thumb .fullimage.bg2 {
-  background-image: url(../../images/blog3.jpg);
+  background-image: url(../../assets/images/blog3.jpg);
 }
 
 .widget-area .widget_comero_posts_thumb .item .thumb .fullimage.bg3 {
-  background-image: url(../../images/blog4.jpg);
-}
+  background-image: url(../../assets/images/blog4.jpg);
+} */
 
 .widget-area .widget_comero_posts_thumb .item .info {
   overflow: hidden;
@@ -7844,6 +7844,9 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
 .product-desc dl{
   width: 33%;
+  display: inline-block;
+}
+.product-desc dd{
   display: inline-block;
 }
 

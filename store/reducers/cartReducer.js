@@ -15,7 +15,7 @@ import {
 } from '../actions/action-types/cart-actions'
 
 const initState = {
-    brands: [ {id:1, title: "Toyota", image: require("../../images/img1.jpg"),
+    brands: [ {id:1, title: "Toyota", image: require("../../assets/images/img1.jpg"),
     products: [
         {
             id: 1,
@@ -24,9 +24,9 @@ const initState = {
             engineCap: "1797cc",
             power:"98bhp",
             fuelConspt:"23.8km/litre",
-            image: require("../../images/img1.jpg"),
-            imageHover: require("../../images/img-hover1.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img1.jpg"),
+            imageHover: require("../../assets/images/img-hover1.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 2,
@@ -35,12 +35,12 @@ const initState = {
             engineCap: "2493cc",
             power:"180bhp",
             fuelConspt:"11.6km/litre",
-            image: require("../../images/img2.jpg"),
-            imageHover: require("../../images/img-hover2.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img2.jpg"),
+            imageHover: require("../../assets/images/img-hover2.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         }]
         }, 
-    { id:2, title: "Honda", image: require("../../images/img1.jpg"), 
+    { id:2, title: "Honda", image: require("../../assets/images/img1.jpg"), 
         products:[{
             id: 3,
             title: "Honda Shuttle 1.5G Facelift Sensing",
@@ -48,9 +48,9 @@ const initState = {
             engineCap: "1797cc",
             power:"98bhp",
             fuelConspt:"23.8km/litre",
-            image: require("../../images/img3.jpg"),
-            imageHover: require("../../images/img-hover3.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img3.jpg"),
+            imageHover: require("../../assets/images/img-hover3.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 4,
@@ -59,9 +59,9 @@ const initState = {
             engineCap: "1496cc",
             power:"128bhp",
             fuelConspt:"20.0km/litre",
-            image: require("../../images/img4.jpg"),
-            imageHover: require("../../images/img-hover4.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img4.jpg"),
+            imageHover: require("../../assets/images/img-hover4.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 5,
@@ -70,12 +70,12 @@ const initState = {
             engineCap: "1496cc",
             power:"128bhp",
             fuelConspt:"20.0km/litre",
-            image: require("../../images/img5.jpg"),
-            imageHover: require("../../images/img-hover5.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img5.jpg"),
+            imageHover: require("../../assets/images/img-hover5.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         }]
     }, 
-    { id:3, title: "Suzuki", image: require("../../images/img1.jpg"),
+    { id:3, title: "Suzuki", image: require("../../assets/images/img1.jpg"),
         products: [{
             id: 6,
             title: "Suzuki Swift Sport MT ",
@@ -83,9 +83,9 @@ const initState = {
             engineCap: "1371cc",
             power:"138bhp",
             fuelConspt:"16.4km/litre",
-            image: require("../../images/img6.jpg"),
-            imageHover: require("../../images/img-hover6.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img6.jpg"),
+            imageHover: require("../../assets/images/img-hover6.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 7,
@@ -94,9 +94,9 @@ const initState = {
             engineCap: "1371cc",
             power:"138bhp",
             fuelConspt:"16.4km/litre",
-            image: require("../../images/img7.jpg"),
-            imageHover: require("../../images/img-hover7.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img7.jpg"),
+            imageHover: require("../../assets/images/img-hover7.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 8,
@@ -105,25 +105,25 @@ const initState = {
             engineCap: "1371cc",
             power:"138bhp",
             fuelConspt:"16.4km/litre",
-            image: require("../../images/img8.jpg"),
-            imageHover: require("../../images/img-hover8.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img8.jpg"),
+            imageHover: require("../../assets/images/img-hover8.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         }/*,
         {
             id: 9,
             title: "Belted chino trousers polo",
             price: 430,
-            image: require("../../images/img1.jpg"),
-            imageHover: require("../../images/img-hover1.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img1.jpg"),
+            imageHover: require("../../assets/images/img-hover1.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         },
         {
             id: 10,
             title: "Belted chino trousers polo",
             price: 650,
-            image: require("../../images/img2.jpg"),
-            imageHover: require("../../images/img-hover2.jpg"),
-            quickView: require("../../images/quick-view-img.jpg")
+            image: require("../../assets/images/img2.jpg"),
+            imageHover: require("../../assets/images/img-hover2.jpg"),
+            quickView: require("../../assets/images/quick-view-img.jpg")
         }*/
     ]} 
     ],

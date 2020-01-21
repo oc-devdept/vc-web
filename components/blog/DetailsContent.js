@@ -9,7 +9,7 @@ export class DetailsContent extends Component {
                         <div className="col-lg-8 col-md-12 offset-lg-2 offset-md-0">
                             <div className="blog-details">
                                 <div className="article-img">
-                                    <img src={require("../../images/blog1.jpg")} alt="image" />
+                                    <img src={require("../../assets/images/blog1.jpg")} alt="image" />
                                 </div>
 
                                 <div className="article-content">
@@ -65,7 +65,7 @@ export class DetailsContent extends Component {
                                         <article className="comment-body">
                                             <footer className="comment-meta">
                                                 <div className="comment-author vcard">
-                                                    <img src={require("../../images/author1.jpg")} className="avatar" alt="image" />
+                                                    <img src={require("../../assets/images/author1.jpg")} className="avatar" alt="image" />
                                                     <b className="fn">Novine</b>
                                                     <span className="says">says:</span>
                                                 </div>
@@ -91,7 +91,7 @@ export class DetailsContent extends Component {
                                                 <article className="comment-body">
                                                     <footer className="comment-meta">
                                                         <div className="comment-author vcard">
-                                                            <img src={require("../../images/author2.jpg")} className="avatar" alt="image" />
+                                                            <img src={require("../../assets/images/author2.jpg")} className="avatar" alt="image" />
                                                             <b className="fn">Novine</b>
                                                             <span className="says">says:</span>
                                                         </div>
@@ -118,7 +118,7 @@ export class DetailsContent extends Component {
                                                     <article className="comment-body">
                                                         <footer className="comment-meta">
                                                             <div className="comment-author vcard">
-                                                                <img src={require("../../images/author3.jpg")} className="avatar" alt="image" />
+                                                                <img src={require("../../assets/images/author3.jpg")} className="avatar" alt="image" />
                                                                 <b className="fn">Comero</b>
                                                                 <span className="says">says:</span>
                                                             </div>
@@ -144,7 +144,7 @@ export class DetailsContent extends Component {
                                                             <article className="comment-body">
                                                                 <footer className="comment-meta">
                                                                     <div className="comment-author vcard">
-                                                                        <img src={require("../../images/author4.jpg")} className="avatar" alt="image" />
+                                                                        <img src={require("../../assets/images/author4.jpg")} className="avatar" alt="image" />
                                                                         <b className="fn">Comero</b>
                                                                         <span className="says">says:</span>
                                                                     </div>
@@ -175,7 +175,7 @@ export class DetailsContent extends Component {
                                         <article className="comment-body">
                                             <footer className="comment-meta">
                                                 <div className="comment-author vcard">
-                                                    <img src={require("../../images/author2.jpg")} className="avatar" alt="image" />
+                                                    <img src={require("../../assets/images/author2.jpg")} className="avatar" alt="image" />
                                                     <b className="fn">Comero</b>
                                                     <span className="says">says:</span>
                                                 </div>

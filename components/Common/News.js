@@ -54,7 +54,7 @@ class News extends Component {
                                     <div className="news-image">
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/blog-img1.jpg")} alt="image" />
+                                                <img src={require("../../assets/images/blog-img1.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </div>
@@ -79,7 +79,7 @@ class News extends Component {
                                     <div className="news-image">
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/blog-img2.jpg")} alt="image" />
+                                                <img src={require("../../assets/images/blog-img2.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </div>
@@ -104,7 +104,7 @@ class News extends Component {
                                     <div className="news-image">
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/blog-img1.jpg")} alt="image" />
+                                                <img src={require("../../assets/images/blog-img1.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </div>
@@ -129,7 +129,7 @@ class News extends Component {
                                     <div className="news-image">
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/blog-img2.jpg")} alt="image" />
+                                                <img src={require("../../assets/images/blog-img2.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </div>
@@ -154,7 +154,7 @@ class News extends Component {
                                     <div className="news-image">
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/blog-img1.jpg")} alt="image" />
+                                                <img src={require("../../assets/images/blog-img1.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </div>

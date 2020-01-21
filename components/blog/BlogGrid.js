@@ -11,7 +11,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog1.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog1.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">
@@ -32,7 +32,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog2.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog2.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">
@@ -53,7 +53,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog3.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog3.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">
@@ -74,7 +74,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog4.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog4.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">
@@ -95,7 +95,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog5.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog5.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">
@@ -116,7 +116,7 @@ export class BlogGrid extends Component {
                             <div className="single-blog-post">
                                 <div className="blog-image">
                                     <Link href="/blog-details">
-                                        <a><img src={require("../../images/blog6.jpg")} alt="image" /></a>
+                                        <a><img src={require("../../assets/images/blog6.jpg")} alt="image" /></a>
                                     </Link>
 
                                     <div className="post-tag">

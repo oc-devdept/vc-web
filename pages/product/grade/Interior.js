@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { selectedProductInterior } from "../../../redux/ducks/product/ProductActions.js";
+import { selectedProductInterior } from "Ducks/product/ProductActions";
 
 const Interior = props => {
   const handleOptionChange = event => {

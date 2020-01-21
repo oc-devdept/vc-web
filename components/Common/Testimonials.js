@@ -36,7 +36,7 @@ class Testimonials extends Component {
                     >
                         <div className="single-testimonials">
                             <div className="client-image">
-                                <img src={require("../../images/client1.jpg")} alt="image" />
+                                <img src={require("../../assets/images/client1.jpg")} alt="image" />
                             </div>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
@@ -49,7 +49,7 @@ class Testimonials extends Component {
 
                         <div className="single-testimonials">
                             <div className="client-image">
-                                <img src={require("../../images/client2.jpg")} alt="image" />
+                                <img src={require("../../assets/images/client2.jpg")} alt="image" />
                             </div>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
@@ -62,7 +62,7 @@ class Testimonials extends Component {
 
                         <div className="single-testimonials">
                             <div className="client-image">
-                                <img src={require("../../images/client3.jpg")} alt="image" />
+                                <img src={require("../../assets/images/client3.jpg")} alt="image" />
                             </div>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>

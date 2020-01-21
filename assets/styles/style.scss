@@ -1386,16 +1386,16 @@ Main Banner Area CSS
         position: center center;
     }
     &.item-bg1 {
-        background-image: url(../../images/main-banner1.jpg);
+        background-image: url(../../assets/images/main-banner1.jpg);
     }
     &.item-bg2 {
-        background-image: url(../../images/main-banner2.jpg);
+        background-image: url(../../assets/images/main-banner2.jpg);
     }
     &.item-bg3 {
-        background-image: url(../../images/main-banner3.jpg);
+        background-image: url(../../assets/images/main-banner3.jpg);
     }
     &.item-bg4 {
-        background-image: url(../../images/main-banner4.jpg);
+        background-image: url(../../assets/images/main-banner4.jpg);
     }
 }
 .main-banner-content {
@@ -2856,7 +2856,7 @@ Testimonials Area CSS
         position: center center;
         size: cover;
         repeat: no-repeat;
-        image: url(../../images/testimonials-bg.jpg);
+        // image: url(../../assets/images/testimonials-bg.jpg);
     }
 }
 .single-testimonials {
@@ -2927,7 +2927,7 @@ Products Offer Area CSS
     position: relative;
     z-index: 1;
     background: {
-        image: url(../../images/offer-bg.jpg);
+        // image: url(../../assets/images/offer-bg.jpg);
         position: center center;
         size: cover;
         attachment: fixed;
@@ -6473,15 +6473,15 @@ Sidebar Area CSS
                         repeat: no-repeat;
                         position: center center !important;
                     }
-                    &.bg1 {
-                        background-image: url(../../images/blog1.jpg);
-                    }
-                    &.bg2 {
-                        background-image: url(../../images/blog3.jpg);
-                    }
-                    &.bg3 {
-                        background-image: url(../../images/blog4.jpg);
-                    }
+                    // &.bg1 {
+                    //     background-image: url(../../assets/images/blog1.jpg);
+                    // }
+                    // &.bg2 {
+                    //     background-image: url(../../assets/images/blog3.jpg);
+                    // }
+                    // &.bg3 {
+                    //     background-image: url(../../assets/images/blog4.jpg);
+                    // }
                 }
             }
             .info {

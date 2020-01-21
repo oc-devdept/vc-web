@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
-import Navbar from '../components/Layout/Navbar';
-import Banner from '../components/shop-style-four/Banner';
-import Makes from '../components/shop-style-four/Makes';
-import Footer from '../components/Layout/Footer';
-import AddsModal from '../components/Modal/AddsModal';
+import React, { Component } from "react";
+import Navbar from "Components/Layout/Navbar";
+import Footer from "Components/Layout/Footer";
 
 class Index extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <Makes/>
-                <Footer />
-                {/*<AddsModal />*/}
-            </React.Fragment>
-            
-        );
-        
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
 export default Index;

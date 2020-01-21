@@ -6,7 +6,7 @@ const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
 const nextConfig = {
-  distDir: "dist",
+  // distDir: "dist",
   webpack(config) {
     config.resolve.alias["Components"] = path.join(__dirname, "components");
     config.resolve.alias["Store"] = path.join(__dirname, "redux/store");

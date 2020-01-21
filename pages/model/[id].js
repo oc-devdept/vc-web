@@ -1,38 +1,55 @@
-import React, { Component } from "react";
-import Default from "Components/Layout/PageTemplates/Default";
-import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
-const Model = props => {
+import React, { Component } from "react"
+import { connect } from "react-redux"
 
-  console.log('Model Rendered')
-  return (
-  <Default>
-     <section className="contact-area pb-60">
-                    <div className="container">
-                        <div className="section-title">
-                            {/* <Step1 {...props}/>       */}
-                            <h2>{props.show.name}</h2>
-                            <Link class="btn-primary" href="/product/:id" as={`/product/${(props.show.id)}`}> 
-                              Customize
-                            </Link>             
-                        </div>
-                       </div>
-      </section>                  
-    <p></p>
-  </Default>
-  )
-};
+import Default from "Components/Layout/PageTemplates/Default"
+import Link from 'next/link'
+
+import { getModelData } from "Ducks/model/ModelActions"
+
+class Model extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.getModelData(this.props.selectedModelId)
+  }
+
+  render() {
+    console.log("props= ", this.props)
+    return (
+      <Default>
+        <section className="contact-area pb-60">
+          <div className="container">
+            <div className="section-title">
+              <h2>{this.props.ModelState.name}</h2>
+              <p>{this.props.ModelState.description}</p>
+              <Link href="/product/grade/[id]" as={`/product/grade/${this.props.ModelState.id}`}> 
+                <a>Customize</a>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </Default>
+    )
+  }
+}
 
 Model.getInitialProps = async function({ctx}) {
- 
   const { id } = ctx.query;
-  // console.log('getInitialProps')
-  // console.log(ctx)
-  const res = await fetch(`http://159.65.14.175:3001/api/categories/${id}`);
-  const show = await res.json();
-  return {show};
-};
+  return { selectedModelId: id };
+}
 
-export default Model;
+const mapStateToProps = state => {
+  const { ModelState } = state
+  return { ModelState }
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    getModelData
+  }
+)(Model)
 
 

@@ -49,10 +49,9 @@ class Product extends Component {
   }
 }
 
-// This can be removed after wiring model page to redux store
 Product.getInitialProps = async function({ctx}) {
-  const { id } = ctx.query
-  return { selectedModelId: id }
+  const { id, grade } = ctx.query
+  return { selectedModelId: id, selectedGradeId: grade }
 }
 
 const mapStateToProps = state => {

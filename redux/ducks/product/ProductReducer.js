@@ -9,6 +9,7 @@ const INIT_STATE = {
     id: null,
     name: null,
     price: 0,
+    description: null,
     data: { }
   },
   productExterior: {
@@ -64,10 +65,15 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
+      var { fields } = action.payload.data
+
       return {
         ...state,
         productGrade: {
-          ...state.productGrade,
+          id: fields[0].id,
+          name: fields[0].name,
+          price: fields[0].selling_Price,
+          description: fields[0].description,
           data: action.payload.data
         }
       }
@@ -89,6 +95,7 @@ export default (state = INIT_STATE, action) => {
           id: object.id,
           name: object.name,
           price: object.selling_Price,
+          description: object.description
         }
       }
 
@@ -100,11 +107,9 @@ export default (state = INIT_STATE, action) => {
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
       let accessoriesIdList = { }
       const populateAccessoriesIds = action => {
-        action.payload.accessoriesData.data.fields.map(item => {
-          Object.values(item).map(key => {
-            key.map(item => {
-              accessoriesIdList[item.id] = false
-            })
+        Object.values(action.payload.accessoriesData.data.fields).map(value => {
+          value.map(item => {
+            accessoriesIdList[item.id] = false
           })
         })
       }

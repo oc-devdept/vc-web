@@ -17,9 +17,12 @@ export const getProductModelDataFailure = e => ({
 })
 
 // Get grades of selected model
-export const getProductGrades = e => ({
+export const getProductGrades = (modelId, gradeId = null) => ({
   type: types.GET_PRODUCT_GRADES,
-  payload: e
+  payload: {
+    modelId: modelId,
+    gradeId: gradeId
+  }
 })
 
 export const getProductGradesSuccess = e => ({

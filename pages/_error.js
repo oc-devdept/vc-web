@@ -16,7 +16,7 @@ class Error extends Component {
         <section className="error-area ptb-60">
           <div className="container">
             <div className="error-content">
-              <img src={require("../assets/images/404.png")} alt="error" />
+              {/* <img src={require("../assets/images/404.png")} alt="error" /> */}
 
               <h3>{this.props.statusCode} Page Not Found</h3>
               <p>

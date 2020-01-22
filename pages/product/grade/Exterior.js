@@ -36,7 +36,7 @@ class Exterior extends Component {
                   key={ id }
                   id= { item.id }
                   style={ item.id == this.props.productExterior.id ? 
-                    {border: "2px solid #F29D30", color: "#F29D30"} : 
+                    {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
                     {border: "1px solid #DEE2E6"}
                   }
                   onClick={ this.handleOptionChange }

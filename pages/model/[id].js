@@ -25,7 +25,7 @@ class Model extends Component {
               <h2>{this.props.ModelState.name}</h2>
               <p>{this.props.ModelState.description}</p>
               <Link href="/product/grade/[id]" as={`/product/grade/${this.props.ModelState.id}`}> 
-                <a>Customize</a>
+                <a className="btn btn-primary">Customize</a>
               </Link>
             </div>
           </div>

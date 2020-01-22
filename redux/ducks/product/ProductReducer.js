@@ -10,12 +10,14 @@ const INIT_STATE = {
     name: null,
     price: 0,
     description: null,
+    images: [ ],
     data: { }
   },
   productExterior: {
     id: null,
     name: null,
     price: 0,
+    images: [ ],
     data: { }
   },
   productInterior: {
@@ -78,6 +80,15 @@ export default (state = INIT_STATE, action) => {
       }
       populateAccessoriesIds(payload)
 
+      var imageList = [ ]
+      var populateImageList = productGrade => {
+        productGrade.files.map(item => {
+          imageList.push(item.url)
+        })
+      }
+      populateImageList(productGrade)
+      console.log("imageList= ", imageList)
+
       return {
         ...state,
         productGrade: {
@@ -85,6 +96,7 @@ export default (state = INIT_STATE, action) => {
           name: productGrade.name,
           price: productGrade.selling_Price,
           description: productGrade.description,
+          images: imageList,
           data: payload.gradesData.data
         },
         productExterior: {
@@ -115,6 +127,15 @@ export default (state = INIT_STATE, action) => {
       var { fields } = state.productGrade.data
       var object = fields.find(element => element.id === id)
 
+      var imageList = [ ]
+      var populateImageList = object => {
+        object.files.map(item => {
+          imageList.push(item.url)
+        })
+      }
+      populateImageList(object)
+      // console.log("imageList= ", imageList)
+
       return {
         ...state,
         productGrade: {
@@ -122,7 +143,8 @@ export default (state = INIT_STATE, action) => {
           id: object.id,
           name: object.name,
           price: object.selling_Price,
-          description: object.description
+          description: object.description,
+          images: imageList
         }
       }
 

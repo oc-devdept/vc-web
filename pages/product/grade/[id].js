@@ -9,7 +9,16 @@ import Interior from "./Interior"
 import Rims from "./Rims"
 import Accessories from "./Accessories"
 
-import { getProductGrades, getProductModelData } from "Ducks/product/ProductActions"
+import { 
+  getProductGrades, 
+  getProductModelData, 
+  selectedProductGrade,
+  getProductGradeData,
+  selectedProductExterior,
+  selectedProductInterior,
+  selectedProductRims,
+  selectedProductAccessories,
+} from "Ducks/product/ProductActions"
 
 class Product extends Component {
   constructor(props) {
@@ -27,11 +36,42 @@ class Product extends Component {
     console.log("props= ", this.props)
     const { ProductState } = this.props    
     const steps = [
-      {name: "Grade", component:<Grade productGrade={ProductState.productGrade} />},
-      {name: "Exterior", component: <Exterior productExterior={ProductState.productExterior} />},
-      {name: "Interior", component: <Interior productInterior={ProductState.productInterior} /> },
-      {name: "Rims", component: <Rims productRims={ProductState.productRims} /> },
-      {name: "Accessories", component: <Accessories ProductState={ProductState} /> }
+      {
+        name: "Grade", 
+        component: <Grade 
+          productGrade={ProductState.productGrade} 
+          selectedProductGrade={this.props.selectedProductGrade}
+          getProductGradeData={this.props.getProductGradeData}
+        />
+      },
+      {
+        name: "Exterior", 
+        component: <Exterior 
+          productExterior={ProductState.productExterior}
+          selectedProductExterior={this.props.selectedProductExterior}
+        />
+      },
+      {
+        name: "Interior", 
+        component: <Interior 
+          productInterior={ProductState.productInterior} 
+          selectedProductInterior={this.props.selectedProductInterior}
+        /> 
+      },
+      {
+        name: "Rims", 
+        component: <Rims 
+          productRims={ProductState.productRims} 
+          selectedProductRims={this.props.selectedProductRims}
+        /> 
+      },
+      {
+        name: "Accessories", 
+        component: <Accessories 
+          ProductState={ProductState}
+          selectedProductAccessories={this.props.selectedProductAccessories}
+        /> 
+      }
     ]
     
     return (
@@ -66,5 +106,11 @@ export default connect(
   {
     getProductGrades,
     getProductModelData,
+    selectedProductGrade,
+    getProductGradeData,
+    selectedProductExterior,
+    selectedProductInterior,
+    selectedProductRims,
+    selectedProductAccessories
   }
 )(Product)

@@ -7819,16 +7819,18 @@ h1,h2,h3,h4,h5,h6{
 .comero-nav .navbar .navbar-nav {margin:0;}
 
 /* ol.progtrckr,.configure-opt{display:inline-block;} */
-ol.progtrckr{width:66%; text-align:left;}
+ol.progtrckr{width:100%%; text-align:left;}
 ol.progtrckr, .configure-opt-title{text-transform: uppercase; font-weight: 600;}
 .configure-opt{background:#fcfcfc; padding: 2%;}
 .footer-buttons{width:33%;}
 .footer-buttons{float:right; margin: 2% 0 0;}
+li.progtrckr-doing, li.progtrckr-todo, li.progtrckr-done {width:19%;}
 ol.progtrckr li.progtrckr-doing:before{background-color:#F29D30;}
 ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30;}
 .configure-opt-title{color:#4B6674;}
 .configure-list{padding: 2%; margin: 2% 0;}
 .pull-right {float:right;}
+.configure-area .container{max-width:100% !important;}
 .configure-total{text-transform: uppercase;}
 .configure-total dt{display:inline-block;}
 .configure-total dl dt:nth-child(2){float:right;}

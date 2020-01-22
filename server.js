@@ -17,12 +17,12 @@ app.prepare().then(() => {
   // Static files
   // https://github.com/zeit/next.js/tree/4.2.3#user-content-static-file-serving-eg-images
   server.use(cors());
-  server.use(
-    "/assets/images",
-    express.static(path.join(__dirname, "images"), {
-      maxAge: dev ? "0" : "365d"
-    })
-  );
+  // server.use(
+  //   "/assets/images",
+  //   express.static(path.join(__dirname, "images"), {
+  //     maxAge: dev ? "0" : "365d"
+  //   })
+  // );
 
   server.use(bodyParser.json());
 

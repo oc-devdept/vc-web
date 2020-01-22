@@ -17,7 +17,7 @@ class MyDocument extends Document {
           <link
             rel="icon"
             type="image/png"
-            // href={require("../assets/images/favicon.png")}
+            href={'static/favicon.png'}
           ></link>
         </Head>
         <body>

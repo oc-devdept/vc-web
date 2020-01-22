@@ -19,7 +19,24 @@ const getProductModelDataRequest = async(payload) => {
 }
 
 const getProductGradesRequest = async(payload) => {
-  const data = await api.get(`/products/specificGrades/${payload.payload}`)
+  const gradesData = await api.get(`/products/specificGrades/${payload.payload.modelId}`)
+  let gradeId = null
+  !!payload.payload.gradeId ?
+  gradeId = payload.payload.gradeId :
+  gradeId = gradesData.data.fields[0].id
+
+  const exteriorData = await api.get(`/products/specificVariantExterior/${gradeId}`)
+  const interiorData = await api.get(`/products/specificVariantInterior/${gradeId}`)
+  const accessoriesData = await api.get(`/products/specificGradeProductOption/${gradeId}`)
+
+  const data = {
+    gradeId: gradeId,
+    gradesData: gradesData,
+    exteriorData: exteriorData,
+    interiorData: interiorData,
+    accessoriesData: accessoriesData
+  }
+
   return data
 }
 

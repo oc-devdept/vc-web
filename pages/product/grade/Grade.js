@@ -12,7 +12,6 @@ const Grade = props => {
   }
 
   const { fields } = props.productGrade.data
-  console.log("grade props= ", props)
   return(
     <div className="configure-sect row">
       <div className="configure-gall col-9">

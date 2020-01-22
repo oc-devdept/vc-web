@@ -65,16 +65,43 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
-      var { fields } = action.payload.data
+      var { payload } = action
+      const productGrade = payload.gradesData.data.fields.find(element => element.id === payload.gradeId)
+      
+      var accessoriesIdList = { }
+      var populateAccessoriesIds = payload => {
+        Object.values(payload.accessoriesData.data.fields).map(value => {
+          value.map(item => {
+            accessoriesIdList[item.id] = false
+          })
+        })
+      }
+      populateAccessoriesIds(payload)
 
       return {
         ...state,
         productGrade: {
-          id: fields[0].id,
-          name: fields[0].name,
-          price: fields[0].selling_Price,
-          description: fields[0].description,
-          data: action.payload.data
+          id: productGrade.id,
+          name: productGrade.name,
+          price: productGrade.selling_Price,
+          description: productGrade.description,
+          data: payload.gradesData.data
+        },
+        productExterior: {
+          ...state.productExterior,
+          data: payload.exteriorData.data
+        },
+        productInterior: {
+          ...state.productInterior,
+          data: payload.interiorData.data
+        },
+        productRims: {
+          ...state.productInterior,
+          data: payload.interiorData.data
+        },
+        productAccessories: {
+          selectedIds: accessoriesIdList,
+          data: action.payload.accessoriesData.data
         }
       }
 
@@ -105,8 +132,8 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
-      let accessoriesIdList = { }
-      const populateAccessoriesIds = action => {
+      var accessoriesIdList = { }
+      var populateAccessoriesIds = action => {
         Object.values(action.payload.accessoriesData.data.fields).map(value => {
           value.map(item => {
             accessoriesIdList[item.id] = false

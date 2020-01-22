@@ -17,8 +17,10 @@ class Product extends Component {
   }
   
   componentDidMount() {
-    this.props.getProductGrades(this.props.selectedModelId)
     this.props.getProductModelData(this.props.selectedModelId)
+    !!this.props.selectedGradeId ?
+      this.props.getProductGrades(this.props.selectedModelId, this.props.selectedGradeId) :
+      this.props.getProductGrades(this.props.selectedModelId)
   }
   
   render(){
@@ -63,6 +65,6 @@ export default connect(
   mapStateToProps,
   {
     getProductGrades,
-    getProductModelData
+    getProductModelData,
   }
 )(Product)

@@ -52,6 +52,7 @@ export default (state = INIT_STATE, action) => {
           }
         
     case types.RETRIEVE_USER_PROFILE_SUCCESS:
+
           return {
             ...state,
             profile: action.payload

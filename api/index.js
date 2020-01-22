@@ -1,19 +1,29 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://159.65.14.175:3001/api"
-    // process.env.NODE_ENV === "production"
-    //   ? "http://localhost:3001/api"
-    //   : "http://localhost:3001/api"
-});
+  baseURL: process.env.NODE_ENV === "production"
+         ? "http://159.65.14.175:3001/api"
+         : "http://localhost:3001/api"
+  });
 
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem("accessKey");
-  if (token) {
-    config.headers = { Authorization: `${token}` };
+// api.interceptors.request.use(config => {
+  // const token = localStorage.getItem("accessKey");
+  // if (token) {
+  //   config.headers = { Authorization: `${token}` };
+  // }
+//   return config;
+// });
+
+api.AuthorizationHeader = (token) => {
+  if(token){
+    api.defaults.headers["Authorization"] =  `${token}`
   }
-  return config;
-});
+}
+
+api.clearToken = () => {
+  delete api.defaults.headers["Authorization"]
+}
+
 
 api.interceptors.response.use(
   response => {
@@ -28,10 +38,11 @@ api.interceptors.response.use(
       case 400:
         break;
       case 401:
+        console.log(error.response)
         // not logged in
-        if (window.location.pathname != "/login") {
-          window.location.replace("/login");
-        }
+        // if (window.location.pathname != "/login") {
+        //   window.location.replace("/login");
+        // }
         break;
       case 403:
         // no access rights
@@ -48,4 +59,7 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+// export default api;
+
+module.exports = api;
+  

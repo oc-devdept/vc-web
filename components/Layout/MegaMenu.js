@@ -155,6 +155,13 @@ class MegaMenu extends Component {
                         </a>
                       </Link>
                     </div>
+
+                    <div className="option-item">
+                      <Link href="/home">
+                        <a className="nav-link">Account</a>
+                      </Link>
+                    </div>
+
                     <div className="option-item">
                       {/* <i 
                                             onClick={this.handleSearchForm} 

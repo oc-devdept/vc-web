@@ -17,10 +17,10 @@ class Index extends Component {
         super(props);
         this.state = {
             form: {
-                email: 'gianjie@ocdigitalnetwork.com',
-                password: '123',
+                email: '',
+                password: '',
             },
-            passwordEmail: 'gianjie@ocdigitalnetwork.com',
+            passwordEmail: '',
             restartPassword: false,
             restartPasswordDone: false,
             resendLink: false,

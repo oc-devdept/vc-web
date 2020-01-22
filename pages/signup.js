@@ -14,9 +14,9 @@ class Index extends Component {
         super(props);
         this.state = {
             form: {
-                name: 'gianjie',
-                email: 'gianjie@ocdigitalnetwork.com',
-                password: '123',
+                name: '',
+                email: '',
+                password: '',
             },
             success: false,
         }

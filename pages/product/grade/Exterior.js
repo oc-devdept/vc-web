@@ -31,6 +31,7 @@ const Exterior = props => {
               }
               onClick={ handleOptionChange }
             >
+              
               {item.name}<br/>
               ${item.price}
             </li>

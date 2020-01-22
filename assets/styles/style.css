@@ -1499,19 +1499,19 @@ Main Banner Area CSS
 }
 
 .main-banner.item-bg1 {
-  background-image: url(../../assets/images/main-banner1.jpg);
+  background-image: url(/static/banner/main-banner1.jpg);
 }
 
 .main-banner.item-bg2 {
-  background-image: url(../../assets/images/main-banner2.jpg);
+  background-image: url(/static/banner/main-banner2.jpg);
 }
 
 .main-banner.item-bg3 {
-  background-image: url(../../assets/images/main-banner3.jpg);
+  background-image: url(/static/banner/main-banner3.jpg);
 }
 
 .main-banner.item-bg4 {
-  background-image: url(../../assets/images/main-banner4.jpg);
+  background-image: url(/static/banner/main-banner4.jpg);
 }
 
 .main-banner-content {
@@ -7796,13 +7796,6 @@ Go Top CSS
   outline: 0;
 }
 
-.step {
-  background-color: #f0f0f0;
-  width: 31%;
-  margin: 1%;
-  padding: 1%;
-}
-
 h1,h2,h3,h4,h5,h6{
   color:#4B6674;
 }
@@ -7828,7 +7821,7 @@ h1,h2,h3,h4,h5,h6{
 /* ol.progtrckr,.configure-opt{display:inline-block;} */
 ol.progtrckr{width:66%; text-align:left;}
 ol.progtrckr, .configure-opt-title{text-transform: uppercase; font-weight: 600;}
-.configure-opt{background:#f0f0f0; padding: 2%;}
+.configure-opt{background:#fcfcfc; padding: 2%;}
 .footer-buttons{width:33%;}
 .footer-buttons{float:right; margin: 2% 0 0;}
 ol.progtrckr li.progtrckr-doing:before{background-color:#F29D30;}
@@ -7840,8 +7833,6 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 .configure-total dt{display:inline-block;}
 .configure-total dl dt:nth-child(2){float:right;}
 .configure-total-header {background:#4B6674; color: #fff; text-transform: uppercase;}
-/*# sourceMappingURL=style.css.map */
-
 .product-desc dl{
   width: 33%;
   display: inline-block;
@@ -7851,3 +7842,17 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 }
 
 #navbar .container { max-width: 100% !important;}
+
+.step {
+  background-color: #fcfcfc;
+  width: 31%; border-radius: 20px;
+}
+.stepImgs {width: 30%;}
+
+.reverseStepRow{display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-end;}
+
+  .stepArrow{color: #F29D30;}
+/*# sourceMappingURL=style.css.map */

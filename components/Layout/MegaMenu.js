@@ -66,7 +66,7 @@ class MegaMenu extends Component {
                 <Link href="/">
                   <a className="navbar-brand">
                     <img
-                      src={require("../../assets/images/logo.png")}
+                      src={"/static/logo.png"}
                       alt="logo"
                     />
                   </a>

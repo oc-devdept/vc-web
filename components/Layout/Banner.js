@@ -10,7 +10,6 @@ class Banner extends Component {
         <Carousel.Item>
             {banner.id}
                 <img className="d-block w-100" src={banner.image}></img>
-            <div></div>
             <Carousel.Caption>
             <div className="container">
             <h1 style={{color: "#fff",textTransform:"uppercase"}}>{banner.captionText}</h1>

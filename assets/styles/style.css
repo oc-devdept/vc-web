@@ -1498,7 +1498,7 @@ Main Banner Area CSS
   background-position: center center;
 }
 
-.main-banner.item-bg1 {
+/* .main-banner.item-bg1 {
   background-image: url(../../assets/images/main-banner1.jpg);
 }
 
@@ -1512,7 +1512,7 @@ Main Banner Area CSS
 
 .main-banner.item-bg4 {
   background-image: url(../../assets/images/main-banner4.jpg);
-}
+} */
 
 .main-banner-content {
   max-width: 520px;

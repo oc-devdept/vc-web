@@ -1,6 +1,6 @@
 import "../assets/styles/bootstrap.min.css";
 import "../assets/styles/fontawesome.min.css";
-// import "../assets/styles/style.css";
+import "../assets/styles/style.css";
 import "../assets/styles/responsive.css";
 import "../assets/styles/animate.min.css";
 import "../assets/styles/slick.css";

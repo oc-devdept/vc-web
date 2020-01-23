@@ -28,7 +28,6 @@ class Index extends Component {
     render() {
         
         if(this.props.profile){
-            console.log(this.props.profile)
             const bookings = this.props.profile.bookings
             return (
                 <React.Fragment>

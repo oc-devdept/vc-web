@@ -7819,9 +7819,9 @@ h1,h2,h3,h4,h5,h6{
 .comero-nav .navbar .navbar-nav {margin:0;}
 
 /* ol.progtrckr,.configure-opt{display:inline-block;} */
-ol.progtrckr{width:100%%; text-align:left;}
+ol.progtrckr{width:100%; text-align:left;}
 ol.progtrckr, .configure-opt-title{text-transform: uppercase; font-weight: 600;}
-.configure-opt{background:#fcfcfc; padding: 2%;}
+.configure-opt{background:#fcfcfc; padding: 15px 15px 0;}
 .footer-buttons{width:33%;}
 .footer-buttons{float:right; margin: 2% 0 0;}
 li.progtrckr-doing, li.progtrckr-todo, li.progtrckr-done {width:19%;}
@@ -7860,3 +7860,9 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
   .configCoverImg{width:100%; border-radius:20px;}
 /*# sourceMappingURL=style.css.map */
+
+.interior-image { 
+  width: 120px;
+  height: 80px;
+  background-position: center;
+}

@@ -25,12 +25,12 @@ class Grade extends Component {
     // console.log("grade props= ", this.props)
     return(
       <div className="configure-sect row">
-        <div className="configure-gall col-9">
+        <div className="configure-gall col-8">
           <img src={ this.props.productGrade.images } className="configCoverImg"/>
         <h3 className="text-uppercase text-center m-2">{ this.props.productGrade.name }</h3>      
         <p>{ this.props.productGrade.description }</p>
         </div>
-        <div className="configure-opt col-3">
+        <div className="configure-opt col-4">
           <h3 className="configure-opt-title">01 Grade</h3>
           <ul className="list-unstyled">
             {!!fields &&

@@ -14,6 +14,7 @@ const INIT_STATE = {
     data: { }
   },
   productExterior: {
+    tempPlaceholderImage: null,
     id: null,
     name: null,
     price: 0,
@@ -21,15 +22,19 @@ const INIT_STATE = {
     data: { }
   },
   productInterior: {
+    tempPlaceholderImage: null,
     id: null,
     name: null,
     price: 0,
+    images: [ ],
     data: { }
   },
   productRims: {
+    tempPlaceholderImage: null,
     id: null,
     name: null,
     price: 0,
+    images: [ ],
     data: { }
   },
   productAccessories: {
@@ -67,19 +72,25 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
-      var { payload } = action
-      const productGrade = payload.gradesData.data.fields.find(element => element.id === payload.gradeId)
+      var { 
+        gradeId, 
+        gradesData, 
+        exteriorData, 
+        interiorData, 
+        accessoriesData 
+      } = action.payload
       
       var accessoriesIdList = { }
-      var populateAccessoriesIds = payload => {
-        Object.values(payload.accessoriesData.data.fields).map(value => {
+      var populateAccessoriesIds = accessoriesData => {
+        Object.values(accessoriesData.data.fields).map(value => {
           value.map(item => {
             accessoriesIdList[item.id] = false
           })
         })
       }
-      populateAccessoriesIds(payload)
-
+      populateAccessoriesIds(accessoriesData)
+      
+      const productGrade = gradesData.data.fields.find(element => element.id === gradeId)
       var imageList = [ ]
       var populateImageList = productGrade => {
         productGrade.files.map(item => {
@@ -87,7 +98,6 @@ export default (state = INIT_STATE, action) => {
         })
       }
       populateImageList(productGrade)
-      console.log("imageList= ", imageList)
 
       return {
         ...state,
@@ -97,19 +107,29 @@ export default (state = INIT_STATE, action) => {
           price: productGrade.selling_Price,
           description: productGrade.description,
           images: imageList,
-          data: payload.gradesData.data
+          data: gradesData.data
         },
         productExterior: {
-          ...state.productExterior,
-          data: payload.exteriorData.data
+          tempPlaceholderImage: imageList[0],
+          id: exteriorData.data.fields["Car Colors"].objects[0].id,
+          name: exteriorData.data.fields["Car Colors"].objects[0].name,
+          price: exteriorData.data.fields["Car Colors"].objects[0].price,
+          images: exteriorData.data.fields["Car Colors"].objects[0].files.map(item => item.url),
+          data: exteriorData.data
         },
         productInterior: {
-          ...state.productInterior,
-          data: payload.interiorData.data
+          id: interiorData.data.fields["Seating Fabrics"].objects[0].id,
+          name: interiorData.data.fields["Seating Fabrics"].objects[0].name,
+          price: interiorData.data.fields["Seating Fabrics"].objects[0].price,
+          images: interiorData.data.fields["Seating Fabrics"].objects[0].files.map(item => item.url),
+          data: interiorData.data
         },
         productRims: {
-          ...state.productInterior,
-          data: payload.interiorData.data
+          id: interiorData.data.fields["Rims"].objects[0].id,
+          name: interiorData.data.fields["Rims"].objects[0].name,
+          price: interiorData.data.fields["Rims"].objects[0].price,
+          images: interiorData.data.fields["Rims"].objects[0].files.map(item => item.url),
+          data: interiorData.data
         },
         productAccessories: {
           selectedIds: accessoriesIdList,
@@ -134,7 +154,6 @@ export default (state = INIT_STATE, action) => {
         })
       }
       populateImageList(object)
-      // console.log("imageList= ", imageList)
 
       return {
         ...state,
@@ -145,6 +164,10 @@ export default (state = INIT_STATE, action) => {
           price: object.selling_Price,
           description: object.description,
           images: imageList
+        },
+        productExterior: {
+          ...state.productExterior,
+          tempPlaceholderImage: imageList[0]
         }
       }
 
@@ -154,29 +177,46 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
+      var { 
+        exteriorData,
+        interiorData,
+        accessoriesData
+      } = action.payload
+
       var accessoriesIdList = { }
-      var populateAccessoriesIds = action => {
-        Object.values(action.payload.accessoriesData.data.fields).map(value => {
+      var populateAccessoriesIds = accessoriesData => {
+        Object.values(accessoriesData.data.fields).map(value => {
           value.map(item => {
             accessoriesIdList[item.id] = false
           })
         })
       }
-      populateAccessoriesIds(action)
+      populateAccessoriesIds(accessoriesData)
 
       return {
         ...state,
         productExterior: {
           ...state.productExterior,
-          data: action.payload.exteriorData.data
+          id: exteriorData.data.fields["Car Colors"].objects[0].id,
+          name: exteriorData.data.fields["Car Colors"].objects[0].name,
+          price: exteriorData.data.fields["Car Colors"].objects[0].price,
+          images: exteriorData.data.fields["Car Colors"].objects[0].files.map(item => item.url),
+          data: exteriorData.data
         },
         productInterior: {
           ...state.productInterior,
-          data: action.payload.interiorData.data
+          id: interiorData.data.fields["Seating Fabrics"].objects[0].id,
+          name: interiorData.data.fields["Seating Fabrics"].objects[0].name,
+          price: interiorData.data.fields["Seating Fabrics"].objects[0].price,
+          images: interiorData.data.fields["Seating Fabrics"].objects[0].files.map(item => item.url),
+          data: interiorData.data
         },
         productRims: {
-          ...state.productInterior,
-          data: action.payload.interiorData.data
+          id: interiorData.data.fields["Rims"].objects[0].id,
+          name: interiorData.data.fields["Rims"].objects[0].name,
+          price: interiorData.data.fields["Rims"].objects[0].price,
+          images: interiorData.data.fields["Rims"].objects[0].files.map(item => item.url),
+          data: interiorData.data
         },
         productAccessories: {
           selectedIds: accessoriesIdList,
@@ -190,6 +230,7 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.SELECTED_PRODUCT_EXTERIOR:
+      console.log("action.payload= ", action.payload)
       var id = action.payload
       var { objects } = state.productExterior.data.fields["Car Colors"]
       var object = objects.find(element => element.id === id)
@@ -198,9 +239,11 @@ export default (state = INIT_STATE, action) => {
         ...state,
         productExterior: {
           ...state.productExterior,
+          tempPlaceholderImage: state.productGrade.images[0],
           id: object.id,
           name: object.name,
-          price: object.price
+          price: object.price,
+          images: object.files.map(item => item.url)
         }
       }
 
@@ -215,7 +258,8 @@ export default (state = INIT_STATE, action) => {
           ...state.productInterior,
           id: object.id,
           name: object.name,
-          price: object.price
+          price: object.price,
+          images: object.files.map(item => item.url)
         }
       }
 
@@ -230,7 +274,8 @@ export default (state = INIT_STATE, action) => {
           ...state.productRims,
           id: object.id,
           name: object.name,
-          price: object.price
+          price: object.price,
+          images: object.files.map(item => item.url)
         }
       }
 

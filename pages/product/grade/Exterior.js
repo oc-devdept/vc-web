@@ -21,28 +21,37 @@ class Exterior extends Component {
 
   render() {
     const { objects } = this.props.productExterior.data.fields["Car Colors"]
-    // console.log("exterior props: ", this.props)
+    console.log("exterior props: ", this.props)
     return(
       <div className="configure-sect row">  
-        <div className="configure-gall col-9">
-          
+        <div className="configure-gall col-8">
+          <img src={ this.props.productExterior.tempPlaceholderImage } class="configCoverImg" />
+          <h3 class="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
         </div>
-        <div className="configure-opt">
-          <h2 className="configure-opt-title">02 Exterior</h2>
+        <div className="configure-opt col-4">
+          <h3 className="configure-opt-title">02 Exterior</h3>
           <ul className="list-unstyled">
             {!!objects &&
               objects.map(( item, id ) => (
-                <li className="configure-list"
+                <li 
+                  className="configure-list d-inline-block mr-1"
                   key={ id }
-                  id= { item.id }
-                  style={ item.id == this.props.productExterior.id ? 
-                    {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
-                    {border: "1px solid #DEE2E6"}
-                  }
+                  id={ item.id }
                   onClick={ this.handleOptionChange }
                 >
-                  {item.name}<br/>
-                  ${item.price}
+                  <img 
+                    src={ item.files[0].url } 
+                    alt={ item.name } 
+                    id={ item.id }
+                    height="50"
+                    width="50"
+                    style={ item.id == this.props.productExterior.id ? 
+                      {border: "3px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
+                      {border: "1px solid #DEE2E6"}
+                    }
+                  /><br/>
+                  <span id={ item.id } style={{textTransform:"uppercase", fontWeight:500}}>{ item.name }</span><br/>
+                  <span id={ item.id } style={{color:"#4B6674"}}>${ item.price }</span>
                 </li>
               ))
             }

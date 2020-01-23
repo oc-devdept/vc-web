@@ -44,7 +44,7 @@ class BestSeller extends Component {
     }
 }
 BestSeller.getInitialProps = async function() {
-    const res = await fetch(`http://159.65.14.175:3001/api/products/getAllFeaturedCars`);
+    const res = await fetch(`http://157.230.248.96:3001/api/products/getAllFeaturedCars`);
     const data = await res.json()
     console.log("data:",data);
     return {data};

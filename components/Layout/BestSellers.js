@@ -30,7 +30,7 @@ class BestSeller extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://159.65.14.175:3001/api/products/getAllFeaturedCars")
+    fetch("http://157.230.248.96:3001/api/products/getAllFeaturedCars")
       .then(response => response.json())
       .then(data => this.setState({ gradesArray: data.fields }));
   }

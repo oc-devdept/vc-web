@@ -8,7 +8,7 @@ class Step1 extends Component {
   componentDidMount() { 
     console.log(this.props);
     // const id = this.props.match.params.id // we grab the ID from the URL
-    // const {data} = fetch(`http://159.65.14.175:3001/api/categories/${id}`);
+    // const {data} = fetch(`http://157.230.248.96:3001/api/categories/${id}`);
     // this.setState({data})
   }
   render() {
@@ -29,7 +29,7 @@ export default Step1
 //   // const { id } = ctx.query;
 //   // // console.log('getInitialProps')
 //   console.log(ctx)
-//   // const res = await fetch(`http://159.65.14.175:3001/api/categories/${id}`);
+//   // const res = await fetch(`http://157.230.248.96:3001/api/categories/${id}`);
 //   // const show = await res.json();
 //   return {};
 // };

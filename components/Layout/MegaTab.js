@@ -20,10 +20,10 @@ class MegaTab extends Component {
     //component will mount with an empty state this.state... After mounting, we populate the state with data from AllMakeSource
     let AllMakeSource = [...this.state.AllMakeSource]
     try {
-      const Make = await api.get(`http://159.65.14.175:3001/api/products/getMake`);
+      const Make = await api.get(`http://157.230.248.96:3001/api/products/getMake`);
       const MakeSource = Make.data.fields
-      const Model = await api.get(`http://159.65.14.175:3001/api/products/getModel`);
-      const Tags = await api.get(`http://159.65.14.175:3001/api/tags/getAllTags`);
+      const Model = await api.get(`http://157.230.248.96:3001/api/products/getModel`);
+      const Tags = await api.get(`http://157.230.248.96:3001/api/tags/getAllTags`);
       const ModelSource = Model.data.fields
       this.setState({AllModelSource: ModelSource, AllMakeSource: AllMakeSource.concat(MakeSource), ModelLoading: false})
     } catch (e){
@@ -36,7 +36,7 @@ class MegaTab extends Component {
     await this.setState({stage: index, ModelLoading: true})
     let AllModelSource = []
     if(index == 0){
-      const Model = await api.get(`http://159.65.14.175:3001/api/products/getModel`);
+      const Model = await api.get(`http://157.230.248.96:3001/api/products/getModel`);
       AllModelSource = await Model.data.fields
     } else {
       let AllMakeSource = this.state.AllMakeSource[index]
@@ -46,7 +46,7 @@ class MegaTab extends Component {
   }
   async _RenderSpecificModelCategory(value) {
     try {
-        const ModelSource = await api.get(`http://159.65.14.175:3001/api/categories/${value}/category`);
+        const ModelSource = await api.get(`http://157.230.248.96:3001/api/categories/${value}/category`);
         return ModelSource.data
     } catch (e) {
         console.log(e)

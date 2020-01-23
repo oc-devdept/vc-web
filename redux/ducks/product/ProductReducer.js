@@ -72,6 +72,7 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
+      // console.log("action= ", action)
       var { 
         gradeId, 
         gradesData, 
@@ -111,17 +112,17 @@ export default (state = INIT_STATE, action) => {
         },
         productExterior: {
           tempPlaceholderImage: imageList[0],
-          id: exteriorData.data.fields["Car Colors"].objects[0].id,
-          name: exteriorData.data.fields["Car Colors"].objects[0].name,
-          price: exteriorData.data.fields["Car Colors"].objects[0].price,
-          images: exteriorData.data.fields["Car Colors"].objects[0].files.map(item => item.url),
+          id: exteriorData.data.fields["Colors"].objects[0].id,
+          name: exteriorData.data.fields["Colors"].objects[0].name,
+          price: exteriorData.data.fields["Colors"].objects[0].price,
+          images: exteriorData.data.fields["Colors"].objects[0].files.map(item => item.url),
           data: exteriorData.data
         },
         productInterior: {
-          id: interiorData.data.fields["Seating Fabrics"].objects[0].id,
-          name: interiorData.data.fields["Seating Fabrics"].objects[0].name,
-          price: interiorData.data.fields["Seating Fabrics"].objects[0].price,
-          images: interiorData.data.fields["Seating Fabrics"].objects[0].files.map(item => item.url),
+          id: interiorData.data.fields["Material"].objects[0].id,
+          name: interiorData.data.fields["Material"].objects[0].name,
+          price: interiorData.data.fields["Material"].objects[0].price,
+          images: interiorData.data.fields["Material"].objects[0].files.map(item => item.url),
           data: interiorData.data
         },
         productRims: {
@@ -197,18 +198,18 @@ export default (state = INIT_STATE, action) => {
         ...state,
         productExterior: {
           ...state.productExterior,
-          id: exteriorData.data.fields["Car Colors"].objects[0].id,
-          name: exteriorData.data.fields["Car Colors"].objects[0].name,
-          price: exteriorData.data.fields["Car Colors"].objects[0].price,
-          images: exteriorData.data.fields["Car Colors"].objects[0].files.map(item => item.url),
+          id: exteriorData.data.fields["Colors"].objects[0].id,
+          name: exteriorData.data.fields["Colors"].objects[0].name,
+          price: exteriorData.data.fields["Colors"].objects[0].price,
+          images: exteriorData.data.fields["Colors"].objects[0].files.map(item => item.url),
           data: exteriorData.data
         },
         productInterior: {
           ...state.productInterior,
-          id: interiorData.data.fields["Seating Fabrics"].objects[0].id,
-          name: interiorData.data.fields["Seating Fabrics"].objects[0].name,
-          price: interiorData.data.fields["Seating Fabrics"].objects[0].price,
-          images: interiorData.data.fields["Seating Fabrics"].objects[0].files.map(item => item.url),
+          id: interiorData.data.fields["Material"].objects[0].id,
+          name: interiorData.data.fields["Material"].objects[0].name,
+          price: interiorData.data.fields["Material"].objects[0].price,
+          images: interiorData.data.fields["Material"].objects[0].files.map(item => item.url),
           data: interiorData.data
         },
         productRims: {
@@ -232,7 +233,7 @@ export default (state = INIT_STATE, action) => {
     case types.SELECTED_PRODUCT_EXTERIOR:
       console.log("action.payload= ", action.payload)
       var id = action.payload
-      var { objects } = state.productExterior.data.fields["Car Colors"]
+      var { objects } = state.productExterior.data.fields["Colors"]
       var object = objects.find(element => element.id === id)
 
       return {
@@ -249,7 +250,7 @@ export default (state = INIT_STATE, action) => {
 
     case types.SELECTED_PRODUCT_INTERIOR:
       var id = action.payload
-      var { objects } = state.productInterior.data.fields["Seating Fabrics"]
+      var { objects } = state.productInterior.data.fields["Material"]
       var object = objects.find(element => element.id === id)
 
       return {

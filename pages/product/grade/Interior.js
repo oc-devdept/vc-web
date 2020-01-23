@@ -20,7 +20,7 @@ class Interior extends Component {
   }
 
   render() {
-    const { objects } = this.props.productInterior.data.fields["Seating Fabrics"]
+    const { objects } = this.props.productInterior.data.fields["Material"]
     console.log("interior props: ", this.props)
     return (
       <div className="configure-sect row">

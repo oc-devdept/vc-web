@@ -20,7 +20,7 @@ class Exterior extends Component {
   }
 
   render() {
-    const { objects } = this.props.productExterior.data.fields["Car Colors"]
+    const { objects } = this.props.productExterior.data.fields["Colors"]
     console.log("exterior props: ", this.props)
     return(
       <div className="configure-sect row">  

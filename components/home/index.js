@@ -27,8 +27,6 @@ class Index extends Component {
 
     render() {
         
-        console.log(this.props.profile)
-
         if(this.props.profile){
             const bookings = this.props.profile.bookings
             return (
@@ -36,18 +34,26 @@ class Index extends Component {
                     <Navbar />
                     <Breadcrumb title="User Homepage" />
                     <section className="about-area pb-60" style={{border:'1px solid black'}}>
+                        
                         <div className="container" style={{border:'1px solid black'}}>
 
                             <div style={{display:"flex", flex: 1, flexDirection:'row'}}>
                                                                                             
-                                <div className="row align-items-center" style={{flex:0.3}}>
-                                    User Profile
-                                    
-                                    <div style={{display:"flex", flexDirection:'column'}}>
-                                        <h2>Your Agent</h2>
-                                        {this.props.profile.userInfo.name}
-                                    </div>
+                                <div className="row align-items-center flex-column" style={{flex:0.3}}>
 
+                                    <span>User Profile</span>
+                                    <span>Name</span>
+                                    <span>Gmail</span>
+
+                                    <div>
+                                        Hello world
+                                        {this.props.profile.userInfo && 
+                                            <div style={{display:"flex", flexDirection:'column'}}>
+                                                <h2>Your Agent</h2>
+                                                {this.props.profile.userInfo.name}
+                                            </div>
+                                        }                             
+                                    </div>
                                 </div>
 
                                 <div style={{flex: 0.7}}>

@@ -4,6 +4,7 @@ import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
+import { NotificationManager } from "react-notifications";
 
 import api from 'Api'
 // import api from 'axios'
@@ -28,12 +29,11 @@ class Index extends Component {
         try {
 
             await api.post('/basecustomerusers/signup', {data: this.state.form})
-            
             this.setState({success: true})
-
+            NotificationManager.success('Signup Successfully');
         } catch (e) {
-
             console.log(e)
+            NotificationManager.error(e.response.data.error.message);
         }
      
     }

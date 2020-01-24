@@ -19,7 +19,11 @@ const getProductModelDataRequest = async(payload) => {
 }
 
 const getProductGradesRequest = async(payload) => {
+  // console.log('getProductGradesRequest')
+  // console.log(gradesData)
+
   const gradesData = await api.get(`/products/specificGrades/${payload.payload.modelId}`)
+
   let gradeId = null
   !!payload.payload.gradeId ?
   gradeId = payload.payload.gradeId :
@@ -66,6 +70,7 @@ function* getProductModelData(e) {
 }
 
 function* getProductGrades(e) {
+  console.log('getProductGrades')
   try {
     const data = yield call(getProductGradesRequest, e)
     yield put(actions.getProductGradesSuccess(data))

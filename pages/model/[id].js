@@ -10,13 +10,26 @@ class Model extends Component {
   constructor(props) {
     super(props)
   }
+  
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (this.props.selectedModelId != prevProps.selectedModelId) {
+      return this.props.selectedModelId
+    }
+    return null
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot) {
+      this.props.getModelData(snapshot)
+    }
+  }
 
   componentDidMount() {
     this.props.getModelData(this.props.selectedModelId)
   }
 
   render() {
-    console.log("props= ", this.props)
+    // console.log("model props= ", this.props)
     return (
       <Default>
         <section className="contact-area pb-60">
@@ -37,7 +50,7 @@ class Model extends Component {
 
 Model.getInitialProps = async function({ctx}) {
   const { id } = ctx.query;
-  return { selectedModelId: id };
+  return { selectedModelId: id }; 
 }
 
 const mapStateToProps = state => {

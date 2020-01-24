@@ -4,6 +4,7 @@ const INIT_STATE = {
   productModel: {
     id: null,
     name: null,
+    image: null
   },
   productGrade: {
     id: null,
@@ -57,7 +58,8 @@ export default (state = INIT_STATE, action) => {
         ...state,
         productModel: {
           id: data.id,
-          name: data.name
+          name: data.name,
+          image: data.files[0].url
         }
       }
 

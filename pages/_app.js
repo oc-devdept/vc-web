@@ -5,6 +5,8 @@ import "../assets/styles/responsive.css";
 import "../assets/styles/animate.min.css";
 import "../assets/styles/slick.css";
 import "../assets/styles/slick-theme.css";
+import "react-notifications/lib/notifications.css";
+
 
 import { Provider } from "react-redux";
 import App from "next/app";
@@ -13,6 +15,8 @@ import withReduxSaga from "next-redux-saga";
 import makeStore from "Store";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
+import { NotificationContainer } from "react-notifications";
+
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -36,6 +40,7 @@ class MyApp extends App {
           <Component {...pageProps} />
         </Provider>
         <GoTop scrollStepInPx="50" delayInMs="16.66" />
+        <NotificationContainer/>
       </>
     );
   }

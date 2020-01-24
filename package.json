@@ -42,6 +42,7 @@
     "react-dom": "^16.8.6",
     "react-image-lightbox": "^5.1.0",
     "react-multi-carousel": "^2.5.0",
+    "react-notifications": "^1.4.3",
     "react-owl-carousel3": "^2.2.5",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.1.2",

@@ -9,6 +9,7 @@ import api from 'Api'
 
 import { connect } from "react-redux"
 import {saveAccessTokenSuccess } from "Ducks/user/UserActions"
+import { NotificationManager } from "react-notifications";
 
 
 class Index extends Component {
@@ -39,8 +40,10 @@ class Index extends Component {
         try {
             const item = await api.post('/basecustomerusers/login', this.state.form)
             await this.props.saveAccessTokenSuccess(item.data)
+            NotificationManager.success('Login Success');
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data.error.message)
+            NotificationManager.error(e.response.data.error.message);
         }
     }
 
@@ -48,26 +51,24 @@ class Index extends Component {
     _handlePasswordForm = async(e) => {
         try {
             const email = this.state.passwordEmail
-
             await api.post(`/basecustomerusers/reset`, { email: email });
-
-            this.setState({restartPassword: false, restartPasswordDone: true})
-
+            this.setState({restartPassword: false, restartPasswordDone: true, passwordEmail: ''})
+            NotificationManager.success('An Email Has Been Sent Out');
         } catch (e) {
             console.log(e)
+            NotificationManager.error('Please check your network or input correct email address');
         }
     }
 
     _handleVerificationLink = async(e) => {
         try {
             const email = this.state.passwordEmail
-
             await api.post(`/basecustomerusers/verify`, { email: email });
-
             this.setState({resendLink: false, resendLinkDone: true})
-
+            NotificationManager.success('A verification email has been sent out');
         } catch (e) {
             console.log(e)
+            NotificationManager.error('Please check your network or input correct email address');
         }
     }
 
@@ -140,7 +141,7 @@ class Index extends Component {
                                                     
                                                     <div className="form-group">
                                                         <label>Account Email</label>
-                                                        <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
+                                                        <input type="email" className="form-control" value={this.state.passwordEmail} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
                                                     </div>
 
                                                     <button onClick={this._handlePasswordForm} className="btn btn-primary">Reset my password</button>

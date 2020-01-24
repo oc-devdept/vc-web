@@ -31,25 +31,16 @@ class Booking extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    //   booking: {
-    //     name: '',
-    //     email: '',
-    //     service: '',
-    //     interest: '',
-    //     contact: '',
 
-    //     status: 'Awaiting',
-    //     created: '',
-    //     start: '',
-    //     end: '',
-    //   },
+    const {name, email} = this.props.Customer
+
+    this.state = {
       booking: {
-        name: 'John Doe',
-        email: 'gianjie@ocdigitalnetwork.com',
+        name: name,
+        email: email,
         service: '',
-        interest: 'BMW3i Series X',
-        contact: '92289321',
+        interest: '',
+        contact: '',
 
         status: 'Awaiting',
         created: '',
@@ -77,10 +68,13 @@ class Booking extends Component {
       let booking = {...this.state.booking}
       booking.created = new Date()
 
-      // Create Api to backend to save bookings
-      const result = await api.post(`/bookings/createBooking`, {data: booking});
-      
-      switch(result.data.success){
+      console.log(booking)
+      try {
+
+        // Create Api to backend to save bookings
+        const result = await api.post(`/bookings/createBooking`, {data: booking});
+            
+        switch(result.data.success){
             case 0:
                 this.setState({error: true})
                 break
@@ -89,8 +83,12 @@ class Booking extends Component {
                 break
             default:
                 break
-      }
+        }
 
+      } catch (e){
+          console.log(e)
+      }
+     
   }
 
   _ToggleCategoryKey = (item) => {

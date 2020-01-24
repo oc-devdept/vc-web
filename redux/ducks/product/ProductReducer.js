@@ -72,7 +72,6 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
-      // console.log("action= ", action)
       var { 
         gradeId, 
         gradesData, 
@@ -99,7 +98,6 @@ export default (state = INIT_STATE, action) => {
         })
       }
       populateImageList(productGrade)
-
       return {
         ...state,
         productGrade: {

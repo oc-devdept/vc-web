@@ -25,8 +25,8 @@ class Interior extends Component {
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-8">
-          <img src="/static/interior-placeholder.png" class="configCoverImg" />
-          <h3 class="text-uppercase text-center m-2">{ this.props.productInterior.name }</h3>
+          <img src="/static/interior-placeholder.png" className="configCoverImg" />
+          <h3 className="text-uppercase text-center m-2">{ this.props.productInterior.name }</h3>
         </div>
         <div className="configure-opt col-4">
           <h3 className="configure-opt-title">03 Interior</h3>

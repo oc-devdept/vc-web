@@ -25,8 +25,8 @@ class Rims extends Component {
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-8">
-          <img src="/static/rims-placeholder.png" class="configCoverImg" />
-          <h3 class="text-uppercase text-center m-2">{ this.props.productRims.name }</h3>
+          <img src="/static/rims-placeholder.png" className="configCoverImg" />
+          <h3 className="text-uppercase text-center m-2">{ this.props.productRims.name }</h3>
         </div>
         <div className="configure-opt col-4">
           <h3 className="configure-opt-title">04 Rims</h3>
@@ -34,7 +34,7 @@ class Rims extends Component {
             {!!objects &&
               objects.map((item, id) => (
                 <li
-                  className="configure-list d-inline-block"
+                  className="configure-list d-inline-block align-top"
                   key={ id }
                   id={ item.id }
                   onClick={ this.handleOptionChange }

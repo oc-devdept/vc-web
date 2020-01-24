@@ -25,8 +25,8 @@ class Exterior extends Component {
     return(
       <div className="configure-sect row">  
         <div className="configure-gall col-8">
-          <img src={ this.props.productExterior.tempPlaceholderImage } class="configCoverImg" />
-          <h3 class="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
+          <img src={ this.props.productExterior.tempPlaceholderImage } className="configCoverImg" />
+          <h3 className="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
         </div>
         <div className="configure-opt col-4">
           <h3 className="configure-opt-title">02 Exterior</h3>

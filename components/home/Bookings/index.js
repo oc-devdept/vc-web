@@ -7,7 +7,6 @@ class index extends Component {
  
     _RenderBookings = () => {
         const AllBookings = this.props.AllBookings
-
         return (
             <div style={{flex: 1}}>
                 <div style={{width: '100%', display:'flex', flexDirection:"row", backgroundColor: 'rgba(73,100,150,1)', padding: 10, justifyContent:'space-between'}}>

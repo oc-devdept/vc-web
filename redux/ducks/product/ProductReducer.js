@@ -74,6 +74,7 @@ export default (state = INIT_STATE, action) => {
       }
     
     case types.GET_PRODUCT_GRADES_SUCCESS:
+
       var { 
         gradeId, 
         gradesData, 

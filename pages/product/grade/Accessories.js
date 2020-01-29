@@ -69,6 +69,28 @@ class Accessories extends Component {
       },
     ]
 
+    const subtotal = parseFloat(productGrade.price) + parseFloat(productExterior.price) 
+    + parseFloat(productInterior.price) + parseFloat(productRims.price)
+    const misc = 0
+    const gst = (subtotal + misc) * 0.07
+    const total = subtotal + misc + gst
+    const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    const subtotalData = [
+      {
+        name: "SUBTOTAL",
+        amount: subtotal.toFixed(2)
+      },
+      {
+        name: "MISC. FEES",
+        amount: misc.toFixed(2)
+      },
+      {
+        name: "GST",
+        amount: gst.toFixed(2)
+      }
+    ]
+
     return(
       <div className="configure-sect row">
         <div className="configure-gall col-8">
@@ -101,8 +123,10 @@ class Accessories extends Component {
           </ul>
         </div>
         <div className="configure-summary col-4">
-          <Card>
-            <Card.Header>Total (SGD)</Card.Header>
+          <Card className="rounded-0">
+            <Card.Header className="py-1 px-3" style={{backgroundColor:"#4B6674"}}>
+              <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>
+            </Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item className="configure-summary-options p-2">
                 { data.map(( item, key ) => (
@@ -116,53 +140,34 @@ class Accessories extends Component {
                   />
                 ))}
               </ListGroup.Item>
-              <ListGroup.Item className="configure-summary-subtotal">
-                <p>Subtotal</p>
-                <p>Misc. Fees</p>
-                <p>GST</p>
+              <ListGroup.Item className="configure-summary-subtotal p-2">
+                { subtotalData.map(( item, key ) => (
+                  <div key={ key } className="d-flex flex-row align-items-center">
+                    <div className="col-1 p-0 mr-1"></div>
+                    <div className="col-2 p-0 mr-1"></div>
+                    <div className="col-5 pr-3 mr-1 text-right">
+                      <p style={{fontWeight:600, color:"#4B6674"}}>{item.name}</p>
+                    </div>
+                    <div className="col-4 p-0 mr-1">
+                      <p>${formatPrice(item.amount)}</p>
+                    </div>
+                  </div>
+                ))}
               </ListGroup.Item>
-              <ListGroup.Item className="configure-summary-total">
-              <p>Total</p>
+              <ListGroup.Item className="configure-summary-total p-2">
+                <div className="d-flex flex-row align-items-center">
+                  <div className="col-1 p-0 mr-1"></div>
+                  <div className="col-2 p-0 mr-1"></div>
+                  <div className="col-5 pr-3 mr-1 text-right">
+                    <p style={{fontWeight:700, color:"#4B6674"}}>TOTAL</p>
+                  </div>
+                  <div className="col-4 p-0 mr-1">
+                    <p>${formatPrice(total)}</p>
+                  </div>
+                </div>
               </ListGroup.Item>
             </ListGroup>
           </Card>
-          {/* <Accordion>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0" className="configure-total-header">
-                Total (SGD)
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body>
-                  <div className="p-0 list-unstyled configure-total">
-                    <dl>
-                      <dt>{`01 Car Make & Model`}</dt>
-                      <dd>{this.props.ProductState.productModel.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>02 Grade</dt>
-                      <dt>${this.props.ProductState.productGrade.price}</dt>
-                      <dd>{this.props.ProductState.productGrade.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>03 Exterior</dt>
-                      <dt>${this.props.ProductState.productExterior.price}</dt>
-                      <dd>{this.props.ProductState.productExterior.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>04 Interior</dt>
-                      <dt>${this.props.ProductState.productInterior.price}</dt>
-                      <dd>{this.props.ProductState.productInterior.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>05 Rims</dt>
-                      <dt>${this.props.ProductState.productRims.price}</dt>
-                      <dd>{this.props.ProductState.productRims.name}</dd>
-                    </dl>
-                  </div>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion> */}
         </div> 
       </div>
     )

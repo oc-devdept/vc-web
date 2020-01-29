@@ -70,7 +70,6 @@ function* getProductModelData(e) {
 }
 
 function* getProductGrades(e) {
-  console.log('getProductGrades')
   try {
     const data = yield call(getProductGradesRequest, e)
     yield put(actions.getProductGradesSuccess(data))

@@ -8,6 +8,7 @@ import AccessoriesCartItem from 'Components/Layout/AccessoriesCartItem'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import ListGroup from "react-bootstrap/ListGroup"
+import Form from "react-bootstrap/Form"
 
 class Accessories extends Component {
   constructor(props) {
@@ -95,36 +96,85 @@ class Accessories extends Component {
       <div className="configure-sect row">
         <div className="configure-gall col-8">
           <p>Expand the options below to add acessories to your vehicle</p>
-          <ul className="p-0 list-unstyled">
+          <Accordion defaultActiveKey="0">
             {!!productAccessories.data.fields &&        
               Object.entries(productAccessories.data.fields).map(([key, value], id) => (
-                <div className="product-option-group" key={ id }>
-                  <p><strong>Product Option Group: { key }</strong></p>
-                  <ul className="p-0">
-                    { value.map(( item, id ) => (
-                      <li
-                        key={ id }
-                        id={ item.id }
-                        className="product-option list-unstyled configure-list" 
-                        style={ !!productAccessories.selectedIds[item.id] ? 
-                          {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : {border: "1px solid #DEE2E6"}
-                        }
-                        onClick={ this.handleOptionChange }
-                      >
-                        { item.productOption.name }<br/>
-                        ${ item.productOption.price }<br/>
-                        <img src={ item.productOption.files[0].url } alt={ item.productOption.name } />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <Card className="product-option-group" key={ id } className="rounded-0 mb-2 border">
+                  <Accordion.Toggle 
+                    as={ Card.Header } 
+                    eventKey={`${id}`} 
+                    className="py-1 px-3 rounded-0" 
+                    style={{backgroundColor:"#7da9bf", borderColor:"#7da9bf"}}
+                  >
+                    <div className="row d-flex flex-row align-items-center">
+                      <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>0{ id + 1 }</p>
+                      <p className="col-10 m-0 text-center text-uppercase" style={{fontWeight: 600, color:"#ffffff"}}>{ key }</p>
+                      <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>+</p>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey={`${id}`}>
+                    <Card.Body className="p-0">
+                      <Accordion defaultActiveKey="0">
+                        { value.map(( item, id ) => (
+                          <Card key={ id } className=" rounded-0">
+                            <Accordion.Toggle 
+                              as={ Card.Header } 
+                              eventKey={`${id}`} 
+                              className="product-option py-2 px-3"
+                            >
+                              <div className="row d-flex flex-row align-items-center">
+                                <div className="col-1">
+                                  <Form.Check custom id={ item.id } label="" />
+                                </div>
+                                <div className="col-8 p-0">
+                                  <p style={{color:"#4B6674", textTransform:"uppercase"}}>{ item.productOption.name }</p>
+                                </div>
+                                <div className="col-2">
+                                  <p style={{fontWeight:600, color:"#4B6674"}}>${ formatPrice(item.productOption.price.toFixed(2)) }</p>
+                                </div>
+                                <div className="col-1">
+                                  <i className="fas fa-chevron-down" style={{color:"#4B6674"}} />
+                                </div>
+                              </div>
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey={`${id}`}>
+                              <div className="row">
+                                <div className="col-3">
+                                  <div className="d-flex justify-content-center align-items-center">
+                                    <div style={{marginTop:"75%"}} />
+                                    <img 
+                                      src={ item.productOption.files[0].url } 
+                                      alt={ item.productOption.name } 
+                                      style={{position:"absolute", objectFit:"cover", width:"80%", borderRadius:3, marginLeft:"1rem"}} 
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-9">
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                  <p>lorem ipsum</p>
+                                </div>
+                              </div>
+                            </Accordion.Collapse>
+                          </Card>
+                        ))}
+                      </Accordion>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
               ))
             }
-          </ul>
+          </Accordion>
         </div>
         <div className="configure-summary col-4">
           <Card className="rounded-0">
-            <Card.Header className="py-1 px-3" style={{backgroundColor:"#4B6674"}}>
+            <Card.Header className="py-1 px-3 rounded-0" style={{backgroundColor:"#4B6674"}}>
               <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>
             </Card.Header>
             <ListGroup variant="flush">

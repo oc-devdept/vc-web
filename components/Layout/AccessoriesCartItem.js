@@ -10,7 +10,11 @@ const AccessoriesCartItem = props => {
       </div>
       <div className="col-2 p-0 mr-1 d-flex align-items-center justify-content-center">
         <div style={{marginTop:"100%"}} />
-        <img src={props.image} style={{position:"absolute", objectFit:"cover", width:"90%", height:"90%", borderRadius:3}}/>
+        <img 
+          src={props.image} 
+          alt={props.name} 
+          style={{position:"absolute", objectFit:"cover", width:"90%", height:"90%", borderRadius:3}}
+        />
       </div>
       <div className="col-5 p-0 mr-1 text-uppercase">
         <p style={{fontWeight: 600, lineHeight: 1}} className="mb-1">{props.title}</p>

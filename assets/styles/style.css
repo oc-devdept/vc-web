@@ -7866,3 +7866,6 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
   height: 80px;
   background-position: center;
 }
+
+.custom-control-input:checked~.custom-control-label::before{color:#fff;border-color:#4B6674;background-color:#4B6674}
+.custom-checkbox .custom-control-label::before{border-radius:0}

@@ -3,6 +3,8 @@ import React, { Component } from "react"
 
 // import { selectedProductGrade, getProductGradeData } from "Ducks/product/ProductActions"
 
+import { Carousel } from "react-responsive-carousel"
+
 class Grade extends Component {
   constructor(props) {
     super(props)

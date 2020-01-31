@@ -24,8 +24,9 @@ class Interior extends Component {
     console.log("interior props: ", this.props)
     return (
       <div className="configure-sect row">
-        <div className="configure-gall col-8">
-          <img src="/static/interior-placeholder.png" className="configCoverImg" />
+        <div className="configure-gall col-8 d-flex flex-column">
+          {/* Need to change img src to display all images */}
+          <img src={this.props.productInterior.images[0]} className="configCoverImg align-self-center" />
           <h3 className="text-uppercase text-center m-2">{ this.props.productInterior.name }</h3>
         </div>
         <div className="configure-opt col-4">
@@ -43,8 +44,8 @@ class Interior extends Component {
                     id={ item.id }
                     className="interior-image"
                     style={ item.id == this.props.productInterior.id ? 
-                      {backgroundImage: `url(${ item.files[0].url })`, border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
-                      {backgroundImage: `url(${ item.files[0].url })`, border: "1px solid #DEE2E6"}
+                      {backgroundImage: `url(${ item.files[0].path })`, border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
+                      {backgroundImage: `url(${ item.files[0].path })`, border: "1px solid #DEE2E6"}
                     }
                   />
                   <span id={ item.id } style={{textTransform:"uppercase", fontWeight:500}}>{ item.name }</span><br/>

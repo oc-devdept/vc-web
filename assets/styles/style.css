@@ -7830,6 +7830,8 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 .configure-opt-title{color:#4B6674;}
 .configure-list{padding: 2%; margin: 2% 0;}
 .pull-right {float:right;}
+.pull-left{color:#F29D30!important;background-color:transparent}
+.pull-left:hover,.pull-left:focus{color:#ffffff!important;background-color:#F29D30;}
 .configure-area .container{max-width:100% !important;}
 .configure-total{text-transform: uppercase;}
 .configure-total dt{display:inline-block;}
@@ -7858,7 +7860,7 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
   .stepArrow{color: #F29D30;}
 
-  .configCoverImg{width:100%; border-radius:20px;}
+  .configCoverImg{border-radius:20px; object-fit:cover; max-height:300px;}
 /*# sourceMappingURL=style.css.map */
 
 .interior-image { 

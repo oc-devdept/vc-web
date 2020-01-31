@@ -48,7 +48,7 @@ class Accessories extends Component {
 
   render() {
     // console.log("state= ", this.state)
-    // console.log("Accessories props: ", this.props)
+    console.log("Accessories props: ", this.props)
     const { 
       productModel,
       productGrade,
@@ -183,7 +183,7 @@ class Accessories extends Component {
                                   <div className="d-flex justify-content-center align-items-start ml-4">
                                     <div style={{marginTop:"75%"}} />
                                     <img 
-                                      src={ item.productOption.files[0].url } 
+                                      src={ item.productOption.files[0].path } 
                                       alt={ item.productOption.name } 
                                       style={{width:"100%", maxWidth:200, borderRadius:3,}} 
                                     />

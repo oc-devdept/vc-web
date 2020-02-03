@@ -119,7 +119,7 @@ class Accessories extends Component {
 
     return(
       <div className="configure-sect row">
-        <div className="configure-gall col-8">
+        <div className="configure-gall col-lg-8">
           <p>Expand the options below to add acessories to your vehicle</p>
           <Accordion activeKey={ this.state.mainAccordionActiveKey }>
             {!!productAccessories.data.fields &&        
@@ -133,10 +133,10 @@ class Accessories extends Component {
                     onClick={ () => this.handleMainAccordionClick(id) }
                   >
                     <div className="row d-flex flex-row align-items-center">
-                      <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>
+                      <p className="col-2 m-0" style={{fontWeight: 600, color:"#ffffff"}}>
                         0{ id + 1 }
                       </p>
-                      <p className="col-10 m-0 text-center text-uppercase" style={{fontWeight: 600, color:"#ffffff"}}>
+                      <p className="col-9 m-0 text-center text-uppercase" style={{fontWeight: 600, color:"#ffffff"}}>
                         { key }
                       </p>
                       <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>
@@ -163,10 +163,10 @@ class Accessories extends Component {
                                 <div className="col-1">
                                   <Form.Check custom id={ item.id } label="" onChange={ this.handleOptionChange } />
                                 </div>
-                                <div className="col-8 p-0">
+                                <div className="col-7 p-0">
                                   <p style={{color:"#4B6674", textTransform:"uppercase"}}>{ item.productOption.name }</p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-3">
                                   <p style={{fontWeight:600, color:"#4B6674"}}>${ formatPrice(item.productOption.price.toFixed(2)) }</p>
                                 </div>
                                 <div className="col-1">
@@ -216,7 +216,7 @@ class Accessories extends Component {
             }
           </Accordion>
         </div>
-        <div className="configure-summary col-4">
+        <div className="configure-summary col-lg-4">
           <Card className="rounded-0">
             <Card.Header className="py-1 px-3 rounded-0" style={{backgroundColor:"#4B6674"}}>
               <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>

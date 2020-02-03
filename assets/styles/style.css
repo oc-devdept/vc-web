@@ -669,10 +669,10 @@ Navbar Area CSS
   margin-bottom: 0;
 }
 
-.comero-nav .navbar .navbar-nav {
+/* .comero-nav .navbar .navbar-nav {
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 .comero-nav .navbar .navbar-nav .nav-item {
   padding-top: 20px;
@@ -7816,10 +7816,10 @@ h1,h2,h3,h4,h5,h6{
   border: 1px solid #F29D30;
 }
 
-.comero-nav .navbar .navbar-nav {margin:0;}
+/* .comero-nav .navbar .navbar-nav {margin:0;} */
 
 /* ol.progtrckr,.configure-opt{display:inline-block;} */
-ol.progtrckr{width:100%; text-align:left;}
+ol.progtrckr{width:100%; text-align:center;}
 ol.progtrckr, .configure-opt-title{text-transform: uppercase; font-weight: 600;}
 .configure-opt{background:#fcfcfc; padding: 15px 15px 0;}
 .footer-buttons{width:33%;}
@@ -7828,7 +7828,7 @@ li.progtrckr-doing, li.progtrckr-todo, li.progtrckr-done {width:19%;}
 ol.progtrckr li.progtrckr-doing:before{background-color:#F29D30;}
 ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30;}
 .configure-opt-title{color:#4B6674;}
-.configure-list{padding: 2%; margin: 2% 0;}
+.configure-list{padding: 1%; margin: 2% 0;}
 .pull-right {float:right;}
 .pull-left{color:#F29D30!important;background-color:transparent}
 .pull-left:hover,.pull-left:focus{color:#ffffff!important;background-color:#F29D30;}
@@ -7860,7 +7860,7 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
   .stepArrow{color: #F29D30;}
 
-  .configCoverImg{border-radius:20px; object-fit:cover; height:300px; width:600px;}
+  .configCoverImg{border-radius:20px; object-fit:cover; max-height:300px; max-width:600px; width: 100%; height:auto}
 /*# sourceMappingURL=style.css.map */
 
 .interior-image { 
@@ -7871,3 +7871,7 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
 .custom-control-input:checked~.custom-control-label::before{color:#fff;border-color:#4B6674;background-color:#4B6674}
 .custom-checkbox .custom-control-label::before{border-radius:0}
+
+.navbar .navbar-nav .nav-item.highlight a {
+  padding: 3px 10px;
+}

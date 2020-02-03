@@ -29,7 +29,6 @@ class Index extends Component {
         
         if(this.props.profile){
             const bookings = this.props.profile.bookings
-            console.log(this.props.profile)
             return (
                 <React.Fragment>
                     <Navbar />
@@ -59,17 +58,19 @@ class Index extends Component {
 
                                 <div style={{flex: 0.7}}>
 
-                                    <Booking
+                                    {/* <Booking
                                         AllBookings={bookings}
-                                    />
+                                    /> */}
 
-                                    <BookingForm
+                                    {/* <BookingForm
                                         _FetchProfile={this._FetchProfile}
                                         Customer={this.props.profile.customer}
-                                    />
+                                    /> */}
+
+                                    All Bookings, Make Bookings, History, Transactions
+
                                 </div>
                                
-
                             </div>
                             
                             <button onClick={this._HandleLogout} className="btn btn-primary">logout</button>

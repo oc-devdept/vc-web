@@ -3,14 +3,28 @@ import React, { Component } from "react"
 
 // import { selectedProductAccessories } from "Ducks/product/ProductActions"
 
+import AccessoriesCartItem from 'Components/Layout/AccessoriesCartItem'
+
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
+import ListGroup from "react-bootstrap/ListGroup"
+import Form from "react-bootstrap/Form"
 
 class Accessories extends Component {
   constructor(props) {
     super(props)
+    this.state = { }
 
     this.handleOptionChange = this.handleOptionChange.bind(this)
+    this.handleClick = this.handleMainAccordionClick.bind(this)
+  }
+
+  componentDidMount() {
+    let list = { mainAccordionActiveKey: "0" }
+    Object.keys(this.props.ProductState.productAccessories.data.fields).map((item, id) => {
+      list[id] = "0"
+    })
+    this.setState(list)
   }
 
   handleOptionChange(event) {
@@ -18,78 +32,236 @@ class Accessories extends Component {
     this.props.selectedProductAccessories(id)
   }
 
+  handleMainAccordionClick(id) {
+    this.setState({
+      mainAccordionActiveKey: `${id}`,
+      // secondaryAccordionActiveKey: "0"
+    })
+  }
+
+  handleSecondaryAccordionClick(id, idd) {
+    this.setState({
+      ...this.state,
+      [id]: `${idd}`
+    })
+  }
+
   render() {
-    const { fields } = this.props.ProductState.productAccessories.data
-    // console.log("Accessories props: ", this.props)
+    // console.log("state= ", this.state)
+    console.log("Accessories props: ", this.props)
+    const { 
+      productModel,
+      productGrade,
+      productExterior,
+      productInterior,
+      productRims,
+      productAccessories,
+    } = this.props.ProductState
+
+    const data = [
+      {
+        number: "01",
+        image: productModel.image,
+        title: "CAR MAKE & MODEL",
+        name: productModel.name,
+      },
+      {
+        number: "02",
+        image: productGrade.images[0],
+        title: "GRADE",
+        name: productGrade.name,
+        price: parseFloat(productGrade.price).toFixed(2)
+      },
+      {
+        number: "03",
+        image: productExterior.images[0],
+        title: "EXTERIOR",
+        name: productExterior.name,
+        price: parseFloat(productExterior.price).toFixed(2)
+      },
+      {
+        number: "04",
+        image: productInterior.images[0],
+        title: "INTERIOR",
+        name: productInterior.name,
+        price: parseFloat(productInterior.price).toFixed(2)
+      },
+      {
+        number: "05",
+        image: productRims.images[0],
+        title: "RIMS",
+        name: productRims.name,
+        price: parseFloat(productRims.price).toFixed(2)
+      },
+    ]
+    
+    const subtotal = parseFloat(productGrade.price) + parseFloat(productExterior.price) 
+    + parseFloat(productInterior.price) + parseFloat(productRims.price)
+    const misc = 0
+    const gst = (subtotal + misc) * 0.07
+    const total = subtotal + misc + gst
+    const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    const subtotalData = [
+      {
+        name: "SUBTOTAL",
+        amount: subtotal.toFixed(2)
+      },
+      {
+        name: "MISC. FEES",
+        amount: misc.toFixed(2)
+      },
+      {
+        name: "GST",
+        amount: gst.toFixed(2)
+      }
+    ]
+
     return(
       <div className="configure-sect row">
         <div className="configure-gall col-8">
           <p>Expand the options below to add acessories to your vehicle</p>
-          <ul className="p-0 list-unstyled">
-            {!!fields &&        
-              Object.entries(fields).map(([key, value], id) => (
-                <div className="product-option-group" key={ id }>
-                  <p><strong>Product Option Group: { key }</strong></p>
-                  <ul className="p-0">
-                    { value.map(( item, id ) => (
-                      <li
-                        key={ id }
-                        id={ item.id }
-                        className="product-option list-unstyled configure-list" 
-                        style={ !!this.props.ProductState.productAccessories.selectedIds[item.id] ? 
-                          {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : {border: "1px solid #DEE2E6"}
+          <Accordion activeKey={ this.state.mainAccordionActiveKey }>
+            {!!productAccessories.data.fields &&        
+              Object.entries(productAccessories.data.fields).map(([key, value], id) => (
+                <Card className="product-option-group" key={ id } className="rounded-0 mb-2 border">
+                  <Accordion.Toggle 
+                    as={ Card.Header } 
+                    eventKey={`${id}`} 
+                    className="py-1 px-3 rounded-0" 
+                    style={{backgroundColor:"#7da9bf", borderColor:"#7da9bf"}}
+                    onClick={ () => this.handleMainAccordionClick(id) }
+                  >
+                    <div className="row d-flex flex-row align-items-center">
+                      <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>
+                        0{ id + 1 }
+                      </p>
+                      <p className="col-10 m-0 text-center text-uppercase" style={{fontWeight: 600, color:"#ffffff"}}>
+                        { key }
+                      </p>
+                      <p className="col-1 m-0" style={{fontWeight: 600, color:"#ffffff"}}>
+                        { this.state.mainAccordionActiveKey === `${id}` ?
+                          <i className="fas fa-minus" /> :
+                          <i className="fas fa-plus" />
                         }
-                        onClick={ this.handleOptionChange }
-                      >
-                        { item.productOption.name }<br/>
-                        ${ item.productOption.price }<br/>
-                        <img src={ item.productOption.files[0].url } alt={ item.productOption.name } />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      </p>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey={`${id}`}>
+                    <Card.Body className="p-0">
+                      <Accordion activeKey={ this.state[id] }>
+                        { value.map(( item, idd ) => (
+                          <Card key={ idd } className=" rounded-0">
+                            <Accordion.Toggle 
+                              as={ Card.Header } 
+                              eventKey={`${idd}`} 
+                              className="py-2 px-3"
+                              style={{backgroundColor:"transparent"}}
+                              onClick={ () => this.handleSecondaryAccordionClick(id, idd) }
+                            >
+                              <div className="row d-flex flex-row align-items-center">
+                                <div className="col-1">
+                                  <Form.Check custom id={ item.id } label="" onChange={ this.handleOptionChange } />
+                                </div>
+                                <div className="col-8 p-0">
+                                  <p style={{color:"#4B6674", textTransform:"uppercase"}}>{ item.productOption.name }</p>
+                                </div>
+                                <div className="col-2">
+                                  <p style={{fontWeight:600, color:"#4B6674"}}>${ formatPrice(item.productOption.price.toFixed(2)) }</p>
+                                </div>
+                                <div className="col-1">
+                                  { this.state[id] === `${idd}` ?
+                                    <i className="fas fa-chevron-up" style={{color:"#4B6674"}} /> :
+                                    <i className="fas fa-chevron-down" style={{color:"#4B6674"}} /> 
+                                  }
+                                </div>
+                              </div>
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey={`${idd}`}>
+                              <div className="row my-3">
+                                <div className="col-3">
+                                  <div className="d-flex justify-content-center align-items-start ml-4">
+                                    <div style={{marginTop:"75%"}} />
+                                    <img 
+                                      src={ item.productOption.files[0].path } 
+                                      alt={ item.productOption.name } 
+                                      style={{width:"100%", maxWidth:200, borderRadius:3,}} 
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-9">
+                                  <div className="mr-4">
+                                    <p>Lorem Ipsum</p>
+                                    <p>Lorem Ipsum</p>
+                                    <p>Lorem Ipsum</p>
+                                    <p className="text-justify">
+                                      Maecenas tristique justo odio, gravida vehicula tellus condimentum quis. 
+                                      Integer rhoncus tortor et arcu auctor fermentum. 
+                                      Suspendisse feugiat molestie pellentesque. Donec sed eleifend libero. 
+                                      Duis egestas porttitor dui sed fringilla. 
+                                      Duis massa turpis, semper nec sollicitudin a, commodo eu tortor. 
+                                      Ut quis nunc ipsum.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </Accordion.Collapse>
+                          </Card>
+                        ))}
+                      </Accordion>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
               ))
             }
-          </ul>
+          </Accordion>
         </div>
         <div className="configure-summary col-4">
-          <Accordion>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0" className="configure-total-header">
-                Total (SGD)
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body>
-                  <div className="p-0 list-unstyled configure-total">
-                    <dl>
-                      <dt>{`01 Car Make & Model`}</dt>
-                      <dd>{this.props.ProductState.productModel.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>02 Grade</dt>
-                      <dt>${this.props.ProductState.productGrade.price}</dt>
-                      <dd>{this.props.ProductState.productGrade.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>03 Exterior</dt>
-                      <dt>${this.props.ProductState.productExterior.price}</dt>
-                      <dd>{this.props.ProductState.productExterior.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>04 Interior</dt>
-                      <dt>${this.props.ProductState.productInterior.price}</dt>
-                      <dd>{this.props.ProductState.productInterior.name}</dd>
-                    </dl>
-                    <dl>
-                      <dt>05 Rims</dt>
-                      <dt>${this.props.ProductState.productRims.price}</dt>
-                      <dd>{this.props.ProductState.productRims.name}</dd>
-                    </dl>
+          <Card className="rounded-0">
+            <Card.Header className="py-1 px-3 rounded-0" style={{backgroundColor:"#4B6674"}}>
+              <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>
+            </Card.Header>
+            <ListGroup variant="flush">
+              <ListGroup.Item className="configure-summary-options p-2">
+                { data.map(( item, key ) => (
+                  <AccessoriesCartItem
+                    key={ key }
+                    number={ item.number }
+                    image={ item.image }
+                    title={ item.title }
+                    name={ item.name }
+                    price={ item.price }
+                  />
+                ))}
+              </ListGroup.Item>
+              <ListGroup.Item className="configure-summary-subtotal p-2">
+                { subtotalData.map(( item, key ) => (
+                  <div key={ key } className="d-flex flex-row align-items-center">
+                    <div className="col-1 p-0 mr-1"></div>
+                    <div className="col-2 p-0 mr-1"></div>
+                    <div className="col-5 pr-3 mr-1 text-right">
+                      <p style={{fontWeight:600, color:"#4B6674"}}>{item.name}</p>
+                    </div>
+                    <div className="col-4 p-0 mr-1">
+                      <p>${formatPrice(item.amount)}</p>
+                    </div>
                   </div>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
+                ))}
+              </ListGroup.Item>
+              <ListGroup.Item className="configure-summary-total p-2">
+                <div className="d-flex flex-row align-items-center">
+                  <div className="col-1 p-0 mr-1"></div>
+                  <div className="col-2 p-0 mr-1"></div>
+                  <div className="col-5 pr-3 mr-1 text-right">
+                    <p style={{fontWeight:700, color:"#4B6674"}}>TOTAL</p>
+                  </div>
+                  <div className="col-4 p-0 mr-1">
+                    <p>${formatPrice(total.toFixed(2))}</p>
+                  </div>
+                </div>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
         </div> 
       </div>
     )

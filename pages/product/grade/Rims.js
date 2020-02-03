@@ -2,6 +2,8 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 
 // import { selectedProductRims } from "Ducks/product/ProductActions";
+import { Carousel } from "react-responsive-carousel"
+import "../../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css"
 
 class Rims extends Component {
   constructor(props) {
@@ -24,8 +26,14 @@ class Rims extends Component {
     console.log("rims props: ", this.props)
     return (
       <div className="configure-sect row">
-        <div className="configure-gall col-8">
-          <img src="/static/rims-placeholder.png" className="configCoverImg" />
+        <div className="configure-gall col-8 d-flex flex-column">
+          <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
+            { this.props.productRims.images.map((item, id) => (
+              <div key={ id }>
+                <img src={ item } className="configCoverImg align-self-center" />
+              </div>
+            ))}
+          </Carousel>
           <h3 className="text-uppercase text-center m-2">{ this.props.productRims.name }</h3>
         </div>
         <div className="configure-opt col-4">
@@ -41,7 +49,7 @@ class Rims extends Component {
                   style={{width:120}}
                 >
                   <img 
-                    src={ item.files[0].url } 
+                    src={ item.files[0].path } 
                     alt={ item.name } 
                     id={ item.id }
                     height="100"

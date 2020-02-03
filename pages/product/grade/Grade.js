@@ -22,11 +22,11 @@ class Grade extends Component {
 
   render() {
     const { fields } = this.props.productGrade.data
-    // console.log("grade props= ", this.props)
+    console.log("grade props= ", this.props)
     return(
       <div className="configure-sect row">
-        <div className="configure-gall col-8">
-          <img src={ this.props.productGrade.images } className="configCoverImg"/>
+        <div className="configure-gall col-8 d-flex flex-column">
+          <img src={ this.props.productGrade.images } className="configCoverImg align-self-center"/>
         <h3 className="text-uppercase text-center m-2">{ this.props.productGrade.name }</h3>      
         <p>{ this.props.productGrade.description }</p>
         </div>

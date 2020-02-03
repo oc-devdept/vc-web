@@ -70,31 +70,31 @@ class Accessories extends Component {
         image: productGrade.images[0],
         title: "GRADE",
         name: productGrade.name,
-        price: productGrade.price
+        price: parseFloat(productGrade.price).toFixed(2)
       },
       {
         number: "03",
         image: productExterior.images[0],
         title: "EXTERIOR",
         name: productExterior.name,
-        price: productExterior.price
+        price: parseFloat(productExterior.price).toFixed(2)
       },
       {
         number: "04",
         image: productInterior.images[0],
         title: "INTERIOR",
         name: productInterior.name,
-        price: productInterior.price
+        price: parseFloat(productInterior.price).toFixed(2)
       },
       {
         number: "05",
         image: productRims.images[0],
         title: "RIMS",
         name: productRims.name,
-        price: productRims.price
+        price: parseFloat(productRims.price).toFixed(2)
       },
     ]
-
+    
     const subtotal = parseFloat(productGrade.price) + parseFloat(productExterior.price) 
     + parseFloat(productInterior.price) + parseFloat(productRims.price)
     const misc = 0
@@ -256,7 +256,7 @@ class Accessories extends Component {
                     <p style={{fontWeight:700, color:"#4B6674"}}>TOTAL</p>
                   </div>
                   <div className="col-4 p-0 mr-1">
-                    <p>${formatPrice(total)}</p>
+                    <p>${formatPrice(total.toFixed(2))}</p>
                   </div>
                 </div>
               </ListGroup.Item>

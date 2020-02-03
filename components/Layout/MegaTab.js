@@ -88,7 +88,7 @@ class MegaTab extends Component {
                   model.files.map(image => { 
                     return ( 
                       <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
-                        <img style={modelImage} src={image.url} />
+                        <img style={modelImage} src={image.path} />
                       </Link>
                       )
                   } )

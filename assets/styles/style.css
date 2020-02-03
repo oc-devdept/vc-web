@@ -7860,7 +7860,7 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 
   .stepArrow{color: #F29D30;}
 
-  .configCoverImg{border-radius:20px; object-fit:cover; max-height:300px;}
+  .configCoverImg{border-radius:20px; object-fit:cover; height:300px; width:600px;}
 /*# sourceMappingURL=style.css.map */
 
 .interior-image { 

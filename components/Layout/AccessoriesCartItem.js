@@ -22,7 +22,7 @@ const AccessoriesCartItem = props => {
       </div>
       <div className="col-4 p-0 mr-1">
         {props.price > 0 && 
-          <p style={{color:"#4B6674"}}>${formatPrice(props.price)}.00</p>
+          <p style={{color:"#4B6674"}}>${formatPrice(props.price)}</p>
         }
         {props.price === 0 &&
           <p style={{color:"#4B6674"}}>$0.00</p>

@@ -28,7 +28,6 @@ class Exterior extends Component {
     return(
       <div className="configure-sect row">  
         <div className="configure-gall col-8 d-flex flex-column">
-          {/* Need to change img src to display all images */}
           <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
             { this.props.productExterior.images.map((item, id) => (
               <div key={ id }>
@@ -36,7 +35,6 @@ class Exterior extends Component {
               </div>
             ))}
           </Carousel>
-          {/* <img src={ this.props.productExterior.images[0] } className="configCoverImg align-self-center" /> */}
           <h3 className="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
         </div>
         <div className="configure-opt col-4">

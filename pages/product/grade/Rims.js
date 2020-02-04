@@ -26,7 +26,7 @@ class Rims extends Component {
     console.log("rims props: ", this.props)
     return (
       <div className="configure-sect row">
-        <div className="configure-gall col-8 d-flex flex-column">
+        <div className="configure-gall col-lg-8 d-flex flex-column">
           <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
             { this.props.productRims.images.map((item, id) => (
               <div key={ id }>
@@ -36,7 +36,7 @@ class Rims extends Component {
           </Carousel>
           <h3 className="text-uppercase text-center m-2">{ this.props.productRims.name }</h3>
         </div>
-        <div className="configure-opt col-4">
+        <div className="configure-opt col-lg-4">
           <h3 className="configure-opt-title">04 Rims</h3>
           <ul className="p-0 list-unstyled">
             {!!objects &&
@@ -46,7 +46,7 @@ class Rims extends Component {
                   key={ id }
                   id={ item.id }
                   onClick={ this.handleOptionChange }
-                  style={{width:120}}
+                  style={{maxWidth:120}}
                 >
                   <img 
                     src={ item.files[0].path } 

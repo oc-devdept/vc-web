@@ -27,7 +27,7 @@ class Exterior extends Component {
     console.log("exterior props: ", this.props)
     return(
       <div className="configure-sect row">  
-        <div className="configure-gall col-8 d-flex flex-column">
+        <div className="configure-gall col-lg-8 d-flex flex-column">
           <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
             { this.props.productExterior.images.map((item, id) => (
               <div key={ id }>
@@ -37,7 +37,7 @@ class Exterior extends Component {
           </Carousel>
           <h3 className="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
         </div>
-        <div className="configure-opt col-4">
+        <div className="configure-opt col-lg-4">
           <h3 className="configure-opt-title">02 Exterior</h3>
           <ul className="list-unstyled">
             {!!objects &&

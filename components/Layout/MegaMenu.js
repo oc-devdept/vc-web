@@ -86,68 +86,108 @@ class MegaMenu extends Component {
                 </button>
                 <div className={classOne} id="navbarSupportedContent">
                   <ul className="navbar-nav">
-                    <li className="nav-item megamenu">
-                      <Link href="#">
-                        <a className="nav-link">
-                          New <i className="fas fa-chevron-down"></i>
-                        </a>
-                      </Link>
-                      <ul className="dropdown-menu">
-                        <li className="nav-item">
-                          <div className="container">
-                            <div className="row">
-                              <div className="col-12 megaTab">
-                                {/* <ul className="megamenu-submenu top-brands">
-                                                            {makes.map((make, id) => (    
-                                                                <li key={id}>
-                                                                    <Link href={`/make/${make.id}`}>
-                                                                        <a>
-                                                                                <img src={make.image} alt="image" />
-                                                                        </a>
-                                                                    </Link>
-                                                                </li>
-                                                                ))}
-                                                            </ul> */}
+                    <div className="navbar-nav-1">
+                      <li className="nav-item megamenu">
+                        <Link href="#">
+                          <a className="nav-link">
+                            New <i className="fas fa-chevron-down"></i>
+                          </a>
+                        </Link>
+                        <ul className="dropdown-menu">
+                          <li className="nav-item">
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-12 megaTab">
+                                  {/* <ul className="megamenu-submenu top-brands">
+                                                              {makes.map((make, id) => (    
+                                                                  <li key={id}>
+                                                                      <Link href={`/make/${make.id}`}>
+                                                                          <a>
+                                                                                  <img src={make.image} alt="image" />
+                                                                          </a>
+                                                                      </Link>
+                                                                  </li>
+                                                                  ))}
+                                                              </ul> */}
 
-                                <MegaTab />
+                                  <MegaTab />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className="nav-item p-relative">
-                      <Link href="#">
-                        <a className="nav-link">Used</a>
-                      </Link>
-                    </li>
+                          </li>
+                        </ul>
+                      </li>
+                      {/* <li className="nav-item p-relative">
+                        <Link href="#">
+                          <a className="nav-link">Used</a>
+                        </Link>
+                      </li> */}
 
-                    <li className="nav-item p-relative">
-                      <Link href="#">
-                        <a className="nav-link">Rent</a>
-                      </Link>
-                    </li>
+                      <li className="nav-item p-relative">
+                        <Link href="#">
+                          <a className="nav-link">Rent</a>
+                        </Link>
+                      </li>
 
-                    <li className="nav-item p-relative">
-                      <Link href="#">
-                        <a className="nav-link">Services</a>
-                      </Link>
-                    </li>
+                      <li className="nav-item p-relative">
+                        <Link href="#">
+                          <a className="nav-link">Services</a>
+                        </Link>
+                      </li>
 
-                    <li className="nav-item p-relative">
-                      <Link href="/about">
-                        <a className="nav-link">About Us</a>
-                      </Link>
-                    </li>
+                      <li className="nav-item p-relative">
+                        <Link href="/about">
+                          <a className="nav-link">About Us</a>
+                        </Link>
+                      </li>
 
-                    <li className="nav-item p-relative">
-                      <Link href="/contact-us">
-                        <a className="nav-link">Contact Us</a>
-                      </Link>
-                    </li>
+                      <li className="nav-item p-relative">
+                        <Link href="/contact-us">
+                          <a className="nav-link">Contact Us</a>
+                        </Link>
+                      </li>
+                    </div>
+                    
+                    <div className="navbar-nav-2">
+                      <li className="nav-item p-relative">
+                        {/* <Link href="/compare"> */}
+                        <Link href="#">
+                          <a>
+                            Compare <i className="fas fa-balance-scale"></i>
+                          </a>
+                        </Link>
+                      </li>
+
+                      <li className="nav-item highlight p-relative">
+                        <Link href="/contact.js">
+                          <a className="btn btn-primary">
+                            <span>Get Quote</span>
+                          </a>
+                        </Link>
+                      </li>
+
+                      <li className="nav-item highlight p-relative">
+                        <Link href="/contact.js">
+                          <a className="btn btn-light">
+                            <span>Book A Service</span>
+                          </a>
+                        </Link>
+                      </li>
+
+                      <li className="nav-item p-relative">
+                        <Link href="/login">
+                          <a>
+                            <Icon
+                              className="medIcon"
+                              icon={accountCircleOutline}
+                            />
+                          </a>
+                        </Link>
+                      </li>
+                    </div>
                   </ul>
 
-                  <div className="others-option">
+                  {/* <div className="others-option">
                     <div className="option-item">
                       <Link href="/compare">
                         <a>
@@ -163,7 +203,7 @@ class MegaMenu extends Component {
                     </div> */}
 
                     <div className="option-item">
-                      {/* <i 
+                      <i 
                                             onClick={this.handleSearchForm} 
                                             className="search-btn fas fa-search"
                                             style={{
@@ -189,7 +229,7 @@ class MegaMenu extends Component {
                                                     <button className="search-button" type="submit"><i className="fas fa-search"></i></button>
                                                 </form>
                                             </div>
-                                        </div> */}
+                                        </div>
                       <Link href="/contact.js">
                         <a className="btn btn-primary">
                           <span>Get Quote</span>
@@ -214,7 +254,7 @@ class MegaMenu extends Component {
                         </a>
                       </Link>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </nav>
             </div>

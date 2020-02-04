@@ -27,7 +27,7 @@ class Interior extends Component {
     console.log("interior props: ", this.props)
     return (
       <div className="configure-sect row">
-        <div className="configure-gall col-8 d-flex flex-column">
+        <div className="configure-gall col-lg-8 d-flex flex-column">
           <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
             { this.props.productInterior.images.map((item, id) => (
               <div key={ id }>
@@ -37,7 +37,7 @@ class Interior extends Component {
           </Carousel>
           <h3 className="text-uppercase text-center m-2">{ this.props.productInterior.name }</h3>
         </div>
-        <div className="configure-opt col-4">
+        <div className="configure-opt col-lg-4">
           <h3 className="configure-opt-title">03 Interior</h3>
           <ul className="p-0 list-unstyled">
             {!!objects &&

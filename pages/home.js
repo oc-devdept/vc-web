@@ -10,7 +10,6 @@ import { connect } from "react-redux"
 
 class Index extends Component {
 
-
     componentDidMount(){
         if (!this.props.accessToken) {
             Router.push('/login') 
@@ -33,14 +32,11 @@ class Index extends Component {
     render() {
         return (
             <React.Fragment>
-            <Navbar />
-            <Breadcrumb title="User Homepage" />
-            <section className="about-area pb-60">
-                <Home/>
-            </section>
-            <Footer />
-            </React.Fragment>
-        );
+                <Navbar />
+                <Breadcrumb title="User Homepage" />
+                {this.props.accessToken? <Home/> : <div>Loading ...</div>}
+            </React.Fragment>   
+        )
     }
 }
 

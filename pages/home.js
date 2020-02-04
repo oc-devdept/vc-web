@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Layout/Navbar';
 import Breadcrumb from '../components/Common/Breadcrumb';
+import Footer from 'Components/Layout/Footer';
 
-import Link from 'next/link';
-
+import Router from 'next/router'
 import Home from 'Components/home'
 
 import { connect } from "react-redux"
@@ -11,33 +11,35 @@ import { connect } from "react-redux"
 class Index extends Component {
 
 
-    render() {
-
+    componentDidMount(){
         if (!this.props.accessToken) {
-            return (
-                <React.Fragment>
-                    <Navbar />
-                    <Breadcrumb title="User Homepage" />
-                    <section className="about-area pb-60">
-                        <div className="container" style={{display:'flex', justifyContent:'center', flexDirection:"column", alignItems:'center'}}>
-                            <div className="row align-items-center">
-                                Please login to access your profile
-                            </div>
-
-                            <Link href="/login">
-                                <a className="return-store">Click here to login here</a>
-                            </Link>
-
-                        </div>
-                    </section>
-                </React.Fragment>
-            );
+            Router.push('/login') 
         }
+    }
 
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        if (this.props.accessToken == null ) {
+            return true
+        }
+        return false
+    }
+    
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (snapshot) {
+            Router.push('/login') 
+        }
+    }
+
+    render() {
         return (
-            <Home
-                  
-            />
+            <React.Fragment>
+            <Navbar />
+            <Breadcrumb title="User Homepage" />
+            <section className="about-area pb-60">
+                <Home/>
+            </section>
+            <Footer />
+            </React.Fragment>
         );
     }
 }

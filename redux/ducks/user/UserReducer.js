@@ -66,9 +66,7 @@ export default (state = INIT_STATE, action) => {
             user: null,
             accessToken: null
           }
-
-
-          
+                    
     default:
       return {...state}
   }

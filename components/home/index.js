@@ -1,116 +1,96 @@
-import React, { Component } from 'react';
-import Navbar from 'Components/Layout/Navbar';
-import Breadcrumb from 'Components/Common/Breadcrumb';
+import React, { Component, useState, useEffect } from 'react';
+import Menu from './Menu/Menu'
 
 
-
-import { connect } from "react-redux"
-import { handleAccountLogout, retrieveUserProfile} from "Ducks/user/UserActions"
-
-import Booking from './Bookings'
-import BookingForm from './Bookings/Booking_Form'
-
-
-class Index extends Component {
+// Transactions
+// import User from './Transactions/Bookings/index'
+import Purchases from './Transactions/Purchases/index'
+import Rent from './Transactions/Rent/index'
+import Testdrive from './Transactions/Testdrive/index'
+import CarServicing from './Transactions/CarServicing/index'
 
 
-    async componentDidMount() {  
-        this._isMounted = true;
-        this.loadInitial()   
+// Account
+import User from './Account/User/index'
+import Rewards from './Account/Rewards/index'
+import Payment from './Account/Payment/index'
+import Saved from './Account/Saved/index'
+import Settings from './Account/Settings/index'
+
+
+const Index = () => {
+
+    const [Tab, setTab] = useState({Tab: 'Account', Index: 0});
+
+    const setCurrentTab = (SetTab, Index) => {
+        setTab(Tab => ({...Tab, Tab: SetTab, Index: Index}));
     }
 
-    loadInitial = async () => {
-        try {            
-            if(this._isMounted) {
-                this.props.retrieveUserProfile(this.props.user)
+    const renderWindow = () => {
+
+        if(Tab.Tab === "Transactions"){
+            switch(Tab.Index){
+                case 0:
+                    return(
+                        <Purchases/>
+                    )
+                case 1:
+                    return(
+                        <Rent/>
+                    )
+                case 2:
+                    return(
+                        <Testdrive/>
+                    )
+                case 3:
+                    return(
+                        <CarServicing/>
+                    )
+                default:break
             }
-        } catch (e) {
-            console.log(e)       
-        }      
-    } 
-
-    _HandleLogout = () => {  
-        this.props.handleAccountLogout()
-    }
-
-    _FetchProfile = () => {
-        this.props.retrieveUserProfile(this.props.user)
-    }
-
-
-
-    render() {
-        
-        if(this.props.profile){
-            const bookings = this.props.profile.bookings
-            return (
-                <section className="about-area pb-60" style={{border:'1px solid black'}}>  
-                    <div className="container" style={{border:'1px solid black'}}>
-
-                    <div style={{display:"flex", flex: 1, flexDirection:'row'}}>
-                                                                                    
-                        <div className="row align-items-center flex-column" style={{flex:0.3}}>
-
-                            <span>User Profile</span>
-                            <span>Name</span>
-                            <span>Gmail</span>
-
-                            <div>
-                                Hello world
-                                {this.props.profile.userInfo && 
-                                    <div style={{display:"flex", flexDirection:'column'}}>
-                                        <h2>Your Agent</h2>
-                                        {this.props.profile.userInfo.name}
-                                    </div>
-                                }                             
-                            </div>
-                        </div>
-
-                        <div style={{flex: 0.7}}>
-
-                            {/* <Booking
-                                AllBookings={bookings}
-                            /> */}
-
-                            {/* <BookingForm
-                                _FetchProfile={this._FetchProfile}
-                                Customer={this.props.profile.customer}
-                            /> */}
-
-                            All Bookings, Make Bookings, History, Transactions
-
-                        </div>
-                       
-                    </div>
-                    
-                    <button onClick={this._HandleLogout} className="btn btn-primary">logout</button>
-
-                </div>
-                </section>
-            );
         } else {
-            return (
-                <section className="about-area pb-60" style={{border:'1px solid black'}}>
-                    <div className="container" style={{border:'1px solid black'}}>
-                        Loading ...
-                    </div>
-                </section>
-            )
+            switch(Tab.Index){
+                case 0:
+                    return(
+                        <User/>
+                    )
+                case 1:
+                    return(
+                        <Rewards/>
+                    )
+                case 2:
+                    return(
+                        <Payment/>
+                    )
+                case 3:
+                    return(
+                        <Saved/>
+                    )
+                case 4:
+                    return(
+                        <Settings/>
+                    )
+                default:break
+            }
         }
     }
-}
 
+    return (
+        <div className="d-flex flex-row" style={{paddingTop: 20}}>
+            
+            <Menu
+                Tab={Tab}
+                setCurrentTab={setCurrentTab}
+            />
 
-const mapStateToProps = state => {
-    const { UserState } = state
-    const { user, profile } = UserState
-    return { user, profile }
+            <div className="d-flex" style={{flex: 1}}>
+                {renderWindow()}
+            </div>
+
+            
+        </div>
+    )
+    
 }
   
-export default connect(
-  mapStateToProps,
-  {
-    handleAccountLogout,
-    retrieveUserProfile
-  }
-)(Index)
+export default Index

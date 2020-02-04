@@ -1,6 +1,8 @@
 import * as types from "./UserTypes"
-
 import api from 'Api'
+
+import { NotificationManager } from "react-notifications";
+
 
 const INIT_STATE = {
   user: null,
@@ -12,11 +14,6 @@ export default (state = INIT_STATE, action) => {
   switch(action.type){
     case types.SAVE_ACCESS_TOKEN_SUCCESS:
       const {id, ttl, userId} = action.payload
-
-      // api.interceptors.request.use(config => {
-      //     config.headers = { Authorization: `${id}` };
-      //     return config
-      // });
 
       api.AuthorizationHeader(id)
 
@@ -33,12 +30,9 @@ export default (state = INIT_STATE, action) => {
 
     case types.LOGOUT_ACCOUNT_SUCCESS:
     
-          // api.interceptors.request.use(config => {
-          //   config.headers = { Authorization: '' };
-          //   return config
-          // });
-    
           api.clearToken()
+
+          NotificationManager.success("You've logged out successfully");
 
           return {
             ...state,

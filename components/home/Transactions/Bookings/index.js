@@ -75,4 +75,11 @@ class index extends Component {
 export default index;
 
 
+{/* <Booking
+    AllBookings={bookings}
+/> */}
 
+{/* <BookingForm
+    _FetchProfile={this._FetchProfile}
+    Customer={this.props.profile.customer}
+/> */}

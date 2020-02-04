@@ -97,8 +97,7 @@ class Index extends Component {
                 <Navbar />
                 <Breadcrumb title="Login" />
                     <section className="login-area pb-60">
-                        {!this.props.accessToken &&
-                            <div className="container">
+                        <div className="container">
                                 <div className="row">
                                 <div className="col-lg-6 col-md-12">
                                     <div className="login-content">
@@ -214,7 +213,6 @@ class Index extends Component {
                                 </div>
                             </div>
                             </div>
-                        }
                     </section>
                 <Footer />
             </React.Fragment>

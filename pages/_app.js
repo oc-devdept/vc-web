@@ -7,7 +7,6 @@ import "../assets/styles/slick.css";
 import "../assets/styles/slick-theme.css";
 import "react-notifications/lib/notifications.css";
 
-
 import { Provider } from "react-redux";
 import App from "next/app";
 import withRedux from "next-redux-wrapper";
@@ -16,7 +15,6 @@ import makeStore from "Store";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
 import { NotificationContainer } from "react-notifications";
-
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -35,10 +33,10 @@ class MyApp extends App {
         <DefaultSeo
           title="Venture Cars"
           description="Venture Cars"
-        />
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+          />
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
         <GoTop scrollStepInPx="50" delayInMs="16.66" />
         <NotificationContainer/>
       </>

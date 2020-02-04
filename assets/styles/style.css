@@ -206,7 +206,7 @@ a:hover, a:focus {
 }
 
 .pb-60 {
-  padding: 90px 0;
+  padding-bottom: 60px;
 }
 
 .pt-60 {
@@ -7875,3 +7875,5 @@ ol.progtrckr li.progtrckr-doing {color:#F29D30; border-bottom: 4px solid #F29D30
 .navbar .navbar-nav .nav-item.highlight a {
   padding: 3px 10px;
 }
+
+.fixed-top {position:relative;}

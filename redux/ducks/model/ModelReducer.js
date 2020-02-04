@@ -5,6 +5,8 @@ const INIT_STATE = {
     id: null,
     name: null,
     description: null,
+    header: null,
+    images: [ ],
     ProductGradeData: { }
   },
 }
@@ -24,6 +26,8 @@ export default (state = INIT_STATE, action) => {
         id: data.id,
         name: data.name,
         description: data.description,
+        header: data.header[0].path,
+        images: data.images,
         ProductGradeData: data
       }
 

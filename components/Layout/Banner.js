@@ -8,7 +8,7 @@ class Banner extends Component {
     <Carousel>
         {BannerInfo.map((banner => (
         <Carousel.Item>
-            {banner.id}
+            {/* {banner.id} */}
                 <img className="d-block w-100" src={banner.image}></img>
             <Carousel.Caption>
             <div className="container">

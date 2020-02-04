@@ -28,8 +28,8 @@ app.prepare().then(() => {
 
   server.get("/model/:id", (req, res) => {
     const link = req.params.id;
-    console.log("link");
-    console.log(link);
+    // console.log("link");
+    // console.log(link);
 
     return app.render(req, res, `/model/${link}`, { id: link });
   });

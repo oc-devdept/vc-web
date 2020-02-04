@@ -11,6 +11,7 @@ import Input from 'Components/Inventory/Input'
 import Text from 'Components/Inventory/Text'
 import Button from 'Components/Inventory/Button'
 
+import { NotificationManager } from "react-notifications";
 
 const options = ['Test Drive', 'Maintenance', 'Rental']
 
@@ -68,18 +69,19 @@ class Booking extends Component {
       let booking = {...this.state.booking}
       booking.created = new Date()
 
-      console.log(booking)
       try {
 
         // Create Api to backend to save bookings
         const result = await api.post(`/bookings/createBooking`, {data: booking});
-            
+
         switch(result.data.success){
             case 0:
                 this.setState({error: true})
+                NotificationManager.error('Unable to make booking request');
                 break
             case 1:
                 this.props._FetchProfile()
+                NotificationManager.success('Booking created successfully');
                 break
             default:
                 break

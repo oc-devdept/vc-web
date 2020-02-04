@@ -196,11 +196,11 @@ class MegaMenu extends Component {
                       </Link>
                     </div>
 
-                    <div className="option-item">
+                    {/* <div className="option-item">
                       <Link href="/home">
                         <a className="nav-link">Account</a>
                       </Link>
-                    </div>
+                    </div> */}
 
                     <div className="option-item">
                       <i 

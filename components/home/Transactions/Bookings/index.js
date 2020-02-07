@@ -46,9 +46,7 @@ class index extends Component {
                     })}
                 </div>
             </div>
-        )
-               
-        
+        ) 
     }
 
     render() {

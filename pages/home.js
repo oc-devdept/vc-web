@@ -33,8 +33,9 @@ class Index extends Component {
         return (
             <React.Fragment>
                 <Navbar />
-                <Breadcrumb title="User Homepage" />
-                {this.props.accessToken? <Home/> : <div>Loading ...</div>}
+                <div className="d-flex flex-fill" style={{height:'100vh'}}>
+                    {this.props.accessToken? <Home/> : <div>Loading ...</div>}
+                </div>
             </React.Fragment>   
         )
     }

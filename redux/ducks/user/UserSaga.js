@@ -17,6 +17,11 @@ import api from "Api"
 // REQUESTS
 //=========================
 
+const userLoginRequest = async(e) => {
+  const data = await api.post(`/basecustomerusers/login`, e.payload)
+  return data
+}
+
 const userLogoutRequest = async(e) => {
   const data = await api.post(`/basecustomerusers/logout`)
   return data
@@ -31,6 +36,15 @@ const userProfileRequest = async(e) => {
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
+function* userLogin(e) {
+  try {
+    const data = yield call(userLoginRequest, e)
+    yield put(actions.handleAccountLogin_success(data))
+  } catch (error) {
+    yield put(actions.handleAccountLogin_failure(error))
+  }
+}
+
 function* userLogout(e) {
   try {
     const data = yield call(userLogoutRequest, e)
@@ -53,15 +67,17 @@ function* userProfile(e) {
 //=======================
 // WATCHER FUNCTIONS
 //=======================
+export function* userLoginWatcher() {
+  yield takeEvery(types.LOGIN_ACCOUNT, userLogin)
+}
+
 export function* userLogoutWatcher() {
   yield takeEvery(types.LOGOUT_ACCOUNT, userLogout)
 }
 
-
 export function* retrieveUserProfileWatcher() {
   yield takeEvery(types.RETRIEVE_USER_PROFILE, userProfile)
 }
-
 
 
 //=======================
@@ -69,8 +85,8 @@ export function* retrieveUserProfileWatcher() {
 //=======================
 export default function* productSaga() {
   yield all([
+    fork(userLoginWatcher),
     fork(userLogoutWatcher),
     fork(retrieveUserProfileWatcher),
-
   ])
 }

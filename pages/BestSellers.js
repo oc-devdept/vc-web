@@ -39,7 +39,7 @@ class BestSeller extends Component {
                             </div>
                         ))} */}
 
-            </section>
+           b </section>
         );
     }
 }

@@ -15,7 +15,8 @@ class Index extends Component {
         super(props);
         this.state = {
             form: {
-                name: '',
+                firstName: '',
+                lastName: '',
                 email: '',
                 password: '',
             },
@@ -25,9 +26,7 @@ class Index extends Component {
 
       
     _handleSubmitForm = async(e) => {
-
         try {
-
             await api.post('/basecustomerusers/signup', {data: this.state.form})
             this.setState({success: true})
             NotificationManager.success('Signup Successfully');
@@ -35,7 +34,6 @@ class Index extends Component {
             console.log(e)
             NotificationManager.error(e.response.data.error.message);
         }
-     
     }
 
     _handleForm = (e, element) => {
@@ -61,9 +59,15 @@ class Index extends Component {
 
                                 <div className="signup-form">
 
-                                    <div className="form-group">
-                                        <label>Name</label>
-                                        <input type="text" value={this.state.form.name} onChange={(e) => this._handleForm(e.target.value, 'name')} className="form-control" placeholder="Enter your name" id="fname" name="fname" />
+                                    <div  className="d-flex flex-row flex-fill">
+                                        <div className="form-group d-flex flex-column" style={{flex:1, marginRight:25}}>
+                                            <label>First Name</label>
+                                            <input type="text" value={this.state.form.firstName} onChange={(e) => this._handleForm(e.target.value, 'firstName')} className="form-control" placeholder="Enter your name" id="fname" name="fname" />
+                                        </div>
+                                        <div className="form-group d-flex flex-column" style={{flex:1}}>
+                                            <label>Last Name</label>
+                                            <input type="text" value={this.state.form.lastName} onChange={(e) => this._handleForm(e.target.value, 'lastName')} className="form-control" placeholder="Enter your name" id="fname" name="fname" />
+                                        </div>
                                     </div>
 
                                     <div className="form-group">

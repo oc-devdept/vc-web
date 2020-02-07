@@ -9,7 +9,7 @@ import Router from 'next/router'
 import api from 'Api'
 
 import { connect } from "react-redux"
-import {saveAccessTokenSuccess } from "Ducks/user/UserActions"
+import { handleAccountLogin } from "Ducks/user/UserActions"
 import { NotificationManager } from "react-notifications";
 
 
@@ -37,6 +37,7 @@ class Index extends Component {
     }
       
     getSnapshotBeforeUpdate(prevProps, prevState) {
+    
         if (this.props.accessToken) {
             return this.props.accessToken
         }
@@ -50,14 +51,18 @@ class Index extends Component {
     }
 
     _handleSubmitForm = async(e) => {
+
         try {
-            const item = await api.post('/basecustomerusers/login', this.state.form)
-            await this.props.saveAccessTokenSuccess(item.data)
-            NotificationManager.success('Login Success');
+            this.props.handleAccountLogin(this.state.form)
+
         } catch (e) {
-            console.log(e.response.data.error.message)
-            NotificationManager.error(e.response.data.error.message);
+            if(e.response){
+                NotificationManager.error(e.response.data.error.message);
+            } else {
+                NotificationManager.error('Network error');                
+            }
         }
+
     }
 
     _handlePasswordForm = async(e) => {
@@ -98,107 +103,107 @@ class Index extends Component {
                 <Breadcrumb title="Login" />
                     <section className="login-area pb-60">
                         <div className="container">
+                            {!this.state.loading?
                                 <div className="row">
-                                <div className="col-lg-6 col-md-12">
-                                    <div className="login-content">
-                                        <div className="section-title">
-                                            <h2><span className="dot"></span> Login</h2>
-                                        </div>
-
-                                        <div className="login-form">
-                                            <div className="form-group">
-                                                <label>Email</label>
-                                                <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this._handleForm(e.target.value, 'email')} placeholder="Enter your email" id="email" name="email" />
+                                    <div className="col-lg-6 col-md-12">
+                                        <div className="login-content">
+                                            <div className="section-title">
+                                                <h2><span className="dot"></span> Login</h2>
                                             </div>
 
-                                            <div className="form-group">
-                                                <label>Password</label>
-                                                <input type="password" className="form-control" value={this.state.form.password} onChange={(e) => this._handleForm(e.target.value, 'password')}  placeholder="Enter your password" id="password" name="password" />
+                                            <div className="login-form">
+                                                <div className="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" className="form-control" value={this.state.form.email} onChange={(e) => this._handleForm(e.target.value, 'email')} placeholder="Enter your email" id="email" name="email" />
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label>Password</label>
+                                                    <input type="password" className="form-control" value={this.state.form.password} onChange={(e) => this._handleForm(e.target.value, 'password')}  placeholder="Enter your password" id="password" name="password" />
+                                                </div>
+
+                                                <button onClick={this._handleSubmitForm} className="btn btn-primary">Login</button>
+                                                
+                                                <div style={{display:'flex', justifyContent:"space-evenly"}}>
+                                                    
+                                                        <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false})} className="forgot-password">Lost your password?</button>
+                                                    
+
+                                                        <button onClick={()=>this.setState({resendLink: true, restartPassword: false, resendLinkDone: false})} className="forgot-password">Resend verification link</button>
+                                                    
+                                                </div>
+
+                                                {this.state.resendLink && 
+                                                    <div>
+                                                        <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                        <div className="login-form" style={{marginTop: 50}}>
+                                                            
+                                                            <div className="form-group">
+                                                                <label>Account Email</label>
+                                                                <input type="email" className="form-control" value={this.state.passwordEmail} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
+                                                            </div>
+
+                                                            <button onClick={this._handleVerificationLink} className="btn btn-primary">Send me verification link</button>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                                {this.state.restartPassword &&
+                                                    <div>
+                                                        <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                        <div className="login-form" style={{marginTop: 50}}>
+                                                            
+                                                            <div className="form-group">
+                                                                <label>Account Email</label>
+                                                                <input type="email" className="form-control" value={this.state.passwordEmail} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
+                                                            </div>
+
+                                                            <button onClick={this._handlePasswordForm} className="btn btn-primary">Reset my password</button>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                                {this.state.restartPasswordDone && 
+                                                    <div>
+                                                        <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                        <div className="login-form" style={{marginTop: 50}}>
+                                                            
+                                                            <div className="form-group">
+                                                                <label>A reset password link has sent to your emaill</label>
+                                                            </div>
+
+                                                            <button onClick={() => this.setState({restartPasswordDone: false})} className="btn btn-primary">Back to menu</button>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                                {this.state.resendLinkDone && 
+                                                    <div>
+                                                        <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
+
+                                                        <div className="login-form" style={{marginTop: 50}}>
+                                                            
+                                                            <div className="form-group">
+                                                                <label>You will receive a new verification link in your email, if you have registered with us previously</label>
+                                                            </div>
+
+                                                            <button onClick={() => this.setState({resendLinkDone: false})} className="btn btn-primary">Back to menu</button>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+
                                             </div>
-
-                                            <button onClick={this._handleSubmitForm} className="btn btn-primary">Login</button>
-                                            
-                                            <div style={{display:'flex', justifyContent:"space-evenly"}}>
-                                                
-                                                    <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false})} className="forgot-password">Lost your password?</button>
-                                                
-
-                                                    <button onClick={()=>this.setState({resendLink: true, restartPassword: false, resendLinkDone: false})} className="forgot-password">Resend verification link</button>
-                                                
-                                            </div>
-
-                                            {this.state.resendLink && 
-                                                <div>
-                                                    <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
-
-                                                    <div className="login-form" style={{marginTop: 50}}>
-                                                        
-                                                        <div className="form-group">
-                                                            <label>Account Email</label>
-                                                            <input type="email" className="form-control" value={this.state.passwordEmail} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
-                                                        </div>
-
-                                                        <button onClick={this._handleVerificationLink} className="btn btn-primary">Send me verification link</button>
-
-                                                    </div>
-                                                </div>
-                                            }
-
-                                            {this.state.restartPassword &&
-                                                <div>
-                                                    <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
-
-                                                    <div className="login-form" style={{marginTop: 50}}>
-                                                        
-                                                        <div className="form-group">
-                                                            <label>Account Email</label>
-                                                            <input type="email" className="form-control" value={this.state.passwordEmail} onChange={(e) => this.setState({passwordEmail: e.target.value})} placeholder="Enter your email" id="email" name="email" />
-                                                        </div>
-
-                                                        <button onClick={this._handlePasswordForm} className="btn btn-primary">Reset my password</button>
-
-                                                    </div>
-                                                </div>
-                                            }
-
-                                            {this.state.restartPasswordDone && 
-                                                <div>
-                                                    <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
-
-                                                    <div className="login-form" style={{marginTop: 50}}>
-                                                        
-                                                        <div className="form-group">
-                                                            <label>A reset password link has sent to your emaill</label>
-                                                        </div>
-
-                                                        <button onClick={() => this.setState({restartPasswordDone: false})} className="btn btn-primary">Back to menu</button>
-
-                                                    </div>
-                                                </div>
-                                            }
-
-                                            {this.state.resendLinkDone && 
-                                                <div>
-                                                    <div style={{marginTop: 50, border: '1px solid rgba(0,0,0,0.2)', marginLeft: 25, marginRight: 25}}></div>
-
-                                                    <div className="login-form" style={{marginTop: 50}}>
-                                                        
-                                                        <div className="form-group">
-                                                            <label>You will receive a new verification link in your email, if you have registered with us previously</label>
-                                                        </div>
-
-                                                        <button onClick={() => this.setState({resendLinkDone: false})} className="btn btn-primary">Back to menu</button>
-
-                                                    </div>
-                                                </div>
-                                            }
-
-
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-12">
+                                    <div className="col-lg-6 col-md-12">
                                     <div className="new-customer-content">
                                         <div className="section-title">
                                             <h2><span className="dot"></span> New Customer</h2>
@@ -211,8 +216,13 @@ class Index extends Component {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                            </div>
+                                </div>
+                                :
+                                <div>
+                                    Loading ...
+                                </div>
+                            }
+                        </div>
                     </section>
                 <Footer />
             </React.Fragment>
@@ -230,6 +240,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { 
-    saveAccessTokenSuccess
+    handleAccountLogin
   }
 )(Index)

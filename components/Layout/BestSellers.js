@@ -29,6 +29,7 @@ class BestSeller extends Component {
       gradesArray: []
     };
   }
+
   componentDidMount() {
     fetch("http://157.230.248.96:3001/api/products/getAllFeaturedCars")
       .then(response => response.json())
@@ -77,7 +78,7 @@ class BestSeller extends Component {
                         <a>
                           <img
                             style={modelImage}
-                            src={gradeImg.url}
+                            src={gradeImg.path}
                             key={idx}
                           />
                         </a>

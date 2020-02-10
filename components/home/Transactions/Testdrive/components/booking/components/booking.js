@@ -5,10 +5,9 @@ import { useCookies } from 'react-cookie';
 const Index = memo(({_HandleDayChange,_HandleInputDate, model, date, timeslot, description, currentDate}) => {
 
     return (
-        <div className="d-flex flex-column" style={{flex:1, padding: 25}}>
+        <div className="d-flex flex-column">
 
-            <div className="d-flex flex-column flex-fill" style={{padding: 20}}>
-                <span style={{textAlign:'center'}}>MAINTENANCE BOOKING SYSTEM</span>
+            <div className="d-flex flex-column flex-fill">
                 <div className="d-flex flex-row">
                     <div style={{flex: 1, padding: 25}}>
                         <div  className="d-flex flex-row flex-fill">
@@ -21,12 +20,12 @@ const Index = memo(({_HandleDayChange,_HandleInputDate, model, date, timeslot, d
                         <div  className="d-flex flex-row flex-fill">
                             <div className="form-group d-flex flex-column" style={{flex:0.5,  marginRight:25}}>
                                 <label>Date</label>
-                                <input type="text" value={currentDate} className="form-control" placeholder="Pick your date" id="date" name="date" />
+                                <input type="text" value={currentDate} onChange={() => console.log('Date!')} className="form-control" placeholder="Pick your date" id="date" name="date" />
                             </div>
 
                             <div className="form-group d-flex flex-column" style={{flex:0.5}}>
                                 <label>Timeslot</label>
-                                <input type="text" value={timeslot} className="form-control" placeholder="Select your time" id="timeslot" name="timeslot" />
+                                <input type="text" value={timeslot} onChange={() => console.log('Timeslot!')} className="form-control" placeholder="Select your time" id="timeslot" name="timeslot" />
                             </div>
                         </div>
 

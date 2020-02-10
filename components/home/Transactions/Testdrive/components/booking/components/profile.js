@@ -4,11 +4,9 @@ import React, { memo} from 'react';
 const Index = memo(({_HandleInputProfile, lastName, firstName, email, phone}) => {
 
     return (
-        <div className="d-flex flex-column" style={{padding: 25}}>
+        <div className="d-flex flex-column">
             
-            <div className="d-flex flex-column" style={{padding: 20}}>
-                <span style={{textAlign:'center'}}>APPOINTMENT HOLDER</span>
-        
+            <div className="d-flex flex-column">
                 <div style={{flex: 1, padding: 25}}>
                         <div  className="d-flex flex-row flex-fill">
                             <div className="form-group d-flex flex-column" style={{flex:1, marginRight:25}}>

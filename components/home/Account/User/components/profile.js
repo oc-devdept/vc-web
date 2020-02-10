@@ -12,8 +12,6 @@ let InitUserProfile = {
 
 const Index = ({Profile, _SaveUserDetails}) => {
 
-    console.log(Profile)
-
     if(!Profile){return (<div>Loading ...</div>)}
 
     const {lastName, firstName, email, phone, address} = Profile.customer.baseContact

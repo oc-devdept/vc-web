@@ -23,35 +23,8 @@ let InitUserProfile = {
     phone: '',
 }
 
-// const Service = {
-//     service: 'Maintenance',
-//     status: 'Awaiting',
-//     contact: {},
-//     content: {}
-// }
 
-
-// const TestDrive = {
-//     // Test Drive
-//     onCreated: '', // creation date
-//     service: 'Test Drive',
-//     status: 'Awaiting',
-//     contact: {
-//         firstName: '', // firstName
-//         lastName: '', // lastName
-//         email: '', //email
-//         phone: '',
-//     },
-//     content: {
-//         model: '', // model type
-//         date: '', // schedule date
-//         timeslot: '', // AM/PM
-//         description: '', // description
-//     }
-// }
-
-
-const Index = ({_ReturnDashBoard}) => {
+const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
    
     const reduxProfile = useSelector(state => state.UserState.profile);
@@ -83,8 +56,6 @@ const Index = ({_ReturnDashBoard}) => {
             contact: Profile,
             content: BookService,
         }
-        console.log('reduxProfile', reduxProfile)
-        console.log('Book!', newBooking)
         // if okay, send to backend to save
 
         const result = await api.post(`/bookings/createBooking`, {data: newBooking});
@@ -111,9 +82,17 @@ const Index = ({_ReturnDashBoard}) => {
 
     return (
 
-        <div className="d-flex flex-fill flex-column" style={{padding:20}}>            
+        <div className="d-flex flex-fill flex-column">   
 
-            <div className="d-flex flex-fill flex-column"  style={{padding: 20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
+            <div className="d-flex justify-content-start">
+                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,}} className="btn-primary">Dashboard</button>
+            </div>
+
+            <div className="d-flex justify-content-center">
+                <span style={{textAlign:'center'}}>APPOINTMENT DETAIL</span>
+            </div>
+
+            <div className="d-flex flex-column"  style={{margin: 20, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
                 <UserProfile
                     _HandleInputProfile={_HandleInputProfile}
                     lastName={lastName}

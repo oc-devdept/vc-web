@@ -14,7 +14,7 @@ const Index = () => {
     const customerId = useSelector(state => state.UserState.customerId);
 
 
-    const createBookService = () => {
+    const toggleBookService = () => {
         if(state == 0){
             setState(() => (1))
         } else {
@@ -32,17 +32,15 @@ const Index = () => {
 
         <div className="d-flex flex-fill flex-column">            
 
-            <div className="d-flex justify-content-end">
-                <button onClick={createBookService} style={{width: 250, padding: 10, margin:20, borderRadius: 10,}} className="btn-primary">{Title[state]}</button>
-            </div>
-
             {
                 {
                     0 : <Dashboard
                             customerId={customerId}
+                            toggleBookService={toggleBookService}
                         />,
                     1 : <Booking
                             _ReturnDashBoard={RefetchBookingRecords}
+                            toggleBookService={toggleBookService}
                         />
                 }[state]
             }

@@ -110,6 +110,7 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) =
         }
     }
   ];
+  
   // if (action == true) {
   //   columns.push({
   //     name: "Actions",

@@ -30,8 +30,8 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     const reduxProfile = useSelector(state => state.UserState.profile);
     
     // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
+    const [Timeslot, setTimeSlot] = useState(["AM","PM"]);
     const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.customer.baseContact});
-
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);
 
@@ -47,6 +47,16 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     const _HandleInputDate = (element, e) => {
         setBookService(BookService => ({ ...BookService, [element]: e }));
     };
+
+    const _setItemTimeSlot = (e) => {
+        setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
+    }
+
+
+    const validateService = () => {
+        console.log('should validate test drive form')
+        createBookService()
+    }
 
     const createBookService = async () => {
 
@@ -104,15 +114,16 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
                 <Booking
                     _HandleDayChange={_HandleDayChange}
                     _HandleInputDate={_HandleInputDate}
+                    _setItemTimeSlot={_setItemTimeSlot}
+                    Timeslot={Timeslot}
                     currentDate={currentDate}
                     model={model}
-                    date={date}
                     timeslot={timeslot}
                     description={description}
                 />
                 
                 <div className="d-flex justify-content-end">
-                    <button onClick={createBookService} style={{width: 250, padding: 10, margin:20, borderRadius: 10,}} className="btn-primary">BOOK APPOINTMENT</button>
+                    <button onClick={validateService} style={{width: 250, padding: 10, margin:20, borderRadius: 10,}} className="btn-primary">BOOK APPOINTMENT</button>
                 </div>
             </div>
 

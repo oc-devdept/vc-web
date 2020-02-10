@@ -17,7 +17,6 @@ const Index = ({}) => {
     
     // update incoming profile to local state
    
-
    const _SaveUserDetails  = (UserDetail) => {
         console.log('UserDetail', UserDetail)
         console.log(Api)

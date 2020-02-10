@@ -2,7 +2,12 @@ import React, { memo } from 'react';
 import DayPicker from "react-day-picker";
 import { useCookies } from 'react-cookie';
 
-const Index = memo(({_HandleDayChange,_HandleInputDate, model, date, timeslot, description, currentDate}) => {
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+
+const Index = memo(({_HandleDayChange,_HandleInputDate, model, timeslot, description, currentDate, Timeslot, _setItemTimeSlot}) => {
 
     return (
         <div className="d-flex flex-column">
@@ -25,7 +30,23 @@ const Index = memo(({_HandleDayChange,_HandleInputDate, model, date, timeslot, d
 
                             <div className="form-group d-flex flex-column" style={{flex:0.5}}>
                                 <label>Timeslot</label>
-                                <input type="text" value={timeslot} onChange={() => console.log('Timeslot!')} className="form-control" placeholder="Select your time" id="timeslot" name="timeslot" />
+                                {/* <input type="text" value={timeslot} onChange={() => console.log('Timeslot!')} className="form-control" placeholder="Select your time" id="timeslot" name="timeslot" /> */}
+
+                                <FormControl>
+                                    <Select 
+                                        labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        value={timeslot ? timeslot : ''}
+                                        onChange={_setItemTimeSlot}
+                                        style={{minWidth: 100, marginLeft: 5}}
+                                    >
+                                    
+                                        {Timeslot.map((e, index) => {
+                                            return <MenuItem key={index} value={e}>{e}</MenuItem>
+                                        })}
+                                    
+                                    </Select>
+                                </FormControl>
                             </div>
                         </div>
 
@@ -48,7 +69,6 @@ const Index = memo(({_HandleDayChange,_HandleInputDate, model, date, timeslot, d
                         month={new Date()}
                     />
 
-                    <style>{birthdayStyle}</style>
                 </div>
             </div>
 
@@ -73,35 +93,3 @@ export default Index
 //         {cookies.name && <h1>Hello {cookies.name}!</h1>}
 //     </div>
 // );
-
-
-function publicHolidays() {
-    const year = 2020
-    // Jan = 0, Feb = 1, ... Dec = 11
-    // https://www.mom.gov.sg/newsroom/press-releases/2019/0408-public-holidays-for-2020
-    const dates = [
-      { month: 0, day: 1 },
-      { month: 0, day: 25 },
-      { month: 0, day: 26 },
-      { month: 0, day: 27 },
-      { month: 3, day: 10 },
-      { month: 4, day: 1 },
-      { month: 4, day: 7  },
-      { month: 4, day: 24 },
-      { month: 4, day: 25 },
-      { month: 6, day: 31 },
-      { month: 7, day: 9 },
-      { month: 7, day: 10 },
-      { month: 10, day: 14  },
-      { month: 11, day: 25 },
-    ]
-      
-    return (dates.map( date => (
-        new Date(year, date.month, date.day)
-      )))
-}
-
-const birthdayStyle = `.DayPicker-Day--highlighted {
-    background-color: orange;
-    color: white;
-  }`;

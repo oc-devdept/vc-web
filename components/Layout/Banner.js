@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import Carousel from 'react-bootstrap/Carousel'
-import {BannerInfo} from '../Layout/BannerInfo'
+import React, { Component } from "react";
+import Link from "next/link";
+import Carousel from "react-bootstrap/Carousel";
+import { BannerInfo } from "./BannerInfo";
 class Banner extends Component {
-    render() {
-        return (
-    <Carousel>
-        {BannerInfo.map((banner => (
-        <Carousel.Item>
+  render() {
+    return (
+      <Carousel>
+        {BannerInfo.map((banner, key) => (
+          <Carousel.Item key={key}>
             {/* {banner.id} */}
-                <img className="d-block w-100" src={banner.image}></img>
+            <img className="d-block w-100" src={banner.image}></img>
             <Carousel.Caption>
-            <div className="container">
-            <h1 style={{color: "#fff",textTransform:"uppercase"}}>{banner.captionText}</h1>
-            <h1 style={{color: "#F29D30",textTransform:"uppercase"}}>{banner.captionText2}</h1>
-            <a class="btn btn-primary btn-slider" href="/contact-us">Contact Us</a>
-            </div>
+              <div className="container">
+                <h1 style={{ color: "#fff", textTransform: "uppercase" }}>
+                  {banner.captionText}
+                </h1>
+                <h1 style={{ color: "#F29D30", textTransform: "uppercase" }}>
+                  {banner.captionText2}
+                </h1>
+                <a className="btn btn-primary btn-slider" href="/contact-us">
+                  Contact Us
+                </a>
+              </div>
             </Carousel.Caption>
-        </Carousel.Item>
-        )
-        
+          </Carousel.Item>
         ))}
-    </Carousel>
-
-        );
-    }
+      </Carousel>
+    );
+  }
 }
 
 export default Banner;

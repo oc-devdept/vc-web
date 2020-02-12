@@ -74,13 +74,13 @@ class BestSeller extends Component {
                 <div className="single-product-box">
                   <div className="product-image">
                     {grade.images.map((gradeImg, idx) => (
-                      <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
+                      <Link
+                        key={idx}
+                        href="/product/grade/[id]"
+                        as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
+                      >
                         <a>
-                          <img
-                            style={modelImage}
-                            src={gradeImg.path}
-                            key={idx}
-                          />
+                          <img style={modelImage} src={gradeImg.path} />
                         </a>
                       </Link>
                     ))}
@@ -88,7 +88,10 @@ class BestSeller extends Component {
 
                   <div className="product-content">
                     <h3 className="text-uppercase">
-                      <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
+                      <Link
+                        href="/product/grade/[id]"
+                        as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
+                      >
                         <a>{grade.name}</a>
                       </Link>
                     </h3>
@@ -103,12 +106,6 @@ class BestSeller extends Component {
                     </div>
 
                     <div className="product-desc">
-                      {/* {Object.entries(grade).map(([key, value], i)=>{
-                                        return(
-                                        <div key={key}>
-                                        id is: {value} 
-                                      </div>)
-                                      })*/}
                       {grade.power && (
                         <dl>
                           <dt>{grade.power.detailCategory.name}</dt>
@@ -132,7 +129,10 @@ class BestSeller extends Component {
                       )}
                     </div>
 
-                    <Link href="/product/grade/[id]" as={`/product/grade/${grade.modelId}?grade=${grade.id}`}>
+                    <Link
+                      href="/product/grade/[id]"
+                      as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
+                    >
                       <a className="btn btn-primary">Explore</a>
                     </Link>
                   </div>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import Default from "Components/Layout/PageTemplates/Default";
-import Breadcrumb from "Components/Common/Breadcrumb";
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
 
 class Error extends Component {
   static getInitialProps({ res, err }) {
@@ -11,12 +10,11 @@ class Error extends Component {
 
   render() {
     return (
-      <Default>
-        <Breadcrumb title="404 Not Found" />
+      <DefaultLayout crumbs="404 Not Found">
         <section className="error-area ptb-60">
           <div className="container">
             <div className="error-content">
-              <img src={'/static/404.png'} alt="error" />
+              <img src={"/static/404.png"} alt="error" />
 
               <h3>{this.props.statusCode} Page Not Found</h3>
               <p>
@@ -30,7 +28,7 @@ class Error extends Component {
             </div>
           </div>
         </section>
-      </Default>
+      </DefaultLayout>
     );
   }
 }

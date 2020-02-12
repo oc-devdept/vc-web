@@ -44,14 +44,13 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
         setBookService(BookService => ({ ...BookService, date: date }));
     }
 
-    const _HandleInputDate = (element, e) => {
+    const _HandleInputForm = (element, e) => {
         setBookService(BookService => ({ ...BookService, [element]: e }));
     };
 
     const _setItemTimeSlot = (e) => {
         setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
     }
-
 
     const validateService = () => {
         console.log('should validate service form')
@@ -112,7 +111,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
                 <Booking
                     _HandleDayChange={_HandleDayChange}
-                    _HandleInputDate={_HandleInputDate}
+                    _HandleInputForm={_HandleInputForm}
                     _setItemTimeSlot={_setItemTimeSlot}
                     Timeslot={Timeslot}
                     currentDate={currentDate}

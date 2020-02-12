@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-const Index = memo(({_HandleDayChange,_HandleInputDate, model, timeslot, description, currentDate, Timeslot, _setItemTimeSlot}) => {
+const Index = memo(({_HandleDayChange,_HandleInputForm, model, timeslot, description, currentDate, Timeslot, _setItemTimeSlot}) => {
 
     return (
         <div className="d-flex flex-column">
@@ -18,7 +18,7 @@ const Index = memo(({_HandleDayChange,_HandleInputDate, model, timeslot, descrip
                         <div  className="d-flex flex-row flex-fill">
                             <div className="form-group d-flex flex-column" style={{flex:0.5, marginRight:25}}>
                                 <label>Your Car Model</label>
-                                <input type="text" value={model} onChange={(e) => _HandleInputDate('model', e.target.value)}  className="form-control" placeholder="Enter your car model" id="model" name="model" />
+                                <input type="text" value={model} onChange={(e) => _HandleInputForm('model', e.target.value)}  className="form-control" placeholder="Enter your car model" id="model" name="model" />
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@ const Index = memo(({_HandleDayChange,_HandleInputDate, model, timeslot, descrip
                         <div  className="d-flex flex-row flex-fill">
                             <div className="form-group d-flex flex-column" style={{flex:1}}>
                                 <label>Description</label>
-                                <input type="text" value={description}  onChange={(e) => _HandleInputDate('description', e.target.value)} className="form-control" placeholder="What would you like us to service for you?" id="description" name="description" />
+                                <input type="text" value={description}  onChange={(e) => _HandleInputForm('description', e.target.value)} className="form-control" placeholder="What would you like us to service for you?" id="description" name="description" />
                             </div>
                         </div>
                        

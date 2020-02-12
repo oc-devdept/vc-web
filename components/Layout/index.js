@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import api from "Api";
+
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ class Index extends Component {
       ModelLoading : true
     }
   }
+
   // Fetch All Models (DONE)
   // Fetch Dynamic Make Categories
   async componentDidMount() {
@@ -35,6 +38,7 @@ class Index extends Component {
       this.setState({AllModelSource: [], AllMakeSource: [], ModelLoading: false})
     }
   }
+
   // Download all model
   async _RenderModelCategory(value) {
     try {

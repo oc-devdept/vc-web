@@ -27,6 +27,7 @@ class Index extends Component {
             restartPasswordDone: false,
             resendLink: false,
             resendLinkDone: false,
+            loading: false
         }
     }
 
@@ -37,7 +38,6 @@ class Index extends Component {
     }
       
     getSnapshotBeforeUpdate(prevProps, prevState) {
-    
         if (this.props.accessToken) {
             return this.props.accessToken
         }
@@ -53,14 +53,17 @@ class Index extends Component {
     _handleSubmitForm = async(e) => {
 
         try {
+            
             this.props.handleAccountLogin(this.state.form)
 
         } catch (e) {
+
             if(e.response){
                 NotificationManager.error(e.response.data.error.message);
             } else {
                 NotificationManager.error('Network error');                
             }
+
         }
 
     }

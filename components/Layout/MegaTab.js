@@ -7,21 +7,6 @@ import Link from 'next/link';
 
 const MegaTab = () => {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     stage: 0,
-  //     AllMakeSource : [{
-  //       name: 'All',
-  //       description : 'All model in the Venture Cars '
-  //     }],
-  //     AllModelSource: [],
-  //     ModelLoading : true,
-  //     AllSource: []
-  //   }
-  // }
-
-  // http://localhost:3001/api/categories/getMegaMenu
   const [MegaMenu, setMegaMenu] = useState([]);
   const [Stage, setStage] = useState(0);
   const [Loading, setLoading] = useState(false);
@@ -92,38 +77,9 @@ const MegaTab = () => {
   const _HandleItem = async (index) => {
     setStage(()=> index )
   }
-
   
   return (  
     <div className="text-uppercase">
-
-      {/* <ul className="nav nav-tabs">  
-          {this.state.AllMakeSource.length > 0 &&
-              this._RenderMake()
-          }
-      </ul> 
-      <div className="tab-content">       
-          {!this.state.ModelLoading &&
-            <div>
-              {this.state.AllModelSource.length > 0 &&
-                <div className="tab-pane row">  
-                    {this._RenderModel()}
-                </div>  
-              }
-              {this.state.AllModelSource.length == 0 &&
-                <div className="tab-pane row">
-                  No Model Found
-                </div>     
-              }
-            </div>
-
-          }
-          {this.state.ModelLoading &&
-            <div>
-              Loading ....
-            </div>
-          }
-      </div>  */}
 
       {Loading && 
         <div>

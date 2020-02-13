@@ -13,19 +13,7 @@ const INIT_STATE = {
 
 export default (state = INIT_STATE, action) => {
   switch(action.type){
-    // case types.SAVE_ACCESS_TOKEN_SUCCESS:
-      // const {id, ttl, userId} = action.payload
-      // api.AuthorizationHeader(id)
-      // return {
-      //   ...state,
-      //   user : userId,
-      //   accessToken: id
-      // }
-    // case types.SAVE_ACCESS_TOKEN_FAILURE:
-    //   return {
-    //     ...state,
-    //   }
-
+   
     case types.LOGIN_ACCOUNT_SUCCESS:
       const {id, ttl, userId} = action.payload.data
       api.AuthorizationHeader(id)
@@ -35,7 +23,6 @@ export default (state = INIT_STATE, action) => {
         userId : userId,
         accessToken: id
       }
-
     case types.LOGIN_ACCOUNT_FAILURE:
       NotificationManager.error(action.payload.response.data.error.message);
       return {
@@ -49,7 +36,6 @@ export default (state = INIT_STATE, action) => {
         ...state,
         ...INIT_STATE
       }
-
     case types.LOGOUT_ACCOUNT_FAILURE:
       return {
         ...state,
@@ -61,12 +47,25 @@ export default (state = INIT_STATE, action) => {
         profile: action.payload,
         customerId: action.payload.customer.customerId
       }
-
- 
     case types.RETRIEVE_USER_PROFILE_FAILURE:
       return {
         ...state,
         ...INIT_STATE
+      }
+
+    case types.UPDATE_USER_PROFILE_SUCCESS:
+      let profile = JSON.parse(JSON.stringify(state.profile)); 
+      profile.customer = action.payload
+      NotificationManager.success("Your profile has been successfully updated");
+      return {
+        ...state,
+        profile: profile
+      }
+
+    case types.UPDATE_USER_PROFILE_FAILURE:
+      return {
+        ...state,
+        // ...INIT_STATE
       }
                     
     default:

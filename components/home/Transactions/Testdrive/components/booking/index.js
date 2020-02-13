@@ -11,7 +11,7 @@ import api from "Api";
 
 let InitBookService = {
     model: '',
-    date: '', // schedule date
+    date: new Date, // schedule date
     timeslot: '', // AM/PM
     description: '',
 }
@@ -30,7 +30,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     const reduxProfile = useSelector(state => state.UserState.profile);
     
     // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
-    const [Timeslot, setTimeSlot] = useState(["AM","PM"]);
+    const [Timeslot] = useState(["AM","PM"]);
     const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.customer.baseContact});
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);

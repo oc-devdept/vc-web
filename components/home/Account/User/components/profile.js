@@ -27,11 +27,7 @@ const Index = ({Profile, _SaveUserDetails}) => {
             <div className="d-flex flex-column" style={{padding: 20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)' }}>
                 <span style={{textAlign:'center'}}>USER PROFILE SETTINGS</span>
                 <div className="d-flex flex-row">
-                    <div style={{flex: 0.2, padding: 25}}>
-                        Display Photo
-                    </div>
-
-                    <div style={{flex: 0.8, padding: 25}}>
+                    <div style={{flex: 1, padding: 25}}>
                         <div  className="d-flex flex-row flex-fill">
                             <div className="form-group d-flex flex-column" style={{flex:1, marginRight:25}}>
                                 <label>First Name</label>

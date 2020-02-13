@@ -28,8 +28,13 @@ const userLogoutRequest = async(e) => {
 }
 
 const userProfileRequest = async(e) => {
-  const result = await api.get(`/basecustomerusers/${e.payload}/customer`)
+  const result = await api.get(`/basecustomerusers/${e}/customer`)
   return result.data
+}
+
+const updateUserProfileRequest = async(e) => {
+  const result = await api.post(`/basecustomerusers/updateContact`, {data: e.payload})
+  return result.data.fields
 }
 
 
@@ -56,11 +61,22 @@ function* userLogout(e) {
 
 function* userProfile(e) {
   try {
-    const data = yield call(userProfileRequest, e)
+    const data = yield call(userProfileRequest, e.payload)
     yield put(actions.retrieveUserProfileSuccess(data))
   } catch (error) {
     console.log('userProfile Error')
     yield put(actions.retrieveUserProfileFailure(error))
+  }
+}
+
+
+function* updateUserProfile(e) {
+  try {
+    const data = yield call(updateUserProfileRequest, e)
+    yield put(actions.updateUserProfileSuccess(data))
+  } catch (error) {
+    console.log('updateUserProfile Error', error)
+    yield put(actions.updateUserProfileFailure(error))
   }
 }
 
@@ -79,6 +95,10 @@ export function* retrieveUserProfileWatcher() {
   yield takeEvery(types.RETRIEVE_USER_PROFILE, userProfile)
 }
 
+export function* updateUserProfileWatcher() {
+  yield takeEvery(types.UPDATE_USER_PROFILE, updateUserProfile)
+}
+
 
 //=======================
 // FORK SAGAS TO STORE
@@ -88,5 +108,7 @@ export default function* productSaga() {
     fork(userLoginWatcher),
     fork(userLogoutWatcher),
     fork(retrieveUserProfileWatcher),
+    fork(updateUserProfileWatcher),
+
   ])
 }

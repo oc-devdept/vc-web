@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 const OwlCarousel = dynamic(import("react-owl-carousel3"));
 
 const options = {
-  loop: true,
-  nav: false,
+  loop: false,
+  nav: true,
   dots: true,
   autoplayHoverPause: true,
   items: 1,
@@ -29,80 +29,77 @@ class Testimonials extends Component {
     return (
       <section className="testimonials-area ptb-60">
         <div className="container">
-          {this.state.display ? (
-            <OwlCarousel
-              className="testimonials-slides owl-carousel owl-theme"
-              {...options}
-            >
-              <div className="single-testimonials">
-                <div className="client-image">
-                  {/* <img src={require("../../assets/images/client1.jpg")} alt="image" /> */}
-                </div>
-
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Quis ipsum
-                  suspendisse ultrices gravida. Risus commodo viverra maecenas
-                  accumsan lacus vel facilisis.
-                </p>
-
-                <div className="client-info">
-                  <h4>Jason Statham</h4>
-                  <span>Founder at Brand</span>
-                </div>
+          <h3>What our customers says</h3>
+          <OwlCarousel
+            className="testimonials-slides owl-carousel owl-theme"
+            {...options}
+          >
+            <div className="single-testimonials">
+              <div className="client-image">
+                {/* <img src={require("../../assets/images/client1.jpg")} alt="image" /> */}
               </div>
 
-              <div className="single-testimonials">
-                <div className="client-image">
-                  {/* <img src={require("../../assets/images/client2.jpg")} alt="image" /> */}
-                </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ipsum suspendisse ultrices gravida. Risus commodo viverra
+                maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum
+                suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis.
+              </p>
 
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Quis ipsum
-                  suspendisse ultrices gravida. Risus commodo viverra maecenas
-                  accumsan lacus vel facilisis.
-                </p>
+              <div className="client-info">
+                <h4>Jason Statham</h4>
+                <span>Founder at Brand</span>
+              </div>
+            </div>
 
-                <div className="client-info">
-                  <h4>Jason Jisan</h4>
-                  <span>Founder at Brand</span>
-                </div>
+            <div className="single-testimonials">
+              <div className="client-image">
+                {/* <img src={require("../../assets/images/client2.jpg")} alt="image" /> */}
               </div>
 
-              <div className="single-testimonials">
-                <div className="client-image">
-                  {/* <img src={require("../../assets/images/client3.jpg")} alt="image" /> */}
-                </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ipsum suspendisse ultrices gravida. Risus commodo viverra
+                maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum
+                suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis.
+              </p>
 
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Quis ipsum
-                  suspendisse ultrices gravida. Risus commodo viverra maecenas
-                  accumsan lacus vel facilisis.
-                </p>
-
-                <div className="client-info">
-                  <h4>Jason Shabbir</h4>
-                  <span>Founder at Brand</span>
-                </div>
+              <div className="client-info">
+                <h4>Jason Jisan</h4>
+                <span>Founder at Brand</span>
               </div>
-            </OwlCarousel>
-          ) : (
-            ""
-          )}
+            </div>
+
+            <div className="single-testimonials">
+              <div className="client-image">
+                {/* <img src={require("../../assets/images/client3.jpg")} alt="image" /> */}
+              </div>
+
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ipsum suspendisse ultrices gravida. Risus commodo viverra
+                maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum
+                suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis.
+              </p>
+
+              <div className="client-info">
+                <h4>Jason Shabbir</h4>
+                <span>Founder at Brand</span>
+              </div>
+            </div>
+          </OwlCarousel>
         </div>
       </section>
     );

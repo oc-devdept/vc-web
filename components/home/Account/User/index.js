@@ -1,7 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import Api from 'Api'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import UserProfile from './components/profile'
+import { updateUserProfile} from "Ducks/user/UserActions"
 
 
 const Index = ({}) => {
@@ -16,11 +17,10 @@ const Index = ({}) => {
     // useEffect(() => {dispatch(retrieveUserProfile(userId))}, []);
     
     // update incoming profile to local state
-   
-   const _SaveUserDetails  = (UserDetail) => {
-        console.log('UserDetail', UserDetail)
-        console.log(Api)
-   }
+    const dispatch = useDispatch();
+    const _SaveUserDetails  = (UserDetail) => {
+        dispatch(updateUserProfile({UserDetail, id:Profile.customer.id}))
+    }
 
 
     return (

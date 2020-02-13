@@ -65,3 +65,19 @@ export const retrieveUserProfileFailure = e => ({
   payload: e
 })
 
+
+
+export const updateUserProfile = e => ({
+  type: types.UPDATE_USER_PROFILE,
+  payload: e
+})
+
+export const updateUserProfileSuccess = e => ({
+  type: types.UPDATE_USER_PROFILE_SUCCESS,
+  payload: e
+})
+
+export const updateUserProfileFailure = e => ({
+  type: types.UPDATE_USER_PROFILE_FAILURE,
+  payload: e
+})

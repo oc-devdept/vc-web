@@ -48,17 +48,17 @@ function ContactUs(props) {
 
                 <h3>Follow Us:</h3>
                 <ul className="social d-inline">
-                  <li>
+                  <li className="mr-3">
                     <a href="#">
                       <i className="fab fa-facebook-f"></i>
                     </a>
                   </li>
-                  <li>
+                  <li className="mr-3">
                     <a href="#">
                       <i className="fab fa-instagram"></i>
                     </a>
                   </li>
-                  <li>
+                  <li className="mr-3">
                     <a href="#">
                       <i className="fab fa-youtube"></i>
                     </a>
@@ -71,8 +71,11 @@ function ContactUs(props) {
               <div className="contact-form">
                 <h3>Have a question?</h3>
                 <p>
-                  You may find an answer in our <a href="/faq">FAQs</a> or drop
-                  us an enquiry!
+                  You may find an answer in our{" "}
+                  <a className="d-inline" href="/faq">
+                    FAQs
+                  </a>{" "}
+                  or drop us an enquiry!
                 </p>
                 <form id="contactForm">
                   <div className="row">

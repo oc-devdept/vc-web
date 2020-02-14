@@ -27,7 +27,6 @@ class Index extends Component {
             restartPasswordDone: false,
             resendLink: false,
             resendLinkDone: false,
-            loading: false
         }
     }
 
@@ -99,14 +98,13 @@ class Index extends Component {
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <Navbar />
                 <Breadcrumb title="Login" />
                     <section className="login-area pb-60">
                         <div className="container">
-                            {!this.state.loading?
+                            {!this.props.loading?
                                 <div className="row">
                                     <div className="col-lg-6 col-md-12">
                                         <div className="login-content">
@@ -236,8 +234,8 @@ class Index extends Component {
 
 const mapStateToProps = state => {
     const { UserState } = state
-    const { accessToken } = UserState
-    return { accessToken }
+    const { accessToken, loading } = UserState
+    return { accessToken, loading }
 }
   
 export default connect(

@@ -8,25 +8,33 @@ const INIT_STATE = {
   userId: null,
   accessToken: null,
   profile: null,
-  customerId: null
+  customerId: null,
+  loading: false
 }
 
 export default (state = INIT_STATE, action) => {
   switch(action.type){
    
+    case types.LOGIN_ACCOUNT:
+      return {
+        ...state,
+        loading: true
+      }
+
     case types.LOGIN_ACCOUNT_SUCCESS:
       const {id, ttl, userId} = action.payload.data
       api.AuthorizationHeader(id)
-      NotificationManager.success("You've successfully logged in");
       return {
         ...state,
         userId : userId,
-        accessToken: id
+        accessToken: id,
       }
+
     case types.LOGIN_ACCOUNT_FAILURE:
       NotificationManager.error(action.payload.response.data.error.message);
       return {
         ...state,
+        loading: false
       }
 
     case types.LOGOUT_ACCOUNT_SUCCESS:
@@ -42,10 +50,14 @@ export default (state = INIT_STATE, action) => {
       }
         
     case types.RETRIEVE_USER_PROFILE_SUCCESS:
+
+      NotificationManager.success("You've successfully logged in");
+
       return {
         ...state,
         profile: action.payload,
-        customerId: action.payload.customer.customerId
+        customerId: action.payload.customer.customerId,
+        loading: false
       }
     case types.RETRIEVE_USER_PROFILE_FAILURE:
       return {

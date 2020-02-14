@@ -47,15 +47,17 @@ class Interior extends Component {
                   key={ id }
                   id={ item.id }
                   onClick={ this.handleOptionChange }
+                  style= {{maxWidth:120}}
                 >
-                  <div 
+                  <img 
+                    src={ item.files[0].path } 
+                    alt={ item.name } 
                     id={ item.id }
-                    className="interior-image"
                     style={ item.id == this.props.ProductInterior.id ? 
-                      {backgroundImage: `url(${ item.files[0].path })`, border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
-                      {backgroundImage: `url(${ item.files[0].path })`, border: "1px solid #DEE2E6"}
+                      {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
+                      {border: "1px solid #DEE2E6"}
                     }
-                  />
+                  /><br/>
                   <span id={ item.id } style={{textTransform:"uppercase", fontWeight:500}}>{ item.name }</span><br/>
                   <span id={ item.id } style={{color:"#4B6674"}}>${ item.price }</span>
                 </li>

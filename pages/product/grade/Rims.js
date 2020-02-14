@@ -52,11 +52,11 @@ class Rims extends Component {
                     src={ item.files[0].path } 
                     alt={ item.name } 
                     id={ item.id }
-                    height="100"
-                    width="100"
+                    // height="100"
+                    // width="100"
                     style={ item.id == this.props.ProductRims.id ? 
                       {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
-                      { }
+                      {border: "1px solid #DEE2E6"}
                     }
                   /><br/>
                   <span id={ item.id } style={{textTransform:"uppercase", fontWeight:500}}>{ item.name }</span><br/>

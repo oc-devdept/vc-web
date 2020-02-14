@@ -47,13 +47,12 @@ class Exterior extends Component {
                   key={ id }
                   id={ item.id }
                   onClick={ this.handleOptionChange }
+                  style={{maxWidth:120}}
                 >
                   <img 
                     src={ item.files[0].path } 
                     alt={ item.name } 
                     id={ item.id }
-                    height="50"
-                    width="50"
                     style={ item.id == this.props.ProductExterior.id ? 
                       {border: "3px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
                       {border: "1px solid #DEE2E6"}

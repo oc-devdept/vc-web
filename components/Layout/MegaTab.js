@@ -36,7 +36,7 @@ const MegaTab = () => {
       AllModels[1].map((model, index) => {   
         return (
           <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}>  
-              <div className="col-3 my-2 px-2"> 
+              <div className="col-6 col-md-4 col-lg-3 my-2 px-2"> 
                 {model.files.map(image => { 
                     return ( 
                       <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`} > 
@@ -97,7 +97,7 @@ const MegaTab = () => {
 
           <div className="tab-content">
             {MegaMenu.length > 0 &&
-              <div className="d-flex">  
+              <div className="row">  
                     {_RenderModel()}
               </div> 
             }

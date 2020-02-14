@@ -29,7 +29,7 @@ class Model extends Component {
   }
 
   render() {
-    console.log("model props= ", this.props)
+    // console.log("model props= ", this.props)
 
     const options = {
       transitionSpeed: 3000

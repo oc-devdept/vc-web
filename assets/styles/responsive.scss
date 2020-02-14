@@ -57,12 +57,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .footer-buttons {
-    float: none;
-    margin: 2% auto;
-    width: 90%;
-  }
-
   .comero-nav
     .navbar
     .navbar-nav
@@ -1207,6 +1201,12 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .footer-buttons {
+    float: none;
+    margin: 2% auto;
+    width: 90%;
+  }
+  
   .comero-mobile-nav {
     display: block;
     position: relative;

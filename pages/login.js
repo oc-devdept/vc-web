@@ -72,7 +72,8 @@ class Index extends Component {
             const email = this.state.passwordEmail
             await api.post(`/basecustomerusers/reset`, { email: email });
             this.setState({restartPassword: false, restartPasswordDone: true, passwordEmail: ''})
-            NotificationManager.success('An Email Has Been Sent Out');
+            NotificationManager.success('A reset password email has been sent out');
+
         } catch (e) {
             console.log(e)
             NotificationManager.error('Please check your network or input correct email address');
@@ -127,7 +128,7 @@ class Index extends Component {
                                                 
                                                 <div style={{display:'flex', justifyContent:"space-evenly"}}>
                                                     
-                                                        <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false})} className="forgot-password">Lost your password?</button>
+                                                        <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false,})} className="forgot-password">Lost your password?</button>
                                                     
 
                                                         <button onClick={()=>this.setState({resendLink: true, restartPassword: false, resendLinkDone: false})} className="forgot-password">Resend verification link</button>

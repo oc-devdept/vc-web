@@ -25,7 +25,8 @@ const MegaTab = () => {
       objectFit: 'cover',
       borderRadius: '20px',
       height: '100px',
-      padding: "5px"
+      padding: "5px",
+      cursor: 'pointer',
     };
 
      
@@ -38,13 +39,13 @@ const MegaTab = () => {
               <div className="col-3 my-2 px-2"> 
                 {model.files.map(image => { 
                     return ( 
-                      <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
-                        <img style={modelImage} src={image.path} />
+                      <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`} > 
+                        <a className='tab-anchor'><img style={modelImage} src={image.path} /></a>
                       </Link>
                       )
                 })}
                 <Link key={index} href="/model/[id]" as={`/model/${(model.id).replace(/ /g,"-")}`}> 
-                  {model.name}
+                  <a className='tab-anchor'>{model.name}</a>
                 </Link>
               </div>    
           </Link>             
@@ -60,9 +61,9 @@ const MegaTab = () => {
       MegaMenu.map((e, index) =>{
         const key = e[0]
         const stage = Stage
-        let style = {padding: '10px'}
+        let style = {padding: '10px', cursor:'pointer'}
         if(stage == index){
-          style = {borderBottom: '3px solid #F29D30', color:'#F29D30',padding: '10px'}
+          style = {borderBottom: '3px solid #F29D30', color:'#F29D30',padding: '10px', cursor:'pointer'}
         }
         
         return (

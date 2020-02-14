@@ -18,6 +18,10 @@
     align-items: center;
   }
 
+  .navbar-nav-2 {
+    justify-content: flex-end;
+  }
+
   .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     top: 121px;
     margin: 0;
@@ -31,12 +35,6 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
-    top: 137px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
   .navbar .navbar-nav {
     flex-direction: row;
   }
@@ -48,7 +46,9 @@
   .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     top: 76px;
   }
+}
 
+@media only screen and (min-width: 1200px) {
   .card-columns {
     -webkit-column-count: 4;
     -moz-column-count: 4;

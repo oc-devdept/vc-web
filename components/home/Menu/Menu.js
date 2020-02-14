@@ -2,8 +2,8 @@ import React, {} from 'react';
 import { useDispatch } from "react-redux";
 import { handleAccountLogout} from "Ducks/user/UserActions"
 
-const TransOptions = ["PURCHASES", "RENT", "TEST DRIVE", "CAR SERVICING"]
-const AccOptions = ["USER", "REWARDS","PAYMENT LOGS", "SAVED", "SETTINGS"]
+export const Transactions = ["PURCHASES", "TEST DRIVE", "CAR SERVICING"]
+export const Account = ["USER", "REWARDS","PAYMENT LOGS", "SETTINGS"]
 
 const Index = ({Tab, setCurrentTab}) => {
 
@@ -16,7 +16,7 @@ const Index = ({Tab, setCurrentTab}) => {
             <div className="d-flex flex-column">
                 <div className="d-flex flex-column" style={{marginTop: 30}}>
                     <span style={{color:'white', padding:10, paddingLeft: 21, paddingRight:21}}>TRANSACTIONS</span>
-                    {TransOptions.map((item, index) => {
+                    {Transactions.map((item, index) => {
                         switch(Tab.Tab){
                             case "Transactions":
                                 if(Tab.Index == index){
@@ -43,7 +43,7 @@ const Index = ({Tab, setCurrentTab}) => {
                 </div>
                 <div className="d-flex flex-column" style={{marginTop: 30}}>
                 <span style={{color:'white', padding:10, paddingLeft: 21, paddingRight:21}}>ACCOUNT</span>
-                {AccOptions.map((item, index) => {
+                {Account.map((item, index) => {
                     switch(Tab.Tab){
                         case "Account":
                             if(Tab.Index == index){
@@ -76,5 +76,5 @@ const Index = ({Tab, setCurrentTab}) => {
     )
     
 }
-  
+
 export default Index

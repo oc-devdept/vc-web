@@ -27,7 +27,6 @@ class Index extends Component {
             restartPasswordDone: false,
             resendLink: false,
             resendLinkDone: false,
-            loading: false
         }
     }
 
@@ -73,7 +72,8 @@ class Index extends Component {
             const email = this.state.passwordEmail
             await api.post(`/basecustomerusers/reset`, { email: email });
             this.setState({restartPassword: false, restartPasswordDone: true, passwordEmail: ''})
-            NotificationManager.success('An Email Has Been Sent Out');
+            NotificationManager.success('A reset password email has been sent out');
+
         } catch (e) {
             console.log(e)
             NotificationManager.error('Please check your network or input correct email address');
@@ -99,14 +99,13 @@ class Index extends Component {
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <Navbar />
                 <Breadcrumb title="Login" />
                     <section className="login-area pb-60">
                         <div className="container">
-                            {!this.state.loading?
+                            {!this.props.loading?
                                 <div className="row">
                                     <div className="col-lg-6 col-md-12">
                                         <div className="login-content">
@@ -129,7 +128,7 @@ class Index extends Component {
                                                 
                                                 <div style={{display:'flex', justifyContent:"space-evenly"}}>
                                                     
-                                                        <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false})} className="forgot-password">Lost your password?</button>
+                                                        <button onClick={()=>this.setState({restartPassword: true, resendLink: false, restartPasswordDone: false,})} className="forgot-password">Lost your password?</button>
                                                     
 
                                                         <button onClick={()=>this.setState({resendLink: true, restartPassword: false, resendLinkDone: false})} className="forgot-password">Resend verification link</button>
@@ -236,8 +235,8 @@ class Index extends Component {
 
 const mapStateToProps = state => {
     const { UserState } = state
-    const { accessToken } = UserState
-    return { accessToken }
+    const { accessToken, loading } = UserState
+    return { accessToken, loading }
 }
   
 export default connect(

@@ -104,9 +104,9 @@ ol.progtrckr li {
   cursor: pointer;
 }
 
-ol.progtrckr li span {
-  padding: 0 1.5rem;
-}
+// ol.progtrckr li span {
+//   padding: 0 1.5rem;
+// }
 
 @media (max-width: 650px) {
   .progtrckr li span {
@@ -9312,6 +9312,9 @@ ol.progtrckr {
   width: 100%;
   text-align: center;
 }
+ol.progtrckr li:last-child {
+  display: none;
+}
 ol.progtrckr,
 .configure-opt-title {
   text-transform: uppercase;
@@ -9328,7 +9331,7 @@ ol.progtrckr,
 li.progtrckr-doing,
 li.progtrckr-todo,
 li.progtrckr-done {
-  width: 19%;
+  width: 19.99%;
 }
 ol.progtrckr li.progtrckr-doing:before {
   background-color: #f29d30;
@@ -9436,4 +9439,40 @@ ol.progtrckr li.progtrckr-doing {
 
 .fixed-top {
   position: relative;
+}
+
+/* Removing up down icons for input type=number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.calculator-field {
+  margin-bottom: .75rem;
+}
+.field-name p {
+  color: #f29d30; 
+  font-weight: 600;
+}
+.calculator-submit button {
+  padding: 6px 30px; 
+  margin-top: 10px; 
+  box-shadow: 0px 5px 8px #888888;
+  
+.calculator-submit button:disabled {
+  background-color: #cccccc; 
+  border: #cccccc;
+}
+.calculator-submit button:disabled:hover, 
+.calculator-submit button:disabled:hover {
+  box-shadow: 0px 5px 8px #888888; 
+  color:#ffffff!important
+}
+.form-control {
+  color:#666666;
 }

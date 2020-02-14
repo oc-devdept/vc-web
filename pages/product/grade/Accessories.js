@@ -1,13 +1,9 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux"
 
-// import { selectedProductAccessories } from "Ducks/product/ProductActions"
-
-import AccessoriesCartItem from 'Components/Layout/AccessoriesCartItem'
+import SummaryTable from "Components/configurator/SummaryTable"
 
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
-import ListGroup from "react-bootstrap/ListGroup"
 import Form from "react-bootstrap/Form"
 
 class Accessories extends Component {
@@ -21,21 +17,20 @@ class Accessories extends Component {
 
   componentDidMount() {
     let list = { mainAccordionActiveKey: "0" }
-    Object.keys(this.props.ProductState.productAccessories.data.fields).map((item, id) => {
+    Object.keys(this.props.ProductState.ProductAccessories.data.fields).map((item, id) => {
       list[id] = "0"
     })
     this.setState(list)
   }
 
   handleOptionChange(event) {
-    const { id } = event.target
-    this.props.selectedProductAccessories(id)
+    const { id, checked } = event.target
+    this.props.selectedProductAccessories(id, checked)
   }
 
   handleMainAccordionClick(id) {
     this.setState({
       mainAccordionActiveKey: `${id}`,
-      // secondaryAccordionActiveKey: "0"
     })
   }
 
@@ -49,81 +44,18 @@ class Accessories extends Component {
   render() {
     // console.log("state= ", this.state)
     console.log("Accessories props: ", this.props)
-    const { 
-      productModel,
-      productGrade,
-      productExterior,
-      productInterior,
-      productRims,
-      productAccessories,
-    } = this.props.ProductState
 
-    const data = [
-      {
-        number: "01",
-        image: productModel.image,
-        title: "CAR MAKE & MODEL",
-        name: productModel.name,
-      },
-      {
-        number: "02",
-        image: productGrade.images[0],
-        title: "GRADE",
-        name: productGrade.name,
-        price: parseFloat(productGrade.price).toFixed(2)
-      },
-      {
-        number: "03",
-        image: productExterior.images[0],
-        title: "EXTERIOR",
-        name: productExterior.name,
-        price: parseFloat(productExterior.price).toFixed(2)
-      },
-      {
-        number: "04",
-        image: productInterior.images[0],
-        title: "INTERIOR",
-        name: productInterior.name,
-        price: parseFloat(productInterior.price).toFixed(2)
-      },
-      {
-        number: "05",
-        image: productRims.images[0],
-        title: "RIMS",
-        name: productRims.name,
-        price: parseFloat(productRims.price).toFixed(2)
-      },
-    ]
-    
-    const subtotal = parseFloat(productGrade.price) + parseFloat(productExterior.price) 
-    + parseFloat(productInterior.price) + parseFloat(productRims.price)
-    const misc = 0
-    const gst = (subtotal + misc) * 0.07
-    const total = subtotal + misc + gst
+    const { ProductAccessories } = this.props.ProductState
+
     const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
-    const subtotalData = [
-      {
-        name: "SUBTOTAL",
-        amount: subtotal.toFixed(2)
-      },
-      {
-        name: "MISC. FEES",
-        amount: misc.toFixed(2)
-      },
-      {
-        name: "GST",
-        amount: gst.toFixed(2)
-      }
-    ]
 
     return(
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8">
           <p>Expand the options below to add acessories to your vehicle</p>
           <Accordion activeKey={ this.state.mainAccordionActiveKey }>
-            {!!productAccessories.data.fields &&        
-              Object.entries(productAccessories.data.fields).map(([key, value], id) => (
+            {!!ProductAccessories.data.fields &&        
+              Object.entries(ProductAccessories.data.fields).map(([key, value], id) => (
                 <Card className="product-option-group" key={ id } className="rounded-0 mb-2 border">
                   <Accordion.Toggle 
                     as={ Card.Header } 
@@ -151,7 +83,7 @@ class Accessories extends Component {
                     <Card.Body className="p-0">
                       <Accordion activeKey={ this.state[id] }>
                         { value.map(( item, idd ) => (
-                          <Card key={ idd } className=" rounded-0">
+                          <Card key={ idd } className="rounded-0">
                             <Accordion.Toggle 
                               as={ Card.Header } 
                               eventKey={`${idd}`} 
@@ -217,51 +149,10 @@ class Accessories extends Component {
           </Accordion>
         </div>
         <div className="configure-summary col-lg-4">
-          <Card className="rounded-0">
-            <Card.Header className="py-1 px-3 rounded-0" style={{backgroundColor:"#4B6674"}}>
-              <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>
-            </Card.Header>
-            <ListGroup variant="flush">
-              <ListGroup.Item className="configure-summary-options p-2">
-                { data.map(( item, key ) => (
-                  <AccessoriesCartItem
-                    key={ key }
-                    number={ item.number }
-                    image={ item.image }
-                    title={ item.title }
-                    name={ item.name }
-                    price={ item.price }
-                  />
-                ))}
-              </ListGroup.Item>
-              <ListGroup.Item className="configure-summary-subtotal p-2">
-                { subtotalData.map(( item, key ) => (
-                  <div key={ key } className="d-flex flex-row align-items-center">
-                    <div className="col-1 p-0 mr-1"></div>
-                    <div className="col-2 p-0 mr-1"></div>
-                    <div className="col-5 pr-3 mr-1 text-right">
-                      <p style={{fontWeight:600, color:"#4B6674"}}>{item.name}</p>
-                    </div>
-                    <div className="col-4 p-0 mr-1">
-                      <p>${formatPrice(item.amount)}</p>
-                    </div>
-                  </div>
-                ))}
-              </ListGroup.Item>
-              <ListGroup.Item className="configure-summary-total p-2">
-                <div className="d-flex flex-row align-items-center">
-                  <div className="col-1 p-0 mr-1"></div>
-                  <div className="col-2 p-0 mr-1"></div>
-                  <div className="col-5 pr-3 mr-1 text-right">
-                    <p style={{fontWeight:700, color:"#4B6674"}}>TOTAL</p>
-                  </div>
-                  <div className="col-4 p-0 mr-1">
-                    <p>${formatPrice(total.toFixed(2))}</p>
-                  </div>
-                </div>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
+          <SummaryTable
+            page='accessories'
+            productState='this.props.ProductState'
+          />
         </div> 
       </div>
     )

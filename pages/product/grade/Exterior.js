@@ -4,7 +4,7 @@ import React, { Component } from "react"
 // import { selectedProductExterior } from "Ducks/product/ProductActions"
 
 import { Carousel } from "react-responsive-carousel"
-import "../../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css"
+import "Styles/carousel.min.css"
 
 class Exterior extends Component {
   constructor(props){
@@ -19,23 +19,23 @@ class Exterior extends Component {
   }
 
   isValidated() {
-    return !!this.props.productExterior.id
+    return !!this.props.ProductExterior.id
   }
 
   render() {
-    const { objects } = this.props.productExterior.data.fields["Colors"]
+    const { objects } = this.props.ProductExterior.data.fields["Colors"]
     console.log("exterior props: ", this.props)
     return(
       <div className="configure-sect row">  
         <div className="configure-gall col-lg-8 d-flex flex-column">
           <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
-            { this.props.productExterior.images.map((item, id) => (
+            { this.props.ProductExterior.images.map((item, id) => (
               <div key={ id }>
                 <img src={ item } className="configCoverImg align-self-center" />
               </div>
             ))}
           </Carousel>
-          <h3 className="text-uppercase text-center m-2">Standard { this.props.productExterior.name } Paintwork</h3>
+          <h3 className="text-uppercase text-center m-2">Standard { this.props.ProductExterior.name } Paintwork</h3>
         </div>
         <div className="configure-opt col-lg-4">
           <h3 className="configure-opt-title">02 Exterior</h3>
@@ -72,8 +72,8 @@ class Exterior extends Component {
 }
 
 // const mapStateToProps = state => {
-//   const { productExterior } = state.ProductState
-//   return { productExterior }
+//   const { ProductExterior } = state.ProductState
+//   return { ProductExterior }
 // }
 
 // export default connect(

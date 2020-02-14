@@ -4,10 +4,12 @@ import {
   fork, 
   put, 
   takeEvery,
+  select,
 } from "redux-saga/effects"
 
 import * as types from "./ProductTypes"
 import * as actions from "./ProductActions"
+import { saveAs } from 'file-saver'
 import api from "Api"
 
 //=========================
@@ -56,6 +58,20 @@ const getProductGradeDataRequest = async(payload) => {
   return data
 }
 
+const printConfiguratorPDF = async(state) => {
+  var reportVals = formatReportState(state);
+  const result = await api.post("/create-pdf", reportVals);
+  return result.data;
+
+};
+
+const fetchConfiguratorPDF = async(dirName) => {
+  var filedata = await api.get("/fetch-pdf/" + dirName, { responseType: 'blob' });
+  var fileblob = new Blob([filedata.data], { type: 'application/pdf' });
+  saveAs(fileblob, "vehicle-configuration.pdf");
+}
+
+
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
@@ -89,6 +105,19 @@ function* getProductGradeData(e) {
   }
 }
 
+function* generateConfiguratorPDF() {
+  try {
+    const getProductState = state => state.ProductState;
+    var productState = yield select(getProductState); 
+    var data = yield call(printConfiguratorPDF, productState, "full");
+    yield call(fetchConfiguratorPDF, data);
+    yield put(actions.printConfiguratorSuccess());
+  } catch (error) {
+    yield put(actions.printConfiguratorFailure(error));
+    console.log("Error!");
+  }
+}
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -104,6 +133,10 @@ export function* getProductGradeDataWatcher() {
   yield takeEvery(types.GET_PRODUCT_GRADE_DATA, getProductGradeData)
 }
 
+export function* generateConfiguratorPDFWatcher() {
+  yield takeEvery(types.PRINT_CONFIGURATOR, generateConfiguratorPDF)
+}
+
 //=======================
 // FORK SAGAS TO STORE
 //=======================
@@ -112,5 +145,6 @@ export default function* productSaga() {
     fork(getProductModelDataWatcher),
     fork(getProductGradesWatcher),
     fork(getProductGradeDataWatcher),
+    fork(generateConfiguratorPDFWatcher),
   ])
 }

@@ -17,18 +17,18 @@ class Grade extends Component {
   }
 
   isValidated() {
-    return !!this.props.productGrade.id
+    return !!this.props.ProductGrade.id
   }
 
   render() {
-    const { fields } = this.props.productGrade.data
+    const { fields } = this.props.ProductGrade.data
     console.log("grade props= ", this.props)
     return(
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8 d-flex flex-column">
-          <img src={ this.props.productGrade.images } className="configCoverImg align-self-center"/>
-        <h3 className="text-uppercase text-center m-2">{ this.props.productGrade.name }</h3>      
-        <p>{ this.props.productGrade.description }</p>
+          <img src={ this.props.ProductGrade.images } className="configCoverImg align-self-center"/>
+        <h3 className="text-uppercase text-center m-2">{ this.props.ProductGrade.name }</h3>      
+        <p>{ this.props.ProductGrade.description }</p>
         </div>
         <div className="configure-opt col-lg-4">
           <h3 className="configure-opt-title">01 Grade</h3>
@@ -38,7 +38,7 @@ class Grade extends Component {
                 <li className="configure-list"
                   key={ id }
                   id= { item.id }
-                  style={item.id == this.props.productGrade.id ? 
+                  style={item.id == this.props.ProductGrade.id ? 
                     {border: "2px solid #F29D30", color: "#F29D30", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", fontWeight:"bold"} : 
                     {border: "1px solid #DEE2E6"}
                   }
@@ -57,8 +57,8 @@ class Grade extends Component {
 }
 
 // const mapStateToProps = state => {
-//   const { productGrade } = state.ProductState
-//   return { productGrade }
+//   const { ProductGrade } = state.ProductState
+//   return { ProductGrade }
 // }
 
 // export default connect(

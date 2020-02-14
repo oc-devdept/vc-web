@@ -10,9 +10,15 @@ class Index extends Component {
   render() {
     return (
       <DefaultLayout>
-        <Banner />
-        <BestSellers />
-        <Steps />
+        <section className="pb-5">
+          <Banner />
+        </section>
+        <section className="pb-5">
+          <BestSellers />
+        </section>
+        <section className="pb-5">
+          <Steps />
+        </section>
       </DefaultLayout>
     );
   }

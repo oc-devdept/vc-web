@@ -9298,10 +9298,17 @@ h6 {
   position: absolute !important;
   width: 100% !important;
   top: 0px !important;
-  margin-top: 202px !important;
+  display: flex;
+  align-items: center;
   text-align: left !important;
   right: 0 !important;
   left: 0 !important;
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 34px;
+  }
 }
 
 .btn-slider:hover,

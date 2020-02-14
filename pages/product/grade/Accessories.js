@@ -151,7 +151,7 @@ class Accessories extends Component {
         <div className="configure-summary col-lg-4">
           <SummaryTable
             page='accessories'
-            productState='this.props.ProductState'
+            productState={this.props.ProductState}
           />
         </div> 
       </div>

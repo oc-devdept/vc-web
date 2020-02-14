@@ -55,11 +55,60 @@ const getProductGradeDataRequest = async(payload) => {
   return data
 }
 
+const formatReportState = state => {
+  var reportVals = { }
+
+  reportVals.model_name = state.ProductModel.name
+  reportVals.model_description = state.ProductModel.description
+  reportVals.model_image = state.ProductModel.image
+
+  reportVals.grade_name = state.ProductGrade.name
+  reportVals.grade_price = state.ProductGrade.price
+  reportVals.grade_image = state.ProductGrade.images[0]
+  reportVals.grade_description = state.ProductGrade.description
+
+  reportVals.exterior_name = state.ProductExterior.name
+  reportVals.exterior_price = state.ProductExterior.price
+  reportVals.exterior_image = state.ProductExterior.thumbnail
+
+  reportVals.interior_name = state.ProductInterior.name
+  reportVals.interior_price = state.ProductInterior.price
+  reportVals.interior_image = state.ProductInterior.thumbnail
+
+  reportVals.rims_name = state.ProductRims.name
+  reportVals.rims_price = state.ProductRims.price
+  reportVals.rims_image = state.ProductRims.thumbnail
+
+  if (!!state.ProductAccessories.selectedAccessories) {
+    reportVals.accessories = state.ProductAccessories.selectedAccessories.map( item => {
+      return {
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        description: item.description,
+      }
+    })
+  }
+
+  reportVals.total_subtotal = state.ProductTotal.subtotal
+  reportVals.total_misc = state.ProductTotal.misc
+  reportVals.total_gst = state.ProductTotal.gst
+  reportVals.total_total = state.ProductTotal.total
+
+  reportVals.calculator_loanTerm = state.LoanCalculator.loanTerm
+  reportVals.calculator_loanAmount = state.LoanCalculator.loanAmount
+  reportVals.calculator_interestRate = state.LoanCalculator.interestRate
+  reportVals.calculator_downPayment = state.LoanCalculator.downPayment
+  reportVals.calculator_deposit = state.LoanCalculator.deposit
+  reportVals.calculator_monthlyInstallment = state.LoanCalculator.monthlyInstallment
+
+  return reportVals
+}
+
 const printConfiguratorPDF = async(state) => {
   var reportVals = formatReportState(state);
   const result = await api.post("/create-pdf", reportVals);
   return result.data;
-
 };
 
 const fetchConfiguratorPDF = async(dirName) => {
@@ -67,7 +116,6 @@ const fetchConfiguratorPDF = async(dirName) => {
   var fileblob = new Blob([filedata.data], { type: 'application/pdf' });
   saveAs(fileblob, "vehicle-configuration.pdf");
 }
-
 
 //=========================
 // CALL(GENERATOR) ACTIONS

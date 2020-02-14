@@ -1,12 +1,6 @@
-import "../assets/styles/bootstrap.min.css";
-import "../assets/styles/fontawesome.min.css";
-import "../assets/styles/style.css";
-import "../assets/styles/responsive.css";
-import "../assets/styles/animate.min.css";
-import "../assets/styles/slick.css";
-import "../assets/styles/slick-theme.css";
+import "../assets/styles/_index.scss";
 import "react-notifications/lib/notifications.css";
-import 'react-day-picker/lib/style.css';
+import "react-day-picker/lib/style.css";
 
 import { Provider } from "react-redux";
 import App from "next/app";
@@ -16,8 +10,7 @@ import makeStore from "Store";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
 import { NotificationContainer } from "react-notifications";
-import { CookiesProvider } from 'react-cookie';
-
+import { CookiesProvider } from "react-cookie";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -33,17 +26,14 @@ class MyApp extends App {
 
     return (
       <>
-        <DefaultSeo
-          title="Venture Cars"
-          description="Venture Cars"
-          />
-          <CookiesProvider>
-            <Provider store={store}>
-              <Component {...pageProps} />
-            </Provider>
-          </CookiesProvider>
+        <DefaultSeo title="Venture Cars" description="Venture Cars" />
+        <CookiesProvider>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </CookiesProvider>
         <GoTop scrollStepInPx="50" delayInMs="16.66" />
-        <NotificationContainer/>
+        <NotificationContainer />
       </>
     );
   }

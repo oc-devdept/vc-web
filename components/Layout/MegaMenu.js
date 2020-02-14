@@ -65,10 +65,7 @@ class MegaMenu extends Component {
               <nav className="navbar navbar-expand-md navbar-light">
                 <Link href="/">
                   <a className="navbar-brand">
-                    <img
-                      src={'/static/logo.png'}
-                      alt="logo"
-                    />
+                    <img src={"/static/logo.png"} alt="logo" />
                   </a>
                 </Link>
 
@@ -117,7 +114,7 @@ class MegaMenu extends Component {
                           </li>
                         </ul>
                       </li>
-                      
+
                       {/* <li className="nav-item p-relative">
                         <Link href="#">
                           <a className="nav-link">Used</a>
@@ -129,9 +126,9 @@ class MegaMenu extends Component {
                           <a className="nav-link">Rent</a>
                         </Link>
                       </li>
-                    
+
                       <li className="nav-item p-relative">
-                        <Link href="#">
+                        <Link href="/services">
                           <a className="nav-link">Services</a>
                         </Link>
                       </li>
@@ -153,7 +150,9 @@ class MegaMenu extends Component {
                       <li className="nav-item p-relative">
                         {/* <Link href="/compare"> */}
                         <Link href="#">
-                          <a className="nav-link">Compare <i className="fas fa-balance-scale"></i></a>
+                          <a className="nav-link">
+                            Compare <i className="fas fa-balance-scale"></i>
+                          </a>
                         </Link>
                       </li>
 
@@ -166,7 +165,7 @@ class MegaMenu extends Component {
                       </li>
 
                       <li className="nav-item highlight p-relative">
-                        <Link href="/contact.js">
+                        <Link href="/book-now">
                           <a className="btn btn-light">
                             <span>Book A Service</span>
                           </a>

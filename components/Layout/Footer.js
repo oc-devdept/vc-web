@@ -13,8 +13,8 @@ class Footer extends Component {
 
                                 <ul className="quick-links">
                                     <li><Link href="/about"><a>About Us</a></Link></li>
-                                    <li><Link href="/blog"><a>Blog</a></Link></li>
-                                    <li><Link href="/faq"><a>FAQS</a></Link></li>
+                                    {/* <li><Link href="/blog"><a>Blog</a></Link></li> */}
+                                    <li><Link href="/faq"><a>FAQs</a></Link></li>
                                     <li><Link href="/contact-us"><a>Contact Us</a></Link></li>
                                 </ul>
                             </div>

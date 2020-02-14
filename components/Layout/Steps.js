@@ -11,7 +11,7 @@ class Steps extends Component {
           arrow: "˃",
           image: "/static/steps/step01.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "We have a range of vehicles that fulfil all different needs. Begin the process by selecting your ideal vehicle."
         },
         {
           id: "02 Build",
@@ -19,7 +19,7 @@ class Steps extends Component {
           arrow: "˃",
           image: "/static/steps/step02.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "After selecting your vehicle, pick your favourite color for your vehicle's exterior."
         },
         {
           id: "03 Build",
@@ -27,7 +27,7 @@ class Steps extends Component {
           arrow: "˅",
           image: "/static/steps/step03.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "Configure your vehicle's interior with different types and colours of seating fabrics."
         },
         {
           id: "04 Configure",
@@ -35,7 +35,7 @@ class Steps extends Component {
           arrow: "˂",
           image: "/static/steps/step04.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "We provide a variety of rims for each vehicle. Pick up a set for yours."
         },
         {
           id: "05 Accessories",
@@ -43,7 +43,7 @@ class Steps extends Component {
           arrow: "˂",
           image: "/static/steps/step05.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "Last but not least, take a look at the various accessories available and upgrade your driving experience."
         },
         {
           id: "06 Get",
@@ -51,7 +51,7 @@ class Steps extends Component {
           arrow: "",
           image: "/static/steps/step06.png",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim egestas quam in interdum."
+            "Congratulations! We will notify you when your vehicle is ready for collection."
         }
       ]
     };

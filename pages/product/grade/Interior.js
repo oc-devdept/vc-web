@@ -24,11 +24,11 @@ class Interior extends Component {
 
   render() {
     const { objects } = this.props.ProductInterior.data.fields["Material"]
-    console.log("interior props: ", this.props)
+    // console.log("interior props: ", this.props)
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8 d-flex flex-column">
-          <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false }>
+          <Carousel infiniteLoop autoPlay showThumbs={ false } showStatus={ false } showArrows={ false }>
             { this.props.ProductInterior.images.map((item, id) => (
               <div key={ id }>
                 <img src={ item } className="configCoverImg align-self-center" />
@@ -43,7 +43,7 @@ class Interior extends Component {
             {!!objects &&
               objects.map((item, id) => (
                 <li
-                  className="configure-list d-inline-block"
+                  className="configure-list d-inline-block align-top"
                   key={ id }
                   id={ item.id }
                   onClick={ this.handleOptionChange }

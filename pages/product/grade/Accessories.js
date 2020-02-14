@@ -43,7 +43,7 @@ class Accessories extends Component {
 
   render() {
     // console.log("state= ", this.state)
-    console.log("Accessories props: ", this.props)
+    // console.log("Accessories props: ", this.props)
 
     const { ProductAccessories } = this.props.ProductState
 

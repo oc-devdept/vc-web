@@ -21,9 +21,6 @@ const getProductModelDataRequest = async(payload) => {
 }
 
 const getProductGradesRequest = async(payload) => {
-  // console.log('getProductGradesRequest')
-  // console.log(gradesData)
-
   const gradesData = await api.get(`/products/specificGrades/${payload.payload.modelId}`)
 
   let gradeId = null

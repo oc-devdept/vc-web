@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import LoanCalculator from "Components/configurator/LoanCalculator"
 
 const Summary = (props) => {
-  console.log("Summary props= ", props)
+  // console.log("Summary props= ", props)
 
   const overallSummary = [
     {
@@ -63,14 +63,14 @@ const Summary = (props) => {
               <button
                 onClick={ props.printConfigurator }
                 className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
-                style={{border:"1px solid #4b6674", minWidth:65, maxWidth:120}}
+                style={{border:"1px solid #4b6674", minWidth:65, maxWidth:120, backgroundColor:'transparent'}}
               >
                 <i className='fas fa-save' style={{color:"#4b6674", fontSize:24}}/>
                 <p style={{fontSize:12, color:"#4b6674", textAlign:"center"}}>SAVE</p>
               </button>
               <button
                 className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
-                style={{border:"1px solid #4b6674", minWidth:65, maxWidth:120}}
+                style={{border:"1px solid #4b6674", minWidth:65, maxWidth:120, backgroundColor:'transparent'}}
               >
                 <i className='fas fa-car' style={{color:"#4b6674", fontSize:24}}/>
                 <a href='#'>

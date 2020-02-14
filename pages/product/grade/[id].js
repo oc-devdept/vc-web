@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import { connect } from "react-redux"
 
-import Default from "Components/Layout/PageTemplates/Default";
-import StepZilla from "react-stepzilla";
-import Grade from "./Grade";
-import Exterior from "./Exterior";
-import Interior from "./Interior";
-import Rims from "./Rims";
-import Accessories from "./Accessories";
+import Default from "Components/Layout/PageTemplates/Default"
+import StepZilla from "react-stepzilla"
+import Grade from "./Grade"
+import Exterior from "./Exterior"
+import Interior from "./Interior"
+import Rims from "./Rims"
+import Accessories from "./Accessories"
+import Summary from './Summary'
 
 import {
   getProductGrades,
@@ -17,12 +18,18 @@ import {
   selectedProductExterior,
   selectedProductInterior,
   selectedProductRims,
-  selectedProductAccessories
+  selectedProductAccessories,
+  updateProductTotal,
+  updateLoanCalculator,
+  printConfigurator,
 } from "Ducks/product/ProductActions";
 
 class Product extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {showSteps:true}
+    this.onStepChange = this.onStepChange.bind(this)
   }
 
   componentDidMount() {
@@ -35,15 +42,19 @@ class Product extends Component {
       : this.props.getProductGrades(this.props.selectedModelId);
   }
 
+  onStepChange(step) {
+    step === 5 && this.setState({showSteps:false})
+  }
+
   render() {
-    console.log("props= ", this.props);
+    // console.log("props= ", this.props);
     const { ProductState } = this.props;
     const steps = [
       {
         name: "Grade",
         component: (
           <Grade
-            productGrade={ProductState.productGrade}
+            ProductGrade={ProductState.ProductGrade}
             selectedProductGrade={this.props.selectedProductGrade}
             getProductGradeData={this.props.getProductGradeData}
           />
@@ -53,7 +64,7 @@ class Product extends Component {
         name: "Exterior",
         component: (
           <Exterior
-            productExterior={ProductState.productExterior}
+            ProductExterior={ProductState.ProductExterior}
             selectedProductExterior={this.props.selectedProductExterior}
           />
         )
@@ -62,7 +73,7 @@ class Product extends Component {
         name: "Interior",
         component: (
           <Interior
-            productInterior={ProductState.productInterior}
+            ProductInterior={ProductState.ProductInterior}
             selectedProductInterior={this.props.selectedProductInterior}
           />
         )
@@ -71,7 +82,7 @@ class Product extends Component {
         name: "Rims",
         component: (
           <Rims
-            productRims={ProductState.productRims}
+            ProductRims={ProductState.ProductRims}
             selectedProductRims={this.props.selectedProductRims}
           />
         )
@@ -84,6 +95,17 @@ class Product extends Component {
             selectedProductAccessories={this.props.selectedProductAccessories}
           />
         )
+      },
+      {
+        name: "Summary", 
+        component: (
+          <Summary 
+            ProductState={ProductState}
+            updateProductTotal={this.props.updateProductTotal}
+            updateLoanCalculator={this.props.updateLoanCalculator}
+            printConfigurator={this.props.printConfigurator}
+          />
+        )
       }
     ];
 
@@ -94,7 +116,13 @@ class Product extends Component {
             <div>
               {/* need to validate steps to prevent user from skipping steps */}
               <div className="step-process">
-                <StepZilla steps={steps} />
+                <StepZilla 
+                  steps={steps} 
+                  nextTextOnFinalActionStep="Summary" 
+                  prevBtnOnLastStep={false}
+                  onStepChange={this.onStepChange}
+                  showSteps={this.state.showSteps}
+                />
               </div>
             </div>
           </div>
@@ -122,5 +150,8 @@ export default connect(mapStateToProps, {
   selectedProductExterior,
   selectedProductInterior,
   selectedProductRims,
-  selectedProductAccessories
+  selectedProductAccessories,
+  updateProductTotal,
+  updateLoanCalculator,
+  printConfigurator,
 })(Product);

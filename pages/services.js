@@ -66,16 +66,16 @@ function Services(props) {
                     How do I earn membership points through car servicing?
                   </Card.Subtitle>
                   <Card.Text>
-                    <ul class="list-group">
-                      <li class="list-group-item">
+                    <ul className="list-group">
+                      <li className="list-group-item">
                         <dt>Question</dt>
                         <dd>Answer</dd>
                       </li>
-                      <li class="list-group-item">
+                      <li className="list-group-item">
                         <dt>Question</dt>
                         <dd>Answer</dd>
                       </li>
-                      <li class="list-group-item">
+                      <li className="list-group-item">
                         <dt>Question</dt>
                         <dd>Answer</dd>
                       </li>

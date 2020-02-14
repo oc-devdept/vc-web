@@ -126,7 +126,7 @@ class MegaMenu extends Component {
                           <a className="nav-link">Rent</a>
                         </Link>
                       </li> */}
-                    
+
                       <li className="nav-item p-relative">
                         <Link href="/services">
                           <a className="nav-link">Services</a>
@@ -165,7 +165,7 @@ class MegaMenu extends Component {
                       </li> */}
 
                       <li className="nav-item highlight p-relative">
-                        <Link href="/contact.js">
+                        <Link href="/book-now">
                           <a className="btn btn-primary">
                             <span>Book A Service</span>
                           </a>

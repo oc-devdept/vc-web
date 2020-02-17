@@ -76,7 +76,33 @@ export const selectedProductRims = e => ({
 })
 
 // Update selected accessories
-export const selectedProductAccessories = e => ({
+export const selectedProductAccessories = (id, checked) => ({
   type: types.SELECTED_PRODUCT_ACCESSORIES,
+  payload: { id, checked }
+})
+
+// Update total price
+export const updateProductTotal = e => ({
+  type: types.UPDATE_PRODUCT_TOTAL,
+  payload: e
+})
+
+// Update loan calculator
+export const updateLoanCalculator = e => ({
+  type: types.UPDATE_LOAN_CALCULATOR,
+  payload: e
+})
+
+// Generate PDF
+export const printConfigurator = () => ({
+  type: types.PRINT_CONFIGURATOR
+})
+
+export const printConfiguratorSuccess = () => ({
+  type: types.PRINT_CONFIGURATOR_SUCCESS
+})
+
+export const printConfiguratorFailure = e => ({
+  type: types.PRINT_CONFIGURATOR_FAILURE,
   payload: e
 })

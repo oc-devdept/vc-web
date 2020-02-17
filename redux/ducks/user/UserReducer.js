@@ -24,6 +24,7 @@ export default (state = INIT_STATE, action) => {
     case types.LOGIN_ACCOUNT_SUCCESS:
       const {id, ttl, userId} = action.payload.data
       api.AuthorizationHeader(id)
+      console.log(action.payload.data)
       return {
         ...state,
         userId : userId,
@@ -67,6 +68,7 @@ export default (state = INIT_STATE, action) => {
 
     case types.UPDATE_USER_PROFILE_SUCCESS:
       let profile = JSON.parse(JSON.stringify(state.profile)); 
+      console.log(state.profile)
       profile.customer = action.payload
       NotificationManager.success("Your profile has been successfully updated");
       return {
@@ -75,6 +77,7 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.UPDATE_USER_PROFILE_FAILURE:
+
       return {
         ...state,
         // ...INIT_STATE

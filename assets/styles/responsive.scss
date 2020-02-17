@@ -35,6 +35,17 @@
 }
 
 @media only screen and (min-width: 992px) {
+  .navbar-expand-md .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-md .navbar-collapse {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+
   .navbar .navbar-nav {
     flex-direction: row;
   }
@@ -982,11 +993,11 @@
   /* .navbar-area .comero-nav .others-option {
     display: none;
   } */
-  .navbar-area .comero-nav .navbar .navbar-nav {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: 0;
-  }
+  // .navbar-area .comero-nav .navbar .navbar-nav {
+  //   margin-top: 0;
+  //   margin-left: auto;
+  //   margin-right: 0;
+  // }
   .navbar-area .comero-nav .navbar .navbar-nav .nav-item a {
     margin-left: 8px;
     margin-right: 8px;
@@ -1428,4 +1439,31 @@
     outline: 0;
   }
 }
+
+// Changing hamburger menu breakpoint to width:992px
+// If bootstrap.min.css is ever updated/refreshed, delete relevant styles there
+@media only screen and (min-width: 992px) {
+  .navbar .navbar-nav {
+    align-items: center;
+  }
+
+  .navbar-expand-md .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-md .navbar-collapse {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+
+  .navbar-expand-md {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
 /*# sourceMappingURL=responsive.css.map */

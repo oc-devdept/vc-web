@@ -1,26 +1,27 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react";
 
-import AccessoriesCartItem from 'Components/configurator/AccessoriesCartItem'
+import { formatPrice } from "Components/Helpers/helpers";
+import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";
 
-import Card from 'react-bootstrap/Card'
-import ListGroup from "react-bootstrap/ListGroup"
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const SummaryTable = props => {
-  const { 
+  const {
     ProductModel,
     ProductGrade,
     ProductExterior,
     ProductInterior,
     ProductRims,
-    ProductAccessories    
-  } = props.productState
+    ProductAccessories
+  } = props.productState;
 
   const data = [
     {
       number: "01",
       image: ProductModel.image,
       title: "CAR MAKE & MODEL",
-      name: ProductModel.name,
+      name: ProductModel.name
     },
     {
       number: "02",
@@ -50,37 +51,37 @@ const SummaryTable = props => {
       name: ProductRims.name,
       price: parseFloat(ProductRims.price).toFixed(2)
     }
-  ]
+  ];
 
-  let subtotal = 0
+  let subtotal = 0;
   data.map(item => {
     if (!!item.price) {
-      subtotal += parseFloat(item.price)
+      subtotal += parseFloat(item.price);
     }
-  })
+  });
   if (props.page === "summary") {
     ProductAccessories.selectedAccessories.map(item => {
-      subtotal += parseFloat(item.price)
-    })
+      subtotal += parseFloat(item.price);
+    });
   }
 
-  const misc = 0
-  const gst = (subtotal + misc) * 0.07
-  const total = subtotal + misc + gst
+  const misc = 0;
+  const gst = (subtotal + misc) * 0.07;
+  const total = subtotal + misc + gst;
   const allFees = useRef({
     subtotal: subtotal,
     misc: misc,
     gst: gst,
-    total: total,
-  })
+    total: total
+  });
 
   useEffect(() => {
     if (!!props.updateProductTotal) {
-      props.updateProductTotal(allFees)
+      props.updateProductTotal(allFees);
     }
-  }, [allFees])
+  }, [allFees]);
 
-  const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  // const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   const subtotalData = [
     {
@@ -95,57 +96,80 @@ const SummaryTable = props => {
       name: "GST",
       amount: gst.toFixed(2)
     }
-  ]
+  ];
 
-  return(
+  return (
     <>
       <Card className={`rounded-0 ${props.page === "summary" && "border-0"}`}>
-        {props.page === "accessories" ?
-          <Card.Header className="py-1 px-3 rounded-0" style={{backgroundColor:"#4B6674"}}>
-            <p style={{fontWeight:600, color:"#ffffff"}}>TOTAL (SGD)</p>
-          </Card.Header> :
-          <Card.Header className="py-3 px-0 rounded-0 d-flex" style={{backgroundColor:"transparent"}}>
-            <p style={{fontWeight:600, color:"#4b6674", margin:0, display:"inline-block"}}>ORDER SUMMARY OF YOUR CUSTOMISED CAR</p>
-            { props.page === "summary" &&
-              <p style={{display:"inline-block", marginLeft:"auto"}}>
-                <a href={window.location.pathname} style={{border:"1px solid", padding:"0 0.5rem"}}>EDIT</a>
-              </p>
-            }
+        {props.page === "accessories" ? (
+          <Card.Header
+            className="py-1 px-3 rounded-0"
+            style={{ backgroundColor: "#4B6674" }}
+          >
+            <p style={{ fontWeight: 600, color: "#ffffff" }}>TOTAL (SGD)</p>
           </Card.Header>
-        }
+        ) : (
+          <Card.Header
+            className="py-3 px-0 rounded-0 d-flex"
+            style={{ backgroundColor: "transparent" }}
+          >
+            <p
+              style={{
+                fontWeight: 600,
+                color: "#4b6674",
+                margin: 0,
+                display: "inline-block"
+              }}
+            >
+              ORDER SUMMARY OF YOUR CUSTOMISED CAR
+            </p>
+            {props.page === "summary" && (
+              <p style={{ display: "inline-block", marginLeft: "auto" }}>
+                <a
+                  href={window.location.pathname}
+                  style={{ border: "1px solid", padding: "0 0.5rem" }}
+                >
+                  EDIT
+                </a>
+              </p>
+            )}
+          </Card.Header>
+        )}
         <ListGroup variant="flush">
           <ListGroup.Item className="configure-summary-options p-2">
-            { data.map(( item, key ) => (
+            {data.map((item, key) => (
               <AccessoriesCartItem
-                key={ key }
-                page={ props.page }
-                number={ item.number }
-                image={ item.image }
-                title={ item.title }
-                name={ item.name }
-                price={ item.price }
+                key={key}
+                page={props.page}
+                number={item.number}
+                image={item.image}
+                title={item.title}
+                name={item.name}
+                price={item.price}
               />
             ))}
-            { props.page === "summary" &&
-              ProductAccessories.selectedAccessories.map(( item, key ) => (
+            {props.page === "summary" &&
+              ProductAccessories.selectedAccessories.map((item, key) => (
                 <AccessoriesCartItem
-                  key={ key }
-                  page={ props.page }
-                  number={ key + 6 < 10 ? `0${key + 6}` : `${key + 6}`}
-                  image={ item.image }
+                  key={key}
+                  page={props.page}
+                  number={key + 6 < 10 ? `0${key + 6}` : `${key + 6}`}
+                  image={item.image}
                   title="ACCESSORY"
-                  name={ item.name }
-                  price={ parseFloat(item.price).toFixed(2) }
+                  name={item.name}
+                  price={parseFloat(item.price).toFixed(2)}
                 />
-            ))}
+              ))}
           </ListGroup.Item>
           <ListGroup.Item className="configure-summary-subtotal p-2">
-            { subtotalData.map(( item, key ) => (
-              <div key={ key } className="d-flex flex-row align-items-center">
+            {subtotalData.map((item, key) => (
+              <div key={key} className="d-flex flex-row align-items-center">
                 <div className="col-1 p-0 mr-1"></div>
                 <div className="col-2 p-0 mr-1"></div>
                 <div className="col-5 pr-3 mr-1 text-right">
-                  <p style={{fontWeight:600, color:"#4B6674"}}>{item.name}</p>
+                  <p style={{ fontWeight: 600, color: "#4B6674" }}>
+                    {item.name}
+                  </p>
                 </div>
                 <div className="col-4 p-0 mr-1">
                   <p>${formatPrice(item.amount)}</p>
@@ -158,11 +182,10 @@ const SummaryTable = props => {
               <div className="col-1 p-0 mr-1"></div>
               <div className="col-2 p-0 mr-1"></div>
               <div className="col-5 pr-3 mr-1 text-right">
-                <p style={{fontWeight:700, color:"#4B6674"}}>
-                  { props.page === "accessories"
+                <p style={{ fontWeight: 700, color: "#4B6674" }}>
+                  {props.page === "accessories"
                     ? "TOTAL"
-                    : "TOTAL CAR PRICE (SGD)"
-                  }
+                    : "TOTAL CAR PRICE (SGD)"}
                 </p>
               </div>
               <div className="col-4 p-0 mr-1">
@@ -173,7 +196,7 @@ const SummaryTable = props => {
         </ListGroup>
       </Card>
     </>
-  )
-}
+  );
+};
 
-export default SummaryTable
+export default SummaryTable;

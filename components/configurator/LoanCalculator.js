@@ -26,7 +26,10 @@ const LoanCalculator = props => {
   const { loanTerm, loanAmount, interestRate, downPayment, deposit } = state;
 
   const onChange = e => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if (typeof value === "string") {
+      value = parseFloat(value);
+    }
     dispatch({ field: name, value: value });
 
     if (name === "loanAmount") {

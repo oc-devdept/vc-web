@@ -140,10 +140,7 @@ class Accessories extends Component {
                                         color: "#4B6674"
                                       }}
                                     >
-                                      $
-                                      {formatPrice(
-                                        item.productOption.price.toFixed(2)
-                                      )}
+                                      {formatPrice(item.productOption.price)}
                                     </p>
                                   </div>
                                   <div className="col-1">

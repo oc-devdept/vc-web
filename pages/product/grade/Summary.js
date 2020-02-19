@@ -79,7 +79,7 @@ const Summary = props => {
                   </p>
                   {!!item.price ? (
                     <p style={{ color: "#ffffff" }}>
-                      ${formatPrice(parseFloat(item.price).toFixed(2))}
+                      {formatPrice(item.price)}
                     </p>
                   ) : (
                     <p style={{ color: "#ffffff" }}>-</p>

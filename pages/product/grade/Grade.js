@@ -74,8 +74,8 @@ class Grade extends Component {
                   onClick={this.handleOptionChange}
                 >
                   {item.name}
-                  <br />$
-                  {formatPrice(parseFloat(item.selling_Price).toFixed(2))}
+                  <br />
+                  {formatPrice(item.selling_Price)}
                 </li>
               ))}
           </ul>

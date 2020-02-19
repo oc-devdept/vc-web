@@ -172,7 +172,8 @@ const SummaryTable = props => {
                   </p>
                 </div>
                 <div className="col-4 p-0 mr-1">
-                  <p>${formatPrice(item.amount)}</p>
+                  {console.log(item)}
+                  <p>{formatPrice(item.amount)}</p>
                 </div>
               </div>
             ))}
@@ -189,7 +190,7 @@ const SummaryTable = props => {
                 </p>
               </div>
               <div className="col-4 p-0 mr-1">
-                <p>${formatPrice(total.toFixed(2))}</p>
+                <p>{formatPrice(total)}</p>
               </div>
             </div>
           </ListGroup.Item>

@@ -82,7 +82,7 @@ class Interior extends Component {
                   </span>
                   <br />
                   <span id={item.id} style={{ color: "#4B6674" }}>
-                    ${formatPrice(parseFloat(item.price).toFixed(2))}
+                    {formatPrice(item.price)}
                   </span>
                 </li>
               ))}

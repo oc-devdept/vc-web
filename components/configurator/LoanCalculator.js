@@ -130,7 +130,7 @@ const LoanCalculator = props => {
           <p>TOTAL CAR PRICE</p>
         </div>
         <div className="field-input col-7">
-          <p>${formatPrice(props.productTotal.total.toFixed(2))}</p>
+          <p>{formatPrice(props.productTotal.total)}</p>
         </div>
       </div>
       <div className="calculator-field row">
@@ -268,7 +268,7 @@ const LoanCalculator = props => {
                 paddingLeft: 0,
                 height: 35
               }}
-              value={!!downPayment ? formatPrice(downPayment.toFixed(2)) : ""}
+              value={!!downPayment ? formatPrice(downPayment) : ""}
               onChange={onChange}
               disabled
             />
@@ -306,7 +306,7 @@ const LoanCalculator = props => {
                 paddingLeft: 0,
                 height: 35
               }}
-              value={formatPrice(deposit.toFixed(2))}
+              value={formatPrice(deposit)}
               onChange={onChange}
               disabled
             />

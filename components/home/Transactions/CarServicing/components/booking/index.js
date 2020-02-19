@@ -28,10 +28,10 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
    
     const reduxProfile = useSelector(state => state.UserState.profile);
-    
+
     // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
     const [Timeslot, setTimeSlot] = useState(["AM","PM"]);
-    const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.customer.baseContact});
+    const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.baseContact});
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);
 
@@ -52,12 +52,8 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
         setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
     }
 
-    const validateService = () => {
-        console.log('should validate service form')
-        createBookService()
-    }
 
-    const createBookService = async () => {
+    const validateService = async () => {
 
         const newBooking = {
             service: 'Maintenance',

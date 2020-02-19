@@ -75,7 +75,9 @@ class Grade extends Component {
                 >
                   {item.name}
                   <br />
-                  {formatPrice(item.selling_Price)}
+                  {/* Pending api call fix to pull integer/float instead of string */}
+                  {/* {formatPrice(item.selling_Price)} */}
+                  {item.selling_Price}
                 </li>
               ))}
           </ul>

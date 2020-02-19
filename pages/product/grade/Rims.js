@@ -24,7 +24,7 @@ class Rims extends Component {
 
   render() {
     const { objects } = this.props.ProductRims.data.fields.Rims;
-    // console.log("rims props: ", this.props)
+    // console.log("rims props: ", this.props);
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8 d-flex flex-column">

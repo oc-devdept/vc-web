@@ -47,8 +47,8 @@ class Product extends Component {
   }
 
   render() {
-    // console.log("props= ", this.props);
     const { ProductState } = this.props;
+
     const steps = [
       {
         name: "Grade",

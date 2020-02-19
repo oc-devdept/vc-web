@@ -1,42 +1,90 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react"
+import DialogRoot from "Components/Dialog/DialogRoot";
 import { formatPrice } from "Components/Helpers/helpers";
-// import { connect } from "react-redux"
 
-// import { selectedProductGrade, getProductGradeData } from "Ducks/product/ProductActions"
+import Booking from 'Components/booking/booking'
+import UserProfile from 'Components/booking/profile'
 
-class Grade extends Component {
-  constructor(props) {
-    super(props);
+import Moment from 'moment'
 
-    this.handleOptionChange = this.handleOptionChange.bind(this);
+
+let InitBookService = {
+  model: '',
+  date: new Date, // schedule date
+  timeslot: '', // AM/PM
+  description: '',
+}
+
+
+let InitUserProfile = {
+  lastName: '',
+  firstName: '',
+  email: '',
+  phone: '',
+}
+
+
+const Grade = ({ProductGrade, selectedProductGrade, getProductGradeData}) => {
+
+  const [Toggle, setToggle] = useState(false);
+  const [Timeslot] = useState(["AM","PM"]);
+  const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
+  const [BookService, setBookService] = useState(InitBookService);
+  const [Profile, setUserProfile] = useState({...InitUserProfile});
+
+ 
+  const _HandleInputProfile = (element, e) => {
+    setUserProfile(Profile => ({ ...Profile, [element]: e }));
+  };
+
+  const _HandleDayChange = (date) => {
+      setDate(() => Moment(date).format('LL'))
+      setBookService(BookService => ({ ...BookService, date: date }));
   }
 
-  handleOptionChange(event) {
-    const { id } = event.target;
-    this.props.selectedProductGrade(id);
-    this.props.getProductGradeData(id);
+  const _HandleInputDate = (element, e) => {
+      setBookService(BookService => ({ ...BookService, [element]: e }));
+  };
+
+  const _setItemTimeSlot = (e) => {
+      setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
   }
 
-  isValidated() {
-    return !!this.props.ProductGrade.id;
+
+  const handleOptionChange = async(event) => {
+    const { id } = event.target
+    selectedProductGrade(id)
+    getProductGradeData(id)
   }
 
-  render() {
-    const { fields } = this.props.ProductGrade.data;
-    // console.log("grade props= ", this.props);
-    return (
+  const isValidated = () => {
+    return !!ProductGrade.id
+  }
+
+  const _RestartToggle = () =>{
+    setToggle(() => !Toggle)
+  }
+
+  // const customerId = useSelector(state => state.UserState.customerId);
+  const {model, date, timeslot, description} = BookService
+  const {lastName, firstName, email, phone} = Profile
+
+  const { fields } = ProductGrade.data;
+
+  return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8 d-flex flex-column">
           <img
-            src={this.props.ProductGrade.images}
+            src={ProductGrade.images}
             className="configCoverImg align-self-center"
           />
           <h3 className="text-uppercase text-center m-2">
-            {this.props.ProductGrade.name}
+            {ProductGrade.name}
           </h3>
-          <p>{this.props.ProductGrade.description}</p>
+          <p>{ProductGrade.description}</p>
           <button
             className="d-flex align-items-center px-2 py-1"
+            onClick={_RestartToggle}
             style={{
               border: "1px solid #4b6674",
               backgroundColor: "transparent",
@@ -47,9 +95,7 @@ class Grade extends Component {
               className="fas fa-car mr-1"
               style={{ color: "#4b6674", fontSize: 24 }}
             />
-            <a href="/contact-us">
               <p style={{ fontSize: 12, color: "#4b6674" }}>BOOK TEST DRIVE</p>
-            </a>
           </button>
         </div>
         <div className="configure-opt col-lg-4">
@@ -62,7 +108,7 @@ class Grade extends Component {
                   key={id}
                   id={item.id}
                   style={
-                    item.id == this.props.ProductGrade.id
+                    item.id == ProductGrade.id
                       ? {
                           border: "2px solid #F29D30",
                           color: "#F29D30",
@@ -71,7 +117,7 @@ class Grade extends Component {
                         }
                       : { border: "1px solid #DEE2E6" }
                   }
-                  onClick={this.handleOptionChange}
+                  onClick={handleOptionChange}
                 >
                   {item.name}
                   <br />$
@@ -80,9 +126,41 @@ class Grade extends Component {
               ))}
           </ul>
         </div>
+     
+        {Toggle && 
+          <DialogRoot
+              // title={"Hello world"}
+              size="md"
+              show={Toggle}
+              handleHide={_RestartToggle}
+          >
+
+              <UserProfile
+                  _HandleInputProfile={_HandleInputProfile}
+                  lastName={lastName}
+                  firstName={firstName}
+                  email={email}
+                  phone={phone}
+              />
+
+
+              <Booking
+                  _HandleDayChange={_HandleDayChange}
+                  _HandleInputDate={_HandleInputDate}
+                  _setItemTimeSlot={_setItemTimeSlot}
+                  Timeslot={Timeslot}
+                  currentDate={currentDate}
+                  model={model}
+                  timeslot={timeslot}
+                  description={description}
+              />
+              
+          </DialogRoot>
+        }
+     
       </div>
     );
-  }
+  
 }
 
 // const mapStateToProps = state => {
@@ -98,4 +176,8 @@ class Grade extends Component {
 //   }
 // )(Grade)
 
-export default Grade;
+export default Grade
+
+// import DialogRoot from "Components/Dialog/DialogRoot";
+
+     

@@ -24,6 +24,8 @@ export default (state = INIT_STATE, action) => {
     case types.LOGIN_ACCOUNT_SUCCESS:
       const {id, ttl, userId} = action.payload.data
       api.AuthorizationHeader(id)
+      NotificationManager.success("You've successfully logged in");
+
       return {
         ...state,
         userId : userId,
@@ -51,14 +53,13 @@ export default (state = INIT_STATE, action) => {
         
     case types.RETRIEVE_USER_PROFILE_SUCCESS:
 
-      NotificationManager.success("You've successfully logged in");
-
       return {
         ...state,
         profile: action.payload,
         customerId: action.payload.customer.customerId,
         loading: false
       }
+
     case types.RETRIEVE_USER_PROFILE_FAILURE:
       return {
         ...state,
@@ -67,7 +68,8 @@ export default (state = INIT_STATE, action) => {
 
     case types.UPDATE_USER_PROFILE_SUCCESS:
       let profile = JSON.parse(JSON.stringify(state.profile)); 
-      profile.customer = action.payload
+
+      profile = action.payload
       NotificationManager.success("Your profile has been successfully updated");
       return {
         ...state,
@@ -75,6 +77,7 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.UPDATE_USER_PROFILE_FAILURE:
+
       return {
         ...state,
         // ...INIT_STATE

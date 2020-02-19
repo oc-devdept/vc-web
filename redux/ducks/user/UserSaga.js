@@ -64,7 +64,7 @@ function* userProfile(e) {
     const data = yield call(userProfileRequest, e.payload)
     yield put(actions.retrieveUserProfileSuccess(data))
   } catch (error) {
-    console.log('userProfile Error')
+    console.log('userProfile Error', error)
     yield put(actions.retrieveUserProfileFailure(error))
   }
 }

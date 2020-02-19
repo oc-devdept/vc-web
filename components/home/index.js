@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import Menu from './Menu/Menu'
 import Breadcrumb from 'Components/Common/Breadcrumb';
 import {Transactions, Account} from './Menu/Menu'
+
 // Transactions
 // import User from './Transactions/Bookings/index'
 // import Rent from './Transactions/Rent/index'

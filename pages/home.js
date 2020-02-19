@@ -31,12 +31,12 @@ class Index extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="d-flex flex-column" style={{height:'100vh'}}>
                 <Navbar />
-                <div className="d-flex flex-fill" style={{height:'100vh'}}>
+                <div className="d-flex flex-fill">
                     {this.props.accessToken? <Home/> : <div>Loading ...</div>}
                 </div>
-            </React.Fragment>   
+            </div>   
         )
     }
 }

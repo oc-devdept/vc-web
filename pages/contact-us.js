@@ -1,8 +1,47 @@
-import React from "react";
-// Page Layout
+import React, {useState} from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
+import { NotificationManager } from "react-notifications";
 
-function ContactUs(props) {
+import api from 'Api'
+
+
+
+
+const InitForm = {
+  name : '',
+  email: '',
+  phone: '',
+  message: ''
+}
+
+function ContactUs({}) {
+
+  const [Form, setForm] = useState(InitForm);
+  const {name, email, phone, message} = Form
+
+
+  const onChangeForm = (element, value) =>{
+    setForm(Form => ({ ...Form, [element]: value }));
+  }
+
+  const onSubmit = async(event) =>{
+    event.preventDefault();
+
+    try {
+      console.log('Send to server! ', Form)
+      await api.post(`/contactus/createContactForm`, {data: Form});
+      // success
+      setForm(() => InitForm);
+      NotificationManager.success('Contact form sent successfully');                
+
+    } catch (e){
+      // failed
+      NotificationManager.error('Network error, please try again');                
+
+    }
+    
+  }
+
   return (
     <DefaultLayout crumbs="Contact Us">
       <section className="contact-area pb-60">
@@ -90,6 +129,8 @@ function ContactUs(props) {
                           id="name"
                           className="form-control"
                           required={true}
+                          value= {name}
+                          onChange={(e) => onChangeForm('name', e.target.value)}
                           data-error="Please enter your name"
                           placeholder="Enter your name"
                         />
@@ -106,6 +147,8 @@ function ContactUs(props) {
                           type="email"
                           name="email"
                           id="email"
+                          value= {email}
+                          onChange={(e) => onChangeForm('email', e.target.value)}
                           className="form-control"
                           required={true}
                           data-error="Please enter your email"
@@ -124,6 +167,8 @@ function ContactUs(props) {
                           type="text"
                           name="phone_number"
                           id="phone_number"
+                          value= {phone}
+                          onChange={(e) => onChangeForm('phone', e.target.value)}
                           className="form-control"
                           required={true}
                           data-error="Please enter your phone number"
@@ -143,7 +188,9 @@ function ContactUs(props) {
                           id="message"
                           cols="30"
                           rows="8"
+                          value= {message}
                           required={true}
+                          onChange={(e) => onChangeForm('message', e.target.value)}
                           data-error="Please enter your message"
                           className="form-control"
                           placeholder="Enter your Message"
@@ -153,7 +200,7 @@ function ContactUs(props) {
                     </div>
 
                     <div className="col-lg-12 col-md-12">
-                      <button type="submit" className="btn btn-primary">
+                      <button onClick={onSubmit} className="btn btn-primary">
                         Send Message
                       </button>
                       <div
@@ -161,6 +208,7 @@ function ContactUs(props) {
                         className="h3 text-center hidden"
                       ></div>
                       <div className="clearfix"></div>
+
                     </div>
                   </div>
                 </form>

@@ -61,7 +61,6 @@ function* userLogout(e) {
 
 function* userProfile(e) {
   try {
-    console.log('userProfileRequest', e)
     const data = yield call(userProfileRequest, e.payload)
     yield put(actions.retrieveUserProfileSuccess(data))
   } catch (error) {

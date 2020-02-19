@@ -14,7 +14,7 @@ const Index = ({Profile, _SaveUserDetails}) => {
 
     if(!Profile){return (<div>Loading ...</div>)}
 
-    const {lastName, firstName, email, phone, address} = Profile.customer.baseContact
+    const {lastName, firstName, email, phone, address} = Profile.baseContact
     const [UserProfile, setUserProfile] = useState({...InitUserProfile, lastName, firstName, email, phone, address});
 
     const _HandleInput = (element, e) => {

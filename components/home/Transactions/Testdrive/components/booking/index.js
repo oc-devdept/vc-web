@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 
-import Booking from './components/booking'
+import Booking from 'Components/booking'
 import UserProfile from './components/profile'
 import Moment from 'moment'
 import { NotificationManager } from "react-notifications";

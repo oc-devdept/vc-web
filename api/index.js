@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: process.env.NODE_ENV === "production"
     ? "http://157.230.248.96:3001/api"
-    : "http://157.230.248.96:3001/api"
+    : "http://localhost:3001/api"
   });
 
 // api.interceptors.request.use(config => {

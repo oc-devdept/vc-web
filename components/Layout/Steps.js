@@ -67,14 +67,14 @@ class Steps extends Component {
           <div className="d-flex flex-row">
             {this.state.list.slice(0, 3).map((l, key) => (
               <div className="step text-center m-2 p-2" key={key}>
-                <h3 className="text-center">
+                <h3 className="text-center mb-3">
                   <span className="stepArrow font-weight-bold font-italic">
                     {l.id}
                   </span>{" "}
                   {l.step}{" "}
                   <span className="float-right stepArrow"> {l.arrow} </span>{" "}
                 </h3>
-                <img className="stepImgs" src={l.image}></img>
+                <img className="stepImgs mb-3" src={l.image}></img>
                 <p className="text-justify">{l.description}</p>
               </div>
             ))}
@@ -82,14 +82,14 @@ class Steps extends Component {
           <div className="reverseStepRow">
             {this.state.list.slice(3, 6).map((l, key) => (
               <div className="step text-center m-2 p-2" key={key}>
-                <h3 className="text-center">
+                <h3 className="text-center mb-3">
                   <span className="stepArrow font-weight-bold font-italic">
                     {l.id}
                   </span>{" "}
                   {l.step}{" "}
                   <span className="float-left stepArrow"> {l.arrow} </span>{" "}
                 </h3>
-                <img className="stepImgs" src={l.image}></img>
+                <img className="stepImgs mb-3" src={l.image}></img>
                 <p className="text-justify">{l.description}</p>
               </div>
             ))}

@@ -189,3 +189,13 @@ export const listOptions = {
   rowsPerPageOptions: [15, 30, 60, 100],
   textLabels: { body: { noMatch: "No data to display" } }
 };
+
+/**
+ * Formats numerics into price strings (e.g. $XX,XXX,XXX.XX)
+ *
+ * Takes in integer or float
+ */
+export function formatPrice(price) {
+  var formattedPrice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return formattedPrice;
+}

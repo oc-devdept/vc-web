@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 
-import Booking from 'Components/booking'
-import UserProfile from './components/profile'
+import Booking from 'Components/booking/booking'
+import UserProfile from 'Components/booking/profile'
 import Moment from 'moment'
 import { NotificationManager } from "react-notifications";
 
@@ -32,6 +32,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
     const [Timeslot] = useState(["AM","PM"]);
     const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.customer.baseContact});
+
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);
 
@@ -54,7 +55,6 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
 
     const validateService = () => {
-        console.log('should validate test drive form')
         createBookService()
     }
 

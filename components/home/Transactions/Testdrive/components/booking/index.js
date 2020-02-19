@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 
 import Booking from 'Components/booking/booking'
 import UserProfile from 'Components/booking/profile'
-import Moment from 'moment'
 import { NotificationManager } from "react-notifications";
+import Moment from 'moment'
 
 import api from "Api";
 
@@ -26,15 +26,14 @@ let InitUserProfile = {
 
 const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
-   
     const reduxProfile = useSelector(state => state.UserState.profile);
     
-    // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
     const [Timeslot] = useState(["AM","PM"]);
-    const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.customer.baseContact});
+    const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.baseContact});
 
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);
+
 
     const _HandleInputProfile = (element, e) => {
         setUserProfile(Profile => ({ ...Profile, [element]: e }));
@@ -45,7 +44,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
         setBookService(BookService => ({ ...BookService, date: date }));
     }
 
-    const _HandleInputDate = (element, e) => {
+    const _HandleInputForm = (element, e) => {
         setBookService(BookService => ({ ...BookService, [element]: e }));
     };
 
@@ -54,11 +53,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     }
 
 
-    const validateService = () => {
-        createBookService()
-    }
-
-    const createBookService = async () => {
+    const validateService = async () => {
 
         const newBooking = {
             service: 'Test Drive',
@@ -89,7 +84,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
     const {lastName, firstName, email, phone} = Profile
     const {model, date, timeslot, description} = BookService
-
+    
     return (
 
         <div className="d-flex flex-fill flex-column">   
@@ -103,6 +98,8 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
             </div>
 
             <div className="d-flex flex-column"  style={{margin: 20, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
+              
+
                 <UserProfile
                     _HandleInputProfile={_HandleInputProfile}
                     lastName={lastName}
@@ -113,7 +110,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
                 <Booking
                     _HandleDayChange={_HandleDayChange}
-                    _HandleInputDate={_HandleInputDate}
+                    _HandleInputForm={_HandleInputForm}
                     _setItemTimeSlot={_setItemTimeSlot}
                     Timeslot={Timeslot}
                     currentDate={currentDate}

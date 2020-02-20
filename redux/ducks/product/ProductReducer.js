@@ -54,7 +54,7 @@ const INIT_STATE = {
     loanAmount: 0,
     interestRate: 0,
     downPayment: 0,
-    deposit: 5000,
+    deposit: 500,
     monthlyInstallment: 0
   },
   featuredCars: {
@@ -339,8 +339,8 @@ export default (state = INIT_STATE, action) => {
         ...state,
         LoanCalculator: {
           loanTerm: loanTerm,
-          loanAmount: parseFloat(loanAmount),
-          interestRate: parseFloat(interestRate),
+          loanAmount: loanAmount,
+          interestRate: interestRate,
           downPayment: downPayment,
           deposit: deposit,
           monthlyInstallment: monthlyInstallment

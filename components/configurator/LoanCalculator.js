@@ -9,9 +9,10 @@ const LoanCalculator = props => {
     loanTerm: 24,
     loanAmount: "",
     interestRate: "",
+    totalInterest: "",
     downPayment: "",
-    deposit: 5000,
-    monthlyInstallment: 0
+    deposit: 500,
+    monthlyInstallment: ""
   };
 
   function reducer(state, { field, value }) {
@@ -23,21 +24,21 @@ const LoanCalculator = props => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { loanTerm, loanAmount, interestRate, downPayment, deposit } = state;
+  const {
+    loanTerm,
+    loanAmount,
+    interestRate,
+    totalInterest,
+    downPayment,
+    deposit
+  } = state;
 
   const onChange = e => {
     let { name, value } = e.target;
-    if (typeof value === "string") {
+    if (typeof value === "string" && !!value) {
       value = parseFloat(value);
     }
     dispatch({ field: name, value: value });
-
-    if (name === "loanAmount") {
-      const loanAmount = props.productTotal.total - parseFloat(value);
-      !!loanAmount
-        ? dispatch({ field: "downPayment", value: loanAmount })
-        : dispatch({ field: "downPayment", value: "" });
-    }
   };
 
   const onSliderChange = (e, value) => {
@@ -45,12 +46,12 @@ const LoanCalculator = props => {
   };
 
   const handleCalculationClick = () => {
+    const downPayment = props.productTotal.total - loanAmount;
     const totalInterest =
-      (parseFloat(loanAmount) * (parseFloat(interestRate) / 100 + 1) -
-        parseFloat(loanAmount)) *
-      (loanTerm / 12);
-    const monthlyInstallment =
-      (totalInterest + parseFloat(loanAmount)) / loanTerm;
+      (loanAmount * (interestRate / 100 + 1) - loanAmount) * (loanTerm / 12);
+    const monthlyInstallment = (totalInterest + loanAmount) / loanTerm;
+    dispatch({ field: "downPayment", value: downPayment });
+    dispatch({ field: "totalInterest", value: totalInterest });
     dispatch({ field: "monthlyInstallment", value: monthlyInstallment });
   };
 
@@ -116,20 +117,18 @@ const LoanCalculator = props => {
     }
   })(Slider);
 
-  // formatting of string to display commas
-  // const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
+  // Updates redux state on render if successful calculation has been made
   useEffect(() => {
     if (!!state.monthlyInstallment) {
       props.updateLoanCalculator(state);
     }
   }, [state]);
 
-  // console.log('calculator state= ', state)
+  // console.log("calculator state= ", state);
   return (
     <div className="calculator p-3">
       <div className="calculator-field row">
-        <div className="field-name col-5">
+        <div className="field-name d-flex align-items-center col-5">
           <p>TOTAL CAR PRICE</p>
         </div>
         <div className="field-input col-7">
@@ -137,8 +136,12 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-field row">
-        <div className="field-name col-5">
-          <p>LOAN TERM (MONTHS)</p>
+        <div className="field-name d-flex align-items-center col-5">
+          <p style={{ lineHeight: 1.2 }}>
+            LOAN TERM
+            <br />
+            <span style={{ fontSize: 10 }}>(MONTHS)</span>
+          </p>
         </div>
         <div className="field-input col-7">
           {/* CAN REVISIT WHEN THERE IS TIME */}
@@ -164,7 +167,7 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-field row">
-        <div className="field-name col-5">
+        <div className="field-name d-flex align-items-center col-5">
           <p>LOAN AMOUNT</p>
         </div>
         <div className="field-input col-7">
@@ -203,8 +206,12 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-field row">
-        <div className="field-name col-5">
-          <p>INTEREST RATE</p>
+        <div className="field-name d-flex align-items-center col-5">
+          <p style={{ lineHeight: 1.2 }}>
+            INTEREST RATE
+            <br />
+            <span style={{ fontSize: 10 }}>(PER ANNUM)</span>
+          </p>
         </div>
         <div className="field-input col-7">
           <InputGroup>
@@ -240,8 +247,9 @@ const LoanCalculator = props => {
           </InputGroup>
         </div>
       </div>
+
       <div className="calculator-field row">
-        <div className="field-name col-5">
+        <div className="field-name d-flex align-items-center col-5">
           <p>DOWN PAYMENT</p>
         </div>
         <div className="field-input col-7">
@@ -271,7 +279,7 @@ const LoanCalculator = props => {
                 paddingLeft: 0,
                 height: 35
               }}
-              value={!!downPayment ? formatPrice(downPayment) : ""}
+              value={!!downPayment ? formatPrice(downPayment).slice(1) : ""}
               onChange={onChange}
               disabled
             />
@@ -279,7 +287,45 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-field row">
-        <div className="field-name col-5">
+        <div className="field-name d-flex align-items-center col-5">
+          <p>TOTAL INTEREST</p>
+        </div>
+        <div className="field-input col-7">
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text
+                style={{
+                  border: "1px solid #4B6674",
+                  borderRight: 0,
+                  borderRadius: 0,
+                  backgroundColor: "#e5e5e5",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  height: 35
+                }}
+              >
+                $
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              name="interestAmount"
+              aria-label="Interest Amount"
+              style={{
+                border: "1px solid #4B6674",
+                borderLeft: 0,
+                backgroundColor: "#e5e5e5",
+                paddingLeft: 0,
+                height: 35
+              }}
+              value={!!totalInterest ? formatPrice(totalInterest).slice(1) : ""}
+              onChange={onChange}
+              disabled
+            />
+          </InputGroup>
+        </div>
+      </div>
+      <div className="calculator-field row">
+        <div className="field-name d-flex align-items-center  col-5">
           <p>DEPOSIT</p>
         </div>
         <div className="field-input col-7">
@@ -309,7 +355,7 @@ const LoanCalculator = props => {
                 paddingLeft: 0,
                 height: 35
               }}
-              value={formatPrice(deposit)}
+              value={formatPrice(deposit).slice(1)}
               onChange={onChange}
               disabled
             />

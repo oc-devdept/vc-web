@@ -46,11 +46,9 @@ class Accessories extends Component {
 
   render() {
     // console.log("state= ", this.state)
-    // console.log("Accessories props: ", this.props)
+    console.log("Accessories props: ", this.props);
 
     const { ProductAccessories } = this.props.ProductState;
-
-    // const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
     return (
       <div className="configure-sect row">
@@ -140,10 +138,7 @@ class Accessories extends Component {
                                         color: "#4B6674"
                                       }}
                                     >
-                                      $
-                                      {formatPrice(
-                                        item.productOption.price.toFixed(2)
-                                      )}
+                                      {formatPrice(item.productOption.price)}
                                     </p>
                                   </div>
                                   <div className="col-1">

@@ -152,8 +152,9 @@ const Grade = ({ProductGrade, selectedProductGrade, getProductGradeData}) => {
                   onClick={handleOptionChange}
                 >
                   {item.name}
-                  <br />$
-                  {formatPrice(parseFloat(item.selling_Price).toFixed(2))}
+                  <br />
+                  {/* Pending api call fix to pull integer/float instead of string */}
+                  {formatPrice(item.selling_Price)}
                 </li>
               ))}
           </ul>

@@ -28,40 +28,40 @@ const SummaryTable = props => {
       image: ProductGrade.images[0],
       title: "GRADE",
       name: ProductGrade.name,
-      price: parseFloat(ProductGrade.price).toFixed(2)
+      price: ProductGrade.price
     },
     {
       number: "03",
       image: ProductExterior.images[0],
       title: "EXTERIOR",
       name: ProductExterior.name,
-      price: parseFloat(ProductExterior.price).toFixed(2)
+      price: ProductExterior.price
     },
     {
       number: "04",
       image: ProductInterior.images[0],
       title: "INTERIOR",
       name: ProductInterior.name,
-      price: parseFloat(ProductInterior.price).toFixed(2)
+      price: ProductInterior.price
     },
     {
       number: "05",
       image: ProductRims.images[0],
       title: "RIMS",
       name: ProductRims.name,
-      price: parseFloat(ProductRims.price).toFixed(2)
+      price: ProductRims.price
     }
   ];
 
   let subtotal = 0;
   data.map(item => {
     if (!!item.price) {
-      subtotal += parseFloat(item.price);
+      subtotal += item.price;
     }
   });
   if (props.page === "summary") {
     ProductAccessories.selectedAccessories.map(item => {
-      subtotal += parseFloat(item.price);
+      subtotal += item.price;
     });
   }
 
@@ -81,20 +81,18 @@ const SummaryTable = props => {
     }
   }, [allFees]);
 
-  // const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
   const subtotalData = [
     {
       name: "SUBTOTAL",
-      amount: subtotal.toFixed(2)
+      amount: subtotal
     },
     {
       name: "MISC. FEES",
-      amount: misc.toFixed(2)
+      amount: misc
     },
     {
       name: "GST",
-      amount: gst.toFixed(2)
+      amount: gst
     }
   ];
 
@@ -157,7 +155,7 @@ const SummaryTable = props => {
                   image={item.image}
                   title="ACCESSORY"
                   name={item.name}
-                  price={parseFloat(item.price).toFixed(2)}
+                  price={item.price}
                 />
               ))}
           </ListGroup.Item>
@@ -172,7 +170,7 @@ const SummaryTable = props => {
                   </p>
                 </div>
                 <div className="col-4 p-0 mr-1">
-                  <p>${formatPrice(item.amount)}</p>
+                  <p>{formatPrice(item.amount)}</p>
                 </div>
               </div>
             ))}
@@ -189,7 +187,7 @@ const SummaryTable = props => {
                 </p>
               </div>
               <div className="col-4 p-0 mr-1">
-                <p>${formatPrice(total.toFixed(2))}</p>
+                <p>{formatPrice(total)}</p>
               </div>
             </div>
           </ListGroup.Item>

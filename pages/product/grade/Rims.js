@@ -24,7 +24,7 @@ class Rims extends Component {
 
   render() {
     const { objects } = this.props.ProductRims.data.fields.Rims;
-    // console.log("rims props: ", this.props)
+    // console.log("rims props: ", this.props);
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8 d-flex flex-column">
@@ -83,7 +83,7 @@ class Rims extends Component {
                   </span>
                   <br />
                   <span id={item.id} style={{ color: "#4B6674" }}>
-                    ${formatPrice(parseFloat(item.price).toFixed(2))}
+                    {formatPrice(item.price)}
                   </span>
                 </li>
               ))}

@@ -2,8 +2,6 @@ import React from "react";
 import { formatPrice } from "Components/Helpers/helpers";
 
 const AccessoriesCartItem = props => {
-  // const formatPrice = price => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
   return (
     <div className="d-flex flex-row align-items-center mb-2">
       <div className="col-1 p-0 mr-1">
@@ -31,7 +29,7 @@ const AccessoriesCartItem = props => {
       </div>
       <div className="col-4 p-0 mr-1">
         {props.price > 0 && (
-          <p style={{ color: "#4B6674" }}>${formatPrice(props.price)}</p>
+          <p style={{ color: "#4B6674" }}>{formatPrice(props.price)}</p>
         )}
         {props.price === 0 && <p style={{ color: "#4B6674" }}>$0.00</p>}
       </div>

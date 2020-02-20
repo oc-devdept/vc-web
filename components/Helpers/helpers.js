@@ -196,7 +196,14 @@ export const listOptions = {
  * Takes in integer or float
  */
 export function formatPrice(price) {
-  var decimal = price.toFixed(2);
-  var formattedPrice = decimal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  let toFormat;
+  if (price % 1 != 0) {
+    toFormat = price.toFixed(2);
+  } else {
+    toFormat = price;
+  }
+  var formattedPrice = toFormat
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return `$${formattedPrice}`;
 }

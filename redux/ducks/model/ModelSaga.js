@@ -8,8 +8,8 @@ import api from "Api";
 // REQUESTS
 //=========================
 const getModelDataRequest = async payload => {
-  const data = await api.get(`/categories/${payload.payload}`);
-  return data;
+  const result = await api.get(`/categories/${payload.payload}`);
+  return result.data;
 };
 
 //=========================

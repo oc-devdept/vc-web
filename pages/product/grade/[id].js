@@ -1,14 +1,14 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import Default from "Components/Layout/PageTemplates/Default"
-import StepZilla from "react-stepzilla"
-import Grade from "./Grade"
-import Exterior from "./Exterior"
-import Interior from "./Interior"
-import Rims from "./Rims"
-import Accessories from "./Accessories"
-import Summary from './Summary'
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
+import StepZilla from "react-stepzilla";
+import Grade from "./Grade";
+import Exterior from "./Exterior";
+import Interior from "./Interior";
+import Rims from "./Rims";
+import Accessories from "./Accessories";
+import Summary from "./Summary";
 
 import {
   getProductGrades,
@@ -21,15 +21,15 @@ import {
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
-  printConfigurator,
+  printConfigurator
 } from "Ducks/product/ProductActions";
 
 class Product extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {showSteps:true}
-    this.onStepChange = this.onStepChange.bind(this)
+    this.state = { showSteps: true };
+    this.onStepChange = this.onStepChange.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +43,7 @@ class Product extends Component {
   }
 
   onStepChange(step) {
-    step === 5 && this.setState({showSteps:false})
+    step === 5 && this.setState({ showSteps: false });
   }
 
   render() {
@@ -97,9 +97,9 @@ class Product extends Component {
         )
       },
       {
-        name: "Summary", 
+        name: "Summary",
         component: (
-          <Summary 
+          <Summary
             ProductState={ProductState}
             updateProductTotal={this.props.updateProductTotal}
             updateLoanCalculator={this.props.updateLoanCalculator}
@@ -110,24 +110,26 @@ class Product extends Component {
     ];
 
     return (
-      <Default>
+      <DefaultLayout crumbs="Car Configuration">
         <section className="configure-area pb-60">
           <div className="container">
-            <div>
-              {/* need to validate steps to prevent user from skipping steps */}
-              <div className="step-process">
-                <StepZilla 
-                  steps={steps} 
-                  nextTextOnFinalActionStep="Summary" 
-                  prevBtnOnLastStep={false}
-                  onStepChange={this.onStepChange}
-                  showSteps={this.state.showSteps}
-                />
+            <div className="row justify-content-center">
+              <div className="col-md-12">
+                {/* need to validate steps to prevent user from skipping steps */}
+                <div className="step-process">
+                  <StepZilla
+                    steps={steps}
+                    nextTextOnFinalActionStep="Summary"
+                    prevBtnOnLastStep={false}
+                    onStepChange={this.onStepChange}
+                    showSteps={this.state.showSteps}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </section>
-      </Default>
+      </DefaultLayout>
     );
   }
 }
@@ -153,5 +155,5 @@ export default connect(mapStateToProps, {
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
-  printConfigurator,
+  printConfigurator
 })(Product);

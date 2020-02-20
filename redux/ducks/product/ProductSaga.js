@@ -130,8 +130,8 @@ const fetchConfiguratorPDF = async dirName => {
 };
 
 const getFeaturedCarsRequest = async () => {
-  const data = await api.get(`/products/getAllFeaturedCars`);
-  return data;
+  const result = await api.get(`/products/getAllFeaturedCars`);
+  return result.data.fields;
 };
 
 //=========================

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Link from "next/link";
+import RctSectionLoader from "Components/RctSectionLoader";
+import { formatPrice } from "Components/Helpers/helpers";
+
+// Carousel
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+
+import { getFeaturedCars } from "Ducks/product";
 
 const responsive = {
   desktop: {
@@ -22,21 +29,12 @@ const responsive = {
 };
 
 class BestSeller extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      gradesArray: []
-    };
-  }
-
   componentDidMount() {
-    fetch("http://157.230.248.96:3001/api/products/getAllFeaturedCars")
-      .then(response => response.json())
-      .then(data => this.setState({ gradesArray: data.fields }));
+    this.props.getFeaturedCars();
   }
 
   render() {
+    const { featured, loading } = this.props;
     var modelImage = {
       objectFit: "cover",
       borderRadius: "20px",
@@ -51,7 +49,7 @@ class BestSeller extends Component {
           <div className="section-title without-bg">
             <h2>Featured Cars</h2>
           </div>
-
+          {loading && <RctSectionLoader />}
           <Carousel
             swipeable={true}
             draggable={true}
@@ -69,7 +67,7 @@ class BestSeller extends Component {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
           >
-            {this.state.gradesArray.map((grade, idx) => (
+            {featured.map((grade, idx) => (
               <div className="col-lg-12 col-md-12" key={idx}>
                 <div className="single-product-box">
                   <div className="product-image">
@@ -98,10 +96,7 @@ class BestSeller extends Component {
 
                     <div className="product-price">
                       <span className="new-price">
-                        S${" "}
-                        {grade.selling_Price.toLocaleString(undefined, {
-                          maximumFractionDigits: 2
-                        })}
+                        {formatPrice(grade.selling_Price)}
                       </span>
                     </div>
 
@@ -146,4 +141,10 @@ class BestSeller extends Component {
     );
   }
 }
-export default BestSeller;
+const mapStateToProps = ({ ProductState }) => {
+  const { featuredCars } = ProductState;
+  const { featured, loading } = featuredCars;
+  return { featured, loading };
+};
+
+export default connect(mapStateToProps, { getFeaturedCars })(BestSeller);

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { formatPrice } from "Components/Helpers/helpers";
-// import { connect } from "react-redux"
-
-// import { selectedProductGrade, getProductGradeData } from "Ducks/product/ProductActions"
 
 class Grade extends Component {
   constructor(props) {
@@ -26,7 +23,7 @@ class Grade extends Component {
     // console.log("grade props= ", this.props);
     return (
       <div className="configure-sect row">
-        <div className="configure-gall col-lg-8 d-flex flex-column">
+        <div className="configure-gall col-lg-8 d-flex flex-column p-3">
           <img
             src={this.props.ProductGrade.images}
             className="configCoverImg align-self-center"
@@ -35,6 +32,7 @@ class Grade extends Component {
             {this.props.ProductGrade.name}
           </h3>
           <p>{this.props.ProductGrade.description}</p>
+          <div>Show details here</div>
           <button
             className="d-flex align-items-center px-2 py-1"
             style={{
@@ -85,18 +83,5 @@ class Grade extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   const { ProductGrade } = state.ProductState
-//   return { ProductGrade }
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   {
-//     selectedProductGrade,
-//     getProductGradeData
-//   }
-// )(Grade)
 
 export default Grade;

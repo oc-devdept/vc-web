@@ -1023,7 +1023,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
-  padding: 35px 0;
+  padding: 10px 20px;
   position: absolute;
   top: auto;
   left: 0;
@@ -9371,9 +9371,6 @@ ol.progtrckr li.progtrckr-doing {
 .pull-left:focus {
   color: #ffffff !important;
   background-color: #f29d30;
-}
-.configure-area .container {
-  max-width: 100% !important;
 }
 .configure-total {
   text-transform: uppercase;

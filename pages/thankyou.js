@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import Navbar from "Components/Layout/Navbar";
-import Subscribe from "Components/Common/Subscribe";
-import Partner from "Components/Common/Partner";
+// import Subscribe from "Components/Common/Subscribe";
+// import Partner from "Components/Common/Partner";
 import Footer from "Components/Layout/Footer";
 
 class Index extends Component {
@@ -20,8 +20,8 @@ class Index extends Component {
           </div>
         </div>
 
-        <Subscribe />
-        <Partner />
+        {/* <Subscribe />
+        <Partner /> */}
         <Footer />
       </React.Fragment>
     );

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import dynamic from "next/dynamic";
-const OwlCarousel = dynamic(import("react-owl-carousel3"));
+
+import { Carousel } from "react-responsive-carousel";
+import "Styles/carousel.min.css";
 
 const options = {
+  showThumbs: false,
   loop: false,
   nav: true,
   dots: true,
@@ -30,7 +32,7 @@ class Testimonials extends Component {
       <section className="testimonials-area ptb-60">
         <div className="container">
           <h3>What our customers says</h3>
-          <OwlCarousel
+          <Carousel
             className="testimonials-slides owl-carousel owl-theme"
             {...options}
           >
@@ -99,7 +101,7 @@ class Testimonials extends Component {
                 <span>Founder at Brand</span>
               </div>
             </div>
-          </OwlCarousel>
+          </Carousel>
         </div>
       </section>
     );

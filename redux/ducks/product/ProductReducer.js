@@ -302,17 +302,17 @@ export default (state = INIT_STATE, action) => {
 
       Object.values(fields).map(item => {
         item.map(object => {
-          if (object.id === id) {
+          if (object.productOptionId === id) {
             checked
               ? selectedAccessories.push({
-                  id: object.id,
+                  productOptionId: object.productOptionId,
                   name: object.productOption.name,
                   price: object.productOption.price,
-                  image: object.productOption.files[0].path,
-                  description: object.productOption.description
+                  image: object.productOption.files[0].path
+                  // description: object.productOption.description
                 })
               : (selectedAccessories = selectedAccessories.filter(
-                  item => item.id != id
+                  item => item.productOptionId != id
                 ));
           }
         });

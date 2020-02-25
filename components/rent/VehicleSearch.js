@@ -9,7 +9,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
-// todo: validating date/time input
+// KIV: validate date/time input during search
 class VehicleSearch extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +19,13 @@ class VehicleSearch extends Component {
     // };
     this.state = {
       pickUpDate: "",
-      pickUpTime: "",
+      pickUpTime: "09:00",
       dropOffDate: "",
-      dropOffTime: ""
+      dropOffTime: "09:00"
     };
 
     this.handleDayChange = this.handleDayChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
     this.listOfTimings = this.listOfTimings.bind(this);
   }
 
@@ -49,6 +50,7 @@ class VehicleSearch extends Component {
   //   }
   // };
 
+  // KIV: format date output if necessary
   handleDayChange(day, modifiers, input) {
     const { id } = input.input;
     switch (id) {
@@ -67,6 +69,14 @@ class VehicleSearch extends Component {
       default:
         break;
     }
+  }
+
+  handleTimeChange(event) {
+    const { id, value } = event.target;
+    this.setState({
+      ...this.state,
+      [id]: value
+    });
   }
 
   listOfTimings() {
@@ -121,7 +131,8 @@ class VehicleSearch extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    window.location = "/search";
+    this.props.getSearch(this.state);
+    window.location = "/rent/results";
   };
 
   render() {
@@ -129,16 +140,18 @@ class VehicleSearch extends Component {
       {
         controlId: "pick-up",
         formLabel: "Pick-up Date:",
-        timeId: "pick-up-time"
+        timeId: "pickUpTime",
+        dateId: "pickUpDate"
       },
       {
         controlId: "drop-off",
         formLabel: "Drop-off Date:",
-        timeId: "drop-off-time"
+        timeId: "dropOffTime",
+        dateId: "dropOffDate"
       }
     ];
 
-    console.log(this.state);
+    console.log("state= ", this.state);
     return (
       <div className="search">
         <Form className="my-3" onSubmit={this.onFormSubmit}>
@@ -206,6 +219,7 @@ class VehicleSearch extends Component {
                       style={{
                         width: "50%"
                       }}
+                      value={this.state[item.dateId]}
                       onDayChange={this.handleDayChange}
                     />
                     <Form.Control
@@ -215,6 +229,8 @@ class VehicleSearch extends Component {
                         padding: 0,
                         textAlignLast: "center"
                       }}
+                      value={this.state[item.timeId]}
+                      onChange={this.handleTimeChange}
                     >
                       {/* item.timeId is either pick-up-time or drop-off-time */}
                       {/* {item.timeId === "pick-up-time"

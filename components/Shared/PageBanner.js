@@ -4,7 +4,7 @@ import PageTitle from "./PageTitle";
 
 function PageBanner(props) {
   const { title, caption, bgImgUrl, overlay } = props;
-  console.log(bgImgUrl);
+  // console.log(bgImgUrl);
   return (
     <Jumbotron
       className="d-flex align-items-center text-center"

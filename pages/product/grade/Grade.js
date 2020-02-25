@@ -111,6 +111,7 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
         <img
           src={ProductGrade.images}
           className="configCoverImg align-self-center"
+          style={{ maxWidth: "100%" }}
         />
         <h3 className="text-uppercase text-center m-2">{ProductGrade.name}</h3>
         <p>{ProductGrade.description}</p>

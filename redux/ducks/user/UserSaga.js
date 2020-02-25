@@ -1,82 +1,79 @@
-import { 
-  all, 
-  call, 
-  fork, 
-  put, 
-  takeEvery, 
-  takeLatest, 
-  select, 
-  delay 
-} from "redux-saga/effects"
+import {
+  all,
+  call,
+  fork,
+  put,
+  takeEvery,
+  takeLatest,
+  select,
+  delay
+} from "redux-saga/effects";
 
-import * as types from "./UserTypes"
-import * as actions from "./UserActions"
-import api from "Api"
+import * as types from "./UserTypes";
+import * as actions from "./UserActions";
+import api from "Api";
 
 //=========================
 // REQUESTS
 //=========================
 
-const userLoginRequest = async(e) => {
-  const data = await api.post(`/basecustomerusers/login`, e.payload)
-  return data
-}
-
-const userLogoutRequest = async(e) => {
-  const data = await api.post(`/basecustomerusers/logout`)
-  return data
-}
-
-const userProfileRequest = async(e) => {
-  const result = await api.get(`/basecustomerusers/${e}/customer`)
-  return result.data
-}
-
-const updateUserProfileRequest = async(e) => {
-  const result = await api.post(`/basecustomerusers/updateContact`, {data: e.payload})
-  return result.data.fields
-}
-
+const userLoginRequest = async e => {
+  const data = await api.post(`/basecustomerusers/login`, e.payload);
+  return data;
+};
+const userLogoutRequest = async e => {
+  const data = await api.post(`/basecustomerusers/logout`);
+  return data;
+};
+const userProfileRequest = async e => {
+  const result = await api.get(`/basecustomerusers/${e}/customer`);
+  return result.data;
+};
+const updateUserProfileRequest = async e => {
+  const result = await api.post(`/basecustomerusers/updateContact`, {
+    data: e.payload
+  });
+  return result.data.fields;
+};
 
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
 function* userLogin(e) {
   try {
-    const data = yield call(userLoginRequest, e)
-    yield put(actions.handleAccountLogin_success(data))
+    const data = yield call(userLoginRequest, e);
+    yield put(actions.handleAccountLogin_success(data));
   } catch (error) {
-    yield put(actions.handleAccountLogin_failure(error))
+    yield put(actions.handleAccountLogin_failure(error));
   }
 }
 
 function* userLogout(e) {
   try {
-    const data = yield call(userLogoutRequest, e)
-    yield put(actions.handleAccountLogout_success(data))
+    const data = yield call(userLogoutRequest, e);
+    yield put(actions.handleAccountLogout_success(data));
   } catch (error) {
-    yield put(actions.handleAccountLogout_failure(error))
+    yield put(actions.handleAccountLogout_failure(error));
   }
 }
 
 function* userProfile(e) {
   try {
-    const data = yield call(userProfileRequest, e.payload)
-    yield put(actions.retrieveUserProfileSuccess(data))
+    const data = yield call(userProfileRequest, e.payload);
+    yield put(actions.retrieveUserProfileSuccess(data));
   } catch (error) {
-    console.log('userProfile Error', error)
-    yield put(actions.retrieveUserProfileFailure(error))
+    console.log("userProfile Error", error);
+    yield put(actions.retrieveUserProfileFailure(error));
   }
 }
 
-
 function* updateUserProfile(e) {
   try {
-    const data = yield call(updateUserProfileRequest, e)
-    yield put(actions.updateUserProfileSuccess(data))
+    const data = yield call(updateUserProfileRequest, e);
+    yield put(actions.updateUserProfileSuccess(data));
   } catch (error) {
-    console.log('updateUserProfile Error', error)
-    yield put(actions.updateUserProfileFailure(error))
+    console.log("updateUserProfile Error", error);
+    yield put(actions.updateUserProfileFailure(error));
   }
 }
 
@@ -84,21 +81,20 @@ function* updateUserProfile(e) {
 // WATCHER FUNCTIONS
 //=======================
 export function* userLoginWatcher() {
-  yield takeEvery(types.LOGIN_ACCOUNT, userLogin)
+  yield takeEvery(types.LOGIN_ACCOUNT, userLogin);
 }
 
 export function* userLogoutWatcher() {
-  yield takeEvery(types.LOGOUT_ACCOUNT, userLogout)
+  yield takeEvery(types.LOGOUT_ACCOUNT, userLogout);
 }
 
 export function* retrieveUserProfileWatcher() {
-  yield takeEvery(types.RETRIEVE_USER_PROFILE, userProfile)
+  yield takeEvery(types.RETRIEVE_USER_PROFILE, userProfile);
 }
 
 export function* updateUserProfileWatcher() {
-  yield takeEvery(types.UPDATE_USER_PROFILE, updateUserProfile)
+  yield takeEvery(types.UPDATE_USER_PROFILE, updateUserProfile);
 }
-
 
 //=======================
 // FORK SAGAS TO STORE
@@ -108,7 +104,6 @@ export default function* productSaga() {
     fork(userLoginWatcher),
     fork(userLogoutWatcher),
     fork(retrieveUserProfileWatcher),
-    fork(updateUserProfileWatcher),
-
-  ])
+    fork(updateUserProfileWatcher)
+  ]);
 }

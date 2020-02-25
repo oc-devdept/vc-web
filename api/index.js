@@ -25,35 +25,4 @@ api.clearToken = () => {
   delete api.defaults.headers["Authorization"];
 };
 
-// api.interceptors.response.use(
-//   response => {
-//     return response;
-//   },
-//   error => {
-//     if (error.message === "Network Error") {
-//       // The user doesn't have internet
-//       return Promise.reject(error);
-//     }
-//     switch (error.response.status) {
-//       case 400:
-//         break;
-//       case 401:
-//         break;
-//       case 403:
-//         // no access rights
-//         break;
-//       case 404:
-//         break;
-//       case 500:
-//         break;
-//       default:
-//         // Unknown Error
-//         break;
-//     }
-//     return Promise.reject(error);
-//   }
-// );
-
-// export default api;
-
 module.exports = api;

@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-const Index = memo(({_HandleDayChange,_HandleInputForm, model, timeslot, description, currentDate, Timeslot, _setItemTimeSlot}) => {
+const Index = memo(({_HandleDayChange,_HandleInputForm, model, timeslot, description, currentDate, Timeslot, _setItemTimeSlot, date}) => {
 
     return (
         <div className="d-flex flex-column">
@@ -16,10 +16,14 @@ const Index = memo(({_HandleDayChange,_HandleInputForm, model, timeslot, descrip
                 <div className="d-flex flex-row">
                     <div style={{flex: 1, padding: 25}}>
                         <div  className="d-flex flex-row flex-fill">
+
                             <div className="form-group d-flex flex-column" style={{flex:0.5, marginRight:25}}>
                                 <label>Your Car Model</label>
                                 <input type="text" value={model} onChange={(e) => _HandleInputForm('model', e.target.value)}  className="form-control" placeholder="Enter your car model" id="model" name="model" />
                             </div>
+
+                               
+
                         </div>
 
                         <div  className="d-flex flex-row flex-fill">
@@ -60,13 +64,16 @@ const Index = memo(({_HandleDayChange,_HandleInputForm, model, timeslot, descrip
                     </div>
 
                     <DayPicker 
-                        // modifiers={{
-                        //     sunday: day => day.getDay() === 0,
-                        //     firstOfMonth: day => day.getDate() === 1,
-                        // }}               
+                        selectedDays={[date]}   
                         onDayClick={_HandleDayChange} 
                         style={{width: "50%",}}
                         month={new Date()}
+                        disabledDays={[
+                            {
+                              after: new Date(new Date().setMonth(new Date().getMonth()+1)),
+                              before: new Date(),
+                            },
+                        ]}
                     />
 
                 </div>

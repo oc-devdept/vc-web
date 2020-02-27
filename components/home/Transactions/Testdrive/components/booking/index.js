@@ -30,7 +30,6 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     
     const [Timeslot] = useState(["AM","PM"]);
     const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.baseContact});
-
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);
 
@@ -51,8 +50,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     const _setItemTimeSlot = (e) => {
         setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
     }
-
-
+    
     const validateService = async () => {
 
         const newBooking = {
@@ -117,6 +115,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
                     model={model}
                     timeslot={timeslot}
                     description={description}
+                    date={date}
                 />
                 
                 <div className="d-flex justify-content-end">

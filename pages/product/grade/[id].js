@@ -24,6 +24,8 @@ import {
   printConfigurator
 } from "Ducks/product/ProductActions";
 
+import { getCheckoutData } from "Ducks/checkout/CheckoutActions";
+
 class Product extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +49,7 @@ class Product extends Component {
   }
 
   render() {
-    const { ProductState } = this.props;
+    const { ProductState, CheckoutState } = this.props;
 
     const steps = [
       {
@@ -101,14 +103,17 @@ class Product extends Component {
         component: (
           <Summary
             ProductState={ProductState}
+            CheckoutState={CheckoutState}
             updateProductTotal={this.props.updateProductTotal}
             updateLoanCalculator={this.props.updateLoanCalculator}
             printConfigurator={this.props.printConfigurator}
+            getCheckoutData={this.props.getCheckoutData}
           />
         )
       }
     ];
 
+    // console.log("[id] props= ", this.props);
     return (
       <DefaultLayout crumbs="Car Configuration">
         <section className="configure-area pb-60">
@@ -140,8 +145,8 @@ Product.getInitialProps = async function({ ctx }) {
 };
 
 const mapStateToProps = state => {
-  const { ProductState } = state;
-  return { ProductState };
+  const { ProductState, CheckoutState } = state;
+  return { ProductState, CheckoutState };
 };
 
 export default connect(mapStateToProps, {
@@ -155,5 +160,6 @@ export default connect(mapStateToProps, {
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
-  printConfigurator
+  printConfigurator,
+  getCheckoutData
 })(Product);

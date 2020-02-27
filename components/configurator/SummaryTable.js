@@ -14,7 +14,7 @@ const SummaryTable = props => {
     ProductInterior,
     ProductRims,
     ProductAccessories
-  } = props.productState;
+  } = props.ProductState;
 
   const data = [
     {
@@ -32,21 +32,21 @@ const SummaryTable = props => {
     },
     {
       number: "03",
-      image: ProductExterior.images[0],
+      image: ProductExterior.thumbnail,
       title: "EXTERIOR",
       name: ProductExterior.name,
       price: ProductExterior.price
     },
     {
       number: "04",
-      image: ProductInterior.images[0],
+      image: ProductInterior.thumbnail,
       title: "INTERIOR",
       name: ProductInterior.name,
       price: ProductInterior.price
     },
     {
       number: "05",
-      image: ProductRims.images[0],
+      image: ProductRims.thumbnail,
       title: "RIMS",
       name: ProductRims.name,
       price: ProductRims.price
@@ -75,6 +75,7 @@ const SummaryTable = props => {
     total: total
   });
 
+  // Update product total
   useEffect(() => {
     if (!!props.updateProductTotal) {
       props.updateProductTotal(allFees);
@@ -95,6 +96,13 @@ const SummaryTable = props => {
       amount: gst
     }
   ];
+
+  // Transform selected options into CheckoutState after product total update
+  useEffect(() => {
+    if (!!props.getCheckoutData) {
+      props.getCheckoutData(props.ProductState);
+    }
+  }, [props.ProductState.ProductTotal]);
 
   return (
     <>

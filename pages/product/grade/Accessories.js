@@ -45,7 +45,7 @@ class Accessories extends Component {
   }
 
   render() {
-    // console.log("state= ", this.state)
+    // console.log("state= ", this.state);
     // console.log("Accessories props: ", this.props);
 
     const { ProductAccessories } = this.props.ProductState;
@@ -116,7 +116,7 @@ class Accessories extends Component {
                                   <div className="col-1">
                                     <Form.Check
                                       custom
-                                      id={item.id}
+                                      id={item.productOptionId}
                                       label=""
                                       onChange={this.handleOptionChange}
                                     />
@@ -205,7 +205,7 @@ class Accessories extends Component {
         <div className="configure-summary col-lg-4">
           <SummaryTable
             page="accessories"
-            productState={this.props.ProductState}
+            ProductState={this.props.ProductState}
           />
         </div>
       </div>

@@ -10,7 +10,6 @@ import makeStore from "Store";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
 import { NotificationContainer } from "react-notifications";
-import { CookiesProvider } from "react-cookie";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -27,11 +26,9 @@ class MyApp extends App {
     return (
       <>
         <DefaultSeo title="Venture Cars" description="Venture Cars" />
-        <CookiesProvider>
-          <Provider store={store}>
-            <Component {...pageProps} />
-          </Provider>
-        </CookiesProvider>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
         <GoTop scrollStepInPx="50" delayInMs="16.66" />
         <NotificationContainer />
       </>

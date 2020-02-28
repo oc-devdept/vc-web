@@ -11,6 +11,9 @@ import Booking from "Components/booking/booking";
 import UserProfile from "Components/booking/profile";
 import { NotificationManager } from "react-notifications";
 
+// TO DELETE ONCE CHECKOUT SMOOTHEN
+import TestButton from "./toDelete";
+
 import Moment from "moment";
 import api from "Api";
 
@@ -244,6 +247,7 @@ const Summary = props => {
             </div>
             <div className="d-flex">
               <Button style={{ maxWidth: 180 }}>PROCEED TO DOWNPAYMENT</Button>
+              <TestButton />
             </div>
           </div>
         </div>

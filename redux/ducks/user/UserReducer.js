@@ -21,7 +21,7 @@ export default (state = INIT_STATE, action) => {
 
     case types.LOGIN_ACCOUNT_SUCCESS:
       const { id, ttl, userId } = action.payload.data;
-      console.log(action.payload.data);
+      // console.log(action.payload.data);
       api.AuthorizationHeader(id);
       NotificationManager.success("You've successfully logged in");
 

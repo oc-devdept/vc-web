@@ -193,6 +193,7 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
             model={model}
             timeslot={timeslot}
             description={description}
+            date={date}
           />
 
           <div className="d-flex justify-content-end">

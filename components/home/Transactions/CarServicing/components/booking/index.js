@@ -114,6 +114,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
                     model={model}
                     timeslot={timeslot}
                     description={description}
+                    date={date}
                 />
                 
                 <div className="d-flex justify-content-end">

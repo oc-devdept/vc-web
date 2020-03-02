@@ -43,7 +43,7 @@ class Exterior extends Component {
             ))}
           </Carousel>
           <h3 className="text-uppercase text-center m-2">
-            Standard {this.props.ProductExterior.name} Paintwork
+            {this.props.ProductExterior.name}
           </h3>
         </div>
         <div className="configure-opt col-lg-4">

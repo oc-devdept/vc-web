@@ -53,7 +53,7 @@ class Accessories extends Component {
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8">
-          <p>Expand the options below to add acessories to your vehicle</p>
+          <p>Expand the options below to view accessory details</p>
           <Accordion activeKey={this.state.mainAccordionActiveKey}>
             {!!ProductAccessories.data.fields &&
               Object.entries(ProductAccessories.data.fields).map(

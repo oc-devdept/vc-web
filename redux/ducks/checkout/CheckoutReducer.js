@@ -51,7 +51,7 @@ export default (state = INIT_STATE, action) => {
       if (ProductAccessories.selectedAccessories.length !== 0) {
         ProductAccessories.selectedAccessories.map(item =>
           productAccessories.push({
-            id: item.id,
+            id: item.productOptionId,
             name: item.name,
             price: item.price,
             thumbnail: item.image

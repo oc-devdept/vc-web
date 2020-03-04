@@ -8,7 +8,7 @@ const LoanCalculator = props => {
   const initialState = {
     loanTerm: 24,
     loanAmount: "",
-    interestRate: "",
+    interestRate: 0,
     totalInterest: "",
     downPayment: "",
     deposit: 500,
@@ -54,6 +54,13 @@ const LoanCalculator = props => {
     dispatch({ field: "totalInterest", value: totalInterest });
     dispatch({ field: "monthlyInstallment", value: monthlyInstallment });
   };
+
+  // GET interest rate from DB, update it in local state
+  useEffect(() => {
+    props.getInterestRate();
+    let interestRate = props.loanCalculator.interestRate;
+    dispatch({ field: "interestRate", value: interestRate });
+  }, [props.loanCalculator.interestRate]);
 
   // options to style input range slider
   const marks = [
@@ -125,6 +132,7 @@ const LoanCalculator = props => {
   }, [state]);
 
   // console.log("calculator state= ", state);
+  // console.log("calculator props= ", props);
   return (
     <div className="calculator p-3">
       <div className="calculator-field row">
@@ -218,16 +226,14 @@ const LoanCalculator = props => {
             <FormControl
               name="interestRate"
               type="number"
-              placeholder="Enter interest rate here"
-              aria-label="Enter interest rate here"
               value={interestRate}
-              onChange={onChange}
               style={{
                 border: "1px solid #4B6674",
                 borderRight: 0,
-                backgroundColor: "transparent",
+                backgroundColor: "#e5e5e5",
                 height: 35
               }}
+              disabled
             />
             <InputGroup.Append>
               <InputGroup.Text
@@ -235,7 +241,7 @@ const LoanCalculator = props => {
                   border: "1px solid #4B6674",
                   borderLeft: 0,
                   borderRadius: 0,
-                  backgroundColor: "transparent",
+                  backgroundColor: "#e5e5e5",
                   fontSize: 14,
                   fontWeight: 600,
                   height: 35
@@ -247,7 +253,6 @@ const LoanCalculator = props => {
           </InputGroup>
         </div>
       </div>
-
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
           <p>DOWN PAYMENT</p>
@@ -317,7 +322,7 @@ const LoanCalculator = props => {
                 paddingLeft: 0,
                 height: 35
               }}
-              value={!!totalInterest ? formatPrice(totalInterest).slice(1) : ""}
+              value={formatPrice(totalInterest).slice(1)}
               onChange={onChange}
               disabled
             />
@@ -363,7 +368,7 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-submit row justify-content-center">
-        {!!loanAmount && !!interestRate ? (
+        {!!loanAmount ? (
           <Button onClick={handleCalculationClick}>Calculate</Button>
         ) : (
           <Button onClick={handleCalculationClick} disabled>

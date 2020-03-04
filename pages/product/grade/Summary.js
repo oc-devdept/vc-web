@@ -29,7 +29,7 @@ let InitUserProfile = {
 };
 
 const Summary = props => {
-  console.log("Summary props= ", props);
+  // console.log("Summary props= ", props);
 
   const overallSummary = [
     {
@@ -154,7 +154,9 @@ const Summary = props => {
           >
             <LoanCalculator
               productTotal={props.ProductState.ProductTotal}
+              loanCalculator={props.ProductState.LoanCalculator}
               updateLoanCalculator={props.updateLoanCalculator}
+              getInterestRate={props.getInterestRate}
             />
           </div>
           <div

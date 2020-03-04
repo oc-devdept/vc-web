@@ -3,19 +3,46 @@ import { connect } from "react-redux";
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import VehicleSearch from "Components/rent/VehicleSearch";
+import VehicleSearchMobile from "Components/rent/VehicleSearchMobile";
+import SearchSortbar from "Components/rent/SearchSortbar";
+import SearchFilter from "Components/rent/SearchFilter";
+import SearchList from "Components/rent/SearchList";
+import SearchFilterMobile from "Components/rent/SearchFilterMobile";
+import { Button, Modal } from "react-bootstrap";
 
-import { getSearch } from "Ducks/rent/RentActions";
+import categoriesData from "../../../assets/data/car-categories.json";
 
 const Results = props => {
+  const [categories, setCategories] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function getCategories() {
+      setLoading(true);
+      // const result = await api.get(``);
+      const result = categoriesData;
+      setCategories(result);
+      setLoading(false);
+    }
+    getCategories();
+  }, []);
+
   console.log("results props= ", props);
   return (
     <DefaultLayout crumbs="Results">
       <section className="pb-20">
         <div className="container mb-5">
-          {/* YOU LEFT OFF HERE: pulling SearchParameters and reflecting it on the search inputs */}
-          <VehicleSearch getSearch={props.getSearch} />
+          <VehicleSearch />
         </div>
-        <div className="container mb-5">pending</div>
+        <div className="container mb-5">
+          <SearchSortbar noOfResults="3" />
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-9"></div>
+            <div className="col-lg-3"></div>
+          </div>
+        </div>
       </section>
     </DefaultLayout>
   );
@@ -26,6 +53,4 @@ const mapStateToProps = state => {
   return { RentState };
 };
 
-export default connect(mapStateToProps, {
-  getSearch
-})(Results);
+export default connect(mapStateToProps, {})(Results);

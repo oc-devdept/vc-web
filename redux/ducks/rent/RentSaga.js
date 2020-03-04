@@ -4,14 +4,21 @@ import * as types from "./RentTypes";
 import * as actions from "./RentActions";
 import api from "Api";
 
-import data from "../../../assets/data/data.json";
+import searchResultsData from "../../../assets/data/data.json";
+import categoriesData from "../../../assets/data/car-categories.json";
 
 //=========================
 // REQUESTS
 //=========================
 const getSearchRequest = async payload => {
   // const result = await api.get(`/categories/${payload.payload}`);
-  const result = data;
+  const result = searchResultsData;
+  return result.data;
+};
+
+const getCategoriesRequest = async payload => {
+  // const result = await api.get(`/categories/${payload.payload}`);
+  const result = categoriesData;
   return result.data;
 };
 
@@ -27,6 +34,15 @@ function* getSearch(e) {
   }
 }
 
+function* getCategories(e) {
+  try {
+    const data = yield call(getCategoriesRequest, e);
+    yield put(actions.getCategoriesSuccess(data));
+  } catch (error) {
+    yield put(actions.getCategoriesFailure(data));
+  }
+}
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -34,9 +50,13 @@ export function* getSearchWatcher() {
   yield takeEvery(types.GET_SEARCH, getSearch);
 }
 
+export function* getCategoriesWatcher() {
+  yield takeEvery(types.GET_CATEGORIES, getCategories);
+}
+
 //=======================
 // FORK SAGAS TO STORE
 //=======================
 export default function* RentSaga() {
-  yield all([fork(getSearchWatcher)]);
+  yield all([fork(getSearchWatcher), fork(getCategoriesWatcher)]);
 }

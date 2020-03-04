@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Router from "next/router";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
+import { getSearch } from "Ducks/rent/RentActions";
+
 // KIV: validate date/time input during search
 class VehicleSearch extends Component {
   constructor(props) {
@@ -17,10 +20,12 @@ class VehicleSearch extends Component {
     //   isSaturdayPickUp: false,
     //   isSaturdayDropoff: false
     // };
+    const dateNow = new Date();
+
     this.state = {
-      pickUpDate: "",
+      pickUpDate: dateNow,
       pickUpTime: "09:00",
-      dropOffDate: "",
+      dropOffDate: dateNow,
       dropOffTime: "09:00"
     };
 
@@ -131,8 +136,8 @@ class VehicleSearch extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.getSearch(this.state);
-    window.location = "/rent/results";
+    getSearch(this.state);
+    Router.push("/rent/results");
   };
 
   render() {

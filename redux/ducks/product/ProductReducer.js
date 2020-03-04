@@ -327,7 +327,7 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.UPDATE_LOAN_CALCULATOR:
-      const {
+      var {
         loanTerm,
         loanAmount,
         interestRate,
@@ -364,6 +364,7 @@ export default (state = INIT_STATE, action) => {
         ...state,
         featuredCars: { ...state.featuredCars, loading: true }
       };
+
     case types.GET_FEATURED_CARS_SUCCESS:
       return {
         ...state,
@@ -374,10 +375,33 @@ export default (state = INIT_STATE, action) => {
         }
       };
     case types.GET_FEATURED_CARS_FAILURE:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         featuredCars: { ...state.featuredCars, loading: false }
+      };
+
+    case types.GET_INTEREST_RATE:
+      return {
+        ...state
+      };
+
+    case types.GET_INTEREST_RATE_SUCCESS:
+      var interestRate;
+      !!action.payload.data[0]
+        ? (interestRate = action.payload.data[0].interestRate)
+        : (interestRate = 0);
+      return {
+        ...state,
+        LoanCalculator: {
+          ...state.LoanCalculator,
+          interestRate: interestRate
+        }
+      };
+
+    case types.GET_INTEREST_RATE_FAILURE:
+      return {
+        ...state
       };
 
     default:

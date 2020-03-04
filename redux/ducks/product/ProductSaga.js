@@ -134,6 +134,11 @@ const getFeaturedCarsRequest = async () => {
   return result.data.fields;
 };
 
+const getInterestRateRequest = async () => {
+  const data = await api.get(`/WebsiteSettings`);
+  return data;
+};
+
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
@@ -182,6 +187,15 @@ function* getFeaturedCars() {
   }
 }
 
+function* getInterestRate() {
+  try {
+    const data = yield call(getInterestRateRequest);
+    yield put(actions.getInterestRateSuccess(data));
+  } catch (error) {
+    yield put(actions.getInterestRateFailure(data));
+  }
+}
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -200,6 +214,9 @@ export function* generateConfiguratorPDFWatcher() {
 export function* getFeaturedCarsWatcher() {
   yield takeEvery(types.GET_FEATURED_CARS, getFeaturedCars);
 }
+export function* getInterestRateWatcher() {
+  yield takeEvery(types.GET_INTEREST_RATE, getInterestRate);
+}
 
 //=======================
 // FORK SAGAS TO STORE
@@ -210,6 +227,7 @@ export default function* productSaga() {
     fork(getProductGradesWatcher),
     fork(getProductGradeDataWatcher),
     fork(generateConfiguratorPDFWatcher),
-    fork(getFeaturedCarsWatcher)
+    fork(getFeaturedCarsWatcher),
+    fork(getInterestRateWatcher)
   ]);
 }

@@ -114,3 +114,16 @@ export const getFeaturedCarsFailure = error => ({
   type: types.GET_FEATURED_CARS_FAILURE,
   payload: error
 });
+
+// Get interest rate
+export const getInterestRate = () => ({
+  type: types.GET_INTEREST_RATE
+});
+export const getInterestRateSuccess = data => ({
+  type: types.GET_INTEREST_RATE_SUCCESS,
+  payload: data
+});
+export const getInterestRateFailure = error => ({
+  type: types.GET_INTEREST_RATE_FAILURE,
+  payload: error
+});

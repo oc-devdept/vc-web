@@ -21,7 +21,8 @@ import {
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
-  printConfigurator
+  printConfigurator,
+  getInterestRate
 } from "Ducks/product/ProductActions";
 
 import { getCheckoutData } from "Ducks/checkout/CheckoutActions";
@@ -108,6 +109,7 @@ class Product extends Component {
             updateLoanCalculator={this.props.updateLoanCalculator}
             printConfigurator={this.props.printConfigurator}
             getCheckoutData={this.props.getCheckoutData}
+            getInterestRate={this.props.getInterestRate}
           />
         )
       }
@@ -161,5 +163,6 @@ export default connect(mapStateToProps, {
   updateProductTotal,
   updateLoanCalculator,
   printConfigurator,
-  getCheckoutData
+  getCheckoutData,
+  getInterestRate
 })(Product);

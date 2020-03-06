@@ -1212,6 +1212,21 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .search-item-pricing-text {
+    margin-right: 1rem;
+  }
+
+  .search-item-price {
+    margin-right: 0.25rem;
+  }
+
+  .search-item-pricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   .footer-buttons {
     float: none;
     margin: 2% auto;

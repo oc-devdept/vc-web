@@ -1,114 +1,100 @@
-import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useReducer } from "react";
+import { Form } from "react-bootstrap";
 
-// import CarCategories from "../../data/car-categories.json"
-// import CommercialCategories from "../../data/commercial-categories.json"
-// import "../../assets/styles/search-filter.css"
+const SearchFilter = ({ state, handleChange }) => {
+  // let initialState = {};
+  // initialState["All"] = true;
+  // categoriesData.map(item => {
+  //   initialState[item.catName] = false;
+  // });
 
-class SearchFilter extends Component {
-  constructor(props) {
-    super(props);
+  // function reducer(state, { field, value }) {
+  //   return {
+  //     ...state,
+  //     [field]: value
+  //   };
+  // }
 
-    // const { carCategories } = CarCategories
-    // const { commercialCategories } = CommercialCategories
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
-    // this.state = {
-    //   type: "cars",
-    //   carsCategory: { },
-    //   commercialCategory: { }
-    // }
+  // const handleChange = event => {
+  //   let { id, checked } = event.target;
+  //   if (id === "All") {
+  //     for (const key in state) {
+  //       dispatch({ field: key, value: false });
+  //     }
+  //     dispatch({ field: "All", value: true });
+  //   } else {
+  //     dispatch({ field: id, value: checked });
+  //     dispatch({ field: "All", value: false });
+  //   }
+  // };
 
-    // carCategories.forEach( item => {
-    //   this.state.carsCategory[item.catName] = false
-    // })
-    // commercialCategories.forEach( item => {
-    //   this.state.commercialCategory[item.catName] = false
-    // })
+  // const areAllCheckboxesUnchecked = () => {
+  //   let boolean = true;
+  //   for (const key in state) {
+  //     if (state[key] === true) {
+  //       boolean = false;
+  //       break;
+  //     }
+  //   }
+  //   return boolean;
+  // };
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+  // // If all categories are unchecked, check "All"
+  // useEffect(() => {
+  //   if (state["All"] === false && areAllCheckboxesUnchecked()) {
+  //     dispatch({ field: "All", value: true });
+  //   }
+  // }, [state]);
 
-  handleClick(type) {
-    // type === "cars" ?
-    //   this.setState({type: "cars"}) :
-    //   this.setState({type: "commercial"})
-    this.props.onTypeChange(type);
-  }
+  const selectedStyle = {
+    backgroundColor: "#4b6674",
+    color: "#ffffff",
+    transition: "background-color 0.5s, color 0.5s"
+  };
 
-  handleChange(event) {
-    const { id, checked } = event.target;
-    const { type } = this.props;
-    this.props.onCategoryChange(type, id, checked);
-
-    // switch (type) {
-    // case "cars":
-    // this.setState({
-    //   carsCategory: {
-    //     ...this.state.carsCategory,
-    //     [id]: checked
-    //   }
-    // })
-    // this.props.onCategoryChange(id, checked)
-    // break
-    // case "commercial":
-    // this.setState({
-    //   commercialCategory: {
-    //     ...this.state.commercialCategory,
-    //     [id]: checked
-    //   }
-    // })
-    // this.props.onCategoryChange(id, checked)
-    // break
-    // default:
-    // break
-    // }
-  }
-
-  render() {
-    return (
-      <div className="search-filter">
-        <div className="search-filter-type">
-          <Button
-            onClick={() => this.handleClick("cars")}
-            variant={this.props.type == "cars" ? "primary" : "light"}
-          >
-            Cars
-          </Button>
-          <Button
-            onClick={() => this.handleClick("commercial")}
-            variant={this.props.type == "commercial" ? "primary" : "light"}
-          >
-            Commercial
-          </Button>
-        </div>
-        <legend>Vehicle Category</legend>
-        <div className="search-filter-categories">
-          {this.props.type === "cars"
-            ? Object.keys(this.props.carsCategory).map((item, id) => (
-                <Form.Check
-                  custom
-                  key={id}
-                  id={item}
-                  checked={this.props.carsCategory[item]}
-                  label={item}
-                  onChange={this.handleChange}
-                />
-              ))
-            : Object.keys(this.props.commercialCategory).map((item, id) => (
-                <Form.Check
-                  custom
-                  key={id}
-                  id={item}
-                  checked={this.props.commercialCategory[item]}
-                  label={item}
-                  onChange={this.handleChange}
-                />
-              ))}
-        </div>
+  return (
+    <div className="search-filter">
+      <div
+        className="d-block mb-3"
+        style={{ color: "#4b6674", fontWeight: 500 }}
+      >
+        <span>Filter By</span>
+        <br />
+        <span style={{ fontSize: 20 }}>Vehicle Categories</span>
       </div>
-    );
-  }
-}
+      <div className="search-filter-categories">
+        {/* <Form.Check
+          id="All"
+          checked={state["All"]}
+          label="All"
+          onChange={handleChange}
+          style={state["All"] ? selectedStyle : {}}
+        /> */}
+        {/* {categoriesData.map((item, id) => (
+          <Form.Check
+            key={id}
+            id={item.catName}
+            checked={state[item.catName]}
+            label={item.catName}
+            onChange={handleChange}
+            style={state[item.catName] ? selectedStyle : {}}
+          />
+        ))} */}
+        {Object.entries(state).map(([key, value], id) => (
+          <Form.Check
+            key={id}
+            id={key}
+            checked={value}
+            label={key}
+            onChange={handleChange}
+            style={value ? selectedStyle : {}}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default SearchFilter;

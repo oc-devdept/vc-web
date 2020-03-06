@@ -5,10 +5,14 @@ import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import PageBanner from "Components/Shared/PageBanner";
 import VehicleSearch from "Components/rent/VehicleSearch";
 
+import { getSearch, getCategories } from "Ducks/rent/RentActions";
+
 var rentBanner = "/static/rent/rentBanner.png";
 
 const Rent = props => {
-  console.log("rent props= ", props);
+  useEffect(() => {
+    props.getCategories();
+  }, []);
 
   const whyUsInfo = [
     {
@@ -54,13 +58,13 @@ const Rent = props => {
       amet nulla.`
     }
   ];
-
+  // console.log("rent props= ", props);
   return (
     <DefaultLayout crumbs="Rental">
       <section className="pb-20">
         <PageBanner overlay title="RENT A VEHICLE" bgImgUrl={rentBanner} />
         <div className="container mb-5">
-          <VehicleSearch />
+          <VehicleSearch getSearch={props.getSearch} />
         </div>
         <div className="container border mb-5">
           <h2 className="text-center py-4">Rental Details</h2>
@@ -131,4 +135,4 @@ const mapStateToProps = state => {
   return { RentState };
 };
 
-export default connect(mapStateToProps, {})(Rent);
+export default connect(mapStateToProps, { getSearch, getCategories })(Rent);

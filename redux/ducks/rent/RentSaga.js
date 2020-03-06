@@ -16,7 +16,7 @@ const getSearchRequest = async payload => {
   return result.data;
 };
 
-const getCategoriesRequest = async payload => {
+const getCategoriesRequest = async () => {
   // const result = await api.get(`/categories/${payload.payload}`);
   const result = categoriesData;
   return result.data;

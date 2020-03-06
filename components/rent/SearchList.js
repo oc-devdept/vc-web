@@ -1,16 +1,11 @@
 import React from "react";
 import SearchItem from "./SearchItem";
 
-import carList from "../../assets/data/data.json";
-
-// This component should eventually be taking in props from an api call
-// to dynamically display data
-const SearchList = () => {
-  const cars = carList["car-list"];
-
+const SearchList = props => {
+  const { searchData } = props;
   return (
-    <>
-      {cars.map((item, id) => (
+    <React.Fragment>
+      {searchData.map((item, id) => (
         <SearchItem
           key={id}
           image={item.img}
@@ -24,7 +19,7 @@ const SearchList = () => {
           price={item.price}
         />
       ))}
-    </>
+    </React.Fragment>
   );
 };
 

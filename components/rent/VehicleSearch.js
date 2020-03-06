@@ -10,8 +10,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
-import { getSearch } from "Ducks/rent/RentActions";
-
 // KIV: validate date/time input during search
 class VehicleSearch extends Component {
   constructor(props) {
@@ -136,7 +134,7 @@ class VehicleSearch extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    getSearch(this.state);
+    this.props.getSearch(this.state);
     Router.push("/rent/results");
   };
 
@@ -156,7 +154,7 @@ class VehicleSearch extends Component {
       }
     ];
 
-    console.log("state= ", this.state);
+    // console.log("state= ", this.state);
     return (
       <div className="search">
         <Form className="my-3" onSubmit={this.onFormSubmit}>

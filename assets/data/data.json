@@ -3,7 +3,7 @@
     {
       "car_id": 0,
       "cat_id": 10,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2006 TOYOTA Vios 1.5",
       "person": 5,
       "luggage": 1,
@@ -14,7 +14,7 @@
     {
       "car_id": 1,
       "cat_id": 10,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2006 TOYOTA Altis 1.6",
       "person": 5,
       "luggage": 2,
@@ -25,7 +25,7 @@
     {
       "car_id": 2,
       "cat_id": 11,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2010 TOYOTA Altis 1.6",
       "person": 5,
       "luggage": 2,
@@ -36,7 +36,7 @@
     {
       "car_id": 3,
       "cat_id": 11,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2011 TOYOTA Vious 1.5",
       "person": 5,
       "luggage": 2,
@@ -47,7 +47,7 @@
     {
       "car_id": 4,
       "cat_id": 11,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2015 SUZUKI Swift 1.5",
       "person": 5,
       "luggage": 1,
@@ -58,7 +58,7 @@
     {
       "car_id": 5,
       "cat_id": 12,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2015 KIA K3 Forte 1.6",
       "person": 4,
       "luggage": 1,
@@ -69,7 +69,7 @@
     {
       "car_id": 6,
       "cat_id": 12,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2015 TOYOTA Altis 1.6",
       "person": 5,
       "luggage": 2,
@@ -80,7 +80,7 @@
     {
       "car_id": 7,
       "cat_id": 12,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2018 KIA Cerato 1.6",
       "person": 5,
       "luggage": 2,
@@ -91,7 +91,7 @@
     {
       "car_id": 8,
       "cat_id": 12,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "2018 NISSAN Sylphy 1.6",
       "person": 5,
       "luggage": 1,
@@ -102,7 +102,7 @@
     {
       "car_id": 9,
       "cat_id": 13,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "test",
       "person": 0,
       "luggage": 0,
@@ -113,7 +113,7 @@
     {
       "car_id": 10,
       "cat_id": 14,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "test",
       "person": 0,
       "luggage": 0,
@@ -124,7 +124,7 @@
     {
       "car_id": 11,
       "cat_id": 15,
-      "img": "../../images/car-400x300.png",
+      "img": "/Static/rent/car-400x300.png",
       "name": "test",
       "person": 0,
       "luggage": 0,

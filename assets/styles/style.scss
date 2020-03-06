@@ -9497,3 +9497,50 @@ input[type="number"] {
   a.tab-anchor {
   width: fit-content;
 }
+
+.search-item-prices {
+  margin-bottom: 0.5rem;
+}
+
+.search-item-price {
+  margin-right: 0.25rem;
+}
+
+.search-item-pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-filter-categories .form-check {
+  display: inline-block;
+  color: #4b6674;
+  border: 1px solid #4b6674;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.search-filter-categories input {
+  display: none;
+}
+
+.mobile-filter-modal {
+  width: inherit;
+  max-width: inherit;
+  height: inherit;
+  margin: 0;
+}
+
+.mobile-filter-modal .modal-content {
+  height: inherit;
+  border-radius: 0;
+}
+
+.custom-control-label::after,
+.custom-control-label::before {
+  top: 0.45rem;
+}

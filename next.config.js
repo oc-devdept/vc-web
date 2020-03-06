@@ -14,6 +14,7 @@ const nextConfig = {
     // config.resolve.alias["Images"] = path.join(__dirname, "assets/images");
     config.resolve.alias["Api"] = path.join(__dirname, "api");
     config.resolve.alias["Styles"] = path.join(__dirname, "assets/styles");
+    config.resolve.alias["Static"] = path.join(__dirname, "static");
     return config;
   }
 };

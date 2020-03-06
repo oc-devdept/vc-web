@@ -2,21 +2,15 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import VehicleSearch from "Components/rent/VehicleSearch";
 
-const VehicleSearchMobile = props => {
-  const [tempDateTime, setTempDateTime] = useState({
-    pickUpDate: "1st Jan 2020",
-    pickUpTime: "10:00",
-    dropOffDate: "3rd Jan 2020",
-    dropOffTime: "10:00"
-  });
+const VehicleSearchMobile = ({ getSearch, searchParameters }) => {
   const [showSearchModal, setShowSearchModal] = useState(false);
 
   return (
-    <>
+    <React.Fragment>
       <div className="search-mobile-details">
         <div className="col-10">
-          <p>363 Sembawang Road Goodlink Park</p>
-          <p>{`${tempDateTime.pickUpDate}, ${tempDateTime.pickUpTime} - ${tempDateTime.dropOffDate}, ${tempDateTime.dropOffTime}`}</p>
+          <span>33 Ubi Ave, #01-47/48</span>
+          <span>{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
         </div>
         <div
           className="col-2 d-flex justify-content-center align-items-center"
@@ -33,12 +27,12 @@ const VehicleSearchMobile = props => {
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              <p>363 Sembawang Road Goodlink Park</p>
-              <p>{`${tempDateTime.pickUpDate}, ${tempDateTime.pickUpTime} - ${tempDateTime.dropOffDate}, ${tempDateTime.dropOffTime}`}</p>
+              <span>33 Ubi Ave, #01-47/48</span>
+              <span>{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <VehicleSearch />
+            <VehicleSearch getSearch={getSearch} />
           </Modal.Body>
           <Modal.Footer>
             <Button
@@ -51,7 +45,7 @@ const VehicleSearchMobile = props => {
           </Modal.Footer>
         </Modal>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

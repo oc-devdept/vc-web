@@ -22,7 +22,17 @@ const SearchFilterMobile = ({ state, handleChange }) => {
 
   return (
     <React.Fragment>
-      <div className="mobile-filter-toggle">
+      <div
+        className="mobile-filter-toggle"
+        style={{
+          display: "none",
+          position: "fixed",
+          left: "50%",
+          bottom: "20px",
+          transform: "translate(-50%)",
+          zIndex: 999
+        }}
+      >
         <Button onClick={() => handleClick("open")} variant="secondary">
           <i className="fas fa-filter" /> Filter
         </Button>

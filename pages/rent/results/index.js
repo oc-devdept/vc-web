@@ -69,13 +69,21 @@ const Results = props => {
     }
   }, [state]);
 
-  // console.log("results props= ", props);
+  console.log("results props= ", props);
   // console.log("state= ", state);
   return (
     <DefaultLayout crumbs="Results">
       <section className="pb-20">
         <div className="container mb-5">
-          <VehicleSearch getSearch={props.getSearch} />
+          <VehicleSearch
+            getSearch={props.getSearch}
+            searchParameters={RentState.SearchParameters}
+          />
+          {/* STOPPED HERE, INTEGRATING VEHICLESEARCHMOBILE */}
+          <VehicleSearchMobile
+            getSearch={props.getSearch}
+            searchParameters={RentState.SearchParameters}
+          />
         </div>
         <div className="container mb-5">
           <SearchSortbar noOfResults="3" />

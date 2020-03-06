@@ -37,7 +37,7 @@ class SearchSortbar extends Component {
             Showing {this.props.noOfResults} Results
           </span>
         </div>
-        <div className="search-display-style">
+        {/* <div className="search-display-style">
           <Button
             onClick={() => this.handleClick("list")}
             style={
@@ -74,7 +74,7 @@ class SearchSortbar extends Component {
           >
             <i className="fas fa-grip-horizontal" />
           </Button>
-        </div>
+        </div> */}
         <div className="search-sort px-3">
           <Form.Group controlId="search-sort-select" style={{ margin: 0 }}>
             <Form.Label srOnly="true">Sort by</Form.Label>

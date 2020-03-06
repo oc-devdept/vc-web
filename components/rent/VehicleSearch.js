@@ -11,6 +11,7 @@ import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 // KIV: validate date/time input during search
+// KIV: check RentState for input values, to reflect on rent/results's VehicleSearch. incoming prop: searchParameters
 class VehicleSearch extends Component {
   constructor(props) {
     super(props);

@@ -1212,6 +1212,14 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .mobile-filter-toggle {
+    display: inline-block !important;
+  }
+
+  .search-filter {
+    display: none;
+  }
+
   .search-item-pricing-text {
     margin-right: 1rem;
   }

@@ -55,7 +55,7 @@ const SearchFilter = ({ state, handleChange }) => {
   };
 
   return (
-    <div className="search-filter">
+    <div className="search-filter" style={{ position: "sticky", top: 100 }}>
       <div
         className="d-block mb-3"
         style={{ color: "#4b6674", fontWeight: 500 }}

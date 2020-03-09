@@ -35,7 +35,8 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .navbar-expand-md .navbar-toggler {
+  .navbar-expand-md .navbar-toggler,
+  .vehicle-search-mobile {
     display: none;
   }
 
@@ -68,6 +69,22 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .search-item-name * {
+    font-size: 18px;
+  }
+
+  .search-item-prices .search-item-price {
+    font-size: 18px !important;
+  }
+
+  .search-item-category * {
+    font-size: 12px;
+  }
+
+  .search-item-pricing-text {
+    margin-right: auto !important;
+  }
+
   .comero-nav
     .navbar
     .navbar-nav
@@ -1212,11 +1229,20 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .search-mobile-details {
+    display: flex;
+  }
+
+  .search-mobile-modal .search {
+    display: block;
+  }
+
   .mobile-filter-toggle {
     display: inline-block !important;
   }
 
-  .search-filter {
+  .search-filter,
+  .vehicle-search .search {
     display: none;
   }
 

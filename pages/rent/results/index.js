@@ -74,18 +74,21 @@ const Results = props => {
   return (
     <DefaultLayout crumbs="Results">
       <section className="pb-20">
-        <div className="container mb-5">
-          <VehicleSearch
-            getSearch={props.getSearch}
-            searchParameters={RentState.SearchParameters}
-          />
-          {/* STOPPED HERE, INTEGRATING VEHICLESEARCHMOBILE */}
-          <VehicleSearchMobile
-            getSearch={props.getSearch}
-            searchParameters={RentState.SearchParameters}
-          />
+        <div className="container my-3">
+          <div className="vehicle-search">
+            <VehicleSearch
+              getSearch={props.getSearch}
+              searchParameters={RentState.SearchParameters}
+            />
+          </div>
+          <div className="vehicle-search-mobile">
+            <VehicleSearchMobile
+              getSearch={props.getSearch}
+              searchParameters={RentState.SearchParameters}
+            />
+          </div>
         </div>
-        <div className="container mb-5">
+        <div className="container my-3">
           <SearchSortbar noOfResults="3" />
         </div>
         <div className="container">

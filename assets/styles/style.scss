@@ -9528,14 +9528,16 @@ input[type="number"] {
   display: none;
 }
 
-.mobile-filter-modal {
+.mobile-filter-modal,
+.search-mobile-modal {
   width: inherit;
   max-width: inherit;
   height: inherit;
   margin: 0;
 }
 
-.mobile-filter-modal .modal-content {
+.mobile-filter-modal .modal-content,
+.search-mobile-modal .modal-content {
   height: inherit;
   border-radius: 0;
 }
@@ -9543,4 +9545,14 @@ input[type="number"] {
 .custom-control-label::after,
 .custom-control-label::before {
   top: 0.45rem;
+}
+
+.search-mobile-modal .close {
+  color: #ffffff;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.search-mobile-modal .search-submit {
+  display: none;
 }

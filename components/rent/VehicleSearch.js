@@ -158,7 +158,15 @@ class VehicleSearch extends Component {
     // console.log("state= ", this.state);
     return (
       <div className="search">
-        <Form className="my-3" onSubmit={this.onFormSubmit}>
+        <Form
+          className="my-3"
+          onSubmit={this.onFormSubmit}
+          id={
+            this.props.mobile === true
+              ? "vehicle-search-mobile"
+              : "vehicle-search"
+          }
+        >
           <Form.Row>
             <Col md={12} lg={true}>
               <Form.Group controlId="location">

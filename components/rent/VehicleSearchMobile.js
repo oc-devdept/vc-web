@@ -7,16 +7,20 @@ const VehicleSearchMobile = ({ getSearch, searchParameters }) => {
 
   return (
     <React.Fragment>
-      <div className="search-mobile-details">
-        <div className="col-10">
-          <span>33 Ubi Ave, #01-47/48</span>
-          <span>{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
+      <div className="row search-mobile-details">
+        <div className="col-9">
+          <span style={{ color: "#4b6674", fontWeight: 600 }}>
+            33 Ubi Ave, #01-47/48
+          </span>
+          <br />
+          <span
+            style={{ color: "#4b6674", fontWeight: 500 }}
+          >{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
         </div>
-        <div
-          className="col-2 d-flex justify-content-center align-items-center"
-          onClick={() => setShowSearchModal(true)}
-        >
-          <i className="far fa-edit" />
+        <div className="col-3 d-flex justify-content-center align-items-center">
+          <Button onClick={() => setShowSearchModal(true)}>
+            <i className="far fa-edit" />
+          </Button>
         </div>
       </div>
       <div className="search-mobile">
@@ -25,23 +29,40 @@ const VehicleSearchMobile = ({ getSearch, searchParameters }) => {
           onHide={() => setShowSearchModal(false)}
           dialogClassName="search-mobile-modal"
         >
-          <Modal.Header closeButton>
-            <Modal.Title>
+          <Modal.Header
+            style={{
+              backgroundColor: "#4b6674",
+              color: "#ffffff",
+              borderRadius: 0
+            }}
+            closeButton
+          >
+            <Modal.Title style={{ fontSize: 16 }}>
               <span>33 Ubi Ave, #01-47/48</span>
+              <br />
               <span>{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <VehicleSearch getSearch={getSearch} />
+            <VehicleSearch getSearch={getSearch} mobile={true} />
           </Modal.Body>
           <Modal.Footer>
             <Button
               onClick={() => setShowSearchModal(false)}
-              variant="outline-secondary"
+              variant="light"
+              style={{ width: "50%" }}
             >
               Close
             </Button>
-            <Button onClick={() => setShowSearchModal(false)}>Search</Button>
+            <Button
+              onClick={() => setShowSearchModal(false)}
+              style={{ width: "50%" }}
+              type="submit"
+              form="vehicle-search-mobile"
+              value="search"
+            >
+              Search
+            </Button>
           </Modal.Footer>
         </Modal>
       </div>

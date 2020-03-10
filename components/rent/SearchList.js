@@ -8,6 +8,7 @@ const SearchList = props => {
       {searchData.map((item, id) => (
         <SearchItem
           key={id}
+          id={item.car_id}
           image={item.img}
           category={item.catId}
           name={item.name}
@@ -17,6 +18,7 @@ const SearchList = props => {
           transmission="Auto"
           oldPrice={item.price}
           price={item.price}
+          updateSelectedVehicle={props.updateSelectedVehicle}
         />
       ))}
     </React.Fragment>

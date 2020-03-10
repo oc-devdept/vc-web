@@ -2,9 +2,10 @@ import * as types from "./RentTypes";
 
 const INIT_STATE = {
   loading: false,
+  Categories: [],
   SearchParameters: {},
   SearchData: [],
-  Categories: []
+  SelectedVehicle: {}
 };
 
 export default (state = INIT_STATE, action) => {
@@ -29,6 +30,12 @@ export default (state = INIT_STATE, action) => {
     case types.GET_CATEGORIES_FAILURE:
       console.log("Error!");
       return { ...state, loading: false };
+
+    case types.UPDATE_SELECTED_VEHICLE:
+      var id = action.payload;
+      var { SearchData } = state;
+      var object = SearchData.find(element => element.car_id === id);
+      return { ...state, SelectedVehicle: object };
 
     default:
       return { ...state };

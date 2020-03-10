@@ -1,7 +1,14 @@
 import React from "react";
+import Router from "next/router";
+
 import Button from "react-bootstrap/Button";
 
 const SearchItem = props => {
+  const handleClick = id => {
+    props.updateSelectedVehicle(id);
+    Router.push("/rent/extras");
+  };
+
   return (
     <div className="search-item pb-3 mb-3 border-bottom">
       <div className="row">
@@ -65,7 +72,7 @@ const SearchItem = props => {
             </div>
           </div>
           <div className="search-item-pricing-button">
-            <Button href="/search-extras">Book Now</Button>
+            <Button onClick={() => handleClick(props.id)}>Book Now</Button>
           </div>
         </div>
       </div>

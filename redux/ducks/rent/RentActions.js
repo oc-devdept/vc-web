@@ -31,3 +31,9 @@ export const getCategoriesFailure = e => ({
   type: types.GET_CATEGORIES_FAILURE,
   payload: e
 });
+
+// Update selected vehicle
+export const updateSelectedVehicle = e => ({
+  type: types.UPDATE_SELECTED_VEHICLE,
+  payload: e
+});

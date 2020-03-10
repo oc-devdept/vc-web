@@ -29,7 +29,7 @@ class SearchSortbar extends Component {
   render() {
     return (
       <div className="col-12 search-sortbar border">
-        <div className="row align-items-center">
+        <div className="row align-items-center" style={{ minHeight: 50 }}>
           <div className="col-4 search-no-of-results mr-auto pl-3">
             <span style={{ color: "#404040", fontWeight: 600 }}>
               Showing {this.props.noOfResults} Results
@@ -82,7 +82,10 @@ class SearchSortbar extends Component {
                   height: 30,
                   backgroundColor: "#ffffff",
                   border: "1px solid #dee2e6",
-                  paddingLeft: 5
+                  paddingLeft: 5,
+                  width: "auto",
+                  maxWidth: "100%",
+                  marginLeft: "auto"
                 }}
                 value={this.state.sort}
                 onChange={this.handleChange}

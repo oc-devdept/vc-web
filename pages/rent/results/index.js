@@ -10,7 +10,11 @@ import SearchFilter from "Components/rent/SearchFilter";
 import SearchList from "Components/rent/SearchList";
 import SearchFilterMobile from "Components/rent/SearchFilterMobile";
 
-import { getSearch, getCategories } from "Ducks/rent/RentActions";
+import {
+  getSearch,
+  getCategories,
+  updateSelectedVehicle
+} from "Ducks/rent/RentActions";
 
 const Results = props => {
   const { RentState } = props;
@@ -94,7 +98,10 @@ const Results = props => {
         <div className="container">
           <div className="row">
             <div className="col-lg-9">
-              <SearchList searchData={RentState.SearchData} />
+              <SearchList
+                searchData={RentState.SearchData}
+                updateSelectedVehicle={props.updateSelectedVehicle}
+              />
             </div>
             <div className="col-lg-3">
               <SearchFilter state={state} handleChange={handleChange} />
@@ -112,4 +119,8 @@ const mapStateToProps = state => {
   return { RentState };
 };
 
-export default connect(mapStateToProps, { getSearch, getCategories })(Results);
+export default connect(mapStateToProps, {
+  getSearch,
+  getCategories,
+  updateSelectedVehicle
+})(Results);

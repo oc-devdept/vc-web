@@ -22,7 +22,7 @@ const Results = props => {
   // KIV: is there a better way to prevent users from accessing this page without entering search info?
   useEffect(() => {
     if (Object.keys(RentState.SearchParameters).length === 0) {
-      Router.push("/rent");
+      Router.replace("/rent");
     }
   });
 

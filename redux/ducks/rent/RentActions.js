@@ -37,3 +37,15 @@ export const updateSelectedVehicle = e => ({
   type: types.UPDATE_SELECTED_VEHICLE,
   payload: e
 });
+
+// Update extra options
+export const updateExtraOptions = e => ({
+  type: types.UPDATE_EXTRA_OPTIONS,
+  payload: e
+});
+
+// Update price breakdown
+export const updatePrice = e => ({
+  type: types.UPDATE_PRICE,
+  payload: e
+});

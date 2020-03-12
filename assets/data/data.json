@@ -8,8 +8,10 @@
       "person": 5,
       "luggage": 1,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 80
+      "transmission": "Auto",
+      "pricePerDay": 80,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 1,
@@ -19,8 +21,10 @@
       "person": 5,
       "luggage": 2,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 90
+      "transmission": "Auto",
+      "pricePerDay": 90,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 2,
@@ -30,8 +34,10 @@
       "person": 5,
       "luggage": 2,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 90
+      "transmission": "Auto",
+      "pricePerDay": 90,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 3,
@@ -41,8 +47,10 @@
       "person": 5,
       "luggage": 2,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 100
+      "transmission": "Auto",
+      "pricePerDay": 100,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 4,
@@ -52,8 +60,10 @@
       "person": 5,
       "luggage": 1,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 100
+      "transmission": "Auto",
+      "pricePerDay": 100,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 5,
@@ -63,8 +73,10 @@
       "person": 4,
       "luggage": 1,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 110
+      "transmission": "Auto",
+      "pricePerDay": 110,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 6,
@@ -74,8 +86,10 @@
       "person": 5,
       "luggage": 2,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 112
+      "transmission": "Auto",
+      "pricePerDay": 112,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 7,
@@ -85,8 +99,10 @@
       "person": 5,
       "luggage": 2,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 115
+      "transmission": "Auto",
+      "pricePerDay": 115,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 8,
@@ -96,8 +112,10 @@
       "person": 5,
       "luggage": 1,
       "doors": 4,
-      "transmission": "Auto Transmission",
-      "price": 130
+      "transmission": "Auto",
+      "pricePerDay": 130,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 9,
@@ -107,8 +125,10 @@
       "person": 0,
       "luggage": 0,
       "doors": 0,
-      "transmission": "Auto Transmission",
-      "price": 0
+      "transmission": "Auto",
+      "pricePerDay": 0,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 10,
@@ -118,8 +138,10 @@
       "person": 0,
       "luggage": 0,
       "doors": 0,
-      "transmission": "Auto Transmission",
-      "price": 0
+      "transmission": "Auto",
+      "pricePerDay": 0,
+      "totalPrice": 0,
+      "cdwPrice": 200
     },
     {
       "car_id": 11,
@@ -129,8 +151,10 @@
       "person": 0,
       "luggage": 0,
       "doors": 0,
-      "transmission": "Auto Transmission",
-      "price": 0
+      "transmission": "Auto",
+      "pricePerDay": 0,
+      "totalPrice": 0,
+      "cdwPrice": 200
     }
   ]
 }

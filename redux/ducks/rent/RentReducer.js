@@ -5,7 +5,9 @@ const INIT_STATE = {
   Categories: [],
   SearchParameters: {},
   SearchData: [],
-  SelectedVehicle: {}
+  SelectedVehicle: {},
+  ExtraOptions: {},
+  PriceBreakdown: {}
 };
 
 export default (state = INIT_STATE, action) => {
@@ -36,6 +38,51 @@ export default (state = INIT_STATE, action) => {
       var { SearchData } = state;
       var object = SearchData.find(element => element.car_id === id);
       return { ...state, SelectedVehicle: object };
+
+    case types.UPDATE_EXTRA_OPTIONS:
+      let data = {};
+      Object.entries(action.payload).map(([key, value]) => {
+        switch (key) {
+          case "childSeats":
+            data[key] = { text: "Child Seats", value: value };
+            break;
+          case "malaysiaTravel":
+            data[key] = { text: "Travel to Malaysia" };
+            break;
+          case "fullCoverage":
+            data[key] = {
+              text: "Collision Damage Waiver",
+              value: state.SelectedVehicle.cdwPrice
+            };
+            break;
+          default:
+            break;
+        }
+      });
+      return { ...state, ExtraOptions: data };
+
+    case types.UPDATE_PRICE:
+      const rentalCharge = state.SelectedVehicle.totalPrice;
+      const childSeatCharge = !!state.ExtraOptions.childSeats
+        ? state.ExtraOptions.childSeats.value * 30
+        : 0;
+      const coverageCharge = !!state.ExtraOptions.fullCoverage
+        ? state.ExtraOptions.fullCoverage.value
+        : 0;
+      const subtotal = rentalCharge + childSeatCharge + coverageCharge;
+      const gst = subtotal * 0.07;
+      const total = subtotal + gst;
+      return {
+        ...state,
+        PriceBreakdown: {
+          rentalCharge: rentalCharge,
+          childSeatCharge: childSeatCharge,
+          coverageCharge: coverageCharge,
+          subtotal: subtotal,
+          gst: gst,
+          total: total
+        }
+      };
 
     default:
       return { ...state };

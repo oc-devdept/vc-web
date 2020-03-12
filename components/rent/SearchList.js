@@ -15,9 +15,9 @@ const SearchList = props => {
           person={item.person}
           luggage={item.luggage}
           doors={item.doors}
-          transmission="Auto"
-          oldPrice={item.price}
-          price={item.price}
+          transmission={item.transmission}
+          oldPrice={item.pricePerDay}
+          price={item.pricePerDay}
           updateSelectedVehicle={props.updateSelectedVehicle}
         />
       ))}

@@ -3,39 +3,57 @@ import Router from "next/router";
 import { connect } from "react-redux";
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
+import { formatPrice } from "Components/Helpers/helpers";
 import VehicleSearch from "Components/rent/VehicleSearch";
 import VehicleSearchMobile from "Components/rent/VehicleSearchMobile";
 
-import { getSearch } from "Ducks/rent/RentActions";
+import { getSearch, updateExtraOptions } from "Ducks/rent/RentActions";
 
 import { Card, ListGroup, Form, InputGroup, Button } from "react-bootstrap";
 
-const Extras = props => {
-  const { RentState } = props;
+const Extras = ({ RentState, getSearch, updateExtraOptions }) => {
+  console.log("RentState= ", RentState);
   const { SelectedVehicle } = RentState;
 
-  // KIV: is there a better way to prevent users from accessing this page without entering search info?
   useEffect(() => {
-    if (Object.keys(RentState.SelectedVehicle).length === 0) {
-      Router.push("/rent");
+    if (Object.keys(SelectedVehicle).length === 0) {
+      Router.replace("/rent");
     }
   });
 
   const [childSeats, setChildSeats] = useState(0);
   const [malaysiaTravel, setMalaysiaTravel] = useState(false);
 
+  const handleClick = coverage => {
+    const data = {
+      childSeats: childSeats,
+      malaysiaTravel: malaysiaTravel,
+      fullCoverage: coverage
+    };
+    let payload = {};
+
+    Object.entries(data).map(([key, value]) => {
+      if (!!value) {
+        payload[key] = value;
+      }
+    });
+
+    updateExtraOptions(payload);
+    Router.push("/rent/confirmation");
+  };
+
   return (
     <DefaultLayout crumbs="Extras">
-      <div className="container mb-3">
+      <div className="container my-3">
         <div className="vehicle-search-mobile">
           <VehicleSearchMobile
-            getSearch={props.getSearch}
+            getSearch={getSearch}
             searchParameters={RentState.SearchParameters}
           />
         </div>
         <div className="vehicle-search">
           <VehicleSearch
-            getSearch={props.getSearch}
+            getSearch={getSearch}
             searchParameters={RentState.SearchParameters}
           />
         </div>
@@ -44,7 +62,7 @@ const Extras = props => {
         <Card className="mb-3">
           <Card.Body>
             <div className="row">
-              <div className="col-6 col-md-4 col-lg-3 d-flex align-items-center">
+              <div className="col-6 col-md-3 col-lg-3 d-flex align-items-center">
                 <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
               </div>
               <div className="col-6 col-md-5 col-lg-6 d-flex flex-column justify-content-center">
@@ -70,12 +88,18 @@ const Extras = props => {
                   </div>
                 </div>
               </div>
-              <div className="d-none d-md-flex col-md-3 col-lg-3 search-extras-price flex-column justify-content-center">
+              <div className="d-none d-md-flex col-md-4 col-lg-3 search-extras-price flex-column justify-content-center">
                 <p style={{ lineHeight: 1.7 }}>
-                  <span style={{ fontSize: 20 }}>Car Hire Charges</span> <br />
-                  <span>SGD {SelectedVehicle.price}/day</span> <br />
-                  <span style={{ fontSize: 18, fontWeight: 600 }}>
-                    Total: SGD -
+                  <span className="h5" style={{ color: "#4b6674" }}>
+                    Car Hire Charges
+                  </span>{" "}
+                  <br />
+                  <span>
+                    {formatPrice(SelectedVehicle.pricePerDay)}/day
+                  </span>{" "}
+                  <br />
+                  <span className="h6">
+                    Total: {formatPrice(SelectedVehicle.totalPrice)}
                   </span>
                 </p>
               </div>
@@ -84,8 +108,8 @@ const Extras = props => {
           <Card.Footer
             className="d-md-none"
             style={{
-              backgroundColor: "#5faf57",
-              borderColor: "#5faf57",
+              backgroundColor: "#4b6674",
+              borderColor: "#4b6674",
               padding: ".25rem 1.25rem"
             }}
           >
@@ -96,7 +120,7 @@ const Extras = props => {
                   fontWeight: 600
                 }}
               >
-                SGD -
+                {formatPrice(SelectedVehicle.totalPrice)}
               </span>
             </p>
           </Card.Footer>
@@ -176,7 +200,7 @@ const Extras = props => {
                     </InputGroup>
                   </div>
                   <div className="option-price col-8 col-md-2">
-                    <p style={{ fontWeight: 600 }}>SGD 30.00/rental</p>
+                    <p style={{ fontWeight: 600 }}>$30.00/seat</p>
                   </div>
                 </div>
               </ListGroup.Item>
@@ -253,9 +277,9 @@ const Extras = props => {
           <Card.Footer className="d-flex justify-content-end">
             <Button
               variant="light"
-              href="/checkout"
-              className="mx-2 rounded d-flex flex-column justify-content-center"
+              className="mx-2 d-flex flex-column align-items-center justify-content-center"
               style={{ flex: "0 1 200px" }}
+              onClick={() => handleClick(false)}
             >
               <span style={{ fontWeight: 600, fontSize: 20 }}>
                 Book without
@@ -263,9 +287,9 @@ const Extras = props => {
               Full Coverage
             </Button>
             <Button
-              href="/checkout"
-              className="mx-2 rounded d-flex flex-column justify-content-center"
+              className="mx-2 d-flex flex-column align-items-center justify-content-center"
               style={{ flex: "0 1 200px" }}
+              onClick={() => handleClick(true)}
             >
               <span style={{ fontWeight: 600, fontSize: 20 }}>Book with</span>
               Full Coverage
@@ -283,5 +307,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  getSearch
+  getSearch,
+  updateExtraOptions
 })(Extras);

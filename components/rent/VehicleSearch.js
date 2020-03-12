@@ -173,7 +173,7 @@ class VehicleSearch extends Component {
                 <Form.Label>Pick-up / Drop-off Location:</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="33 Ubi Ave, #01-47/48"
+                  placeholder="33 Ubi Ave 3, #01-47/48"
                   disabled={true}
                   style={{
                     backgroundColor: "#d8d8d8"

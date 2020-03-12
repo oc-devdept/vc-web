@@ -8,7 +8,7 @@ const VehicleSearchMobile = ({ getSearch, searchParameters }) => {
   return (
     <React.Fragment>
       <div className="row search-mobile-details">
-        <div className="col-9">
+        <div className="col-10">
           <span style={{ color: "#4b6674", fontWeight: 600 }}>
             33 Ubi Ave, #01-47/48
           </span>
@@ -17,8 +17,15 @@ const VehicleSearchMobile = ({ getSearch, searchParameters }) => {
             style={{ color: "#4b6674", fontWeight: 500 }}
           >{`${searchParameters.pickUpDate}, ${searchParameters.pickUpTime} - ${searchParameters.dropOffDate}, ${searchParameters.dropOffTime}`}</span>
         </div>
-        <div className="col-3 d-flex justify-content-center align-items-center">
-          <Button onClick={() => setShowSearchModal(true)}>
+        <div className="col-2 d-flex align-items-center">
+          <Button
+            onClick={() => setShowSearchModal(true)}
+            style={{
+              width: "inherit",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
             <i className="far fa-edit" />
           </Button>
         </div>

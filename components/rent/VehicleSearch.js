@@ -165,6 +165,7 @@ class VehicleSearch extends Component {
     ];
 
     // console.log("state= ", this.state);
+    console.log("YOU STILL NEED TO VALIDATE SEARCH INPUTS!!!");
     return (
       <div className="search">
         <Form

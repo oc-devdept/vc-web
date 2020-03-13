@@ -11,7 +11,6 @@ import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 // KIV: validate date/time input during search
-// KIV: check RentState for input values, to reflect on rent/results's VehicleSearch. incoming prop: searchParameters
 class VehicleSearch extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +20,22 @@ class VehicleSearch extends Component {
     // };
     const dateNow = new Date();
 
-    this.state = {
-      pickUpDate: dateNow,
-      pickUpTime: "09:00",
-      dropOffDate: dateNow,
-      dropOffTime: "09:00"
-    };
+    // Check if search parameters exist, else generate general search parameters
+    if (Object.keys(this.props.searchParameters).length !== 0) {
+      this.state = {
+        pickUpDate: this.props.searchParameters.pickUpDate,
+        pickUpTime: this.props.searchParameters.pickUpTime,
+        dropOffDate: this.props.searchParameters.dropOffDate,
+        dropOffTime: this.props.searchParameters.dropOffTime
+      };
+    } else {
+      this.state = {
+        pickUpDate: dateNow,
+        pickUpTime: "09:00",
+        dropOffDate: dateNow,
+        dropOffTime: "09:00"
+      };
+    }
 
     this.handleDayChange = this.handleDayChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -232,6 +241,11 @@ class VehicleSearch extends Component {
                         width: "50%"
                       }}
                       value={this.state[item.dateId]}
+                      // value={
+                      //   !!this.props.searchParameters
+                      //     ? this.props.searchParameters[item.dateId]
+                      //     : this.state[item.dateId]
+                      // }
                       onDayChange={this.handleDayChange}
                     />
                     <Form.Control
@@ -242,6 +256,11 @@ class VehicleSearch extends Component {
                         textAlignLast: "center"
                       }}
                       value={this.state[item.timeId]}
+                      // value={
+                      //   !!this.props.searchParameters
+                      //     ? this.props.searchParameters[item.timeId]
+                      //     : this.state[item.timeId]
+                      // }
                       onChange={this.handleTimeChange}
                     >
                       {/* item.timeId is either pick-up-time or drop-off-time */}

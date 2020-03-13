@@ -9,15 +9,13 @@ import {
 } from "Components/Helpers/helpers";
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
-import VehicleSearch from "Components/rent/VehicleSearch";
-import VehicleSearchMobile from "Components/rent/VehicleSearchMobile";
 
 import { updatePrice } from "Ducks/rent/RentActions";
 
-import { Card, ListGroup, Form, InputGroup, Button } from "react-bootstrap";
+import { Card, Form, Button } from "react-bootstrap";
 
 const Confirmation = ({ RentState, updatePrice }) => {
-  console.log("rentstate= ", RentState);
+  // console.log("rentstate= ", RentState);
 
   useEffect(() => {
     if (Object.keys(RentState.SelectedVehicle).length === 0) {
@@ -26,21 +24,23 @@ const Confirmation = ({ RentState, updatePrice }) => {
   });
 
   useEffect(() => {
-    updatePrice();
+    if (Object.keys(RentState.ExtraOptions).length !== 0) {
+      updatePrice();
+    }
   }, []);
 
   // reducer to maintain state of inputs
   const initialState = {
-    givenName: "",
-    surname: "",
-    email: "",
-    contactNumber: ""
+    givenName: { value: "", error: "" },
+    surname: { value: "", error: "" },
+    email: { value: "", error: "" },
+    contactNumber: { value: "", error: "" }
   };
 
-  function reducer(state, { field, value }) {
+  function reducer(state, { field, values }) {
     return {
       ...state,
-      [field]: value
+      [field]: values
     };
   }
 
@@ -50,7 +50,51 @@ const Confirmation = ({ RentState, updatePrice }) => {
 
   const onChange = e => {
     let { name, value } = e.target;
-    dispatch({ field: name, value: value });
+    let error;
+    switch (name) {
+      case "givenName":
+        /^[a-zA-Z\s?]+$/.test(value)
+          ? (error = "")
+          : (error = "Invalid given name format");
+        break;
+      case "surname":
+        /^[a-zA-Z\s]+$/.test(value)
+          ? (error = "")
+          : (error = "Invalid surname format");
+        break;
+      case "email":
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          value
+        )
+          ? (error = "")
+          : (error = "Invalid email format");
+        break;
+      case "contactNumber":
+        /^\+?(\d{8,})$/.test(value)
+          ? (error = "")
+          : (error =
+              "Invalid contact number format, do not include spaces or hyphens");
+        break;
+      default:
+        break;
+    }
+
+    dispatch({ field: name, values: { value: value, error: error } });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    let isValid = true;
+    for (const input in state) {
+      if (!!state[input].error || !state[input].value) {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (isValid) {
+      console.log("form is valid, post this info!");
+    }
   };
 
   const {
@@ -63,179 +107,258 @@ const Confirmation = ({ RentState, updatePrice }) => {
   return (
     <DefaultLayout crumbs="Confirmation">
       <div className="container my-3">
+        <h1 className="h2 mb-3">Confirmation of Details</h1>
         <div className="row">
-          <div className="col-md-8 row">
-            <div className="your-car col-md-5">
-              <h4>{SelectedVehicle.name}</h4>
-              <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
-              <span>
-                <img src="/Static/rent/icon-person.png" />
-                {SelectedVehicle.person}
-                <img src="/Static/rent/icon-luggage.png" />
-                {SelectedVehicle.luggage}
-                <img src="/Static/rent/icon-car-door.png" />{" "}
-                {SelectedVehicle.doors}
-                <img src="/Static/rent/icon-gearbox.png" />
-                {SelectedVehicle.transmission}
-              </span>
-            </div>
-            <div className="reservation-details col-md-7">
-              <h5>Pick-up</h5>
-              <span>
-                33 Ubi Ave 3, #01-47/48
-                <br />
-                {`${getTheDate(SearchParameters.pickUpDate)} ${getTheTime(
-                  SearchParameters.pickUpDate
-                )}`}
-              </span>
-              <h5>Drop-off</h5>
-              <span>
-                33 Ubi Ave 3, #01-47/48
-                <br />
-                {`${getTheDate(SearchParameters.dropOffDate)} ${getTheTime(
-                  SearchParameters.dropOffDate
-                )}`}
-              </span>
-              <h5>Extra Options</h5>
-              {Object.keys(ExtraOptions).length !== 0 ? (
-                <div>
-                  {Object.entries(ExtraOptions).map(([key, value], id) => (
-                    <span>hello hello you stopped here</span>
-                  ))}
-                </div>
-              ) : (
-                <span>No options selected</span>
-              )}
-            </div>
-          </div>
-          <div className="col-md-5"></div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-7">
-            <h2>Driver Details</h2>
-            <div className="text-right">
-              <span style={{ color: "red" }}>*</span> Required Fields
-            </div>
-            <Form>
-              <Form.Group controlId="givenName">
-                <Form.Label>
-                  Given Name <span style={{ color: "red" }}>*</span>
-                </Form.Label>
-                <Form.Control
-                  name="givenName"
-                  value={givenName}
-                  onChange={onChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="surname">
-                <Form.Label>
-                  Surname <span style={{ color: "red" }}>*</span>
-                </Form.Label>
-                <Form.Control
-                  name="surname"
-                  value={surname}
-                  onChange={onChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="email">
-                <Form.Label>
-                  Email <span style={{ color: "red" }}>*</span>
-                </Form.Label>
-                <Form.Control name="email" value={email} onChange={onChange} />
-              </Form.Group>
-              <Form.Group controlId="contactNumber">
-                <Form.Label>
-                  Contact Number <span style={{ color: "red" }}>*</span>
-                </Form.Label>
-                <Form.Control
-                  name="contactNumber"
-                  value={contactNumber}
-                  onChange={onChange}
-                />
-              </Form.Group>
-              <Button type="submit" style={{ width: "100%" }}>
-                Reserve Now
-              </Button>
-            </Form>
-          </div>
-          <div className="col-md-5">
-            <Card>
+          <div className="left-card col-lg-8">
+            <Card className="rounded-0" style={{ marginBottom: 30 }}>
               <Card.Body>
-                <div className="reservation-details">
-                  <h4>Reservation Details</h4>
-                  <h5>Pick-up</h5>
-                  <span>
-                    33 Ubi Ave 3, #01-47/48
-                    <br />
-                    {getTheDate(SearchParameters.pickUpDate)}
-                    <br />
-                    {getTheTime(SearchParameters.pickUpDate)}
-                  </span>
-                  <h5>Drop-off</h5>
-                  <span>
-                    33 Ubi Ave 3, #01-47/48
-                    <br />
-                    {getTheDate(SearchParameters.dropOffDate)}
-                    <br />
-                    {getTheTime(SearchParameters.dropOffDate)}
-                  </span>
-                  <br />
-                  <Link href="/rent">
-                    <Button variant="light" href="/rent">
-                      Change Dates
-                    </Button>
-                  </Link>
+                <div className="row">
+                  <div className="your-car col-lg-6">
+                    <span>Your Vehicle</span>
+                    <h4>{SelectedVehicle.name}</h4>
+                    <Link href="/rent/results">
+                      <a>
+                        <i className="fas fa-pen" /> Change
+                      </a>
+                    </Link>
+                    <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
+                    <div className="d-block mb-3">
+                      <span className="mr-2">
+                        <img
+                          src="/Static/rent/icon-person.png"
+                          className="mr-1"
+                        />
+                        {SelectedVehicle.person}
+                      </span>
+                      <span className="mr-2">
+                        <img
+                          src="/Static/rent/icon-luggage.png"
+                          className="mr-1"
+                        />
+                        {SelectedVehicle.luggage}
+                      </span>
+                      <span className="mr-2">
+                        <img
+                          src="/Static/rent/icon-car-door.png"
+                          className="mr-1"
+                        />
+                        {SelectedVehicle.doors}
+                      </span>
+                      <span className="mr-2">
+                        <img
+                          src="/Static/rent/icon-gearbox.png"
+                          className="mr-1"
+                        />
+                        {SelectedVehicle.transmission}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="reservation-details col-lg-6">
+                    <div className="d-flex justify-content-between">
+                      <h5>Pick-up</h5>
+                      <Link href="/rent">
+                        <a>
+                          <i className="fas fa-pen" /> Change
+                        </a>
+                      </Link>
+                    </div>
+                    <span className="d-block mb-3" style={{ fontSize: 16 }}>
+                      33 Ubi Ave 3, #01-47/48
+                      <br />
+                      {`${getTheDate(SearchParameters.pickUpDate)} ${
+                        SearchParameters.pickUpTime
+                      }`}
+                    </span>
+                    <h5>Drop-off</h5>
+                    <span className="d-block mb-3" style={{ fontSize: 16 }}>
+                      33 Ubi Ave 3, #01-47/48
+                      <br />
+                      {`${getTheDate(SearchParameters.dropOffDate)} ${
+                        SearchParameters.dropOffTime
+                      }`}
+                    </span>
+                    <div className="d-flex justify-content-between">
+                      <h5>Extra Options</h5>
+                      <Link href="/rent/extras">
+                        <a>
+                          <i className="fas fa-pen" /> Change
+                        </a>
+                      </Link>
+                    </div>
+                    {Object.keys(ExtraOptions).length !== 0 ? (
+                      <ul>
+                        {Object.values(ExtraOptions.render).map((value, id) => (
+                          <li key={id}>
+                            <span style={{ fontSize: 16 }}>
+                              {!!value.value
+                                ? value.value + " " + value.text
+                                : value.text}
+                              <br />
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No options selected</p>
+                    )}
+                  </div>
                 </div>
-                <div className="your-car">
-                  <h4>Your Car</h4>
-                  <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
-                  <h5>{SelectedVehicle.name}</h5>
-                  <span>
-                    {SelectedVehicle.person} Persons
-                    <br />
-                    {SelectedVehicle.luggage} Luggages
-                    <br />
-                    {SelectedVehicle.doors} Doors
-                    <br />
-                    {SelectedVehicle.transmission}
-                  </span>
-                  <br />
-                  <Link href="/rent/results">
-                    <Button variant="light" href="/rent/results">
-                      Change Car
+              </Card.Body>
+            </Card>
+            <div className="driver-details" style={{ marginBottom: 30 }}>
+              <Card className="rounded-0">
+                <Card.Body>
+                  <h4>Driver Details</h4>
+                  <div className="text-right">
+                    <span style={{ color: "red" }}>*</span> Required Fields
+                  </div>
+                  <Form onSubmit={handleSubmit} validated={false} noValidate>
+                    <Form.Group controlId="givenName">
+                      <Form.Label>
+                        Given Name <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
+                      <Form.Control
+                        name="givenName"
+                        value={givenName.value}
+                        onChange={onChange}
+                        placeholder="Required"
+                      />
+                      {!!state.givenName.error && (
+                        <span style={{ color: "red" }}>
+                          Please enter a valid given name
+                        </span>
+                      )}
+                    </Form.Group>
+                    <Form.Group controlId="surname">
+                      <Form.Label>
+                        Surname <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
+                      <Form.Control
+                        name="surname"
+                        value={surname.value}
+                        onChange={onChange}
+                        placeholder="Required"
+                      />
+                      {!!state.surname.error && (
+                        <span style={{ color: "red" }}>
+                          Please enter a valid surname
+                        </span>
+                      )}
+                    </Form.Group>
+                    <Form.Group controlId="email">
+                      <Form.Label>
+                        Email <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
+                      <Form.Control
+                        name="email"
+                        value={email.value}
+                        onChange={onChange}
+                        placeholder="Required"
+                      />
+                      {!!state.email.error && (
+                        <span style={{ color: "red" }}>
+                          Please enter a valid email
+                        </span>
+                      )}
+                    </Form.Group>
+                    <Form.Group controlId="contactNumber">
+                      <Form.Label>
+                        Contact Number <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
+                      <Form.Control
+                        name="contactNumber"
+                        value={contactNumber.value}
+                        onChange={onChange}
+                        placeholder="Required, omit spaces and hypens"
+                      />
+                      {!!state.contactNumber.error && (
+                        <span style={{ color: "red" }}>
+                          Please enter a valid contact number
+                        </span>
+                      )}
+                    </Form.Group>
+                    <Button
+                      type="submit"
+                      style={{ width: "100%", marginTop: "1rem" }}
+                    >
+                      Reserve Now
                     </Button>
-                  </Link>
-                </div>
-                {Object.keys(PriceBreakdown).length !== 0 && (
+                  </Form>
+                </Card.Body>
+              </Card>
+            </div>
+          </div>
+          <div className="right-card col-lg-4">
+            <Card className="rounded-0" style={{ marginBottom: 30 }}>
+              <Card.Header
+                style={{ backgroundColor: "#4b6674", borderRadius: 0 }}
+              >
+                <h4 style={{ color: "#ffffff" }}>Price Breakdown</h4>
+              </Card.Header>
+              <Card.Body>
+                {!!PriceBreakdown.total && (
                   <div className="price-breakdown">
-                    <h4>Price Breakdown</h4>
-                    <h5>
-                      Car Rental Charge{" "}
-                      {formatPrice(PriceBreakdown.rentalCharge)}
-                    </h5>
+                    <p className="h6 d-flex justify-content-between">
+                      <span>Car Rental Charge</span>
+                      <span>{formatPrice(PriceBreakdown.rentalCharge)}</span>
+                    </p>
                     {!!PriceBreakdown.childSeatCharge && (
-                      <h5>
-                        Child Seat Charge{" "}
-                        {formatPrice(PriceBreakdown.childSeatCharge)}
-                      </h5>
+                      <p className="h6 d-flex justify-content-between">
+                        <span>Child Seat Charge</span>
+                        <span>
+                          {formatPrice(PriceBreakdown.childSeatCharge)}
+                        </span>
+                      </p>
                     )}
                     {!!PriceBreakdown.coverageCharge && (
-                      <h5>
-                        Collision Damage Waiver{" "}
-                        {formatPrice(PriceBreakdown.coverageCharge)}
-                      </h5>
+                      <p className="h6 d-flex justify-content-between">
+                        <span>Collision Damage Waiver</span>
+                        <span>
+                          {formatPrice(PriceBreakdown.coverageCharge)}
+                        </span>
+                      </p>
                     )}
-                    <h5>GST (7%) {formatPrice(PriceBreakdown.gst)}</h5>
-                    <h5></h5>
+                    <p className="h6 d-flex justify-content-between">
+                      <span>GST (7%)</span>
+                      <span>{formatPrice(PriceBreakdown.gst)}</span>
+                    </p>
+                    <h5
+                      className="d-flex justify-content-between"
+                      style={{ fontWeight: 600 }}
+                    >
+                      <span>Total</span>
+                      <span>{formatPrice(PriceBreakdown.total)}</span>
+                    </h5>
                   </div>
                 )}
               </Card.Body>
-              <Card.Footer>
-                {!!PriceBreakdown.total && (
-                  <h5>Total {formatPrice(PriceBreakdown.total)}</h5>
-                )}
-              </Card.Footer>
+            </Card>
+            <Card className="rounded-0">
+              <Card.Header
+                style={{ backgroundColor: "#4b6674", borderRadius: 0 }}
+              >
+                <h4 style={{ color: "#ffffff" }}>Need Help?</h4>
+              </Card.Header>
+              <Card.Body>
+                <span className="d-block mb-3">
+                  Have a question or need to clarify something?
+                </span>
+                <div className="d-flex justify-content-between">
+                  <Button
+                    variant="light"
+                    href="tel:65528800"
+                    style={{ width: "48%", padding: "11px 24px" }}
+                  >
+                    Call Us
+                  </Button>
+                  <Button
+                    href="mailto:sales@bw.com.sg"
+                    style={{ width: "48%", padding: "11px 24px" }}
+                  >
+                    Email Us
+                  </Button>
+                </div>
+              </Card.Body>
             </Card>
           </div>
         </div>

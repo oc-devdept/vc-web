@@ -13,7 +13,7 @@ import { Card, ListGroup, Form, InputGroup, Button } from "react-bootstrap";
 
 const Extras = ({ RentState, getSearch, updateExtraOptions }) => {
   console.log("RentState= ", RentState);
-  const { SelectedVehicle } = RentState;
+  const { SelectedVehicle, ExtraOptions } = RentState;
 
   useEffect(() => {
     if (Object.keys(SelectedVehicle).length === 0) {
@@ -21,24 +21,37 @@ const Extras = ({ RentState, getSearch, updateExtraOptions }) => {
     }
   });
 
-  const [childSeats, setChildSeats] = useState(0);
-  const [malaysiaTravel, setMalaysiaTravel] = useState(false);
+  // Check if there is an existing ExtraOptions state
+  let childSeatState, malaysiaTravelState;
+  if (Object.keys(ExtraOptions).length === 0) {
+    childSeatState = 0;
+    malaysiaTravelState = false;
+  } else {
+    childSeatState = ExtraOptions.data.childSeats;
+    malaysiaTravelState = ExtraOptions.data.malaysiaTravel;
+  }
+
+  const [childSeats, setChildSeats] = useState(childSeatState);
+  const [malaysiaTravel, setMalaysiaTravel] = useState(malaysiaTravelState);
 
   const handleClick = coverage => {
-    const data = {
+    let data = {
       childSeats: childSeats,
       malaysiaTravel: malaysiaTravel,
       fullCoverage: coverage
     };
-    let payload = {};
+    // let render = {};
 
-    Object.entries(data).map(([key, value]) => {
-      if (!!value) {
-        payload[key] = value;
-      }
-    });
+    // Object.entries(data).map(([key, value]) => {
+    //   if (!!value) {
+    //     render[key] = value;
+    //   }
+    // });
 
-    updateExtraOptions(payload);
+    // data["render"] = render;
+
+    // // updateExtraOptions(payload);
+    updateExtraOptions(data);
     Router.push("/rent/confirmation");
   };
 
@@ -59,72 +72,74 @@ const Extras = ({ RentState, getSearch, updateExtraOptions }) => {
         </div>
       </div>
       <div className="container">
-        <Card className="mb-3">
-          <Card.Body>
-            <div className="row">
-              <div className="col-6 col-md-3 col-lg-3 d-flex align-items-center">
-                <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
-              </div>
-              <div className="col-6 col-md-5 col-lg-6 d-flex flex-column justify-content-center">
-                <div className="search-extras-name">
-                  <h1 className="h4">{SelectedVehicle.name}</h1>
+        {Object.keys(SelectedVehicle).length !== 0 && (
+          <Card className="mb-3">
+            <Card.Body>
+              <div className="row">
+                <div className="col-6 col-md-3 col-lg-3 d-flex align-items-center">
+                  <img src={SelectedVehicle.img} alt={SelectedVehicle.name} />
                 </div>
-                <div className="search-extras-properties">
-                  <div className="search-extras-person d-inline-flex mr-1">
-                    {/* <img src="/Static/rent/icon-person.png" className="mr-1" /> */}
-                    <span>{SelectedVehicle.person} Persons |</span>
+                <div className="col-6 col-md-5 col-lg-6 d-flex flex-column justify-content-center">
+                  <div className="search-extras-name">
+                    <h1 className="h4">{SelectedVehicle.name}</h1>
                   </div>
-                  <div className="search-extras-luggage d-inline-flex mr-1">
-                    {/* <img src="/Static/rent/icon-luggage.png" className="mr-1" /> */}
-                    <span>{SelectedVehicle.luggage} Luggages |</span>
-                  </div>
-                  <div className="search-extras-door d-inline-flex mr-1">
-                    {/* <img src="/Static/rent/icon-car-door.png" className="mr-1" /> */}
-                    <span>{SelectedVehicle.doors} Doors |</span>
-                  </div>
-                  <div className="search-item-transmission d-inline-flex mr-1">
-                    {/* <img src="/Static/rent/icon-gearbox.png" className="mr-1" /> */}
-                    <span>{SelectedVehicle.transmission}</span>
+                  <div className="search-extras-properties">
+                    <div className="search-extras-person d-inline-flex mr-1">
+                      {/* <img src="/Static/rent/icon-person.png" className="mr-1" /> */}
+                      <span>{SelectedVehicle.person} Persons |</span>
+                    </div>
+                    <div className="search-extras-luggage d-inline-flex mr-1">
+                      {/* <img src="/Static/rent/icon-luggage.png" className="mr-1" /> */}
+                      <span>{SelectedVehicle.luggage} Luggages |</span>
+                    </div>
+                    <div className="search-extras-door d-inline-flex mr-1">
+                      {/* <img src="/Static/rent/icon-car-door.png" className="mr-1" /> */}
+                      <span>{SelectedVehicle.doors} Doors |</span>
+                    </div>
+                    <div className="search-item-transmission d-inline-flex mr-1">
+                      {/* <img src="/Static/rent/icon-gearbox.png" className="mr-1" /> */}
+                      <span>{SelectedVehicle.transmission}</span>
+                    </div>
                   </div>
                 </div>
+                <div className="d-none d-md-flex col-md-4 col-lg-3 search-extras-price flex-column justify-content-center">
+                  <p style={{ lineHeight: 1.7 }}>
+                    <span className="h5" style={{ color: "#4b6674" }}>
+                      Car Hire Charges
+                    </span>{" "}
+                    <br />
+                    <span>
+                      {formatPrice(SelectedVehicle.pricePerDay)}/day
+                    </span>{" "}
+                    <br />
+                    <span className="h6">
+                      Total: {formatPrice(SelectedVehicle.totalPrice)}
+                    </span>
+                  </p>
+                </div>
               </div>
-              <div className="d-none d-md-flex col-md-4 col-lg-3 search-extras-price flex-column justify-content-center">
-                <p style={{ lineHeight: 1.7 }}>
-                  <span className="h5" style={{ color: "#4b6674" }}>
-                    Car Hire Charges
-                  </span>{" "}
-                  <br />
-                  <span>
-                    {formatPrice(SelectedVehicle.pricePerDay)}/day
-                  </span>{" "}
-                  <br />
-                  <span className="h6">
-                    Total: {formatPrice(SelectedVehicle.totalPrice)}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </Card.Body>
-          <Card.Footer
-            className="d-md-none"
-            style={{
-              backgroundColor: "#4b6674",
-              borderColor: "#4b6674",
-              padding: ".25rem 1.25rem"
-            }}
-          >
-            <p style={{ color: "#ffffff", fontSize: 16, textAlign: "right" }}>
-              Total Car Hire Charge:{" "}
-              <span
-                style={{
-                  fontWeight: 600
-                }}
-              >
-                {formatPrice(SelectedVehicle.totalPrice)}
-              </span>
-            </p>
-          </Card.Footer>
-        </Card>
+            </Card.Body>
+            <Card.Footer
+              className="d-md-none"
+              style={{
+                backgroundColor: "#4b6674",
+                borderColor: "#4b6674",
+                padding: ".25rem 1.25rem"
+              }}
+            >
+              <p style={{ color: "#ffffff", fontSize: 16, textAlign: "right" }}>
+                Total Car Hire Charge:{" "}
+                <span
+                  style={{
+                    fontWeight: 600
+                  }}
+                >
+                  {formatPrice(SelectedVehicle.totalPrice)}
+                </span>
+              </p>
+            </Card.Footer>
+          </Card>
+        )}
         <Card className="mb-3">
           <Card.Body>
             <h2 className="h5">Add more options</h2>
@@ -228,7 +243,7 @@ const Extras = ({ RentState, getSearch, updateExtraOptions }) => {
                       type="checkbox"
                       label=""
                       id="malaysiaTravel"
-                      value={malaysiaTravel}
+                      checked={malaysiaTravel}
                       onChange={() => setMalaysiaTravel(!malaysiaTravel)}
                     />
                     <p style={{ lineHeight: 1.2 }}>

@@ -40,34 +40,43 @@ export default (state = INIT_STATE, action) => {
       return { ...state, SelectedVehicle: object };
 
     case types.UPDATE_EXTRA_OPTIONS:
-      let data = {};
+      let render = {};
       Object.entries(action.payload).map(([key, value]) => {
         switch (key) {
           case "childSeats":
-            data[key] = { text: "Child Seats", value: value };
+            if (!!value) {
+              render[key] = { text: "Child Seat(s)", value: value };
+            }
             break;
           case "malaysiaTravel":
-            data[key] = { text: "Travel to Malaysia" };
+            if (!!value) {
+              render[key] = { text: "Travel to Malaysia" };
+            }
             break;
           case "fullCoverage":
-            data[key] = {
-              text: "Collision Damage Waiver",
-              value: state.SelectedVehicle.cdwPrice
-            };
+            if (!!value) {
+              render[key] = {
+                text: "Collision Damage Waiver"
+              };
+            }
             break;
           default:
             break;
         }
       });
-      return { ...state, ExtraOptions: data };
+
+      return {
+        ...state,
+        ExtraOptions: { data: action.payload, render: render }
+      };
 
     case types.UPDATE_PRICE:
       const rentalCharge = state.SelectedVehicle.totalPrice;
-      const childSeatCharge = !!state.ExtraOptions.childSeats
-        ? state.ExtraOptions.childSeats.value * 30
+      const childSeatCharge = !!state.ExtraOptions.data.childSeats
+        ? state.ExtraOptions.data.childSeats * 30
         : 0;
-      const coverageCharge = !!state.ExtraOptions.fullCoverage
-        ? state.ExtraOptions.fullCoverage.value
+      const coverageCharge = !!state.ExtraOptions.data.fullCoverage
+        ? state.SelectedVehicle.cdwPrice
         : 0;
       const subtotal = rentalCharge + childSeatCharge + coverageCharge;
       const gst = subtotal * 0.07;

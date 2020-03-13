@@ -58,13 +58,16 @@ const Rent = props => {
       amet nulla.`
     }
   ];
-  // console.log("rent props= ", props);
+  console.log("rent props= ", props);
   return (
     <DefaultLayout crumbs="Rental">
       <section className="pb-20">
         <PageBanner overlay title="RENT A VEHICLE" bgImgUrl={rentBanner} />
         <div className="container mb-5">
-          <VehicleSearch getSearch={props.getSearch} />
+          <VehicleSearch
+            getSearch={props.getSearch}
+            searchParameters={props.RentState.SearchParameters}
+          />
         </div>
         <div className="container border mb-5">
           <h2 className="text-center py-4">Rental Details</h2>

@@ -2,11 +2,7 @@ import React, { useReducer, useEffect } from "react";
 import Router from "next/router";
 import Link from "next/link";
 import { connect } from "react-redux";
-import {
-  getTheDate,
-  getTheTime,
-  formatPrice
-} from "Components/Helpers/helpers";
+import { getTheDate, formatPrice } from "Components/Helpers/helpers";
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 

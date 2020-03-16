@@ -8,7 +8,14 @@ import { LayoutSaga } from "Ducks/layout";
 import { ProductSaga } from "Ducks/product";
 import { ModelSaga } from "Ducks/model";
 import { UserSaga } from "Ducks/user";
+import { CheckoutSaga } from "Ducks/checkout";
 
 export default function* rootSaga() {
-  yield all([LayoutSaga(), ProductSaga(), ModelSaga(), UserSaga()]);
+  yield all([
+    LayoutSaga(),
+    ProductSaga(),
+    ModelSaga(),
+    UserSaga(),
+    CheckoutSaga()
+  ]);
 }

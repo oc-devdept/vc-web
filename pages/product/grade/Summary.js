@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { connect } from "react-redux";
 import { formatPrice } from "Components/Helpers/helpers";
 
 import SummaryTable from "Components/configurator/SummaryTable";
@@ -10,6 +10,9 @@ import DialogRoot from "Components/Dialog/DialogRoot";
 import Booking from "Components/booking/booking";
 import UserProfile from "Components/booking/profile";
 import { NotificationManager } from "react-notifications";
+
+// Actions
+import { doCheckout } from "Ducks/checkout";
 
 // TO DELETE ONCE CHECKOUT SMOOTHEN
 import TestButton from "./toDelete";
@@ -32,8 +35,6 @@ let InitUserProfile = {
 };
 
 const Summary = props => {
-  console.log("Summary props= ", props);
-
   const overallSummary = [
     {
       text: "TOTAL CAR PRICE",
@@ -97,6 +98,25 @@ const Summary = props => {
   const _RestartToggle = () => {
     setToggle(() => !Toggle);
   };
+
+  function checkout() {
+    const {
+      productVariance,
+      productAccessories,
+      productGradeId,
+      subtotal,
+      gst,
+      total
+    } = props.CheckoutState;
+    props.doCheckout(
+      productVariance,
+      productAccessories,
+      productGradeId,
+      subtotal,
+      gst,
+      total
+    );
+  }
 
   const onSubmitForm = async () => {
     const newBooking = {
@@ -246,8 +266,10 @@ const Summary = props => {
               </button>
             </div>
             <div className="d-flex">
-              <Button style={{ maxWidth: 180 }}>PROCEED TO DOWNPAYMENT</Button>
-              <TestButton />
+              <Button onClick={checkout} style={{ maxWidth: 180 }}>
+                PROCEED TO DOWNPAYMENT
+              </Button>
+              {/* <TestButton /> */}
             </div>
           </div>
         </div>
@@ -297,4 +319,4 @@ const Summary = props => {
   );
 };
 
-export default Summary;
+export default connect(null, { doCheckout })(Summary);

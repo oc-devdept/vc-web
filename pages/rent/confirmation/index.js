@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import Router from "next/router";
 import Link from "next/link";
 import { connect } from "react-redux";
@@ -78,6 +78,8 @@ const Confirmation = ({ RentState, updatePrice }) => {
     dispatch({ field: name, values: { value: value, error: error } });
   };
 
+  const [showSubmitFeedback, setShowSubmitFeedback] = useState(false);
+
   const handleSubmit = e => {
     e.preventDefault();
     let isValid = true;
@@ -90,6 +92,10 @@ const Confirmation = ({ RentState, updatePrice }) => {
 
     if (isValid) {
       console.log("form is valid, post this info!");
+      // KIV: get response from api post, need to catch (and display) if api post throws error
+      setShowSubmitFeedback(true);
+    } else {
+      console.log("form is invalid");
     }
   };
 
@@ -218,6 +224,7 @@ const Confirmation = ({ RentState, updatePrice }) => {
                         value={givenName.value}
                         onChange={onChange}
                         placeholder="Required"
+                        disabled={showSubmitFeedback}
                       />
                       {!!state.givenName.error && (
                         <span style={{ color: "red" }}>
@@ -234,6 +241,7 @@ const Confirmation = ({ RentState, updatePrice }) => {
                         value={surname.value}
                         onChange={onChange}
                         placeholder="Required"
+                        disabled={showSubmitFeedback}
                       />
                       {!!state.surname.error && (
                         <span style={{ color: "red" }}>
@@ -250,6 +258,7 @@ const Confirmation = ({ RentState, updatePrice }) => {
                         value={email.value}
                         onChange={onChange}
                         placeholder="Required"
+                        disabled={showSubmitFeedback}
                       />
                       {!!state.email.error && (
                         <span style={{ color: "red" }}>
@@ -266,6 +275,7 @@ const Confirmation = ({ RentState, updatePrice }) => {
                         value={contactNumber.value}
                         onChange={onChange}
                         placeholder="Required, omit spaces and hypens"
+                        disabled={showSubmitFeedback}
                       />
                       {!!state.contactNumber.error && (
                         <span style={{ color: "red" }}>
@@ -273,12 +283,27 @@ const Confirmation = ({ RentState, updatePrice }) => {
                         </span>
                       )}
                     </Form.Group>
-                    <Button
-                      type="submit"
-                      style={{ width: "100%", marginTop: "1rem" }}
-                    >
-                      Reserve Now
-                    </Button>
+                    {showSubmitFeedback ? (
+                      <React.Fragment>
+                        <p className="h5" style={{ lineHeight: 2 }}>
+                          Your form has been submitted successfully.
+                          <br />
+                          Thank you for your interest, we will get back to you
+                          within 24 hours.
+                          <br />
+                          <a className="d-inline-block" href="/">
+                            Return to home page
+                          </a>
+                        </p>
+                      </React.Fragment>
+                    ) : (
+                      <Button
+                        type="submit"
+                        style={{ width: "100%", marginTop: "1rem" }}
+                      >
+                        Reserve Now
+                      </Button>
+                    )}
                   </Form>
                 </Card.Body>
               </Card>

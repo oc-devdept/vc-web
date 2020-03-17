@@ -14,9 +14,6 @@ import { NotificationManager } from "react-notifications";
 // Actions
 import { doCheckout } from "Ducks/checkout";
 
-// TO DELETE ONCE CHECKOUT SMOOTHEN
-import TestButton from "./toDelete";
-
 import Moment from "moment";
 import api from "Api";
 

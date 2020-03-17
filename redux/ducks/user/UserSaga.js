@@ -1,17 +1,13 @@
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-  takeLatest,
-  select,
-  delay
-} from "redux-saga/effects";
+import { all, call, fork, put, takeEvery } from "redux-saga/effects";
 
 import * as types from "./UserTypes";
 import * as actions from "./UserActions";
 import api from "Api";
+
+import { ttlToDays } from "Components/Helpers/helpers";
+
+// save cookies
+import { login, logout } from "../../../utils/auth";
 
 //=========================
 // REQUESTS
@@ -19,15 +15,15 @@ import api from "Api";
 
 const userLoginRequest = async e => {
   const data = await api.post(`/basecustomerusers/login`, e.payload);
-  return data;
+  return data.data;
 };
 const userLogoutRequest = async e => {
   const data = await api.post(`/basecustomerusers/logout`);
   return data;
 };
 const userProfileRequest = async e => {
-  const result = await api.get(`/basecustomerusers/${e}/customer`);
-  return result.data;
+  const result = await api.get(`/basecustomerusers/customer`);
+  return result.data.customer;
 };
 const updateUserProfileRequest = async e => {
   const result = await api.post(`/basecustomerusers/updateContact`, {
@@ -42,6 +38,7 @@ const updateUserProfileRequest = async e => {
 function* userLogin(e) {
   try {
     const data = yield call(userLoginRequest, e);
+    login({ token: data.id, expires: ttlToDays(data.ttl) });
     yield put(actions.handleAccountLogin_success(data));
   } catch (error) {
     yield put(actions.handleAccountLogin_failure(error));
@@ -51,18 +48,18 @@ function* userLogin(e) {
 function* userLogout(e) {
   try {
     const data = yield call(userLogoutRequest, e);
+    logout();
     yield put(actions.handleAccountLogout_success(data));
   } catch (error) {
     yield put(actions.handleAccountLogout_failure(error));
   }
 }
 
-function* userProfile(e) {
+function* userProfile() {
   try {
-    const data = yield call(userProfileRequest, e.payload);
+    const data = yield call(userProfileRequest);
     yield put(actions.retrieveUserProfileSuccess(data));
   } catch (error) {
-    console.log("userProfile Error", error);
     yield put(actions.retrieveUserProfileFailure(error));
   }
 }
@@ -72,7 +69,6 @@ function* updateUserProfile(e) {
     const data = yield call(updateUserProfileRequest, e);
     yield put(actions.updateUserProfileSuccess(data));
   } catch (error) {
-    console.log("updateUserProfile Error", error);
     yield put(actions.updateUserProfileFailure(error));
   }
 }

@@ -28,6 +28,7 @@ class Model extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { loading, ModelData } = this.props;
     return (
       <DefaultLayout>
@@ -93,9 +94,8 @@ class Model extends Component {
   }
 }
 
-Model.getInitialProps = async function({ ctx }) {
-  const { id } = ctx.query;
-  return { selectedModelId: id };
+Model.getInitialProps = async function({ query: id }) {
+  return { selectedModelId: id.id };
 };
 
 const mapStateToProps = ({ ModelState }) => {

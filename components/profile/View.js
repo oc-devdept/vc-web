@@ -3,7 +3,6 @@ import React from "react";
 import DefaultMessage from "./DefaultMessage";
 
 // Transaction
-import Purchases from "./Transactions/Purchases/index";
 import Testdrive from "./Transactions/Testdrive/index";
 import CarServicing from "./Transactions/CarServicing/index";
 
@@ -13,7 +12,6 @@ import Rewards from "./Account/Rewards/index";
 import Payment from "./Account/Payment/index";
 
 const renderView = {
-  purchases: Purchases,
   testDrive: Testdrive,
   carServicing: CarServicing,
   user: User,

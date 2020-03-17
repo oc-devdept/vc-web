@@ -28,7 +28,6 @@ class Model extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { loading, ModelData } = this.props;
     return (
       <DefaultLayout>

@@ -22,7 +22,6 @@ const Index = () => {
 
   const RefetchBookingRecords = async () => {
     setState(() => 0);
-    console.log("Refetch records");
   };
 
   return (

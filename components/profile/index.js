@@ -8,9 +8,8 @@ import ViewComponent from "./View";
 
 const menuTabs = [
   {
-    title: "TRANSACTIONS",
+    title: "BOOKINGS",
     routes: [
-      { name: "PURCHASES", state: "purchases" },
       { name: "TEST DRIVE", state: "testDrive" },
       { name: "CAR SERVICING", state: "carServicing" }
     ]
@@ -18,10 +17,8 @@ const menuTabs = [
   {
     title: "ACCOUNT",
     routes: [
-      { name: "USER", state: "user" },
-      { name: "REWARDS", state: "rewards" },
       { name: "PAYMENT LOGS", state: "payment" },
-      { name: "SETTINGS", state: "settings" }
+      { name: "PROFILE", state: "user" }
     ]
   }
 ];

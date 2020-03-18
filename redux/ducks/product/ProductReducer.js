@@ -15,6 +15,7 @@ const INIT_STATE = {
     images: [],
     data: {}
   },
+  ProductSpecification: {},
   ProductExterior: {
     id: null,
     name: null,
@@ -97,6 +98,7 @@ export default (state = INIT_STATE, action) => {
       var {
         gradeId,
         gradesData,
+        specificationData,
         exteriorData,
         interiorData,
         accessoriesData
@@ -119,11 +121,13 @@ export default (state = INIT_STATE, action) => {
         ProductGrade: {
           id: ProductGrade.id,
           name: ProductGrade.name,
-          // PARSEFLOAT USED AS selling_Price IS STORED AS A STRING
-          price: parseFloat(ProductGrade.selling_Price),
+          price: ProductGrade.selling_Price,
           description: ProductGrade.description,
           images: imageList,
           data: gradesData.data
+        },
+        ProductSpecification: {
+          data: specificationData.data.fields.Detail
         },
         ProductExterior: {
           id: exteriorData.data.fields["Colors"].objects[0].id,
@@ -159,7 +163,7 @@ export default (state = INIT_STATE, action) => {
         },
         ProductAccessories: {
           ...state.ProductAccessories,
-          data: action.payload.accessoriesData.data
+          data: accessoriesData.data
         }
       };
 
@@ -199,10 +203,18 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
-      var { exteriorData, interiorData, accessoriesData } = action.payload;
+      var {
+        specificationData,
+        exteriorData,
+        interiorData,
+        accessoriesData
+      } = action.payload;
 
       return {
         ...state,
+        ProductSpecification: {
+          data: specificationData.data.fields.Detail
+        },
         ProductExterior: {
           id: exteriorData.data.fields["Colors"].objects[0].id,
           name: exteriorData.data.fields["Colors"].objects[0].name,

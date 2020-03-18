@@ -4,15 +4,12 @@ import Router from "next/router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
 
-// date picker docs - https://react-day-picker.js.org/docs/getting-started
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 import Select from "react-select";
 
-// KIV: validate date/time input during search
 class VehicleSearch extends Component {
   constructor(props) {
     super(props);
@@ -106,7 +103,8 @@ class VehicleSearch extends Component {
   }
 
   componentDidUpdate() {
-    // if selected pick up date is later than drop off date, change it to stipulated default end date
+    // if selected pick up date is later than drop off date,
+    // change it to stipulated default end date
     if (this.state.pickUpDate >= this.state.dropOffDate) {
       const { dateEnd } = this.state;
       this.setState({

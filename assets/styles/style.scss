@@ -9556,3 +9556,7 @@ input[type="number"] {
 .search-mobile-modal .search-submit {
   display: none;
 }
+
+.DayPickerInput > input:focus {
+  outline: #f29d30 solid 1px;
+}

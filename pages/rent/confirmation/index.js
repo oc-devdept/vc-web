@@ -285,7 +285,7 @@ const Confirmation = ({ RentState, updatePrice }) => {
                     </Form.Group>
                     {showSubmitFeedback ? (
                       <React.Fragment>
-                        <p className="h5" style={{ lineHeight: 2 }}>
+                        <p className="h6" style={{ lineHeight: 2 }}>
                           Your form has been submitted successfully.
                           <br />
                           Thank you for your interest, we will get back to you

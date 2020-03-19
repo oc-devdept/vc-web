@@ -22,6 +22,7 @@ const INIT_STATE = {
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
     data: {}
   },
   ProductInterior: {
@@ -30,6 +31,7 @@ const INIT_STATE = {
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
     data: {}
   },
   ProductRims: {
@@ -38,6 +40,7 @@ const INIT_STATE = {
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
     data: {}
   },
   ProductAccessories: {
@@ -138,6 +141,8 @@ export default (state = INIT_STATE, action) => {
           images: exteriorData.data.fields["Colors"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
@@ -149,6 +154,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Material"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Material"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductRims: {
@@ -159,6 +166,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Rims"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
@@ -224,6 +233,8 @@ export default (state = INIT_STATE, action) => {
           images: exteriorData.data.fields["Colors"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
@@ -235,6 +246,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Material"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Material"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductRims: {
@@ -245,6 +258,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Rims"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
@@ -269,7 +284,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 
@@ -286,7 +302,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 
@@ -303,7 +320,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 

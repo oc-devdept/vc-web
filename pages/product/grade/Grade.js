@@ -131,7 +131,9 @@ const Grade = ({
                     {value.map((item, idd) => (
                       <React.Fragment key={idd}>
                         <p className="d-flex justify-content-between mb-1">
-                          <span>{item.detailCategory.name}:&nbsp;</span>
+                          <span className="mr-2">
+                            {item.detailCategory.name}:
+                          </span>
                           <span>
                             {item.value} {item.detailCategory.unit}
                           </span>

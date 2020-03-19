@@ -108,6 +108,7 @@ const Grade = ({
   const { model, date, timeslot, description } = BookService;
   const { lastName, firstName, email, phone } = Profile;
 
+  // console.log("ProductSpecification= ", ProductSpecification);
   return (
     <div className="configure-sect row">
       <div className="configure-gall col-lg-8 d-flex flex-column p-3">
@@ -118,26 +119,30 @@ const Grade = ({
         />
         <h3 className="text-uppercase text-center m-2">{ProductGrade.name}</h3>
         <p>{ProductGrade.description}</p>
-        {!!ProductSpecification.data.length ? (
-          <div className="specifications d-flex flex-wrap">
-            {ProductSpecification.data.map(detail =>
-              Object.entries(detail).map(([key, value], id) => (
-                <div key={id} className="specification-group mb-4 mr-4">
-                  <h6 className="text-uppercase">{key}</h6>
-                  {value.map((item, idd) => (
-                    <React.Fragment key={idd}>
-                      <p>
-                        {`${item.detailCategory.name}: ${item.value} ${item.detailCategory.unit}`}
-                      </p>
-                    </React.Fragment>
-                  ))}
-                </div>
-              ))
-            )}
-          </div>
-        ) : (
-          <p>No product specifications available.</p>
-        )}
+        {!!Object.values(ProductSpecification).length &&
+          (ProductSpecification.data.length === 0 ? (
+            <p>No product specification available.</p>
+          ) : (
+            <div className="specifications d-flex flex-wrap">
+              {ProductSpecification.data.map(detail =>
+                Object.entries(detail).map(([key, value], id) => (
+                  <div key={id} className="specification-group mb-4 mr-4">
+                    <h6 className="text-uppercase">{key}</h6>
+                    {value.map((item, idd) => (
+                      <React.Fragment key={idd}>
+                        <p className="d-flex justify-content-between mb-1">
+                          <span>{item.detailCategory.name}:&nbsp;</span>
+                          <span>
+                            {item.value} {item.detailCategory.unit}
+                          </span>
+                        </p>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ))
+              )}
+            </div>
+          ))}
         <button
           className="d-flex align-items-center px-2 py-1"
           onClick={_RestartToggle}

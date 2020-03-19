@@ -10,11 +10,7 @@ import SearchFilter from "Components/rent/SearchFilter";
 import SearchList from "Components/rent/SearchList";
 import SearchFilterMobile from "Components/rent/SearchFilterMobile";
 
-import {
-  getSearch,
-  getCategories,
-  updateSelectedVehicle
-} from "Ducks/rent/RentActions";
+import { getSearch, updateSelectedVehicle } from "Ducks/rent/RentActions";
 
 const Results = props => {
   const { RentState } = props;
@@ -26,39 +22,44 @@ const Results = props => {
     }
   });
 
-  // Reducer to maintain filter state
-  let initialState = {};
-  initialState["All"] = true;
+  // Reducer to maintain filter/sort state
+  let initialState = {
+    filter: {},
+    sort: {}
+  };
+  initialState.filter["All"] = true;
   RentState.Categories.map(item => {
-    initialState[item.catName] = false;
+    initialState.filter[item.catName] = false;
   });
+  initialState.sort["Sort"] = "ascending";
 
-  function reducer(state, { field, value }) {
+  function reducer(state, { field, value, type }) {
     return {
       ...state,
-      [field]: value
+      [type]: { ...state[type], [field]: value }
     };
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleChange = event => {
+  const handleFilterChange = event => {
     let { id, checked } = event.target;
     if (id === "All") {
-      for (const key in state) {
-        dispatch({ field: key, value: false });
+      for (const key in state.filter) {
+        dispatch({ field: key, value: false, type: "filter" });
       }
-      dispatch({ field: "All", value: true });
+      dispatch({ field: "All", value: true, type: "filter" });
     } else {
-      dispatch({ field: id, value: checked });
-      dispatch({ field: "All", value: false });
+      dispatch({ field: id, value: checked, type: "filter" });
+      dispatch({ field: "All", value: false, type: "filter" });
     }
   };
 
   const areAllCheckboxesUnchecked = () => {
     let boolean = true;
-    for (const key in state) {
-      if (state[key] === true) {
+    const { filter } = state;
+    for (const key in filter) {
+      if (filter[key] === true) {
         boolean = false;
         break;
       }
@@ -68,12 +69,17 @@ const Results = props => {
 
   // If all categories are unchecked, check "All"
   useEffect(() => {
-    if (state["All"] === false && areAllCheckboxesUnchecked()) {
-      dispatch({ field: "All", value: true });
+    if (state.filter["All"] === false && areAllCheckboxesUnchecked()) {
+      dispatch({ field: "All", value: true, type: "filter" });
     }
   }, [state]);
 
-  console.log("results props= ", props);
+  const handleSortChange = event => {
+    const { value } = event;
+    dispatch({ field: "Sort", value: value, type: "sort" });
+  };
+
+  // console.log("results props= ", props);
   // console.log("state= ", state);
   return (
     <DefaultLayout crumbs="Results">
@@ -93,7 +99,11 @@ const Results = props => {
           </div>
         </div>
         <div className="container my-3">
-          <SearchSortbar noOfResults="3" />
+          <SearchSortbar
+            noOfResults={RentState.SearchData.length}
+            state={state.sort}
+            handleSortChange={handleSortChange}
+          />
         </div>
         <div className="container">
           <div className="row">
@@ -104,11 +114,17 @@ const Results = props => {
               />
             </div>
             <div className="col-lg-3">
-              <SearchFilter state={state} handleChange={handleChange} />
+              <SearchFilter
+                state={state.filter}
+                handleChange={handleFilterChange}
+              />
             </div>
           </div>
         </div>
-        <SearchFilterMobile state={state} handleChange={handleChange} />
+        <SearchFilterMobile
+          state={state.filter}
+          handleChange={handleFilterChange}
+        />
       </section>
     </DefaultLayout>
   );
@@ -121,6 +137,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   getSearch,
-  getCategories,
   updateSelectedVehicle
 })(Results);

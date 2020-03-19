@@ -1,32 +1,76 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import Select from "react-select";
 
 class SearchSortbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      display: "list",
-      sort: "price-ascending"
-    };
+    //   this.state = {
+    //     display: "list",
+    //     sort: "price-ascending"
+    //   };
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+    //   this.handleClick = this.handleClick.bind(this);
+    //   this.handleChange = this.handleChange.bind(this);
+    // }
 
-  handleClick(style) {
-    style === "list"
-      ? this.setState({ display: "list" })
-      : this.setState({ display: "grid" });
-  }
+    // handleClick(style) {
+    //   style === "list"
+    //     ? this.setState({ display: "list" })
+    //     : this.setState({ display: "grid" });
+    // }
 
-  handleChange(event) {
-    this.setState({
-      ...this.state,
-      sort: event.target.value
-    });
+    // handleChange(event) {
+    //   this.setState({
+    //     ...this.state,
+    //     sort: event.target.value
+    //   });
   }
 
   render() {
+    const selectOptions = [
+      { value: "ascending", label: "Price- Low to High" },
+      { value: "descending", label: "Price- High to Low" }
+    ];
+
+    const selectStyles = {
+      container: styles => ({
+        ...styles,
+        minWidth: 250,
+        display: "inline-block",
+        position: "relative"
+        // marginLeft: "auto"
+      }),
+      control: (styles, { isFocused }) => ({
+        ...styles,
+        border: 0,
+        backgroundColor: "#f5f5f5",
+        height: "inherit",
+        borderColor: "transparent",
+        borderRadius: 0,
+        boxShadow: "none",
+        outline: isFocused ? "#f29d30 solid 1px" : "none"
+      }),
+      option: (styles, { isFocused }) => ({
+        ...styles,
+        textAlign: "center",
+        backgroundColor: isFocused ? "#4A90E2" : null,
+        color: isFocused ? "#ffffff" : null
+      }),
+      valueContainer: styles => ({
+        ...styles,
+        display: "flex",
+        justifyContent: "center"
+      }),
+      singleValue: styles => ({
+        ...styles,
+        color: "#666666"
+      }),
+      menu: styles => ({
+        ...styles,
+        borderRadius: 0
+      })
+    };
+
     return (
       <div className="col-12 search-sortbar border">
         <div className="row align-items-center" style={{ minHeight: 50 }}>
@@ -73,8 +117,8 @@ class SearchSortbar extends Component {
               <i className="fas fa-grip-horizontal" />
             </Button>
           </div> */}
-          <div className="col-8 search-sort px-3">
-            <Form.Group controlId="search-sort-select" style={{ margin: 0 }}>
+          <div className="col-8 search-sort px-3 d-flex align-items-center justify-content-end">
+            {/* <Form.Group controlId="search-sort-select" style={{ margin: 0 }}>
               <Form.Label srOnly="true">Sort by</Form.Label>
               <Form.Control
                 as="select"
@@ -87,8 +131,8 @@ class SearchSortbar extends Component {
                   maxWidth: "100%",
                   marginLeft: "auto"
                 }}
-                value={this.state.sort}
-                onChange={this.handleChange}
+                value={this.props.state}
+                onChange={this.props.handleSortChange}
               >
                 <option value="price-ascending">
                   Sort by: Price - Low to High
@@ -97,7 +141,14 @@ class SearchSortbar extends Component {
                   Sort by: Price - High to Low
                 </option>
               </Form.Control>
-            </Form.Group>
+            </Form.Group> */}
+            <Select
+              options={selectOptions}
+              placeholder="Sort By:"
+              styles={selectStyles}
+              isSearchable={false}
+              onChange={this.props.handleSortChange}
+            />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { formatPrice } from "Components/Helpers/helpers";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -11,6 +11,7 @@ const VariantSelection = ({
   selectedId,
   stockHistory
 }) => {
+  // consider moving this to Helpers and add a type=reducer
   const checkStock = (stockhistory, type) => {
     const stockChecklist = [
       "VAC READY",
@@ -55,8 +56,7 @@ const VariantSelection = ({
         return (
           <p className="mt-auto">
             Your selection is{" "}
-            <span style={{ color: "red" }}>not available</span>. It may take at
-            least 6 month(s) before delivery.
+            <span style={{ color: "red" }}>not available</span>.
           </p>
         );
       }

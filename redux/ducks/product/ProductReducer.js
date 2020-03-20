@@ -23,6 +23,7 @@ const INIT_STATE = {
     thumbnail: null,
     images: [],
     stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductInterior: {
@@ -32,6 +33,7 @@ const INIT_STATE = {
     thumbnail: null,
     images: [],
     stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductRims: {
@@ -41,6 +43,7 @@ const INIT_STATE = {
     thumbnail: null,
     images: [],
     stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductAccessories: {
@@ -118,6 +121,8 @@ export default (state = INIT_STATE, action) => {
         });
       };
       populateImageList(ProductGrade);
+
+      // need to update stockId here with checkstock() helper
 
       return {
         ...state,
@@ -219,6 +224,8 @@ export default (state = INIT_STATE, action) => {
         accessoriesData
       } = action.payload;
 
+      // need to update stockId here with checkstock() helper
+
       return {
         ...state,
         ProductSpecification: {
@@ -276,6 +283,8 @@ export default (state = INIT_STATE, action) => {
       var { objects } = state.ProductExterior.data.fields["Colors"];
       var object = objects.find(element => element.id === id);
 
+      // need to update stockId here with checkstock() helper
+
       return {
         ...state,
         ProductExterior: {
@@ -294,6 +303,8 @@ export default (state = INIT_STATE, action) => {
       var { objects } = state.ProductInterior.data.fields["Material"];
       var object = objects.find(element => element.id === id);
 
+      // need to update stockId here with checkstock() helper
+
       return {
         ...state,
         ProductInterior: {
@@ -311,6 +322,8 @@ export default (state = INIT_STATE, action) => {
       var id = action.payload;
       var { objects } = state.ProductInterior.data.fields["Rims"];
       var object = objects.find(element => element.id === id);
+
+      // need to update stockId here with checkstock() helper
 
       return {
         ...state,

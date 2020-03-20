@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import Link from "next/link";
 import { formatPrice } from "Components/Helpers/helpers";
 
 import SummaryTable from "Components/configurator/SummaryTable";
@@ -12,7 +13,7 @@ import UserProfile from "Components/booking/profile";
 import { NotificationManager } from "react-notifications";
 
 // Actions
-import { doCheckout } from "Ducks/checkout";
+import { saveCheckout } from "Ducks/checkout";
 
 import Moment from "moment";
 import api from "Api";
@@ -82,15 +83,15 @@ const Summary = props => {
     }));
   };
 
-  const handleOptionChange = async event => {
-    const { id } = event.target;
-    selectedProductGrade(id);
-    getProductGradeData(id);
-  };
+  // const handleOptionChange = async event => {
+  //   const { id } = event.target;
+  //   selectedProductGrade(id);
+  //   getProductGradeData(id);
+  // };
 
-  const isValidated = () => {
-    return !!ProductGrade.id;
-  };
+  // const isValidated = () => {
+  //   return !!ProductGrade.id;
+  // };
 
   const _RestartToggle = () => {
     setToggle(() => !Toggle);
@@ -105,14 +106,17 @@ const Summary = props => {
       gst,
       total
     } = props.CheckoutState;
-    props.doCheckout(
+    const { ProductModel, ProductGrade } = props.ProductState;
+    props.saveCheckout({
+      ProductModel,
+      ProductGrade,
       productVariance,
       productAccessories,
       productGradeId,
       subtotal,
       gst,
       total
-    );
+    });
   }
 
   const onSubmitForm = async () => {
@@ -266,9 +270,10 @@ const Summary = props => {
             </div>
             <div className="d-flex">
               <Button onClick={checkout} style={{ maxWidth: 180 }}>
-                PROCEED TO DOWNPAYMENT
+                <Link href="/checkout">
+                  <a style={{ color: "inherit" }}>PROCEED TO DOWNPAYMENT</a>
+                </Link>
               </Button>
-              {/* <TestButton /> */}
             </div>
           </div>
         </div>
@@ -318,4 +323,4 @@ const Summary = props => {
   );
 };
 
-export default connect(null, { doCheckout })(Summary);
+export default connect(null, { saveCheckout })(Summary);

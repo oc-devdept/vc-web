@@ -51,7 +51,6 @@ class Product extends Component {
 
   render() {
     const { ProductState, CheckoutState } = this.props;
-
     const steps = [
       {
         name: "Grade",
@@ -114,8 +113,6 @@ class Product extends Component {
         )
       }
     ];
-
-    // console.log("[id] props= ", this.props);
     return (
       <DefaultLayout crumbs="Car Configuration">
         <section className="configure-area pb-60">
@@ -141,8 +138,7 @@ class Product extends Component {
   }
 }
 
-Product.getInitialProps = async function({ ctx }) {
-  const { id, grade } = ctx.query;
+Product.getInitialProps = async function({ query: { id, grade } }) {
   return { selectedModelId: id, selectedGradeId: grade };
 };
 

@@ -28,6 +28,17 @@ const responsive = {
   }
 };
 
+const GradePageLink = ({ children, grade }) => (
+  <Link
+    href={{
+      pathname: `/product/grade/${grade.modelId}`,
+      query: { grade: grade.id }
+    }}
+  >
+    {children}
+  </Link>
+);
+
 class BestSeller extends Component {
   componentDidMount() {
     this.props.getFeaturedCars();
@@ -72,26 +83,19 @@ class BestSeller extends Component {
                 <div className="single-product-box">
                   <div className="product-image">
                     {grade.images.map((gradeImg, idx) => (
-                      <Link
-                        key={idx}
-                        href="/product/grade/[id]"
-                        as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
-                      >
+                      <GradePageLink key={idx} grade={grade}>
                         <a>
                           <img style={modelImage} src={gradeImg.path} />
                         </a>
-                      </Link>
+                      </GradePageLink>
                     ))}
                   </div>
 
                   <div className="product-content">
                     <h3 className="text-uppercase">
-                      <Link
-                        href="/product/grade/[id]"
-                        as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
-                      >
+                      <GradePageLink grade={grade}>
                         <a>{grade.name}</a>
-                      </Link>
+                      </GradePageLink>
                     </h3>
 
                     <div className="product-price">
@@ -124,12 +128,9 @@ class BestSeller extends Component {
                       )}
                     </div>
 
-                    <Link
-                      href="/product/grade/[id]"
-                      as={`/product/grade/${grade.modelId}?grade=${grade.id}`}
-                    >
+                    <GradePageLink grade={grade}>
                       <a className="btn btn-primary">Explore</a>
-                    </Link>
+                    </GradePageLink>
                   </div>
                 </div>
               </div>

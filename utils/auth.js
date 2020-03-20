@@ -26,7 +26,6 @@ export const auth = ctx => {
 
 export const logout = () => {
   cookie.remove("token");
-  console.log("logout");
   // to support logging out from all windows
   window.localStorage.setItem("logout", Date.now());
   Router.push("/login");

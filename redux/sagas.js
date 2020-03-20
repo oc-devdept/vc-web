@@ -9,6 +9,7 @@ import { ProductSaga } from "Ducks/product";
 import { ModelSaga } from "Ducks/model";
 import { UserSaga } from "Ducks/user";
 import { CheckoutSaga } from "Ducks/checkout";
+import { RentSaga } from "Ducks/rent";
 
 export default function* rootSaga() {
   yield all([
@@ -16,6 +17,7 @@ export default function* rootSaga() {
     ProductSaga(),
     ModelSaga(),
     UserSaga(),
-    CheckoutSaga()
+    CheckoutSaga(),
+    RentSaga()
   ]);
 }

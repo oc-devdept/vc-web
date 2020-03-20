@@ -1,0 +1,16 @@
+{
+    "commercialCategories": [
+        {
+            "catId": 20,
+            "catName": "Compact Vans"
+        },
+        {
+            "catId": 21,
+            "catName": "Large Vans"
+        },
+        {
+            "catId": 22,
+            "catName": "Trucks"
+        }
+    ]
+}

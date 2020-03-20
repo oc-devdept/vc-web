@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "catId": 10,
+      "catName": "Budget"
+    },
+    {
+      "catId": 11,
+      "catName": "Compact"
+    },
+    {
+      "catId": 12,
+      "catName": "Intermediate"
+    },
+    {
+      "catId": 13,
+      "catName": "Executive"
+    },
+    {
+      "catId": 14,
+      "catName": "Family"
+    },
+    {
+      "catId": 15,
+      "catName": "Sports Utility"
+    }
+  ]
+}

@@ -119,8 +119,7 @@ export default (state = INIT_STATE, action) => {
         ProductGrade: {
           id: ProductGrade.id,
           name: ProductGrade.name,
-          // PARSEFLOAT USED AS selling_Price IS STORED AS A STRING
-          price: parseFloat(ProductGrade.selling_Price),
+          price: ProductGrade.selling_Price,
           description: ProductGrade.description,
           images: imageList,
           data: gradesData.data

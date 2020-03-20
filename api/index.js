@@ -1,4 +1,5 @@
 import axios from "axios";
+import nextCookie from "next-cookies";
 
 const api = axios.create({
   baseURL:
@@ -7,22 +8,12 @@ const api = axios.create({
       : "http://localhost:3001/api"
 });
 
-// api.interceptors.request.use(config => {
-// const token = localStorage.getItem("accessKey");
-// if (token) {
-//   config.headers = { Authorization: `${token}` };
-// }
-//   return config;
-// });
-
-api.AuthorizationHeader = token => {
+api.interceptors.request.use(config => {
+  const { token } = nextCookie(config);
   if (token) {
-    api.defaults.headers["Authorization"] = `${token}`;
+    config.headers = { Authorization: `${token}` };
   }
-};
-
-api.clearToken = () => {
-  delete api.defaults.headers["Authorization"];
-};
+  return config;
+});
 
 module.exports = api;

@@ -33,3 +33,8 @@ export const doCheckoutFailure = error => ({
   type: types.DO_CHECKOUT_FAILURE,
   payload: error
 });
+
+export const saveCheckout = data => ({
+  type: types.SAVE_CHECKOUT,
+  payload: data
+});

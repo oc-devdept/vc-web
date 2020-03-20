@@ -1,11 +1,8 @@
 import * as types from "./UserTypes";
-import api from "Api";
 
 import { NotificationManager } from "react-notifications";
 
 const INIT_STATE = {
-  userId: null,
-  accessToken: null,
   profile: null,
   customerId: null,
   loading: false
@@ -20,26 +17,18 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.LOGIN_ACCOUNT_SUCCESS:
-      const { id, ttl, userId } = action.payload.data;
-      // console.log(action.payload.data);
-      api.AuthorizationHeader(id);
       NotificationManager.success("You've successfully logged in");
-
-      return {
-        ...state,
-        userId: userId,
-        accessToken: id
-      };
+      return { ...state, loading: false };
 
     case types.LOGIN_ACCOUNT_FAILURE:
-      NotificationManager.error(action.payload.response.data.error.message);
+      console.log(action.payload);
+      NotificationManager.error("Error in logging in");
       return {
         ...state,
         loading: false
       };
 
     case types.LOGOUT_ACCOUNT_SUCCESS:
-      api.clearToken();
       NotificationManager.success("You've logged out successfully");
       return {
         ...state,
@@ -54,7 +43,7 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         profile: action.payload,
-        customerId: action.payload.customer.customerId,
+        customerId: action.payload.id,
         loading: false
       };
 

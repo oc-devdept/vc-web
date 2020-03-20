@@ -1,14 +1,24 @@
 import * as types from "./CheckoutTypes";
 
-const INIT_STATE = {
-  productGradeId: "",
-  productVariance: {},
-  productAccessories: [],
-  subtotal: 0,
-  misc: 0,
-  gst: 0,
-  total: 0
-};
+let localCart;
+
+if (typeof window !== "undefined") {
+  localCart = JSON.parse(localStorage.getItem("vc-shoppingcart"));
+}
+
+// JSON.parse(localStorage.getItem("vc-shoppingcart"))
+
+const INIT_STATE = localCart
+  ? localCart
+  : {
+      productGradeId: "",
+      productVariance: {},
+      productAccessories: [],
+      subtotal: 0,
+      misc: 0,
+      gst: 0,
+      total: 0
+    };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -68,6 +78,11 @@ export default (state = INIT_STATE, action) => {
         gst: ProductTotal.gst,
         total: ProductTotal.total
       };
+
+    case types.SAVE_CHECKOUT:
+      console.log("save", action.payload);
+      localStorage.setItem("vc-shoppingcart", JSON.stringify(action.payload));
+      return { ...action.payload };
 
     default:
       return { ...state };

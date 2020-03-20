@@ -104,6 +104,15 @@ export function getAppLayout(url) {
 }
 
 /**
+ * Convert TTl to Days
+ */
+export function ttlToDays(ttl) {
+  var seconds = parseInt(ttl, 10);
+  var days = Math.floor(seconds / (3600 * 24));
+  return days;
+}
+
+/**
  * Convert Month
  */
 export function convertMonth(mm) {

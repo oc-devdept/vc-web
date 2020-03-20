@@ -24,76 +24,101 @@ const VariantSelection = ({
     ];
     if (type === "tooltip") {
       if (stockhistory.length === 0) {
-        return "OUT OF STOCK";
+        return "PRE-ORDER";
       }
-
       for (const status of stockChecklist) {
         const result = stockhistory.find(element => element.status === status);
         if (!!result) {
-          switch (status) {
-            case "VAC READY":
-              return "AVAILABLE";
-            case "FINAL INSP":
-              return "READY IN 0.5 MONTH";
-            case "STOCK":
-              return "READY IN 0.5-1 MONTH";
-            case "PORT":
-              return "READY IN 1 MONTH";
-            case "ETA":
-              return "READY IN 1-1.5 MONTHS";
-            case "INCOMING":
-              return "READY IN 3 MONTHS";
-            case "INDENT":
-              return "READY IN 3-6 MONTHS";
-            default:
-              break;
+          if (status === "VAC READY") {
+            return "VAC READY STOCK";
+          } else if (status === "FINAL INSP" || status === "STOCK") {
+            return "READY STOCK";
+          } else if (
+            status === "PORT" ||
+            status === "ETA" ||
+            status === "INCOMING"
+          ) {
+            return "INCOMING STOCK";
+          } else {
+            return "PRE-ORDER";
           }
         }
       }
     } else if (type === "warning") {
-      let duration = "";
       if (stockhistory.length === 0) {
         return (
           <p className="mt-auto">
-            Your selection is{" "}
-            <span style={{ color: "red" }}>not available</span>.
+            This option is currently on indent basis. Expected arrival time of{" "}
+            <span style={{ color: "red" }}>3-6 months</span>.
           </p>
         );
       }
       for (const status of stockChecklist) {
         const result = stockhistory.find(element => element.status === status);
         if (!!result) {
-          switch (status) {
-            case "VAC READY":
-              return;
-            case "FINAL INSP":
-              duration = "0.5";
-              break;
-            case "STOCK":
-              duration = "0.5-1";
-              break;
-            case "PORT":
-              duration = "1";
-              break;
-            case "ETA":
-              duration = "1-1.5";
-              break;
-            case "INCOMING":
-              duration = "3";
-              break;
-            case "INDENT":
-              duration = "3-6";
-              break;
-            default:
-              break;
+          if (status === "VAC READY") {
+            return (
+              <p className="mt-auto">
+                VAC Ready Stock. Immediate availability.
+              </p>
+            );
+          } else if (status === "FINAL INSP" || status === "STOCK") {
+            return (
+              <p className="mt-auto">
+                Ready Stock. Expected waiting time of{" "}
+                <span style={{ color: "red" }}>2-4 weeks</span>.
+              </p>
+            );
+          } else if (
+            status === "PORT" ||
+            status === "ETA" ||
+            status === "INCOMING"
+          ) {
+            return (
+              <p className="mt-auto">
+                Stock is incoming. Expected arrival time of{" "}
+                <span style={{ color: "red" }}>1-3 months</span>.
+              </p>
+            );
+          } else {
+            return (
+              <p className="mt-auto">
+                This option is current on indent basis. Expected arrival time of{" "}
+                <span style={{ color: "red" }}>3-6 months</span>.
+              </p>
+            );
           }
-          return (
-            <p className="mt-auto">
-              Your selection will require{" "}
-              <span style={{ color: "red" }}>{duration} month(s)</span> before
-              delivery
-            </p>
-          );
+          // switch (status) {
+          //   case "VAC READY":
+          //     return;
+          //   case "FINAL INSP":
+          //     duration = "0.5";
+          //     break;
+          //   case "STOCK":
+          //     duration = "0.5-1";
+          //     break;
+          //   case "PORT":
+          //     duration = "1";
+          //     break;
+          //   case "ETA":
+          //     duration = "1-1.5";
+          //     break;
+          //   case "INCOMING":
+          //     duration = "3";
+          //     break;
+          //   case "INDENT":
+          //     duration = "3-6";
+          //     break;
+          //   default:
+          //     break;
+          // }
+          // return (
+          //   <p className="mt-auto">
+          //     Your selection will require{" "}
+          //     <span style={{ color: "red" }}>{duration} month(s)</span> before
+          //     delivery
+          //   </p>
+          // );
         }
       }
     }

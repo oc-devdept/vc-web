@@ -52,17 +52,20 @@ const VariantSelection = ({
     } else if (type === "warning") {
       let duration = "";
       if (stockhistory.length === 0) {
-        duration = "6";
-        return duration;
+        return (
+          <p className="mt-auto">
+            Your selection is{" "}
+            <span style={{ color: "red" }}>not available</span>. It may take at
+            least 6 month(s) before delivery.
+          </p>
+        );
       }
       for (const status of stockChecklist) {
         const result = stockhistory.find(element => element.status === status);
         if (!!result) {
           switch (status) {
             case "VAC READY":
-              // THIS IS NOT WORKING??
-              duration = "9";
-              break;
+              return;
             case "FINAL INSP":
               duration = "0.5";
               break;
@@ -84,9 +87,15 @@ const VariantSelection = ({
             default:
               break;
           }
+          return (
+            <p className="mt-auto">
+              Your selection will require{" "}
+              <span style={{ color: "red" }}>{duration} month(s)</span> before
+              delivery
+            </p>
+          );
         }
       }
-      return duration;
     }
   };
 
@@ -139,15 +148,7 @@ const VariantSelection = ({
             </OverlayTrigger>
           ))}
       </ul>
-      {checkStock(stockHistory, "warning") && (
-        <p className="mt-auto">
-          Your selection will require{" "}
-          <span style={{ color: "red" }}>
-            {checkStock(stockHistory, "warning")} month(s)
-          </span>{" "}
-          before delivery
-        </p>
-      )}
+      {checkStock(stockHistory, "warning")}
     </React.Fragment>
   );
 };

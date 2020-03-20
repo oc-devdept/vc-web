@@ -15,12 +15,15 @@ const INIT_STATE = {
     images: [],
     data: {}
   },
+  ProductSpecification: {},
   ProductExterior: {
     id: null,
     name: null,
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductInterior: {
@@ -29,6 +32,8 @@ const INIT_STATE = {
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductRims: {
@@ -37,6 +42,8 @@ const INIT_STATE = {
     price: 0,
     thumbnail: null,
     images: [],
+    stockhistory: [],
+    stockId: null,
     data: {}
   },
   ProductAccessories: {
@@ -97,6 +104,7 @@ export default (state = INIT_STATE, action) => {
       var {
         gradeId,
         gradesData,
+        specificationData,
         exteriorData,
         interiorData,
         accessoriesData
@@ -114,6 +122,8 @@ export default (state = INIT_STATE, action) => {
       };
       populateImageList(ProductGrade);
 
+      // need to update stockId here with checkstock() helper
+
       return {
         ...state,
         ProductGrade: {
@@ -124,6 +134,9 @@ export default (state = INIT_STATE, action) => {
           images: imageList,
           data: gradesData.data
         },
+        ProductSpecification: {
+          data: specificationData.data.fields.Detail
+        },
         ProductExterior: {
           id: exteriorData.data.fields["Colors"].objects[0].id,
           name: exteriorData.data.fields["Colors"].objects[0].name,
@@ -133,6 +146,8 @@ export default (state = INIT_STATE, action) => {
           images: exteriorData.data.fields["Colors"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
@@ -144,6 +159,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Material"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Material"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductRims: {
@@ -154,11 +171,13 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Rims"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
           ...state.ProductAccessories,
-          data: action.payload.accessoriesData.data
+          data: accessoriesData.data
         }
       };
 
@@ -198,10 +217,20 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
-      var { exteriorData, interiorData, accessoriesData } = action.payload;
+      var {
+        specificationData,
+        exteriorData,
+        interiorData,
+        accessoriesData
+      } = action.payload;
+
+      // need to update stockId here with checkstock() helper
 
       return {
         ...state,
+        ProductSpecification: {
+          data: specificationData.data.fields.Detail
+        },
         ProductExterior: {
           id: exteriorData.data.fields["Colors"].objects[0].id,
           name: exteriorData.data.fields["Colors"].objects[0].name,
@@ -211,6 +240,8 @@ export default (state = INIT_STATE, action) => {
           images: exteriorData.data.fields["Colors"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
@@ -222,6 +253,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Material"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Material"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductRims: {
@@ -232,6 +265,8 @@ export default (state = INIT_STATE, action) => {
           images: interiorData.data.fields["Rims"].objects[0].images.map(
             item => item.path
           ),
+          stockhistory:
+            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
@@ -248,6 +283,8 @@ export default (state = INIT_STATE, action) => {
       var { objects } = state.ProductExterior.data.fields["Colors"];
       var object = objects.find(element => element.id === id);
 
+      // need to update stockId here with checkstock() helper
+
       return {
         ...state,
         ProductExterior: {
@@ -256,7 +293,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 
@@ -264,6 +302,8 @@ export default (state = INIT_STATE, action) => {
       var id = action.payload;
       var { objects } = state.ProductInterior.data.fields["Material"];
       var object = objects.find(element => element.id === id);
+
+      // need to update stockId here with checkstock() helper
 
       return {
         ...state,
@@ -273,7 +313,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 
@@ -281,6 +322,8 @@ export default (state = INIT_STATE, action) => {
       var id = action.payload;
       var { objects } = state.ProductInterior.data.fields["Rims"];
       var object = objects.find(element => element.id === id);
+
+      // need to update stockId here with checkstock() helper
 
       return {
         ...state,
@@ -290,7 +333,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.price,
           thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path)
+          images: object.images.map(item => item.path),
+          stockhistory: object.stockhistory
         }
       };
 

@@ -58,6 +58,7 @@ class Product extends Component {
         component: (
           <Grade
             ProductGrade={ProductState.ProductGrade}
+            ProductSpecification={ProductState.ProductSpecification}
             selectedProductGrade={this.props.selectedProductGrade}
             getProductGradeData={this.props.getProductGradeData}
           />

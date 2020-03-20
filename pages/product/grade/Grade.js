@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { formatPrice } from "Components/Helpers/helpers";
 
 import DialogRoot from "Components/Dialog/DialogRoot";
@@ -23,9 +23,12 @@ let InitUserProfile = {
   phone: ""
 };
 
-const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
-  const { fields } = ProductGrade.data;
-
+const Grade = ({
+  ProductGrade,
+  ProductSpecification,
+  selectedProductGrade,
+  getProductGradeData
+}) => {
   const [Toggle, setToggle] = useState(false);
   const [Timeslot] = useState(["AM", "PM"]);
   const [currentDate, setDate] = useState(Moment(new Date()).format("LL"));
@@ -105,6 +108,7 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
   const { model, date, timeslot, description } = BookService;
   const { lastName, firstName, email, phone } = Profile;
 
+  // console.log("ProductSpecification= ", ProductSpecification);
   return (
     <div className="configure-sect row">
       <div className="configure-gall col-lg-8 d-flex flex-column p-3">
@@ -115,6 +119,32 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
         />
         <h3 className="text-uppercase text-center m-2">{ProductGrade.name}</h3>
         <p>{ProductGrade.description}</p>
+        {!!Object.values(ProductSpecification).length &&
+          (ProductSpecification.data.length === 0 ? (
+            <p>No product specification available.</p>
+          ) : (
+            <div className="specifications d-flex flex-wrap">
+              {ProductSpecification.data.map(detail =>
+                Object.entries(detail).map(([key, value], id) => (
+                  <div key={id} className="specification-group mb-4 mr-4">
+                    <h6 className="text-uppercase">{key}</h6>
+                    {value.map((item, idd) => (
+                      <React.Fragment key={idd}>
+                        <p className="d-flex justify-content-between mb-1">
+                          <span className="mr-2">
+                            {item.detailCategory.name}:
+                          </span>
+                          <span>
+                            {item.value} {item.detailCategory.unit}
+                          </span>
+                        </p>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ))
+              )}
+            </div>
+          ))}
         <button
           className="d-flex align-items-center px-2 py-1"
           onClick={_RestartToggle}
@@ -134,8 +164,8 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
       <div className="configure-opt col-lg-4">
         <h3 className="configure-opt-title">01 Grade</h3>
         <ul className="list-unstyled">
-          {!!fields &&
-            fields.map((item, id) => (
+          {!!ProductGrade.data.fields &&
+            ProductGrade.data.fields.map((item, id) => (
               <li
                 className="configure-list"
                 key={id}
@@ -154,7 +184,6 @@ const Grade = ({ ProductGrade, selectedProductGrade, getProductGradeData }) => {
               >
                 {item.name}
                 <br />
-                {/* Pending api call fix to pull integer/float instead of string */}
                 {formatPrice(item.selling_Price)}
               </li>
             ))}

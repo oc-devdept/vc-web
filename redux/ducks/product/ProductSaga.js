@@ -23,6 +23,10 @@ const getProductGradesRequest = async payload => {
     ? (gradeId = payload.payload.gradeId)
     : (gradeId = gradesData.data.fields[0].id);
 
+  const specificationData = await api.get(
+    `/products/specificGradeDetail/${gradeId}`
+  );
+
   const exteriorData = await api.get(
     `/products/specificVariantExterior/${gradeId}`
   );
@@ -36,6 +40,7 @@ const getProductGradesRequest = async payload => {
   const data = {
     gradeId: gradeId,
     gradesData: gradesData,
+    specificationData: specificationData,
     exteriorData: exteriorData,
     interiorData: interiorData,
     accessoriesData: accessoriesData
@@ -45,6 +50,9 @@ const getProductGradesRequest = async payload => {
 };
 
 const getProductGradeDataRequest = async payload => {
+  const specificationData = await api.get(
+    `/products/specificGradeDetail/${payload.payload}`
+  );
   const exteriorData = await api.get(
     `/products/specificVariantExterior/${payload.payload}`
   );
@@ -55,6 +63,7 @@ const getProductGradeDataRequest = async payload => {
     `/products/specificGradeProductOption/${payload.payload}`
   );
   const data = {
+    specificationData: specificationData,
     exteriorData: exteriorData,
     interiorData: interiorData,
     accessoriesData: accessoriesData

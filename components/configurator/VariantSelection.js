@@ -12,6 +12,7 @@ const VariantSelection = ({
   stockHistory
 }) => {
   // consider moving this to Helpers and add a type=reducer
+  // consider seperating different use cases into different functions
   const checkStock = (stockhistory, type) => {
     const stockChecklist = [
       "VAC READY",
@@ -88,37 +89,6 @@ const VariantSelection = ({
               </p>
             );
           }
-          // switch (status) {
-          //   case "VAC READY":
-          //     return;
-          //   case "FINAL INSP":
-          //     duration = "0.5";
-          //     break;
-          //   case "STOCK":
-          //     duration = "0.5-1";
-          //     break;
-          //   case "PORT":
-          //     duration = "1";
-          //     break;
-          //   case "ETA":
-          //     duration = "1-1.5";
-          //     break;
-          //   case "INCOMING":
-          //     duration = "3";
-          //     break;
-          //   case "INDENT":
-          //     duration = "3-6";
-          //     break;
-          //   default:
-          //     break;
-          // }
-          // return (
-          //   <p className="mt-auto">
-          //     Your selection will require{" "}
-          //     <span style={{ color: "red" }}>{duration} month(s)</span> before
-          //     delivery
-          //   </p>
-          // );
         }
       }
     }

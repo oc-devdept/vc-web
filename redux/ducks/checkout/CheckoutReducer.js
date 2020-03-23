@@ -6,8 +6,6 @@ if (typeof window !== "undefined") {
   localCart = JSON.parse(localStorage.getItem("vc-shoppingcart"));
 }
 
-// JSON.parse(localStorage.getItem("vc-shoppingcart"))
-
 const INIT_STATE = localCart
   ? localCart
   : {
@@ -80,9 +78,12 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.SAVE_CHECKOUT:
-      console.log("save", action.payload);
       localStorage.setItem("vc-shoppingcart", JSON.stringify(action.payload));
       return { ...action.payload };
+
+    case types.GET_CHECKOUT:
+      const checkout = JSON.parse(localStorage.getItem("vc-shoppingcart"));
+      return { ...checkout };
 
     default:
       return { ...state };

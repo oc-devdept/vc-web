@@ -1,4 +1,6 @@
 import "../assets/styles/_index.scss";
+
+// Plugins
 import "react-notifications/lib/notifications.css";
 import "react-day-picker/lib/style.css";
 

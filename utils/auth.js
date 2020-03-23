@@ -64,3 +64,12 @@ export const withAuthSync = WrappedComponent => {
 
   return Wrapper;
 };
+
+export const isLoggedIn = ctx => {
+  const { token } = nextCookie(ctx);
+  if (token) {
+    return true;
+  } else {
+    return false;
+  }
+};

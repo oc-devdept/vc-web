@@ -1,7 +1,8 @@
 import React from "react";
-import Navbar from "../components/Layout/Navbar";
-import Footer from "../components/Layout/Footer";
-import Breadcrumb from "../components/Common/Breadcrumb";
+import Navbar from "Components/Layout/Navbar";
+import Footer from "Components/Layout/Footer";
+import Breadcrumb from "Components/Common/Breadcrumb";
+import OrderList from "Components/checkout/OrderList";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckout } from "Ducks/checkout";
@@ -18,11 +19,22 @@ const Checkout = props => {
   }, []);
   const checkoutState = useSelector(state => state.CheckoutState);
 
+  // console.log("checkout props= ", props);
+  // console.log("checkoutState= ", checkoutState);
   return (
     <React.Fragment>
       <Navbar />
       <Breadcrumb title="Checkout" />
-
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6">
+            <OrderList checkoutState={checkoutState} />
+          </div>
+          <div className="col-lg-6">
+            {props.loggedIn ? <div>logged in</div> : <div>logged out</div>}
+          </div>
+        </div>
+      </div>
       <Footer />
     </React.Fragment>
   );

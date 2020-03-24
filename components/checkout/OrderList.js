@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import { formatPrice } from "Components/Helpers/helpers";
 import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";

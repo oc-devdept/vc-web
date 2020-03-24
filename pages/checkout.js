@@ -3,6 +3,8 @@ import Navbar from "Components/Layout/Navbar";
 import Footer from "Components/Layout/Footer";
 import Breadcrumb from "Components/Common/Breadcrumb";
 import OrderList from "Components/checkout/OrderList";
+import LoginOverlay from "Components/checkout/LoginOverlay";
+import CreditCardForm from "Components/checkout/CreditCardForm";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckout } from "Ducks/checkout";
@@ -31,7 +33,7 @@ const Checkout = props => {
             <OrderList checkoutState={checkoutState} />
           </div>
           <div className="col-lg-6">
-            {props.loggedIn ? <div>logged in</div> : <div>logged out</div>}
+            {props.loggedIn ? <CreditCardForm /> : <LoginOverlay />}
           </div>
         </div>
       </div>

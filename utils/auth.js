@@ -73,3 +73,8 @@ export const isLoggedIn = ctx => {
     return false;
   }
 };
+
+export const loginCheckout = ({ token, expires }) => {
+  cookie.set("token", token, { expires });
+  Router.push("/checkout");
+};

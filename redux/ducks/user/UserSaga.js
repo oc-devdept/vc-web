@@ -7,7 +7,7 @@ import api from "Api";
 import { ttlToDays } from "Components/Helpers/helpers";
 
 // save cookies
-import { login, logout } from "../../../utils/auth";
+import { login, logout, loginCheckout } from "../../../utils/auth";
 
 //=========================
 // REQUESTS
@@ -73,6 +73,16 @@ function* updateUserProfile(e) {
   }
 }
 
+function* checkoutLogin(e) {
+  try {
+    const data = yield call(userLoginRequest, e);
+    loginCheckout({ token: data.id, expires: ttlToDays(data.ttl) });
+    yield put(actions.handleAccountLogin_success(data));
+  } catch (error) {
+    yield put(actions.handleAccountLogin_failure(error));
+  }
+}
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -92,6 +102,10 @@ export function* updateUserProfileWatcher() {
   yield takeEvery(types.UPDATE_USER_PROFILE, updateUserProfile);
 }
 
+export function* checkoutLoginWatcher() {
+  yield takeEvery(types.CHECKOUT_LOGIN, checkoutLogin);
+}
+
 //=======================
 // FORK SAGAS TO STORE
 //=======================
@@ -100,6 +114,7 @@ export default function* productSaga() {
     fork(userLoginWatcher),
     fork(userLogoutWatcher),
     fork(retrieveUserProfileWatcher),
-    fork(updateUserProfileWatcher)
+    fork(updateUserProfileWatcher),
+    fork(checkoutLoginWatcher)
   ]);
 }

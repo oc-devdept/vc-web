@@ -54,3 +54,9 @@ export const updateUserProfileFailure = e => ({
   type: types.UPDATE_USER_PROFILE_FAILURE,
   payload: e
 });
+
+// Checkout Login
+export const handleCheckoutLogin = e => ({
+  type: types.CHECKOUT_LOGIN,
+  payload: e
+});

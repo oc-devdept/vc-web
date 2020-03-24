@@ -339,24 +339,30 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.SELECTED_PRODUCT_ACCESSORIES:
-      var { id, checked } = action.payload;
-      var { fields } = state.ProductAccessories.data;
-      let selectedAccessories = state.ProductAccessories.selectedAccessories;
+      let selectedAccessoriesId = [];
+      Object.values(action.payload).map(values =>
+        Object.entries(values).map(([productOptionId, selected]) => {
+          if (selected) {
+            selectedAccessoriesId.push(productOptionId);
+          }
+        })
+      );
 
+      var { fields } = state.ProductAccessories.data;
+      let selectedAccessories = [];
       Object.values(fields).map(item => {
         item.map(object => {
-          if (object.productOptionId === id) {
-            checked
-              ? selectedAccessories.push({
-                  productOptionId: object.productOptionId,
-                  name: object.productOption.name,
-                  price: object.productOption.price,
-                  image: object.productOption.files[0].path
-                  // description: object.productOption.description
-                })
-              : (selectedAccessories = selectedAccessories.filter(
-                  item => item.productOptionId != id
-                ));
+          if (
+            !!selectedAccessoriesId.find(
+              element => element === object.productOptionId
+            )
+          ) {
+            selectedAccessories.push({
+              productOptionId: object.productOptionId,
+              name: object.productOption.name,
+              price: object.productOption.price,
+              image: object.productOption.files[0].path
+            });
           }
         });
       });
@@ -418,7 +424,6 @@ export default (state = INIT_STATE, action) => {
         }
       };
     case types.GET_FEATURED_CARS_FAILURE:
-      // console.log(action.payload);
       return {
         ...state,
         featuredCars: { ...state.featuredCars, loading: false }

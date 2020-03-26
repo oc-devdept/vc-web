@@ -65,7 +65,7 @@ export default function OrderList({ checkoutState }) {
   };
   return (
     <React.Fragment>
-      <Card className={`rounded-0 border-0`}>
+      <Card className="rounded-0 border-0">
         <Card.Header
           className="py-3 px-0 rounded-0 d-flex"
           style={{ backgroundColor: "transparent" }}

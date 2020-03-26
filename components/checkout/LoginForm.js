@@ -20,6 +20,7 @@ const LoginForm = ({
   });
 
   const _handleVerificationLink = async e => {
+    e.preventDefault();
     try {
       const email = addForm.passwordEmail;
       await api.post(`/basecustomerusers/verify`, { email: email });
@@ -39,6 +40,7 @@ const LoginForm = ({
   };
 
   const _handlePasswordForm = async e => {
+    e.preventDefault();
     try {
       const email = addForm.passwordEmail;
       await api.post(`/basecustomerusers/reset`, { email: email });
@@ -95,6 +97,7 @@ const LoginForm = ({
             </Form.Group>
             <Button
               onClick={e => _handleLoginForm(e, loginForm)}
+              type="submit"
               className="primary"
               style={{ width: "100%" }}
             >
@@ -163,7 +166,7 @@ const LoginForm = ({
                     }
                   />
                 </Form.Group>
-                <Button onClick={() => _handlePasswordForm(addForm)}>
+                <Button type="submit" onClick={_handlePasswordForm}>
                   Reset my password
                 </Button>
               </Form>
@@ -215,7 +218,7 @@ const LoginForm = ({
                     }
                   />
                 </Form.Group>
-                <Button onClick={() => _handleVerificationLink(addForm)}>
+                <Button type="submit" onClick={_handleVerificationLink}>
                   Send me verification link
                 </Button>
               </Form>

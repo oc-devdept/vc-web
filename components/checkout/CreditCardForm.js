@@ -67,13 +67,17 @@ const CreditCardForm = () => {
   const isDisabled = () => {
     let disabled = true;
     Object.values(state).map(item => {
-      console.log("item.value= ", item.value);
       if (item.value === "" || !!item.error) {
         disabled = false;
         return disabled;
       }
     });
     return !disabled;
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    console.log("post form to stripe!");
   };
 
   const inputData = [
@@ -152,6 +156,7 @@ const CreditCardForm = () => {
               type="submit"
               style={{ width: "100%" }}
               disabled={isDisabled()}
+              onClick={handleSubmit}
             >
               PAY NOW
             </Button>

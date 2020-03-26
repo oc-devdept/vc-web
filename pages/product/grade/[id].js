@@ -9,6 +9,7 @@ import Interior from "./Interior";
 import Rims from "./Rims";
 import Accessories from "./Accessories";
 import Summary from "./Summary";
+import ExteriorDynamic from "./ExteriorDynamic";
 
 import {
   getProductGrades,
@@ -66,7 +67,11 @@ class Product extends Component {
       {
         name: "Exterior",
         component: (
-          <Exterior
+          // <Exterior
+          //   ProductExterior={ProductState.ProductExterior}
+          //   selectedProductExterior={this.props.selectedProductExterior}
+          // />
+          <ExteriorDynamic
             ProductExterior={ProductState.ProductExterior}
             selectedProductExterior={this.props.selectedProductExterior}
           />

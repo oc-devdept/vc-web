@@ -105,6 +105,8 @@ const VariantSelection = ({
     }
   };
 
+  console.log("selectedId= ", selectedId);
+
   return (
     <React.Fragment>
       <h3 className="configure-opt-title">{title}</h3>

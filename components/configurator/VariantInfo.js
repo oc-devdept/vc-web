@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Carousel } from "react-responsive-carousel";
-import "Styles/carousel.min.css";
+// import "Styles/carousel.min.css";
 
 const VariantInfo = ({ images, name }) => {
   return (

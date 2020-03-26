@@ -67,9 +67,11 @@ const Summary = props => {
     setUserProfile(Profile => ({ ...Profile, [element]: e }));
   };
 
-  const _HandleDayChange = date => {
-    setDate(() => Moment(date).format("LL"));
-    setBookService(BookService => ({ ...BookService, date: date }));
+  const _HandleDayChange = (date, { disabled }) => {
+    if (disabled === undefined) {
+      setDate(() => Moment(date).format("LL"));
+      setBookService(BookService => ({ ...BookService, date: date }));
+    }
   };
 
   const _HandleInputForm = (element, e) => {
@@ -308,6 +310,7 @@ const Summary = props => {
             model={model}
             timeslot={timeslot}
             description={description}
+            date={date}
           />
 
           <div className="d-flex justify-content-end">

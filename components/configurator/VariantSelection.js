@@ -12,8 +12,7 @@ const VariantSelection = ({
   stockHistory
 }) => {
   // consider moving this to Helpers and add a type=reducer
-  // consider seperating different use cases into different functions
-  const checkStock = (stockhistory, type) => {
+  const checkTooltip = stockhistory => {
     const stockChecklist = [
       "VAC READY",
       "FINAL INSP",
@@ -23,72 +22,84 @@ const VariantSelection = ({
       "INCOMING",
       "INDENT"
     ];
-    if (type === "tooltip") {
-      if (stockhistory.length === 0) {
-        return "PRE-ORDER";
-      }
-      for (const status of stockChecklist) {
-        const result = stockhistory.find(element => element.status === status);
-        if (!!result) {
-          if (status === "VAC READY") {
-            return "VAC READY STOCK";
-          } else if (status === "FINAL INSP" || status === "STOCK") {
-            return "READY STOCK";
-          } else if (
-            status === "PORT" ||
-            status === "ETA" ||
-            status === "INCOMING"
-          ) {
-            return "INCOMING STOCK";
-          } else {
-            return "PRE-ORDER";
-          }
+
+    if (stockhistory.length === 0) {
+      return "PRE-ORDER";
+    }
+    for (const status of stockChecklist) {
+      const result = stockhistory.find(
+        element => element.status === status && element.stock_count !== 0
+      );
+      if (!!result) {
+        if (status === "VAC READY") {
+          return "VAC READY STOCK";
+        } else if (status === "FINAL INSP" || status === "STOCK") {
+          return "READY STOCK";
+        } else if (
+          status === "PORT" ||
+          status === "ETA" ||
+          status === "INCOMING"
+        ) {
+          return "INCOMING STOCK";
+        } else {
+          return "PRE-ORDER";
         }
       }
-    } else if (type === "warning") {
-      if (stockhistory.length === 0) {
-        return (
-          <p className="mt-auto">
-            This option is currently on indent basis. Expected arrival time of{" "}
-            <span style={{ color: "red" }}>3-6 months</span>.
-          </p>
-        );
-      }
-      for (const status of stockChecklist) {
-        const result = stockhistory.find(element => element.status === status);
-        if (!!result) {
-          if (status === "VAC READY") {
-            return (
-              <p className="mt-auto">
-                VAC Ready Stock. Immediate availability.
-              </p>
-            );
-          } else if (status === "FINAL INSP" || status === "STOCK") {
-            return (
-              <p className="mt-auto">
-                Ready Stock. Expected waiting time of{" "}
-                <span style={{ color: "red" }}>2-4 weeks</span>.
-              </p>
-            );
-          } else if (
-            status === "PORT" ||
-            status === "ETA" ||
-            status === "INCOMING"
-          ) {
-            return (
-              <p className="mt-auto">
-                Stock is incoming. Expected arrival time of{" "}
-                <span style={{ color: "red" }}>1-3 months</span>.
-              </p>
-            );
-          } else {
-            return (
-              <p className="mt-auto">
-                This option is current on indent basis. Expected arrival time of{" "}
-                <span style={{ color: "red" }}>3-6 months</span>.
-              </p>
-            );
-          }
+    }
+  };
+
+  const checkWarning = stockhistory => {
+    const stockChecklist = [
+      "VAC READY",
+      "FINAL INSP",
+      "STOCK",
+      "PORT",
+      "ETA",
+      "INCOMING",
+      "INDENT"
+    ];
+    if (stockhistory.length === 0) {
+      return (
+        <p className="mt-auto">
+          This option is currently on indent basis. Expected arrival time of{" "}
+          <span style={{ color: "red" }}>3-6 months</span>.
+        </p>
+      );
+    }
+    for (const status of stockChecklist) {
+      const result = stockhistory.find(
+        element => element.status === status && element.stock_count !== 0
+      );
+      if (!!result) {
+        if (status === "VAC READY") {
+          return (
+            <p className="mt-auto">VAC Ready Stock. Immediate availability.</p>
+          );
+        } else if (status === "FINAL INSP" || status === "STOCK") {
+          return (
+            <p className="mt-auto">
+              Ready Stock. Expected waiting time of{" "}
+              <span style={{ color: "red" }}>2-4 weeks</span>.
+            </p>
+          );
+        } else if (
+          status === "PORT" ||
+          status === "ETA" ||
+          status === "INCOMING"
+        ) {
+          return (
+            <p className="mt-auto">
+              Stock is incoming. Expected arrival time of{" "}
+              <span style={{ color: "red" }}>1-3 months</span>.
+            </p>
+          );
+        } else {
+          return (
+            <p className="mt-auto">
+              This option is currently on indent basis. Expected arrival time of{" "}
+              <span style={{ color: "red" }}>3-6 months</span>.
+            </p>
+          );
         }
       }
     }
@@ -101,14 +112,12 @@ const VariantSelection = ({
         {!!objects &&
           objects.map((item, id) => (
             <OverlayTrigger
+              key={id}
               placement="top"
-              overlay={
-                <Tooltip>{checkStock(item.stockhistory, "tooltip")}</Tooltip>
-              }
+              overlay={<Tooltip>{checkTooltip(item.stockhistory)}</Tooltip>}
             >
               <li
                 className="configure-list d-inline-block align-top"
-                key={id}
                 id={item.id}
                 onClick={handleOptionChange}
                 style={{ maxWidth: 120 }}
@@ -143,7 +152,7 @@ const VariantSelection = ({
             </OverlayTrigger>
           ))}
       </ul>
-      {checkStock(stockHistory, "warning")}
+      {checkWarning(stockHistory)}
     </React.Fragment>
   );
 };

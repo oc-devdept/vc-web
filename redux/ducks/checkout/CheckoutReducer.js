@@ -1,4 +1,5 @@
 import * as types from "./CheckoutTypes";
+import { selectedStockId } from "Components/Helpers/helpers";
 
 const INIT_STATE = {
   productGradeId: "",
@@ -22,6 +23,10 @@ export default (state = INIT_STATE, action) => {
         ProductTotal
       } = action.payload;
 
+      const exteriorStockId = selectedStockId(ProductExterior.stockhistory);
+      const interiorStockId = selectedStockId(ProductInterior.stockhistory);
+      const rimsStockId = selectedStockId(ProductRims.stockhistory);
+
       // Mapping of selected exterior and interio into productVariance[]
       let productVariance = [];
       // KIV: need to change exterior/interior to dynamic mapping eventually
@@ -30,13 +35,15 @@ export default (state = INIT_STATE, action) => {
         id: ProductExterior.id,
         name: ProductExterior.name,
         price: ProductExterior.price,
-        thumbnail: ProductExterior.thumbnail
+        thumbnail: ProductExterior.thumbnail,
+        stockId: exteriorStockId
       });
       productVariance.push({
         id: ProductInterior.id,
         name: ProductInterior.name,
         price: ProductInterior.price,
-        thumbnail: ProductInterior.thumbnail
+        thumbnail: ProductInterior.thumbnail,
+        stockId: interiorStockId
       });
 
       // Mapping of selected rims and accessories into productAccessories[]
@@ -45,7 +52,8 @@ export default (state = INIT_STATE, action) => {
         id: ProductRims.id,
         name: ProductRims.name,
         price: ProductRims.price,
-        thumbnail: ProductRims.thumbnail
+        thumbnail: ProductRims.thumbnail,
+        stockId: rimsStockId
       });
 
       if (ProductAccessories.selectedAccessories.length !== 0) {

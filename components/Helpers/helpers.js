@@ -207,3 +207,32 @@ export function formatPrice(price) {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return `$${formattedPrice}`;
 }
+
+/**
+ * Takes in stock history
+ *
+ * Returns selected stock id (if applicable)
+ */
+export function selectedStockId(stockHistory) {
+  const stockChecklist = [
+    "VAC READY",
+    "FINAL INSP",
+    "STOCK",
+    "PORT",
+    "ETA",
+    "INCOMING",
+    "INDENT"
+  ];
+
+  if (stockHistory.length === 0) {
+    return "";
+  }
+  for (const status of stockChecklist) {
+    const result = stockHistory.find(
+      element => element.status === status && element.stock_count !== 0
+    );
+    if (!!result) {
+      return result.id;
+    }
+  }
+}

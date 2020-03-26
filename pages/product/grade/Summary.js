@@ -103,6 +103,7 @@ const Summary = props => {
       productAccessories,
       productGradeId,
       subtotal,
+      misc,
       gst,
       total
     } = props.CheckoutState;
@@ -114,6 +115,7 @@ const Summary = props => {
       productAccessories,
       productGradeId,
       subtotal,
+      misc,
       gst,
       total
     });

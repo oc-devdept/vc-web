@@ -64,3 +64,17 @@ export const withAuthSync = WrappedComponent => {
 
   return Wrapper;
 };
+
+export const isLoggedIn = ctx => {
+  const { token } = nextCookie(ctx);
+  if (token) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const loginCheckout = ({ token, expires }) => {
+  cookie.set("token", token, { expires });
+  Router.push("/checkout");
+};

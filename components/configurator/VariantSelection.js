@@ -101,6 +101,7 @@ const VariantSelection = ({
         {!!objects &&
           objects.map((item, id) => (
             <OverlayTrigger
+              key={id}
               placement="top"
               overlay={
                 <Tooltip>{checkStock(item.stockhistory, "tooltip")}</Tooltip>
@@ -108,7 +109,6 @@ const VariantSelection = ({
             >
               <li
                 className="configure-list d-inline-block align-top"
-                key={id}
                 id={item.id}
                 onClick={handleOptionChange}
                 style={{ maxWidth: 120 }}

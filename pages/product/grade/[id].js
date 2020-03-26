@@ -114,6 +114,8 @@ class Product extends Component {
         )
       }
     ];
+
+    // console.log("ProductState= ", ProductState);
     return (
       <DefaultLayout crumbs="Car Configuration">
         <section className="configure-area pb-60">

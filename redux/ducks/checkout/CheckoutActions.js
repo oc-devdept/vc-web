@@ -38,3 +38,6 @@ export const saveCheckout = data => ({
   type: types.SAVE_CHECKOUT,
   payload: data
 });
+export const getCheckout = () => ({
+  type: types.GET_CHECKOUT
+});

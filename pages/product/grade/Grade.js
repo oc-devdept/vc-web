@@ -46,9 +46,11 @@ const Grade = ({
     setUserProfile(Profile => ({ ...Profile, [element]: e }));
   };
 
-  const _HandleDayChange = date => {
-    setDate(() => Moment(date).format("LL"));
-    setBookService(BookService => ({ ...BookService, date: date }));
+  const _HandleDayChange = (date, { disabled }) => {
+    if (disabled === undefined) {
+      setDate(() => Moment(date).format("LL"));
+      setBookService(BookService => ({ ...BookService, date: date }));
+    }
   };
 
   const _HandleInputForm = (element, e) => {

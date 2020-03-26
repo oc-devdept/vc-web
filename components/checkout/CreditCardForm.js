@@ -131,7 +131,7 @@ const CreditCardForm = () => {
         </Card.Header>
         <Card.Body>
           <h3 className="text-uppercase mb-4">deposit amount: $500.00</h3>
-          <Form class="checkout-form">
+          <Form className="checkout-form">
             {inputData.map((item, key) => (
               <Form.Group controlId={item.name} key={key}>
                 <Form.Label

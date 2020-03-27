@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import StepZilla from "react-stepzilla";
 import Grade from "./Grade";
-import Exterior from "./Exterior";
-import Interior from "./Interior";
-import Rims from "./Rims";
+// import Exterior from "./Exterior";
+// import Interior from "./Interior";
+// import Rims from "./Rims";
 import Accessories from "./Accessories";
 import Summary from "./Summary";
 import ExteriorDynamic from "./ExteriorDynamic";
+import InteriorDynamic from "./InteriorDynamic";
 
 import {
   getProductGrades,
@@ -18,7 +19,6 @@ import {
   getProductGradeData,
   selectedProductExterior,
   selectedProductInterior,
-  selectedProductRims,
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
@@ -47,7 +47,7 @@ class Product extends Component {
   }
 
   onStepChange(step) {
-    step === 5 && this.setState({ showSteps: false });
+    step === 4 && this.setState({ showSteps: false });
   }
 
   render() {
@@ -67,10 +67,6 @@ class Product extends Component {
       {
         name: "Exterior",
         component: (
-          // <Exterior
-          //   ProductExterior={ProductState.ProductExterior}
-          //   selectedProductExterior={this.props.selectedProductExterior}
-          // />
           <ExteriorDynamic
             ProductExterior={ProductState.ProductExterior}
             selectedProductExterior={this.props.selectedProductExterior}
@@ -80,18 +76,9 @@ class Product extends Component {
       {
         name: "Interior",
         component: (
-          <Interior
+          <InteriorDynamic
             ProductInterior={ProductState.ProductInterior}
             selectedProductInterior={this.props.selectedProductInterior}
-          />
-        )
-      },
-      {
-        name: "Rims",
-        component: (
-          <Rims
-            ProductRims={ProductState.ProductRims}
-            selectedProductRims={this.props.selectedProductRims}
           />
         )
       },
@@ -127,7 +114,6 @@ class Product extends Component {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-12">
-                {/* need to validate steps to prevent user from skipping steps */}
                 <div className="step-process">
                   <StepZilla
                     steps={steps}
@@ -135,6 +121,7 @@ class Product extends Component {
                     prevBtnOnLastStep={false}
                     onStepChange={this.onStepChange}
                     showSteps={this.state.showSteps}
+                    stepsNavigation={false}
                   />
                 </div>
               </div>
@@ -162,7 +149,6 @@ export default connect(mapStateToProps, {
   getProductGradeData,
   selectedProductExterior,
   selectedProductInterior,
-  selectedProductRims,
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,

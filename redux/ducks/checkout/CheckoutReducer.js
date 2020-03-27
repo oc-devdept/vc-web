@@ -1,5 +1,4 @@
 import * as types from "./CheckoutTypes";
-import { selectedStockId } from "Components/Helpers/helpers";
 
 let localCart;
 
@@ -26,43 +25,33 @@ export default (state = INIT_STATE, action) => {
         ProductGrade,
         ProductExterior,
         ProductInterior,
-        ProductRims,
         ProductAccessories,
         ProductTotal
       } = action.payload;
 
-      const exteriorStockId = selectedStockId(ProductExterior.stockhistory);
-      const interiorStockId = selectedStockId(ProductInterior.stockhistory);
-      const rimsStockId = selectedStockId(ProductRims.stockhistory);
-
-      // Mapping of selected exterior and interio into productVariance[]
-      let productVariance = [];
-      // KIV: need to change exterior/interior to dynamic mapping eventually
-      // ProductExterior & ProductInterior likely to hold an array
-      productVariance.push({
-        id: ProductExterior.id,
-        name: ProductExterior.name,
-        price: ProductExterior.price,
-        thumbnail: ProductExterior.thumbnail,
-        stockId: exteriorStockId
+      // Mapping of selected exterior/interior into productVariance[]
+      var productVariance = [];
+      Object.values(ProductExterior.selected).map(item => {
+        productVariance.push({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          thumbnail: item.thumbnail,
+          stockId: item.stockId
+        });
       });
-      productVariance.push({
-        id: ProductInterior.id,
-        name: ProductInterior.name,
-        price: ProductInterior.price,
-        thumbnail: ProductInterior.thumbnail,
-        stockId: interiorStockId
+      Object.values(ProductInterior.selected).map(item => {
+        productVariance.push({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          thumbnail: item.thumbnail,
+          stockId: item.stockId
+        });
       });
 
-      // Mapping of selected rims and accessories into productAccessories[]
+      // Mapping of accessories into productAccessories[]
       let productAccessories = [];
-      productAccessories.push({
-        id: ProductRims.id,
-        name: ProductRims.name,
-        price: ProductRims.price,
-        thumbnail: ProductRims.thumbnail,
-        stockId: rimsStockId
-      });
 
       if (ProductAccessories.selectedAccessories.length !== 0) {
         ProductAccessories.selectedAccessories.map(item =>

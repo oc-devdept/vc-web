@@ -7,69 +7,83 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const SummaryTable = props => {
-  const {
-    ProductModel,
-    ProductGrade,
-    ProductExterior,
-    ProductInterior,
-    ProductRims,
-    ProductAccessories
-  } = props.ProductState;
+  let data = {};
 
-  const data = [
-    {
-      number: "01",
+  const dataStructuring = ProductState => {
+    const {
+      ProductModel,
+      ProductGrade,
+      ProductExterior,
+      ProductInterior,
+      ProductAccessories
+    } = ProductState;
+
+    let renderData = [];
+    let counter = 1;
+    let subtotal = 0;
+    renderData.push({
+      number: counter,
       image: ProductModel.image,
       title: "CAR MAKE & MODEL",
       name: ProductModel.name
-    },
-    {
-      number: "02",
+    });
+    counter++;
+    renderData.push({
+      number: counter,
       image: ProductGrade.images[0],
       title: "GRADE",
       name: ProductGrade.name,
       price: ProductGrade.price
-    },
-    {
-      number: "03",
-      image: ProductExterior.thumbnail,
-      title: "EXTERIOR",
-      name: ProductExterior.name,
-      price: ProductExterior.price
-    },
-    {
-      number: "04",
-      image: ProductInterior.thumbnail,
-      title: "INTERIOR",
-      name: ProductInterior.name,
-      price: ProductInterior.price
-    },
-    {
-      number: "05",
-      image: ProductRims.thumbnail,
-      title: "RIMS",
-      name: ProductRims.name,
-      price: ProductRims.price
-    }
-  ];
-
-  let subtotal = 0;
-  data.map(item => {
-    if (!!item.price) {
-      subtotal += item.price;
-    }
-  });
-  if (props.page === "summary") {
-    ProductAccessories.selectedAccessories.map(item => {
-      subtotal += item.price;
     });
-  }
+    subtotal += ProductGrade.price;
+    counter++;
+
+    Object.entries(ProductExterior.selected).map(([key, value]) => {
+      renderData.push({
+        number: counter,
+        image: value.thumbnail,
+        title: key,
+        name: value.name,
+        price: value.price
+      });
+      subtotal += value.price;
+      counter++;
+    });
+    Object.entries(ProductInterior.selected).map(([key, value]) => {
+      renderData.push({
+        number: counter,
+        image: value.thumbnail,
+        title: key,
+        name: value.name,
+        price: value.price
+      });
+      subtotal += value.price;
+      counter++;
+    });
+    if (props.page === "summary") {
+      ProductAccessories.selectedAccessories.forEach(element => {
+        renderData.push({
+          number: counter,
+          image: element.image,
+          title: "ACCESSORY",
+          name: element.name,
+          price: element.price
+        });
+        subtotal += element.price;
+        counter++;
+      });
+    }
+
+    return { renderData: renderData, subtotal: subtotal };
+  };
+
+  Object.assign(data, dataStructuring(props.ProductState));
 
   const misc = 0;
-  const gst = (subtotal + misc) * 0.07;
-  const total = subtotal + misc + gst;
+  const gst = (data.subtotal + misc) * 0.07;
+  const total = data.subtotal + misc + gst;
   const allFees = useRef({
-    subtotal: subtotal,
+    subtotal: data.subtotal,
     misc: misc,
     gst: gst,
     total: total
@@ -85,7 +99,7 @@ const SummaryTable = props => {
   const subtotalData = [
     {
       name: "SUBTOTAL",
-      amount: subtotal
+      amount: data.subtotal
     },
     {
       name: "MISC. FEES",
@@ -105,7 +119,7 @@ const SummaryTable = props => {
   }, [props.ProductState.ProductTotal]);
 
   return (
-    <>
+    <React.Fragment>
       <Card className={`rounded-0 ${props.page === "summary" && "border-0"}`}>
         {props.page === "accessories" ? (
           <Card.Header
@@ -143,10 +157,9 @@ const SummaryTable = props => {
         )}
         <ListGroup variant="flush">
           <ListGroup.Item className="configure-summary-options p-2">
-            {data.map((item, key) => (
+            {data.renderData.map((item, key) => (
               <AccessoriesCartItem
                 key={key}
-                page={props.page}
                 number={item.number}
                 image={item.image}
                 title={item.title}
@@ -154,18 +167,6 @@ const SummaryTable = props => {
                 price={item.price}
               />
             ))}
-            {props.page === "summary" &&
-              ProductAccessories.selectedAccessories.map((item, key) => (
-                <AccessoriesCartItem
-                  key={key}
-                  page={props.page}
-                  number={key + 6 < 10 ? `0${key + 6}` : `${key + 6}`}
-                  image={item.image}
-                  title="ACCESSORY"
-                  name={item.name}
-                  price={item.price}
-                />
-              ))}
           </ListGroup.Item>
           <ListGroup.Item className="configure-summary-subtotal p-2">
             {subtotalData.map((item, key) => (
@@ -189,9 +190,7 @@ const SummaryTable = props => {
               <div className="col-2 p-0 mr-1"></div>
               <div className="col-5 pr-3 mr-1 text-right">
                 <p style={{ fontWeight: 700, color: "#4B6674" }}>
-                  {props.page === "accessories"
-                    ? "TOTAL"
-                    : "TOTAL CAR PRICE (SGD)"}
+                  TOTAL CAR PRICE
                 </p>
               </div>
               <div className="col-4 p-0 mr-1">
@@ -201,7 +200,7 @@ const SummaryTable = props => {
           </ListGroup.Item>
         </ListGroup>
       </Card>
-    </>
+    </React.Fragment>
   );
 };
 

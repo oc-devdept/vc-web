@@ -156,7 +156,7 @@ const Summary = props => {
   const { lastName, firstName, email, phone } = Profile;
 
   return (
-    <div className="container">
+    <React.Fragment>
       <div className="row">
         <div className="col-lg-6">
           <SummaryTable
@@ -324,7 +324,7 @@ const Summary = props => {
           </div>
         </DialogRoot>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

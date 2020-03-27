@@ -9324,6 +9324,7 @@ h6 {
 ol.progtrckr {
   width: 100%;
   text-align: center;
+  margin-bottom: 2rem;
 }
 ol.progtrckr li:last-child {
   display: none;
@@ -9344,7 +9345,7 @@ ol.progtrckr,
 li.progtrckr-doing,
 li.progtrckr-todo,
 li.progtrckr-done {
-  width: 19.99%;
+  width: 24.99%;
 }
 ol.progtrckr li.progtrckr-doing:before {
   background-color: #f29d30;
@@ -9385,6 +9386,9 @@ ol.progtrckr li.progtrckr-doing {
   background: #4b6674;
   color: #fff;
   text-transform: uppercase;
+}
+.configure-sect {
+  margin-bottom: 1.5rem;
 }
 .product-desc dl {
   width: 33%;

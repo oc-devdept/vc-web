@@ -70,10 +70,6 @@ const Grade = ({
     getProductGradeData(id);
   };
 
-  const isValidated = () => {
-    return !!ProductGrade.id;
-  };
-
   const _RestartToggle = () => {
     setToggle(() => !Toggle);
   };
@@ -110,7 +106,7 @@ const Grade = ({
   const { model, date, timeslot, description } = BookService;
   const { lastName, firstName, email, phone } = Profile;
 
-  // console.log("ProductSpecification= ", ProductSpecification);
+  // console.log("ProductGrade= ", ProductGrade);
   return (
     <div className="configure-sect row">
       <div className="configure-gall col-lg-8 d-flex flex-column p-3">
@@ -119,8 +115,8 @@ const Grade = ({
           className="configCoverImg align-self-center"
           style={{ maxWidth: "100%" }}
         />
-        <h3 className="text-uppercase text-center m-2">{ProductGrade.name}</h3>
-        <p>{ProductGrade.description}</p>
+        <h3 className="text-uppercase text-center my-3">{ProductGrade.name}</h3>
+        <p className="mb-4">{ProductGrade.description}</p>
         {!!Object.values(ProductSpecification).length &&
           (ProductSpecification.data.length === 0 ? (
             <p>No product specification available.</p>
@@ -133,12 +129,13 @@ const Grade = ({
                     {value.map((item, idd) => (
                       <React.Fragment key={idd}>
                         <p className="d-flex justify-content-between mb-1">
-                          <span className="mr-2">
+                          <span style={{ fontWeight: 500 }} className="mr-2">
                             {item.detailCategory.name}:
                           </span>
-                          <span>
-                            {item.value} {item.detailCategory.unit}
-                          </span>
+                          <div>
+                            <span>{item.value}&nbsp;</span>
+                            <span>{item.detailCategory.unit}</span>
+                          </div>
                         </p>
                       </React.Fragment>
                     ))}
@@ -242,19 +239,4 @@ const Grade = ({
   );
 };
 
-// const mapStateToProps = state => {
-//   const { ProductGrade } = state.ProductState
-//   return { ProductGrade }
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   {
-//     selectedProductGrade,
-//     getProductGradeData
-//   }
-// )(Grade)
-
 export default Grade;
-
-// import DialogRoot from "Components/Dialog/DialogRoot";

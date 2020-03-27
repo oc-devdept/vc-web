@@ -41,3 +41,8 @@ export const saveCheckout = data => ({
 export const getCheckout = () => ({
   type: types.GET_CHECKOUT
 });
+
+// export const updateSelectedExterior = data => ({
+//   type: types.UPDATE_SELECTED_EXTERIOR,
+//   payload: data
+// });

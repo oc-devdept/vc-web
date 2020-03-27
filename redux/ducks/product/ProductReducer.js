@@ -17,31 +17,12 @@ const INIT_STATE = {
   },
   ProductSpecification: {},
   ProductExterior: {
-    id: null,
-    name: null,
-    price: 0,
-    thumbnail: null,
-    images: [],
-    stockhistory: [],
-    data: {}
+    data: {},
+    selected: {}
   },
   ProductInterior: {
-    id: null,
-    name: null,
-    price: 0,
-    thumbnail: null,
-    images: [],
-    stockhistory: [],
-    data: {}
-  },
-  ProductRims: {
-    id: null,
-    name: null,
-    price: 0,
-    thumbnail: null,
-    images: [],
-    stockhistory: [],
-    data: {}
+    data: {},
+    selected: {}
   },
   ProductAccessories: {
     selectedAccessories: [],
@@ -133,41 +114,9 @@ export default (state = INIT_STATE, action) => {
           data: specificationData.data.fields.Detail
         },
         ProductExterior: {
-          id: exteriorData.data.fields["Colors"].objects[0].id,
-          name: exteriorData.data.fields["Colors"].objects[0].name,
-          price: exteriorData.data.fields["Colors"].objects[0].price,
-          thumbnail:
-            exteriorData.data.fields["Colors"].objects[0].files[0].path,
-          images: exteriorData.data.fields["Colors"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
-          id: interiorData.data.fields["Material"].objects[0].id,
-          name: interiorData.data.fields["Material"].objects[0].name,
-          price: interiorData.data.fields["Material"].objects[0].price,
-          thumbnail:
-            interiorData.data.fields["Material"].objects[0].files[0].path,
-          images: interiorData.data.fields["Material"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            interiorData.data.fields["Material"].objects[0].stockhistory,
-          data: interiorData.data
-        },
-        ProductRims: {
-          id: interiorData.data.fields["Rims"].objects[0].id,
-          name: interiorData.data.fields["Rims"].objects[0].name,
-          price: interiorData.data.fields["Rims"].objects[0].price,
-          thumbnail: interiorData.data.fields["Rims"].objects[0].files[0].path,
-          images: interiorData.data.fields["Rims"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
@@ -225,41 +174,9 @@ export default (state = INIT_STATE, action) => {
           data: specificationData.data.fields.Detail
         },
         ProductExterior: {
-          id: exteriorData.data.fields["Colors"].objects[0].id,
-          name: exteriorData.data.fields["Colors"].objects[0].name,
-          price: exteriorData.data.fields["Colors"].objects[0].price,
-          thumbnail:
-            exteriorData.data.fields["Colors"].objects[0].files[0].path,
-          images: exteriorData.data.fields["Colors"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            exteriorData.data.fields["Colors"].objects[0].stockhistory,
           data: exteriorData.data
         },
         ProductInterior: {
-          id: interiorData.data.fields["Material"].objects[0].id,
-          name: interiorData.data.fields["Material"].objects[0].name,
-          price: interiorData.data.fields["Material"].objects[0].price,
-          thumbnail:
-            interiorData.data.fields["Material"].objects[0].files[0].path,
-          images: interiorData.data.fields["Material"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            interiorData.data.fields["Material"].objects[0].stockhistory,
-          data: interiorData.data
-        },
-        ProductRims: {
-          id: interiorData.data.fields["Rims"].objects[0].id,
-          name: interiorData.data.fields["Rims"].objects[0].name,
-          price: interiorData.data.fields["Rims"].objects[0].price,
-          thumbnail: interiorData.data.fields["Rims"].objects[0].files[0].path,
-          images: interiorData.data.fields["Rims"].objects[0].images.map(
-            item => item.path
-          ),
-          stockhistory:
-            interiorData.data.fields["Rims"].objects[0].stockhistory,
           data: interiorData.data
         },
         ProductAccessories: {
@@ -272,56 +189,20 @@ export default (state = INIT_STATE, action) => {
       return { ...state };
 
     case types.SELECTED_PRODUCT_EXTERIOR:
-      var id = action.payload;
-      var { objects } = state.ProductExterior.data.fields["Colors"];
-      var object = objects.find(element => element.id === id);
-
       return {
         ...state,
         ProductExterior: {
           ...state.ProductExterior,
-          id: object.id,
-          name: object.name,
-          price: object.price,
-          thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path),
-          stockhistory: object.stockhistory
+          selected: action.payload
         }
       };
 
     case types.SELECTED_PRODUCT_INTERIOR:
-      var id = action.payload;
-      var { objects } = state.ProductInterior.data.fields["Material"];
-      var object = objects.find(element => element.id === id);
-
       return {
         ...state,
         ProductInterior: {
           ...state.ProductInterior,
-          id: object.id,
-          name: object.name,
-          price: object.price,
-          thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path),
-          stockhistory: object.stockhistory
-        }
-      };
-
-    case types.SELECTED_PRODUCT_RIMS:
-      var id = action.payload;
-      var { objects } = state.ProductInterior.data.fields["Rims"];
-      var object = objects.find(element => element.id === id);
-
-      return {
-        ...state,
-        ProductRims: {
-          ...state.ProductRims,
-          id: object.id,
-          name: object.name,
-          price: object.price,
-          thumbnail: object.files[0].path,
-          images: object.images.map(item => item.path),
-          stockhistory: object.stockhistory
+          selected: action.payload
         }
       };
 

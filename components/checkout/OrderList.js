@@ -118,7 +118,9 @@ export default function OrderList({ checkoutState }) {
               <div className="col-1 p-0 mr-1"></div>
               <div className="col-2 p-0 mr-1"></div>
               <div className="col-5 pr-3 mr-1 text-right">
-                <p style={{ fontWeight: 700, color: "#4B6674" }}>TOTAL</p>
+                <p style={{ fontWeight: 700, color: "#4B6674" }}>
+                  TOTAL CAR PRICE
+                </p>
               </div>
               <div className="col-4 p-0 mr-1">
                 <p>{formatPrice(checkoutState.total)}</p>

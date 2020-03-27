@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Carousel } from "react-responsive-carousel";
-// import "Styles/carousel.min.css";
 
 const VariantInfo = ({ images, name }) => {
   return (
@@ -19,7 +18,7 @@ const VariantInfo = ({ images, name }) => {
           </div>
         ))}
       </Carousel>
-      <h3 className="text-uppercase text-center m-2">{name}</h3>
+      <h3 className="text-uppercase text-center my-3">{name}</h3>
     </React.Fragment>
   );
 };

@@ -11,7 +11,6 @@ const VariantSelection = ({
   selectedId,
   stockHistory
 }) => {
-  // consider moving this to Helpers and add a type=reducer
   const checkTooltip = stockhistory => {
     const stockChecklist = [
       "VAC READY",
@@ -105,8 +104,6 @@ const VariantSelection = ({
     }
   };
 
-  console.log("selectedId= ", selectedId);
-
   return (
     <React.Fragment>
       <h3 className="configure-opt-title">{title}</h3>
@@ -121,7 +118,7 @@ const VariantSelection = ({
               <li
                 className="configure-list d-inline-block align-top"
                 id={item.id}
-                onClick={handleOptionChange}
+                onClick={() => handleOptionChange(title, id)}
                 style={{ maxWidth: 120 }}
               >
                 <img

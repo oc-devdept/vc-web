@@ -4,15 +4,15 @@ import VariantSelection from "Components/configurator/VariantSelection";
 import VariantInfo from "Components/configurator/VariantInfo";
 import { selectedStockId } from "Components/Helpers/helpers";
 
-class ExteriorDynamic extends Component {
+class Interior extends Component {
   constructor(props) {
     super(props);
 
-    if (!!this.props.ProductExterior.selected) {
-      this.state = this.props.ProductExterior.selected;
+    if (!!this.props.ProductInterior.selected) {
+      this.state = this.props.ProductInterior.selected;
     } else {
       let state = {};
-      const { fields } = this.props.ProductExterior.data;
+      const { fields } = this.props.ProductInterior.data;
       Object.keys(fields).map(variance => {
         state[variance] = {
           selectedKey: 0,
@@ -25,11 +25,12 @@ class ExteriorDynamic extends Component {
       });
       this.state = state;
     }
+
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
   handleOptionChange(variance, selectedKey) {
-    const { fields } = this.props.ProductExterior.data;
+    const { fields } = this.props.ProductInterior.data;
     this.setState({
       ...this.state,
       [variance]: {
@@ -46,19 +47,18 @@ class ExteriorDynamic extends Component {
   }
 
   componentDidMount() {
-    this.props.selectedProductExterior(this.state);
+    this.props.selectedProductInterior(this.state);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state !== prevState) {
-      this.props.selectedProductExterior(this.state);
+      this.props.selectedProductInterior(this.state);
     }
   }
 
   render() {
-    // console.log("ProductExterior= ", this.props.ProductExterior);
-    // console.log("state= ", this.state);
-    const { fields } = this.props.ProductExterior.data;
+    // console.log("interior props: ", this.props);
+    const { fields } = this.props.ProductInterior.data;
     return (
       <React.Fragment>
         {Object.entries(fields).map(([variance, data], key) => (
@@ -89,4 +89,4 @@ class ExteriorDynamic extends Component {
   }
 }
 
-export default ExteriorDynamic;
+export default Interior;

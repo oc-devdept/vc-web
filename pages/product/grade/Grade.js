@@ -128,7 +128,7 @@ const Grade = ({
                     <h6 className="text-uppercase">{key}</h6>
                     {value.map((item, idd) => (
                       <React.Fragment key={idd}>
-                        <p className="d-flex justify-content-between mb-1">
+                        <div className="d-flex justify-content-between mb-1">
                           <span style={{ fontWeight: 500 }} className="mr-2">
                             {item.detailCategory.name}:
                           </span>
@@ -136,7 +136,7 @@ const Grade = ({
                             <span>{item.value}&nbsp;</span>
                             <span>{item.detailCategory.unit}</span>
                           </div>
-                        </p>
+                        </div>
                       </React.Fragment>
                     ))}
                   </div>

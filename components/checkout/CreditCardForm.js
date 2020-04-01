@@ -9,7 +9,11 @@ import Loader from "react-loader-spinner";
 import "Styles/react-spinner-loader.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createPayment, clearPayment } from "Ducks/payment/PaymentActions";
+import {
+  createPayment,
+  getPayment,
+  clearPayment
+} from "Ducks/payment/PaymentActions";
 import { doCheckout } from "Ducks/checkout/CheckoutActions";
 
 const CreditCardForm = () => {
@@ -27,10 +31,13 @@ const CreditCardForm = () => {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    if (PaymentState.client_secret === "") {
+    const paymentIntentId = localStorage.getItem("stripe-paymentIntentId");
+    if (paymentIntentId) {
+      dispatch(getPayment(paymentIntentId));
+    } else {
       dispatch(createPayment());
-      setLoading(false);
     }
+    setLoading(false);
   }, []);
 
   const handleSubmit = async e => {
@@ -58,7 +65,7 @@ const CreditCardForm = () => {
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === "succeeded") {
-        doCheckout(CheckoutState);
+        dispatch(doCheckout(CheckoutState));
         setShowFeedbackSuccess(true);
         setFeedbackMessage("");
         setShowForm(false);
@@ -75,7 +82,6 @@ const CreditCardForm = () => {
         fontSmoothing: "antialiased",
         fontFamily: "Montserrat, sans-serif",
         fontSize: "14px",
-        lineHeight: "45px",
         "::placeholder": {
           color: "#999999"
         }
@@ -88,7 +94,7 @@ const CreditCardForm = () => {
   };
 
   // console.log("PaymentState= ", PaymentState);
-  // console.log("CheckoutState= ", CheckoutState);
+  console.log("CheckoutState= ", CheckoutState);
   return (
     <Card
       style={{
@@ -130,7 +136,7 @@ const CreditCardForm = () => {
               <Form.Label>CARD DETAILS</Form.Label>
               <CardElement
                 options={CARD_ELEMENT_OPTIONS}
-                className="form-control"
+                className="form-control card-element"
               />
             </Form.Group>
             <Button
@@ -160,7 +166,7 @@ const CreditCardForm = () => {
               soon!
             </p>
             <Link href="/">
-              <a>Back to Home</a>
+              <a className="d-inline">Back to Home</a>
             </Link>
           </React.Fragment>
         )}

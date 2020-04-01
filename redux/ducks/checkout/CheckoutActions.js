@@ -6,21 +6,21 @@ export const getCheckoutData = e => ({
   payload: e
 });
 
-export const doCheckout = (
-  productVariant,
+export const doCheckout = ({
+  productVariance,
   productAccessories,
-  productId,
+  productGradeId,
   subtotal,
-  tax,
+  gst,
   total
-) => ({
+}) => ({
   type: types.DO_CHECKOUT,
   payload: {
-    productVariant,
+    productVariance,
     productAccessories,
-    productId,
+    productGradeId,
     subtotal,
-    tax,
+    gst,
     total
   }
 });

@@ -1,0 +1,6 @@
+// Create PaymentIntent from Stripe
+export const CREATE_PAYMENT = "CREATE_PAYMENT";
+export const CREATE_PAYMENT_SUCCESS = "CREATE_PAYMENT_SUCCESS";
+export const CREATE_PAYMENT_FAILURE = "CREATE_PAYMENT_FAILURE";
+
+export const CLEAR_PAYMENT = "SUBMIT_PAYMENT";

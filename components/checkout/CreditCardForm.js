@@ -94,7 +94,7 @@ const CreditCardForm = () => {
   };
 
   // console.log("PaymentState= ", PaymentState);
-  console.log("CheckoutState= ", CheckoutState);
+  // console.log("CheckoutState= ", CheckoutState);
   return (
     <Card
       style={{

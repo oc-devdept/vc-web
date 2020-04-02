@@ -43,8 +43,6 @@ export default (state = INIT_STATE, action) => {
 
     case types.CLEAR_PAYMENT:
       localStorage.removeItem("stripe-paymentIntentId");
-      // removing of shopping cart should be done in doCheckout()?
-      // localStorage.removeItem("vc-shoppingcart");
       return INIT_STATE;
 
     default:

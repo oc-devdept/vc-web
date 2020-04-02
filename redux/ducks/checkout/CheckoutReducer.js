@@ -82,6 +82,14 @@ export default (state = INIT_STATE, action) => {
       const checkout = JSON.parse(localStorage.getItem("vc-shoppingcart"));
       return { ...checkout };
 
+    case types.DO_CHECKOUT_SUCCESS:
+      localStorage.removeItem("vc-shoppingcart");
+      return INIT_STATE;
+
+    case types.DO_CHECKOUT_FAILURE:
+      console.log("DoCheckout failure");
+      return { ...state };
+
     default:
       return { ...state };
   }

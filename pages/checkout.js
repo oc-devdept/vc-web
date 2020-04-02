@@ -1,4 +1,5 @@
 import React from "react";
+import Router from "next/router";
 import Navbar from "Components/Layout/Navbar";
 import Footer from "Components/Layout/Footer";
 import Breadcrumb from "Components/Common/Breadcrumb";
@@ -11,13 +12,14 @@ import { getCheckout } from "Ducks/checkout";
 
 import { isLoggedIn } from "../utils/auth";
 
-// !!!IMPORTANT!!! must handle users accessing /checkout without checkout item
 const Checkout = props => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem("vc-shoppingcart"));
     if (localCart) {
       dispatch(getCheckout());
+    } else {
+      Router.replace("/");
     }
   }, []);
   const checkoutState = useSelector(state => state.CheckoutState);

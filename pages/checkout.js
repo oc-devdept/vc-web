@@ -11,6 +11,7 @@ import { getCheckout } from "Ducks/checkout";
 
 import { isLoggedIn } from "../utils/auth";
 
+// !!!IMPORTANT!!! must handle users accessing /checkout without checkout item
 const Checkout = props => {
   const dispatch = useDispatch();
   React.useEffect(() => {

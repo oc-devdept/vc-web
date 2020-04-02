@@ -10,6 +10,7 @@ import { ModelSaga } from "Ducks/model";
 import { UserSaga } from "Ducks/user";
 import { CheckoutSaga } from "Ducks/checkout";
 import { RentSaga } from "Ducks/rent";
+import { PaymentSaga } from "Ducks/payment";
 
 export default function* rootSaga() {
   yield all([
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     ModelSaga(),
     UserSaga(),
     CheckoutSaga(),
-    RentSaga()
+    RentSaga(),
+    PaymentSaga()
   ]);
 }

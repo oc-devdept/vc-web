@@ -20,6 +20,10 @@ import makeStore from "Store";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
 import { NotificationContainer } from "react-notifications";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_jIFi9RGBEaAIkErwMgosR9yq00rutW1trK");
 
 class MyApp extends App {
   render() {
@@ -28,9 +32,11 @@ class MyApp extends App {
     return (
       <>
         <DefaultSeo title="Venture Cars" description="Venture Cars" />
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <Elements stripe={stripePromise}>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </Elements>
         <GoTop scrollStepInPx="50" delayInMs="16.66" />
         <NotificationContainer />
       </>

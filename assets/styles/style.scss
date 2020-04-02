@@ -9565,3 +9565,7 @@ input[type="number"] {
 .DayPickerInput > input:focus {
   outline: #f29d30 solid 1px;
 }
+
+.form-control.card-element {
+  padding: 15px;
+}

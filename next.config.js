@@ -6,12 +6,10 @@ const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
 const nextConfig = {
-  // distDir: "dist",
   webpack(config) {
     config.resolve.alias["Components"] = path.join(__dirname, "components");
     config.resolve.alias["Store"] = path.join(__dirname, "redux/store");
     config.resolve.alias["Ducks"] = path.join(__dirname, "redux/ducks");
-    // config.resolve.alias["Images"] = path.join(__dirname, "assets/images");
     config.resolve.alias["Api"] = path.join(__dirname, "api");
     config.resolve.alias["Styles"] = path.join(__dirname, "assets/styles");
     config.resolve.alias["Static"] = path.join(__dirname, "static");
@@ -47,9 +45,9 @@ module.exports = withPlugins(
         }
       }
     ],
+    [withSass],
     [withCSS],
-    [withFonts],
-    [withSass]
+    [withFonts]
   ],
   nextConfig
 );

@@ -1,4 +1,12 @@
-import "../assets/styles/_index.scss";
+// import "../assets/styles/_index.scss";
+import "../assets/styles/bootstrap.min.css";
+import "../assets/styles/fontawesome.min.css";
+import "../assets/styles/animate.min.css";
+import "../assets/styles/slick.css";
+import "../assets/styles/slick-theme.css";
+import "../assets/styles/responsive.scss";
+import "../assets/styles/carousel.min.css";
+import "../assets/styles/style.scss";
 
 // Plugins
 import "react-notifications/lib/notifications.css";

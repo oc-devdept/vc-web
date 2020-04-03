@@ -9569,3 +9569,8 @@ input[type="number"] {
 .form-control.card-element {
   padding: 15px;
 }
+
+.configure-sect .configure-gall .custom-control-label::before,
+.configure-sect .configure-gall .custom-control-label::after {
+  top: 0.25rem;
+}

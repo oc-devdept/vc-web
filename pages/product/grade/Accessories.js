@@ -14,11 +14,25 @@ class Accessories extends Component {
     let accordionDisplay = { mainAccordionActiveKey: "0" };
     let optionsState = {};
     Object.entries(this.props.ProductState.ProductAccessories.data.fields).map(
-      ([key, value], id) => {
-        accordionDisplay[id] = "0";
-        let values = {};
-        value.map(item => (values[item.productOptionId] = false));
-        optionsState[key] = values;
+      ([accessoryCategory, accessoryData], index) => {
+        // If there is a default option available, pre-select the first one
+        const selectedIndex = accessoryData.findIndex(
+          element => element.isDefault
+        );
+        selectedIndex !== -1
+          ? (accordionDisplay[index] = `${selectedIndex}`)
+          : (accordionDisplay[index] = "0");
+
+        let data = { values: {}, defaultAccessory: "" };
+        accessoryData.forEach((accessory, indexx) => {
+          if (indexx === selectedIndex) {
+            data.values[accessory.productOptionId] = true;
+            data.defaultAccessory = accessory.productOptionId;
+          } else {
+            data.values[accessory.productOptionId] = false;
+          }
+        });
+        optionsState[accessoryCategory] = data;
       }
     );
     this.state = {
@@ -30,20 +44,8 @@ class Accessories extends Component {
     this.handleClick = this.handleMainAccordionClick.bind(this);
   }
 
-  handleOptionChange(event, category) {
-    const { id, checked } = event.target;
-    let resetCategoryState = {};
-    Object.keys(this.state.optionsState[category]).map(
-      key => (resetCategoryState[key] = false)
-    );
-    resetCategoryState[id] = checked;
-    this.setState({
-      ...this.state,
-      optionsState: {
-        ...this.state.optionsState,
-        [category]: resetCategoryState
-      }
-    });
+  componentDidMount() {
+    this.props.selectedProductAccessories(this.state.optionsState);
   }
 
   // Updates selected product options
@@ -51,6 +53,31 @@ class Accessories extends Component {
     if (this.state.optionsState !== prevState.optionsState) {
       this.props.selectedProductAccessories(this.state.optionsState);
     }
+  }
+
+  handleOptionChange(event, category) {
+    const { id, checked } = event.target;
+    let resetCategoryState = {};
+    Object.keys(this.state.optionsState[category].values).map(
+      key => (resetCategoryState[key] = false)
+    );
+    if (checked) {
+      resetCategoryState[id] = checked;
+    } else {
+      const defaultAccessory = this.state.optionsState[category]
+        .defaultAccessory;
+      resetCategoryState[defaultAccessory] = true;
+    }
+    this.setState({
+      ...this.state,
+      optionsState: {
+        ...this.state.optionsState,
+        [category]: {
+          ...this.state.optionsState[category],
+          values: resetCategoryState
+        }
+      }
+    });
   }
 
   handleMainAccordionClick(id) {
@@ -75,7 +102,7 @@ class Accessories extends Component {
 
   render() {
     // console.log("state= ", this.state);
-    // console.log("Acce ssories props: ", this.props);
+    // console.log("Accessories props= ", this.props);
 
     const { ProductAccessories } = this.props.ProductState;
 
@@ -158,7 +185,7 @@ class Accessories extends Component {
                                     id={item.productOptionId}
                                     label=""
                                     checked={
-                                      this.state.optionsState[key][
+                                      this.state.optionsState[key].values[
                                         item.productOptionId
                                       ]
                                     }
@@ -174,7 +201,12 @@ class Accessories extends Component {
                                       textTransform: "uppercase"
                                     }}
                                   >
-                                    {item.productOption.name}
+                                    {item.productOption.name}{" "}
+                                    <span style={{ color: "#cccccc" }}>
+                                      {this.state.optionsState[key]
+                                        .defaultAccessory ===
+                                        item.productOptionId && "(DEFAULT)"}
+                                    </span>
                                   </p>
                                 </div>
                                 <div className="col-3">

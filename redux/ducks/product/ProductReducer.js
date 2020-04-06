@@ -209,7 +209,7 @@ export default (state = INIT_STATE, action) => {
     case types.SELECTED_PRODUCT_ACCESSORIES:
       let selectedAccessoriesId = [];
       Object.values(action.payload).map(values =>
-        Object.entries(values).map(([productOptionId, selected]) => {
+        Object.entries(values.values).map(([productOptionId, selected]) => {
           if (selected) {
             selectedAccessoriesId.push(productOptionId);
           }

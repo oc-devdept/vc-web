@@ -6,13 +6,12 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import Loader from "react-loader-spinner";
-import "Styles/react-spinner-loader.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
   createPayment,
   getPayment,
-  clearPayment
+  clearPayment,
 } from "Ducks/payment/PaymentActions";
 import { doCheckout } from "Ducks/checkout/CheckoutActions";
 
@@ -21,8 +20,8 @@ const CreditCardForm = () => {
   const elements = useElements();
   const dispatch = useDispatch();
 
-  const PaymentState = useSelector(state => state.PaymentState);
-  const CheckoutState = useSelector(state => state.CheckoutState);
+  const PaymentState = useSelector((state) => state.PaymentState);
+  const CheckoutState = useSelector((state) => state.CheckoutState);
 
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(true);
@@ -40,7 +39,7 @@ const CreditCardForm = () => {
     setLoading(false);
   }, []);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements || loading) {
       return;
@@ -55,9 +54,9 @@ const CreditCardForm = () => {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: name
-        }
-      }
+          name: name,
+        },
+      },
     });
 
     if (result.error) {
@@ -83,14 +82,14 @@ const CreditCardForm = () => {
         fontFamily: "Montserrat, sans-serif",
         fontSize: "14px",
         "::placeholder": {
-          color: "#999999"
-        }
+          color: "#999999",
+        },
       },
       invalid: {
         color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    }
+        iconColor: "#fa755a",
+      },
+    },
   };
 
   // console.log("PaymentState= ", PaymentState);
@@ -100,13 +99,13 @@ const CreditCardForm = () => {
       style={{
         width: "90%",
         maxWidth: 500,
-        margin: "2rem auto"
+        margin: "2rem auto",
       }}
     >
       <Card.Header
         style={{
           backgroundColor: "#ffffff",
-          padding: "1.25rem"
+          padding: "1.25rem",
         }}
       >
         <h3
@@ -129,7 +128,7 @@ const CreditCardForm = () => {
               <Form.Control
                 placeholder="Required"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
             <Form.Group>

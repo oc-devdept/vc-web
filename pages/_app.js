@@ -9,8 +9,11 @@ import "../assets/styles/carousel.min.css";
 import "../assets/styles/style.scss";
 
 // Plugins
+import "react-multi-carousel/lib/styles.css";
 import "react-notifications/lib/notifications.css";
 import "react-day-picker/lib/style.css";
+import "../assets/styles/react-spinner-loader.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Provider } from "react-redux";
 import App from "next/app";

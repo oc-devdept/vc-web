@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
 
 import Select from "react-select";
 
@@ -30,7 +29,7 @@ class VehicleSearch extends Component {
     this.state = {
       dateStart: dateStart,
       dateEnd: dateEnd,
-      dateLimit: dateLimit
+      dateLimit: dateLimit,
     };
 
     // Check if search parameters exist, else generate general search parameters
@@ -40,7 +39,7 @@ class VehicleSearch extends Component {
         pickUpDate: this.props.searchParameters.pickUpDate,
         pickUpTime: this.props.searchParameters.pickUpTime,
         dropOffDate: this.props.searchParameters.dropOffDate,
-        dropOffTime: this.props.searchParameters.dropOffTime
+        dropOffTime: this.props.searchParameters.dropOffTime,
       };
     } else {
       this.state = {
@@ -48,7 +47,7 @@ class VehicleSearch extends Component {
         pickUpDate: dateStart,
         pickUpTime: "09:00",
         dropOffDate: dateEnd,
-        dropOffTime: "09:00"
+        dropOffTime: "09:00",
       };
     }
 
@@ -88,13 +87,13 @@ class VehicleSearch extends Component {
         this.setState({
           ...this.state,
           dateEnd: dateEnd,
-          pickUpDate: day
+          pickUpDate: day,
         });
         break;
       case "drop-off":
         this.setState({
           ...this.state,
-          dropOffDate: day
+          dropOffDate: day,
         });
         break;
       default:
@@ -109,7 +108,7 @@ class VehicleSearch extends Component {
       const { dateEnd } = this.state;
       this.setState({
         ...this.state,
-        dropOffDate: dateEnd
+        dropOffDate: dateEnd,
       });
     }
   }
@@ -127,13 +126,13 @@ class VehicleSearch extends Component {
       case "pickUpTime":
         this.setState({
           ...this.state,
-          pickUpTime: value.value
+          pickUpTime: value.value,
         });
         break;
       case "dropOffTime":
         this.setState({
           ...this.state,
-          dropOffTime: value.value
+          dropOffTime: value.value,
         });
         break;
       default:
@@ -191,7 +190,7 @@ class VehicleSearch extends Component {
   //   return dates.map(date => new Date(year, date.month, date.day));
   // }
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
     this.props.getSearch(this.state);
     Router.push("/rent/results");
@@ -204,15 +203,15 @@ class VehicleSearch extends Component {
         formLabel: "Pick-up Date:",
         timeId: "pickUpTime",
         dateId: "pickUpDate",
-        disabledBefore: "dateStart"
+        disabledBefore: "dateStart",
       },
       {
         controlId: "drop-off",
         formLabel: "Drop-off Date:",
         timeId: "dropOffTime",
         dateId: "dropOffDate",
-        disabledBefore: "dateEnd"
-      }
+        disabledBefore: "dateEnd",
+      },
     ];
 
     const selectOptions = [
@@ -224,16 +223,16 @@ class VehicleSearch extends Component {
       { value: "14:00", label: "14:00" },
       { value: "15:00", label: "15:00" },
       { value: "16:00", label: "16:00" },
-      { value: "17:00", label: "17:00" }
+      { value: "17:00", label: "17:00" },
     ];
 
     const selectStyles = {
-      container: styles => ({
+      container: (styles) => ({
         ...styles,
         width: "49%",
         height: 45,
         display: "inline-block",
-        position: "absolute"
+        position: "absolute",
       }),
       control: (styles, { isFocused }) => ({
         ...styles,
@@ -243,27 +242,27 @@ class VehicleSearch extends Component {
         borderColor: "transparent",
         borderRadius: 0,
         boxShadow: "none",
-        outline: isFocused ? "#f29d30 solid 1px" : "none"
+        outline: isFocused ? "#f29d30 solid 1px" : "none",
       }),
       option: (styles, { isFocused }) => ({
         ...styles,
         textAlign: "center",
         backgroundColor: isFocused ? "#4A90E2" : null,
-        color: isFocused ? "#ffffff" : null
+        color: isFocused ? "#ffffff" : null,
       }),
-      valueContainer: styles => ({
+      valueContainer: (styles) => ({
         ...styles,
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
       }),
-      singleValue: styles => ({
+      singleValue: (styles) => ({
         ...styles,
-        color: "#666666"
+        color: "#666666",
       }),
-      menu: styles => ({
+      menu: (styles) => ({
         ...styles,
-        borderRadius: 0
-      })
+        borderRadius: 0,
+      }),
     };
 
     // console.log("state= ", this.state);
@@ -287,7 +286,7 @@ class VehicleSearch extends Component {
                   placeholder="33 Ubi Ave 3, #01-47/48"
                   disabled={true}
                   style={{
-                    backgroundColor: "#d8d8d8"
+                    backgroundColor: "#d8d8d8",
                   }}
                 />
               </Form.Group>
@@ -297,28 +296,16 @@ class VehicleSearch extends Component {
                 <Form.Group controlId={item.controlId}>
                   <Form.Label>{item.formLabel}</Form.Label>
                   <br />
-                  {/* <InputGroup> */}
-                  {/* <InputGroup.Prepend>
-                      <InputGroup.Text
-                        style={{
-                          backgroundColor: "#f5f5f5",
-                          border: "none",
-                          borderRadius: 0
-                        }}
-                      >
-                        <i className="fas fa-calendar-alt" />
-                      </InputGroup.Text>
-                    </InputGroup.Prepend> */}
                   <DayPickerInput
                     dayPickerProps={{
                       disabledDays: [
                         // { daysOfWeek: [0] },
                         { before: this.state[item.disabledBefore] },
-                        { after: this.state.dateLimit }
+                        { after: this.state.dateLimit },
                         // ...this.publicHolidays()
                       ],
                       fromMonth: this.state.dateStart,
-                      toMonth: this.state.dateLimit
+                      toMonth: this.state.dateLimit,
                     }}
                     inputProps={{
                       id: item.controlId,
@@ -332,12 +319,12 @@ class VehicleSearch extends Component {
                         borderRight: "1px solid #c5c5c5",
                         backgroundColor: "#f5f5f5",
                         textAlignLast: "center",
-                        color: "#666666"
-                      }
+                        color: "#666666",
+                      },
                     }}
                     style={{
                       width: "50%",
-                      height: 45
+                      height: 45,
                     }}
                     value={this.state[item.dateId]}
                     // value={
@@ -374,7 +361,7 @@ class VehicleSearch extends Component {
                     styles={selectStyles}
                     isSearchable={false}
                     id={item.timeId}
-                    onChange={value =>
+                    onChange={(value) =>
                       this.handleTimeChange(item.timeId, value)
                     }
                   />
@@ -388,7 +375,7 @@ class VehicleSearch extends Component {
                   type="submit"
                   style={{
                     fontSize: 16,
-                    width: "100%"
+                    width: "100%",
                   }}
                 >
                   Search

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import VariantSelection from "Components/configurator/VariantSelection";
 import VariantInfo from "Components/configurator/VariantInfo";
-import "Styles/carousel.min.css";
 
 class Exterior extends Component {
   constructor(props) {

@@ -3,10 +3,9 @@ import Link from "next/link";
 import { connect } from "react-redux";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export class Content extends Component {
-  handleRemove = id => {
+  handleRemove = (id) => {
     this.props.removeItemFromCompare(id);
 
     toast.error("Removed from compare list", {
@@ -15,11 +14,11 @@ export class Content extends Component {
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
-      draggable: true
+      draggable: true,
     });
   };
 
-  handleAddToCart = id => {
+  handleAddToCart = (id) => {
     this.props.addToCart(id);
 
     toast.success("Added to the cart", {
@@ -28,7 +27,7 @@ export class Content extends Component {
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
-      draggable: true
+      draggable: true,
     });
   };
 
@@ -53,7 +52,7 @@ export class Content extends Component {
                       <Link href="#">
                         <a
                           className="remove"
-                          onClick={e => {
+                          onClick={(e) => {
                             e.preventDefault();
                             this.handleRemove(data.id);
                           }}
@@ -95,7 +94,7 @@ export class Content extends Component {
                         <Link href="#">
                           <a
                             className="btn btn-light"
-                            onClick={e => {
+                            onClick={(e) => {
                               e.preventDefault();
                               this.handleAddToCart(data.id);
                             }}

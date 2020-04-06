@@ -14,7 +14,7 @@ const nextConfig = {
     config.resolve.alias["Styles"] = path.join(__dirname, "assets/styles");
     config.resolve.alias["Static"] = path.join(__dirname, "static");
     return config;
-  }
+  },
 };
 
 module.exports = withPlugins(
@@ -29,25 +29,25 @@ module.exports = withPlugins(
         optimizeImages: true,
         optimizeImagesInDev: false,
         mozjpeg: {
-          quality: 80
+          quality: 80,
         },
         optipng: {
-          optimizationLevel: 3
+          optimizationLevel: 3,
         },
         pngquant: false,
         gifsicle: {
           interlaced: true,
-          optimizationLevel: 3
+          optimizationLevel: 3,
         },
         webp: {
           preset: "default",
-          quality: 75
-        }
-      }
+          quality: 75,
+        },
+      },
     ],
-    [withSass],
-    [withCSS],
-    [withFonts]
+    // [withSass],
+    // [withCSS],
+    [withFonts],
   ],
   nextConfig
 );

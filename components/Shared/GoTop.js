@@ -1,10 +1,11 @@
+import { ArrowUpward } from "@material-ui/icons";
 class GoTop extends React.Component {
   _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
       intervalId: 0,
-      thePosition: false
+      thePosition: false,
     };
   }
 
@@ -42,8 +43,7 @@ class GoTop extends React.Component {
     if (this.state.thePosition) {
       return (
         <div className="go-top" onClick={this.scrollToTop}>
-          <i className="fas fa-arrow-up"></i>
-          <i className="fas fa-arrow-up"></i>
+          <ArrowUpward fontSize="small" />
         </div>
       );
     }

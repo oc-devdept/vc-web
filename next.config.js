@@ -1,6 +1,4 @@
 const path = require("path");
-const withSass = require("@zeit/next-sass");
-const withCSS = require("@zeit/next-css");
 const withFonts = require("next-fonts");
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
@@ -45,8 +43,6 @@ module.exports = withPlugins(
         },
       },
     ],
-    // [withSass],
-    // [withCSS],
     [withFonts],
   ],
   nextConfig

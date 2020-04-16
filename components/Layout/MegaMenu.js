@@ -3,25 +3,26 @@ import Link from "next/link";
 import MegaTab from "./MegaTab";
 /*iconify*/
 import { Icon } from "@iconify/react";
+import { ExpandMore } from "@material-ui/icons";
 import accountCircleOutline from "@iconify/icons-mdi/account-circle-outline";
 
 class MegaMenu extends Component {
   state = {
     display: false,
-    collapsed: true
+    collapsed: true,
   };
 
   handleCart = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
-        display: !prevState.display
+        display: !prevState.display,
       };
     });
   };
 
   toggleNavbar = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   };
 
@@ -75,7 +76,7 @@ class MegaMenu extends Component {
                     <li className="nav-item megamenu">
                       <Link href="#">
                         <a className="nav-link">
-                          New <i className="fas fa-chevron-down"></i>
+                          New <ExpandMore fontSize="inherit" />
                         </a>
                       </Link>
                       <ul className="dropdown-menu">

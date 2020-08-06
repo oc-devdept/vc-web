@@ -2,6 +2,8 @@ import React from "react";
 import Router from "next/router";
 
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const SearchItem = props => {
   const handleClick = id => {
@@ -42,9 +44,9 @@ const SearchItem = props => {
           </div>
           <div className="search-item-points">
             <span style={{ lineHeight: 1.8 }}>
-              <i className="fas fa-check" /> Fuel Policy: Same-to-same
+              <FontAwesomeIcon icon={faCheck } /> Fuel Policy: Same-to-same
               <br />
-              <i className="fas fa-check" /> Mileage Included: Unlimited
+              <FontAwesomeIcon icon={faCheck } /> Mileage Included: Unlimited
             </span>
           </div>
         </div>

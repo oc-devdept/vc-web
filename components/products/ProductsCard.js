@@ -5,6 +5,10 @@ import Link from 'next/link';
 import ReactTooltip from 'react-tooltip'
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
+import {faStar as faStarReg } from '@fortawesome/free-regular-svg-icons';
 
 class ProductsCard extends Component {
     state = {
@@ -70,21 +74,21 @@ class ProductsCard extends Component {
                                                     }
                                                 }
                                             >
-                                                <i className="far fa-eye"></i>
+                                                <FontAwesomeIcon icon={faEye} />                                                
                                             </a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href="#">
                                             <a data-tip="Add to Wishlist" data-place="left">
-                                                <i className="far fa-heart"></i>
+                                                <FontAwesomeIcon icon={faHeart} />                                                
                                             </a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href="#">
                                             <a data-tip="Add to Compare" data-place="left">
-                                                <i className="fas fa-sync"></i>
+                                                <FontAwesomeIcon icon={faSync} />                                               
                                             </a>
                                         </Link>
                                     </li>
@@ -99,11 +103,11 @@ class ProductsCard extends Component {
                                 </div>
 
                                 <div className="rating">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="far fa-star"></i>
+                                    <FontAwesomeIcon icon={faStar} />
+                                    <FontAwesomeIcon icon={faStar} />
+                                    <FontAwesomeIcon icon={faStar} />
+                                    <FontAwesomeIcon icon={faStar} />                                    
+                                    <FontAwesomeIcon icon={faStarReg} />
                                 </div>
 
                                 <Link href="#">

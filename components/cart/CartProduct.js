@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { removeItem, addQuantity, subtractQuantity } from '../../store/actions/cartActions';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 class CartProduct extends Component {
 
@@ -63,7 +66,7 @@ class CartProduct extends Component {
                                     className="minus-btn"
                                     onClick={()=>{this.handleSubtractQuantity(data.id)}}
                                 >
-                                    <i className="fas fa-minus"></i>
+                                   <FontAwesomeIcon icon={faMinus} />
                                 </span>
                                 <input 
                                     type="text" 
@@ -77,7 +80,7 @@ class CartProduct extends Component {
                                     className="plus-btn"
                                     onClick={()=>{this.handleAddQuantity(data.id)}}
                                 >
-                                    <i className="fas fa-plus"></i>
+                                    <FontAwesomeIcon icon={faPlus} />
                                 </span>
                             </div>
                         </td>
@@ -90,7 +93,7 @@ class CartProduct extends Component {
                                     className="remove"
                                     onClick={(e)=>{e.preventDefault();this.handleRemove(data.id)}}
                                 >
-                                    <i className="far fa-trash-alt"></i>
+                                    <FontAwesomeIcon icon={faTrashAlt} />                                  
                                 </a>
                             </Link>
                         </td>

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import OrderSummary from "./OrderSummary";
 import Payment from "../payments/Payment";
 import useForm from "./userForm";
+import {faSignInAlt} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CheckoutForm({ total, shipping }) {
   function handleSubmit() {
@@ -102,7 +104,7 @@ function CheckoutForm({ total, shipping }) {
         <div className="row">
           <div className="col-lg-12 col-md-12">
             <div className="user-actions">
-              <i className="fas fa-sign-in-alt"></i>
+              <FontAwesomeIcon icon={ faSignInAlt } />              
               <span>
                 Returning customer? <a href="#">Click here to login</a>
               </span>

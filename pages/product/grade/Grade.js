@@ -5,6 +5,8 @@ import DialogRoot from "Components/Dialog/DialogRoot";
 import Booking from "Components/booking/booking";
 import UserProfile from "Components/booking/profile";
 import { NotificationManager } from "react-notifications";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCar } from '@fortawesome/free-solid-svg-icons'
 
 import Moment from "moment";
 import api from "Api";
@@ -153,10 +155,7 @@ const Grade = ({
             width: "max-content"
           }}
         >
-          <i
-            className="fas fa-car mr-1"
-            style={{ color: "#4b6674", fontSize: 24 }}
-          />
+          <FontAwesomeIcon icon={faCar} className="mr-1" style={{ color: "#4b6674", fontSize: 24 }} />          
           <p style={{ fontSize: 12, color: "#4b6674" }}>BOOK TEST DRIVE</p>
         </button>
       </div>

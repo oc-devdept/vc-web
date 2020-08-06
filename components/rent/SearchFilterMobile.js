@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import SearchFilterMobileModal from "Components/rent/SearchFilterMobileModal";
 
 import { Button, Modal } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 const SearchFilterMobile = ({ state, handleChange }) => {
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -34,7 +36,7 @@ const SearchFilterMobile = ({ state, handleChange }) => {
         }}
       >
         <Button onClick={() => handleClick("open")} variant="secondary">
-          <i className="fas fa-filter" /> Filter
+          <FontAwesomeIcon icon={faFilter} /> Filter
         </Button>
       </div>
       <div className="mobile-filter">

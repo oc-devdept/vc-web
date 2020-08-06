@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyCheckAlt, faShieldAlt, faConciergeBell, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 
 class Facility extends Component {
     render() {
@@ -13,7 +15,7 @@ we are familiar with buying, selling, insurance, financing, rental, leasing, lim
                         <div className="col-lg-3 col-sm-6">
                             <div className="facility-box">
                                 <div className="icon">
-                                    <i className="fas fa-hand-holding-usd"></i>
+                                    <FontAwesomeIcon icon={faHandHoldingUsd} />
                                 </div>
                                 <h3>Lowest Depreciation</h3>
                             </div>
@@ -22,7 +24,7 @@ we are familiar with buying, selling, insurance, financing, rental, leasing, lim
                         <div className="col-lg-3 col-sm-6">
                             <div className="facility-box">
                                 <div className="icon">
-                                    <i className="fas fa-money-check-alt"></i>
+                                    <FontAwesomeIcon icon={faMoneyCheckAlt} />                                    
                                 </div>
                                 <h3>Highest OMV in the market</h3>
                             </div> 
@@ -31,7 +33,7 @@ we are familiar with buying, selling, insurance, financing, rental, leasing, lim
                         <div className="col-lg-3 col-sm-6">
                             <div className="facility-box">
                                 <div className="icon">
-                                    <i className="fas fa-shield-alt"></i>
+                                    <FontAwesomeIcon icon={faShieldAlt} />                                   
                                 </div>
                                 <h3>5 Years In-House Warranty</h3>
                             </div>
@@ -40,7 +42,7 @@ we are familiar with buying, selling, insurance, financing, rental, leasing, lim
                         <div className="col-lg-3 col-sm-6">
                             <div className="facility-box">
                                 <div className="icon">
-                                    <i className="fas fa-concierge-bell"></i>
+                                   <FontAwesomeIcon icon={faConciergeBell} />                                    
                                 </div>
                                 <h3>1 Year Free Servicing</h3>
                             </div>

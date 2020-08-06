@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import { Carousel } from "react-responsive-carousel";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const options = {
   showThumbs: false,
@@ -11,8 +13,8 @@ const options = {
   items: 1,
   autoplay: true,
   navText: [
-    "<i class='fas fa-chevron-left'></i>",
-    "<i class='fas fa-chevron-right'></i>"
+    <FontAwesomeIcon icon={faChevronLeft} />,
+    <FontAwesomeIcon icon={faChevronRight} />
   ]
 };
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { connect } from "react-redux";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 export class Content extends Component {
   handleRemove = (id) => {
@@ -84,11 +86,10 @@ export class Content extends Component {
                         </div>
 
                         <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="far fa-star"></i>
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />                          
                         </div>
 
                         <Link href="#">

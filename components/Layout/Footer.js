@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faPhone, faFax } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 class Footer extends Component {
     render() {
@@ -39,10 +42,10 @@ class Footer extends Component {
                                 <h3>Contact Us</h3>
 
                                 <ul className="footer-contact-info">
-                                    <li><i className="fas fa-map-marker-alt"></i>33 Ubi Ave , #01-47/48 Vertex Singapore 408868</li>
-                                    <li><i className="fas fa-phone"></i> <a href="tel:6565528800">(+65) 6552-8800</a></li>
-                                    <li><i className="far fa-envelope"></i> <a href="mailto:sales@bw.com.sg">sales@bw.com.sg</a></li>
-                                    <li><i className="fas fa-fax"></i> <a href="#">(+65) 6858 2120</a></li>
+                                    <li><FontAwesomeIcon icon={faMapMarkerAlt} /> 33 Ubi Ave , #01-47/48 Vertex Singapore 408868</li>
+                                    <li><FontAwesomeIcon icon={faPhone} /> <a href="tel:6565528800">(+65) 6552-8800</a></li>
+                                    <li><FontAwesomeIcon icon={faEnvelope} /> <a href="mailto:sales@bw.com.sg">sales@bw.com.sg</a></li>
+                                    <li><FontAwesomeIcon icon={faFax} /> <a href="#">(+65) 6858 2120</a></li>
                                 </ul>
                             </div>
                         </div>

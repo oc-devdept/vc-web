@@ -1487,6 +1487,64 @@
   .navbar-light .navbar-toggler {
     outline: 0;
   }
+
+  .sub-title {
+    display: block;
+    .box1, .box2, .box3 {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+  .steps-row {
+    display: block;
+    .step {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+  .steps-area .container {
+    padding: 10px;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .single-footer-widget {
+    margin-top: 20px;
+  }
+  .footer-area h5 {
+    margin-top: 30px;
+  }
+  .copyright-area {
+    margin-top: 10px;
+  }
+  .left-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sub-box {
+    display: block;
+    .box {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+  .grade-content .button a {
+    display: block;
+    margin: 10px 0;
+  }
+  .grade-content .button a:first-child {
+    width: 100%;
+  }
+  .about-table {
+    margin-bottom: 20px;
+  }
+  .about-table .right {
+    display: block;
+    width: 100%;
+  }
+  .about-table .left h6 {
+    margin: 10px 0;
+  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
@@ -1512,6 +1570,68 @@
     flex-flow: row nowrap;
     -ms-flex-pack: start;
     justify-content: flex-start;
+  }
+
+  .sub-title {
+    .box1, .box2, .box3 {
+      width: 30%;
+    }
+  }
+  .steps-row {
+    .step {
+      width: 30%;
+    }
+  }
+  .steps-area .container {
+    padding: 20px;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .single-footer-widget {
+    margin-top: 80px;
+  }
+  .footer-area h5 {
+    margin-top: 80px;
+  }
+  .copyright-area {
+    margin-top: 80px;
+  }
+  .left-section {
+    display: flex;
+  }
+  .right-section p {
+    float: right;
+  }
+  .sub-box {
+    display: block;
+    .box {
+      width: 30%;
+    }
+  }
+  .about-honda-fit-area .container {
+    width: 60%;
+  }
+  .about-table {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    justify-content: space-between;
+  }
+  .about-table .left {
+    float: left;
+    padding-top: 5px;
+    width: 10%;
+  }
+  .about-table .right {
+    float: right;
+    width: 90%
+  }
+  .about-table .right p {
+    padding-left: 40px;
+  }
+  .views-area .container {
+    width: 60%;
   }
 }
 

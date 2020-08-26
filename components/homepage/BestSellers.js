@@ -8,34 +8,9 @@ import { formatPrice } from "Components/Helpers/helpers";
 import Carousel from "react-multi-carousel";
 import { getFeaturedCars } from "Ducks/product";
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-};
-
-const GradePageLink = ({ children, grade }) => (
-  <Link
-    href={{
-      pathname: `/product/grade/${grade.modelId}`,
-      query: { grade: grade.id },
-    }}
-  >
-    {children}
-  </Link>
-);
+import { Icon } from '@iconify/react';
+import tickIcon from '@iconify/icons-subway/tick';
+import arrowRight from '@iconify/icons-bi/arrow-right';
 
 class BestSeller extends Component {
   componentDidMount() {
@@ -48,94 +23,176 @@ class BestSeller extends Component {
       objectFit: "cover",
       borderRadius: "20px",
       // wdith: '150px',
-      height: "250px",
+      height: "180px",
       padding: "5px",
     };
 
     return (
       <section className="best-sellers-area">
         <div className="container">
-          <div className="section-title without-bg">
+          <div className="section-title without-bg" align="center">
             <h2>Featured Cars</h2>
           </div>
-          {loading && <RctSectionLoader />}
-          <Carousel
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            autoPlay={false}
-            keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            deviceType={this.props.deviceType}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            {featured.map((grade, idx) => (
-              <div className="col-lg-12 col-md-12" key={idx}>
-                <div className="single-product-box">
-                  <div className="product-image">
-                    {grade.images.map((gradeImg, idx) => (
-                      <GradePageLink key={idx} grade={grade}>
-                        <a>
-                          <img style={modelImage} src={gradeImg.path} />
-                        </a>
-                      </GradePageLink>
-                    ))}
-                  </div>
 
-                  <div className="product-content">
-                    <h3 className="text-uppercase">
-                      <GradePageLink grade={grade}>
-                        <a>{grade.name}</a>
-                      </GradePageLink>
-                    </h3>
-
-                    <div className="product-price">
-                      <span className="new-price">
-                        {formatPrice(grade.selling_Price)}
-                      </span>
-                    </div>
-
-                    <div className="product-desc">
-                      {grade.power && (
-                        <dl>
-                          <dt>{grade.power.detailCategory.name}</dt>
-                          <dd>{grade.power.value}</dd>{" "}
-                          <dd>{grade.power.detailCategory.unit}</dd>
-                        </dl>
-                      )}
-                      {grade.engine && (
-                        <dl>
-                          <dt>{grade.engine.detailCategory.name}</dt>
-                          <dd>{grade.engine.value}</dd>{" "}
-                          <dd>{grade.engine.detailCategory.unit}</dd>
-                        </dl>
-                      )}
-                      {grade.fuel && (
-                        <dl>
-                          <dt>{grade.fuel.detailCategory.name}</dt>
-                          <dd>{grade.fuel.value}</dd>{" "}
-                          <dd>{grade.fuel.detailCategory.unit}</dd>
-                        </dl>
-                      )}
-                    </div>
-
-                    <GradePageLink grade={grade}>
-                      <a className="btn btn-primary">Explore</a>
-                    </GradePageLink>
-                  </div>
+          <div className="sub-title">
+            <div className="box1">
+              <h5>MPV / SUV</h5>
+                <div className="fc-box">
+                <div className="feature-cars">
+                  <h6>TOYOTA RAIZE</h6>
+                  <img src="/static/feature-cars/toyota-raize.png"/>
+                  <h5>fr $175,888</h5>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Engine Cap: 2493cc
+                  </p>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Power: 180bhp
+                  </p>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Fuel Consumption: 11.6 km/litre
+                  </p>
+                  <Link href="/">
+                    <a className="btn moreBtn">
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    </a>
+                  </Link>
+                  <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
+                </div>
+                <hr />
+                <div className="feature-cars">
+                  <h6>TOYOTA VELLFIRE</h6>
+                  <img src="/static/feature-cars/toyota-vellfire.png"/>
+                  <h5>fr $169,888</h5>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Engine Cap: 2493cc
+                  </p>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Power: 180bhp
+                  </p>
+                  <p>
+                    <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                    Fuel Consumption: 11.6 km/litre
+                  </p>
+                  <Link href="/">
+                    <a className="btn moreBtn">
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    </a>
+                  </Link>
+                  <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
                 </div>
               </div>
-            ))}
-          </Carousel>
+            </div>
+            <div className="box2">
+              <h5>HATCHBACKS</h5>
+              <div className="fc-box">
+              <div className="feature-cars">
+                <h6>HONDA FIT</h6>
+                <img src="/static/feature-cars/honda-fit.png"/>
+                <h5>fr $74,000</h5>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Engine Cap: 1339cc
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Power: 84bhp
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Fuel Consumption: 24.0 km/litre
+                </p>
+                <Link href="/">
+                  <a className="btn moreBtn">
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                  </a>
+                </Link>
+                <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
+                </div>
+                <hr />
+                <div className="feature-cars">
+                <h6>SUZUKI SWIFT</h6>
+                <img src="/static/feature-cars/suzuki-swift.png"/>
+                <h5>fr $65,888</h5>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Engine Cap: 1244cc
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Power: 90bhp
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Fuel Consumption: 24.0 km/litre
+                </p>
+                <Link href="/">
+                  <a className="btn moreBtn">
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                  </a>
+                </Link>
+                <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
+              </div>
+            </div>
+            </div>
+            <div className="box3">
+              <h5>NEW ARRIVALS</h5>
+              <div className="fc-box">
+                <div className="feature-cars">
+                <h6>TOYOTA RAIZE</h6>
+                <img src="/static/feature-cars/toyota-raize.png"/>
+                <h5>fr $79,888</h5>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Engine Cap: 996 cc
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Power: 98 bhp
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Fuel Consumption: 18.8 km/litre
+                </p>
+                <Link href="/">
+                  <a className="btn moreBtn">
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                  </a>
+                </Link>
+                <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
+                </div>
+                <hr />
+                <div className="feature-cars">
+                <h6>HONDA FIT</h6>
+                <img src="/static/feature-cars/honda-fit.png"/>
+                <h5>fr $74,888</h5>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Engine Cap: 1339 cc
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Power: 84 bhp
+                </p>
+                <p>
+                  <Icon icon={tickIcon} color="#48A62E" />&nbsp;
+                  Fuel Consumption: 24.0 km/litre
+                </p>
+                <Link href="/">
+                  <a className="btn moreBtn">
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                  </a>
+                </Link>
+                <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div></div>{" "}
       </section>
     );
   }

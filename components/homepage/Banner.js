@@ -2,30 +2,39 @@ import React, { Component } from "react";
 import Link from "next/link";
 import Carousel from "react-bootstrap/Carousel";
 
+import { Icon } from '@iconify/react';
+import arrowRight from '@iconify/icons-bi/arrow-right';
+
 const BannerInfo = [
   {
     title: "Venture Car Banner 1",
-    captionText: "We are",
-    captionText2: "CaseTrust Accredited",
-    image: "/static/banner/main-banner1.jpg"
+    captionText: "FIT RIGHT INTO YOUR LIFE",
+    captionText2: "THE ALL NEW HONDA FIT",
+    image: "/static/banner/banner1.png"
   },
   {
     title: "Venture Car Banner 2",
-    captionText: "Toyota C-HR Hybrid",
-    captionText2: "Let This Space-Age Design Impress You",
-    image: "/static/banner/main-banner2.jpg"
+    captionText: "RAIZE TO THE OCCASION",
+    captionText2: "THE ALL NEW TOYOTA RAIZE",
+    image: "/static/banner/banner2.png"
+  },
+  {
+    title: "Venture Car Banner 3",
+    captionText: "SHOP SAFELY WITH VENTURE CARS",
+    captionText2: "VENTURE CARS VIRTUAL EXPERIENCE",
+    image: "/static/banner/banner3.png"
   }
 ];
 
 const carouselOptions = {
-  controls: false,
+  controls: true,
   interval: 4000
 };
 
 class Banner extends Component {
   render() {
     return (
-      <Carousel {...carouselOptions}>
+      <Carousel {...carouselOptions} active>
         {BannerInfo.map((banner, key) => (
           <Carousel.Item key={key}>
             <div
@@ -56,8 +65,10 @@ class Banner extends Component {
                     >
                       {banner.captionText2}
                     </h1>
-                    <Link href="/contact-us">
-                      <a className="btn btn-primary btn-slider">Contact Us</a>
+                    <Link href="/">
+                      <a className="btn learnMoreBtn">
+                        LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                      </a>
                     </Link>
                   </div>
                 </div>

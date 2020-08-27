@@ -7,6 +7,12 @@ import Link from "next/link";
 
 import { getModelData } from "Ducks/model/ModelActions";
 
+import AboutHondaFit from "../car/about-honda-fit";
+import ChooseGrade from "../car/choose-grade";
+import Views from "../car/views";
+import Gallery from "../car/gallery";
+import ContactUsDetails from "../car/contact-us-details";
+
 class Model extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +37,18 @@ class Model extends Component {
     const { loading, ModelData } = this.props;
     return (
       <DefaultLayout>
-        {loading ? (
+        <div className="single-banner">
+          <h2>HONDA FIT 1.3A</h2>
+        </div>
+
+        <ChooseGrade />
+        <AboutHondaFit />
+        <Views />
+        <Gallery />
+        <ContactUsDetails />
+
+
+        {/* {loading ? (
           <RctSectionLoader />
         ) : ModelData ? (
           <section className="model-info">
@@ -87,7 +104,7 @@ class Model extends Component {
           <div>
             <p>error</p>
           </div>
-        )}
+        )} */}
       </DefaultLayout>
     );
   }

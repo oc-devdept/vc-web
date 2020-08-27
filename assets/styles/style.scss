@@ -249,7 +249,7 @@ img {
 
 /*section-title*/
 .section-title {
-  padding: 20px 0;
+  // padding: 10px 0;
 }
 
 .section-title h2 {
@@ -263,6 +263,76 @@ img {
   background-color: transparent;
 }
 
+// Feature Cars Btn
+.moreBtn {
+  color: #ffffff !important;
+  background-color: #D94032;
+}
+.moreBtn:hover,
+.moreBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff;
+  color: #D94032 !important;
+  border: 1px solid #D94032;
+}
+
+// Sign Up For Our Newsletter Btn
+.signMeUpBtn {
+  color: #ffffff !important;
+  background-color: #f29d30;
+  border-color: #f29d30;
+}
+.signMeUpBtn:hover,
+.signMeUpBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff;
+  color: #f29d30!important;
+}
+
+// homepage slider btn
+.learnMoreBtn {
+  color: #ffffff !important;
+  background-color: #D94032;
+}
+.learnMoreBtn:hover,
+.learnMoreBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff;
+  color: #D94032 !important;
+}
+
+// Enquire Btn
+.enquireBtn {
+  color: #f29d30!important;
+  background-color: #ffffff;
+  border: 1px solid #f29d30 !important;
+  margin-right: 10px;
+}
+.enquireBtn:hover,
+.enquireBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #f29d30 !important;
+  color: #ffffff !important;
+}
+
+// Build Btn
+.buildBtn {
+  color: #ffffff!important;
+  background-color: #f29d30 !important;
+}
+.buildBtn:hover,
+.buildBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff !important;
+  color: #f29d30 !important;
+  border: 1px solid #f29d30 !important;
+}
+
 /*btn(primary&light)*/
 .btn {
   border: 1px solid transparent;
@@ -274,8 +344,8 @@ img {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 14px;
-  -webkit-transform: skew(-12deg);
-  transform: skew(-12deg);
+  // -webkit-transform: skew(-12deg);
+  // transform: skew(-12deg);
   /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
 }
@@ -429,6 +499,161 @@ img {
 .form-control::placeholder {
   color: #999999;
 }
+
+/*================================================
+Single Car Page Area CSS
+=================================================*/
+.single-banner {
+  background-image: url(/static/single-car/honda-fit.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 20px;
+}
+
+.choose-grade-area {
+  margin-bottom: 30px;
+}
+.choose-grade-area h2 {
+  font-weight: bolder;
+}
+.sub-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.grade-box {
+  border: 2px solid #E39D43;
+  margin-bottom: 20px;
+}
+.grade-content {
+  text-align: center;
+  padding: 20px 50px;
+  margin: 10px;
+}
+.grade-content img {
+  margin-bottom: 10px;
+}
+.grade-content .sub-header {
+  margin-top: 10px;
+}
+.grade-content .bar {
+  border: 2px solid #E39D43;
+  text-align: left;
+  padding: 10px 0 10px 20px;
+  margin-bottom: 10px;
+}
+.grade-content .bar p {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.grade-content .bar h6 {
+  color: #020202;
+  margin-top: 10px;
+}
+
+/*================================================
+About Honda Fit Area CSS
+=================================================*/
+.about-honda-fit-area {
+  background-color: #f3f3f3;
+  padding: 20px 0;
+}
+
+.about-honda-fit-area h2 {
+  font-weight: bolder;
+}
+
+/*================================================
+360 Viewing Area CSS
+=================================================*/
+.views-area {
+  background-color: #f5f5f586;
+  padding: 20px 0;
+}
+
+.views-area h2 {
+  font-weight: bolder;
+}
+
+.two-parts {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.two-parts .exterior-view {
+  margin: 0 20px 20px 0;
+  border-bottom: 5px solid #f29d30;
+  padding-bottom: 10px;
+}
+
+.views-area p { 
+  text-align: center;
+  margin-top: 20px;
+}
+
+/*================================================
+Gallery Area CSS
+=================================================*/
+.gallery-area {
+  background-color: #f3f3f3;
+  padding: 20px 0;
+}
+
+.gallery-area h2 {
+  font-weight: bolder;
+}
+
+/*================================================
+Contact Us Details Area CSS
+=================================================*/
+.contact-us-area {
+  // background-color: #f3f3f3;
+  padding: 20px 0;
+}
+
+.contact-us-area h2 {
+  font-weight: bolder;
+}
+
+.contact-details h6 {
+  margin: 20px 0;
+}
+
+.contact-form-area h6 {
+  margin: 40px 0 0;
+}
+.contact-form-area p {
+  padding: 20px 0 0px;
+}
+.contact-form select {
+    width: 100%;
+    padding-right: 25px;
+    z-index: 1;
+}
+.contact-form textarea {
+  padding-top: 10px;
+  height: 200px;
+}
+.contact-form .form-check {
+  margin-top: 10px;
+}
+
+// .contact-form .form-check input:checked ~ .form-check-input {
+//   background-color: #f29d30 !important;
+// }
+
+.contact-form-area button {
+  margin: 20px auto;
+}
+
+
+
 
 /*================================================
 Top Panel Area CSS
@@ -3484,7 +3709,45 @@ Trending Products Area CSS
 }
 
 /*================================================
-Best Sellers Area CSS
+Home Page - Feature Cars Area CSS
+=================================================*/
+.sub-title h5 {
+  margin: 20px 0;
+  color: #E39D43;
+  text-align: center;
+}
+.sub-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+.fc-box {
+  border: 2px solid #E39D43;
+}
+.feature-cars {
+  text-align: center;
+  padding: 20px 50px;
+  margin: 10px;
+}
+.feature-cars h6 {
+  margin-bottom: 20px;
+}
+.feature-cars h5 {
+  color: #E39D43;
+  margin-top: 20px;
+}
+.feature-cars p {
+  vertical-align: middle;
+}
+.feature-cars .terms {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+/*================================================
+Home Page - Best Sellers Area CSS
 =================================================*/
 .best-sellers-area {
   padding-bottom: 30px;
@@ -3500,7 +3763,7 @@ Best Sellers Area CSS
   top: 0;
   height: 62.5%;
   width: 34px;
-  background-color: #dedddc;
+  background-color: #ffffff;
   font-size: 20px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -3551,6 +3814,79 @@ Best Sellers Area CSS
   margin-bottom: 30px;
   margin-top: 10px;
 }
+
+/*================================================
+Home Page - Step Area CSS
+=================================================*/
+.steps-area {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/feature-cars/features_car_bg.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+  width: 100%;
+}
+.steps-area h2 {
+  color: #ffffff;
+}
+.step {
+  background-color: #ffffff;
+}
+
+.stepImgs {
+  margin-top: 20px;
+}
+.stepBubble {
+  border: 1px solid #E39D43;
+  background: #E39D43;
+  color: #ffffff;
+  width: 160px;
+  padding: 10px;
+  margin: 10px auto;
+}
+.steps-area p {
+  margin-bottom: 20px;
+}
+.steps-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*================================================
+Home Page - Question Form Area CSS
+=================================================*/
+.question-area h2 {
+  margin-bottom: 20px;
+}
+.question_form .form-check {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.question_form textarea {
+  padding-top: 10px;
+  height: 200px;
+}
+
+/*================================================
+Single Car Area CSS
+=================================================*/
+.single_banner {
+  background-image: url(/static/single-car/honda-fit.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.single-banner h2 {
+  color: #ffffff;
+  padding: 10% 0 20% 10%;
+}
+
 
 /*================================================
 Facility Area CSS
@@ -9044,18 +9380,22 @@ Customer Service Area CSS
 Footer Area CSS
 =================================================*/
 .footer-area {
-  background-color: #ffffff;
-  padding-top: 40px;
+  background-color: #212C33;
   position: relative;
   z-index: 1;
+  padding: 60px;
+  padding-bottom: 20px;
 }
-
-.single-footer-widget .logo {
-  margin-bottom: 15px;
+.footer-area h6 {
+  color: #ffffff;
+  margin-top: 20px;
 }
-
-.single-footer-widget .logo a {
-  display: inline-block;
+.footer-area h5 {
+  color: #f29d30 !important;
+}
+.footer-area p { 
+  color: #ffffff;
+  margin-top: 10px;
 }
 
 .single-footer-widget h3 {
@@ -9064,16 +9404,7 @@ Footer Area CSS
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
-}
-
-.single-footer-widget h3::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #ebebeb;
-  width: 45px;
-  height: 2px;
+  color: #f29d30 !important;
 }
 
 .single-footer-widget p {
@@ -9083,108 +9414,53 @@ Footer Area CSS
 .single-footer-widget .quick-links {
   padding: 0;
   margin: 0;
-  list-style-type: none;
+  color: #ffffff !important;
 }
 
-.single-footer-widget .quick-links li {
-  color: #666666;
+.single-footer-widget .quick-links p {
+  color: #ffffff;
   margin-bottom: 8px;
   font-size: 13px;
 }
 
-.single-footer-widget .quick-links li a {
-  color: #666666;
+.single-footer-widget .quick-links p a {
+  color: #ffffff;
   display: inline-block;
 }
 
-.single-footer-widget .quick-links li a:hover,
-.single-footer-widget .quick-links li a:focus {
-  color: #222222;
-  padding-left: 5px;
+.single-footer-widget .quick-links p a:hover,
+.single-footer-widget .quick-links p a:focus {
+  color: #f29d30 !important;
 }
 
-.single-footer-widget .quick-links li:last-child {
-  margin-bottom: 0;
-}
-
-.single-footer-widget .information-links {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.single-footer-widget .information-links li {
+.single-footer-widget .information-links p {
   color: #666666;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   font-size: 13px;
 }
 
-.single-footer-widget .information-links li a {
-  color: #666666;
-  display: inline-block;
-}
-
-.single-footer-widget .information-links li a:hover,
-.single-footer-widget .information-links li a:focus {
-  color: #222222;
-  padding-left: 5px;
-}
-
-.single-footer-widget .information-links li:last-child {
-  margin-bottom: 0;
-}
-
-.single-footer-widget .footer-contact-info {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.single-footer-widget .footer-contact-info li {
-  color: #666666;
-  margin-bottom: 10px;
+.single-footer-widget .footer-contact-info p {
+  color: #ffffff;
+  margin-bottom: 20px;
   font-size: 13px;
-  position: relative;
-  padding-left: 20px;
 }
 
-.single-footer-widget .footer-contact-info li i {
-  color: #222222;
-  position: absolute;
-  left: 0;
-  top: 4px;
+.single-footer-widget .footer-contact-info p a:hover,
+.single-footer-widget .footer-contact-info p a:focus {
+  color: #ffffff !important;
 }
 
-.single-footer-widget .footer-contact-info li a {
-  color: #666666;
-  display: inline-block;
+.left-section a {
+  margin-right: 10px;
+  color: #ffffff;
+}
+.right-section p {
+  color: #ffffff;
 }
 
-.single-footer-widget .footer-contact-info li a:hover,
-.single-footer-widget .footer-contact-info li a:focus {
-  color: #222222;
-}
-
-.single-footer-widget .footer-contact-info li:last-child {
-  margin-bottom: 0;
-}
-
-.copyright-area {
-  margin-top: 40px;
-  background-color: #f5f5f5;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.copyright-area .payment-card {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  text-align: right;
-}
-
-.copyright-area .payment-card li {
-  display: inline-block;
+.left-section a:hover,
+.left-section a:focus {
+  color: #f29d30 !important;
 }
 
 /*================================================
@@ -9400,15 +9676,6 @@ ol.progtrckr li.progtrckr-doing {
 
 #navbar .container {
   max-width: 100% !important;
-}
-
-.step {
-  background-color: #fcfcfc;
-  width: 31%;
-  border-radius: 20px;
-}
-.stepImgs {
-  width: 30%;
 }
 
 .reverseStepRow {

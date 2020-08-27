@@ -8,55 +8,81 @@ class Footer extends Component {
     render() {
         return (
             <footer className="footer-area">
-                <div className="container">
+                <div className="container col-lg-8">
+                    <img src="/static/logo.png"/>
+                    <h6>A Subsidiary Of BW Automobiles</h6>
+
+                    <h5>Sign Up For Our Newsletter</h5>
+                    <p>Sign up to keep yourself unpated with our latest car models, promotions &amp; blog posts!</p>
+                    
+                    
+                    <form>
+                    <div class="row">
+                        <div class="col">
+                        <div class="form-group">
+                            <input width="100%" type="email" class="form-control" id="emailAddress" placeholder="Email Address"/>
+                        </div>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn signMeUpBtn">SIGN ME UP!</button>
+                        </div>
+                        </div>
+                    </form>
+                
                     <div className="row">
                         <div className="col-lg-4 col-md-6">
                             <div className="single-footer-widget">
-                                <h3>Venture Cars</h3>
-
-                                <ul className="quick-links">
-                                    <li><Link href="/about"><a>About Us</a></Link></li>
-                                    {/* <li><Link href="/blog"><a>Blog</a></Link></li> */}
-                                    <li><Link href="/faq"><a>FAQs</a></Link></li>
-                                    <li><Link href="/contact-us"><a>Contact Us</a></Link></li>
-                                </ul>
+                                <h3>Quick Links</h3>
+                                <div className="quick-links">
+                                    <p><Link href="/home"><a>Home</a></Link></p>
+                                    <p><Link href="/"><a>Build Car</a></Link></p>
+                                    <p><Link href="/about"><a>About Us</a></Link></p>
+                                    <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
+                                </div>
                             </div>
                         </div>
 
                         <div className="col-lg-4 col-md-6">
                             <div className="single-footer-widget">
-                                <h3>Sales Hours</h3>
+                                <h3>Showroom Hours</h3>
                                 <p className="information-links">
-                                    <strong>Monday, Friday, Saturday and Sunday:</strong><br/>
-                                    09:00AM – 07:00PM
+                                    <strong>Monday - Saturday :</strong><br/>
+                                    09:00AM - 07:00PM
                                 </p>
                                 <p className="information-links">
-                                    <strong>Tuesday – Thursday:</strong><br/>
-                                    09:00AM – 08:00PM
+                                    <strong>Sunday &amp; Public Holidays :</strong><br/>
+                                    09:00AM - 06:00PM
                                 </p>
                             </div>
                         </div>
 
                         <div className="col-lg-4 col-md-6">
                             <div className="single-footer-widget">
-                                <h3>Contact Us</h3>
+                                <h3>Locate Us</h3>
 
-                                <ul className="footer-contact-info">
-                                    <li><FontAwesomeIcon icon={faMapMarkerAlt} /> 33 Ubi Ave , #01-47/48 Vertex Singapore 408868</li>
-                                    <li><FontAwesomeIcon icon={faPhone} /> <a href="tel:6565528800">(+65) 6552-8800</a></li>
-                                    <li><FontAwesomeIcon icon={faEnvelope} /> <a href="mailto:sales@bw.com.sg">sales@bw.com.sg</a></li>
-                                    <li><FontAwesomeIcon icon={faFax} /> <a href="#">(+65) 6858 2120</a></li>
-                                </ul>
+                                <div className="footer-contact-info">
+                                    <p>
+                                        Main Showroom<br />
+                                        33 Ubi Ave , #01-47/48 Vertex Singapore 408868
+                                    </p>
+                                    <p>
+                                        BWWS Workshop<br />
+                                        291-293 Kaki Bukit Ave 1, Shun Li Industrial Park, Singapore 416080
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="copyright-area">
-                    <div className="container">
-                        <div className="row align-items-center">
-                            <div className="col-lg-6 col-md-6">
-                                <p>Copyright @ 2019 Venture Cars. All Rights Reserved</p>
+                
+                    <div className="copyright-area">
+                        <div className="row">
+                            <div className="left-section col-lg-6 col-md-6">
+                                <Link href="/"><a>Terms &amp; Conditons</a></Link>
+                                <Link href="/"><a>Privacy Statment</a></Link>
+                                <Link href="/"><a>Service Policy</a></Link>
+                            </div>
+                            <div className="right-section col-lg- col-md-6">
+                                <p>Copyright @ 2020 Venture Cars</p>
                             </div>
                         </div>
                     </div>

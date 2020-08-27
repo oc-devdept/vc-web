@@ -39,7 +39,7 @@ class BestSeller extends Component {
               <h5>MPV / SUV</h5>
                 <div className="fc-box">
                 <div className="feature-cars">
-                  <h6>TOYOTA RAIZE</h6>
+                  <h3>TOYOTA RAIZE</h3>
                   <img src="/static/feature-cars/toyota-raize.png"/>
                   <h5>fr $175,888</h5>
                   <p>
@@ -63,7 +63,7 @@ class BestSeller extends Component {
                 </div>
                 <hr />
                 <div className="feature-cars">
-                  <h6>TOYOTA VELLFIRE</h6>
+                  <h3>TOYOTA VELLFIRE</h3>
                   <img src="/static/feature-cars/toyota-vellfire.png"/>
                   <h5>fr $169,888</h5>
                   <p>
@@ -91,7 +91,7 @@ class BestSeller extends Component {
               <h5>HATCHBACKS</h5>
               <div className="fc-box">
               <div className="feature-cars">
-                <h6>HONDA FIT</h6>
+                <h3>HONDA FIT</h3>
                 <img src="/static/feature-cars/honda-fit.png"/>
                 <h5>fr $74,000</h5>
                 <p>
@@ -115,7 +115,7 @@ class BestSeller extends Component {
                 </div>
                 <hr />
                 <div className="feature-cars">
-                <h6>SUZUKI SWIFT</h6>
+                <h3>SUZUKI SWIFT</h3>
                 <img src="/static/feature-cars/suzuki-swift.png"/>
                 <h5>fr $65,888</h5>
                 <p>
@@ -143,7 +143,7 @@ class BestSeller extends Component {
               <h5>NEW ARRIVALS</h5>
               <div className="fc-box">
                 <div className="feature-cars">
-                <h6>TOYOTA RAIZE</h6>
+                <h3>TOYOTA RAIZE</h3>
                 <img src="/static/feature-cars/toyota-raize.png"/>
                 <h5>fr $79,888</h5>
                 <p>
@@ -167,7 +167,7 @@ class BestSeller extends Component {
                 </div>
                 <hr />
                 <div className="feature-cars">
-                <h6>HONDA FIT</h6>
+                <h3>HONDA FIT</h3>
                 <img src="/static/feature-cars/honda-fit.png"/>
                 <h5>fr $74,888</h5>
                 <p>

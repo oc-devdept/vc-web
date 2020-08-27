@@ -278,26 +278,24 @@ img {
 }
 
 // Sign Up For Our Newsletter Btn
-.signMeUpBtn {
+.custom-btn {
   color: #ffffff !important;
   background-color: #f29d30;
-  border-color: #f29d30;
 }
-.signMeUpBtn:hover,
-.signMeUpBtn:focus {
+.custom-btn:hover,
+.custom-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff;
   color: #f29d30!important;
 }
 
-// homepage slider btn
-.learnMoreBtn {
+.red-btn {
   color: #ffffff !important;
   background-color: #D94032;
 }
-.learnMoreBtn:hover,
-.learnMoreBtn:focus {
+.red-btn:hover,
+.red-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff;
@@ -351,12 +349,27 @@ img {
 }
 .btn span {
   display: block;
-  -webkit-transform: skew(12deg) !important;
-  transform: skew(12deg) !important;
+  // -webkit-transform: skew(12deg) !important;
+  // transform: skew(12deg) !important;
 }
 .btn.disabled,
 .btn:disabled {
   opacity: 1;
+}
+
+.nav-btn {
+  color: #ffffff !important;
+  background-color: #f29d30;
+  padding: 50% 13% !important;
+  text-align: center;
+  margin-right: 0 !important;
+}
+.nav-btn:hover,
+.nav-btn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff !important;
+  color: #f29d30 !important;
 }
 
 .btn-primary {
@@ -508,7 +521,12 @@ Single Car Page Area CSS
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  padding: 20px;
+  background-size: cover;
+}
+
+.single-banner h2 {
+  font-size: 5rem;
+  // padding: 20px 0 50px;
 }
 
 .choose-grade-area {
@@ -516,6 +534,7 @@ Single Car Page Area CSS
 }
 .choose-grade-area h2 {
   font-weight: bolder;
+  margin: 20px 0;
 }
 .sub-box {
   display: flex;
@@ -555,6 +574,19 @@ Single Car Page Area CSS
   color: #020202;
   margin-top: 10px;
 }
+.grade-content .button a {
+  margin: 10px 0;
+}
+.grade-content .button a:first-child {
+  margin-right: 10px;
+}
+.grade-content h3 {
+  margin: 20px 0;
+}
+.grade-content h5 {
+  color: #f29d30;
+  font-size: 1.8rem;
+}
 
 /*================================================
 About Honda Fit Area CSS
@@ -566,18 +598,31 @@ About Honda Fit Area CSS
 
 .about-honda-fit-area h2 {
   font-weight: bolder;
+  margin: 20px 0;
 }
 
 /*================================================
 360 Viewing Area CSS
 =================================================*/
 .views-area {
-  background-color: #f5f5f586;
+  background-color: #000000;
   padding: 20px 0;
 }
-
 .views-area h2 {
   font-weight: bolder;
+  color: #ffffff !important;
+  margin: 20px 0;
+}
+.views-area h6 {
+  color: #ffffff !important;
+}
+.views-area p {
+  color: #ffffff !important;
+  margin: 20px 0;
+  text-align: center;
+}
+.views-area img {
+  margin-bottom: 20px;
 }
 
 .two-parts {
@@ -585,16 +630,10 @@ About Honda Fit Area CSS
   display: flex;
   justify-content: center;
 }
-
 .two-parts .exterior-view {
   margin: 0 20px 20px 0;
   border-bottom: 5px solid #f29d30;
   padding-bottom: 10px;
-}
-
-.views-area p { 
-  text-align: center;
-  margin-top: 20px;
 }
 
 /*================================================
@@ -602,23 +641,60 @@ Gallery Area CSS
 =================================================*/
 .gallery-area {
   background-color: #f3f3f3;
-  padding: 20px 0;
+  padding: 20px 0 60px;
 }
 
 .gallery-area h2 {
   font-weight: bolder;
+  margin: 20px 0;
+}
+
+.thumbnail-slider-wrap {
+  margin-top: 15px;
+  height: 85px;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide {
+  text-align: center;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide img {
+  width: 70%;
+}
+.image-slider {
+  width: 90%;
+  margin: 0 auto;
+}
+.slick-slide-label {
+  text-align: center;
+  margin: 20px 0 40px;
+}
+
+.slick-slide-image {
+  margin: 0 auto;
+}
+
+.thumbnail-slider-wrap {
+  margin-top: 40px;
+  margin: 40px auto;
+}
+
+.slick-slide h5 {
+  margin-top: 30px;
 }
 
 /*================================================
 Contact Us Details Area CSS
 =================================================*/
 .contact-us-area {
-  // background-color: #f3f3f3;
   padding: 20px 0;
+}
+
+.contact-us-area .container {
+  width: 80%;
 }
 
 .contact-us-area h2 {
   font-weight: bolder;
+  margin: 20px 0;
 }
 
 .contact-details h6 {
@@ -921,8 +997,8 @@ Navbar Area CSS
 
 .comero-nav {
   background-color: #4b6674;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  // padding-top: 3px;
+  // padding-bottom: 3px;
 }
 
 .comero-nav .navbar {
@@ -944,12 +1020,10 @@ Navbar Area CSS
   margin-right: auto;
 } */
 
-.comero-nav .navbar .navbar-nav .nav-item {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 0;
-  padding-right: 0;
-}
+// .comero-nav .navbar .navbar-nav .nav-item {
+  // padding-top: 20px;
+  // padding-bottom: 20px;
+// }
 
 .comero-nav .navbar .navbar-nav .nav-item.p-relative {
   position: relative;
@@ -3731,12 +3805,13 @@ Home Page - Feature Cars Area CSS
   padding: 20px 50px;
   margin: 10px;
 }
-.feature-cars h6 {
+.feature-cars h3 {
   margin-bottom: 20px;
 }
 .feature-cars h5 {
   color: #E39D43;
   margin-top: 20px;
+  font-size: 1.8rem;
 }
 .feature-cars p {
   vertical-align: middle;
@@ -3751,6 +3826,10 @@ Home Page - Best Sellers Area CSS
 =================================================*/
 .best-sellers-area {
   padding-bottom: 30px;
+}
+
+.best-sellers-area h2 {
+  font-weight: bolder;
 }
 
 .best-sellers-products-slides.owl-theme .owl-nav {
@@ -3829,13 +3908,16 @@ Home Page - Step Area CSS
 }
 .steps-area h2 {
   color: #ffffff;
+  font-weight: bolder;
+  margin-bottom: 20px;
 }
 .step {
   background-color: #ffffff;
+  vertical-align: middle;
 }
 
 .stepImgs {
-  margin-top: 20px;
+  vertical-align: middle;
 }
 .stepBubble {
   border: 1px solid #E39D43;
@@ -3851,9 +3933,8 @@ Home Page - Step Area CSS
 .steps-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
-  margin: 0 auto;
 }
 
 /*================================================
@@ -3861,6 +3942,10 @@ Home Page - Question Form Area CSS
 =================================================*/
 .question-area h2 {
   margin-bottom: 20px;
+  font-weight: bolder;
+}
+.question-area p {
+  margin-bottom: 30px;
 }
 .question_form .form-check {
   text-align: left;
@@ -9461,6 +9546,10 @@ Footer Area CSS
 .left-section a:hover,
 .left-section a:focus {
   color: #f29d30 !important;
+}
+
+.footer-signup button {
+  padding: 12px 20px;
 }
 
 /*================================================

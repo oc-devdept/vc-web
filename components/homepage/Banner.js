@@ -34,7 +34,7 @@ const carouselOptions = {
 class Banner extends Component {
   render() {
     return (
-      <Carousel {...carouselOptions} active>
+      <Carousel {...carouselOptions}>
         {BannerInfo.map((banner, key) => (
           <Carousel.Item key={key}>
             <div
@@ -66,7 +66,7 @@ class Banner extends Component {
                       {banner.captionText2}
                     </h1>
                     <Link href="/">
-                      <a className="btn learnMoreBtn">
+                      <a className="btn red-btn">
                         LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
                       </a>
                     </Link>

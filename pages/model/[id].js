@@ -7,11 +7,11 @@ import Link from "next/link";
 
 import { getModelData } from "Ducks/model/ModelActions";
 
-import AboutHondaFit from "../car/about-honda-fit";
-import ChooseGrade from "../car/choose-grade";
-import Views from "../car/views";
-import Gallery from "../car/gallery";
-import ContactUsDetails from "../car/contact-us-details";
+import AboutHondaFit from "../../components/car/about-honda-fit";
+import ChooseGrade from "../../components/car/choose-grade";
+import Views from "../../components/car/views";
+import Gallery from "../../components/car/gallery";
+import ContactUsDetails from "../../components/car/contact-us-details";
 
 class Model extends Component {
   constructor(props) {
@@ -40,6 +40,8 @@ class Model extends Component {
         <div className="single-banner">
           <h2>HONDA FIT 1.3A</h2>
         </div>
+
+        
 
         <ChooseGrade />
         <AboutHondaFit />

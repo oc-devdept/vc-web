@@ -8,6 +8,10 @@ import "../assets/styles/responsive.scss";
 import "../assets/styles/carousel.min.css";
 import "../assets/styles/style.scss";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+
 // Plugins
 import "react-multi-carousel/lib/styles.css";
 import "react-notifications/lib/notifications.css";

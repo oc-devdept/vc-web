@@ -5,6 +5,8 @@ import MegaTab from "./MegaTab";
 import { Icon } from "@iconify/react";
 import { ExpandMore } from "@material-ui/icons";
 import accountCircleOutline from "@iconify/icons-mdi/account-circle-outline";
+import baselineKeyboardArrowDown from '@iconify/icons-ic/baseline-keyboard-arrow-down';
+
 
 class MegaMenu extends Component {
   state = {
@@ -76,7 +78,7 @@ class MegaMenu extends Component {
                     <li className="nav-item megamenu">
                       <Link href="#">
                         <a className="nav-link">
-                          New <ExpandMore fontSize="inherit" />
+                          New <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                       </Link>
                       <ul className="dropdown-menu">
@@ -86,37 +88,75 @@ class MegaMenu extends Component {
                       </ul>
                     </li>
 
-                    <li className="nav-item p-relative">
+                    <li className="nav-item megamenu">
+                      <Link href="#">
+                        <a className="nav-link">
+                          Pre-owned <Icon icon={baselineKeyboardArrowDown} />
+                        </a>
+                      </Link>
+                      <ul className="dropdown-menu">
+                        <li className="nav-item">
+                          {/* <MegaTab /> */}
+                        </li>
+                      </ul>
+                    </li>
+
+                    {/* <li className="nav-item p-relative">
                       <Link href="/rent">
                         <a className="nav-link">Rental</a>
                       </Link>
                     </li>
-
                     <li className="nav-item p-relative">
                       <Link href="/services">
                         <a className="nav-link">Services</a>
                       </Link>
-                    </li>
+                    </li> */}
 
                     <li className="nav-item p-relative">
-                      <Link href="/about">
-                        <a className="nav-link">About Us</a>
+                      <Link href="/virtual-showroom">
+                        <a className="nav-link">Virtual Showroom</a>
                       </Link>
                     </li>
 
                     <li className="nav-item p-relative">
-                      <Link href="/contact-us">
-                        <a className="nav-link">Contact Us</a>
+                      <Link href="/aftersales">
+                        <a className="nav-link">Aftersales</a>
                       </Link>
                     </li>
+                
+                    <li className="nav-item megamenu">
+                      <Link href="#">
+                        <a className="nav-link">
+                          About Us <Icon icon={baselineKeyboardArrowDown} />
+                        </a>
+                      </Link>
+                      <ul className="dropdown-menu">
+                        <li className="nav-item">
+                          <Link href="/about">
+                            <a className="nav-link">About Us</a>
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link href="/contact-us">
+                            <a className="nav-link">Contact Us</a>
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
 
-                    <li className="nav-item highlight p-relative">
+                    <li className="nav-item p-relative">
+                      <Link href="/blog">
+                        <a className="nav-link">Blog</a>
+                      </Link>
+                    </li>
+                    
+                    {/* <li className="nav-item highlight p-relative">
                       <Link href="/book-now">
                         <a className="btn btn-primary">
                           <span>Book A Service</span>
                         </a>
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item p-relative">
                       <Link href="/profile">
                         <a>
@@ -124,6 +164,13 @@ class MegaMenu extends Component {
                             className="medIcon"
                             icon={accountCircleOutline}
                           />
+                        </a>
+                      </Link>
+                    </li>
+                    <li className="nav-item highlight p-relative">
+                      <Link href="/build">
+                        <a className="btn nav-btn">
+                          <span>Build</span>
                         </a>
                       </Link>
                     </li>

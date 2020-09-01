@@ -9,7 +9,11 @@ class Footer extends Component {
         return (
             <footer className="footer-area">
                 <div className="container col-lg-8">
-                    <img src="/static/logo.png"/>
+                    <Link href="/">
+                        <a>
+                            <img src="/static/logo.png"/>
+                        </a>
+                    </Link>
                     <h6>A Subsidiary Of BW Automobiles</h6>
 
                     <h5>Sign Up For Our Newsletter</h5>
@@ -17,14 +21,14 @@ class Footer extends Component {
                     
                     
                     <form>
-                    <div class="row">
+                    <div class="footer-signup row">
                         <div class="col">
                         <div class="form-group">
                             <input width="100%" type="email" class="form-control" id="emailAddress" placeholder="Email Address"/>
                         </div>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn signMeUpBtn">SIGN ME UP!</button>
+                            <button type="submit" class="btn custom-btn">SIGN ME UP!</button>
                         </div>
                         </div>
                     </form>
@@ -34,7 +38,7 @@ class Footer extends Component {
                             <div className="single-footer-widget">
                                 <h3>Quick Links</h3>
                                 <div className="quick-links">
-                                    <p><Link href="/home"><a>Home</a></Link></p>
+                                    <p><Link href="/"><a>Home</a></Link></p>
                                     <p><Link href="/"><a>Build Car</a></Link></p>
                                     <p><Link href="/about"><a>About Us</a></Link></p>
                                     <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
@@ -77,9 +81,9 @@ class Footer extends Component {
                     <div className="copyright-area">
                         <div className="row">
                             <div className="left-section col-lg-6 col-md-6">
-                                <Link href="/"><a>Terms &amp; Conditons</a></Link>
-                                <Link href="/"><a>Privacy Statment</a></Link>
-                                <Link href="/"><a>Service Policy</a></Link>
+                                <Link href="/terms-n-conditions"><a>Terms &amp; Conditions</a></Link>
+                                <Link href="/privacy-statement"><a>Privacy Statement</a></Link>
+                                <Link href="/service-policy"><a>Service Policy</a></Link>
                             </div>
                             <div className="right-section col-lg- col-md-6">
                                 <p>Copyright @ 2020 Venture Cars</p>

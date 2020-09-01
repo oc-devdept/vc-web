@@ -37,7 +37,7 @@ class Form extends Component {
                                     Privacy Policy
                                     </a>{" "}
                                     and{" "}
-                                    <a className="d-inline" href="/">
+                                    <a className="d-inline" href="/terms-n-conditions">
                                     Terms &amp; Conditions
                                     </a>{" "}
                                 </label>

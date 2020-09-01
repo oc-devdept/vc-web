@@ -10,19 +10,22 @@ const BannerInfo = [
     title: "Venture Car Banner 1",
     captionText: "FIT RIGHT INTO YOUR LIFE",
     captionText2: "THE ALL NEW HONDA FIT",
-    image: "/static/banner/banner1.png"
+    image: "/static/banner/banner1.png",
+    position:"top-left"
   },
   {
     title: "Venture Car Banner 2",
     captionText: "RAIZE TO THE OCCASION",
     captionText2: "THE ALL NEW TOYOTA RAIZE",
-    image: "/static/banner/banner2.png"
+    image: "/static/banner/banner2.png",
+    position:"center-left"
   },
   {
     title: "Venture Car Banner 3",
     captionText: "SHOP SAFELY WITH VENTURE CARS",
     captionText2: "VENTURE CARS VIRTUAL EXPERIENCE",
-    image: "/static/banner/banner3.png"
+    image: "/static/banner/banner3.png",
+    position:"center-left"
   }
 ];
 
@@ -34,22 +37,14 @@ const carouselOptions = {
 class Banner extends Component {
   render() {
     return (
-      <Carousel {...carouselOptions} active>
+      <Carousel {...carouselOptions}>
         {BannerInfo.map((banner, key) => (
           <Carousel.Item key={key}>
-            <div
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                zIndex: 2,
-                backgroundColor: "rgba(0, 0, 0, 0.4)"
-              }}
-            />
+            
             <img className="d-block w-100" src={banner.image}></img>
             <Carousel.Caption>
-              <div className="container">
-                <div className="row justify-content-center">
+              <div className={ "container "+banner.position }>
+                <div className="row">
                   <div className="col-md-8">
                     <h2 style={{ color: "#fff", textTransform: "uppercase" }}>
                       {banner.captionText}
@@ -66,7 +61,7 @@ class Banner extends Component {
                       {banner.captionText2}
                     </h1>
                     <Link href="/">
-                      <a className="btn learnMoreBtn">
+                      <a className="btn red-btn">
                         LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
                       </a>
                     </Link>
@@ -74,6 +69,7 @@ class Banner extends Component {
                 </div>
               </div>
             </Carousel.Caption>
+            
           </Carousel.Item>
         ))}
       </Carousel>

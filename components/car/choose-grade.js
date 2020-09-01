@@ -24,7 +24,7 @@ class ChooseGrade extends Component {
                     <div className="grade-box">
                         <div className="grade-content">
                         <img src="/static/feature-cars/honda-fit.png"/>
-                        <h6>HONDA FIT GRADE 1</h6>
+                        <h3>HONDA FIT GRADE 1</h3>
                         <h5>fr $74, 000</h5>
                         
                         <div className="button" align="center">
@@ -82,7 +82,7 @@ class ChooseGrade extends Component {
                         <div className="grade-box">
                         <div className="grade-content">
                         <img src="/static/feature-cars/honda-fit.png"/>
-                        <h6>HONDA FIT GRADE 1</h6>
+                        <h3>HONDA FIT GRADE 1</h3>
                         <h5>fr $74, 000</h5>
                         
                         <div className="button" align="center">
@@ -140,10 +140,10 @@ class ChooseGrade extends Component {
                         <div className="grade-box">
                         <div className="grade-content">
                         <img src="/static/feature-cars/honda-fit.png"/>
-                        <h6>HONDA FIT GRADE 1</h6>
+                        <h3>HONDA FIT GRADE 1</h3>
                         <h5>fr $74, 000</h5>
                         
-                        <div className="button" align="center">
+                        <div className="button">
                             <Link href="/">
                             <a className="btn enquireBtn">
                                 ENQUIRE

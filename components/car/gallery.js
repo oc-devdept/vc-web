@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import Slider from "../../components/car/slider";
 
 class Gallery extends Component {
+
   render() {
     return (
       <section className="gallery-area">
@@ -8,12 +10,13 @@ class Gallery extends Component {
             <div className="section-title without-bg" align="center">
                 <h2>Gallery</h2>
             </div>
-            
-            
+            <Slider />
         </div>
       </section>
+
+      
     );
   }
 }
 
-export default Gallery; 
+export default Gallery;

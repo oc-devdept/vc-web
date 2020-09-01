@@ -5,7 +5,7 @@ import "../assets/styles/animate.min.css";
 import "../assets/styles/slick.css";
 import "../assets/styles/slick-theme.css";
 import "../assets/styles/responsive.scss";
-import "../assets/styles/carousel.min.css";
+import "../assets/styles/carousel.scss";
 import "../assets/styles/style.scss";
 
 import "slick-carousel/slick/slick.css";

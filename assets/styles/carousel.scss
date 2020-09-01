@@ -1,3 +1,4 @@
+
 .carousel .control-arrow,.carousel.carousel-slider .control-arrow {
     -webkit-transition:all .25s ease-in;
     -moz-transition:all .25s ease-in;
@@ -34,3 +35,38 @@
         .carousel .control-dots .dot.selected,.carousel .control-dots .dot:hover{opacity:1}
         .carousel .carousel-status{position:absolute;top:0;right:0;padding:5px;font-size:10px;text-shadow:1px 1px 1px rgba(0,0,0,.9);color:#fff}
 .carousel:hover .slide .legend{opacity:1}
+.carousel-caption {
+    position: absolute;
+    top: 20px ;        
+    text-align: left;
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 34px;
+    }
+    .top-left {
+      position: absolute;
+      top:50px;      
+      left:-30px;
+    }
+    .center-left {
+      position:absolute;
+      left:-30px;
+      top:220px;
+    }
+    .center-center {
+      position:absolute;
+      left:250px;
+      top:220px;
+    }
+    .bottom-right {
+      position:absolute;
+      left: 800px;
+      bottom:90px;
+    }
+    
+  }
+
+
+  

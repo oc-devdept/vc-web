@@ -79,8 +79,8 @@ class Footer extends Component {
                         <div className="row">
                             <div className="left-section col-lg-6 col-md-6">
                                 <Link href="/terms-n-conditions"><a>Terms &amp; Conditions</a></Link>
-                                <Link href="/privacy-statement"><a>Privacy Statement</a></Link>
-                                <Link href="/service-policy"><a>Service Policy</a></Link>
+                                <Link href="/privacy-n-service-policies"><a>Privacy &amp; Service Policies</a></Link>
+                                <Link href="/faq"><a>FAQs</a></Link>
                             </div>
                             <div className="right-section col-lg- col-md-6">
                                 <p>Copyright @ 2020 Venture Cars</p>

@@ -579,6 +579,8 @@ Single Car Page Area CSS
 }
 .grade-content .button a:first-child {
   margin-right: 10px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 .grade-content h3 {
   margin: 20px 0;
@@ -586,6 +588,10 @@ Single Car Page Area CSS
 .grade-content h5 {
   color: #f29d30;
   font-size: 1.8rem;
+}
+
+.arrow-icon {
+  vertical-align: middle;
 }
 
 /*================================================
@@ -728,8 +734,9 @@ Contact Us Details Area CSS
   margin: 20px auto;
 }
 
-
-
+.contact-form-area .trade-in-details {
+  margin-bottom: 20px;
+}
 
 /*================================================
 Top Panel Area CSS
@@ -3954,6 +3961,18 @@ Home Page - Question Form Area CSS
 .question_form textarea {
   padding-top: 10px;
   height: 200px;
+}
+.question-area a:hover,
+.question-area a:focus {
+  color: #222222!important;
+}
+
+/*================================================
+Enquiry Form Area CSS
+=================================================*/
+.form-check-label a:hover,
+.form-check-label a:focus {
+  color: #222222 !important;
 }
 
 /*================================================
@@ -9468,7 +9487,6 @@ Footer Area CSS
   background-color: #212C33;
   position: relative;
   z-index: 1;
-  padding: 60px;
   padding-bottom: 20px;
 }
 .footer-area h6 {
@@ -9485,7 +9503,6 @@ Footer Area CSS
 
 .single-footer-widget h3 {
   font-size: 17px;
-  text-transform: uppercase;
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
@@ -9536,8 +9553,8 @@ Footer Area CSS
 }
 
 .left-section a {
-  margin-right: 10px;
   color: #ffffff;
+  margin-top: 15px;
 }
 .right-section p {
   color: #ffffff;

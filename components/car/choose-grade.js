@@ -28,14 +28,14 @@ class ChooseGrade extends Component {
                         <h5>fr $74, 000</h5>
                         
                         <div className="button" align="center">
-                            <Link href="/">
+                            <Link href="/enquiry-form">
                             <a className="btn enquireBtn">
                                 ENQUIRE
                             </a>
                             </Link>
                             <Link href="/">
                             <a className="btn buildBtn">
-                                BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                BUILD CAR &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                             </a>
                             </Link>
                         </div>
@@ -86,14 +86,14 @@ class ChooseGrade extends Component {
                         <h5>fr $74, 000</h5>
                         
                         <div className="button" align="center">
-                            <Link href="/">
+                            <Link href="/enquiry-form">
                             <a className="btn enquireBtn">
                                 ENQUIRE
                             </a>
                             </Link>
                             <Link href="/">
                             <a className="btn buildBtn">
-                                BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                BUILD CAR &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                             </a>
                             </Link>
                         </div>
@@ -144,14 +144,14 @@ class ChooseGrade extends Component {
                         <h5>fr $74, 000</h5>
                         
                         <div className="button">
-                            <Link href="/">
+                            <Link href="/enquiry-form">
                             <a className="btn enquireBtn">
                                 ENQUIRE
                             </a>
                             </Link>
                             <Link href="/">
                             <a className="btn buildBtn">
-                                BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                BUILD CAR &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                             </a>
                             </Link>
                         </div>

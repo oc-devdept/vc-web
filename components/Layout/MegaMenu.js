@@ -96,21 +96,10 @@ class MegaMenu extends Component {
                       </Link>
                       <ul className="dropdown-menu">
                         <li className="nav-item">
-                          {/* <MegaTab /> */}
+
                         </li>
                       </ul>
                     </li>
-
-                    {/* <li className="nav-item p-relative">
-                      <Link href="/rent">
-                        <a className="nav-link">Rental</a>
-                      </Link>
-                    </li>
-                    <li className="nav-item p-relative">
-                      <Link href="/services">
-                        <a className="nav-link">Services</a>
-                      </Link>
-                    </li> */}
 
                     <li className="nav-item p-relative">
                       <Link href="/virtual-showroom">
@@ -137,8 +126,18 @@ class MegaMenu extends Component {
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link href="/contact-us">
-                            <a className="nav-link">Contact Us</a>
+                          <Link href="/terms-n-conditions">
+                            <a className="nav-link">Terms &amp; Conditions</a>
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link href="/privacy-n-service-policies">
+                            <a className="nav-link">Privacy &amp; Service Policies</a>
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link href="/faq">
+                            <a className="nav-link">Frequently Asked Questions</a>
                           </Link>
                         </li>
                       </ul>

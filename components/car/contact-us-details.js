@@ -81,7 +81,7 @@ class ContactUsDetails extends Component {
                         <textarea class="form-control" id="message" rows="4" placeholder="Message"></textarea>
                     </div>
 
-                    <p>YOUR TRADE-IN CAR DETAILS</p>
+                    <p className="trade-in-details">YOUR TRADE-IN CAR DETAILS</p>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">

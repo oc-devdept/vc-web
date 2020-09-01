@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import Navbar from "Components/Layout/Navbar";
+import Footer from "Components/Layout/Footer";
 
-class Form extends Component {
-
-    render() {
-        return (
+class EnquiryForm extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
             <section className="question-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
@@ -47,8 +50,10 @@ class Form extends Component {
                     </div>
                 </div>
             </section>
-        );
-    }
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
-export default Form;
+export default EnquiryForm;

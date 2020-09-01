@@ -13,8 +13,7 @@ class Gallery extends Component {
             <Slider />
         </div>
       </section>
-
-      
+   
     );
   }
 }

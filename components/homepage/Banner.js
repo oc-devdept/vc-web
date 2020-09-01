@@ -62,7 +62,7 @@ class Banner extends Component {
                     </h1>
                     <Link href="/">
                       <a className="btn red-btn">
-                        LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                        LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                       </a>
                     </Link>
                   </div>

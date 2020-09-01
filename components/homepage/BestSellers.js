@@ -56,7 +56,7 @@ class BestSeller extends Component {
                   </p>
                   <Link href="/">
                     <a className="btn moreBtn">
-                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                     </a>
                   </Link>
                   <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -80,7 +80,7 @@ class BestSeller extends Component {
                   </p>
                   <Link href="/">
                     <a className="btn moreBtn">
-                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                     </a>
                   </Link>
                   <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -108,7 +108,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -132,7 +132,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -160,7 +160,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -184,7 +184,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>

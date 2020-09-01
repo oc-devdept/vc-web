@@ -1518,8 +1518,10 @@
     margin-top: 10px;
   }
   .left-section {
-    display: flex;
-    justify-content: space-between;
+    display: block;
+  }
+  .left-section a {
+    margin-bottom: 10px;
   }
   .sub-box {
     display: block;
@@ -1548,6 +1550,10 @@
 
   .contact-us-area .container {
     width: 90% !important;
+  }
+
+  .footer-area {
+    padding: 40px 20px 20px;
   }
 }
 
@@ -1604,6 +1610,9 @@
   .left-section {
     display: flex;
   }
+  .left-section a {
+    margin-right: 40px;
+  }
   .right-section p {
     float: right;
   }
@@ -1636,6 +1645,9 @@
   }
   .views-area .container {
     width: 60%;
+  }
+  .footer-area {
+    padding: 60px;
   }
 }
 

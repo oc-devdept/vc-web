@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import Slider from "react-slick";
-import InnerImageZoom from 'react-inner-image-zoom';
 
 function ImageSlider() {
   const [nav1, setNav1] = useState(null);

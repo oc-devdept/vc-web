@@ -1555,6 +1555,20 @@
   .footer-area {
     padding: 40px 20px 20px;
   }
+
+  .build-box {
+    width: 100%;
+    margin: 0 20px 20px;
+  }
+
+  .build-area .column {
+    width: 100%;
+    margin: 10px 20px;
+  }
+  .build-area .build-content .part1-left, .build-area .build-content .part1-right, .build-area .build-content .part2-left  {
+    margin-left: 20px;
+    width: 100%;
+  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
@@ -1648,6 +1662,31 @@
   }
   .footer-area {
     padding: 60px;
+  }
+
+  .build-box {
+    width: 47%;
+    margin: 0 0 20px;
+  }
+
+  .build-area .column {
+    float: left;
+    width: 46%;
+    margin: 10px 2%;
+  }
+
+  .build-area .build-content .part1-left {
+    margin-left: 10%;
+    float: left;
+    width: 40%;
+  }
+  .build-area .build-content .part1-right .power {
+    float: right;
+    width: 40%;
+  }
+  .build-area .build-content .part2-left {
+    clear: both;
+    margin-left: 10%;
   }
 }
 

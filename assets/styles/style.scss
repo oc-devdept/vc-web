@@ -331,6 +331,22 @@ img {
   border: 1px solid #f29d30 !important;
 }
 
+// Grey White Bg Btn
+.gw-without-bg-btn {
+  color: #222222 !important;
+  background-color: #ffffff;
+  border: 1px solid #CED0D2 !important;
+  margin-right: 10px;
+}
+.gw-without-bg-btn:hover,
+.gw-without-bg-btn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff !important;
+  color: #f29d30 !important;
+  border: 1px solid #f29d30 !important;
+}
+
 /*btn(primary&light)*/
 .btn {
   border: 1px solid transparent;
@@ -736,6 +752,80 @@ Contact Us Details Area CSS
 
 .contact-form-area .trade-in-details {
   margin-bottom: 20px;
+}
+
+/*================================================
+Build Area CSS
+=================================================*/
+.build-area {
+  padding: 20px 0;
+}
+
+.build-area h2 {
+  font-weight: bolder;
+  margin: 20px 0;
+}
+
+.build-area .column {
+  border: 2px solid #E39D43;
+}
+.build-area .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.build-area .column img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 80%;
+}
+.build-area .column .left {
+  float: left;
+  width: 45%;
+  margin: 20px;
+}
+.build-area .column .right {
+  float: right;
+  width: 45%;
+  text-align: right;
+}
+.build-area .column .types {
+  background-color: #D94032;
+  float: right;
+  width: 50%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 12px;
+  padding: 5px 0;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.build-area .column .car-name {
+  clear: both;
+  margin: 20px 20px 10px;
+}
+.build-area .column .car-price {
+  margin: 0 20px 0px 0;
+  color: #f29d30;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.build-area .build-content {
+  clear: both;
+  background-color: #F6F8FC;
+  padding: 20px;
+}
+.build-area .build-content .engCap {
+  // margin-right: 20%;
+}
+
+.build-area .button {
+  margin: 20px 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
 /*================================================

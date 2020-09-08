@@ -355,7 +355,7 @@ img {
   border-radius: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 400;
   font-size: 14px;
   // -webkit-transform: skew(-12deg);
@@ -766,6 +766,19 @@ Build Area CSS
   margin: 20px 0;
 }
 
+.build-area .filter {
+  float: left;
+}
+.build-area .sortBy {
+  float: right;
+}
+.build-area .sortBy p {
+  margin: auto 10px auto 0;
+}
+
+.build-area .row {
+  clear: both;
+}
 .build-area .column {
   border: 2px solid #E39D43;
 }
@@ -774,7 +787,6 @@ Build Area CSS
   display: table;
   clear: both;
 }
-
 .build-area .column img {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
@@ -818,15 +830,20 @@ Build Area CSS
   background-color: #F6F8FC;
   padding: 20px;
 }
-.build-area .build-content .engCap {
-  // margin-right: 20%;
-}
-
 .build-area .button {
   margin: 20px 20px;
   display: flex;
   justify-content: space-around;
+  // box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 }
+
+/*================================================
+Book Car Servicing Area CSS
+=================================================*/
+.bookCarServicing-area {
+  // background-image: ;
+}
+
 
 /*================================================
 Top Panel Area CSS

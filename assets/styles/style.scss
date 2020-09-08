@@ -253,9 +253,10 @@ img {
 }
 
 .section-title h2 {
-  margin-bottom: 0;
   text-transform: uppercase;
   font-size: 24px;
+  font-weight: bolder;
+  margin: 20px 0;
 }
 
 .section-title.without-bg {
@@ -542,14 +543,12 @@ Single Car Page Area CSS
 
 .single-banner h2 {
   font-size: 5rem;
-  // padding: 20px 0 50px;
 }
 
 .choose-grade-area {
   margin-bottom: 30px;
 }
 .choose-grade-area h2 {
-  font-weight: bolder;
   margin: 20px 0;
 }
 .sub-box {
@@ -618,11 +617,6 @@ About Honda Fit Area CSS
   padding: 20px 0;
 }
 
-.about-honda-fit-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
-}
-
 /*================================================
 360 Viewing Area CSS
 =================================================*/
@@ -631,9 +625,7 @@ About Honda Fit Area CSS
   padding: 20px 0;
 }
 .views-area h2 {
-  font-weight: bolder;
   color: #ffffff !important;
-  margin: 20px 0;
 }
 .views-area h6 {
   color: #ffffff !important;
@@ -664,11 +656,6 @@ Gallery Area CSS
 .gallery-area {
   background-color: #f3f3f3;
   padding: 20px 0 60px;
-}
-
-.gallery-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
 }
 
 .thumbnail-slider-wrap {
@@ -714,11 +701,6 @@ Contact Us Details Area CSS
   width: 80%;
 }
 
-.contact-us-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
-}
-
 .contact-details h6 {
   margin: 20px 0;
 }
@@ -759,11 +741,6 @@ Build Area CSS
 =================================================*/
 .build-area {
   padding: 20px 0;
-}
-
-.build-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
 }
 
 .build-area .filter {
@@ -841,9 +818,77 @@ Build Area CSS
 Book Car Servicing Area CSS
 =================================================*/
 .bookCarServicing-area {
-  // background-image: ;
+  margin-top: 20px;
+}
+.header-bar {
+  background-color: #212C33;
+  padding: 20px;
+  // height: 20px;
+  margin: 0;
 }
 
+.header-bar h6 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+}
+.driver-details {
+  padding: 40px;
+}
+
+.driver-details-form .form-check {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.driver-details-form textarea {
+  padding-top: 10px;
+  height: 290px;
+}
+.driver-details-form a:hover,
+.driver-details-form a:focus {
+  color: #222222!important;
+}
+.DayPicker-wrapper {
+  border: 1px solid #212C33;
+}
+.jumbotron {
+  margin-bottom: 0 !important;
+}
+.successfulMessage p {
+  margin: 20px 0;
+}
+.successfulMessage img {
+  width: 30%;
+}
+
+/*================================================
+About Car Servicing Area CSS
+=================================================*/
+.aboutCarServicing-area {
+  margin-top: 20px;
+}
+.packing-types {
+  display: flex;
+  justify-content: center;
+}
+.packing-types img {
+  width: 50%;
+}
+
+.available-services {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.available-services p {
+  text-transform: uppercase;
+  color: #212C33;
+  font-weight: 500;
+}
+.available-services .tickIcon {
+  color: #f29d30;
+  margin-right: 10px;
+}
 
 /*================================================
 Top Panel Area CSS
@@ -3942,10 +3987,6 @@ Home Page - Best Sellers Area CSS
   padding-bottom: 30px;
 }
 
-.best-sellers-area h2 {
-  font-weight: bolder;
-}
-
 .best-sellers-products-slides.owl-theme .owl-nav {
   margin-top: 0;
 }
@@ -4022,8 +4063,6 @@ Home Page - Step Area CSS
 }
 .steps-area h2 {
   color: #ffffff;
-  font-weight: bolder;
-  margin-bottom: 20px;
 }
 .step {
   background-color: #ffffff;
@@ -4054,10 +4093,6 @@ Home Page - Step Area CSS
 /*================================================
 Home Page - Question Form Area CSS
 =================================================*/
-.question-area h2 {
-  margin-bottom: 20px;
-  font-weight: bolder;
-}
 .question-area p {
   margin-bottom: 30px;
 }

@@ -1569,6 +1569,19 @@
     margin-left: 20px;
     width: 100%;
   }
+  .bookAppBtn {
+    width: 100%;
+  }
+  .available-services .column {
+    margin: 0 auto;
+  }
+  .section-two-header {
+    padding: 0 20px;
+  }
+  .available-text {
+    text-align: center;
+    padding: 20px;
+  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
@@ -1695,6 +1708,26 @@
     margin-right: 18px;
     // background-color: white;
     box-shadow: black;
+  }
+  .form-date {
+    margin: 12px 0 0 50px;
+  }
+  .bookAppBtn {
+    width: 60%;
+    margin: 20px auto 0;
+  }
+  .available-services .column {
+    margin: 0 150px;
+  }
+  .available-text {
+    text-align: center;
+    padding: 20px 20%;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .form-date {
+    margin: 15px auto;
   }
 }
 

@@ -1,17 +1,29 @@
 import React, { Component } from "react";
-import Navbar from "Components/Layout/Navbar";
-import Footer from "Components/Layout/Footer";
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
 
-class PrivacyStatement extends Component {
+// P&SP Data
+import { PNSPData } from "Components/data/pnsp-data";
+
+class PrivacyNServicePolices extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Navbar />
-          <h2>Privacy Statement</h2>
-        <Footer />
-      </React.Fragment>
+      <DefaultLayout>
+        {PNSPData.map((pnsp, index) => (
+          <div className="pnsp-area" eventKey={index} key={index}>
+            <h3>{pnsp.title}</h3>
+            {pnsp.sections.length > 0 &&
+             pnsp.sections.map((section, indx) => (
+              <div className="pnsp-section" key={indx}>
+                <h6>{section.subtitle}</h6>
+                <p>{section.description}</p>
+                <p>{section.description2}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </DefaultLayout>
     );
   }
 }
 
-export default PrivacyStatement;
+export default PrivacyNServicePolices;

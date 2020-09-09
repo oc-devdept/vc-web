@@ -8,8 +8,6 @@ import Tab from '@material-ui/core/Tab';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 
-import BookCarServicing from './Aftersales/BookCarServicing';
-import AboutCarServicing from './Aftersales/AboutCarServicing';
 import TabPanel from './Aftersales/TabPanel'
 
 function Aftersales() {

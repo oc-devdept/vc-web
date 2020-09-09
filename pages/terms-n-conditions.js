@@ -1,15 +1,28 @@
 import React, { Component } from "react";
-import Navbar from "Components/Layout/Navbar";
-import Footer from "Components/Layout/Footer";
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
+
+
+// T&C Data
+import { TNCData } from "Components/data/tnc-data";
 
 class TermsAndConditions extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Navbar />
-          <h2>Terms And Conditions</h2>
-        <Footer />
-      </React.Fragment>
+      <DefaultLayout>
+        {TNCData.map((tnc, index) => (
+          <div className="tnc-area" eventKey={index} key={index}>
+            <h3>{tnc.title}</h3>
+            {tnc.sections.length > 0 &&
+             tnc.sections.map((section, indx) => (
+              <div className="tnc-section" key={indx}>
+                <h6>{section.subtitle}</h6>
+                <p>{section.description}</p>
+                <p>{section.description2}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </DefaultLayout>
     );
   }
 }

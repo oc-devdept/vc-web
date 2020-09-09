@@ -823,7 +823,6 @@ Book Car Servicing Area CSS
 .header-bar {
   background-color: #212C33;
   padding: 20px;
-  // height: 20px;
   margin: 0;
 }
 
@@ -872,7 +871,11 @@ About Car Servicing Area CSS
   justify-content: center;
 }
 .packing-types img {
-  width: 50%;
+  width: 80%;
+  margin-bottom: 20px;
+}
+.packing-types p {
+  margin: 10px auto 20px;
 }
 
 .available-services {
@@ -889,6 +892,83 @@ About Car Servicing Area CSS
   color: #f29d30;
   margin-right: 10px;
 }
+
+/*================================================
+About Us Area CSS
+=================================================*/
+.about-us-banner {
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/about-us/about-us-banner.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+}
+.about-history {
+  background-color: #212C33;
+  padding: 40px;
+  margin: 0;
+}
+.about-history h2 {
+  color: #ffffff;
+  margin: 0 auto 20px;
+}
+.about-history p {
+  color: #ffffff;
+}
+.about-history .amount {
+  font-size: 2.5rem;
+}
+.our-story {
+  background-color: #ffffff;
+  padding: 40px;
+}
+.our-story h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+.our-story h5 {
+  margin: 20px auto;
+}
+
+/*================================================
+Faq Area CSS
+=================================================*/
+.faqs-area {
+  margin: 40px;
+}
+
+/*================================================
+TNC Area CSS
+=================================================*/
+.tnc-area {
+  margin: 40px auto;
+  width: 80%;
+}
+.tnc-area h3 {
+  color: #222222;
+}
+.tnc-section h6 {
+  margin: 20px auto;
+  font-size: 14px;
+}
+
+/*================================================
+PNSP Area CSS
+=================================================*/
+.pnsp-area {
+  margin: 40px auto;
+  width: 80%;
+}
+.pnsp-area h3 {
+  color: #222222;
+}
+.pnsp-section h6 {
+  margin: 20px auto;
+  font-size: 14px;
+}
+
 
 /*================================================
 Top Panel Area CSS
@@ -1224,7 +1304,7 @@ Navbar Area CSS
   border: none;
   top: 80px;
   left: 0;
-  width: 250px;
+  // width: 250px;
   z-index: 99;
   display: block;
   opacity: 0;
@@ -1236,26 +1316,31 @@ Navbar Area CSS
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
-  position: relative;
-  padding: 0;
+  // position: relative;
+  // padding: 0;
+  margin: 0 auto;
+  display: inline-block;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
   text-transform: uppercase;
-  padding: 8px 15px;
-  margin: 0;
-  display: block;
-  color: #666666;
+  padding: 10px 15px;
+  margin: 0 auto;
+  // display: inline-block;
+  color: #212C33;
   font-size: 14px;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #222222;
+  color: #f29d30;
+  border-bottom: 2px solid #f29d30;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -6760,6 +6845,9 @@ Sizing Guide Area CSS
 /*================================================
 FAQs Area CSS
 =================================================*/
+.faq-area {
+  margin: 40px auto;
+}
 .faq-accordion .accordion {
   list-style-type: none;
   padding: 0;

@@ -255,7 +255,7 @@ img {
 .section-title h2 {
   text-transform: uppercase;
   font-size: 24px;
-  font-weight: bolder;
+  font-weight: 500;
   margin: 20px 0;
 }
 
@@ -903,7 +903,7 @@ About Us Area CSS
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
 .about-history {
   background-color: #212C33;
@@ -920,6 +920,10 @@ About Us Area CSS
 .about-history .amount {
   font-size: 2.5rem;
 }
+.about-history .column {
+  margin-top: 20px;
+}
+
 .our-story {
   background-color: #ffffff;
   padding: 40px;

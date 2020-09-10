@@ -12,6 +12,31 @@ import Box from '@material-ui/core/Box';
 // FAQ Data
 import { BlogData } from "Components/data/blog-data";
 
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import Pagination from '@material-ui/lab/Pagination';
+
+const muiTheme = createMuiTheme({
+  overrides: {
+      MuiPagination: {
+          root: {
+              color: "#212C33 !important",
+          },
+      },
+      MuiPaginationItem: {
+          root: {
+              "&:hover": {
+                  backgroundColor: "#212C33 !important",
+                  color: "#ffffff !important",
+              },
+              "&$selected": {
+                  "backgroundColor": "#212C33 !important",
+                  color: "#ffffff !important",
+              }
+          },
+      },
+  }
+});
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -51,11 +76,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: "center",
   },
-  tabs: {
-    // border: `1px solid ${theme.palette.divider}`,
-  },
   tab: {
-      margin: '25px auto',
+      margin: '25px 20px',
       border: `1px solid ${theme.palette.divider}`,
       textTransform: 'capitalize',
   },
@@ -66,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor : '#f29d30',
     left: "0px",
     width: "3px",
+    marginLeft: "20px"
   },
   headerBar: {
       padding: '20px',
@@ -76,7 +99,12 @@ const useStyles = makeStyles((theme) => ({
   },
   date: {
     margin: "20px 20px 0",
-  }
+  },
+  paginationArea: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "20px",
+  },
 }));
 
 
@@ -92,9 +120,10 @@ export default function Blog() {
   };
 
   return (
+    <MuiThemeProvider theme={muiTheme}>
     <DefaultLayout>
       <div className="section-title without-bg" align="center">
-          <h2>BLOG POSTS</h2>
+        <h2>Blog Posts</h2>
       </div>
       <div className={classes.root}>
         <Tabs
@@ -135,6 +164,9 @@ export default function Blog() {
                 </div>
             </div>
           </div>
+          <div className={classes.paginationArea}>
+            <Pagination count={3} />
+          </div>
         </TabPanel>
         <TabPanel className="blogTabPanel" value={value} index={1}>
           <div className={classes.post}>
@@ -160,8 +192,12 @@ export default function Blog() {
                 </div>
             </div>
           </div>
+          <div className={classes.paginationArea}>
+            <Pagination count={3} />
+          </div>
         </TabPanel>
       </div>
     </DefaultLayout>
+    </MuiThemeProvider>
   );
 }

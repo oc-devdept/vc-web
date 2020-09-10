@@ -95,7 +95,6 @@ export default function Faq() {
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
-                // TabIndicatorProps={{ style: { background: "#f29d30",  }}}
                 TabIndicatorProps={{ className: classes.indicator }}
             >
                 {FaqData.map((faq, key) => (

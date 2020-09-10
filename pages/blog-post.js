@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
 
@@ -9,8 +9,8 @@ import { Icon } from '@iconify/react';
 import bxCalendar from '@iconify/icons-bx/bx-calendar';
 import bxArrowBack from '@iconify/icons-bx/bx-arrow-back';
 
-class BlogPost extends Component {
-    render() {
+export default function BlogPost()  {
+    
       return (
         <DefaultLayout>
             <div className="blog-post-main-area">
@@ -56,7 +56,4 @@ class BlogPost extends Component {
             </div>
         </DefaultLayout>
       );
-    }
   }
-  
-  export default BlogPost;

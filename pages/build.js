@@ -11,7 +11,6 @@ import searchIcon from '@iconify/icons-gg/search';
 import arrowDownAlt2 from '@iconify/icons-dashicons/arrow-down-alt2';
 import resetIcon from '@iconify/icons-carbon/reset';
 
-
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Popover from '@material-ui/core/Popover';
@@ -24,7 +23,6 @@ import Slider from '@material-ui/core/Slider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Pagination from '@material-ui/lab/Pagination';
-import PaginationItem from '@material-ui/lab/PaginationItem';
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -64,12 +62,19 @@ const muiTheme = createMuiTheme({
     },
     MuiPagination: {
       root: {
-        color: "#212C33"
+        color: "#212C33 !important",
       },
     },
     MuiPaginationItem: {
       root: {
-        color: "#212C33"
+        "&:hover": {
+          backgroundColor: "#212C33 !important",
+          color: "#ffffff !important",
+        },
+        "&$selected": {
+          "backgroundColor": "#212C33 !important",
+          color: "#ffffff !important",
+        }
       },
     },
   }
@@ -106,16 +111,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px",
   },
   paginationArea: {
-    // color: "#212C33",
     display: "flex",
     justifyContent: "center",
     marginTop: "20px",
-  },
-  pagination: {
-    color: '#000',
-    "&:active": {
-      color: "#772e2e",
-    }
   },
 }));
 
@@ -254,7 +252,7 @@ function Build() {
               </div>
 
               <div class="sortBy">
-                <span class="sortBy-Btn">SortBy:</span>
+                <span class="sortBy-Btn">Sort By :</span>
                 <StyledButton className="sortBy-Btn" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                   View All <Icon className={classes.arrowDown} icon={arrowDownAlt2} />
                 </StyledButton>
@@ -330,9 +328,7 @@ function Build() {
               </div>
             </div>
             <div className={classes.paginationArea} >
-              <Pagination count={3}>
-                {/* <PaginationItem className={classes.pagination}></PaginationItem> */}
-              </Pagination>
+              <Pagination count={3} />
             </div>
           </div>
       </section>

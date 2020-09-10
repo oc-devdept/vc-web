@@ -54,8 +54,11 @@ TabPanel.propTypes = {
       display: 'flex',
       justifyContent: "center",
     },
+    tabs: {
+      // border: `1px solid ${theme.palette.divider}`,
+    },
     tab: {
-        margin: '20px 20px',
+        margin: '20px auto',
         border: `1px solid ${theme.palette.divider}`,
         textTransform: 'capitalize',
     },
@@ -66,7 +69,6 @@ TabPanel.propTypes = {
       backgroundColor : '#f29d30',
       left: "0px",
       width: "3px",
-      marginLeft: "20px"
     },
     headerBar: {
         padding: '20px'

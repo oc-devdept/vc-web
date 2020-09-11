@@ -65,8 +65,10 @@ Default CSS
 }
 /*icon*/
 .medIcon {
-  font-size: 30px;
+  font-size: 35px;
+  color: #ffffff !important;
 }
+
 body {
   padding: 0;
   margin: 0;
@@ -259,11 +261,6 @@ img {
   margin: 20px 0;
 }
 
-.section-title.without-bg {
-  padding: 20px 0;
-  background-color: transparent;
-}
-
 // Feature Cars Btn
 .moreBtn {
   color: #ffffff !important;
@@ -301,6 +298,7 @@ img {
   box-shadow: unset;
   background-color: #ffffff;
   color: #D94032 !important;
+  border: 1px solid #D94032;
 }
 
 // Enquire Btn
@@ -377,7 +375,7 @@ img {
 .nav-btn {
   color: #ffffff !important;
   background-color: #f29d30;
-  padding: 50% 13% !important;
+  // padding: 50% 13% !important;
   text-align: center;
   margin-right: 0 !important;
 }
@@ -541,10 +539,6 @@ Single Car Page Area CSS
   background-size: cover;
 }
 
-.single-banner h2 {
-  font-size: 5rem;
-}
-
 .choose-grade-area {
   margin-bottom: 30px;
 }
@@ -586,8 +580,11 @@ Single Car Page Area CSS
   margin: 0;
 }
 .grade-content .bar h6 {
-  color: #020202;
+  color: #666666;
   margin-top: 10px;
+}
+.grade-content .button {
+  display: block;
 }
 .grade-content .button a {
   margin: 10px 0;
@@ -740,17 +737,25 @@ Contact Us Details Area CSS
 Build Area CSS
 =================================================*/
 .build-area {
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 
 .build-area .filter {
   float: left;
 }
+.filter-button {
+  margin-top: 20px !important;
+}
+
 .build-area .sortBy {
   float: right;
 }
-.build-area .sortBy p {
+.build-area .sortBy span {
   margin: auto 10px auto 0;
+}
+
+.build-area .sortBy .sortBy-Btn {
+  padding-right: 5px;
 }
 
 .build-area .row {
@@ -811,15 +816,11 @@ Build Area CSS
   margin: 20px 20px;
   display: flex;
   justify-content: space-around;
-  // box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 }
 
 /*================================================
 Book Car Servicing Area CSS
 =================================================*/
-.bookCarServicing-area {
-  margin-top: 20px;
-}
 .header-bar {
   background-color: #212C33;
   padding: 20px;
@@ -863,15 +864,12 @@ Book Car Servicing Area CSS
 /*================================================
 About Car Servicing Area CSS
 =================================================*/
-.aboutCarServicing-area {
-  margin-top: 20px;
-}
 .packing-types {
   display: flex;
   justify-content: center;
 }
 .packing-types img {
-  width: 80%;
+  width: 50%;
   margin-bottom: 20px;
 }
 .packing-types p {
@@ -1313,8 +1311,8 @@ Navbar Area CSS
 } */
 
 // .comero-nav .navbar .navbar-nav .nav-item {
-  // padding-top: 20px;
-  // padding-bottom: 20px;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
 // }
 
 .comero-nav .navbar .navbar-nav .nav-item.p-relative {
@@ -1374,17 +1372,13 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
-  // position: relative;
-  // padding: 0;
   margin: 0 auto;
-  display: inline-block;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
   text-transform: uppercase;
   padding: 10px 15px;
   margin: 0 auto;
-  // display: inline-block;
   color: #212C33;
   font-size: 14px;
 }
@@ -4083,7 +4077,7 @@ Trending Products Area CSS
 Home Page - Feature Cars Area CSS
 =================================================*/
 .sub-title h5 {
-  margin: 20px 0;
+  margin-bottom: 20px;
   color: #E39D43;
   text-align: center;
 }
@@ -4091,7 +4085,7 @@ Home Page - Feature Cars Area CSS
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 80%;
+  // width: 80%;
   margin: 0 auto;
 }
 .fc-box {
@@ -4099,7 +4093,7 @@ Home Page - Feature Cars Area CSS
 }
 .feature-cars {
   text-align: center;
-  padding: 20px 50px;
+  padding: 20px 40px;
   margin: 10px;
 }
 .feature-cars h3 {
@@ -4196,7 +4190,7 @@ Home Page - Step Area CSS
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  padding: 20px;
+  // padding: 20px;
   width: 100%;
 }
 .steps-area h2 {
@@ -4209,6 +4203,7 @@ Home Page - Step Area CSS
 
 .stepImgs {
   vertical-align: middle;
+  padding: auto 20px;
 }
 .stepBubble {
   border: 1px solid #E39D43;
@@ -4225,7 +4220,7 @@ Home Page - Step Area CSS
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100%;
+  // width: 100%;
 }
 
 /*================================================

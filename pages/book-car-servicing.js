@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
 
 import PageBanner from "Components/Shared/PageBanner";
 import DayPicker from "react-day-picker";
@@ -10,6 +11,7 @@ import DayPicker from "react-day-picker";
 
 export default function BookCarServicing() {
     return (
+        <DefaultLayout>
         <div className="bookCarServicing-area">
             <PageBanner
                 overlay
@@ -115,5 +117,6 @@ export default function BookCarServicing() {
                 </div>
             </div>
         </div>
+        </DefaultLayout>
     );
 }

@@ -58,6 +58,10 @@
   .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     top: 76px;
   }
+
+  .nav-btn {
+    padding: 50% 13% !important;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -121,6 +125,13 @@
     .submenu-title {
     margin-bottom: 15px;
   }
+
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
+    width: 65%;
+  }
+
   .btn {
     padding: 11px 23px;
     font-size: 12px;
@@ -897,6 +908,13 @@
   .footer-area {
     padding-top: 35px;
   }
+  .footer-area .top {
+    // text-align: center;
+  }
+  .footer-signup {
+    text-align: center;
+    margin-top: 20px;
+  }
   .single-footer-widget {
     margin-bottom: 30px;
   }
@@ -1450,10 +1468,15 @@
     padding-bottom: 10px;
   }
   .navbar-light .navbar-toggler {
-    color: #222222;
-    border-color: #222222;
+    // color: #222222;
+    border-color: transparent;
     border-radius: 0;
   }
+  .nav-profile-icon {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
   .search-overlay.search-popup {
     width: 250px;
     padding: 10px;
@@ -1468,6 +1491,7 @@
     right: 15px;
   }
   .navbar-area.is-sticky {
+    width: auto !important;
     height: auto !important;
   }
   .navbar-area.is-sticky .others-option {
@@ -1487,12 +1511,12 @@
   .navbar-light .navbar-toggler {
     outline: 0;
   }
-
+ 
   .sub-title {
     display: block;
     .box1, .box2, .box3 {
       width: 100%;
-      margin: 0 0 10px 0;
+      margin: 0 20px 10px 20px;
     }
   }
   .steps-row {
@@ -1585,11 +1609,58 @@
   .blogTabPanel {
     width: 80%;
   }
+  .navbar-brand {
+    display: none;
+  }
+  .navbar-brand-mobile img {
+    width: 70%;
+    margin-left: 20px;
+  }
+  .medIcon-mobile {
+    font-size: 35px;
+    color: #ffffff;
+  }
+  .profile-icon {
+    display: none;
+  }
+  .nav-btn {
+    width: 96%;
+  }
+  .nav-btn span {
+    padding: 15px !important;
+  }
+  .navbar-hr {
+    padding-top: 10px;
+  }
+  .build-area .filter {
+    margin: auto 0 auto 5px;
+  }
+  .build-area .sortBy {
+    margin: auto 5px;
+  }
+  .filter-type-title {
+    margin: 20px 10px auto;
+  }
+  .filter-checkbox {
+    margin-left: 10px;
+    width: 100%;
+  }
+  .red-btn {
+    padding: 8px 16px !important;
+  }
+  .single-banner h2 {
+    font-size: 2.5rem;
+  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
 // If bootstrap.min.css is ever updated/refreshed, delete relevant styles there
 @media only screen and (min-width: 992px) {
+  .section-title.without-bg {
+    padding: 20px 0;
+    background-color: transparent;
+  }
+
   .navbar .navbar-nav {
     align-items: center;
   }
@@ -1610,6 +1681,11 @@
     flex-flow: row nowrap;
     -ms-flex-pack: start;
     justify-content: flex-start;
+  }
+
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
+    display: inline-block;
+    // padding-right: 20px;
   }
 
   .sub-title {
@@ -1690,7 +1766,6 @@
     width: 46%;
     margin: 10px 2%;
   }
-
   .build-area .build-content .part1-left {
     margin-left: 10%;
     float: left;
@@ -1707,11 +1782,10 @@
   .build-area .filter {
     margin: auto 0 auto 20px;
   }
-  .build-area .sortBy .sortBy-Btn {
-    margin-right: 18px;
-    // background-color: white;
-    box-shadow: black;
+  .build-area .sortBy {
+    margin: auto 20px;
   }
+
   .form-date {
     margin: 12px 0 0 50px;
   }
@@ -1728,6 +1802,22 @@
   }
   .blogTabPanel {
     width: 60%;
+  }
+  .packing-types .column {
+    width: 50%;
+  }
+
+  .navbar-brand-mobile {
+    display: none;
+  }
+  .medIcon-mobile {
+    display: none;
+  }
+  .filter-type-title {
+    margin: 20px;
+  }
+  .single-banner h2 {
+    font-size: 5rem;
   }
 }
 

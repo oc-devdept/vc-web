@@ -24,6 +24,7 @@ import Slider from '@material-ui/core/Slider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Pagination from '@material-ui/lab/Pagination';
+import { shadows } from '@material-ui/system';
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -83,7 +84,7 @@ const muiTheme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   typography: {
-    padding: theme.spacing(2),
+    padding: '20px 0 20px',
     marginBottom: '20px',
   },
   button: {
@@ -95,10 +96,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f29d30",
 
     },
-    // "&:active": {
-    //   color: "#ffffff",
-    //   backgroundColor: "#f29d30",
-    // }
   },
   arrowDown: {
     marginLeft: "20px",
@@ -120,16 +117,27 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledButton = withStyles({
   root: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#ffffff !important",
     color: "#f29d30",
     "&:hover, &:focus": {
       color: "#ffffff",
-      // hoverBackgroundColor: "#f29d30",
-      backgroundColor: "#f29d30",
-
+      backgroundColor: "#f29d30 !important",
     },
   },
 })(Button);
+
+const StyledMenu = withStyles({
+  paper: {
+    boxShadow: '0 3px 5px 2px rgba(105, 105, 105, .2)',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+
+    {...props}
+  />
+));
 
 const CustomCheckbox = withStyles({
   root: {
@@ -153,6 +161,15 @@ function Build() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [aEl, setAEl ] = React.useState(null);
+  const onOpen = (e) => {
+    setAEl(e.currentTarget);
+  }
+
+  const onClose = () => {
+    setAEl(null);
+  }
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
@@ -192,7 +209,7 @@ function Build() {
                 >
                   <Typography className={classes.typography}>Show me only these options:</Typography>
                   <FormGroup row>
-                    <p className={classes.checkboxTitle}>Price Range: </p>
+                    <p className="filter-type-title">Price Range: </p>
                     <Slider 
                       defaultValue={[0,200000]} 
                       valueLabelDisplay="on"
@@ -202,7 +219,8 @@ function Build() {
                     />
                   </FormGroup>
                   <FormGroup row>
-                    <p className={classes.checkboxTitle}>Car Brand: </p>
+                    <p className="filter-type-title">Car Brand: </p>
+                    <div className="filter-checkbox">
                     <FormControlLabel
                       control={<CustomCheckbox onChange={handleChange} />}
                       label="Toyota"
@@ -218,26 +236,29 @@ function Build() {
                       label="Suzuki"
                       className={classes.checkbox}
                     />
+                    </div>
                   </FormGroup>
                   <FormGroup row>
-                    <p className={classes.checkboxTitle}>Car Type: </p>
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="MPV / SUV"
-                      className={classes.checkbox}
-                    />
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="Stationwagon"
-                      className={classes.checkbox}
-                    />
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="Hatchback"
-                      className={classes.checkbox}
-                    />
+                    <p className="filter-type-title">Car Type: </p>
+                    <div className="filter-checkbox">
+                      <FormControlLabel
+                        control={<CustomCheckbox onChange={handleChange} />}
+                        label="MPV / SUV"
+                        className={classes.checkbox}
+                      />
+                      <FormControlLabel
+                        control={<CustomCheckbox onChange={handleChange} />}
+                        label="Stationwagon"
+                        className={classes.checkbox}
+                      />
+                      <FormControlLabel
+                        control={<CustomCheckbox onChange={handleChange} />}
+                        label="Hatchback"
+                        className={classes.checkbox}
+                      /> 
+                    </div>
                   </FormGroup>
-                  <div className="filter_button" align="right">
+                  <div className="filter-button" align="right">
                     <Link href="/">
                     <a className="btn gw-without-bg-btn">
                       <Icon icon={resetIcon} /> &nbsp;&nbsp; Reset
@@ -253,23 +274,29 @@ function Build() {
               </div>
 
               <div class="sortBy">
-                <span class="sortBy-Btn">Sort By :</span>
-                <StyledButton className="sortBy-Btn" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                <span class="sortBy-Btn-text">Sort By :</span>
+                <StyledButton variant="contained" className="sortBy-Btn" aria-controls="simple-menu" aria-haspopup="true" onClick={onOpen}>
                   View All <Icon className={classes.arrowDown} icon={arrowDownAlt2} />
                 </StyledButton>
-                <Menu
+                <StyledMenu
                   id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
+                  anchorEl={aEl}
+                  open={Boolean(aEl)}
+                  onClose={onClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
                 >
-                  <MenuItem onClick={handleClose}>View ALL</MenuItem>
-                  <MenuItem onClick={handleClose}>Price (Lowest to Highest)</MenuItem>
-                  <MenuItem onClick={handleClose}>Price (Highest to Lowest)</MenuItem>
-                  <MenuItem onClick={handleClose}>Release Date (Newest to Oldest)</MenuItem>
-                  <MenuItem onClick={handleClose}>Release Date (Oldest to Newest)</MenuItem>
-                </Menu>
+                  <MenuItem onClick={onClose}>Price (Lowest to Highest)</MenuItem>
+                  <MenuItem onClick={onClose}>Price (Highest to Lowest)</MenuItem>
+                  <MenuItem onClick={onClose}>Release Date (Newest to Oldest)</MenuItem>
+                  <MenuItem onClick={onClose}>Release Date (Oldest to Newest)</MenuItem>
+                </StyledMenu>
               </div>
             </div>
             <div class="row">

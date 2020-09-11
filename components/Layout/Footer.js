@@ -9,6 +9,8 @@ class Footer extends Component {
         return (
             <footer className="footer-area">
                 <div className="container col-lg-8">
+                    <div className="top">
+                    
                     <Link href="/">
                         <a>
                             <img src="/static/logo.png"/>
@@ -32,7 +34,7 @@ class Footer extends Component {
                         </div>
                         </div>
                     </form>
-                
+                    </div>
                     <div className="row">
                         <div className="col-lg-4 col-md-6">
                             <div className="single-footer-widget">

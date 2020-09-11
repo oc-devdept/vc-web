@@ -22,7 +22,6 @@ class BestSeller extends Component {
     var modelImage = {
       objectFit: "cover",
       borderRadius: "20px",
-      // wdith: '150px',
       height: "180px",
       padding: "5px",
     };

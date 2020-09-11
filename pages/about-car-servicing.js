@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import DefaultLayout from "Components/Layout/PageTemplates/Default";
 
 import PageBanner from "Components/Shared/PageBanner";
 
@@ -7,6 +8,7 @@ import tickIcon from '@iconify/icons-subway/tick';
 
 export default function AboutCarServicing() {
     return (
+        <DefaultLayout>
         <div className="aboutCarServicing-area">
             <PageBanner
                 overlay
@@ -76,5 +78,6 @@ export default function AboutCarServicing() {
                 </div>
             </div>
         </div>
+        </DefaultLayout>
     );
 }

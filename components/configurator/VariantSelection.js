@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { Icon, InlineIcon } from '@iconify/react';
+import plusIcon from '@iconify/icons-bi/plus';
+
 import { formatPrice } from "Components/Helpers/helpers";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -9,8 +12,11 @@ const VariantSelection = ({
   objects,
   handleOptionChange,
   selectedId,
-  stockHistory
+  stockHistory,
+  category
 }) => {
+  const [isShowing, changeShowing] = useState(false);
+
   const checkTooltip = stockhistory => {
     const stockChecklist = [
       "VAC READY",
@@ -46,6 +52,10 @@ const VariantSelection = ({
       }
     }
   };
+
+  const toggleView = () => {
+    changeShowing(!isShowing);
+  }
 
   const checkWarning = stockhistory => {
     const stockChecklist = [
@@ -106,8 +116,10 @@ const VariantSelection = ({
 
   return (
     <React.Fragment>
-      <h3 className="configure-opt-title">{title}</h3>
-      <ul className="list-unstyled">
+      <div className="optionTitleRow">
+      <h3 className="configure-opt-title">{title}</h3><div className="configure-icon"><Icon icon={plusIcon} onClick={toggleView} height="24" /></div>
+      </div>      
+      <ul className={ "list-unstyled configOptionBox " + (isShowing ? "show" : "") }>
         {!!objects &&
           objects.map((item, id) => (
             <OverlayTrigger
@@ -118,7 +130,7 @@ const VariantSelection = ({
               <li
                 className="configure-list d-inline-block align-top"
                 id={item.id}
-                onClick={() => handleOptionChange(title, id)}
+                onClick={() => handleOptionChange(category, title, id)}
                 style={{ maxWidth: 120 }}
               >
                 <img

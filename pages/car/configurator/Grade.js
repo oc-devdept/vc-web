@@ -119,45 +119,8 @@ const Grade = ({
         />
         <h3 className="text-uppercase text-center my-3">{ProductGrade.name}</h3>
         <p className="mb-4">{ProductGrade.description}</p>
-        {!!Object.values(ProductSpecification).length &&
-          (ProductSpecification.data.length === 0 ? (
-            <p>No product specification available.</p>
-          ) : (
-            <div className="specifications d-flex flex-wrap">
-              {ProductSpecification.data.map(detail =>
-                Object.entries(detail).map(([key, value], id) => (
-                  <div key={id} className="specification-group mb-4 mr-4">
-                    <h6 className="text-uppercase">{key}</h6>
-                    {value.map((item, idd) => (
-                      <React.Fragment key={idd}>
-                        <div className="d-flex justify-content-between mb-1">
-                          <span style={{ fontWeight: 500 }} className="mr-2">
-                            {item.detailCategory.name}:
-                          </span>
-                          <div>
-                            <span>{item.value}&nbsp;</span>
-                            <span>{item.detailCategory.unit}</span>
-                          </div>
-                        </div>
-                      </React.Fragment>
-                    ))}
-                  </div>
-                ))
-              )}
-            </div>
-          ))}
-        <button
-          className="d-flex align-items-center px-2 py-1"
-          onClick={_RestartToggle}
-          style={{
-            border: "1px solid #4b6674",
-            backgroundColor: "transparent",
-            width: "max-content"
-          }}
-        >
-          <FontAwesomeIcon icon={faCar} className="mr-1" style={{ color: "#4b6674", fontSize: 24 }} />          
-          <p style={{ fontSize: 12, color: "#4b6674" }}>BOOK TEST DRIVE</p>
-        </button>
+        
+        
       </div>
       <div className="configure-opt col-lg-4">
         <h3 className="configure-opt-title">01 Grade</h3>
@@ -180,15 +143,25 @@ const Grade = ({
                 }
                 onClick={handleOptionChange}
               >
-                {item.name}
-                <br />
+              <img src="/static/gradeblue.png" className="gradeThumb" />  <div className="configText">{item.name}
+              <br />
                 {formatPrice(item.selling_Price)}
+              </div>
+               
               </li>
             ))}
         </ul>
       </div>
 
-      {Toggle && (
+      
+    </div>
+  );
+};
+
+export default Grade;
+
+/*
+{Toggle && (
         <DialogRoot
           // title={"Hello world"}
           size="md"
@@ -234,8 +207,32 @@ const Grade = ({
           </div>
         </DialogRoot>
       )}
-    </div>
-  );
-};
 
-export default Grade;
+      {!!Object.values(ProductSpecification).length &&
+          (ProductSpecification.data.length === 0 ? (
+            <p>No product specification available.</p>
+          ) : (
+            <div className="specifications d-flex flex-wrap">
+              {ProductSpecification.data.map(detail =>
+                Object.entries(detail).map(([key, value], id) => (
+                  <div key={id} className="specification-group mb-4 mr-4">
+                    <h6 className="text-uppercase">{key}</h6>
+                    {value.map((item, idd) => (
+                      <React.Fragment key={idd}>
+                        <div className="d-flex justify-content-between mb-1">
+                          <span style={{ fontWeight: 500 }} className="mr-2">
+                            {item.detailCategory.name}:
+                          </span>
+                          <div>
+                            <span>{item.value}&nbsp;</span>
+                            <span>{item.detailCategory.unit}</span>
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ))
+              )}
+            </div>
+          ))}
+*/

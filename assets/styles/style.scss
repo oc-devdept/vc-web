@@ -441,7 +441,7 @@ img {
   box-shadow: unset;
 }
 
-.btn-light:hover,
+.btn-light:hover:not(:disabled),
 .btn-light:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
@@ -9683,10 +9683,7 @@ ol.progtrckr,
   text-transform: uppercase;
   font-weight: 600;
 }
-.configure-opt {
-  background: #fcfcfc;
-  padding: 15px;
-}
+
 .footer-buttons {
   margin: 2% 0 0 auto;
   width: 33%;
@@ -9703,13 +9700,7 @@ ol.progtrckr li.progtrckr-doing {
   color: #f29d30;
   border-bottom: 4px solid #f29d30;
 }
-.configure-opt-title {
-  color: #4b6674;
-}
-.configure-list {
-  padding: 1%;
-  margin: 2% 0;
-}
+
 .pull-right {
   float: right;
 }
@@ -9722,23 +9713,7 @@ ol.progtrckr li.progtrckr-doing {
   color: #ffffff !important;
   background-color: #f29d30;
 }
-.configure-total {
-  text-transform: uppercase;
-}
-.configure-total dt {
-  display: inline-block;
-}
-.configure-total dl dt:nth-child(2) {
-  float: right;
-}
-.configure-total-header {
-  background: #4b6674;
-  color: #fff;
-  text-transform: uppercase;
-}
-.configure-sect {
-  margin-bottom: 1.5rem;
-}
+
 .product-desc dl {
   width: 33%;
   display: inline-block;
@@ -9762,14 +9737,16 @@ ol.progtrckr li.progtrckr-doing {
   color: #f29d30;
 }
 
-.configCoverImg {
-  border-radius: 20px;
-  object-fit: cover;
-  max-height: 300px;
-  max-width: 600px;
-  width: 100%;
-  height: auto;
+
+
+.gradeThumb {
+  display:inline-block;
+  margin-right:5px;
 }
+.configText {
+  display:inline-block;
+}
+
 /*# sourceMappingURL=style.css.map */
 
 .interior-image {
@@ -9910,7 +9887,4 @@ input[type="number"] {
   padding: 15px;
 }
 
-.configure-sect .configure-gall .custom-control-label::before,
-.configure-sect .configure-gall .custom-control-label::after {
-  top: 0.25rem;
-}
+

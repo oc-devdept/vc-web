@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import Link from "next/link";
 import { makeStyles } from '@material-ui/core/styles';
 
 import Accordion from '@material-ui/core/Accordion';
@@ -16,28 +16,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
   },
   heading: {
-    // backgroundColor: "#FCE8D4",
-    // borderRadius: '10px 10px 0 0',
-    // width: '100%',
-    borderTop: '1px solid #f3f3f3',
+    backgroundColor: "#f29d30",
   },
   subHeading: {
-    fontSize: '12px',
+    fontSize: '14px',
     fontWeight: "500",
-    color: "#212C33",
     width: '100%',
+    margin: '0 auto !important',
+    paddingLeft: "25px",
   },
   expanded: {
     "&$expanded": {
       margin: 0,
-    //   borderTop: '1px solid #FF8B19',
-    //   borderRadius: '10px 10px 0 0',
     }
   },
   expandMore: {
     "&$expanded": {
       margin: 0,
-    //   borderRadius: '5px',
     }
   },
   expand: {
@@ -56,7 +51,6 @@ const theme = createMuiTheme({
   overrides: {
     MuiCardContent: {
       root: {
-        paddingTop: '10px',
         paddingRight: '0 !important',
         paddingBottom: '0 !important'
       },
@@ -64,9 +58,15 @@ const theme = createMuiTheme({
     MuiPaper: {
       root: {
         margingBottom: '20px !important',
+        backgroundColor: 'transparent',
+        boxShadow: 'none !important',
       }
     },
-
+    MuiSvgIcon: {
+        root: {
+            color: '#ffffff'
+        }
+      }
   },
 });
 
@@ -91,11 +91,16 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>General Enquiry Question 1</p>
+                    Quick Links
                 </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
+            <AccordionDetails className={classes.details}>
+                <div className="footer-accordion-info">
+                    <p><Link href="/"><a>Home</a></Link></p>
+                    <p><Link href="/build"><a>Build Car</a></Link></p>
+                    <p><Link href="/about"><a>About Us</a></Link></p>
+                    <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
+                </div>
             </AccordionDetails>
         </Accordion>
         <Accordion className={classes.expanded}>
@@ -106,11 +111,44 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>General Enquiry Question 2</p>
+                    Showroom Hours
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
+                <div className="footer-accordion-info">
+                    <p>
+                        <strong>Monday - Saturday :</strong><br/>
+                        09:00AM - 07:00PM
+                    </p>
+                    <p>
+                        <strong>Sunday &amp; Public Holidays :</strong><br/>
+                        09:00AM - 06:00PM
+                    </p>        
+                </div>   
+            </AccordionDetails>
+        </Accordion>
+        <Accordion className={classes.expanded}>
+            <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className={classes.heading}
+            >
+                <Typography className={classes.subHeading}>
+                    Locate Us
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <div className="footer-accordion-info">
+                    <p>
+                        Main Showroom<br />
+                        33 Ubi Ave , #01-47/48 Vertex Singapore 408868
+                    </p>
+                    <p>
+                        BWWS Workshop<br />
+                        291-293 Kaki Bukit Ave 1, Shun Li Industrial Park, Singapore 416080
+                    </p>   
+                </div>   
             </AccordionDetails>
         </Accordion>
     </div>

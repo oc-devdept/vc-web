@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faPhone, faFax } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
+import FooterAccordion from './Footer-Accordion';
 class Footer extends Component {
     render() {
         return (
             <footer className="footer-area">
-                <div className="container col-lg-8">
+                {/* <div className="container"> */}
                     <div className="top">
                     
                     <Link href="/">
@@ -35,13 +33,13 @@ class Footer extends Component {
                         </div>
                     </form>
                     </div>
-                    <div className="row">
+                    <div className="row footer-info-group">
                         <div className="col-lg-4 col-md-6">
                             <div className="single-footer-widget">
                                 <h3>Quick Links</h3>
                                 <div className="quick-links">
                                     <p><Link href="/"><a>Home</a></Link></p>
-                                    <p><Link href="/"><a>Build Car</a></Link></p>
+                                    <p><Link href="/build"><a>Build Car</a></Link></p>
                                     <p><Link href="/about"><a>About Us</a></Link></p>
                                     <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
                                 </div>
@@ -79,6 +77,12 @@ class Footer extends Component {
                             </div>
                         </div>
                     </div>
+
+
+                    <div className="mobile-footer">
+                        <FooterAccordion />
+                    </div>
+
                 
                     <div className="copyright-area">
                         <div className="row">
@@ -92,7 +96,7 @@ class Footer extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
             </footer>
         );
     }

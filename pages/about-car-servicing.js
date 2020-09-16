@@ -46,7 +46,7 @@ export default function AboutCarServicing() {
                     <h2 className="section-two-header">TYPES OF AVAILABLE CAR SERVICING</h2>
                 </div>
                 <div class="row available-services">
-                    <div class="column">
+                    <div class="column box1">
                         <p><Icon className="tickIcon" icon={tickIcon} /> Regular Service</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Repairs</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Inspection</p>
@@ -56,9 +56,9 @@ export default function AboutCarServicing() {
                         <p><Icon className="tickIcon" icon={tickIcon} /> Brakes</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Clutch &amp; Transmission</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Electrical System</p>
-                        <p><Icon className="tickIcon" icon={tickIcon} /> Brakes</p>
+                        <p><Icon className="tickIcon" icon={tickIcon} /> Engine</p>
                     </div>
-                    <div class="column">
+                    <div class="column box2">
                         <p><Icon className="tickIcon" icon={tickIcon} /> Exhaust System</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Ignition System</p>
                         <p><Icon className="tickIcon" icon={tickIcon} /> Lights &amp; Bulbs</p>

@@ -7,7 +7,14 @@ class VirtualShowroom extends Component {
     return (
       <React.Fragment>
         <Navbar />
-          <h2>Virtual Showroom</h2>
+          <section className="virtual-showroom-area">
+              <iframe 
+                className="frame"
+                // width="100%" height="530" 
+                src="https://venture-cars-pte-ltd.vr-360-tour.com/e/bwYBdI-BF_o/e" allowfullscreen allow="microphone; camera; gyroscope; accelerometer">
+              </iframe>
+
+          </section>
         <Footer />
       </React.Fragment>
     );

@@ -820,6 +820,13 @@ Build Area CSS
 }
 
 /*================================================
+Virtual Showroom Area CSS
+=================================================*/
+.virtual-showroom-area {
+  background-color: #212C33;
+}
+
+/*================================================
 Book Car Servicing Area CSS
 =================================================*/
 .header-bar {
@@ -9767,10 +9774,6 @@ Footer Area CSS
   position: relative;
   z-index: 1;
   padding-bottom: 20px;
-}
-.footer-area h6 {
-  color: #ffffff;
-  margin-top: 20px;
 }
 .footer-area h5 {
   color: #f29d30 !important;

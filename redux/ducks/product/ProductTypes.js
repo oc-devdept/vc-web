@@ -1,3 +1,4 @@
+
 // Get data of selected model
 export const GET_PRODUCT_MODEL_DATA = "GET_PRODUCT_MODEL_DATA";
 export const GET_PRODUCT_MODEL_DATA_SUCCESS = "GET_PRODUCT_MODEL_DATA_SUCCESS";

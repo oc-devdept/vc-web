@@ -102,7 +102,7 @@ function* getProductModelData(e) {
     const data = yield call(getProductModelDataRequest, e);
     yield put(actions.getProductModelDataSuccess(data));
   } catch (error) {
-    yield put(actions.getProductModelDataFailure(data));
+    yield put(actions.getProductModelDataFailure(error));
   }
 }
 

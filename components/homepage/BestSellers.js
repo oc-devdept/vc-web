@@ -34,7 +34,7 @@ class BestSeller extends Component {
           </div>
 
           <div className="sub-title">
-            <div className="box1">
+            <div className="box">
               <h5>MPV / SUV</h5>
                 <div className="fc-box">
                 <div className="feature-cars">
@@ -86,7 +86,7 @@ class BestSeller extends Component {
                 </div>
               </div>
             </div>
-            <div className="box2">
+            <div className="box">
               <h5>HATCHBACKS</h5>
               <div className="fc-box">
               <div className="feature-cars">

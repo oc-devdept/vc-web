@@ -8,8 +8,9 @@ import api from "Api";
 // REQUESTS
 //=========================
 const getModelDataRequest = async payload => {
-  const result = await api.get(`/categories/${payload.payload}`);
-  return result.data;
+  let result = await api.get(`/carpages/getSingleCarDataForCategory/?id=${payload.payload}`);
+  // const result = await api.get(`/categories/${payload.payload}`);
+  return result.data.data;
 };
 
 //=========================
@@ -20,7 +21,7 @@ function* getModelData(e) {
     const data = yield call(getModelDataRequest, e);
     yield put(actions.getModelDataSuccess(data));
   } catch (error) {
-    yield put(actions.getModelDataFailure(data));
+    yield put(actions.getModelDataFailure(error));
   }
 }
 

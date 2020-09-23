@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import Rotation from "react-rotation";
 
 class Views extends Component {
   render() {
+      const { exterior, interior } = this.props;
     return (
       <section className="views-area">
         <div className="container">
@@ -12,22 +14,31 @@ class Views extends Component {
                 <div className="exterior-view">
                     <h6>360&deg; EXTERIOR VIEWING</h6>
                 </div>
-                <div className="interior-view">
-                    <h6>360&deg; INTERIOR VIEWING</h6>
-                </div>
+                {/*<div className="interior-view">*/}
+                {/*    <h6>360&deg; INTERIOR VIEWING</h6>*/}
+                {/*</div>*/}
             </div>
 
-            <img src="/static/single-car/360car.png"/>
+            <Rotation
+                scroll={false}
+                cycle={true}
+            >
+                {
+                    exterior.map(ex => (
+                        <img src={ex.path} />
+                    ))
+                }
+            </Rotation>
 
-            <p> 
-                Click on the hotspots above to interact with the live 3D car model
-                and view the details of each section. You can also freely rotate the car model 
-                by clicking the 360&deg; direction in either clock-wise or anti-clockwise direction.
-            </p>
+            {/*<p>*/}
+            {/*    Click on the hotspots above to interact with the live 3D car model*/}
+            {/*    and view the details of each section. You can also freely rotate the car model*/}
+            {/*    by clicking the 360&deg; direction in either clock-wise or anti-clockwise direction.*/}
+            {/*</p>*/}
         </div>
       </section>
     );
   }
 }
 
-export default Views; 
+export default Views;

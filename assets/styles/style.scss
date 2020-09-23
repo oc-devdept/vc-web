@@ -517,7 +517,7 @@ img {
 Single Car Page Area CSS
 =================================================*/
 .single-banner {
-  background-image: url(/static/single-car/honda-fit.jpg);
+  //background-image: url(/static/single-car/honda-fit.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -539,7 +539,7 @@ Single Car Page Area CSS
 .sub-box {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 80%;
   margin: 0 auto;
 }
@@ -9478,7 +9478,7 @@ Footer Area CSS
 .footer-area h5 {
   color: #f29d30 !important;
 }
-.footer-area p { 
+.footer-area p {
   color: #ffffff;
   margin-top: 10px;
 }

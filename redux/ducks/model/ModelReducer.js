@@ -2,15 +2,18 @@ import * as types from "./ModelTypes";
 
 const INIT_STATE = {
   loading: false,
-  // ModelData: {
-  //   id: null,
-  //   name: null,
-  //   description: null,
-  //   header: null,
-  //   images: [],
-  //   ProductGradeData: {}
-  // }
-  ModelData: null
+  ModelData: {
+    id: null,
+    name: null,
+    description: null,
+    header: null,
+    coverPhoto: '',
+    galleryPhoto: [],
+    exterior: [],
+    interior: [],
+    ProductGradeData: []
+  }
+  // ModelData: null
 };
 
 export default (state = INIT_STATE, action) => {
@@ -19,21 +22,35 @@ export default (state = INIT_STATE, action) => {
     case types.GET_MODEL_DATA:
       return { ...state, loading: true };
 
-    // case types.GET_MODEL_DATA_SUCCESS:
-    //   const { data } = action.payload;
-    //   console.log("===============");
-    //   console.log(action.payload);
-    //   return {
-    //     id: data.id,
-    //     name: data.name,
-    //     description: data.description,
-    //     header: data.header[0].path,
-    //     images: data.images,
-    //     ProductGradeData: data
-    //   };
-
     case types.GET_MODEL_DATA_SUCCESS:
-      return { ...state, loading: false, ModelData: action.payload };
+      const data = action.payload;
+      console.log("=======redux========", data);
+      let coverPhoto;
+      let exteriors = [];
+      let interiors = [];
+      for (let i = 0; i < data.file.length; i++) {
+        if (data.file[i].fileableType === "CarPage-Cover") { coverPhoto = data.file[i] }
+        else if (data.file[i].fileableType === "CarPage-Exterior") { exteriors.push(data.file[i]) }
+        else if (data.file[i].fileableType === "CarPage-Interior") { interiors.push(data.file[i]) }
+      }
+      return {
+        ...state,
+        ModelData: {
+          id: data.id,
+          name: data.name,
+          description: data.description,
+          // header: data.header[0].path,
+          coverPhoto: coverPhoto,
+          exterior: exteriors,
+          interior: interiors,
+          galleryPhoto: data.gallery,
+          ProductGradeData: data.product
+        },
+        loading: false,
+      };
+
+    // case types.GET_MODEL_DATA_SUCCESS:
+    //   return { ...state, loading: false, ModelData: action.payload };
 
     case types.GET_MODEL_DATA_FAILURE:
       return { ...state, loading: false };

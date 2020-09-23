@@ -35,20 +35,35 @@ class Model extends Component {
 
   render() {
     const { loading, ModelData } = this.props;
+    const { ProductGradeData, coverPhoto, description, exterior, interior, galleryPhoto, name, id } = ModelData;
     return (
       <DefaultLayout>
-        <div className="single-banner">
-          <h2>HONDA FIT 1.3A</h2>
+        <div className="single-banner" style={{backgroundImage: "url(" + coverPhoto.path + ")"}}>
+          <h2>{name}</h2>
         </div>
 
-        
+        {
+          ProductGradeData !== 0 && (
+              <ChooseGrade productData={ProductGradeData} />
+          )
+        }
+        {
+          description && (
+              <AboutHondaFit about={description} carName={name} />
+          )
+        }
+        {
+          exterior.length !== 0 && (
+              <Views exterior={exterior} interior={interior} />
+          )
+        }
+        {
+          galleryPhoto.length !== 0 && (
+              <Gallery galleryPhoto={galleryPhoto} />
+          )
+        }
 
-        <ChooseGrade />
-        <AboutHondaFit />
-        <Views />
-        <Gallery />
         <ContactUsDetails />
-
 
         {/* {loading ? (
           <RctSectionLoader />

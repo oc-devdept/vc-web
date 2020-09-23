@@ -19,7 +19,11 @@ const getModelDataRequest = async payload => {
 function* getModelData(e) {
   try {
     const data = yield call(getModelDataRequest, e);
-    yield put(actions.getModelDataSuccess(data));
+    if (data != "no data") {
+      yield put(actions.getModelDataSuccess(data));
+    } else {
+      yield put(actions.getModelDataFailure("There is no car data!"));
+    }
   } catch (error) {
     yield put(actions.getModelDataFailure(error));
   }

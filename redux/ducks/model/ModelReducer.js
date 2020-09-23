@@ -1,4 +1,5 @@
 import * as types from "./ModelTypes";
+import NotificationManager from "react-notifications/lib/NotificationManager";
 
 const INIT_STATE = {
   loading: false,
@@ -53,6 +54,7 @@ export default (state = INIT_STATE, action) => {
     //   return { ...state, loading: false, ModelData: action.payload };
 
     case types.GET_MODEL_DATA_FAILURE:
+      NotificationManager.warning(action.payload);
       return { ...state, loading: false };
 
     default:

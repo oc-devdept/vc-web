@@ -54,10 +54,11 @@ class ExtInt extends Component {
       exterior: {},
       interior: {}
     }
+    
     if (!!this.props.ProductExterior.selected) {
       this.state.exterior = this.props.ProductExterior.selected;      
     } else {      
-      const { fields } = this.props.ProductExterior.data;      
+      const { fields } = this.props.ProductExterior.data[this.props.gradeId];      
       Object.entries(fields).map(([variance, data]) => {
         // If there is a default option available, pre-select the first one
         const selectedIndex = data.objects.findIndex(
@@ -90,8 +91,8 @@ class ExtInt extends Component {
         this.state.interior = this.props.ProductInterior.selected;
 
     } else {        
-      const { fields } = this.props.ProductInterior.data;
-      console.log(this.props.ProductInterior.data);
+      const { fields } = this.props.ProductInterior.data[this.props.gradeId];
+      
       Object.entries(fields).map(([variance, data]) => {        
         // If there is a default option available, pre-select the first one
       const selectedIndex = data.objects.findIndex(
@@ -121,13 +122,37 @@ class ExtInt extends Component {
       });
      
     }
+    
     this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleInteriorOptionChange = this.handleInteriorOptionChange.bind(this);
   }
 
   handleOptionChange(category, variance, selectedKey) {
-    const { fields } = this.props.ProductExterior.data;
+    const { fields } = this.props.ProductExterior.data[this.props.gradeId];
     this.setState({
       ...this.state,
+      tabVal: 0,
+      [category]:{
+        ...this.state[category],
+        [variance]: {
+          selectedKey: selectedKey,
+          id: fields[variance].objects[selectedKey].id,
+          name: fields[variance].objects[selectedKey].name,
+          price: fields[variance].objects[selectedKey].price,
+          thumbnail: fields[variance].objects[selectedKey].files[0].path,
+          stockId: selectedStockId(
+            fields[variance].objects[selectedKey].stockhistory
+          )
+        }
+      }      
+    });
+  }
+
+  handleInteriorOptionChange(category, variance, selectedKey) {
+    const { fields } = this.props.ProductInterior.data[this.props.gradeId];
+    this.setState({
+      ...this.state,
+      tabVal: 1,
       [category]:{
         ...this.state[category],
         [variance]: {
@@ -150,8 +175,9 @@ class ExtInt extends Component {
     })
   };
 
-
+/*
   componentDidMount() {
+    this.props.getProductGradeData(id);
     this.props.selectedProductExterior(this.state.exterior);
     this.props.selectedProductInterior(this.state.interior);
   }
@@ -162,13 +188,14 @@ class ExtInt extends Component {
       this.props.selectedProductInterior(this.state.interior);
     }
   }
+*/
+
 
   render() {
     // console.log("ProductExterior= ", this.props.ProductExterior);
     // console.log("state= ", this.state);
-    const { fields } = this.props.ProductExterior.data;
-    const fields2 = this.props.ProductInterior.data.fields;
-    console.log(fields2);
+    const { fields } = this.props.ProductExterior.data[this.props.gradeId];
+    const fields2 = this.props.ProductInterior.data[this.props.gradeId].fields;
     return (
       <React.Fragment>
           <div className="row">
@@ -187,8 +214,7 @@ class ExtInt extends Component {
           
         
           <div className="configure-sect row">
-         
-            <div className="configure-gall col-lg-8 d-flex flex-column">
+          <div className="configure-gall col-lg-8 d-flex flex-column">
             {this.state.tabVal == 0 && Object.entries(fields).map(([variance, data], key) => (
               <VariantInfo
                 images={data.objects[
@@ -223,8 +249,8 @@ class ExtInt extends Component {
               <VariantSelection
                 title={variance}
                 objects={data.objects}
-                handleOptionChange={this.handleOptionChange}
-                category="exterior"
+                handleOptionChange={this.handleInteriorOptionChange}
+                category="interior"
                 selectedId={this.state.interior[variance].id}
                 stockHistory={
                   data.objects[this.state.interior[variance].selectedKey].stockhistory
@@ -232,6 +258,7 @@ class ExtInt extends Component {
               />
               )) }
             </div>
+            
           </div>
         
       </React.Fragment>

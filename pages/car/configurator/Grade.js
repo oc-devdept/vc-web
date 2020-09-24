@@ -28,8 +28,7 @@ let InitUserProfile = {
 const Grade = ({
   ProductGrade,
   ProductSpecification,
-  selectedProductGrade,
-  getProductGradeData
+  selectedProductGrade
 }) => {
   const [Toggle, setToggle] = useState(false);
   const [Timeslot] = useState(["AM", "PM"]);
@@ -66,10 +65,10 @@ const Grade = ({
     }));
   };
 
-  const handleOptionChange = async event => {
-    const { id } = event.target;
+  const handleOptionChange = async id => {
+   
     selectedProductGrade(id);
-    getProductGradeData(id);
+    //getProductGradeData(id);
   };
 
   const _RestartToggle = () => {
@@ -119,7 +118,13 @@ const Grade = ({
         />
         <h3 className="text-uppercase text-center my-3">{ProductGrade.name}</h3>
         <p className="mb-4">{ProductGrade.description}</p>
-        
+        <ul>
+          {
+            ProductGrade.details && ProductGrade.details.map((item, id)=> (
+              <li key={"detail"+id}>{item.name}: {item.value} {item.unit != "." ? item.unit : "" }</li>              
+            ))
+          }
+        </ul>
         
       </div>
       <div className="configure-opt col-lg-4">
@@ -141,9 +146,9 @@ const Grade = ({
                       }
                     : { border: "1px solid #DEE2E6" }
                 }
-                onClick={handleOptionChange}
+                onClick={()=> handleOptionChange(item.id)}
               >
-              <img src="/static/gradeblue.png" className="gradeThumb" />  <div className="configText">{item.name}
+              <img src={item.images.length > 0 ? item.images[0].path : ""} className="gradeThumb" />  <div className="configText">{item.name}
               <br />
                 {formatPrice(item.selling_Price)}
               </div>

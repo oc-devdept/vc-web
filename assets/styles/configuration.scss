@@ -67,7 +67,7 @@
 .configCoverImg {
     object-fit: cover;
     max-height: 800px;
-    max-width: 600px;
+    max-width: 900px;
     width: 100%;
     height: auto;
     margin-bottom: 20px;
@@ -109,8 +109,15 @@
   overflow:hidden;
 }
 
+.configOptionBox + p {
+    display:none;
+}
+
 .configOptionBox.show {
     max-height:600px;  
+}
+.configOptionBox.show + p {
+    display: block;
 }
 
 .configure-opt-title {

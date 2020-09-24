@@ -23,6 +23,7 @@ import Grade from "./Grade";
 import Accessories from "./Accessories";
 import Summary from "./Summary";
 import ExtInt from "./ExtInt";
+import Rims from "./Rims";
 import BottomSummary from "./BottomSummary";
 
 import {
@@ -66,6 +67,18 @@ class Product extends Component {
           this.props.selectedGradeId
         )
       : this.props.getProductGrades(this.props.selectedModelId);
+  }
+
+  componentDidUpdate(prevProps) {                     
+    if (prevProps.ProductState.ProductGrade.data.fields === undefined && this.props.ProductState.ProductGrade.data.fields != undefined) {
+      //get exteriors and interiors
+      for(let i=0; i < this.props.ProductState.ProductGrade.data.fields.length; i++){
+        this.props.getProductGradeData(this.props.ProductState.ProductGrade.data.fields[i].id);
+      }
+      
+      //this.props.selectedProductExterior(this.state.exterior);
+      //this.props.selectedProductInterior(this.state.interior);
+    }
   }
 
   handleNext = () => {
@@ -148,15 +161,28 @@ class Product extends Component {
                         ProductGrade={ProductState.ProductGrade}
                         ProductSpecification={ProductState.ProductSpecification}
                         selectedProductGrade={this.props.selectedProductGrade}
-                        getProductGradeData={this.props.getProductGradeData}
                       />
                     }
                     { this.state.verticalStep == 1 &&  
                       <ExtInt
+                      gradeId={ProductState.ProductGrade.id}
                       ProductExterior={ProductState.ProductExterior}
                       selectedProductExterior={this.props.selectedProductExterior}
                       ProductInterior={ProductState.ProductInterior}
                       selectedProductInterior={this.props.selectedProductInterior}
+                    />
+                    }
+                    { this.state.verticalStep == 2 &&  
+                      <Rims
+                      gradeId={ProductState.ProductGrade.id}
+                      ProductRims={ProductState.ProductRims}                      
+                    />
+                    }
+                    { this.state.verticalStep == 3 &&  
+                      <Accessories
+                      gradeId={ProductState.ProductGrade.id}
+                      ProductAccessories={ProductState.ProductAccessories}
+                      selectedProductAccessories={this.props.selectedProductAccessories}
                     />
                     }
                     </div>

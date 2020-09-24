@@ -138,7 +138,7 @@ class BestSeller extends Component {
               </div>
             </div>
             </div>
-            <div className="box3">
+            <div className="box">
               <h5>NEW ARRIVALS</h5>
               <div className="fc-box">
                 <div className="feature-cars">

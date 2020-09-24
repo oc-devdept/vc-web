@@ -14,7 +14,6 @@ class Footer extends Component {
                             <img src="/static/logo.png"/>
                         </a>
                     </Link>
-
                     <h5>Sign Up For Our Newsletter</h5>
                     <p>Sign up to keep yourself unpated with our latest car models, promotions &amp; blog posts!</p>
                     

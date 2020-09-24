@@ -43,7 +43,7 @@ class Model extends Component {
 
         
 
-        <ChooseGrade />
+        <ChooseGrade  />
         <AboutHondaFit />
         <Views />
         <Gallery />

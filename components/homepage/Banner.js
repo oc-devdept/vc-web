@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import { connect } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
+//components
+import RctSectionLoader from "Components/RctSectionLoader";
 
+//redux
+import { getAllBanner } from "Ducks/homepage";
+
+//icons
 import { Icon } from '@iconify/react';
 import arrowRight from '@iconify/icons-bi/arrow-right';
 
+/*
 const BannerInfo = [
   {
     title: "Venture Car Banner 1",
@@ -28,26 +36,32 @@ const BannerInfo = [
     position:"center-left"
   }
 ];
-
+*/
 const carouselOptions = {
   controls: true,
   interval: 4000
 };
 
 class Banner extends Component {
+  componentDidMount(){
+    this.props.getAllBanner();
+  }
+
   render() {
+    const { tableData, loading } = this.props.bannerList;    
     return (
+     <React.Fragment>
       <Carousel {...carouselOptions}>
-        {BannerInfo.map((banner, key) => (
+        {tableData.map((banner, key) => (
           <Carousel.Item key={key}>
             
-            <img className="d-block w-100" src={banner.image}></img>
+        { banner.images.length > 0 && <img className="d-block w-100" src={banner.images[0].path} /> }
             <Carousel.Caption>
-              <div className={ "container "+banner.position }>
+              <div className={ "container "+banner.captionPosition }>
                 <div className="row">
                   <div className="col-md-8">
                     <h2 style={{ color: "#fff", textTransform: "uppercase" }}>
-                      {banner.captionText}
+                      {banner.caption1}
                     </h2>
                     <h1
                       style={{
@@ -58,13 +72,17 @@ class Banner extends Component {
                         paddingBottom: 10
                       }}
                     >
-                      {banner.captionText2}
+                      {banner.caption2}
                     </h1>
-                    <Link href="/">
+                    {
+                      banner.linkURL != "" && 
+                    
+                    <Link href={banner.linkURL }>
                       <a className="btn red-btn">
                         LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                       </a>
                     </Link>
+                    }
                   </div>
                 </div>
               </div>
@@ -73,8 +91,17 @@ class Banner extends Component {
           </Carousel.Item>
         ))}
       </Carousel>
+      { loading && <RctSectionLoader />}
+      </React.Fragment>
     );
   }
 }
 
-export default Banner;
+const mapStateToProps = ({ HomeState }) => {
+  const { BannerState} = HomeState;
+  const { bannerList } = BannerState;
+  return { bannerList };
+}
+export default connect(mapStateToProps, {
+  getAllBanner
+})(Banner);

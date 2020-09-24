@@ -742,6 +742,7 @@ Build Area CSS
 
 .build-area .filter {
   float: left;
+  padding-bottom: 20px;
 }
 .filter-button {
   margin-top: 20px !important;
@@ -816,6 +817,13 @@ Build Area CSS
   margin: 20px 20px;
   display: flex;
   justify-content: space-around;
+}
+
+/*================================================
+Virtual Showroom Area CSS
+=================================================*/
+.virtual-showroom-area {
+  background-color: #212C33;
 }
 
 /*================================================
@@ -9767,10 +9775,6 @@ Footer Area CSS
   z-index: 1;
   padding-bottom: 20px;
 }
-.footer-area h6 {
-  color: #ffffff;
-  margin-top: 20px;
-}
 .footer-area h5 {
   color: #f29d30 !important;
 }
@@ -9828,6 +9832,28 @@ Footer Area CSS
 .single-footer-widget .footer-contact-info p a:hover,
 .single-footer-widget .footer-contact-info p a:focus {
   color: #ffffff !important;
+}
+
+.footer-accordion-info {
+  padding: 0;
+  margin: 0;
+  color: #ffffff !important;
+}
+
+.footer-accordion-info p {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.footer-accordion-info p a {
+  color: #ffffff;
+  display: inline-block;
+}
+
+.footer-accordion-info p a:hover,
+.footer-accordion-info p a:focus {
+  color: #f29d30 !important;
 }
 
 .left-section a {

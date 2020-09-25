@@ -46,14 +46,16 @@ class ChooseGrade extends Component {
                                         <p className="sub-header">Features :</p>
                                         {
                                             product.productDetailValues.map(detail => (
-                                                <div className="bar">
-                                                    <p>{detail.detailCategory.name}</p>
-                                                    <h6>
-                                                        <Icon icon={smartphoneShake} width="2.3rem"/>
-                                                        &nbsp;&nbsp;
-                                                        {detail.value}
-                                                    </h6>
-                                                </div>
+                                                detail != null && (
+                                                    <div className="bar">
+                                                        <p>{detail.detailCategory.name}</p>
+                                                        <h6>
+                                                            <Icon icon={smartphoneShake} width="2.3rem"/>
+                                                            &nbsp;&nbsp;
+                                                            {detail.value}
+                                                        </h6>
+                                                    </div>
+                                                )
                                             ))
                                         }
                                     </div>

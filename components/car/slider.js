@@ -27,7 +27,7 @@ function ImageSlider(props) {
   };
 
   const settingsThumbs = {
-    slidesToShow: 5,
+    slidesToShow: galleryPhoto.length,
     slidesToScroll: 1,
     asNavFor: '.slider-for',
     dots: false,
@@ -35,30 +35,6 @@ function ImageSlider(props) {
     swipeToSlide: true,
     focusOnSelect: true,
   };
-
-  const slidesData = [
-    {
-      id: 1,
-      image: '/static/single-car/i1.jpg',
-      label: 'FULL VIEW'
-    }, {
-      id: 2,
-      image: '/static/single-car/i2.jpg',
-      label: 'SIDE VIEW'
-    }, {
-      id: 3,
-      image: '/static/single-car/i3.jpg',
-      label: 'INTERIOR VIEW 1'
-    }, {
-      id: 4,
-      image: '/static/single-car/i4.jpg',
-      label: 'INTERIOR VIEW 2'
-    }, {
-      id: 5,
-      image: '/static/single-car/i5.jpg',
-      label: 'INTERIOR VIEW 3'
-    },
-  ];
 
   return (
       <div className="image-slider">

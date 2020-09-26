@@ -548,7 +548,7 @@ Single Car Page Area CSS
 .sub-box {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 80%;
   margin: 0 auto;
 }
@@ -9778,7 +9778,7 @@ Footer Area CSS
 .footer-area h5 {
   color: #f29d30 !important;
 }
-.footer-area p { 
+.footer-area p {
   color: #ffffff;
   margin-top: 10px;
 }

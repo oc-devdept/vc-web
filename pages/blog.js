@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
 
@@ -8,9 +8,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import moment from "moment";
 
 // FAQ Data
 import { BlogData } from "Components/data/blog-data";
+import api from "Api";
 
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
@@ -111,12 +113,40 @@ const useStyles = makeStyles((theme) => ({
 export default function Blog() {
 
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+  const [tags, setTags] = useState([]);
+  const [totalNumber, setTotalNumber] = useState(0);
+  const [page, setPage] = useState(1);
+  const [blogs, setBlogs] = useState([]);
   const [value, setValue] = React.useState(0);
 
-  const [readMore,setReadMore]=useState(false);
+  useEffect(() => {
+      getTagData();
+  }, []);
 
-  const handleChange = (event, newValue) => {
+  const getTagData = async () => {
+    let result = await api.get(`/carblogs/initialTags`);
+    setTags(result.data.data.tags);
+    setTotalNumber(result.data.data.totalNumber);
+    setBlogs(result.data.data.blogs);
+  };
+
+  const handleChange = async (event, newValue) => {
       setValue(newValue);
+      let result = await api.post(`/carblogs/getPageTagData`, {data: tags[newValue]});
+      setBlogs(result.data.data.blogs);
+      setTotalNumber(result.data.data.totalNumber);
+  };
+
+  const handlePage = async (event, number) => {
+    let params = {
+        number: number,
+        tag: tags[value]
+    };
+    setPage(number);
+    let result = await api.post(`/carblogs/getPaginationData`, {data: params});
+    setBlogs(result.data.data.blogs);
+    setTotalNumber(result.data.data.totalNumber);
   };
 
   return (
@@ -135,43 +165,59 @@ export default function Blog() {
             className={classes.tabs}
             TabIndicatorProps={{ className: classes.indicator }}
         >
-            {BlogData.map((blog, key) => (
-            <Tab className={classes.tab} key={key} label={blog.title} />
+            {tags.map((tag, key) => (
+                <Tab className={classes.tab} key={key} label={tag} />
             ))}
-    
         </Tabs>
-        <TabPanel className="blogTabPanel" value={value} index={0}>
-          <div className={classes.post}>
-            <div className={classes.date} align="right">
-              <p>5 Jan 2020</p>
-            </div>
-            <div className={classes.headerBar}>
-                <div class="row">
-                  <div className="image col-md-4">
-                    <img src="/static/blog/blog1.png" />
-                  </div>
-                  <div className="text col-md-7">
-                    <h3>Should you buy or lease a car in singapore?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
-                    <div className="button">
-                      <Link href="/blog-post">
-                        <a className="btn enquireBtn">
-                            READ MORE
-                        </a>
-                      </Link>
-                  </div>
-                  </div>
+
+        <TabPanel className="blogTabPanel">
+          {
+            blogs.length !== 0 ? (
+                blogs.map(blog => (
+                    <div className={classes.post} key={blog.id}>
+                        <div className={classes.date} align="right">
+                            <p>{moment(blog.publishDate).format('YYYY-MM-DD')}</p>
+                        </div>
+                        <div className={classes.headerBar}>
+                            <div className="row">
+                                <div className="image col-md-4">
+                                    <img src={blog.file[0].path} />
+                                </div>
+                                <div className="text col-md-7">
+                                    <h3>{blog.title}</h3>
+                                    <p>{blog.intro}</p>
+                                    <div className="button">
+                                        <Link
+                                            href={{
+                                                pathname: '/blog-post/[id]',
+                                                query: {id: blog.id}
+                                            }}
+                                            as={`/blog-post/${blog.id.replace(/ /g, "-")}`}
+                                        >
+                                            <a className="btn enquireBtn">
+                                                READ MORE
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <div className={classes.post}>
+                    There is no data
                 </div>
-            </div>
-          </div>
+            )
+          }
           <div className={classes.paginationArea}>
-            <Pagination count={3} />
+            <Pagination count={totalNumber} page={page} onChange={handlePage} />
           </div>
         </TabPanel>
-        <TabPanel className="blogTabPanel" value={value} index={1}>
+       {/* <TabPanel className="blogTabPanel" value={value} index={1}>
           <div className={classes.post}>
             <div className={classes.date} align="right">
-              <p>5 Jan 2020</p>
+              <p>6 Jan 2020</p>
             </div>
             <div className={classes.headerBar}>
                 <div class="row">
@@ -195,7 +241,7 @@ export default function Blog() {
           <div className={classes.paginationArea}>
             <Pagination count={3} />
           </div>
-        </TabPanel>
+        </TabPanel>*/}
       </div>
     </DefaultLayout>
     </MuiThemeProvider>

@@ -13,7 +13,8 @@ class Accessories extends Component {
 
     let accordionDisplay = { mainAccordionActiveKey: "0" };
     let optionsState = {};
-    Object.entries(this.props.ProductState.ProductAccessories.data.fields).map(
+    const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
+    Object.entries(fields).map(
       ([accessoryCategory, accessoryData], index) => {
         // If there is a default option available, pre-select the first one
         const selectedIndex = accessoryData.findIndex(
@@ -104,12 +105,12 @@ class Accessories extends Component {
     // console.log("state= ", this.state);
     // console.log("Accessories props= ", this.props);
 
-    const { ProductAccessories } = this.props.ProductState;
+    const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
 
     return (
       <div className="configure-sect row">
         <div className="configure-gall col-lg-8">
-          {Object.keys(ProductAccessories.data.fields).length === 0 ? (
+          {Object.keys(fields).length === 0 ? (
             <p>No accessories available for selection</p>
           ) : (
             <p>Expand the options below to view accessory details</p>
@@ -117,7 +118,7 @@ class Accessories extends Component {
           <Accordion
             activeKey={this.state.accordionDisplay.mainAccordionActiveKey}
           >
-            {Object.entries(ProductAccessories.data.fields).map(
+            {Object.entries(fields).map(
               ([key, value], id) => (
                 <Card
                   className="product-option-group"
@@ -273,15 +274,19 @@ class Accessories extends Component {
             )}
           </Accordion>
         </div>
-        <div className="configure-summary col-lg-4">
-          <SummaryTable
-            page="accessories"
-            ProductState={this.props.ProductState}
-          />
-        </div>
+        
       </div>
     );
   }
 }
 
 export default Accessories;
+
+/*
+<div className="configure-summary col-lg-4">
+          <SummaryTable
+            page="accessories"
+            ProductState={this.props.ProductState}
+          />
+        </div>
+*/

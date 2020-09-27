@@ -10,6 +10,7 @@ import { UserReducer } from "Ducks/user";
 import { CheckoutReducer } from "Ducks/checkout";
 import { RentReducer } from "Ducks/rent";
 import { PaymentReducer } from "Ducks/payment";
+import { BannerReducer, FeaturedReducer } from "Ducks/homepage";
 
 const reducers = combineReducers({
   LayoutState: LayoutReducer,
@@ -18,7 +19,11 @@ const reducers = combineReducers({
   UserState: UserReducer,
   CheckoutState: CheckoutReducer,
   RentState: RentReducer,
-  PaymentState: PaymentReducer
+  PaymentState: PaymentReducer,
+  HomeState: combineReducers({
+    BannerState: BannerReducer,
+    FeaturedState: FeaturedReducer
+  })
 });
 
 export default reducers;

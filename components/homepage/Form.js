@@ -34,7 +34,7 @@ class Form extends Component {
                                 <label class="form-check-label" for="exampleCheck1">
                                     I agree with Venture Car's{" "}
                                     <a className="d-inline" href="/">
-                                    Privacy Policy
+                                    Privacy &amp; Service Policies
                                     </a>{" "}
                                     and{" "}
                                     <a className="d-inline" href="/terms-n-conditions">

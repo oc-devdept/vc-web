@@ -14,64 +14,64 @@ import Gallery from "../../components/car/gallery";
 import ContactUsDetails from "../../components/car/contact-us-details";
 
 class Model extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    if (this.props.selectedModelId != prevProps.selectedModelId) {
-      return this.props.selectedModelId;
+    constructor(props) {
+        super(props);
     }
-    return null;
-  }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (snapshot) {
-      this.props.getModelData(snapshot);
-    }
-  }
-  componentDidMount() {
-    this.props.getModelData(this.props.selectedModelId);
-  }
 
-  render() {
-    const { loading, ModelData } = this.props;
-    const { ProductGradeData, coverPhoto, description, exterior, interior, galleryPhoto, name, id } = ModelData;
-    return (
-      <DefaultLayout>
-        {
-          name && (
-              <>
-                <div className="single-banner" style={{backgroundImage: "url(" + coverPhoto.path + ")"}}>
-                  <h2>{name}</h2>
-                </div>
-
-                {
-                  ProductGradeData !== 0 && (
-                      <ChooseGrade productData={ProductGradeData} />
-                  )
-                }
-                {
-                  description && (
-                      <AboutHondaFit about={description} carName={name} />
-                  )
-                }
-                {
-                  exterior.length !== 0 && (
-                      <Views exterior={exterior} interior={interior} />
-                  )
-                }
-                {
-                  galleryPhoto.length !== 0 && (
-                      <Gallery galleryPhoto={galleryPhoto} />
-                  )
-                }
-              </>
-          )
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        if (this.props.selectedModelId != prevProps.selectedModelId) {
+            return this.props.selectedModelId;
         }
+        return null;
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (snapshot) {
+            this.props.getModelData(snapshot);
+        }
+    }
+    componentDidMount() {
+        this.props.getModelData(this.props.selectedModelId);
+    }
 
-        <ContactUsDetails />
+    render() {
+        const { loading, ModelData } = this.props;
+        const { ProductGradeData, coverPhoto, description, exterior, interior, galleryPhoto, name, id } = ModelData;
+        return (
+            <DefaultLayout>
+                {
+                    name && (
+                        <>
+                            <div className="single-banner" style={{backgroundImage: "url(" + coverPhoto.path + ")"}}>
+                                <h2>{name}</h2>
+                            </div>
 
-        {/* {loading ? (
+                            {
+                                ProductGradeData !== 0 && (
+                                    <ChooseGrade productData={ProductGradeData} />
+                                )
+                            }
+                            {
+                                description && (
+                                    <AboutHondaFit about={description} carName={name} />
+                                )
+                            }
+                            {
+                                exterior.length !== 0 && (
+                                    <Views exterior={exterior} interior={interior} />
+                                )
+                            }
+                            {
+                                galleryPhoto.length !== 0 && (
+                                    <Gallery galleryPhoto={galleryPhoto} />
+                                )
+                            }
+                        </>
+                    )
+                }
+
+                <ContactUsDetails />
+
+                {/* {loading ? (
           <RctSectionLoader />
         ) : ModelData ? (
           <section className="model-info">
@@ -128,20 +128,20 @@ class Model extends Component {
             <p>error</p>
           </div>
         )} */}
-      </DefaultLayout>
-    );
-  }
+            </DefaultLayout>
+        );
+    }
 }
 
 Model.getInitialProps = async function({ query: id }) {
-  return { selectedModelId: id.id };
+    return { selectedModelId: id.id };
 };
 
 const mapStateToProps = ({ ModelState }) => {
-  const { loading, ModelData } = ModelState;
-  return { loading, ModelData };
+    const { loading, ModelData } = ModelState;
+    return { loading, ModelData };
 };
 
 export default connect(mapStateToProps, {
-  getModelData
+    getModelData
 })(Model);

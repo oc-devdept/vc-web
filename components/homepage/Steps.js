@@ -6,49 +6,37 @@ class Steps extends Component {
     this.state = {
       list: [
         {
-          // id: "01 Select",
           step: "Step 1",
-          // arrow: "˃",
           image: "/static/steps/step1.png",
           description:
             "Select your favourite car model"
         },
         {
-          // id: "02 Build",
           step: "Step 2",
-          // arrow: "˃",
           image: "/static/steps/step2.png",
           description:
             "Customise your exterior & interior"
         },
         {
-          // id: "03 Build",
           step: "Step 3",
-          // arrow: "˅",
           image: "/static/steps/step3.png",
           description:
             "Customise your wheels"
         },
         {
-          // id: "04 Configure",
           step: "Step 4",
-          // arrow: "˂",
           image: "/static/steps/step4.png",
           description:
             "Select your accessories"
         },
         {
-          // id: "05 Accessories",
           step: "Step 5",
-          // arrow: "˂",
           image: "/static/steps/step5.png",
           description:
             "Select your COE package"
         },
         {
-          // id: "06 Get",
           step: "Step 6",
-          arrow: "",
           image: "/static/steps/step6.png",
           description:
             "Select your Aftersales Package"

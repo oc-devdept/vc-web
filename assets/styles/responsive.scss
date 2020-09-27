@@ -58,6 +58,10 @@
   .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     top: 76px;
   }
+
+  .nav-btn {
+    padding: 50% 13% !important;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -121,6 +125,13 @@
     .submenu-title {
     margin-bottom: 15px;
   }
+
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
+    width: 65%;
+  }
+
   .btn {
     padding: 11px 23px;
     font-size: 12px;
@@ -894,19 +905,12 @@
     line-height: 38px;
     font-size: 15px;
   }
-  .footer-area {
-    padding-top: 35px;
+  .footer-signup {
+    text-align: center;
+    margin-top: 20px;
   }
   .single-footer-widget {
     margin-bottom: 30px;
-  }
-  .copyright-area {
-    margin-top: 5px;
-    text-align: center;
-  }
-  .copyright-area .payment-card {
-    text-align: center;
-    margin-top: 10px;
   }
   .go-top {
     bottom: 10px;
@@ -1000,6 +1004,10 @@
   }
   .main-banner-three.item-bg4::before {
     opacity: 0.5;
+  }
+  .virtual-showroom-area .frame {
+    width: 100%;
+    height: 530px;
   }
 }
 
@@ -1450,10 +1458,15 @@
     padding-bottom: 10px;
   }
   .navbar-light .navbar-toggler {
-    color: #222222;
-    border-color: #222222;
+    // color: #222222;
+    border-color: transparent;
     border-radius: 0;
   }
+  .nav-profile-icon {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
   .search-overlay.search-popup {
     width: 250px;
     padding: 10px;
@@ -1468,6 +1481,7 @@
     right: 15px;
   }
   .navbar-area.is-sticky {
+    width: auto !important;
     height: auto !important;
   }
   .navbar-area.is-sticky .others-option {
@@ -1487,12 +1501,12 @@
   .navbar-light .navbar-toggler {
     outline: 0;
   }
-
+ 
   .sub-title {
     display: block;
-    .box1, .box2, .box3 {
+    .box {
       width: 100%;
-      margin: 0 0 10px 0;
+      margin: 0 20px 10px 20px;
     }
   }
   .steps-row {
@@ -1515,11 +1529,29 @@
     margin-top: 30px;
   }
   .copyright-area {
-    margin-top: 10px;
+    padding: 10px 40px 0 40px;
+  }
+  .footer-accordion-info {
+    padding-left: 25px !important;
+  }
+  .footer-accordion-info a {
+    font-size: 14px;
   }
   .left-section {
-    display: flex;
-    justify-content: space-between;
+    display: block;
+    text-align: left;
+  }
+  .left-section a {
+    margin-bottom: 10px;
+  }
+  .right-section {
+    display: block;
+  }
+  .footer-area .top {
+    padding: 40px 40px 20px 40px;
+  }
+  .footer-area .footer-info-group {
+    display: none;
   }
   .sub-box {
     display: block;
@@ -1549,11 +1581,102 @@
   .contact-us-area .container {
     width: 90% !important;
   }
+
+  
+  
+
+  .build-box {
+    width: 100%;
+    margin: 0 20px 20px;
+  }
+
+  .build-area .column {
+    width: 100%;
+    margin: 10px 20px;
+  }
+  .build-area .build-content .part1-left, .build-area .build-content .part1-right, .build-area .build-content .part2-left  {
+    margin-left: 20px;
+    width: 100%;
+  }
+  .bookAppBtn {
+    width: 100%;
+  }
+  .packing-types {
+    margin: 0 auto;
+  }
+  .available-services .column {
+    margin: 0 auto;
+  }
+  .available-services .box1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .available-services .box2 {
+    padding-right: 10px;
+  }
+
+  .section-two-header {
+    padding: 0 20px;
+  }
+  .available-text {
+    text-align: center;
+    padding: 20px;
+  }
+  .blogTabPanel {
+    width: 80%;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .navbar-brand-mobile img {
+    width: 70%;
+    margin-left: 20px;
+  }
+  .medIcon-mobile {
+    font-size: 35px;
+    color: #ffffff;
+  }
+  .profile-icon {
+    display: none;
+  }
+  .nav-btn {
+    width: 96%;
+  }
+  .nav-btn span {
+    padding: 15px !important;
+  }
+  .navbar-hr {
+    padding-top: 10px;
+  }
+  .build-area .filter {
+    margin: auto 0 auto 5px;
+  }
+  .build-area .sortBy {
+    margin: auto 5px;
+  }
+  .filter-type-title {
+    margin: 20px 10px auto;
+  }
+  .filter-checkbox {
+    margin-left: 10px;
+    width: 100%;
+  }
+  .red-btn {
+    padding: 8px 16px !important;
+  }
+  .single-banner h2 {
+    font-size: 2.5rem;
+  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
 // If bootstrap.min.css is ever updated/refreshed, delete relevant styles there
 @media only screen and (min-width: 992px) {
+  .section-title.without-bg {
+    padding: 20px 0;
+    background-color: transparent;
+  }
+
   .navbar .navbar-nav {
     align-items: center;
   }
@@ -1576,8 +1699,13 @@
     justify-content: flex-start;
   }
 
+  .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
+    display: inline-block;
+    // padding-right: 20px;
+  }
+
   .sub-title {
-    .box1, .box2, .box3 {
+    .box {
       width: 30%;
     }
   }
@@ -1603,6 +1731,9 @@
   }
   .left-section {
     display: flex;
+  }
+  .left-section a {
+    margin-right: 40px;
   }
   .right-section p {
     float: right;
@@ -1636,6 +1767,92 @@
   }
   .views-area .container {
     width: 60%;
+  }
+  .footer-area {
+    padding: 60px;
+  }
+  .mobile-footer {
+    display: none;
+  }
+
+  .build-box {
+    width: 47%;
+    margin: 0 0 20px;
+  }
+
+  .build-area .column {
+    float: left;
+    width: 46%;
+    margin: 10px 2%;
+  }
+  .build-area .build-content .part1-left {
+    margin-left: 10%;
+    float: left;
+    width: 40%;
+  }
+  .build-area .build-content .part1-right .power {
+    float: right;
+    width: 40%;
+  }
+  .build-area .build-content .part2-left {
+    clear: both;
+    margin-left: 10%;
+  }
+  .build-area .filter {
+    margin: auto 0 auto 20px;
+  }
+  .build-area .sortBy {
+    margin: auto 20px;
+  }
+
+  .form-date {
+    margin: 12px 0 0 50px;
+  }
+  .bookAppBtn {
+    width: 60%;
+    margin: 20px auto 0;
+  }
+  .available-services .column {
+    margin: 0 150px;
+  }
+  .available-text {
+    text-align: center;
+    padding: 20px 20%;
+  }
+  .blogTabPanel {
+    width: 60%;
+  }
+  .packing-types .column {
+    width: 50%;
+  }
+  .navbar-brand-mobile {
+    display: none;
+  }
+  .medIcon-mobile {
+    display: none;
+  }
+  .filter-type-title {
+    margin: 20px;
+  }
+  .single-banner h2 {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .form-date {
+    margin: 15px auto;
+  }
+  .virtual-showroom-area .frame {
+    width: 100%;
+    height: 530px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .virtual-showroom-area .frame {
+    width: 100%;
+    height: 800px;
   }
 }
 

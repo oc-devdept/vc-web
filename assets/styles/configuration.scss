@@ -1,0 +1,141 @@
+.orange-circle > .MuiStepLabel-iconContainer >  .MuiStepIcon-active{
+    color: #f29d30        
+  
+}
+
+.bottomSummary {
+    background-color:#4b6674;
+    padding:20px;
+    width:95%;
+    color: white;
+    margin-left:20px;
+
+}
+
+.bottomSummary > h5 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.bottomSummary ol {
+    margin:10px;
+    padding:0;
+    font-size:15px;
+}
+
+.bottomSummary ul {
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    font-size:12px;
+}
+.bottomSummary ul > li {
+    float:left;
+    width:100%;
+    margin-bottom: 18px;
+}
+
+.bottomSummary .info {
+    float:left;
+}
+.bottomSummary .price {
+    float:right;
+    text-align: right;
+    
+}
+.bottomSummary hr {
+    clear:both;
+    width:100%;
+   border-color: rgb(223, 222, 222);
+}
+
+.bottomSummary .totalRow {
+    height:30px;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.bottomSummary .grandTotal {
+    float:left;    
+}
+
+.configHeader {
+    margin-top:20px;
+}
+
+.configCoverImg {
+    object-fit: cover;
+    max-height: 800px;
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+.configure-total {
+    text-transform: uppercase;
+}
+.configure-total dt {
+    display: inline-block;
+}
+.configure-total dl dt:nth-child(2) {
+    float: right;
+}
+.configure-total-header {
+    background: #4b6674;
+    color: #fff;
+    text-transform: uppercase;
+}
+.configure-sect {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+.configure-opt {
+    background: #fcfcfc;
+    padding: 15px;
+  }
+
+.optionTitleRow {
+    display:flex;
+}
+
+.configOptionBox {
+    -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
+  max-height:0;
+  overflow:hidden;
+}
+
+.configOptionBox + p {
+    display:none;
+}
+
+.configOptionBox.show {
+    max-height:600px;  
+}
+.configOptionBox.show + p {
+    display: block;
+}
+
+.configure-opt-title {
+    color: #4b6674;
+    display:block;
+    flex:9
+  }
+.configure-icon {
+    flex:1;    
+    color:#FF8B19;    
+}
+
+  .configure-list {
+    padding: 1%;
+    margin: 2% 0;
+  }
+
+.configure-sect .configure-gall .custom-control-label::before,
+.configure-sect .configure-gall .custom-control-label::after {
+  top: 0.25rem;
+}

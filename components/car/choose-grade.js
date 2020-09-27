@@ -17,13 +17,13 @@ class ChooseGrade extends Component {
             <section className="choose-grade-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                    <h2>CHOOSE YOUR GRADE</h2>
+                        <h2>CHOOSE YOUR GRADE</h2>
                     </div>
                 </div>
                 <div className="sub-box">
                     {
                         products.map(product => (
-                            <div className="box">
+                            <div className="box" key={product.id}>
                                 <div className="grade-box">
                                     <div className="grade-content">
                                         <img src={product.files[0].path}/>
@@ -47,7 +47,7 @@ class ChooseGrade extends Component {
                                         {
                                             product.productDetailValues.map(detail => (
                                                 detail != null && (
-                                                    <div className="bar">
+                                                    <div className="bar" key={detail.id}>
                                                         <p>{detail.detailCategory.name}</p>
                                                         <h6>
                                                             <Icon icon={smartphoneShake} width="2.3rem"/>

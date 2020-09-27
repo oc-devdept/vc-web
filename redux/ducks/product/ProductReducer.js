@@ -24,6 +24,10 @@ const INIT_STATE = {
     data: {},
     selected: {}
   },
+  ProductRims: {
+    data: {},
+    selected: {}
+  },
   ProductAccessories: {
     selectedAccessories: [],
     data: {}
@@ -81,36 +85,30 @@ export default (state = INIT_STATE, action) => {
     case types.GET_PRODUCT_GRADES_SUCCESS:
       var {
         gradeId,
-        gradesData,
-        specificationData,
-        exteriorData,
-        interiorData,
-        accessoriesData
-      } = action.payload;
+        gradesData
+        
+      } = action.payload;      
 
       const ProductGrade = gradesData.data.fields.find(
         element => element.id === gradeId
       );
-
+      /*
+      specificationData,
+        exteriorData,
+        interiorData,
+        accessoriesData
       var imageList = [];
+      var thumbsList = [];
       var populateImageList = ProductGrade => {
         ProductGrade.files.map(item => {
           imageList.push(item.path);
         });
       };
       populateImageList(ProductGrade);
-
-      return {
-        ...state,
-        ProductGrade: {
-          id: ProductGrade.id,
-          name: ProductGrade.name,
-          price: ProductGrade.selling_Price,
-          description: ProductGrade.description,
-          images: imageList,
-          data: gradesData.data
-        },
-        ProductSpecification: {
+      ProductGrade.images.forEach(element => {
+        thumbsList.push(element.path);
+      });
+      ProductSpecification: {
           data: specificationData.data.fields.Detail
         },
         ProductExterior: {
@@ -123,6 +121,21 @@ export default (state = INIT_STATE, action) => {
           ...state.ProductAccessories,
           data: accessoriesData.data
         }
+      */
+      let image = ProductGrade.files.length > 0 ? ProductGrade.files[0].path : "";
+      let thumb = ProductGrade.images.length > 0 ? ProductGrade.images[0].path : "";
+      return {
+        ...state,
+        ProductGrade: {
+          id: ProductGrade.id,
+          name: ProductGrade.name,
+          price: ProductGrade.selling_Price,
+          description: ProductGrade.description,
+          details: ProductGrade.details,
+          images: image,
+          thumbs: thumb,
+          data: gradesData.data
+        }        
       };
 
     case types.GET_PRODUCT_GRADES_FAILURE:
@@ -132,17 +145,16 @@ export default (state = INIT_STATE, action) => {
 
     case types.SELECTED_PRODUCT_GRADE:
       var id = action.payload;
-      var { fields } = state.ProductGrade.data;
+      var { fields } = state.ProductGrade.data;      
       var object = fields.find(element => element.id === id);
-
-      var imageList = [];
-      var populateImageList = object => {
-        object.files.map(item => {
-          imageList.push(item.path);
-        });
-      };
-      populateImageList(object);
-
+      if(object){
+        image = object.files.length > 0 ? object.files[0].path : "";
+        thumb = object.images.length > 0 ? object.images[0].path : "";
+      }
+      else {
+        object = {}
+      }
+      
       return {
         ...state,
         ProductGrade: {
@@ -151,7 +163,8 @@ export default (state = INIT_STATE, action) => {
           name: object.name,
           price: object.selling_Price,
           description: object.description,
-          images: imageList
+          images: image,
+          thumbs: thumb
         }
       };
 
@@ -162,26 +175,55 @@ export default (state = INIT_STATE, action) => {
 
     case types.GET_PRODUCT_GRADE_DATA_SUCCESS:
       var {
+        id,
         specificationData,
         exteriorData,
         interiorData,
         accessoriesData
       } = action.payload;
-
+      let interior = { fields : {}};
+      let rims = { fields: {}};
+      Object.entries(interiorData.data.fields).map(([variance, data]) => {
+        if(variance == "Rims"){
+          rims.fields[variance] = data;
+        }
+        else {
+          interior.fields[variance] = data;
+        }
+      });
+      //console.log(exteriorData.data);
       return {
         ...state,
         ProductSpecification: {
-          data: specificationData.data.fields.Detail
+          data: {
+            ...state.ProductSpecification.data,
+           [id]:  specificationData.data.fields.Detail
+          }
         },
         ProductExterior: {
-          data: exteriorData.data
+          data: {
+           ...state.ProductExterior.data, 
+           [id]: exteriorData.data
+          }
         },
         ProductInterior: {
-          data: interiorData.data
+          data: {
+            ...state.ProductInterior.data,
+            [id]:interior
+          }
+        },
+        ProductRims: {
+          data: {
+            ...state.ProductRims.data,
+            [id]: rims
+          }
         },
         ProductAccessories: {
           ...state.ProductAccessories,
-          data: accessoriesData.data
+          data: {
+            ...state.ProductAccessories.data,
+            [id]: accessoriesData.data
+          }
         }
       };
 
@@ -205,9 +247,19 @@ export default (state = INIT_STATE, action) => {
           selected: action.payload
         }
       };
+    case types.SELECTED_PRODUCT_RIMS:
+      return {
+        ...state,
+        ProductRims: {
+          ...state.ProductRims,
+          selected: action.payload
+        }
+      }
 
     case types.SELECTED_PRODUCT_ACCESSORIES:
       let selectedAccessoriesId = [];
+      let selectedAccessories = [];
+      /*
       Object.values(action.payload).map(values =>
         Object.entries(values.values).map(([productOptionId, selected]) => {
           if (selected) {
@@ -217,7 +269,7 @@ export default (state = INIT_STATE, action) => {
       );
 
       var { fields } = state.ProductAccessories.data;
-      let selectedAccessories = [];
+      
       Object.values(fields).map(item => {
         item.map(object => {
           if (
@@ -234,7 +286,7 @@ export default (state = INIT_STATE, action) => {
           }
         });
       });
-
+      */
       return {
         ...state,
         ProductAccessories: {

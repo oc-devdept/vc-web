@@ -50,8 +50,8 @@ export default (state = INIT_STATE, action) => {
         loading: false,
       };
 
-    // case types.GET_MODEL_DATA_SUCCESS:
-    //   return { ...state, loading: false, ModelData: action.payload };
+      // case types.GET_MODEL_DATA_SUCCESS:
+      //   return { ...state, loading: false, ModelData: action.payload };
 
     case types.GET_MODEL_DATA_FAILURE:
       NotificationManager.warning(action.payload);

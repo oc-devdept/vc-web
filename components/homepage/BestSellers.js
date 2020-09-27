@@ -6,7 +6,7 @@ import { formatPrice } from "Components/Helpers/helpers";
 
 // Carousel
 import Carousel from "react-multi-carousel";
-import { getFeaturedCars } from "Ducks/product";
+import { getFeaturedHtml } from "Ducks/homepage";
 
 import { Icon } from '@iconify/react';
 import tickIcon from '@iconify/icons-subway/tick';
@@ -14,7 +14,7 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 class BestSeller extends Component {
   componentDidMount() {
-    this.props.getFeaturedCars();
+    this.props.getFeaturedHtml();
   }
 
   render() {
@@ -22,20 +22,29 @@ class BestSeller extends Component {
     var modelImage = {
       objectFit: "cover",
       borderRadius: "20px",
-      // wdith: '150px',
       height: "180px",
       padding: "5px",
     };
+    
+    return (<div dangerouslySetInnerHTML={{__html: this.props.featuredHtml.html}} />);
+  }
+}
+const mapStateToProps = ({ HomeState }) => {
+  const { FeaturedState } = HomeState;
+  const { featuredHtml } = FeaturedState;
+  return { featuredHtml };
+};
 
-    return (
-      <section className="best-sellers-area">
+export default connect(mapStateToProps, { getFeaturedHtml })(BestSeller);
+/*
+<section className="best-sellers-area">
         <div className="container">
           <div className="section-title without-bg" align="center">
             <h2>Featured Cars</h2>
           </div>
 
           <div className="sub-title">
-            <div className="box1">
+            <div className="box">
               <h5>MPV / SUV</h5>
                 <div className="fc-box">
                 <div className="feature-cars">
@@ -56,7 +65,7 @@ class BestSeller extends Component {
                   </p>
                   <Link href="/">
                     <a className="btn moreBtn">
-                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                     </a>
                   </Link>
                   <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -80,14 +89,14 @@ class BestSeller extends Component {
                   </p>
                   <Link href="/">
                     <a className="btn moreBtn">
-                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                      DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                     </a>
                   </Link>
                   <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
                 </div>
               </div>
             </div>
-            <div className="box2">
+            <div className="box">
               <h5>HATCHBACKS</h5>
               <div className="fc-box">
               <div className="feature-cars">
@@ -108,7 +117,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -132,14 +141,14 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
               </div>
             </div>
             </div>
-            <div className="box3">
+            <div className="box">
               <h5>NEW ARRIVALS</h5>
               <div className="fc-box">
                 <div className="feature-cars">
@@ -160,7 +169,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -184,7 +193,7 @@ class BestSeller extends Component {
                 </p>
                 <Link href="/">
                   <a className="btn moreBtn">
-                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} />
+                    DISCOVER MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
                   </a>
                 </Link>
                 <p className="terms"> Vaild till 1 Jan 2021 12pm. Price subject to change without prior notice. Terms &amp; Conditions Apply. VES Banding: A2</p>
@@ -194,13 +203,4 @@ class BestSeller extends Component {
           </div>
         </div>
       </section>
-    );
-  }
-}
-const mapStateToProps = ({ ProductState }) => {
-  const { featuredCars } = ProductState;
-  const { featured, loading } = featuredCars;
-  return { featured, loading };
-};
-
-export default connect(mapStateToProps, { getFeaturedCars })(BestSeller);
+*/

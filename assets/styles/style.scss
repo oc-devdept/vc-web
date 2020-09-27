@@ -65,8 +65,10 @@ Default CSS
 }
 /*icon*/
 .medIcon {
-  font-size: 30px;
+  font-size: 35px;
+  color: #ffffff !important;
 }
+
 body {
   padding: 0;
   margin: 0;
@@ -253,14 +255,10 @@ img {
 }
 
 .section-title h2 {
-  margin-bottom: 0;
   text-transform: uppercase;
   font-size: 24px;
-}
-
-.section-title.without-bg {
-  padding: 20px 0;
-  background-color: transparent;
+  font-weight: 500;
+  margin: 20px 0;
 }
 
 // Feature Cars Btn
@@ -300,6 +298,7 @@ img {
   box-shadow: unset;
   background-color: #ffffff;
   color: #D94032 !important;
+  border: 1px solid #D94032;
 }
 
 // Enquire Btn
@@ -331,6 +330,22 @@ img {
   border: 1px solid #f29d30 !important;
 }
 
+// Grey White Bg Btn
+.gw-without-bg-btn {
+  color: #222222 !important;
+  background-color: #ffffff;
+  border: 1px solid #CED0D2 !important;
+  margin-right: 10px;
+}
+.gw-without-bg-btn:hover,
+.gw-without-bg-btn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #ffffff !important;
+  color: #f29d30 !important;
+  border: 1px solid #f29d30 !important;
+}
+
 /*btn(primary&light)*/
 .btn {
   border: 1px solid transparent;
@@ -339,7 +354,7 @@ img {
   border-radius: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 400;
   font-size: 14px;
   // -webkit-transform: skew(-12deg);
@@ -360,7 +375,7 @@ img {
 .nav-btn {
   color: #ffffff !important;
   background-color: #f29d30;
-  padding: 50% 13% !important;
+  // padding: 50% 13% !important;
   text-align: center;
   margin-right: 0 !important;
 }
@@ -441,7 +456,7 @@ img {
   box-shadow: unset;
 }
 
-.btn-light:hover,
+.btn-light:hover:not(:disabled),
 .btn-light:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
@@ -524,16 +539,10 @@ Single Car Page Area CSS
   background-size: cover;
 }
 
-.single-banner h2 {
-  font-size: 5rem;
-  // padding: 20px 0 50px;
-}
-
 .choose-grade-area {
   margin-bottom: 30px;
 }
 .choose-grade-area h2 {
-  font-weight: bolder;
   margin: 20px 0;
 }
 .sub-box {
@@ -571,14 +580,19 @@ Single Car Page Area CSS
   margin: 0;
 }
 .grade-content .bar h6 {
-  color: #020202;
+  color: #666666;
   margin-top: 10px;
+}
+.grade-content .button {
+  display: block;
 }
 .grade-content .button a {
   margin: 10px 0;
 }
 .grade-content .button a:first-child {
   margin-right: 10px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 .grade-content h3 {
   margin: 20px 0;
@@ -586,6 +600,10 @@ Single Car Page Area CSS
 .grade-content h5 {
   color: #f29d30;
   font-size: 1.8rem;
+}
+
+.arrow-icon {
+  vertical-align: middle;
 }
 
 /*================================================
@@ -596,11 +614,6 @@ About Honda Fit Area CSS
   padding: 20px 0;
 }
 
-.about-honda-fit-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
-}
-
 /*================================================
 360 Viewing Area CSS
 =================================================*/
@@ -609,9 +622,7 @@ About Honda Fit Area CSS
   padding: 20px 0;
 }
 .views-area h2 {
-  font-weight: bolder;
   color: #ffffff !important;
-  margin: 20px 0;
 }
 .views-area h6 {
   color: #ffffff !important;
@@ -642,11 +653,6 @@ Gallery Area CSS
 .gallery-area {
   background-color: #f3f3f3;
   padding: 20px 0 60px;
-}
-
-.gallery-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
 }
 
 .thumbnail-slider-wrap {
@@ -692,11 +698,6 @@ Contact Us Details Area CSS
   width: 80%;
 }
 
-.contact-us-area h2 {
-  font-weight: bolder;
-  margin: 20px 0;
-}
-
 .contact-details h6 {
   margin: 20px 0;
 }
@@ -728,8 +729,305 @@ Contact Us Details Area CSS
   margin: 20px auto;
 }
 
+.contact-form-area .trade-in-details {
+  margin-bottom: 20px;
+}
 
+/*================================================
+Build Area CSS
+=================================================*/
+.build-area {
+  padding-bottom: 20px;
+}
 
+.build-area .filter {
+  float: left;
+  padding-bottom: 20px;
+}
+.filter-button {
+  margin-top: 20px !important;
+}
+
+.build-area .sortBy {
+  float: right;
+}
+.build-area .sortBy span {
+  margin: auto 10px auto 0;
+}
+
+.build-area .sortBy .sortBy-Btn {
+  padding-right: 5px;
+}
+
+.build-area .row {
+  clear: both;
+}
+.build-area .column {
+  border: 2px solid #E39D43;
+}
+.build-area .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.build-area .column img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 80%;
+}
+.build-area .column .left {
+  float: left;
+  width: 45%;
+  margin: 20px;
+}
+.build-area .column .right {
+  float: right;
+  width: 45%;
+  text-align: right;
+}
+.build-area .column .types {
+  background-color: #D94032;
+  float: right;
+  width: 50%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 12px;
+  padding: 5px 0;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.build-area .column .car-name {
+  clear: both;
+  margin: 20px 20px 10px;
+}
+.build-area .column .car-price {
+  margin: 0 20px 0px 0;
+  color: #f29d30;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.build-area .build-content {
+  clear: both;
+  background-color: #F6F8FC;
+  padding: 20px;
+}
+.build-area .button {
+  margin: 20px 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/*================================================
+Virtual Showroom Area CSS
+=================================================*/
+.virtual-showroom-area {
+  background-color: #212C33;
+}
+
+/*================================================
+Book Car Servicing Area CSS
+=================================================*/
+.header-bar {
+  background-color: #212C33;
+  padding: 20px;
+  margin: 0;
+}
+
+.header-bar h6 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+}
+.driver-details {
+  padding: 40px;
+}
+
+.driver-details-form .form-check {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.driver-details-form textarea {
+  padding-top: 10px;
+  height: 290px;
+}
+.driver-details-form a:hover,
+.driver-details-form a:focus {
+  color: #222222!important;
+}
+.DayPicker-wrapper {
+  border: 1px solid #212C33;
+}
+.jumbotron {
+  margin-bottom: 0 !important;
+}
+.successfulMessage p {
+  margin: 20px 0;
+}
+.successfulMessage img {
+  width: 30%;
+}
+
+/*================================================
+About Car Servicing Area CSS
+=================================================*/
+.packing-types {
+  display: flex;
+  justify-content: center;
+}
+.packing-types img {
+  width: 50%;
+  margin-bottom: 20px;
+}
+.packing-types p {
+  margin: 10px auto 20px;
+}
+
+.available-services {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.available-services p {
+  text-transform: uppercase;
+  color: #212C33;
+  font-weight: 500;
+}
+.available-services .tickIcon {
+  color: #f29d30;
+  margin-right: 10px;
+}
+
+/*================================================
+About Us Area CSS
+=================================================*/
+.about-us-banner {
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/about-us/about-us-banner.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+.about-history {
+  background-color: #212C33;
+  padding: 40px;
+  margin: 0;
+}
+.about-history h2 {
+  color: #ffffff;
+  margin: 0 auto 20px;
+}
+.about-history p {
+  color: #ffffff;
+}
+.about-history .amount {
+  font-size: 2.5rem;
+}
+.about-history .column {
+  margin-top: 20px;
+}
+
+.our-story {
+  background-color: #ffffff;
+  padding: 40px;
+}
+.our-story h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+.our-story h5 {
+  margin: 20px auto;
+}
+
+/*================================================
+Faq Area CSS
+=================================================*/
+.faqs-area {
+  margin: 40px;
+}
+
+/*================================================
+TNC Area CSS
+=================================================*/
+.tnc-area {
+  margin: 40px auto;
+  width: 80%;
+}
+.tnc-area h3 {
+  color: #222222;
+}
+.tnc-section h6 {
+  margin: 20px auto;
+  font-size: 14px;
+}
+
+/*================================================
+PNSP Area CSS
+=================================================*/
+.pnsp-area {
+  margin: 40px auto;
+  width: 80%;
+}
+.pnsp-area h3 {
+  color: #222222;
+}
+.pnsp-section h6 {
+  margin: 20px auto;
+  font-size: 14px;
+}
+
+/*================================================
+Blog Area CSS
+=================================================*/
+.blogTabPanel h3 {
+  margin-bottom: 20px;
+}
+.blogTabPanel .text {
+  margin: 40px auto 20px auto;
+}
+.blogTabPanel .button {
+  margin: 20px auto;
+}
+
+.blog-post-main-area {
+  margin: 40px auto;
+  width: 80%;
+}
+.blog-post-main-area .link {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.blog-post-main-area .back {
+  margin-left: 20px;
+}
+
+.blog-post-area h2 {
+  margin: 20px auto;
+}
+.blog-post-area h6 {
+  color: #222222;
+  margin-bottom: 20px;
+}
+.blog-post-area .post-date {
+  margin: 5px 0 0 10px;
+}
+.blog-post-area .row {
+  margin: 0 auto;
+}
+.blog-post-area .left {
+  margin: auto;
+  text-align: center;
+}
+.blog-post-area .right {
+  margin: auto;
+  text-align: center;
+}
+.blog-post-main-area .iconNdate {
+  margin-right: 10px;
+}
 
 /*================================================
 Top Panel Area CSS
@@ -1021,8 +1319,8 @@ Navbar Area CSS
 } */
 
 // .comero-nav .navbar .navbar-nav .nav-item {
-  // padding-top: 20px;
-  // padding-bottom: 20px;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
 // }
 
 .comero-nav .navbar .navbar-nav .nav-item.p-relative {
@@ -1065,7 +1363,7 @@ Navbar Area CSS
   border: none;
   top: 80px;
   left: 0;
-  width: 250px;
+  // width: 250px;
   z-index: 99;
   display: block;
   opacity: 0;
@@ -1077,26 +1375,27 @@ Navbar Area CSS
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
-  position: relative;
-  padding: 0;
+  margin: 0 auto;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
   text-transform: uppercase;
-  padding: 8px 15px;
-  margin: 0;
-  display: block;
-  color: #666666;
+  padding: 10px 15px;
+  margin: 0 auto;
+  color: #212C33;
   font-size: 14px;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #222222;
+  color: #f29d30;
+  border-bottom: 2px solid #f29d30;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -3786,7 +4085,7 @@ Trending Products Area CSS
 Home Page - Feature Cars Area CSS
 =================================================*/
 .sub-title h5 {
-  margin: 20px 0;
+  margin-bottom: 20px;
   color: #E39D43;
   text-align: center;
 }
@@ -3794,7 +4093,7 @@ Home Page - Feature Cars Area CSS
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 80%;
+  // width: 80%;
   margin: 0 auto;
 }
 .fc-box {
@@ -3802,7 +4101,7 @@ Home Page - Feature Cars Area CSS
 }
 .feature-cars {
   text-align: center;
-  padding: 20px 50px;
+  padding: 20px 40px;
   margin: 10px;
 }
 .feature-cars h3 {
@@ -3826,10 +4125,6 @@ Home Page - Best Sellers Area CSS
 =================================================*/
 .best-sellers-area {
   padding-bottom: 30px;
-}
-
-.best-sellers-area h2 {
-  font-weight: bolder;
 }
 
 .best-sellers-products-slides.owl-theme .owl-nav {
@@ -3903,13 +4198,11 @@ Home Page - Step Area CSS
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  padding: 20px;
+  // padding: 20px;
   width: 100%;
 }
 .steps-area h2 {
   color: #ffffff;
-  font-weight: bolder;
-  margin-bottom: 20px;
 }
 .step {
   background-color: #ffffff;
@@ -3918,6 +4211,7 @@ Home Page - Step Area CSS
 
 .stepImgs {
   vertical-align: middle;
+  padding: auto 20px;
 }
 .stepBubble {
   border: 1px solid #E39D43;
@@ -3934,16 +4228,12 @@ Home Page - Step Area CSS
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100%;
+  // width: 100%;
 }
 
 /*================================================
 Home Page - Question Form Area CSS
 =================================================*/
-.question-area h2 {
-  margin-bottom: 20px;
-  font-weight: bolder;
-}
 .question-area p {
   margin-bottom: 30px;
 }
@@ -3954,6 +4244,18 @@ Home Page - Question Form Area CSS
 .question_form textarea {
   padding-top: 10px;
   height: 200px;
+}
+.question-area a:hover,
+.question-area a:focus {
+  color: #222222!important;
+}
+
+/*================================================
+Enquiry Form Area CSS
+=================================================*/
+.form-check-label a:hover,
+.form-check-label a:focus {
+  color: #222222 !important;
 }
 
 /*================================================
@@ -6599,6 +6901,9 @@ Sizing Guide Area CSS
 /*================================================
 FAQs Area CSS
 =================================================*/
+.faq-area {
+  margin: 40px auto;
+}
 .faq-accordion .accordion {
   list-style-type: none;
   padding: 0;
@@ -9468,12 +9773,7 @@ Footer Area CSS
   background-color: #212C33;
   position: relative;
   z-index: 1;
-  padding: 60px;
   padding-bottom: 20px;
-}
-.footer-area h6 {
-  color: #ffffff;
-  margin-top: 20px;
 }
 .footer-area h5 {
   color: #f29d30 !important;
@@ -9485,7 +9785,6 @@ Footer Area CSS
 
 .single-footer-widget h3 {
   font-size: 17px;
-  text-transform: uppercase;
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
@@ -9535,9 +9834,31 @@ Footer Area CSS
   color: #ffffff !important;
 }
 
-.left-section a {
-  margin-right: 10px;
+.footer-accordion-info {
+  padding: 0;
+  margin: 0;
+  color: #ffffff !important;
+}
+
+.footer-accordion-info p {
   color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.footer-accordion-info p a {
+  color: #ffffff;
+  display: inline-block;
+}
+
+.footer-accordion-info p a:hover,
+.footer-accordion-info p a:focus {
+  color: #f29d30 !important;
+}
+
+.left-section a {
+  color: #ffffff;
+  margin-top: 15px;
 }
 .right-section p {
   color: #ffffff;
@@ -9683,10 +10004,7 @@ ol.progtrckr,
   text-transform: uppercase;
   font-weight: 600;
 }
-.configure-opt {
-  background: #fcfcfc;
-  padding: 15px;
-}
+
 .footer-buttons {
   margin: 2% 0 0 auto;
   width: 33%;
@@ -9703,13 +10021,7 @@ ol.progtrckr li.progtrckr-doing {
   color: #f29d30;
   border-bottom: 4px solid #f29d30;
 }
-.configure-opt-title {
-  color: #4b6674;
-}
-.configure-list {
-  padding: 1%;
-  margin: 2% 0;
-}
+
 .pull-right {
   float: right;
 }
@@ -9722,23 +10034,7 @@ ol.progtrckr li.progtrckr-doing {
   color: #ffffff !important;
   background-color: #f29d30;
 }
-.configure-total {
-  text-transform: uppercase;
-}
-.configure-total dt {
-  display: inline-block;
-}
-.configure-total dl dt:nth-child(2) {
-  float: right;
-}
-.configure-total-header {
-  background: #4b6674;
-  color: #fff;
-  text-transform: uppercase;
-}
-.configure-sect {
-  margin-bottom: 1.5rem;
-}
+
 .product-desc dl {
   width: 33%;
   display: inline-block;
@@ -9762,14 +10058,17 @@ ol.progtrckr li.progtrckr-doing {
   color: #f29d30;
 }
 
-.configCoverImg {
-  border-radius: 20px;
-  object-fit: cover;
-  max-height: 300px;
-  max-width: 600px;
-  width: 100%;
-  height: auto;
+
+
+.gradeThumb {
+  display:inline-block;
+  margin-right:5px;
+  max-width: 71px;
 }
+.configText {
+  display:inline-block;
+}
+
 /*# sourceMappingURL=style.css.map */
 
 .interior-image {
@@ -9910,7 +10209,4 @@ input[type="number"] {
   padding: 15px;
 }
 
-.configure-sect .configure-gall .custom-control-label::before,
-.configure-sect .configure-gall .custom-control-label::after {
-  top: 0.25rem;
-}
+

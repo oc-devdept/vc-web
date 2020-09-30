@@ -25,6 +25,8 @@ import Summary from "./Summary";
 import ExtInt from "./ExtInt";
 import Rims from "./Rims";
 import BottomSummary from "./BottomSummary";
+import Coe from './Coe';
+import Aftersales from './Aftersales';
 
 import {
   getProductGrades,
@@ -33,6 +35,7 @@ import {
   getProductGradeData,
   selectedProductExterior,
   selectedProductInterior,
+  selectedProductRims,
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,
@@ -82,11 +85,11 @@ class Product extends Component {
   }
 
   handleNext = () => {
-    if(this.state.verticalStep < 4){
+    if(this.state.verticalStep < 3){
       this.setState({
         verticalStep: this.state.verticalStep+1
       })
-    }
+    }    
     else {
       this.setState({
         activeStep: this.state.activeStep +1
@@ -136,8 +139,9 @@ class Product extends Component {
                 </div>
                 <div className="step-body">
                   <div className="row">
-                    <div className="col-md-12 text-center configHeader"><h1>CAR CONFIGURATOR</h1></div>
+                <div className="col-md-12 text-center configHeader"><h1>{this.steps[this.state.activeStep].toUpperCase()}</h1></div>
                   </div>
+                  { this.state.activeStep == 0 && (
                   <div className="row">
                     <div className="col-md-2">
                       <div style={{marginTop:"60px"}}></div>
@@ -175,18 +179,37 @@ class Product extends Component {
                     { this.state.verticalStep == 2 &&  
                       <Rims
                       gradeId={ProductState.ProductGrade.id}
-                      ProductRims={ProductState.ProductRims}                      
+                      ProductRims={ProductState.ProductRims}
+                      selectedProductRims={this.props.selectedProductRims}                      
                     />
                     }
-                    { this.state.verticalStep == 3 &&  
+                    { this.state.verticalStep == 3 &&
                       <Accessories
                       gradeId={ProductState.ProductGrade.id}
                       ProductAccessories={ProductState.ProductAccessories}
                       selectedProductAccessories={this.props.selectedProductAccessories}
                     />
                     }
+
                     </div>
                   </div>
+                  )}
+                  { this.state.activeStep == 1 && 
+                        <div className="row">
+                          <div className="col-md-12">
+                            <Coe />
+                            </div>
+                          </div>
+
+                  }
+                  { this.state.activeStep == 2 && 
+                        <div className="row">
+                          <div className="col-md-12">
+                            <Aftersales />
+                            </div>
+                          </div>
+
+                  }
                 </div>
               </div>            
             </div>
@@ -229,6 +252,7 @@ export default connect(mapStateToProps, {
   getProductGradeData,
   selectedProductExterior,
   selectedProductInterior,
+  selectedProductRims,
   selectedProductAccessories,
   updateProductTotal,
   updateLoanCalculator,

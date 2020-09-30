@@ -6,6 +6,7 @@ import { selectedStockId } from "Components/Helpers/helpers";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { ThreeSixty } from "@material-ui/icons";
 
 const StyledTabs = withStyles({
   
@@ -55,73 +56,73 @@ class ExtInt extends Component {
       interior: {}
     }
     
-    if (!!this.props.ProductExterior.selected) {
-      this.state.exterior = this.props.ProductExterior.selected;      
-    } else {      
-      const { fields } = this.props.ProductExterior.data[this.props.gradeId];      
-      Object.entries(fields).map(([variance, data]) => {
-        // If there is a default option available, pre-select the first one
-        const selectedIndex = data.objects.findIndex(
-          element => element.isDefault
-        );
-        if (selectedIndex !== -1) {
-          this.state['exterior'][variance] = {
-            selectedKey: selectedIndex,
-            id: fields[variance].objects[selectedIndex].id,
-            name: fields[variance].objects[selectedIndex].name,
-            price: fields[variance].objects[selectedIndex].price,
-            thumbnail: fields[variance].objects[selectedIndex].files[0].path,
-            stockId: selectedStockId(
-              fields[variance].objects[selectedIndex].stockhistory
-            )
-          };
-        } else {
-          this.state['exterior'][variance] = {
-            selectedKey: 0,
-            id: fields[variance].objects[0].id,
-            name: fields[variance].objects[0].name,
-            price: fields[variance].objects[0].price,
-            thumbnail: fields[variance].objects[0].files[0].path,
-            stockId: selectedStockId(fields[variance].objects[0].stockhistory)
-          };
-        }        
-      });
-    }
-    if (!!this.props.ProductInterior.selected) {        
-        this.state.interior = this.props.ProductInterior.selected;
-
-    } else {        
-      const { fields } = this.props.ProductInterior.data[this.props.gradeId];
+         
+    var { fields } = this.props.ProductExterior.data[this.props.gradeId];    
+          
+    Object.entries(fields).map(([variance, data]) => {
+      // If there is a default option available, pre-select the first one  
+      var selectedIndex = data.objects.findIndex(element => element.isDefault);
+      if(this.props.ProductExterior.selected != null && this.props.ProductExterior.selected[variance] !== undefined){
+        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductExterior.selected[variance])
+      }          
+      if (selectedIndex !== -1) {
+        this.state['exterior'][variance] = {
+          selectedKey: selectedIndex,
+          id: fields[variance].objects[selectedIndex].id,
+          name: fields[variance].objects[selectedIndex].name,
+          price: fields[variance].objects[selectedIndex].price,
+          thumbnail: fields[variance].objects[selectedIndex].files[0].path,
+          stockId: selectedStockId(
+            fields[variance].objects[selectedIndex].stockhistory
+          )
+        };
+      } else {
+        this.state['exterior'][variance] = {
+          selectedKey: 0,
+          id: fields[variance].objects[0].id,
+          name: fields[variance].objects[0].name,
+          price: fields[variance].objects[0].price,
+          thumbnail: fields[variance].objects[0].files[0].path,
+          stockId: selectedStockId(fields[variance].objects[0].stockhistory)
+        };
+      }        
+    });
+    
       
-      Object.entries(fields).map(([variance, data]) => {        
-        // If there is a default option available, pre-select the first one
-      const selectedIndex = data.objects.findIndex(
-        element => element.isDefault
-        );
-        if (selectedIndex !== -1) {
-          this.state['interior'][variance] = {
-            selectedKey: selectedIndex,
-            id: fields[variance].objects[selectedIndex].id,
-            name: fields[variance].objects[selectedIndex].name,
-            price: fields[variance].objects[selectedIndex].price,
-            thumbnail: fields[variance].objects[selectedIndex].files[0].path,
-            stockId: selectedStockId(
-              fields[variance].objects[selectedIndex].stockhistory
-            )
-          };
-        } else {
-          this.state['interior'][variance] = {
-            selectedKey: 0,
-            id: fields[variance].objects[0].id,
-            name: fields[variance].objects[0].name,
-            price: fields[variance].objects[0].price,
-            thumbnail: fields[variance].objects[0].files[0].path,
-            stockId: selectedStockId(fields[variance].objects[0].stockhistory)
-          };
-        }
-      });
+   var { fields} = this.props.ProductInterior.data[this.props.gradeId];
+    
+    Object.entries(fields).map(([variance, data]) => {        
+      // If there is a default option available, pre-select the first one
+      
+    var selectedIndex = data.objects.findIndex(
+      element => element.isDefault
+      );
+      if(this.props.ProductInterior.selected != null && this.props.ProductInterior.selected[variance] !== undefined){
+        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductInterior.selected[variance])
+      } 
+      if (selectedIndex !== -1) {
+        this.state['interior'][variance] = {
+          selectedKey: selectedIndex,
+          id: fields[variance].objects[selectedIndex].id,
+          name: fields[variance].objects[selectedIndex].name,
+          price: fields[variance].objects[selectedIndex].price,
+          thumbnail: fields[variance].objects[selectedIndex].files[0].path,
+          stockId: selectedStockId(
+            fields[variance].objects[selectedIndex].stockhistory
+          )
+        };
+      } else {
+        this.state['interior'][variance] = {
+          selectedKey: 0,
+          id: fields[variance].objects[0].id,
+          name: fields[variance].objects[0].name,
+          price: fields[variance].objects[0].price,
+          thumbnail: fields[variance].objects[0].files[0].path,
+          stockId: selectedStockId(fields[variance].objects[0].stockhistory)
+        };
+      }
+    });
      
-    }
     
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleInteriorOptionChange = this.handleInteriorOptionChange.bind(this);
@@ -129,6 +130,7 @@ class ExtInt extends Component {
 
   handleOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductExterior.data[this.props.gradeId];
+    this.props.selectedProductExterior({[variance]: fields[variance].objects[selectedKey].id})
     this.setState({
       ...this.state,
       tabVal: 0,
@@ -150,6 +152,7 @@ class ExtInt extends Component {
 
   handleInteriorOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductInterior.data[this.props.gradeId];
+    this.props.selectedProductInterior({[variance]: fields[variance].objects[selectedKey].id})
     this.setState({
       ...this.state,
       tabVal: 1,
@@ -243,6 +246,7 @@ class ExtInt extends Component {
                 stockHistory={
                   data.objects[this.state.exterior[variance].selectedKey].stockhistory
                 }
+                showTab={this.state.tabVal == 0}
               />
               )) }
               { fields2 !== undefined && Object.entries(fields2).map(([variance, data], key) => (
@@ -255,6 +259,7 @@ class ExtInt extends Component {
                 stockHistory={
                   data.objects[this.state.interior[variance].selectedKey].stockhistory
                 }
+                showTab={this.state.tabVal == 1}
               />
               )) }
             </div>

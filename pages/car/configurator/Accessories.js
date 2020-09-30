@@ -1,292 +1,230 @@
 import React, { Component } from "react";
+import VariantSelection from "Components/configurator/VariantSelection";
+import VariantInfo from "Components/configurator/VariantInfo";
+import { selectedStockId } from "Components/Helpers/helpers";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-import { formatPrice } from "Components/Helpers/helpers";
-import SummaryTable from "Components/configurator/SummaryTable";
+const StyledTabs = withStyles({
+  
+  indicator: {
+    display: "flex",
+    height: "3px",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    "& > div": {
+      maxWidth: "50%",
+      width: "100%",
+      backgroundColor: "#FF8B19",
+    },
+    padding: "0 6px"
+  }
+})(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
+const StyledTab = withStyles(theme => ({
+  root: {
+    color: "#a7a7a7",
+    fontSize: theme.typography.pxToRem(15),
+    "&:focus": {
+      opacity: 1
+    },
+    "&$selected": {
+      color: "#FF8B19",
+      "& .tabIconShape": {
+        backgroundColor: "#FCE8D4"
+      },
+    },
+    minWidth: "80px",
+    fontSize: "1em"
+  },
+  wrapper: {
+    fontWeight: "700",
+    padding: "0 5px"
+  },
+  selected: {}
+}))(props => <Tab disableFocusRipple disableTouchRipple {...props} />);
 
 class Accessories extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props){
+        super(props);
+        this.state = {
+            tabVal: 0,
+            accessories: {}
+        }
+        
+        const { fields } = this.props.ProductAccessories.data[this.props.gradeId];       
+        console.log(fields);
+        Object.entries(fields).map(([variance, data]) => {
+            // If there is a default option available, pre-select the first one
+            let selectedIndex = data.options.findIndex(
+              element => element.isDefault
+            );
+            var selectedIds = [];
+            if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] !== undefined){
+                for(let i=0; i < data.options.length; i++){
+                    for(let j=0; j < this.props.ProductAccessories.selected.length; j++){
+                        if(data.options[i].id === this.props.ProductAccessories.selected[j]){
+                            selectedIndex = i;
+                            selectedIds.push(data.options[i].id);
+                        }
+                    }    
+                }                
+              }
+                                    
+            if (selectedIds.length > 0) {
+              let data = {
+                selectedKey: selectedIndex
+              }
+              if(fields[variance].options){
+                data.id = fields[variance].options[selectedIds[0]].id;
+                data.name = fields[variance].options[selectedIds[0]].name;
+                data.price = fields[variance].options[selectedIds[0]].price;
+                data.thumbnail = fields[variance].options[selectedIds[0]].files[0].path;
+                data.selectedId = selectedIds;
+              }
+              this.state.accessories[variance] = data;
+            } else {
+              let data = {
+                selectedKey: 0
+              }              
+              if(fields[variance].options){
+                for(let i=0; i < fields[variance].options.length; i++){
+                  if(fields[variance].options[i].isDefault){
+                    selectedIds.push(fields[variance].options[i].id);
+                  }
+                }
+                data.id = fields[variance].options[0].id;
+                data.name = fields[variance].options[0].name;
+                data.price = fields[variance].options[0].price;
+                data.thumbnail = fields[variance].options[0].files[0].path;
+                data.selectedId = selectedIds;
+              }
+              this.state.accessories[variance] = data;
+            }        
+        });
 
-    let accordionDisplay = { mainAccordionActiveKey: "0" };
-    let optionsState = {};
-    const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
-    Object.entries(fields).map(
-      ([accessoryCategory, accessoryData], index) => {
-        // If there is a default option available, pre-select the first one
-        const selectedIndex = accessoryData.findIndex(
-          element => element.isDefault
-        );
-        selectedIndex !== -1
-          ? (accordionDisplay[index] = `${selectedIndex}`)
-          : (accordionDisplay[index] = "0");
+        this.handleOptionChange = this.handleOptionChange.bind(this);
+    }
 
-        let data = { values: {}, defaultAccessory: "" };
-        accessoryData.forEach((accessory, indexx) => {
-          if (indexx === selectedIndex) {
-            data.values[accessory.productOptionId] = true;
-            data.defaultAccessory = accessory.productOptionId;
-          } else {
-            data.values[accessory.productOptionId] = false;
+
+    handleOptionChange(category, variance, selectedKey) {
+        const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
+        //check if allow one or multi select
+        let selectedIds = [...this.state.accessories[variance].selectedId];
+        const options = fields[variance].options;
+        if(!Array.isArray(selectedIds)){
+          selectedIds = [selectedIds];
+        }
+        let found = selectedIds.indexOf(fields[variance].options[selectedKey].id);
+        if( found >= 0){
+          //remove if editable
+          if(fields[variance].options[selectedKey].isDefault && !fields[variance].options[selectedKey].editable){
+            //cannot remove
+          }
+          else {
+            selectedIds.splice(found, 1);
+            //need to restore default if any
+            if(selectedIds.length == 0){
+              for(let i=0; i < fields[variance].options.length; i++){
+                if(fields[variance].options[i].isDefault){
+                  selectedIds.push(fields[variance].options[i].id);
+                  selectedKey = i;
+                }
+              }
+            }                  
+
+          }
+        }
+        else {
+          //check if multi add is allowed
+          if(fields[variance].selectOne){
+            selectedIds[0] = fields[variance].options[selectedKey].id;
+          }
+          else {
+            selectedIds.push(fields[variance].options[selectedKey].id);
+          }
+        }
+        //change tab
+        let tab = 0;
+        Object.keys(fields).forEach( (item, index) => {
+          if(item === variance){
+            tab = index;
           }
         });
-        optionsState[accessoryCategory] = data;
-      }
-    );
-    this.state = {
-      accordionDisplay: accordionDisplay,
-      optionsState: optionsState
+        
+        this.setState({
+          tabVal: tab,
+          accessories:{
+            ...this.state.accessories,
+            [variance]: {
+              selectedKey: selectedKey,
+              id: fields[variance].options[selectedKey].id,
+              name: fields[variance].options[selectedKey].name,
+              price: fields[variance].options[selectedKey].price,
+              thumbnail: fields[variance].options[selectedKey].files[0].path,
+              selectedId: selectedIds
+            }
+          }      
+        });
+        
+    }
+
+    handleTabChange = (event, newValue) => {
+      this.setState({
+        tabVal: newValue
+      })
     };
 
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-    this.handleClick = this.handleMainAccordionClick.bind(this);
-  }
 
-  componentDidMount() {
-    this.props.selectedProductAccessories(this.state.optionsState);
-  }
-
-  // Updates selected product options
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.optionsState !== prevState.optionsState) {
-      this.props.selectedProductAccessories(this.state.optionsState);
+    render() {
+        const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
+        return (
+          <React.Fragment>
+          <div className="row">
+            <div className="col-lg-8"><StyledTabs
+            value={this.state.tabVal}
+            indicatorColor="primary"
+            textColor="primary"                      
+            aria-label="Accessories"
+            centered
+            onChange={this.handleTabChange}
+        >
+          {fields !== undefined && Object.keys(fields).map( key  => (
+            <StyledTab label={key} id={key} />                      
+          ))}
+        </StyledTabs></div>
+          </div>
+            <div className="configure-sect row">
+                <div className="configure-gall col-lg-8 d-flex flex-column">
+                {Object.entries(fields).map(([variance, data], key) => (
+              key == this.state.tabVal ?
+              <VariantInfo
+                images={data.options[
+                  this.state.accessories[variance].selectedKey
+                ].files.map(item => item.path)}
+                name={data.options[this.state.accessories[variance].selectedKey].name}
+              /> : (<div></div>)
+              )) }
+                    
+                  </div>
+                  <div className="configure-opt col-lg-4 d-flex flex-column">
+                  {fields !== undefined && Object.entries(fields).map(([variance, data], key) => (
+                <VariantSelection
+                  title={variance}
+                  objects={data.options}
+                  handleOptionChange={this.handleOptionChange}
+                  category="accessories"
+                  selectedId={this.state.accessories[variance].selectedId} 
+                  showTab={this.state.tabVal == key}               
+                />
+                )) }                  
+                </div>
+                  
+            </div>
+          </React.Fragment>
+        );
     }
-  }
-
-  handleOptionChange(event, category) {
-    const { id, checked } = event.target;
-    let resetCategoryState = {};
-    Object.keys(this.state.optionsState[category].values).map(
-      key => (resetCategoryState[key] = false)
-    );
-    if (checked) {
-      resetCategoryState[id] = checked;
-    } else {
-      const defaultAccessory = this.state.optionsState[category]
-        .defaultAccessory;
-      resetCategoryState[defaultAccessory] = true;
-    }
-    this.setState({
-      ...this.state,
-      optionsState: {
-        ...this.state.optionsState,
-        [category]: {
-          ...this.state.optionsState[category],
-          values: resetCategoryState
-        }
-      }
-    });
-  }
-
-  handleMainAccordionClick(id) {
-    this.setState({
-      ...this.state,
-      accordionDisplay: {
-        ...this.state.accordionDisplay,
-        mainAccordionActiveKey: `${id}`
-      }
-    });
-  }
-
-  handleSecondaryAccordionClick(id, idd) {
-    this.setState({
-      ...this.state,
-      accordionDisplay: {
-        ...this.state.accordionDisplay,
-        [id]: `${idd}`
-      }
-    });
-  }
-
-  render() {
-    // console.log("state= ", this.state);
-    // console.log("Accessories props= ", this.props);
-
-    const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
-
-    return (
-      <div className="configure-sect row">
-        <div className="configure-gall col-lg-8">
-          {Object.keys(fields).length === 0 ? (
-            <p>No accessories available for selection</p>
-          ) : (
-            <p>Expand the options below to view accessory details</p>
-          )}
-          <Accordion
-            activeKey={this.state.accordionDisplay.mainAccordionActiveKey}
-          >
-            {Object.entries(fields).map(
-              ([key, value], id) => (
-                <Card
-                  className="product-option-group"
-                  key={id}
-                  className="rounded-0 mb-2 border"
-                >
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    eventKey={`${id}`}
-                    className="py-1 px-3 rounded-0"
-                    style={{
-                      backgroundColor: "#7da9bf",
-                      borderColor: "#7da9bf"
-                    }}
-                    onClick={() => this.handleMainAccordionClick(id)}
-                  >
-                    <div className="row d-flex flex-row align-items-center">
-                      <p
-                        className="col-2 m-0"
-                        style={{ fontWeight: 600, color: "#ffffff" }}
-                      >
-                        {id >= 9 ? (
-                          <span>{id + 1}</span>
-                        ) : (
-                          <span>0{id + 1}</span>
-                        )}
-                      </p>
-                      <p
-                        className="col-9 m-0 text-center text-uppercase"
-                        style={{ fontWeight: 600, color: "#ffffff" }}
-                      >
-                        {key}
-                      </p>
-                      <p
-                        className="col-1 m-0"
-                        style={{ fontWeight: 600, color: "#ffffff" }}
-                      >
-                        {this.state.accordionDisplay.mainAccordionActiveKey ===
-                        `${id}` ? (
-                          <i className="fas fa-minus" />
-                        ) : (
-                          <i className="fas fa-plus" />
-                        )}
-                      </p>
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey={`${id}`}>
-                    <Card.Body className="p-0">
-                      <Accordion activeKey={this.state.accordionDisplay[id]}>
-                        {value.map((item, idd) => (
-                          <Card key={idd} className="rounded-0">
-                            <Accordion.Toggle
-                              as={Card.Header}
-                              eventKey={`${idd}`}
-                              className="py-2 px-3"
-                              style={{ backgroundColor: "transparent" }}
-                              onClick={() =>
-                                this.handleSecondaryAccordionClick(id, idd)
-                              }
-                            >
-                              <div className="row d-flex flex-row align-items-center">
-                                <div className="col-1">
-                                  <Form.Check
-                                    custom
-                                    id={item.productOptionId}
-                                    label=""
-                                    checked={
-                                      this.state.optionsState[key].values[
-                                        item.productOptionId
-                                      ]
-                                    }
-                                    onChange={event =>
-                                      this.handleOptionChange(event, key)
-                                    }
-                                  />
-                                </div>
-                                <div className="col-7 p-0">
-                                  <p
-                                    style={{
-                                      color: "#4B6674",
-                                      textTransform: "uppercase"
-                                    }}
-                                  >
-                                    {item.productOption.name}{" "}
-                                    <span style={{ color: "#cccccc" }}>
-                                      {this.state.optionsState[key]
-                                        .defaultAccessory ===
-                                        item.productOptionId && "(DEFAULT)"}
-                                    </span>
-                                  </p>
-                                </div>
-                                <div className="col-3">
-                                  <p
-                                    style={{
-                                      fontWeight: 600,
-                                      color: "#4B6674"
-                                    }}
-                                  >
-                                    {formatPrice(item.productOption.price)}
-                                  </p>
-                                </div>
-                                <div className="col-1">
-                                  {this.state.accordionDisplay[id] ===
-                                  `${idd}` ? (
-                                    <i
-                                      className="fas fa-chevron-up"
-                                      style={{ color: "#4B6674" }}
-                                    />
-                                  ) : (
-                                    <i
-                                      className="fas fa-chevron-down"
-                                      style={{ color: "#4B6674" }}
-                                    />
-                                  )}
-                                </div>
-                              </div>
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey={`${idd}`}>
-                              <div className="row my-3">
-                                <div className="col-3">
-                                  <div className="d-flex justify-content-center align-items-start ml-4">
-                                    {/* <div style={{ marginTop: "75%" }} /> */}
-                                    <img
-                                      src={item.productOption.files[0].path}
-                                      alt={item.productOption.name}
-                                      style={{
-                                        width: "100%",
-                                        maxWidth: 200,
-                                        borderRadius: 3
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-9">
-                                  <div className="mr-4">
-                                    <p>
-                                      {item.productOption.description ===
-                                      "undefined"
-                                        ? "No description available"
-                                        : item.productOption.description}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </Accordion.Collapse>
-                          </Card>
-                        ))}
-                      </Accordion>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              )
-            )}
-          </Accordion>
-        </div>
-        
-      </div>
-    );
-  }
 }
 
 export default Accessories;
-
-/*
-<div className="configure-summary col-lg-4">
-          <SummaryTable
-            page="accessories"
-            ProductState={this.props.ProductState}
-          />
-        </div>
-*/

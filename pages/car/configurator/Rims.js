@@ -9,17 +9,16 @@ class Rims extends Component {
     this.state = {
       rims: {}
     }
-    if(!!this.props.ProductRims.selected){
-      this.state.rims = this.props.ProductRims.selected;
-    }
-    else {
+
       const { fields } = this.props.ProductRims.data[this.props.gradeId];
       Object.entries(fields).map(([variance, data]) => {
         // If there is a default option available, pre-select the first one
-        const selectedIndex = data.objects.findIndex(
+        var selectedIndex = data.objects.findIndex(
           element => element.isDefault
         );
-        console.log(fields[variance].objects);
+        if(this.props.ProductRims.selected != null && this.props.ProductRims.selected[variance] !== undefined){
+          selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductRims.selected[variance])
+        } 
         if (selectedIndex !== -1) {
           this.state['rims'][variance] = {
             selectedKey: selectedIndex,
@@ -42,12 +41,12 @@ class Rims extends Component {
           };
         }        
       });    
-    }
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
   handleOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductRims.data[this.props.gradeId];
+    this.props.selectedProductRims({[variance]: fields[variance].objects[selectedKey].id});
     this.setState({
       ...this.state,
       rims:{

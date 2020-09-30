@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon, InlineIcon } from '@iconify/react';
 import plusIcon from '@iconify/icons-bi/plus';
 
@@ -13,9 +13,14 @@ const VariantSelection = ({
   handleOptionChange,
   selectedId,
   stockHistory,
-  category
+  category,
+  showTab
 }) => {
-  const [isShowing, changeShowing] = useState(false);
+  const [isShowing, changeShowing] = useState(showTab);
+
+  useEffect(() => {
+    changeShowing(showTab);
+  }, [showTab]);
 
   const checkTooltip = stockhistory => {
     const stockChecklist = [
@@ -28,6 +33,9 @@ const VariantSelection = ({
       "INDENT"
     ];
 
+    if(stockhistory === undefined){
+      return ("IN STOCK");
+    }
     if (stockhistory.length === 0) {
       return "PRE-ORDER";
     }
@@ -53,6 +61,8 @@ const VariantSelection = ({
     }
   };
 
+  
+
   const toggleView = () => {
     changeShowing(!isShowing);
   }
@@ -67,6 +77,9 @@ const VariantSelection = ({
       "INCOMING",
       "INDENT"
     ];
+    if(stockhistory === undefined){
+      return (<p></p>);
+    }
     if (stockhistory.length === 0) {
       return (
         <p className="mt-auto">
@@ -114,12 +127,37 @@ const VariantSelection = ({
     }
   };
 
+  const isSelected = (itemId, selected) => {
+    if(Array.isArray(selected)){
+      if(selected.includes(itemId)){
+        return {
+          border: "2px solid #F29D30",
+          color: "#F29D30",
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+          fontWeight: "bold"
+        }
+      }
+    }
+    else {
+      if(itemId == selected){
+        return {
+          border: "2px solid #F29D30",
+          color: "#F29D30",
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+          fontWeight: "bold"
+        }
+      }      
+    }
+    return { border: "1px solid #DEE2E6" }
+  }
+
   return (
     <React.Fragment>
       <div className="optionTitleRow">
       <h3 className="configure-opt-title">{title}</h3><div className="configure-icon"><Icon icon={plusIcon} onClick={toggleView} height="24" /></div>
-      </div>      
-      <ul className={ "list-unstyled configOptionBox " + (isShowing ? "show" : "") }>
+      </div>
+      <div className={"optionDisplay " + (isShowing ? "show" : "")}>    
+      <ul className={ "list-unstyled" }>
         {!!objects &&
           objects.map((item, id) => (
             <OverlayTrigger
@@ -137,16 +175,7 @@ const VariantSelection = ({
                   src={item.files[0].path}
                   alt={item.name}
                   id={item.id}
-                  style={
-                    item.id == selectedId
-                      ? {
-                          border: "2px solid #F29D30",
-                          color: "#F29D30",
-                          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                          fontWeight: "bold"
-                        }
-                      : { border: "1px solid #DEE2E6" }
-                  }
+                  style={isSelected(item.id, selectedId)}
                 />
                 <br />
                 <span
@@ -164,6 +193,7 @@ const VariantSelection = ({
           ))}
       </ul>
       {checkWarning(stockHistory)}
+      </div>  
     </React.Fragment>
   );
 };

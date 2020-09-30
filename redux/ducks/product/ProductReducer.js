@@ -18,18 +18,18 @@ const INIT_STATE = {
   ProductSpecification: {},
   ProductExterior: {
     data: {},
-    selected: {}
+    selected: null
   },
   ProductInterior: {
     data: {},
-    selected: {}
+    selected: null
   },
   ProductRims: {
     data: {},
-    selected: {}
+    selected: null
   },
   ProductAccessories: {
-    selectedAccessories: [],
+    selected: null,
     data: {}
   },
   ProductTotal: {
@@ -230,12 +230,15 @@ export default (state = INIT_STATE, action) => {
     case types.GET_PRODUCT_GRADE_DATA_FAILURE:
       return { ...state };
 
-    case types.SELECTED_PRODUCT_EXTERIOR:
+    case types.SELECTED_PRODUCT_EXTERIOR:      
       return {
         ...state,
         ProductExterior: {
           ...state.ProductExterior,
-          selected: action.payload
+          selected: {
+            ...state.ProductExterior.selected,
+            ...action.payload
+          }
         }
       };
 
@@ -244,7 +247,10 @@ export default (state = INIT_STATE, action) => {
         ...state,
         ProductInterior: {
           ...state.ProductInterior,
-          selected: action.payload
+          selected: {
+            ...state.ProductInterior.selected,
+            ...action.payload
+          }
         }
       };
     case types.SELECTED_PRODUCT_RIMS:
@@ -252,15 +258,18 @@ export default (state = INIT_STATE, action) => {
         ...state,
         ProductRims: {
           ...state.ProductRims,
-          selected: action.payload
+          selected: {
+            ...state.ProductRims.selected,
+            ...action.payload
+          }
         }
       }
 
     case types.SELECTED_PRODUCT_ACCESSORIES:
       let selectedAccessoriesId = [];
       let selectedAccessories = [];
-      /*
-      Object.values(action.payload).map(values =>
+      
+      Object.values(action.payload.items).map(values =>
         Object.entries(values.values).map(([productOptionId, selected]) => {
           if (selected) {
             selectedAccessoriesId.push(productOptionId);
@@ -286,7 +295,7 @@ export default (state = INIT_STATE, action) => {
           }
         });
       });
-      */
+      
       return {
         ...state,
         ProductAccessories: {

@@ -8,8 +8,9 @@ import api from "Api";
 // REQUESTS
 //=========================
 const getModelDataRequest = async payload => {
-  const result = await api.get(`/categories/${payload.payload}`);
-  return result.data;
+  let result = await api.get(`/carpages/getSingleCarDataForCategory/?id=${payload.payload}`);
+  // const result = await api.get(`/categories/${payload.payload}`);
+  return result.data.data;
 };
 
 //=========================
@@ -18,9 +19,13 @@ const getModelDataRequest = async payload => {
 function* getModelData(e) {
   try {
     const data = yield call(getModelDataRequest, e);
-    yield put(actions.getModelDataSuccess(data));
+    if (data != "no data") {
+      yield put(actions.getModelDataSuccess(data));
+    } else {
+      yield put(actions.getModelDataFailure("There is no car data!"));
+    }
   } catch (error) {
-    yield put(actions.getModelDataFailure(data));
+    yield put(actions.getModelDataFailure(error));
   }
 }
 

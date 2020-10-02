@@ -112,11 +112,6 @@ class MegaMenu extends Component {
                           Pre-owned <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                       </Link>
-                      <ul className="dropdown-menu">
-                        <li className="nav-item">
-
-                        </li>
-                      </ul>
                     </li>
 
                     <li className="nav-item p-relative">

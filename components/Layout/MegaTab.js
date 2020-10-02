@@ -29,18 +29,17 @@ const MegaTab = () => {
     const AllModels = MegaMenu[Stage];
 
     return AllModels[1].map((model, index) => {
+
       return (
         <Link
           key={index}
-          href="/model/[id]"
-          as={`/model/${model.id.replace(/ /g, "-")}`}
+          href={`${model.url}`}
         >
           <div className="col-6 col-sm-4 col-md-3 col-lg-2 py-3 px-2 text-center">
             <img style={modelImage} src={model.files[0].path} />
             <Link
               key={index}
-              href="/model/[id]"
-              as={`/model/${model.id.replace(/ /g, "-")}`}
+              href={`${model.url}`}
             >
               <a className="tab-anchor">{model.name}</a>
             </Link>
@@ -62,7 +61,6 @@ const MegaTab = () => {
           color: "#F29D30"
         };
       }
-
       return (
         // All BMW Honda ...
         <div key={index} style={style} onClick={() => _HandleItem(index)}>

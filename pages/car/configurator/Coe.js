@@ -17,7 +17,7 @@ class Coe extends Component {
                         <div className="coeTitle">2-Bid COE guaranteed package</div>
                         <div className="coeDetails">
                             <h3>$4000</h3>
-                            <p>A 2 bid guaranteed COE package means that you will get your car in a month</p>                            
+                            <p>A 2 bid guaranteed COE package means that you will get your car in 1 month</p>                            
                         </div>
                         <button className="coeSelect">Selected</button>
                         <button className="readmore"><Icon icon={magnifyIcon} height="2em" /> Read more</button>
@@ -25,10 +25,10 @@ class Coe extends Component {
                 </div>
                 <div className="col-lg-6">
                 <div className="coebox">
-                        <div className="coeTitle">2-Bid COE guaranteed package</div>
+                        <div className="coeTitle">4-Bid COE guaranteed package</div>
                         <div className="coeDetails">
-                            <h3>$4000</h3>
-                            <p>A 2 bid guaranteed COE package means that you will get your car in a month</p>                            
+                            <h3>$3000</h3>
+                            <p>A 4 bid guaranteed COE package means that you will get your car in 2 months</p>                            
                         </div>
                         <button className="coeSelect">Selected</button>
                         <button className="readmore"><Icon icon={magnifyIcon} height="2em" /> Read more</button>
@@ -36,10 +36,10 @@ class Coe extends Component {
                 </div>
                 <div className="col-lg-6">
                     <div className="coebox">
-                        <div className="coeTitle">2-Bid COE guaranteed package</div>
+                        <div className="coeTitle">6-Bid COE guaranteed package</div>
                         <div className="coeDetails">
-                            <h3>$4000</h3>
-                            <p>A 2 bid guaranteed COE package means that you will get your car in a month</p>                            
+                            <h3>$2000</h3>
+                            <p>A 6 bid guaranteed COE package means that you will get your car in 3 months</p>                            
                         </div>
                         <button className="coeSelect">Selected</button>
                         <button className="readmore"><Icon icon={magnifyIcon} height="2em" /> Read more</button>
@@ -47,10 +47,10 @@ class Coe extends Component {
                 </div>
                 <div className="col-lg-6">
                     <div className="coebox">
-                        <div className="coeTitle">2-Bid COE guaranteed package</div>
+                        <div className="coeTitle">Non guaranteed package</div>
                         <div className="coeDetails">
-                            <h3>$4000</h3>
-                            <p>A 2 bid guaranteed COE package means that you will get your car in a month</p>                            
+                            <h3>$0</h3>
+                            <p>There is no guarantee on when your COE will be available</p>                            
                         </div>
                         <button className="coeSelect">Selected</button>
                         <button className="readmore"><Icon icon={magnifyIcon} height="2em" /> Read more</button>

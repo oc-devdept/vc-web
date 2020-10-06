@@ -12,7 +12,7 @@ class ContactUsDetails extends Component {
     return (
       <section className="contact-us-area">
         <div className="container">
-            <div className="section-title without-bg" align="center">
+            <div className="section-title without-bg" align="center" id="enquireForm">
                 <h2>CONTACT US</h2>
             </div>
             

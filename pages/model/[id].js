@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import RctSectionLoader from "Components/RctSectionLoader";
 import Link from "next/link";
+import { withRouter } from 'next/router'
 
 import { getModelData } from "Ducks/model/ModelActions";
 
@@ -25,9 +26,15 @@ class Model extends Component {
         return null;
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(this.props.noData){
+          //console.log("test");
+          this.props.router.push("/car/configurator/"+this.props.selectedModelId);
+        }
         if (snapshot) {
             this.props.getModelData(snapshot);
         }
+      
     }
     componentDidMount() {
         this.props.getModelData(this.props.selectedModelId);
@@ -38,6 +45,7 @@ class Model extends Component {
         const { ProductGradeData, coverPhoto, description, exterior, interior, galleryPhoto, name, id } = ModelData;
         return (
             <DefaultLayout>
+               { loading && <RctSectionLoader />}
                 {
                     name && (
                         <>
@@ -47,7 +55,7 @@ class Model extends Component {
 
                             {
                                 ProductGradeData !== 0 && (
-                                    <ChooseGrade productData={ProductGradeData} />
+                                    <ChooseGrade productData={ProductGradeData} url={this.props.selectedModelId} />
                                 )
                             }
                             {
@@ -138,10 +146,10 @@ Model.getInitialProps = async function({ query: id }) {
 };
 
 const mapStateToProps = ({ ModelState }) => {
-    const { loading, ModelData } = ModelState;
-    return { loading, ModelData };
+    const { loading, ModelData, noData } = ModelState;
+    return { loading, ModelData, noData };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     getModelData
-})(Model);
+})(Model));

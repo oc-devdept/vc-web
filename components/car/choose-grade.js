@@ -4,10 +4,11 @@ import Link from "next/link";
 
 import { Icon } from '@iconify/react';
 import arrowRight from '@iconify/icons-bi/arrow-right';
-import carBrakeAbs from '@iconify/icons-mdi/car-brake-abs';
-import parkingGarage11 from '@iconify/icons-maki/parking-garage-11';
-import smartphoneShake from '@iconify/icons-gg/smartphone-shake';
+
 import gitFork from '@iconify/icons-gg/git-fork';
+import manageProtection from '@iconify/icons-carbon/manage-protection';
+import smallgearIcon from '@iconify/icons-raphael/smallgear';
+
 
 class ChooseGrade extends Component {
 
@@ -31,12 +32,12 @@ class ChooseGrade extends Component {
                                         <h5>fr ${product.selling_Price}</h5>
 
                                         <div className="button" align="center">
-                                            <Link href="/">
+                                            <Link href="#enquireForm">
                                                 <a className="btn enquireBtn">
                                                     ENQUIRE
                                                 </a>
                                             </Link>
-                                            <Link href="/">
+                                            <Link href={"/car/configurator/"+this.props.url}>
                                                 <a className="btn buildBtn">
                                                     BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
                                                 </a>
@@ -46,16 +47,22 @@ class ChooseGrade extends Component {
                                         <p className="sub-header">Features :</p>
                                         {
                                             product.productDetailValues.map(detail => (
-                                                detail != null && (
+                                                
                                                     <div className="bar" key={detail.id}>
-                                                        <p>{detail.detailCategory.name}</p>
+                                                        <p>{detail.detailCategory.name}                                                        
+                                                        </p>
                                                         <h6>
-                                                            <Icon icon={smartphoneShake} width="2.3rem"/>
+                                            { detail.catname == "Main Equipment" ? <Icon icon={gitFork} width="2.3rem"/> : 
+                                                detail.catname == "Safety Features" ? <Icon icon={manageProtection} width="2.3rem"/> :
+                                                <Icon icon={smallgearIcon} width="1.8rem"/>
+                                            }
                                                             &nbsp;&nbsp;
-                                                            {detail.value}
+                                                            {detail.value} { detail.detailCategory.unit != "." && 
+                                                         detail.detailCategory.unit
+                                                        }  
                                                         </h6>
                                                     </div>
-                                                )
+                                                
                                             ))
                                         }
                                     </div>

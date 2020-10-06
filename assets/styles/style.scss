@@ -618,17 +618,17 @@ About Honda Fit Area CSS
 360 Viewing Area CSS
 =================================================*/
 .views-area {
-  background-color: #000000;
+  background-color: #ffffff;
   padding: 20px 0;
 }
 .views-area h2 {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .views-area h6 {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .views-area p {
-  color: #ffffff !important;
+  color: #000000 !important;
   margin: 20px 0;
   text-align: center;
 }
@@ -651,8 +651,16 @@ About Honda Fit Area CSS
 Gallery Area CSS
 =================================================*/
 .gallery-area {
-  background-color: #f3f3f3;
+  background-color: #000000;
   padding: 20px 0 60px;
+}
+
+.gallery-area h2, .gallery-area h5 {
+  color: #ffffff;
+}
+
+.gallery-area h5 {
+  color: #f2f9ff;
 }
 
 .thumbnail-slider-wrap {
@@ -662,8 +670,16 @@ Gallery Area CSS
 .thumbnail-slider-wrap .slick-track .slick-slide {
   text-align: center;
 }
+
+.slick-slide-image {
+  margin: 0 auto;
+  min-height: 400px;
+  max-height:600px;
+}
+
 .thumbnail-slider-wrap .slick-track .slick-slide img {
-  width: 70%;
+  max-height:160px;
+  min-height: auto;
 }
 .image-slider {
   width: 90%;
@@ -674,9 +690,7 @@ Gallery Area CSS
   margin: 20px 0 40px;
 }
 
-.slick-slide-image {
-  margin: 0 auto;
-}
+
 
 .thumbnail-slider-wrap {
   margin-top: 40px;

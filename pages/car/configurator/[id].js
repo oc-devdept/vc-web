@@ -217,7 +217,7 @@ class Product extends Component {
               <div className="col-md-12">
                 <div className="row">
                   <div className="col-md-9">
-                    <BottomSummary />
+                    <BottomSummary productState={ProductState} />
                   </div>
                   <div className="col-md-3">
                   <button type="submit" class="btn btn-light" disabled={ this.state.verticalStep == 0 ? true: false} style={{marginLeft:"-40px",float:"left"}} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV</button>

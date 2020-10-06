@@ -22,6 +22,7 @@ function* getModelData(e) {
     if (data != "no data") {
       yield put(actions.getModelDataSuccess(data));
     } else {
+      
       yield put(actions.getModelDataFailure("There is no car data!"));
     }
   } catch (error) {

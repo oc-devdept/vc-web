@@ -63,7 +63,7 @@ class ExtInt extends Component {
       // If there is a default option available, pre-select the first one  
       var selectedIndex = data.objects.findIndex(element => element.isDefault);
       if(this.props.ProductExterior.selected != null && this.props.ProductExterior.selected[variance] !== undefined){
-        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductExterior.selected[variance])
+        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductExterior.selected[variance].id)
       }          
       if (selectedIndex !== -1) {
         this.state['exterior'][variance] = {
@@ -98,7 +98,7 @@ class ExtInt extends Component {
       element => element.isDefault
       );
       if(this.props.ProductInterior.selected != null && this.props.ProductInterior.selected[variance] !== undefined){
-        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductInterior.selected[variance])
+        selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductInterior.selected[variance].id)
       } 
       if (selectedIndex !== -1) {
         this.state['interior'][variance] = {
@@ -130,44 +130,46 @@ class ExtInt extends Component {
 
   handleOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductExterior.data[this.props.gradeId];
-    this.props.selectedProductExterior({[variance]: fields[variance].objects[selectedKey].id})
+    let data = {
+      selectedKey: selectedKey,
+      id: fields[variance].objects[selectedKey].id,
+      name: fields[variance].objects[selectedKey].name,
+      price: fields[variance].objects[selectedKey].price,
+      thumbnail: fields[variance].objects[selectedKey].files[0].path,
+      stockId: selectedStockId(
+        fields[variance].objects[selectedKey].stockhistory
+      )
+    }
+    this.props.selectedProductExterior({[variance]:data})
     this.setState({
       ...this.state,
       tabVal: 0,
       [category]:{
         ...this.state[category],
-        [variance]: {
-          selectedKey: selectedKey,
-          id: fields[variance].objects[selectedKey].id,
-          name: fields[variance].objects[selectedKey].name,
-          price: fields[variance].objects[selectedKey].price,
-          thumbnail: fields[variance].objects[selectedKey].files[0].path,
-          stockId: selectedStockId(
-            fields[variance].objects[selectedKey].stockhistory
-          )
-        }
+        [variance]: data
       }      
     });
   }
 
   handleInteriorOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductInterior.data[this.props.gradeId];
-    this.props.selectedProductInterior({[variance]: fields[variance].objects[selectedKey].id})
+    let data = {
+      selectedKey: selectedKey,
+      id: fields[variance].objects[selectedKey].id,
+      name: fields[variance].objects[selectedKey].name,
+      price: fields[variance].objects[selectedKey].price,
+      thumbnail: fields[variance].objects[selectedKey].files[0].path,
+      stockId: selectedStockId(
+        fields[variance].objects[selectedKey].stockhistory
+      )
+    }
+    this.props.selectedProductInterior({[variance]: data})
     this.setState({
       ...this.state,
       tabVal: 1,
       [category]:{
         ...this.state[category],
-        [variance]: {
-          selectedKey: selectedKey,
-          id: fields[variance].objects[selectedKey].id,
-          name: fields[variance].objects[selectedKey].name,
-          price: fields[variance].objects[selectedKey].price,
-          thumbnail: fields[variance].objects[selectedKey].files[0].path,
-          stockId: selectedStockId(
-            fields[variance].objects[selectedKey].stockhistory
-          )
-        }
+        [variance]: data
       }      
     });
   }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import { NotificationManager } from "react-notifications";
 
@@ -8,39 +8,92 @@ import api from 'Api'
 
 
 const InitForm = {
-  name : '',
+  name: '',
   email: '',
   phone: '',
   message: ''
 }
 
-function ContactUs({}) {
+const Errors = {
+  nameError: '',
+  emailError: '',
+  phoneError: ''
+}
+
+function ContactUs({ }) {
 
   const [Form, setForm] = useState(InitForm);
-  const {name, email, phone, message} = Form
+  const { name, email, phone, message } = Form
 
 
-  const onChangeForm = (element, value) =>{
+  const onChangeForm = (element, value) => {
     setForm(Form => ({ ...Form, [element]: value }));
   }
 
-  const onSubmit = async(event) =>{
+  // Setting errors to use a state of null
+  const [nameErr, setNameErr] = useState({});
+  const [emailErr, setEmailErr] = useState({});
+  const [phoneErr, setPhoneErr] = useState({});
+  const [checkboxErr, setCheckBoxErr] = useState({});
+
+  const onSubmit = async (event) => {
     event.preventDefault();
+    const isValid = formValidation();
 
-    try {
-      console.log('Send to server! ', Form)
-      await api.post(`/contactus/createContactForm`, {data: Form});
-      // success
-      setForm(() => InitForm);
-      NotificationManager.success('Contact form sent successfully');                
+    if (isValid) {
+      try {
+        console.log('Send to server! ', Form)
+        await api.post(`/contactus/createContactForm`, { data: Form });
+        // success
+        setForm(() => InitForm);
+        NotificationManager.success('Contact form sent successfully');
 
-    } catch (e){
-      // failed
-      NotificationManager.error('Network error, please try again');                
+      } catch (e) {
+        // failed
+        NotificationManager.error('Network error, please try again');
+
+      }
 
     }
-    
+
   }
+
+  const formValidation = () => {
+    const nameErr = {};
+    const emailErr = {};
+    const phoneErr = {};
+    const checkboxErr = {};
+    let isValid = true;
+
+    var checkBox = document.getElementById('exampleCheck1');
+
+    if (!name.match(/^[a-zA-z0-9]+$/)) {
+      nameErr.nameInvalid = "*Please enter a valid name";
+      isValid = false;
+    }
+
+    if (!email.includes('@')) {
+      emailErr.emailInvalid = "*Email is invalid";
+      isValid = false;
+    }
+
+    if (!phone.match(/^[0-9+-]+$/)) {
+      phoneErr.phoneInvalid = "*Please enter a valid phone number";
+      isValid = false
+    }
+
+    if (!checkBox.checked) {
+      checkboxErr.checkboxInvalid = "*Please check the terms and conditions"
+      isValid = false;
+    }
+
+    setNameErr(nameErr);
+    setEmailErr(emailErr);
+    setPhoneErr(phoneErr);
+    setCheckBoxErr(checkboxErr);
+    return isValid;
+  }
+
 
   return (
     <DefaultLayout crumbs="Contact Us">
@@ -129,11 +182,14 @@ function ContactUs({}) {
                           id="name"
                           className="form-control"
                           required={true}
-                          value= {name}
+                          value={name}
                           onChange={(e) => onChangeForm('name', e.target.value)}
                           data-error="Please enter your name"
                           placeholder="Enter your name"
                         />
+                        {Object.keys(nameErr).map((key) => {
+                          return <div style={{ color: "red" }}>{nameErr[key]}</div>
+                        })}
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>
@@ -147,13 +203,16 @@ function ContactUs({}) {
                           type="email"
                           name="email"
                           id="email"
-                          value= {email}
+                          value={email}
                           onChange={(e) => onChangeForm('email', e.target.value)}
                           className="form-control"
                           required={true}
                           data-error="Please enter your email"
                           placeholder="Enter your Email Address"
                         />
+                        {Object.keys(emailErr).map((key) => {
+                          return <div style={{ color: "red" }}>{emailErr[key]}</div>
+                        })}
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>
@@ -167,13 +226,16 @@ function ContactUs({}) {
                           type="text"
                           name="phone_number"
                           id="phone_number"
-                          value= {phone}
+                          value={phone}
                           onChange={(e) => onChangeForm('phone', e.target.value)}
                           className="form-control"
                           required={true}
                           data-error="Please enter your phone number"
                           placeholder="Enter your Phone Number"
                         />
+                        {Object.keys(phoneErr).map((key) => {
+                          return <div style={{ color: "red" }}>{phoneErr[key]}</div>
+                        })}
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>
@@ -188,7 +250,7 @@ function ContactUs({}) {
                           id="message"
                           cols="30"
                           rows="8"
-                          value= {message}
+                          value={message}
                           required={true}
                           onChange={(e) => onChangeForm('message', e.target.value)}
                           data-error="Please enter your message"
@@ -196,6 +258,25 @@ function ContactUs({}) {
                           placeholder="Enter your Message"
                         />
                         <div className="help-block with-errors"></div>
+                      </div>
+                    </div>
+
+                    <div className="col-lg-12 col-md-12">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                        <label class="form-check-label" for="exampleCheck1">
+                          I agree with Venture Car's{" "}
+                          <a className="d-inline" href="/">
+                            Privacy &amp; Service Policies
+                                    </a>{" "}
+                          and{" "}
+                          <a className="d-inline" href="/terms-n-conditions">
+                            Terms &amp; Conditions
+                                    </a>{" "}
+                        </label>
+                        {Object.keys(checkboxErr).map((key) => {
+                          return <div style={{ color: "red" }}>{checkboxErr[key]}</div>
+                        })}
                       </div>
                     </div>
 

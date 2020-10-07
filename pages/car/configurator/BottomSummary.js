@@ -6,10 +6,11 @@ const BottomSummary = props => {
     let exteriorPrice = 0;;
     let interiorName = "";
     let interiorPrice = 0;
+    let rimsName = "";
+    let rimsPrice = 0;
     if(props.productState.ProductExterior.selected){
         
         Object.entries(props.productState.ProductExterior.selected).map(([variance, data]) => {
-            console.log(variance);
             exteriorName = variance+": "+data.name;
             exteriorPrice = data.price;
             total += exteriorPrice;
@@ -20,6 +21,13 @@ const BottomSummary = props => {
             interiorName = variance+": "+data.name;
             interiorPrice = data.price;
             total += interiorPrice;
+        })
+    }
+    if(props.productState.ProductRims.selected){
+        Object.entries(props.productState.ProductRims.selected).map(([variance, data]) => {
+            rimsName = variance+": "+data.name;
+            rimsPrice = data.price;
+            total += rimsPrice;
         })
     }
     return (
@@ -55,6 +63,38 @@ const BottomSummary = props => {
                         </li>
                     )
                 }
+                {
+                    rimsName != "" && (
+                        <li>Rims
+                        <ul>
+                            <li><div className="info">{rimsName }</div>
+                                <div className="price">${rimsPrice}</div>
+                            </li>
+                        </ul>
+                        </li>
+                    )
+                }
+                {
+                    props.productState.ProductAccessories.selected != null && (
+                        <li>Accessories
+                        <ul>
+                            {
+                                Object.keys(props.productState.ProductAccessories.selected).map(key => {
+                                    return props.productState.ProductAccessories.selected[key].map(item => {
+                                        total += item.price;
+                                        return (
+                                            <li><div className="info">{key +": "+item.name }</div>
+                                                <div className="price">${item.price}</div>
+                                            </li>
+                                        )
+                                    })
+                                })                                    
+                            }
+                        </ul>
+                        </li>
+                    )
+                }
+
 
                 
             </ol>

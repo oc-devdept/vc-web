@@ -54,17 +54,16 @@ class Accessories extends Component {
         }
         
         const { fields } = this.props.ProductAccessories.data[this.props.gradeId];       
-        console.log(fields);
         Object.entries(fields).map(([variance, data]) => {
             // If there is a default option available, pre-select the first one
             let selectedIndex = data.options.findIndex(
               element => element.isDefault
             );
             var selectedIds = [];
-            if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] !== undefined){
+            if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] != undefined ){
                 for(let i=0; i < data.options.length; i++){
-                    for(let j=0; j < this.props.ProductAccessories.selected.length; j++){
-                        if(data.options[i].id === this.props.ProductAccessories.selected[j]){
+                    for(let j=0; j < this.props.ProductAccessories.selected[variance].length; j++){
+                        if(data.options[i].id === this.props.ProductAccessories.selected[variance][j]){
                             selectedIndex = i;
                             selectedIds.push(data.options[i].id);
                         }
@@ -99,6 +98,7 @@ class Accessories extends Component {
                 data.price = fields[variance].options[0].price;
                 data.thumbnail = fields[variance].options[0].files[0].path;
                 data.selectedId = selectedIds;
+                this.props.selectedProductAccessories(variance, selectedIds);
               }
               this.state.accessories[variance] = data;
             }        
@@ -152,7 +152,7 @@ class Accessories extends Component {
             tab = index;
           }
         });
-        
+        this.props.selectedProductAccessories(variance, selectedIds);
         this.setState({
           tabVal: tab,
           accessories:{

@@ -64,9 +64,10 @@ class ExtInt extends Component {
       var selectedIndex = data.objects.findIndex(element => element.isDefault);
       if(this.props.ProductExterior.selected != null && this.props.ProductExterior.selected[variance] !== undefined){
         selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductExterior.selected[variance].id)
-      }          
+      }
+      let updateData = null;          
       if (selectedIndex !== -1) {
-        this.state['exterior'][variance] = {
+        updateData = {
           selectedKey: selectedIndex,
           id: fields[variance].objects[selectedIndex].id,
           name: fields[variance].objects[selectedIndex].name,
@@ -76,16 +77,19 @@ class ExtInt extends Component {
             fields[variance].objects[selectedIndex].stockhistory
           )
         };
+        
       } else {
-        this.state['exterior'][variance] = {
+        updateData = {
           selectedKey: 0,
           id: fields[variance].objects[0].id,
           name: fields[variance].objects[0].name,
           price: fields[variance].objects[0].price,
           thumbnail: fields[variance].objects[0].files[0].path,
           stockId: selectedStockId(fields[variance].objects[0].stockhistory)
-        };
-      }        
+        };        
+      }
+      this.state['exterior'][variance] = updateData;
+      this.props.selectedProductExterior({[variance]:updateData});        
     });
     
       
@@ -100,8 +104,9 @@ class ExtInt extends Component {
       if(this.props.ProductInterior.selected != null && this.props.ProductInterior.selected[variance] !== undefined){
         selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductInterior.selected[variance].id)
       } 
+      let updateData = null;
       if (selectedIndex !== -1) {
-        this.state['interior'][variance] = {
+        updateData = {
           selectedKey: selectedIndex,
           id: fields[variance].objects[selectedIndex].id,
           name: fields[variance].objects[selectedIndex].name,
@@ -110,9 +115,9 @@ class ExtInt extends Component {
           stockId: selectedStockId(
             fields[variance].objects[selectedIndex].stockhistory
           )
-        };
+        };         
       } else {
-        this.state['interior'][variance] = {
+        updateData = {
           selectedKey: 0,
           id: fields[variance].objects[0].id,
           name: fields[variance].objects[0].name,
@@ -120,7 +125,10 @@ class ExtInt extends Component {
           thumbnail: fields[variance].objects[0].files[0].path,
           stockId: selectedStockId(fields[variance].objects[0].stockhistory)
         };
+        
       }
+      this.state['interior'][variance] = updateData;
+      this.props.selectedProductInterior({[variance]: updateData});
     });
      
     

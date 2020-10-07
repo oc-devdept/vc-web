@@ -266,41 +266,30 @@ export default (state = INIT_STATE, action) => {
       }
 
     case types.SELECTED_PRODUCT_ACCESSORIES:
-      let selectedAccessoriesId = [];
-      let selectedAccessories = [];
-      
-      Object.values(action.payload.items).map(values =>
-        Object.entries(values.values).map(([productOptionId, selected]) => {
-          if (selected) {
-            selectedAccessoriesId.push(productOptionId);
-          }
-        })
-      );
+      //let selectedAccessoriesId = [];
+      let selectedAccessories = { ...state.ProductAccessories.selected };      
 
-      var { fields } = state.ProductAccessories.data;
-      
-      Object.values(fields).map(item => {
-        item.map(object => {
+      var { fields } = state.ProductAccessories.data[state.ProductGrade.id];
+      var options = fields[action.payload.variance].options;
+      selectedAccessories[action.payload.variance] = [];     
+      options.map(item => {
+        
+          let found = action.payload.selectedIds.indexOf(item.id);
           if (
-            !!selectedAccessoriesId.find(
-              element => element === object.productOptionId
-            )
+            found >= 0
           ) {
-            selectedAccessories.push({
-              productOptionId: object.productOptionId,
-              name: object.productOption.name,
-              price: object.productOption.price,
-              image: object.productOption.files[0].path
+            selectedAccessories[action.payload.variance].push({              
+              id: item.id,
+              name: item.name,
+              price: item.price
             });
-          }
-        });
+          }        
       });
-      
       return {
         ...state,
         ProductAccessories: {
           ...state.ProductAccessories,
-          selectedAccessories: selectedAccessories
+          selected: selectedAccessories
         }
       };
 

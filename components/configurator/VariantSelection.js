@@ -154,9 +154,9 @@ const VariantSelection = ({
   return (
     <React.Fragment>
       <div className="optionTitleRow">
-      <h3 className="configure-opt-title">{title}</h3><div className="configure-icon"><Icon icon={plusIcon} onClick={toggleView} height="24" /></div>
+      <h3 className="configure-opt-title">{title}</h3>
       </div>
-      <div className={"optionDisplay " + (isShowing ? "show" : "")}>    
+      <div className="optionDisplay show">    
       <ul className={ "list-unstyled" }>
         {!!objects &&
           objects.map((item, id) => (
@@ -199,3 +199,6 @@ const VariantSelection = ({
 };
 
 export default VariantSelection;
+/*
+<div className="configure-icon"><Icon icon={plusIcon} onClick={toggleView} height="24" /></div>
+*/

@@ -73,9 +73,9 @@ export const selectedProductRims = e => ({
 });
 
 // Update selected accessories
-export const selectedProductAccessories = (gradeId, items) => ({
+export const selectedProductAccessories = (variance, selectedIds) => ({
   type: types.SELECTED_PRODUCT_ACCESSORIES,
-  payload: { gradeId, items }
+  payload: { variance, selectedIds }
 });
 
 // Update total price

@@ -27,9 +27,7 @@ const MegaTab = () => {
     };
 
     const AllModels = MegaMenu[Stage];
-
     return AllModels[1].map((model, index) => {
-      console.log(model);
       return (
         <Link
           key={index}

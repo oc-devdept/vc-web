@@ -17,10 +17,11 @@ class Rims extends Component {
           element => element.isDefault
         );
         if(this.props.ProductRims.selected != null && this.props.ProductRims.selected[variance] !== undefined){
-          selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductRims.selected[variance])
+          selectedIndex = data.objects.findIndex(element => element.id === this.props.ProductRims.selected[variance].id)
         } 
+        let updateData = null;
         if (selectedIndex !== -1) {
-          this.state['rims'][variance] = {
+          updateData = {
             selectedKey: selectedIndex,
             id: fields[variance].objects[selectedIndex].id,
             name: fields[variance].objects[selectedIndex].name,
@@ -29,9 +30,9 @@ class Rims extends Component {
             stockId: selectedStockId(
               fields[variance].objects[selectedIndex].stockhistory
             )
-          };
+          };         
         } else {
-          this.state['rims'][variance] = {
+          updateData = {
             selectedKey: 0,
             id: fields[variance].objects[0].id,
             name: fields[variance].objects[0].name,
@@ -39,28 +40,32 @@ class Rims extends Component {
             thumbnail: fields[variance].objects[0].files[0].path,
             stockId: selectedStockId(fields[variance].objects[0].stockhistory)
           };
-        }        
+          
+        }
+        this.state['rims'][variance] = updateData;
+        this.props.selectedProductRims({[variance]: updateData});
       });    
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
   handleOptionChange(category, variance, selectedKey) {
     const { fields } = this.props.ProductRims.data[this.props.gradeId];
-    this.props.selectedProductRims({[variance]: fields[variance].objects[selectedKey].id});
+    let data = {
+      selectedKey: selectedKey,
+      id: fields[variance].objects[selectedKey].id,
+      name: fields[variance].objects[selectedKey].name,
+      price: fields[variance].objects[selectedKey].price,
+      thumbnail: fields[variance].objects[selectedKey].files[0].path,
+      stockId: selectedStockId(
+        fields[variance].objects[selectedKey].stockhistory
+      )
+    }
+    this.props.selectedProductRims({[variance]: data});
     this.setState({
       ...this.state,
       rims:{
         ...this.state.rims,
-        [variance]: {
-          selectedKey: selectedKey,
-          id: fields[variance].objects[selectedKey].id,
-          name: fields[variance].objects[selectedKey].name,
-          price: fields[variance].objects[selectedKey].price,
-          thumbnail: fields[variance].objects[selectedKey].files[0].path,
-          stockId: selectedStockId(
-            fields[variance].objects[selectedKey].stockhistory
-          )
-        }
+        [variance]: data
       }      
     });
   }

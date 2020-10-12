@@ -43,7 +43,7 @@ class Form extends Component {
         }
 
         if (!phone.match(/^[0-9+-]+$/)) {
-            phoneErr.phoneInvalid = "*Please enter a valid phone number";
+            phoneError.phoneInvalid = "*Please enter a valid phone number";
             isValid = false
         }
 

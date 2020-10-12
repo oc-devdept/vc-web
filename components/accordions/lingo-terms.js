@@ -71,7 +71,7 @@ const theme = createMuiTheme({
 });
 
 
-export default function CustomAccordion() {
+export default function CustomAccordionLingo() {
   const classes = useStyles();
 
   const [expanded, setExpanded] = React.useState(false);
@@ -91,11 +91,13 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>1.WHO HANDLES THE AFTER SALES SERVICE FOR VENTURE CARS?</p>
+                    <p>1.WHAT IS A VAC READY CAR?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>For Venture Cars, we have our in-house workshop, all servicing is done in-house and not outsourced to our network of partners. </p>
+                <p>VAC means Vehicle Approval Code. <br></br>
+                A VAC ready car is a car that is ready for vehicle registration with Land, Transport and Authority. With a ready COE, car owners may drive off the car after the vehicle has been registered. 
+                </p>
             </AccordionDetails>
         </Accordion>
 
@@ -107,11 +109,14 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>2.HOW DO WE BOOK A TEST DRIVE WITH YOU?</p>
+                    <p>2.WHAT IS PARF?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>Simply call us at 62828800 or book a test drive through our website! </p>
+                <p>PARF means Preferential Additional Registration Fee. When you deregister your car, you are entitled to PARF rebate 
+                which is a percentage of your ARF. To get a more accurate value of your PARF rebate, please refer to:&nbsp; 
+                <a href="https://www.lta.gov.sg/content/ltaweb/en/roads-and-motoring/owning-a-vehicle/vehicle-quota-system/certificate-of-entitlement-coe.html">Land, Transport and Authority, Singapore website</a>
+                </p>
             </AccordionDetails>
         </Accordion>
 
@@ -123,19 +128,13 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>3.HOW DO YOU CALCULATE CAR DEPRECIATION?</p>
+                    <p>3.WHAT IS VITAS?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>Car Depreciation is calculated this way: <br></br>
-                Formula: Price of Car - ( ARF / 2) / 10 years <br></br>
-                <br></br>
-                *ARF = Additional Registration Fees <br></br>
-                <br></br>
-                So for an example if your car cost $80,000 and your ARF is $20,000. This is how it is calculated. <br></br>
-                Car depreciation = $80,000 - ($20,000 / 2) /10 year<br></br>
-                <br></br>
-                Your car depreciation is $7000 / year.</p>
+                <p>VITAS means Vehicle Inspection & Type Approval System. Vicom is the authorised inspection center for it.
+                All cars in Singapore have to go through VITAS to ensure that it fulfills the technical requirements before it can be driven on Singapore’s road. 
+                For more information, you can visit <a href="http://www.vicom.com.sg/vitas.htm">VICOM’s website</a> for more information.</p>
             </AccordionDetails>
         </Accordion>
 
@@ -147,17 +146,12 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>4.WHAT IS A PARALLEL IMPORT CAR?</p>
+                    <p>4.WHAT DOES READY STOCK CARS MEAN?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>Parallel import car dealers purchase directly from factories producing these vehicles and then import them to Singapore to sell hence the name parallel import car. <br></br>
-                <br></br>
-                Parallel import car dealers do not have any limitation on the brand of vehicles that they can sell and often they can bring in a variety of car models and makes that 
-                Authorised Dealers are not selling or made available in Singapore. Authorised Dealers are companies that have won exclusive distribution rights for a particular car 
-                brand from the manufacturer of the vehicle. <br></br>
-                <br></br>
-                As a result, a typical parallel import car dealer showroom will showcase a variety of car brands and models.</p>
+                <p>Ready stock are cars that are already available in our showroom for sale. There is a shorter waiting period for these cars to 
+                get on the road as parallel import car dealers do not need to make a fresh order from the factory.</p>
             </AccordionDetails>
         </Accordion>
 
@@ -169,14 +163,12 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>5.WHY IS THERE A PRICE DIFFERENCE BETWEEN THE AUTHORIZED DEALERS (AD) AND PARALLEL IMPORTERS (PIS)?</p>
+                    <p>5.WHAT DOES INDENT STOCK MEANS?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>There are a few factors that lead to the lower pricing structure. <br></br>
-
-                1) Lower overhead count as compared to ADs <br></br>
-                2) Less flashy showrooms</p>
+                <p>When a car salesman tells you that he has to indent the car for you. It simply means that the shop does not have that particular car in stock 
+                with them and they would need to order the car for you.</p>
             </AccordionDetails>
         </Accordion>
 
@@ -188,13 +180,33 @@ export default function CustomAccordion() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>6.HOW DOES VENTURE CARS HANDLE CAR RECALL?</p>
+                    <p>6.WHAT IS OMV?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <p>In the event of vehicle recall, Venture Cars will contact you directly to schedule an 
-                  appointment to get the affected parts fixed. As direct importers, we have full access 
-                  to genuine and OEM parts from Japan. </p>
+                <p>OMV is Open Market Value. It is the actual price of the vehicle. This price is not inclusive of COE, ARF, registration fees, taxes and surcharges . 
+                OMV prices can differ even if it is the same vehicle make and model. <br></br>
+                OMV prices are determined by the Singapore customs when the car reaches Singapore shores. For more information on OMV, you can check out 
+                <a href="http://www.onemotoring.com.sg/publish/onemotoring/en/lta_information_guidelines/buy_a_new_vehicle/car_cost.html">Onemotoring webiste</a></p>
+            </AccordionDetails>
+        </Accordion>
+
+        <Accordion className={classes.expanded}>
+            <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className={classes.heading}
+            >
+                <Typography className={classes.subHeading}>
+                    <p>7.WHAT IS ARF?</p>
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <p>ARF is Additional Registration Fee (ARF). It is a tax imposed upon registration of a vehicle. It is calculated based on a percentage of the 
+                Open Market Value (OMV) of the vehicle.  For more information, you can refer to the official explanation provided by 
+                <a href="https://www.lta.gov.sg/content/ltaweb/en/roads-and-motoring/owning-a-vehicle/vehicle-quota-system/certificate-of-entitlement-coe.html">Land, Transport and Authority, Singapore</a>
+                </p>
             </AccordionDetails>
         </Accordion>
 

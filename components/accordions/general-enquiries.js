@@ -71,7 +71,7 @@ const theme = createMuiTheme({
 });
 
 
-export default function CustomAccordion() {
+export default function CustomAccordionGeneral() {
   const classes = useStyles();
 
   const [expanded, setExpanded] = React.useState(false);
@@ -195,6 +195,24 @@ export default function CustomAccordion() {
                 <p>In the event of vehicle recall, Venture Cars will contact you directly to schedule an 
                   appointment to get the affected parts fixed. As direct importers, we have full access 
                   to genuine and OEM parts from Japan. </p>
+            </AccordionDetails>
+        </Accordion>
+
+        <Accordion className={classes.expanded}>
+            <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className={classes.heading}
+            >
+                <Typography className={classes.subHeading}>
+                    <p>7.WHAT DOES YOUR WARRANTY COVER FOR NEW CARS?</p>
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <p>All cars purchased from Venture Cars comes with a 5 years warranty <br></br>
+                - First 5 years / 100,000 km comprehensive coverage or whichever comes first. <br></br>
+                Our accessories comes with a 1 year warranty.</p>
             </AccordionDetails>
         </Accordion>
 

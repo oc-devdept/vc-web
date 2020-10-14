@@ -35,16 +35,24 @@ const Content = {
     description: '',
 }
 
-function BookCarServicing() {
-    /*const state = {
-        visible: true
-    }*/
+const Service = {
+    service: 'Maintenance'
+}
 
+const Status = {
+    status: 'Awaiting',
+}
+
+function BookCarServicing() {
+    // Contact
     const [Form, setForm] = useState(Contact);
     const { firstName, lastName, email, phone } = Form
-
+    // Content
     const [content, setContent] = useState(Content);
     const { model, date, timeslot, description } = content
+
+    const [day, setDay] = useState();
+    
 
     const onChangeForm = (element, value) => {
         setForm(Form => ({ ...Form, [element]: value }));
@@ -57,13 +65,9 @@ function BookCarServicing() {
 
     // Set State for DayPickerInput
     const handleDayChange = (selectedDay, modifiers, dayPickerInput) => {
-        console.log("DATE DATE DATE");
-        console.log(selectedDay);
-        console.log(dayPickerInput);
-        console.log(parseDate);
-        console.log(formatDate);
-        //const input = dayPickerInput.getInput();
-        //setSelectedDay(setSelectedDay);
+        console.log(selectedDay.toLocaleDateString());
+        content.date = selectedDay;
+        console.log(content);
     }
 
     // Setting errors to use a state of null
@@ -71,9 +75,7 @@ function BookCarServicing() {
     const [emailErr, setEmailErr] = useState({});
     const [phoneErr, setPhoneErr] = useState({});
     const [visible, setVisible] = useState(false);
-    //const [day, setDay] = useState();
     const [selectedDay, setSelectedDay] = useState({date});
-    //const [date, setDate] = useState({});
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -86,7 +88,7 @@ function BookCarServicing() {
         if (isValid) {
             try {
               console.log('Send to server! ', Form)
-              await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content } }); //{ data: Form }
+              await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content, service: 'Maintenance', status: 'Awaiting' } });
               // success
               setForm(() => Contact);
               NotificationManager.success('Contact form sent successfully');
@@ -107,13 +109,8 @@ function BookCarServicing() {
         const phoneErr = {};
         let isValid = true;
 
-        if (!firstName.match(/^[a-zA-z0-9]+$/)) {
+        if (!firstName.match(/^[a-zA-z0-9]+$/) || !lastName.match(/^[a-zA-z0-9]+$/)) {
             nameErr.namefirstInvalid = "*Please enter a valid name";
-            isValid = false;
-        }
-
-        if (!lastName.match(/^[a-zA-z0-9]+$/)) {
-            nameErr.namelastInvalid = "*Please enter a valid name";
             isValid = false;
         }
       
@@ -265,13 +262,10 @@ function BookCarServicing() {
                                     style: {width: 675} }}
                                 //onChange={(e) => onChangeContent('date', e.target.value)}
                                 value={date}
-                                onDayChange={(e) => handleDayChange()}
+                                onDayChange={(e) => handleDayChange(e)}
+                                selectedDay={day}
                                 placeholder={`${formatDate(new Date())}`}
                             />
-                            {console.log("Calendar Testing")}
-                            {console.log(date)}
-                            {console.log(parseDate)}
-                            {console.log(formatDate)}
                         </div>
                         
                         <div class="form-group col-md-6">

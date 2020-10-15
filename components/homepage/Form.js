@@ -1,8 +1,92 @@
 import React, { Component } from "react";
 
+import api from 'Api'
+import { NotificationManager } from "react-notifications";
+import { red } from "color-name";
+
+
 class Form extends Component {
 
+    state = {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        nameError: {},
+        emailError: {},
+        phoneError: {},
+        checkboxError: {}
+    }
+
+    onChangeForm = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    formValidation = () => {
+        const { name, email, phone } = this.state;
+        let isValid = true;
+        const nameError = {};
+        const emailError = {};
+        const phoneError = {};
+        const checkboxError = {};
+
+        var checkBox = document.getElementById('exampleCheck1');
+
+        if (!name.match(/^[a-zA-z0-9]+$/)) {
+            nameError.nameInvalid = "*Please enter a valid name";
+            isValid = false;
+        }
+
+        if (!email.includes('@')) {
+            emailError.emailInvalid = "*Email is invalid";
+            isValid = false;
+        }
+
+        if (!phone.match(/^[0-9+-]+$/)) {
+            phoneError.phoneInvalid = "*Please enter a valid phone number";
+            isValid = false
+        }
+
+        if (!checkBox.checked) {
+            checkboxError.checkboxInvalid = "*Please check the terms and conditions"
+            isValid = false;
+        }
+
+        this.setState({ nameError });
+        this.setState({ emailError });
+        this.setState({ phoneError });
+        this.setState({ checkboxError });
+        return isValid;
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        const isValid = this.formValidation();
+
+        if (isValid) {
+            try {
+                console.log('Send to server! ', this.state)
+                await api.post(`/contactus/createContactForm`, { data: { 
+                    name: this.state.name, 
+                    email: this.state.email, 
+                    phone: this.state.phone, 
+                    message: this.state.message } });
+                // success
+                this.setState(this.state);
+                NotificationManager.success('Contact form sent successfully');
+
+            } catch (e) {
+                // failed
+                NotificationManager.error('Network error, please try again');
+
+            }
+
+        }
+
+    }
+
     render() {
+        const { name, email, phone, message, nameError, emailError, phoneError, checkboxError } = this.state;
         return (
             <section className="question-area">
                 <div className="container">
@@ -18,31 +102,72 @@ class Form extends Component {
 
                         <form className="question_form">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="fullName" placeholder="Full Name" />
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="name"
+                                    id="fullName"
+                                    value={name}
+                                    onChange={this.onChangeForm}
+                                    placeholder="Full Name" />
+                                {Object.keys(nameError).map((key) => {
+                                    return <div style={{ color: "red" }} key={key}>{nameError[key]}</div>
+                                })}
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="emailAddress" placeholder="Email Address" />
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    id="emailAddress"
+                                    value={email}
+                                    onChange={this.onChangeForm}
+                                    placeholder="Email Address" />
+                                {Object.keys(emailError).map((key) => {
+                                    return <div style={{ color: "red" }} key={key}>{emailError[key]}</div>
+                                })}
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" />
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="phone"
+                                    id="phoneNumber"
+                                    value={phone}
+                                    onChange={this.onChangeForm}
+                                    placeholder="Phone Number" />
+                                {Object.keys(phoneError).map((key) => {
+                                    return <div style={{ color: "red" }} key={key}>{phoneError[key]}</div>
+                                })}
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="message" rows="4" placeholder="Message"></textarea>
+                                <textarea
+                                    class="form-control"
+                                    name="message"
+                                    id="message"
+                                    value={message}
+                                    onChange={this.onChangeForm}
+                                    rows="4"
+                                    placeholder="Message">
+                                </textarea>
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                 <label class="form-check-label" for="exampleCheck1">
                                     I agree with Venture Car's{" "}
                                     <a className="d-inline" href="/">
-                                    Privacy &amp; Service Policies
+                                        Privacy &amp; Service Policies
                                     </a>{" "}
                                     and{" "}
                                     <a className="d-inline" href="/terms-n-conditions">
-                                    Terms &amp; Conditions
+                                        Terms &amp; Conditions
                                     </a>{" "}
                                 </label>
+                                {Object.keys(checkboxError).map((key) => {
+                                    return <div style={{ color: "red" }} key={key}>{checkboxError[key]}</div>
+                                })}
                             </div>
-                            <button type="submit" class="btn btn-primary">SEND ENQUIRY</button>
+                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">SEND ENQUIRY</button>
                         </form>
                     </div>
                 </div>

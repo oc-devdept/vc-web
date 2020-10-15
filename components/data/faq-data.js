@@ -71,7 +71,7 @@ export const FaqData = [
     ]
   },
   {
-    title: "Rental",
+    title: "Lingo Terms",
     icon: carRental,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor.",
@@ -104,7 +104,40 @@ export const FaqData = [
     ]
   },
   {
-    title: "Test Drive",
+    title: "Lease Buy-back Scheme",
+    icon: Car,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor.",
+    questions: [
+      {
+        question: "What is Venture Cars?",
+        answer:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor. Duis in quam nisl. Donec commodo metus at semper hendrerit. Suspendisse urna sapien, consequat malesuada magna sed, commodo malesuada odio."
+      },
+      {
+        question: "What is Venture Cars?",
+        answer:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor. Duis in quam nisl. Donec commodo metus at semper hendrerit. Suspendisse urna sapien, consequat malesuada magna sed, commodo malesuada odio."
+      },
+      {
+        question: "What is Venture Cars?",
+        answer:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor. Duis in quam nisl. Donec commodo metus at semper hendrerit. Suspendisse urna sapien, consequat malesuada magna sed, commodo malesuada odio."
+      },
+      {
+        question: "What is Venture Cars?",
+        answer:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor. Duis in quam nisl. Donec commodo metus at semper hendrerit. Suspendisse urna sapien, consequat malesuada magna sed, commodo malesuada odio."
+      },
+      {
+        question: "What is Venture Cars?",
+        answer:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor. Duis in quam nisl. Donec commodo metus at semper hendrerit. Suspendisse urna sapien, consequat malesuada magna sed, commodo malesuada odio."
+      }
+    ]
+  },
+  {
+    title: "Hybrid Car Questions",
     icon: Car,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mi a tellus porttitor lacinia sed nec quam. Praesent ac lobortis dui, sit amet rutrum dolor.",

@@ -9,7 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Card from "@material-ui/core/Card";
 
-import CustomAccordion from './accordion';
+//import CustomAccordion from './accordion';
+import CustomAccordionGeneral from 'Components/accordions/general-enquiries';
+import CustomAccordionPurchases from 'Components/accordions/purchases';
+import CustomAccordionLingo from 'Components/accordions/lingo-terms';
+import CustomAccordionLease from 'Components/accordions/lease-buy-back';
+import CustomAccordionHybrid from 'Components/accordions/hybrid-car';
 
 // FAQ Data
 import { FaqData } from "Components/data/faq-data";
@@ -104,36 +109,40 @@ export default function Faq() {
                 <Card>
                     <div className={classes.headerBar}>
                         <h3>General Enquires</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
                     </div>
-                    <CustomAccordion />
+                    <CustomAccordionGeneral />
                 </Card>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={1}>
                 <Card>
                     <div className={classes.headerBar}>
-                        <h3>General Enquires</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
+                        <h3>Purchases</h3>
                     </div>
-                    <CustomAccordion />
+                    <CustomAccordionPurchases />
                 </Card>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={2}>
                 <Card>
                     <div className={classes.headerBar}>
-                        <h3>General Enquires</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
+                        <h3>Lingo Terms</h3>
                     </div>
-                    <CustomAccordion />
+                    <CustomAccordionLingo />
                 </Card>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={3}>
                 <Card>
                     <div className={classes.headerBar}>
-                        <h3>General Enquires</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper justo quis ligula posuere, et venenatis ante aliquet. Cras diam elit, tempor nec lacus in, mollis laoreet nisi. </p>
+                        <h3>Lease Buy-Back Scheme</h3>
                     </div>
-                    <CustomAccordion />
+                    <CustomAccordionLease />
+                </Card>
+            </TabPanel>
+            <TabPanel className={classes.tabPanel} value={value} index={4}>
+                <Card>
+                    <div className={classes.headerBar}>
+                        <h3>Hybrid Car Questions</h3>
+                    </div>
+                    <CustomAccordionHybrid />
                 </Card>
             </TabPanel>
             </div>

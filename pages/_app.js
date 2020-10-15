@@ -19,6 +19,9 @@ import "react-day-picker/lib/style.css";
 import "../assets/styles/react-spinner-loader.css";
 import "react-toastify/dist/ReactToastify.css";
 
+//Day Picker
+import 'react-day-picker/lib/style.css';
+
 import { Provider } from "react-redux";
 import App from "next/app";
 import withRedux from "next-redux-wrapper";

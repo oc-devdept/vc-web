@@ -78,11 +78,25 @@ export const selectedProductAccessories = (variance, selectedIds) => ({
   payload: { variance, selectedIds }
 });
 
+//update coe selected
+export const selectedCoePackage = e => ({
+  type: types.SELECTED_COE_PACKAGE,
+  payload: e
+})
+//update servicing package
+export const selectedServicingPackage = e => ({
+  type: types.SELECTED_AFTERSALES_PACKAGE,
+  payload: e
+});
+
 // Update total price
-export const updateProductTotal = e => ({
+export const updateProductTotal = e => { 
+  console.log(e);
+  return ({
   type: types.UPDATE_PRODUCT_TOTAL,
   payload: e
 });
+}
 
 // Update loan calculator
 export const updateLoanCalculator = e => ({

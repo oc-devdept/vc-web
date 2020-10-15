@@ -8,10 +8,7 @@ if (typeof window !== "undefined") {
 
 const INIT_STATE = localCart
   ? localCart
-  : {
-      productGradeId: "",
-      productVariance: {},
-      productAccessories: [],
+  : {      
       subtotal: 0,
       misc: 0,
       gst: 0,
@@ -21,62 +18,38 @@ const INIT_STATE = localCart
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
     case types.GET_CHECKOUT_DATA:
+    case types.SAVE_CHECKOUT:
       const {
         ProductGrade,
         ProductExterior,
         ProductInterior,
+        ProductRims,
         ProductAccessories,
+        CoeSelected,
+        AftersaleSelected,
         ProductTotal
       } = action.payload;
 
       // Mapping of selected exterior/interior into productVariance[]
-      var productVariance = [];
-      Object.values(ProductExterior.selected).map(item => {
-        productVariance.push({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          thumbnail: item.thumbnail,
-          stockId: item.stockId
-        });
-      });
-      Object.values(ProductInterior.selected).map(item => {
-        productVariance.push({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          thumbnail: item.thumbnail,
-          stockId: item.stockId
-        });
-      });
-
-      // Mapping of accessories into productAccessories[]
-      let productAccessories = [];
-
-      if (ProductAccessories.selectedAccessories.length !== 0) {
-        ProductAccessories.selectedAccessories.map(item =>
-          productAccessories.push({
-            id: item.productOptionId,
-            name: item.name,
-            price: item.price,
-            thumbnail: item.image
-          })
-        );
-      }
-
-      return {
-        productGradeId: ProductGrade.id,
-        productVariance: productVariance,
-        productAccessories: productAccessories,
-        subtotal: ProductTotal.subtotal,
-        misc: ProductTotal.misc,
-        gst: ProductTotal.gst,
-        total: ProductTotal.total
-      };
-
-    case types.SAVE_CHECKOUT:
-      localStorage.setItem("vc-shoppingcart", JSON.stringify(action.payload));
-      return { ...action.payload };
+     //var productVariance = [];
+     let returnData = {
+      ProductGrade: ProductGrade,
+      ProductExterior: ProductExterior.selected,
+      ProductInterior: ProductInterior.selected,
+      ProductRims: ProductRims.selected,
+      ProductAccessories: ProductAccessories.selected,
+      CoeSelected: CoeSelected,
+      AftersaleSelected: AftersaleSelected,
+      subtotal: ProductTotal.subtotal,
+      misc: ProductTotal.misc,
+      gst: ProductTotal.gst,
+      total: ProductTotal.total
+     }
+     if(action.type == types.SAVE_CHECKOUT){
+      localStorage.setItem("vc-shoppingcart", JSON.stringify(returnData));
+     }
+      
+      return returnData;
 
     case types.GET_CHECKOUT:
       const checkout = JSON.parse(localStorage.getItem("vc-shoppingcart"));

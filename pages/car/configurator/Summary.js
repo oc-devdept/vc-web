@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import Link from "next/link";
 import { formatPrice } from "Components/Helpers/helpers";
 
+import { Icon, InlineIcon } from '@iconify/react';
+import arrowLeft from '@iconify/icons-bi/arrow-left';
+
 import SummaryTable from "Components/configurator/SummaryTable";
 import Button from "react-bootstrap/Button";
 import LoanCalculator from "Components/configurator/LoanCalculator";
@@ -100,27 +103,10 @@ const Summary = props => {
   };
 
   function checkout() {
-    const {
-      productVariance,
-      productAccessories,
-      productGradeId,
-      subtotal,
-      misc,
-      gst,
-      total
-    } = props.CheckoutState;
-    const { ProductModel, ProductGrade } = props.ProductState;
-    props.saveCheckout({
-      ProductModel,
-      ProductGrade,
-      productVariance,
-      productAccessories,
-      productGradeId,
-      subtotal,
-      misc,
-      gst,
-      total
-    });
+        
+    //const { ProductGrade, ProductExterior, ProductInterior, ProductRims, ProductAccessories, CoeSelected, AftersaleSelected, ProductTotal } = props.ProductState;
+    props.saveCheckout(props.ProductState);
+    
   }
 
   const onSubmitForm = async () => {
@@ -159,27 +145,28 @@ const Summary = props => {
     <React.Fragment>
       <div className="row">
         <div className="col-lg-6">
+          <div className="py-3 px-0 text-center">
+              
+              <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span>
+            
+          </div>
           <SummaryTable
             page="summary"
             ProductState={props.ProductState}
-            CheckoutState={props.CheckoutState}
-            updateProductTotal={props.updateProductTotal}
+            CheckoutState={props.CheckoutState}            
             getCheckoutData={props.getCheckoutData}
+            loanCalculator={props.ProductState.LoanCalculator}
+            updateProductTotal={props.updateProductTotal}
+            printConfigurator={props.printConfigurator}
           />
         </div>
         <div className="col-lg-6">
-          <div className="py-3 px-0">
-            <p style={{ color: "#F29D30", fontWeight: 600 }}>
-              CAR LOAN CALCULATOR
-            </p>
+          <div className="py-3 px-0 text-center">
+            
+              <span className="summarySubtitle">CAR LOAN CALCULATOR</span>
+            
           </div>
-          <div
-            style={{
-              minHeight: 300,
-              border: "1px solid #F29D30",
-              marginBottom: "1rem"
-            }}
-          >
+          <div>
             <LoanCalculator
               productTotal={props.ProductState.ProductTotal}
               loanCalculator={props.ProductState.LoanCalculator}
@@ -187,95 +174,49 @@ const Summary = props => {
               getInterestRate={props.getInterestRate}
             />
           </div>
-          <div
-            style={{
-              minHeight: 100,
-              backgroundColor: "#4B6674",
-              marginBottom: "1rem"
-            }}
-          >
-            <div className="p-3">
-              <p
-                style={{
-                  color: "#F29D30",
-                  textAlign: "center",
-                  fontWeight: 600,
-                  margin: 0
-                }}
-              >
-                OVERALL SUMMARY
-              </p>
-              {overallSummary.map((item, key) => (
-                <div key={key} className="d-flex justify-content-between">
-                  <p style={{ color: "#ffffff", margin: 0, fontWeight: 600 }}>
-                    {item.text}
-                  </p>
-                  {!!item.price ? (
-                    <p style={{ color: "#ffffff" }}>
-                      {formatPrice(item.price)}
-                    </p>
-                  ) : (
-                    <p style={{ color: "#ffffff" }}>-</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+          
           <div className="d-flex justify-content-between">
             <div className="d-flex">
               <button
-                onClick={props.printConfigurator}
-                className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
-                style={{
-                  border: "1px solid #4b6674",
-                  minWidth: 65,
-                  maxWidth: 120,
-                  backgroundColor: "transparent"
-                }}
+              style={{ padding: 10, margin: 20 }}
+              className="btn-primary"
+                onClick={props.goPrev}                
+                
               >
-                <i
-                  className="fas fa-save"
-                  style={{ color: "#4b6674", fontSize: 24 }}
-                />
-                <p
-                  style={{
-                    fontSize: 12,
-                    color: "#4b6674",
-                    textAlign: "center"
-                  }}
+                <p style={{color: "white"}}
                 >
-                  SAVE
+                  <InlineIcon icon={arrowLeft}  /> PREV
                 </p>
               </button>
-              <button
-                className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
+            </div>
+            <div className="d-flex">
+              <button                
                 onClick={_RestartToggle}
                 style={{
                   border: "1px solid #4b6674",
                   minWidth: 65,
                   maxWidth: 120,
-                  backgroundColor: "transparent"
+                  backgroundColor: "transparent",
+                  margin:20,
+                  padding:10
                 }}
-              >
-                <i
-                  className="fas fa-car"
-                  style={{ color: "#4b6674", fontSize: 24 }}
-                />
+               >
                 <p
                   style={{
                     fontSize: 12,
                     color: "#4b6674",
-                    textAlign: "center"
+                    textAlign: "center",
+                    
                   }}
                 >
-                  BOOK TEST DRIVE
+                  MAKE ENQUIRY
                 </p>
               </button>
             </div>
             <div className="d-flex">
-              <Button onClick={checkout} style={{ maxWidth: 180 }}>
+              <Button onClick={checkout} style={{ padding: 10, margin: 20 }}>
                 <Link href="/checkout">
-                  <a style={{ color: "inherit" }}>PROCEED TO DOWNPAYMENT</a>
+                  <a style={{ color: "inherit" }}>Reserve Car Now</a>
                 </Link>
               </Button>
             </div>
@@ -329,3 +270,67 @@ const Summary = props => {
 };
 
 export default connect(null, { saveCheckout })(Summary);
+
+/*
+<button
+                onClick={props.printConfigurator}                
+                style={{
+                  border: "1px solid #4b6674",
+                  minWidth: 65,
+                  maxWidth: 120,
+                  backgroundColor: "transparent"
+                }}
+              >
+                <i
+                  className="fas fa-save"
+                  style={{ color: "#4b6674", fontSize: 24 }}
+                />
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: "#4b6674",
+                    textAlign: "center"
+                  }}
+                >
+                  SAVE
+                </p>
+              </button>
+
+<button
+                className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
+                onClick={_RestartToggle}
+                style={{
+                  border: "1px solid #4b6674",
+                  minWidth: 65,
+                  maxWidth: 120,
+                  backgroundColor: "transparent"
+                }}
+              >
+
+<div className="p-3">
+      <p
+        style={{
+          color: "#F29D30",
+          textAlign: "center",
+          fontWeight: 600,
+          margin: 0
+        }}
+      >
+        OVERALL SUMMARY
+      </p>
+      {overallSummary.map((item, key) => (
+        <div key={key} className="d-flex justify-content-between">
+          <p style={{ color: "#ffffff", margin: 0, fontWeight: 600 }}>
+            {item.text}
+          </p>
+          {!!item.price ? (
+            <p style={{ color: "#ffffff" }}>
+              {formatPrice(item.price)}
+            </p>
+          ) : (
+            <p style={{ color: "#ffffff" }}>-</p>
+          )}
+        </div>
+      ))}
+    </div>
+*/

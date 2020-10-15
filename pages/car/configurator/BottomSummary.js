@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { formatPrice } from 'Components/Helpers/helpers';
 
 const BottomSummary = props => {
     let total = parseInt(props.productState.ProductGrade.price);
@@ -30,6 +31,27 @@ const BottomSummary = props => {
             total += rimsPrice;
         })
     }
+    if(props.productState.CoeSelected.price > 0){
+        total += props.productState.CoeSelected.price;
+    }
+    if(props.productState.AftersaleSelected.warranty != null){
+        total += props.productState.AftersaleSelected.warranty.price;
+    }
+    if(props.productState.AftersaleSelected.servicing != null){
+        total += props.productState.AftersaleSelected.servicing.price;
+    }
+    
+    if(props.productState.ProductAccessories.selected != null) {
+
+        Object.entries(props.productState.ProductAccessories.selected).map(([key, data]) => {
+            total += data.price;
+        })                                    
+
+    }
+
+    //props.updateProductTotal({total: total});
+        
+
     return (
         <div className="bottomSummary">
             <h5>Summary</h5>
@@ -37,7 +59,7 @@ const BottomSummary = props => {
                 <li>Car Grade
                     <ul>
                         <li><div className="info">{props.productState.ProductGrade.name}</div>
-                        <div className="price">${props.productState.ProductGrade.price}</div>
+                        <div className="price">{formatPrice(props.productState.ProductGrade.price)}</div>
                         </li>
                     </ul>
                 </li>
@@ -46,7 +68,7 @@ const BottomSummary = props => {
                         <li>Exterior
                         <ul>
                             <li><div className="info">{exteriorName }</div>
-                                <div className="price">${exteriorPrice}</div>
+                                <div className="price">{formatPrice(exteriorPrice)}</div>
                             </li>
                         </ul>
                         </li>
@@ -57,7 +79,7 @@ const BottomSummary = props => {
                         <li>Interior
                         <ul>
                             <li><div className="info">{interiorName }</div>
-                                <div className="price">${interiorPrice}</div>
+                                <div className="price">{formatPrice(interiorPrice)}</div>
                             </li>
                         </ul>
                         </li>
@@ -68,7 +90,7 @@ const BottomSummary = props => {
                         <li>Rims
                         <ul>
                             <li><div className="info">{rimsName }</div>
-                                <div className="price">${rimsPrice}</div>
+                                <div className="price">{formatPrice(rimsPrice)}</div>
                             </li>
                         </ul>
                         </li>
@@ -81,15 +103,47 @@ const BottomSummary = props => {
                             {
                                 Object.keys(props.productState.ProductAccessories.selected).map(key => {
                                     return props.productState.ProductAccessories.selected[key].map(item => {
-                                        total += item.price;
                                         return (
                                             <li><div className="info">{key +": "+item.name }</div>
-                                                <div className="price">${item.price}</div>
+                                                <div className="price">{formatPrice(item.price)}</div>
                                             </li>
                                         )
                                     })
                                 })                                    
                             }
+                        </ul>
+                        </li>
+                    )
+                }
+                {
+                    props.productState.CoeSelected.price >= 0 && (
+                        <li>COE
+                        <ul>
+                            <li><div className="info">{props.productState.CoeSelected.name }</div>
+                                <div className="price">{formatPrice(props.productState.CoeSelected.price)}</div>
+                            </li>
+                        </ul>
+                        </li>
+                    )
+                }
+                {
+                    props.productState.AftersaleSelected.warranty != null && props.productState.AftersaleSelected.warranty.price >= 0 && (
+                        <li>Warranty
+                        <ul>
+                            <li><div className="info">{props.productState.AftersaleSelected.warranty.name }</div>
+                                <div className="price">{formatPrice(props.productState.AftersaleSelected.warranty.price)}</div>
+                            </li>
+                        </ul>
+                        </li>
+                    )
+                }
+                {
+                    props.productState.AftersaleSelected.servicing != null && props.productState.AftersaleSelected.servicing.price >= 0 && (
+                        <li>Servicing
+                        <ul>
+                            <li><div className="info">{props.productState.AftersaleSelected.servicing.name }</div>
+                                <div className="price">{formatPrice(props.productState.AftersaleSelected.servicing.price)}</div>
+                            </li>
                         </ul>
                         </li>
                     )
@@ -101,7 +155,7 @@ const BottomSummary = props => {
             <hr />
             <div className="totalRow">
             <div className="grandTotal">Grand Total</div>
-            <div className="price">${total}</div>
+            <div className="price">{formatPrice(total)}</div>
             </div>
         </div>
     )

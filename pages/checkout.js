@@ -6,6 +6,7 @@ import Breadcrumb from "Components/Common/Breadcrumb";
 import OrderList from "Components/checkout/OrderList";
 import LoginOverlay from "Components/checkout/LoginOverlay";
 import CreditCardForm from "Components/checkout/CreditCardForm";
+import SummaryTable from "Components/configurator/SummaryTable";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckout } from "Ducks/checkout";
@@ -30,10 +31,10 @@ const Checkout = props => {
     <React.Fragment>
       <Navbar />
       <Breadcrumb title="Checkout" />
-      <div className="container">
+      <div className="container" style={{marginBottom: 40}}>
         <div className="row">
           <div className="col-lg-6">
-            <OrderList checkoutState={checkoutState} />
+          <OrderList checkoutState={checkoutState}  />
           </div>
           <div className="col-lg-6">
             {props.loggedIn ? <CreditCardForm /> : <LoginOverlay />}
@@ -52,3 +53,6 @@ Checkout.getInitialProps = ctx => {
 };
 
 export default Checkout;
+/*
+
+*/

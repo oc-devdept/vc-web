@@ -38,6 +38,14 @@ const INIT_STATE = {
     gst: 0,
     total: 0
   },
+  CoeSelected: {
+    name: "",
+    price:-1
+  },
+  AftersaleSelected: {
+    warranty: null,
+    servicing: null
+  },
   LoanCalculator: {
     loanTerm: 0,
     loanAmount: 0,
@@ -292,6 +300,16 @@ export default (state = INIT_STATE, action) => {
           selected: selectedAccessories
         }
       };
+    case types.SELECTED_COE_PACKAGE:
+      return {
+        ...state,
+        CoeSelected: action.payload
+      };
+    case types.SELECTED_AFTERSALES_PACKAGE:
+      return {
+        ...state,
+        AftersaleSelected: action.payload
+      };
 
     case types.UPDATE_LOAN_CALCULATOR:
       var {
@@ -314,7 +332,7 @@ export default (state = INIT_STATE, action) => {
         }
       };
 
-    case types.UPDATE_PRODUCT_TOTAL:
+    case types.UPDATE_PRODUCT_TOTAL:   
       const { subtotal, misc, gst, total } = action.payload.current;
       return {
         ...state,
@@ -369,6 +387,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state
       };
+    
+      case types.UPDATE_LOAN_CALCULATOR:
+        return {
+          ...state,
+          LoanCalculator: action.payload
+        }
 
     default:
       return { ...state };

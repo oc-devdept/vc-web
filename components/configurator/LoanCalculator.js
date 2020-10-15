@@ -12,7 +12,8 @@ const LoanCalculator = props => {
     totalInterest: "",
     downPayment: "",
     deposit: 500,
-    monthlyInstallment: ""
+    monthlyInstallment: "",
+    loanPercent: 0
   };
 
   function reducer(state, { field, value }) {
@@ -30,7 +31,8 @@ const LoanCalculator = props => {
     interestRate,
     totalInterest,
     downPayment,
-    deposit
+    deposit,
+    loanPercent
   } = state;
 
   const onChange = e => {
@@ -45,14 +47,25 @@ const LoanCalculator = props => {
     dispatch({ field: "loanTerm", value: value });
   };
 
+  const onSliderChange2 = (e, value) => {
+    dispatch({ field: "loanPercent", value: value });
+  };
+
   const handleCalculationClick = () => {
-    const downPayment = props.productTotal.total - loanAmount;
+    let lAmount = loanAmount;    
+    if(loanPercent > 0){      
+      lAmount = Math.round(loanPercent / 100 * props.productTotal.total);      
+      dispatch({ field: "loanAmount", value: lAmount});
+    }
+    const downPayment = props.productTotal.total - lAmount;
+    
     const totalInterest =
-      (loanAmount * (interestRate / 100 + 1) - loanAmount) * (loanTerm / 12);
-    const monthlyInstallment = (totalInterest + loanAmount) / loanTerm;
+      (lAmount * (interestRate / 100 + 1) - lAmount) * (loanTerm / 12);
+    const monthlyInstallment = (totalInterest + lAmount) / loanTerm;    
     dispatch({ field: "downPayment", value: downPayment });
     dispatch({ field: "totalInterest", value: totalInterest });
-    dispatch({ field: "monthlyInstallment", value: monthlyInstallment });
+    dispatch({ field: "monthlyInstallment", value: monthlyInstallment }); 
+
   };
 
   // GET interest rate from DB, update it in local state
@@ -91,6 +104,41 @@ const LoanCalculator = props => {
     {
       value: 84,
       label: 84
+    }
+  ];
+
+  const marks2 = [
+    {
+      value: 10,
+      label: 10
+    },
+    {
+      value: 20,
+      label: 20
+    },
+    {
+      value: 30,
+      label: 30
+    },
+    {
+      value: 40,
+      label: 40
+    },
+    {
+      value: 50,
+      label: 50
+    },
+    {
+      value: 60,
+      label: 60
+    },
+    {
+      value: 70,
+      label: 70
+    },
+    {
+      value: 80,
+      label: 80
     }
   ];
 
@@ -134,13 +182,13 @@ const LoanCalculator = props => {
   // console.log("calculator state= ", state);
   // console.log("calculator props= ", props);
   return (
-    <div className="calculator p-3">
+    <div className="calculator">
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
           <p>TOTAL CAR PRICE</p>
         </div>
         <div className="field-input col-7">
-          <p>{formatPrice(props.productTotal.total)}</p>
+        <p>{formatPrice(props.productTotal.total)}</p>
         </div>
       </div>
       <div className="calculator-field row">
@@ -211,6 +259,30 @@ const LoanCalculator = props => {
               onChange={onChange}
             />
           </InputGroup>
+        </div>
+      </div>
+      <div className="calculator-field row">
+        <div className="field-name d-flex align-items-center col-5">
+          
+        </div>
+        <div className="field-name col-7 text-center">
+        <p>OR</p>
+        </div>
+      </div>
+      <div className="calculator-field row">
+        <div className="field-name d-flex align-items-center col-5">
+          <p>LOAN PERCENTAGE</p>
+        </div>
+        <div className="field-input col-7">
+        <StyledSlider
+            min={0}
+            max={100}
+            step={10}
+            marks={marks2}
+            name="loanPercent"
+            value={loanPercent}
+            onChangeCommitted={onSliderChange2}
+          />
         </div>
       </div>
       <div className="calculator-field row">
@@ -368,7 +440,7 @@ const LoanCalculator = props => {
         </div>
       </div>
       <div className="calculator-submit row justify-content-center">
-        {!!loanAmount ? (
+        {!!loanAmount || loanPercent > 0 ? (
           <Button onClick={handleCalculationClick}>Calculate</Button>
         ) : (
           <Button onClick={handleCalculationClick} disabled>

@@ -10120,28 +10120,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.calculator-field {
-  margin-bottom: 0.75rem;
-}
-.field-name p {
-  color: #f29d30;
-  font-weight: 600;
-}
-.calculator-submit button {
-  padding: 6px 30px;
-  margin-top: 10px;
-  box-shadow: 0px 5px 8px #888888;
-}
-.calculator-submit button:disabled,
-.checkout-form button:disabled {
-  background-color: #cccccc;
-  border: #cccccc;
-}
-.calculator-submit button:disabled:hover,
-.checkout-form button:disabled:hover {
-  box-shadow: 0px 5px 8px #888888;
-  color: #ffffff !important;
-}
 .form-control {
   color: #666666;
 }

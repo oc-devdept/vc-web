@@ -37,6 +37,8 @@ import {
   selectedProductInterior,
   selectedProductRims,
   selectedProductAccessories,
+  selectedCoePackage,
+  selectedServicingPackage,
   updateProductTotal,
   updateLoanCalculator,
   printConfigurator,
@@ -197,7 +199,7 @@ class Product extends Component {
                   { this.state.activeStep == 1 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Coe />
+                            <Coe selected={ProductState.CoeSelected} selectedCoePackage={this.props.selectedCoePackage} />
                             </div>
                           </div>
 
@@ -205,15 +207,32 @@ class Product extends Component {
                   { this.state.activeStep == 2 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Aftersales />
+                            <Aftersales selected={ProductState.AftersaleSelected} selectedServicingPackage={this.props.selectedServicingPackage} />
                             </div>
                           </div>
 
                   }
+                  { this.state.activeStep == 3 && 
+                   <div className="row">
+                   <div className="col-md-12">
+                        <Summary
+                        ProductState={ProductState}
+                        CheckoutState={CheckoutState}                        
+                        updateLoanCalculator={this.props.updateLoanCalculator}
+                        printConfigurator={this.props.printConfigurator}
+                        getCheckoutData={this.props.getCheckoutData}
+                        getInterestRate={this.props.getInterestRate}
+                        goPrev={this.handlePrev}
+                        updateProductTotal={this.props.updateProductTotal}
+                      />
+                     </div>
+                          </div>
+                  }
                 </div>
               </div>            
             </div>
-            <div className="row justify-content-center">
+            {this.state.activeStep <= 2 && 
+            (<div className="row justify-content-center">
               <div className="col-md-12">
                 <div className="row">
                   <div className="col-md-9">
@@ -224,11 +243,10 @@ class Product extends Component {
                   <button type="submit" class="btn btn-primary" style={{float:"right"}} onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight}  /></button>
                   </div>
                 </div>
-              </div>
-      
-              
-                    
+              </div>                                  
             </div>
+            )
+          }
           </div>
         </section>
       </DefaultLayout>
@@ -254,6 +272,8 @@ export default connect(mapStateToProps, {
   selectedProductInterior,
   selectedProductRims,
   selectedProductAccessories,
+  selectedCoePackage,
+  selectedServicingPackage,
   updateProductTotal,
   updateLoanCalculator,
   printConfigurator,

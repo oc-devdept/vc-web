@@ -17,9 +17,8 @@ const CreateAccountForm = ({
 
   return (
     <React.Fragment>
-      {/* checks to render the correct overlay (form or successful creation) */}
-      {createSuccess ? (
-        <div className="signup-overlay signup-form">
+      {/* checks to render the correct overlay (form or successful creation) 
+      <div className="signup-overlay signup-form">
           <div className="section-title">
             <h2>A verification link has been sent to your email account</h2>
           </div>
@@ -32,6 +31,14 @@ const CreateAccountForm = ({
             Back to Login
           </a>
         </div>
+        
+      */}
+      {createSuccess ? (
+        <div className="signup-overlay signup-form">
+        <div className="section-title">
+          <h2>Logging you in...</h2>
+          </div>
+          </div>
       ) : (
         <div className="signup-overlay">
           <div className="section-title">

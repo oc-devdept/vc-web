@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { NotificationManager } from "react-notifications";
 import api from "Api";
 import { handleCheckoutLogin } from "Ducks/user/UserActions";
 
 import CreateAccountForm from "Components/checkout/CreateAccountForm";
 import LoginForm from "Components/checkout/LoginForm";
+import data from "@iconify/icons-bx/bxs-phone";
 
 const LoginOverlay = ({ handleCheckoutLogin }) => {
   const [createAccount, setCreateAccount] = useState(false);
   const [createSuccess, setCreateSuccess] = useState(false);
+
 
   const _handleLoginForm = async (e, loginForm) => {
     e.preventDefault();
@@ -29,7 +31,10 @@ const LoginOverlay = ({ handleCheckoutLogin }) => {
     try {
       await api.post("/basecustomerusers/signup", { data: createAccountForm });
       setCreateSuccess(true);
-      NotificationManager.success("Signup Successfully");
+      NotificationManager.success("Signup Successful");
+
+      //auto login
+      handleCheckoutLogin({email: createAccountForm.email, password: createAccountForm.password}, "checkout");
     } catch (e) {
       NotificationManager.error(e.response.data.error.message);
     }

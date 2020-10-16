@@ -94,7 +94,7 @@ export default function OrderList({ checkoutState }) {
             <li>
                 Car Grade
                 <div className="summaryDetail">
-                   <img src={ProductGrade.images[0].path } />
+                   <img src={ProductGrade.thumbs } />
                    <p className="details">
                      Car Grade <br />
                      <span className="detailDescription">{ProductGrade.name}</span>
@@ -167,28 +167,31 @@ export default function OrderList({ checkoutState }) {
             </li>
               )
             }
-
-          {
+            {
               ProductAccessories  && (
                 <li>
                 Accessories & Options
-                { Object.entries(ProductAccessories).map(([variance, data]) => {            
-                    return (
-                      <div className="summaryDetail">
-                      <img src={data.thumbnail} />
-                      <p className="details">
-                        { variance } <br />
-                          <span className="detailDescription">{data.name}</span>
-                        </p>
-                        <p className="price">{formatPrice(data.price)}</p>
-                      </div>
-                    )
+                { Object.entries(ProductAccessories).map(([variance, data]) => {
+                       return ProductAccessories[variance].map(item => (
+                        <div className="summaryDetail">
+                        <img src={item.thumbnail} />
+                        <p className="details">
+                          { variance } <br />
+                            <span className="detailDescription">{item.name}</span>
+                          </p>
+                          <p className="price">{formatPrice(item.price)}</p>
+                        </div>
+                       ))       
+                    
+                     
+                    
                   }) 
             
               }
             </li>
               )
             }
+          
             {
                     CoeSelected.price >= 0 && (
                         <li>COE

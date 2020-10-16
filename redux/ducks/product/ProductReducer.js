@@ -289,7 +289,8 @@ export default (state = INIT_STATE, action) => {
             selectedAccessories[action.payload.variance].push({              
               id: item.id,
               name: item.name,
-              price: item.price
+              price: item.price,
+              thumbnail: item.files.length > 0 && item.files[0].path
             });
           }        
       });

@@ -162,7 +162,7 @@ useEffect(() => {
             <li>
                 Car Grade
                 <div className="summaryDetail">
-                   <img src={props.ProductState.ProductGrade.images[0].path } />
+                   <img src={props.ProductState.ProductGrade.thumbs } />
                    <p className="details">
                      Car Grade <br />
                      <span className="detailDescription">{props.ProductState.ProductGrade.name}</span>
@@ -191,8 +191,7 @@ useEffect(() => {
             </li>
               )
             }
-
-          {
+        {
               props.ProductState.ProductInterior.selected  && (
                 <li>
                 Interior
@@ -213,8 +212,7 @@ useEffect(() => {
             </li>
               )
             }
-
-{
+        {
               props.ProductState.ProductRims.selected  && (
                 <li>
                 Rims
@@ -235,29 +233,31 @@ useEffect(() => {
             </li>
               )
             }
-
-          {
+     {
               props.ProductState.ProductAccessories.selected  && (
                 <li>
                 Accessories & Options
-                { Object.entries(props.ProductState.ProductAccessories.selected).map(([variance, data]) => {            
-                    return (
-                      <div className="summaryDetail">
-                      <img src={data.thumbnail} />
-                      <p className="details">
-                        { variance } <br />
-                          <span className="detailDescription">{data.name}</span>
-                        </p>
-                        <p className="price">{formatPrice(data.price)}</p>
-                      </div>
-                    )
+                { Object.entries(props.ProductState.ProductAccessories.selected).map(([variance, data]) => {
+                       return props.ProductState.ProductAccessories.selected[variance].map(item => (
+                        <div className="summaryDetail">
+                        <img src={item.thumbnail} />
+                        <p className="details">
+                          { variance } <br />
+                            <span className="detailDescription">{item.name}</span>
+                          </p>
+                          <p className="price">{formatPrice(item.price)}</p>
+                        </div>
+                       ))       
+                    
+                     
+                    
                   }) 
             
               }
             </li>
               )
             }
-            {
+               {
                     props.ProductState.CoeSelected.price >= 0 && (
                         <li>COE
                             <div className="summaryDetail">
@@ -306,10 +306,7 @@ useEffect(() => {
                         </li>
                     )
                 }
-            
-          </ol>
-        </div>
-        <div className="financingTable">
+       <div className="financingTable">
           <h3>FINANCING DETAILS</h3>
           The final calculated amount below is based on the input values under "Car Loan Calculator".
           <div className="financeDetails">
@@ -335,6 +332,10 @@ useEffect(() => {
             </div>
           </div>
         </div>
+
+          </ol>
+        </div>
+       
       </div>
     </React.Fragment>
   );
@@ -408,4 +409,8 @@ export default SummaryTable;
           </ListGroup.Item>
         </ListGroup>
       </Card>
+
+        
+         
+         
 */

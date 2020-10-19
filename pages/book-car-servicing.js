@@ -52,6 +52,10 @@ function BookCarServicing() {
     const { model, date, timeslot, description } = content
 
     const [day, setDay] = useState();
+
+    const currentYear = new Date().getFullYear();
+    const currentMonth = (new Date().getMonth())+1;
+    const currentDay = new Date().getUTCDate();
     
 
     const onChangeForm = (element, value) => {
@@ -65,9 +69,10 @@ function BookCarServicing() {
 
     // Set State for DayPickerInput
     const handleDayChange = (selectedDay, modifiers, dayPickerInput) => {
-        console.log(selectedDay.toLocaleDateString());
+        console.log(currentDay);
+        //console.log(selectedDay.toLocaleDateString());
         content.date = selectedDay;
-        console.log(content);
+        //console.log(content);
     }
 
     // Setting errors to use a state of null
@@ -158,8 +163,9 @@ function BookCarServicing() {
                             <label for="inputTitle">Title</label>
                             <select id="inputTitle" class="form-control">
                                 <option>Mr.</option>
+                                <option>Mrs.</option>
                                 <option>Ms.</option>
-                                <option>Miss</option>
+                                <option>Dr.</option>
                             </select>
                         </div>
                         <div class="form-group col-md-5">
@@ -264,6 +270,16 @@ function BookCarServicing() {
                                 value={date}
                                 onDayChange={(e) => handleDayChange(e)}
                                 selectedDay={day}
+                                dayPickerProps={{
+                                    modifiers: {
+                                        disabled: [
+                                            {
+                                                before: new Date(),
+                                                after: new Date(currentYear, currentMonth, currentDay)
+                                            }
+                                        ]
+                                    }
+                                }}
                                 placeholder={`${formatDate(new Date())}`}
                             />
                         </div>

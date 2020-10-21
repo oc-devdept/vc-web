@@ -69,10 +69,7 @@ function BookCarServicing() {
 
     // Set State for DayPickerInput
     const handleDayChange = (selectedDay, modifiers, dayPickerInput) => {
-        console.log(currentDay);
-        //console.log(selectedDay.toLocaleDateString());
         content.date = selectedDay;
-        //console.log(content);
     }
 
     // Setting errors to use a state of null

@@ -4,18 +4,20 @@ import api from 'Api'
 import { NotificationManager } from "react-notifications";
 import { red } from "color-name";
 
-
+const INIT_STATE = {
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    nameError: {},
+    emailError: {},
+    phoneError: {},
+    checkboxError: {}
+}
 class Form extends Component {
 
     state = {
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        nameError: {},
-        emailError: {},
-        phoneError: {},
-        checkboxError: {}
+        ...INIT_STATE
     }
 
     onChangeForm = (e) => {
@@ -32,7 +34,7 @@ class Form extends Component {
 
         var checkBox = document.getElementById('exampleCheck1');
 
-        if (!name.match(/^[a-zA-z0-9]+$/)) {
+        if (name == "") {
             nameError.nameInvalid = "*Please enter a valid name";
             isValid = false;
         }
@@ -64,15 +66,14 @@ class Form extends Component {
         const isValid = this.formValidation();
 
         if (isValid) {
-            try {
-                console.log('Send to server! ', this.state)
+            try {                
                 await api.post(`/contactus/createContactForm`, { data: { 
                     name: this.state.name, 
                     email: this.state.email, 
                     phone: this.state.phone, 
                     message: this.state.message } });
                 // success
-                this.setState(this.state);
+                this.setState({...INIT_STATE});
                 NotificationManager.success('Contact form sent successfully');
 
             } catch (e) {

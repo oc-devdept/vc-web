@@ -97,7 +97,7 @@ class Product extends Component {
         activeStep: this.state.activeStep +1
       });
     }
-    
+    window.scrollTo(0, 0);
     
   };  
 
@@ -112,6 +112,7 @@ class Product extends Component {
         activeStep: this.state.activeStep -1
       });
     }
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -124,7 +125,15 @@ class Product extends Component {
         <section className="configure-area pb-60">
           <div className="container">            
             <div className="row justify-content-center">
+            <div className="mobile-step">
+    <div class="stepNum">{this.state.activeStep + 1}/5</div>
+                  <div class="stepTitle">{this.steps[this.state.activeStep] }<br />
+                  {this.activeStep < 4 && (<span class="stepSubtitle">Next: { this.steps[this.state.activeStep + 1] }</span>) }
+                  
+                  </div>
+                </div>
               <div className="col-md-12">
+                
                 <div className="step-process">
                 <Stepper activeStep={this.state.activeStep}>
                   {this.steps.map((label, index) => {
@@ -145,7 +154,22 @@ class Product extends Component {
                   </div>
                   { this.state.activeStep == 0 && (
                   <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-sm-12 vStep2">
+                    <Stepper activeStep={this.state.verticalStep} alternativeLabel >
+                      {this.steps2.map((label, index) => {
+                        const stepProps = {};
+                        const labelProps = {};
+                        
+                        
+                        return (
+                          <Step key={label}  >
+                            <StepLabel className="orange-circle">{label}</StepLabel>
+                          </Step>
+                        );
+                      })}
+                    </Stepper>
+                    </div>
+                    <div className="col-md-2 vStep">
                       <div style={{marginTop:"60px"}}></div>
                     <Stepper activeStep={this.state.verticalStep} orientation="vertical">
                   {this.steps2.map((label, index) => {
@@ -239,8 +263,8 @@ class Product extends Component {
                     <BottomSummary productState={ProductState} />
                   </div>
                   <div className="col-md-3">
-                  <button type="submit" class="btn btn-light" disabled={ this.state.verticalStep == 0 ? true: false} style={{marginLeft:"-40px",float:"left"}} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV</button>
-                  <button type="submit" class="btn btn-primary" style={{float:"right"}} onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight}  /></button>
+                  <button type="submit" className="btn btn-light prevBtn" disabled={ this.state.verticalStep == 0 ? true: false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV</button>
+                  <button type="submit" className="btn btn-primary nextBtn" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight}  /></button>
                   </div>
                 </div>
               </div>                                  

@@ -10,16 +10,17 @@ import { NotificationManager } from "react-notifications";
 import api from 'Api'
 import { red } from "color-name";
 
+const INIT_STATE = {
+    name: '',
+    email: '',
+    message: '',
+    nameError: {},
+    emailError: {},
+    checkboxError: {}
+}
 
 class ContactUsDetails extends Component {
-    state = {
-        name: '',
-        email: '',
-        message: '',
-        nameError: {},
-        emailError: {},
-        checkboxError: {}
-    }
+    state = { ...INIT_STATE }
 
     onChangeForm = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -34,7 +35,7 @@ class ContactUsDetails extends Component {
 
         var checkBox = document.getElementById('gridCheck');
 
-        if (!name.match(/^[a-zA-z0-9]+$/)) {
+        if (name == "") {
             nameError.nameInvalid = "*Please enter a valid name";
             isValid = false;
         }
@@ -62,10 +63,26 @@ class ContactUsDetails extends Component {
 
         if (isValid) {
             try {
-                console.log('Send to server! ', this.state)
-                await api.post(`/contactus/createContactForm`, { data: { name: this.state.name, email: this.state.email, phone: " ", message: this.state.message } });
+                let data= { 
+                    name: this.state.name, 
+                    email: this.state.email, 
+                    phone: " ", 
+                    message: this.state.message                    
+                 };
+                 data.carInterest = document.getElementById("coI").value;
+                 data.ownerIdType = document.getElementById("ownerIdType").value;
+                 
+                 data.vpN = document.getElementById("vpN").value;
+                 data.mileage = document.getElementById("mileage").value;
+                 data.tradeInOwner = document.getElementById("tradeInOwner").value;
+                 data.ownerNRIC = document.getElementById("ownerNRIC").value;
+
+                await api.post(`/contactus/createContactForm`, { data:  data});
                 // success
-                this.setState(this.state);
+                this.setState({...INIT_STATE});
+                document.getElementById("vpN").value = "";
+                document.getElementById("mileage").value = "";
+                document.getElementById("ownerNRIC").value = "";
                 NotificationManager.success('Contact form sent successfully');
 
             } catch (e) {
@@ -81,7 +98,7 @@ class ContactUsDetails extends Component {
     render() {
         const { name, email, message, nameError, emailError, checkboxError } = this.state;
         return (
-            <section className="contact-us-area">
+            <section className="contact-us-area" >
                 <div className="container">
                     <div className="section-title without-bg" align="center">
                         <h2>CONTACT US</h2>
@@ -120,7 +137,7 @@ class ContactUsDetails extends Component {
 
                         <p>YOUR DETAILS</p>
 
-                        <form className="contact-form">
+                        <form className="contact-form" id="enquireForm">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name *</label>
@@ -158,17 +175,18 @@ class ContactUsDetails extends Component {
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="ownerIdType">Owner ID Type</label>
-                                    <select id="ownerIdType" class="form-control">
+                                    <select name="ownerType" id="ownerIdType" class="form-control">
                                         <option selected>SINGAPORE CITIZEN</option>
                                         <option>SINGAPORE PERMANENT RESIDENT</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="coI">Car of Interest *</label>
-                                    <select id="coI" class="form-control">
-                                        <option selected>Honda Fit 1.3A</option>
-                                        <option>Toyota Alphard</option>
-                                        <option>Toyota Vellfire</option>
+                                    <select name="carInterest" id="coI" class="form-control">
+                                        {
+                                            this.props.productData.map(product => (
+                                            this.props.enquire == product.name ? <option selected>{product.name}</option>: <option>{product.name}</option>))
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -188,24 +206,24 @@ class ContactUsDetails extends Component {
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="vpN">Vehicle Plate Number</label>
-                                    <input type="text" class="form-control" id="vpN" placeholder="Enter your vehicle plate number" />
+                                    <input name="vpN" type="text" class="form-control" id="vpN" placeholder="Enter your vehicle plate number" />
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="mileage">Mileage</label>
-                                    <input type="text" class="form-control" id="mileage" placeholder="Enter your mileage" />
+                                    <input name="mileage" type="text" class="form-control" id="mileage" placeholder="Enter your mileage" />
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="ownerIdType">Owner ID Type</label>
-                                    <select id="ownerIdType" class="form-control">
+                                    <label for="tradeInOwner">Owner ID Type</label>
+                                    <select name="tradeInOwner" id="tradeInOwner" class="form-control">
                                         <option selected>SINGAPORE CITIZEN</option>
                                         <option>SINGAPORE PERMANENT RESIDENT</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="ownerNRIC">Owner NRIC (Last 4 characters, e.g. 123A)</label>
-                                    <input type="text" class="form-control" id="ownerNRIC" placeholder="Enter your NRIC's last 4 charaacters" />
+                                    <input type="text" class="form-control" id="ownerNRIC" name="ownerNRIC" placeholder="Enter your NRIC's last 4 charaacters" />
                                 </div>
 
                             </div>

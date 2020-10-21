@@ -259,7 +259,7 @@ function BookCarServicing() {
                                     type: "email", 
                                     class: "form-control", 
                                     id: "date", 
-                                    style: {width: 675} }}
+                                     }}
                                 //onChange={(e) => onChangeContent('date', e.target.value)}
                                 value={date}
                                 onDayChange={(e) => handleDayChange(e)}

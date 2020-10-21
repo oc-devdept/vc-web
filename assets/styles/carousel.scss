@@ -84,9 +84,6 @@
 
   @media only screen and (max-width: 768px) {
     .carousel-caption {
-      position: absolute;
-      top: 20px ;        
-      text-align: left;
       h1 {
         font-size: 20px;
       }
@@ -100,6 +97,18 @@
       }
     }
 
+  }
+
+  @media only screen and (max-width: 426px) {
+    .carousel-caption {
+      top:12px;
+      h1 {
+        font-size:16px;
+      }
+      h2 {
+        font-size:12px;
+      }
+    }
   }
 
 

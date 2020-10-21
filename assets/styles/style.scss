@@ -533,9 +533,7 @@ Single Car Page Area CSS
 =================================================*/
 .single-banner {
   //background-image: url(/static/single-car/honda-fit.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+
   background-size: cover;
 }
 
@@ -1594,6 +1592,7 @@ Navbar Area CSS
   color: #222222;
 }
 
+
 .comero-nav
   .navbar
   .navbar-nav
@@ -1612,6 +1611,7 @@ Navbar Area CSS
   color: #222222;
 }
 
+
 .comero-nav
   .navbar
   .navbar-nav
@@ -1624,7 +1624,8 @@ Navbar Area CSS
   top: -15px;
 }
 
-.comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu {
+
+.comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu,  .comero-nav .navbar .navbar-nav .nav-item > .open{
   opacity: 1;
   visibility: visible;
   top: 100%;
@@ -10202,4 +10203,6 @@ input[type="number"] {
   padding: 15px;
 }
 
-
+.DayPickerInput {
+  width:100%;
+}

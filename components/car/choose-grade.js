@@ -32,11 +32,11 @@ class ChooseGrade extends Component {
                                         <h5>fr ${product.selling_Price}</h5>
 
                                         <div className="button" align="center">
-                                            <Link href="#enquireForm">
-                                                <a className="btn enquireBtn">
+                                            
+                                                <a className="btn enquireBtn" href="#enquireForm" onClick={()=> this.props.enquireModel(product.name)}>
                                                     ENQUIRE
                                                 </a>
-                                            </Link>
+                                           
                                             <Link href={"/car/configurator/"+this.props.url}>
                                                 <a className="btn buildBtn">
                                                     BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />

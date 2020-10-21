@@ -42,10 +42,11 @@ function ContactUs({ }) {
 
     if (isValid) {
       try {
-        console.log('Send to server! ', Form)
+        
         await api.post(`/contactus/createContactForm`, { data: Form });
         // success
-        setForm(() => InitForm);
+        
+        setForm({...InitForm});
         NotificationManager.success('Contact form sent successfully');
 
       } catch (e) {
@@ -58,6 +59,8 @@ function ContactUs({ }) {
 
   }
 
+
+
   const formValidation = () => {
     const nameErr = {};
     const emailErr = {};
@@ -67,7 +70,7 @@ function ContactUs({ }) {
 
     var checkBox = document.getElementById('exampleCheck1');
 
-    if (!name.match(/^[a-zA-z0-9]+$/)) {
+    if (name == "") {
       nameErr.nameInvalid = "*Please enter a valid name";
       isValid = false;
     }

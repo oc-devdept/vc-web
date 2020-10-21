@@ -165,7 +165,10 @@ const LoanCalculator = props => {
     },
     markLabel: {
       fontFamily: "Montserrat",
-      fontWeight: 500
+      fontWeight: 500,
+      ['@media (max-width:426px)']: {
+        fontSize:"0.5rem"
+      }
     },
     markLabelActive: {
       color: "#666666"

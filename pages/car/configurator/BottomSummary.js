@@ -43,8 +43,10 @@ const BottomSummary = props => {
     
     if(props.productState.ProductAccessories.selected != null) {
 
-        Object.entries(props.productState.ProductAccessories.selected).map(([key, data]) => {
-            total += data.price;
+        Object.keys(props.productState.ProductAccessories.selected).map(key => {
+            props.productState.ProductAccessories.selected[key].map(item => {
+                total += item.price;
+            });
         })                                    
 
     }

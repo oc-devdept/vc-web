@@ -120,21 +120,20 @@ const Summary = props => {
     const result = await api.post(`/bookings/createBooking`, {
       data: newBooking
     });
-
-    switch (result.data.success) {
-      case 0:
-        NotificationManager.error(
-          "Unable to make booking request, please try again later"
-        );
-        break;
-      case 1:
+    
+    if(result.data.data && result.data.data.success ==1) {
+      
+        
+        
         NotificationManager.success("Your booking has submitted successfully");
         setBookService(() => ({ ...InitBookService }));
         setUserProfile(() => ({ ...InitUserProfile }));
-        _RestartToggle();
-        break;
-      default:
-        break;
+        _RestartToggle();        
+    }
+    else {
+      NotificationManager.error(
+        "Unable to make booking request, please try again later"
+      );
     }
   };
 

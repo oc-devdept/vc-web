@@ -98,7 +98,7 @@ const Index = memo(
                       _HandleInputForm("description", e.target.value)
                     }
                     className="form-control"
-                    placeholder="What would you like us to service for you?"
+                    placeholder="Any additional enquiries?"
                     id="description"
                     name="description"
                   />

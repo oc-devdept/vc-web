@@ -12,6 +12,7 @@ class MegaMenu extends Component {
   state = {
     display: false,
     collapsed: true,
+    itemsToggle: [false, false, false]
   };
 
   handleCart = () => {
@@ -28,15 +29,26 @@ class MegaMenu extends Component {
     });
   };
 
+  toggleNavItem = (menuNum) => {
+    let toggled = [...this.state.itemsToggle];
+    toggled[menuNum] = !toggled[menuNum];
+    this.setState({
+      itemsToggle: toggled
+    })
+  }
+
   componentDidMount() {
     let elementId = document.getElementById("navbar");
-    document.addEventListener("scroll", () => {
-      if (window.scrollY > 170) {
-        elementId.classList.add("is-sticky");
-      } else {
-        elementId.classList.remove("is-sticky");
-      }
-    });
+    if(document.body.scrollWidth > 425){
+      document.addEventListener("scroll", () => {
+        if (window.scrollY > 170) {
+          elementId.classList.add("is-sticky");
+        } else {
+          elementId.classList.remove("is-sticky");
+        }
+      });
+    }
+    
     window.scrollTo(0, 0);
   }
 
@@ -94,12 +106,12 @@ class MegaMenu extends Component {
                   <hr className="navbar-hr" />
                   <ul className="navbar-nav">
                     <li className="nav-item megamenu">
-                      <Link href="#">
-                        <a className="nav-link">
+                      <Link href="#"  >
+                        <a className="nav-link" onClick={() => this.toggleNavItem(0)}>
                           New <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                       </Link>
-                      <ul className="dropdown-menu">
+                      <ul className={"dropdown-menu"  + (this.state.itemsToggle[0] ? " open": "")}>
                         <li className="nav-item">
                           <MegaTab />
                         </li>
@@ -122,11 +134,11 @@ class MegaMenu extends Component {
 
                     <li className="nav-item megamenu">
                     <Link href="#">
-                        <a className="nav-link">
+                        <a className="nav-link" onClick={() => this.toggleNavItem(1)}>
                           Aftersales <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                     </Link>
-                    <ul className="dropdown-menu">
+                    <ul className={"dropdown-menu"  + (this.state.itemsToggle[1] ? " open": "")}>
                         <li className="nav-item">
                           <Link href="/book-car-servicing">
                             <a className="nav-link">Book Car Servicing</a>
@@ -141,11 +153,11 @@ class MegaMenu extends Component {
                   </li>
                     <li className="nav-item megamenu">
                       <Link href="#">
-                        <a className="nav-link">
+                        <a className="nav-link" onClick={() => this.toggleNavItem(2)}>
                           About Us <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                       </Link>
-                      <ul className="dropdown-menu">
+                      <ul className={"dropdown-menu"  + (this.state.itemsToggle[2] ? " open": "")}>
                         <li className="nav-item">
                           <Link href="/about-us">
                             <a className="nav-link">About Us</a>

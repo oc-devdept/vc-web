@@ -12,11 +12,14 @@ import AboutHondaFit from "../../components/car/about-honda-fit";
 import ChooseGrade from "../../components/car/choose-grade";
 import Views from "../../components/car/views";
 import Gallery from "../../components/car/gallery";
-import ContactUsDetails from "../../components/car/contact-us-details";
+import ContactUsDetails from "Components/car/contact-us-details";
 
 class Model extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+          enquireModel: ""
+        }
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -40,6 +43,12 @@ class Model extends Component {
         this.props.getModelData(this.props.selectedModelId);
     }
 
+    enquireModel = (modelName) =>{
+      this.setState({
+        enquireModel: modelName
+      })
+    }
+
     render() {
         const { loading, ModelData } = this.props;
         const { ProductGradeData, coverPhoto, description, exterior, interior, galleryPhoto, name, id } = ModelData;
@@ -55,7 +64,7 @@ class Model extends Component {
 
                             {
                                 ProductGradeData !== 0 && (
-                                    <ChooseGrade productData={ProductGradeData} url={this.props.selectedModelId} />
+                                    <ChooseGrade productData={ProductGradeData} url={this.props.selectedModelId} enquireModel={this.enquireModel} />
                                 )
                             }
                             {
@@ -77,7 +86,7 @@ class Model extends Component {
                     )
                 }
 
-                <ContactUsDetails />
+                <ContactUsDetails productData={ProductGradeData} enquire={this.state.enquireModel} />
 
                 {/* {loading ? (
           <RctSectionLoader />

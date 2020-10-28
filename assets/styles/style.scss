@@ -783,9 +783,7 @@ Build Area CSS
   clear: both;
 }
 .build-area .column img {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  width: 80%;
+  height:180px;
 }
 .build-area .column .left {
   float: left;
@@ -820,15 +818,18 @@ Build Area CSS
   font-weight: normal;
 }
 
-.build-area .build-content {
-  clear: both;
+.build-area .build-content {  
   background-color: #F6F8FC;
   padding: 20px;
+  float:left;
+  width:100%;
 }
 .build-area .button {
-  margin: 20px 20px;
+  margin: 20px 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 90%;  
+  float:left;
 }
 
 /*================================================

@@ -13,12 +13,17 @@ class Aftersales extends Component {
         this.servicingData = [{name: "1 Yr/20,000km BSP", price: 0}, {name: "3 Yrs/60,000km BSP", price: 600}, {name: "5 Yrs/100,000km BSP", price: 1200}];
         if(props.selected){
             if(props.selected.warranty != null){
-                this.selectedWarranty = this.warrantyData.find((item) => item.name === props.selected.warranty.name);
+                this.state.selectedWarranty = this.warrantyData.find((item) => item.name === props.selected.warranty.name);
             }
             if(props.selected.servicing != null){
-                this.selectedServicing = this.servicingData.find((item) => item.name === props.selected.servicing.name);
+                this.state.selectedServicing = this.servicingData.find((item) => item.name === props.selected.servicing.name);
             }
+            this.props.selectedServicingPackage({ warranty: this.warrantyData[this.state.selectedWarranty], servicing: this.servicingData[this.state.selectedServicing]});
         }
+        else {            
+            this.props.selectedServicingPackage({ warranty: this.warrantyData[0], servicing: this.servicingData[0]});
+        }
+        
     }
 
     selectWarranty = (index) => {

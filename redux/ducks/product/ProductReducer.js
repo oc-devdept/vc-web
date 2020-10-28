@@ -57,6 +57,16 @@ const INIT_STATE = {
   featuredCars: {
     featured: [],
     loading: false
+  },
+  allCarList: {
+    action: false,
+    loading: false,
+    tableData: [],
+    totalCount: 0
+  },
+  allMakes: {
+    loading: false,
+    data: []
   }
 };
 
@@ -100,36 +110,6 @@ export default (state = INIT_STATE, action) => {
       const ProductGrade = gradesData.data.fields.find(
         element => element.id === gradeId
       );
-      /*
-      specificationData,
-        exteriorData,
-        interiorData,
-        accessoriesData
-      var imageList = [];
-      var thumbsList = [];
-      var populateImageList = ProductGrade => {
-        ProductGrade.files.map(item => {
-          imageList.push(item.path);
-        });
-      };
-      populateImageList(ProductGrade);
-      ProductGrade.images.forEach(element => {
-        thumbsList.push(element.path);
-      });
-      ProductSpecification: {
-          data: specificationData.data.fields.Detail
-        },
-        ProductExterior: {
-          data: exteriorData.data
-        },
-        ProductInterior: {
-          data: interiorData.data
-        },
-        ProductAccessories: {
-          ...state.ProductAccessories,
-          data: accessoriesData.data
-        }
-      */
       let image = ProductGrade.files.length > 0 ? ProductGrade.files[0].path : "";
       let thumb = ProductGrade.images.length > 0 ? ProductGrade.images[0].path : "";
       return {
@@ -394,7 +374,59 @@ export default (state = INIT_STATE, action) => {
           ...state,
           LoanCalculator: action.payload
         }
-
+    case types.GET_ALL_CARS:
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: true
+        }
+      }
+    case types.GET_ALL_CARS_SUCCESS: 
+    console.log(action.payload);
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: false,
+          tableData: action.payload.data,
+          totalCount: action.payload.totalCount
+        }
+      }
+    case types.GET_ALL_CARS_FAILURE:
+      console.log(action.payload);
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: false
+        }
+      }
+    case types.GET_ALL_MAKE:
+      return {
+        ...state,
+        allMakes: {
+          ...state.allMakes,
+          loading: true
+        }
+      }
+    case types.GET_ALL_MAKE_SUCCESS:
+      return {
+        ...state,
+        allMakes: {
+          loading: false,
+          data: action.payload
+        }
+      }
+    case types.GET_ALL_MAKE_FAILURE:
+      console.log(action.payload);
+      return {
+        ...state,
+        allMakes: {
+          ...state.allMakes,
+          loading: false,
+        }
+      }
     default:
       return { ...state };
   }

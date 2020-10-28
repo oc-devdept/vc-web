@@ -12,23 +12,30 @@ const BottomSummary = props => {
     if(props.productState.ProductExterior.selected){
         
         Object.entries(props.productState.ProductExterior.selected).map(([variance, data]) => {
-            exteriorName = variance+": "+data.name;
-            exteriorPrice = data.price;
-            total += exteriorPrice;
+            if(data != null){
+                exteriorName = variance+": "+data.name;
+                exteriorPrice = data.price;
+                total += exteriorPrice;
+            }            
         })
     }
     if(props.productState.ProductInterior.selected){
         Object.entries(props.productState.ProductInterior.selected).map(([variance, data]) => {
-            interiorName = variance+": "+data.name;
-            interiorPrice = data.price;
-            total += interiorPrice;
+            if(data != null){
+                interiorName = variance+": "+data.name;
+                interiorPrice = data.price;
+                total += interiorPrice;
+            }
+            
         })
     }
     if(props.productState.ProductRims.selected){
         Object.entries(props.productState.ProductRims.selected).map(([variance, data]) => {
-            rimsName = variance+": "+data.name;
-            rimsPrice = data.price;
-            total += rimsPrice;
+            if(data != null){
+                rimsName = variance+": "+data.name;
+                rimsPrice = data.price;
+                total += rimsPrice;
+            }            
         })
     }
     if(props.productState.CoeSelected.price > 0){

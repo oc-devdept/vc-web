@@ -64,7 +64,9 @@ const CreditCardForm = () => {
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === "succeeded") {
-        dispatch(doCheckout(CheckoutState));
+        const localCart = JSON.parse(localStorage.getItem("vc-shoppingcart"));
+        console.log(localCart);
+        dispatch(doCheckout(localCart));
         setShowFeedbackSuccess(true);
         setFeedbackMessage("");
         setShowForm(false);

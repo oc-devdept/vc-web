@@ -17,17 +17,26 @@ const SummaryTable = props => {
   if(props.ProductState.ProductExterior.selected){
         
     Object.entries(props.ProductState.ProductExterior.selected).map(([variance, data]) => {
-      subtotal += data.price;
+      if(data != null){
+        subtotal += data.price;
+      }
+      
     })
   }
   if(props.ProductState.ProductInterior.selected){
       Object.entries(props.ProductState.ProductInterior.selected).map(([variance, data]) => {
-        subtotal += data.price;
+        if(data != null){
+          subtotal += data.price;
+        }
+        
       })
   }
   if(props.ProductState.ProductRims.selected){
       Object.entries(props.ProductState.ProductRims.selected).map(([variance, data]) => {
-        subtotal += data.price;
+        if(data != null){
+          subtotal += data.price;
+        }
+        
       })
   }
   if(props.ProductState.CoeSelected.price > 0){
@@ -175,6 +184,7 @@ useEffect(() => {
                 <li>
                 Exterior
                 { Object.entries(props.ProductState.ProductExterior.selected).map(([variance, data]) => {            
+                  if(data != null){
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -185,7 +195,12 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
-                  }) 
+                  
+                  }
+                  else {
+                    return (<div></div>)
+                  }
+                })   
             
               }
             </li>
@@ -196,6 +211,7 @@ useEffect(() => {
                 <li>
                 Interior
                 { Object.entries(props.ProductState.ProductInterior.selected).map(([variance, data]) => {            
+                  if(data != null){
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -206,6 +222,10 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                  }
+                  else {
+                    return (<div></div>)
+                  }
                   }) 
             
               }
@@ -217,6 +237,7 @@ useEffect(() => {
                 <li>
                 Rims
                 { Object.entries(props.ProductState.ProductRims.selected).map(([variance, data]) => {            
+                  if(data != null){                  
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -227,6 +248,10 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                  }
+                  else {
+                    return (<div></div>)
+                  }
                   }) 
             
               }

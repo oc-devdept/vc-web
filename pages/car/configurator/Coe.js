@@ -8,9 +8,10 @@ class Coe extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedIndex: 0
+            selectedIndex: 0,
+            diyInput: 40000
         }
-        this.coeData = [{name: "1-Bid COE guaranteed package", price: 32001},{name: "2-Bid COE guaranteed package", price: 31001}, {name: "4-Bid COE guaranteed package", price: 29001}, {name: "6-Bid COE guaranteed package", price: 28001},  {name: "DIY", price: 0}];
+        this.coeData = [{name: "1-Bid COE guaranteed package", price: 32001},{name: "2-Bid COE guaranteed package", price: 31001}, {name: "4-Bid COE guaranteed package", price: 29001}, {name: "6-Bid COE guaranteed package", price: 28001},  {name: "DIY", price: 40000}];
         if(props.selected && props.selected.price >= 0){
             this.state.selectedIndex = this.coeData.findIndex( (item) => item.name === props.selected.name);
         }
@@ -21,9 +22,24 @@ class Coe extends Component {
 
     selectPackage = (index) => {
         this.props.selectedCoePackage(this.coeData[index]);
+        this.updateCoeDiy(this.state.diyInput);
         this.setState({
             selectedIndex: index
         });
+    }
+
+    updateCoeDiy(val){
+        this.coeData[this.coeData.length - 1].price = val;
+    }
+
+    changeDiy = (evt) => {
+        this.setState({
+            diyInput: evt.target.value
+        });
+        if(this.state.selectedIndex == this.coeData.length - 1){
+            this.updateCoeDiy(evt.target.value);
+            this.props.selectedCoePackage(this.coeData[this.state.selectedIndex]);
+        }
     }
 
     render(){
@@ -83,8 +99,9 @@ class Coe extends Component {
                     <div className="coebox">
                         <div className="coeTitle">{this.coeData[4].name }</div>
                         <div className="coeDetails">
-                            <h3>{formatPrice(this.coeData[4].price) }</h3>
-                            <p>There is no guarantee on when your COE will be available</p>                            
+                            <h3><input type="text" name="coeprice" value={this.state.diyInput} onChange={this.changeDiy} />   </h3>
+                            <p>There is no guarantee on when your COE will be available. Enter your price above</p>
+                                                     
                         </div>
                         { this.state.selectedIndex == 4 ? 
                             <button className="coeSelected">Selected</button> : <button className="coeSelect" onClick={ ()=> {this.selectPackage(4); }}>Select</button>

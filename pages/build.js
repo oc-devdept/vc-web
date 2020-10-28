@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, {useEffect, useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
+import { formatPrice } from 'Components/Helpers/helpers';
 
 import { Icon } from '@iconify/react';
 import fuel15 from '@iconify/icons-maki/fuel-15';
@@ -8,8 +10,10 @@ import engineIcon from '@iconify/icons-mdi/engine';
 import powerIcon from '@iconify/icons-icomoon-free/power';
 import arrowRight from '@iconify/icons-bi/arrow-right';
 import searchIcon from '@iconify/icons-gg/search';
+import smallgearIcon from '@iconify/icons-raphael/smallgear';
 import arrowDownAlt2 from '@iconify/icons-dashicons/arrow-down-alt2';
 import resetIcon from '@iconify/icons-carbon/reset';
+
 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -24,6 +28,10 @@ import Slider from '@material-ui/core/Slider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Pagination from '@material-ui/lab/Pagination';
+import RctSectionLoader from "Components/RctSectionLoader";
+import {
+  getAllCars
+} from "Ducks/product/ProductActions";
 import { shadows } from '@material-ui/system';
 
 const muiTheme = createMuiTheme({
@@ -150,6 +158,50 @@ const CustomCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 function Build() {
+  const dispatch = useDispatch();
+  const [dataOptions, setDataOptions ] = useState({
+    limit: 20,
+    skip: 0,
+    filter: [], 
+    searchText: "", 
+    orderBy: ""
+  });
+
+
+  useEffect(() => {
+    dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
+  }, []);
+
+  const carList = useSelector(state => {
+    //turn carlist into pairs
+    //return state.ProductState.allCarList.tableData;
+    
+    let list = [];
+    let set = [];
+    let tableData = state.ProductState.allCarList.tableData;
+    for(let i=0; i < tableData.length; i++){
+      set.push(tableData[i]);
+      if(i % 2 == 1){
+        list.push(set);
+        set = [];
+      }
+    }
+    if(tableData.length % 2 == 1){
+      list.push(tableData[state.ProuctState.allCarList.length-1]);
+    }
+    return list;
+    
+  });
+
+  const pageLoading = useSelector(state => state.ProductState.allCarList.loading);
+
+  const totalPages = useSelector(state => {
+    let total = state.ProductState.allCarList.totalCount;
+    if(total > 0){
+      total = Math.ceil(total / 20);
+    }
+    return total;
+  })
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
@@ -179,10 +231,12 @@ function Build() {
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-  
+  console.log(carList);
+
   return (
     <MuiThemeProvider theme={muiTheme}>
     <DefaultLayout>
+      { pageLoading && <RctSectionLoader />}
         <section className="build-area">
           <div className="container">
             <div className="section-title without-bg" align="center">
@@ -299,6 +353,116 @@ function Build() {
                 </StyledMenu>
               </div>
             </div>
+            {
+              carList.map(car => {
+                return (<div class="row">
+                  <div class="column">
+                    <div class="left">
+                      <img src={car[0].image } />
+                    </div>
+                    <div class="right">
+                      <p className="types">{ car[0].tag ? (car[0].tag).toUpperCase() : "" }</p>
+              <h3 className="car-name">{ (car[0].make +" "+ car[0].model).toUpperCase()  }</h3>
+              <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
+              </div>
+              <div class="build-content">
+                 {
+                   car[0].productDetailValue && car[0].productDetailValue.map(detail => (
+                    <p class="part1"><span class="engCap">
+                      { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
+                          <Icon icon={engineIcon} color="#595959"/>:
+                          detail.detailCategory.name.indexOf("Power") >= 0 ? 
+                          <Icon icon={powerIcon} color="#595959"/> :
+                          detail.detailCategory.name.indexOf("Fuel") >= 0 ?
+                          <Icon icon={fuel15} color="#595959"/> : 
+                          <Icon icon={smallgearIcon} color="#595959"/>
+                         }
+                           &nbsp; { detail.detailCategory.name }: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")} 
+                    </span></p>
+                   ))
+                 }
+
+                </div>
+                <div className="button">
+                  {
+                    car[0].page && ( 
+                    <Link href={car[0].page }>
+                    <a className="btn gw-without-bg-btn">
+                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                    </a>
+                    </Link>)
+                  }
+                 {car[0].build && (
+                  <Link href={car[0].build}>
+                  <a className="btn buildBtn">
+                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                  </a>
+                  </Link>
+                 )}
+                </div>
+                  </div>
+                 { car.length > 1 && (
+                  <div class="column">
+                  <div class="left">
+                      <img src={car[1].image} />
+                    </div>
+                    <div class="right">
+                      <p className="types">{ car[1].tag ? (car[1].tag).toUpperCase() : "" }</p>
+              <h3 className="car-name">{ (car[1].make +" "+ car[1].model).toUpperCase()  }</h3>
+              <h5 className="car-price"> fr {formatPrice(car[1].selling_price)} </h5>
+              </div>
+              <div class="build-content">
+              {
+                   car[1].productDetailValue && car[1].productDetailValue.map(detail => (
+                    <p class="part1"><span class="engCap">
+                      { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
+                          <Icon icon={engineIcon} color="#595959"/>:
+                          detail.detailCategory.name.indexOf("Power") >= 0 ? 
+                          <Icon icon={powerIcon} color="#595959"/> :
+                          detail.detailCategory.name.indexOf("Fuel") >= 0 ?
+                          <Icon icon={fuel15} color="#595959"/> : 
+                          <Icon icon={smallgearIcon} color="#595959"/>
+                         }
+                           &nbsp; { detail.detailCategory.name }: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")} 
+                    </span></p>
+                   ))
+                 }
+                </div>
+                <div className="button">
+                {
+                    car[1].page && ( 
+                    <Link href={car[1].page}>
+                    <a className="btn gw-without-bg-btn">
+                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                    </a>
+                    </Link>)
+                  }
+                  {car[1].build && (
+                  <Link href={car[1].build}>
+                  <a className="btn buildBtn">
+                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                  </a>
+                  </Link>
+                  )}
+                </div>
+                  </div>)
+               }
+                </div>)
+              })
+            }
+
+            <div className={classes.paginationArea} >
+              <Pagination count={totalPages} />
+            </div>
+          </div>
+      </section>
+    </DefaultLayout>
+    </MuiThemeProvider>
+  );
+}
+
+export default Build;
+/*
             <div class="row">
               <div class="column">
                 <div class="left">
@@ -355,14 +519,5 @@ function Build() {
                 </div>
               </div>
             </div>
-            <div className={classes.paginationArea} >
-              <Pagination count={3} />
-            </div>
-          </div>
-      </section>
-    </DefaultLayout>
-    </MuiThemeProvider>
-  );
-}
 
-export default Build;
+*/

@@ -87,7 +87,9 @@ export default function OrderList({ checkoutState }) {
 */
   return (
     <React.Fragment>
-      <div className="summaryTableCard">
+      
+        { ProductGrade ? (
+          <div className="summaryTableCard">
         <button className="summaryDownload" onClick={()=> {dispatch(printConfigurator())}}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
         <div className="summaryTable">
           <ol>
@@ -106,7 +108,8 @@ export default function OrderList({ checkoutState }) {
               ProductExterior  && (
                 <li>
                 Exterior
-                { Object.entries(ProductExterior).map(([variance, data]) => {            
+                { Object.entries(ProductExterior).map(([variance, data]) => {
+                  if(data != null) {            
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -117,6 +120,10 @@ export default function OrderList({ checkoutState }) {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                    }
+                    else {
+                      return (<div></div>)
+                    }
                   }) 
             
               }
@@ -128,7 +135,8 @@ export default function OrderList({ checkoutState }) {
               ProductInterior  && (
                 <li>
                 Interior
-                { Object.entries(ProductInterior).map(([variance, data]) => {            
+                { Object.entries(ProductInterior).map(([variance, data]) => {  
+                  if(data != null) {          
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -139,6 +147,10 @@ export default function OrderList({ checkoutState }) {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                    }
+                    else {
+                      return (<div></div>)
+                    }
                   }) 
             
               }
@@ -150,7 +162,8 @@ export default function OrderList({ checkoutState }) {
               ProductRims  && (
                 <li>
                 Rims
-                { Object.entries(ProductRims).map(([variance, data]) => {            
+                { Object.entries(ProductRims).map(([variance, data]) => { 
+                  if(data != null) {           
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -161,6 +174,9 @@ export default function OrderList({ checkoutState }) {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                  } else {
+                    return (<div></div>)
+                  }
                   }) 
             
               }
@@ -269,7 +285,10 @@ export default function OrderList({ checkoutState }) {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        ) : ( <div className="summaryTableCard"><h2 style={{color: "white"}}>Your cart is empty</h2></div>)}
+        
+      
     </React.Fragment>
   );
 }

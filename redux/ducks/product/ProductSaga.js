@@ -98,6 +98,16 @@ const getInterestRateRequest = async () => {
   return data;
 };
 
+const getAllCarsRequest = async (data) => {
+  const result = await api.get("/products/getall", data);
+  return result.data;
+}
+
+const getAllMakeRequest = async () => {
+  const result = await api.get("/products/getMake");
+  return result.data;
+}
+
 //=========================
 // CALL(GENERATOR) ACTIONS
 //=========================
@@ -127,8 +137,10 @@ function* getProductGradeData(e) {
   }
 }
 function* generateConfiguratorPDF() {
+  console.log("config print");
   try {
     const getProductState = state => state.ProductState;
+    
     var productState = yield select(getProductState);
     var data = yield call(printConfiguratorPDF, productState, "full");
     yield call(fetchConfiguratorPDF, data);
@@ -155,6 +167,27 @@ function* getInterestRate() {
   }
 }
 
+function* getAllCarsFromDB({ payload }){
+  try {
+    const data = yield call(getAllCarsRequest, payload);
+    yield put(actions.getAllCarsSuccess(data));
+  }
+  catch(error) {
+    yield put(actions.getAllCarsFailure(error));
+  }
+}
+
+function* getAllMakesFromDB(){
+  try {
+    const data = yield call(getAllMakeRequest);
+    yield put(actions.getMakeSuccess(data));
+  }
+  catch(error){
+    yield put(actions.getMakeFailure(error));
+  }
+}
+
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -176,6 +209,12 @@ export function* getFeaturedCarsWatcher() {
 export function* getInterestRateWatcher() {
   yield takeEvery(types.GET_INTEREST_RATE, getInterestRate);
 }
+export function* getAllCarsWatcher(){
+  yield takeEvery(types.GET_ALL_CARS, getAllCarsFromDB);
+}
+export function* getMakesWatcher(){
+  yield takeEvery(types.GET_ALL_MAKE, getAllMakesFromDB);
+} 
 
 //=======================
 // FORK SAGAS TO STORE
@@ -187,6 +226,8 @@ export default function* productSaga() {
     fork(getProductGradeDataWatcher),
     fork(generateConfiguratorPDFWatcher),
     fork(getFeaturedCarsWatcher),
-    fork(getInterestRateWatcher)
+    fork(getInterestRateWatcher),
+    fork(getAllCarsWatcher),
+    fork(getMakesWatcher)
   ]);
 }

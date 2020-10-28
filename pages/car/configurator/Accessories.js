@@ -52,58 +52,59 @@ class Accessories extends Component {
             tabVal: 0,
             accessories: {}
         }
-        
-        const { fields } = this.props.ProductAccessories.data[this.props.gradeId];       
-        Object.entries(fields).map(([variance, data]) => {
-            // If there is a default option available, pre-select the first one
-            let selectedIndex = data.options.findIndex(
-              element => element.isDefault
-            );
-            var selectedIds = [];
-            if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] != undefined ){
-                for(let i=0; i < data.options.length; i++){
-                    for(let j=0; j < this.props.ProductAccessories.selected[variance].length; j++){
-                        if(data.options[i].id === this.props.ProductAccessories.selected[variance][j]){
-                            selectedIndex = i;
-                            selectedIds.push(data.options[i].id);
-                        }
-                    }    
-                }                
-              }
-                                    
-            if (selectedIds.length > 0) {
-              let data = {
-                selectedKey: selectedIndex
-              }
-              if(fields[variance].options){
-                data.id = fields[variance].options[selectedIds[0]].id;
-                data.name = fields[variance].options[selectedIds[0]].name;
-                data.price = fields[variance].options[selectedIds[0]].price;
-                data.thumbnail = fields[variance].options[selectedIds[0]].files[0].path;
-                data.selectedId = selectedIds;
-              }
-              this.state.accessories[variance] = data;
-            } else {
-              let data = {
-                selectedKey: 0
-              }              
-              if(fields[variance].options){
-                for(let i=0; i < fields[variance].options.length; i++){
-                  if(fields[variance].options[i].isDefault){
-                    selectedIds.push(fields[variance].options[i].id);
-                  }
+        if(this.props.ProductAccessories.data[this.props.gradeId]){
+          const { fields } = this.props.ProductAccessories.data[this.props.gradeId];       
+          Object.entries(fields).map(([variance, data]) => {
+              // If there is a default option available, pre-select the first one
+              let selectedIndex = data.options.findIndex(
+                element => element.isDefault
+              );
+              var selectedIds = [];
+              if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] != undefined ){
+                  for(let i=0; i < data.options.length; i++){
+                      for(let j=0; j < this.props.ProductAccessories.selected[variance].length; j++){
+                          if(data.options[i].id === this.props.ProductAccessories.selected[variance][j]){
+                              selectedIndex = i;
+                              selectedIds.push(data.options[i].id);
+                          }
+                      }    
+                  }                
                 }
-                data.id = fields[variance].options[0].id;
-                data.name = fields[variance].options[0].name;
-                data.price = fields[variance].options[0].price;
-                data.thumbnail = fields[variance].options[0].files[0].path;
-                data.selectedId = selectedIds;
-                this.props.selectedProductAccessories(variance, selectedIds);
-              }
-              this.state.accessories[variance] = data;
-            }        
-        });
-
+                                      
+              if (selectedIds.length > 0) {
+                let data = {
+                  selectedKey: selectedIndex
+                }
+                if(fields[variance].options){
+                  data.id = fields[variance].options[selectedIds[0]].id;
+                  data.name = fields[variance].options[selectedIds[0]].name;
+                  data.price = fields[variance].options[selectedIds[0]].price;
+                  data.thumbnail = fields[variance].options[selectedIds[0]].files[0].path;
+                  data.selectedId = selectedIds;
+                }
+                this.state.accessories[variance] = data;
+              } else {
+                let data = {
+                  selectedKey: 0
+                }              
+                if(fields[variance].options){
+                  for(let i=0; i < fields[variance].options.length; i++){
+                    if(fields[variance].options[i].isDefault){
+                      selectedIds.push(fields[variance].options[i].id);
+                    }
+                  }
+                  data.id = fields[variance].options[0].id;
+                  data.name = fields[variance].options[0].name;
+                  data.price = fields[variance].options[0].price;
+                  data.thumbnail = fields[variance].options[0].files[0].path;
+                  data.selectedId = selectedIds;
+                  this.props.selectedProductAccessories(variance, selectedIds);
+                }
+                this.state.accessories[variance] = data;
+              }        
+          });
+        }
+        
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
@@ -178,7 +179,10 @@ class Accessories extends Component {
 
 
     render() {
-        const { fields } = this.props.ProductAccessories.data[this.props.gradeId];
+        let fields = {};
+        if(this.props.ProductAccessories.data[this.props.gradeId]){
+          fields = this.props.ProductAccessories.data[this.props.gradeId].fields;
+        }        
         return (
           <React.Fragment>
           <div className="row">

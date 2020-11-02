@@ -24,13 +24,18 @@ import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Slider from '@material-ui/core/Slider';
+import InputLabel from '@material-ui/core/InputLabel';
+
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Pagination from '@material-ui/lab/Pagination';
 import RctSectionLoader from "Components/RctSectionLoader";
 import {
-  getAllCars
+  getAllCars, getMakes, getTags
+  
 } from "Ducks/product/ProductActions";
 import { shadows } from '@material-ui/system';
 
@@ -54,6 +59,16 @@ const muiTheme = createMuiTheme({
         color: "grey",
         height: 5,
         borderRadius: 50,
+      }
+    },
+    MuiFormLabel: {
+      root: {
+        color: "#f29d30",
+      }
+    },
+    MuiSelect: {
+      select: {
+        width:100
       }
     },
     MuiPaper: {
@@ -164,12 +179,14 @@ function Build() {
     skip: 0,
     filter: [], 
     searchText: "", 
-    orderBy: ""
+    orderBy: []
   });
 
 
   useEffect(() => {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
+    dispatch(getMakes());
+    dispatch(getTags());
   }, []);
 
   const carList = useSelector(state => {
@@ -187,7 +204,7 @@ function Build() {
       }
     }
     if(tableData.length % 2 == 1){
-      list.push(tableData[state.ProuctState.allCarList.length-1]);
+      list.push([tableData[tableData.length-1]]);
     }
     return list;
     
@@ -202,6 +219,9 @@ function Build() {
     }
     return total;
   })
+
+  const allMakes = useSelector(state => state.ProductState.allMakes.data);
+  const allTags = useSelector(state => state.ProductState.allTags.data);
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
@@ -226,12 +246,111 @@ function Build() {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const [checked, setChecked] = React.useState(true);
+  const [orderBy, setOrderBy] = React.useState({name: "None", value: ""});
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
+  const onChangeOrder = (name, val) => {
+    setOrderBy({ name: name, value: val});
+    setDataOptions({
+      ...dataOptions,
+      orderBy: [val]
+    })
+    dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, [val]));
+  }
+  
+
+  const [filters, setFilters] = React.useState({});
+
+  const checkMakes = (event) => {
+    if(event.target.checked){
+      if(filters.brand){
+        let fil = [...filters.brand];
+        fil.push(event.target.value);
+        setFilters({
+          ...filters,
+          brand: fil
+        })
+      }
+      else {
+        setFilters({
+          ...filters,
+          brand: [event.target.value]
+        })
+      }
+    }
+    else {
+      if(filters.brand){
+        let fil = [...filters.brand];
+        let index = fil.indexOf(event.target.value);
+        if(index > -1){
+          fil.splice(index, 1);
+        }
+        setFilters({
+          ...filters,
+          brand: fil
+        })
+      }
+    }    
   };
-  console.log(carList);
+
+  const checkTags = (event) => {
+    if(event.target.checked){
+      if(filters.tag){
+        let fil = [...filters.tag];
+        fil.push(event.target.value);
+        setFilters({
+          ...filters,
+          tag: fil
+        })
+      }
+      else {
+        setFilters({
+          ...filters,
+          tag: [event.target.value]
+        })
+      }
+    }
+    else {
+      if(filters.tag){
+        let fil = [...filters.tag];
+        let index = fil.indexOf(event.target.value);
+        if(index > -1){
+          fil.splice(index, 1);
+        }
+        setFilters({
+          ...filters,
+          tag: fil
+        })
+      }
+    }
+  }
+
+  const changePrice = (event) => {
+    if(event.target.name == "min-price"){
+      
+        setFilters({
+          ...filters,
+          minPrice: event.target.value
+        })
+      
+    }
+    else if(event.target.name == "max-price"){
+      setFilters({
+        ...filters,
+        maxPrice: event.target.value
+      })
+    }
+  }
+
+  const applyFilters = () => {
+    dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
+  }
+
+  const resetFilters = () => {
+    setFilters({});
+    dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
+  }
+
+
 
   return (
     <MuiThemeProvider theme={muiTheme}>
@@ -263,74 +382,102 @@ function Build() {
                 >
                   <Typography className={classes.typography}>Show me only these options:</Typography>
                   <FormGroup row>
-                    <p className="filter-type-title">Price Range: </p>
-                    <Slider 
-                      defaultValue={[0,200000]} 
-                      valueLabelDisplay="on"
-                      // min={50000}
-                      // max={200000}
-                      // marks={marks}
-                    />
+                    <p className="filter-type-title">Price: </p>
+                    <FormControl >
+                    <InputLabel htmlFor="min-price">Min Price</InputLabel>
+                    <Select
+                      native
+                      onChange={changePrice}
+                      value={filters.minPrice ? filters.minPrice : ""}
+                      inputProps={{
+                        name: 'min-price',
+                        id: 'min-price',
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={30000}>$30,000</option>
+                      <option value={50000}>$50,000</option>
+                      <option value={70000}>$70,000</option>
+                      <option value={100000}>$100,000</option>
+                      <option value={150000}>$150,000</option>
+                    </Select>
+                  </FormControl>
+                  &nbsp; &nbsp;
+                  <FormControl >
+                    <InputLabel htmlFor="max-price">Max Price</InputLabel>
+                    <Select
+                      native
+                      onChange={changePrice}   
+                      value={filters.maxPrice ? filters.maxPrice : ""}                   
+                      inputProps={{
+                        name: 'max-price',
+                        id: 'max-price',
+                      }}
+                    >
+                      <option aria-label="None" value="" />                      
+                      <option value={70000}>$70,000</option>
+                      <option value={100000}>$100,000</option>
+                      <option value={150000}>$150,000</option>
+                      <option value={180000}>$180,000</option>
+                      <option value={240000}>$240,000</option>
+                      <option value={300000}>$300,000</option>
+                    </Select>
+                  </FormControl>
                   </FormGroup>
+                  
                   <FormGroup row>
                     <p className="filter-type-title">Car Brand: </p>
                     <div className="filter-checkbox">
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="Toyota"
-                      className={classes.checkbox}
-                    />
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="Honda"
-                      className={classes.checkbox}
-                    />
-                    <FormControlLabel
-                      control={<CustomCheckbox onChange={handleChange} />}
-                      label="Suzuki"
-                      className={classes.checkbox}
-                    />
+                      {
+                        allMakes.map(make => (
+                          <FormControlLabel
+                          control={<CustomCheckbox 
+                            onChange={checkMakes} 
+                            name={make.name} 
+                            value={make.id} 
+                            checked={filters.brand && filters.brand.includes(make.id)}
+                            
+                            />}
+                          label={make.name}                          
+                          className={classes.checkbox}
+                        />
+                        ))
+                      }                    
+                    
                     </div>
                   </FormGroup>
                   <FormGroup row>
                     <p className="filter-type-title">Car Type: </p>
                     <div className="filter-checkbox">
-                      <FormControlLabel
-                        control={<CustomCheckbox onChange={handleChange} />}
-                        label="MPV / SUV"
-                        className={classes.checkbox}
-                      />
-                      <FormControlLabel
-                        control={<CustomCheckbox onChange={handleChange} />}
-                        label="Stationwagon"
-                        className={classes.checkbox}
-                      />
-                      <FormControlLabel
-                        control={<CustomCheckbox onChange={handleChange} />}
-                        label="Hatchback"
-                        className={classes.checkbox}
-                      /> 
+                      {
+                        allTags.map(tag => (
+                          <FormControlLabel
+                          control={<CustomCheckbox onChange={checkTags} name={tag.name} value={tag.id} />}
+                          label={tag.name}
+                          className={classes.checkbox}
+                        />
+                        ))
+                      }                      
                     </div>
                   </FormGroup>
                   <div className="filter-button" align="right">
-                    <Link href="/">
-                    <a className="btn gw-without-bg-btn">
+                    
+                    <a className="btn gw-without-bg-btn" onClick={resetFilters}>
                       <Icon icon={resetIcon} /> &nbsp;&nbsp; Reset
                     </a>
-                    </Link>
-                    <Link href="/">
-                    <a className="btn buildBtn">
+                   
+                   
+                    <a className="btn buildBtn" onClick={applyFilters}>
                         Apply Changes
                     </a>
-                    </Link>
+                    
                   </div>
                 </Popover>
               </div>
-
               <div class="sortBy">
                 <span class="sortBy-Btn-text">Sort By :</span>
                 <StyledButton variant="contained" className="sortBy-Btn" aria-controls="simple-menu" aria-haspopup="true" onClick={onOpen}>
-                  View All <Icon className={classes.arrowDown} icon={arrowDownAlt2} />
+                   {orderBy.name} <Icon className={classes.arrowDown} icon={arrowDownAlt2} />
                 </StyledButton>
                 <StyledMenu
                   id="simple-menu"
@@ -346,12 +493,11 @@ function Build() {
                     horizontal: 'right',
                   }}
                 >
-                  <MenuItem onClick={onClose}>Price (Lowest to Highest)</MenuItem>
-                  <MenuItem onClick={onClose}>Price (Highest to Lowest)</MenuItem>
-                  <MenuItem onClick={onClose}>Release Date (Newest to Oldest)</MenuItem>
-                  <MenuItem onClick={onClose}>Release Date (Oldest to Newest)</MenuItem>
+                  <MenuItem onClick={() => onChangeOrder("Price (Lowest to Highest)", "selling_Price ASC")}>Price (Lowest to Highest)</MenuItem>
+                  <MenuItem onClick={() => onChangeOrder("Price (Highest to Lowest)", "selling_Price DESC")}>Price (Highest to Lowest)</MenuItem>                 
                 </StyledMenu>
               </div>
+              
             </div>
             {
               carList.map(car => {
@@ -463,6 +609,7 @@ function Build() {
 
 export default Build;
 /*
+<
             <div class="row">
               <div class="column">
                 <div class="left">

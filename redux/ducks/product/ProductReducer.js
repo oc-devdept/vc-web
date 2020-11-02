@@ -38,6 +38,15 @@ const INIT_STATE = {
     gst: 0,
     total: 0
   },
+  CoeList: {
+    data: []
+  },
+  ServicingList: {
+    data: [],
+  },
+  WarrantyList: {
+    data: []
+  },
   CoeSelected: {
     name: "",
     price:-1
@@ -65,6 +74,10 @@ const INIT_STATE = {
     totalCount: 0
   },
   allMakes: {
+    loading: false,
+    data: []
+  },
+  allTags: {
     loading: false,
     data: []
   }
@@ -415,7 +428,7 @@ export default (state = INIT_STATE, action) => {
         ...state,
         allMakes: {
           loading: false,
-          data: action.payload
+          data: action.payload.fields
         }
       }
     case types.GET_ALL_MAKE_FAILURE:
@@ -427,6 +440,44 @@ export default (state = INIT_STATE, action) => {
           loading: false,
         }
       }
+    case types.GET_ALL_TAGS:
+        return {
+          ...state,
+          allTags: {
+            ...state.allTags,
+            loading: true
+          }
+        }
+      case types.GET_ALL_TAGS_SUCCESS:
+        return {
+          ...state,
+          allTags: {
+            loading: false,
+            data: action.payload.fields
+          }
+        }
+      case types.GET_ALL_TAGS_FAILURE:
+        console.log(action.payload);
+        return {
+          ...state,
+          allTags: {
+            ...state.allTags,
+            loading: false,
+          }
+        }
+    case types.GET_ALL_CONFIG_SUCCESS: 
+        return {
+          ...state,
+          CoeList: {
+            data: action.payload.coe
+          },
+          ServicingList: {
+            data: action.payload.servicing
+          },
+          WarrantyList: {
+            data: action.payload.warranty
+          }
+        }
     default:
       return { ...state };
   }

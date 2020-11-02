@@ -9,7 +9,9 @@ import downloadOutlined from '@iconify/icons-ant-design/download-outlined';
 import moneyCheckAlt from '@iconify/icons-fa-solid/money-check-alt';
 import carRepair15 from '@iconify/icons-maki/car-repair-15';
 
-
+import Popover from '@material-ui/core/Popover';
+import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const SummaryTable = props => {
   let data = {};
@@ -64,97 +66,18 @@ const SummaryTable = props => {
       props.updateProductTotal(allFees);
     }
   }, [allFees]);
-/*
-  const dataStructuring = ProductState => {
-    const {
-      ProductModel,
-      ProductGrade,
-      ProductExterior,
-      ProductInterior,
-      ProductAccessories
-    } = ProductState;
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-    let renderData = [];
-    let counter = 1;
-    let subtotal = 0;
-    renderData.push({
-      number: counter,
-      image: ProductModel.image,
-      title: "CAR MAKE & MODEL",
-      name: ProductModel.name
-    });
-    counter++;
-    renderData.push({
-      number: counter,
-      image: ProductGrade.images[0],
-      title: "GRADE",
-      name: ProductGrade.name,
-      price: ProductGrade.price
-    });
-    subtotal += ProductGrade.price;
-    counter++;
-
-    Object.entries(ProductExterior.selected).map(([key, value]) => {
-      renderData.push({
-        number: counter,
-        image: value.thumbnail,
-        title: key,
-        name: value.name,
-        price: value.price
-      });
-      subtotal += value.price;
-      counter++;
-    });
-    Object.entries(ProductInterior.selected).map(([key, value]) => {
-      renderData.push({
-        number: counter,
-        image: value.thumbnail,
-        title: key,
-        name: value.name,
-        price: value.price
-      });
-      subtotal += value.price;
-      counter++;
-    });
-    if (props.page === "summary" && ProductAccessories.selected != null) {
-      Object.entries(ProductAccessories.selected).map(([key, value]) => {     
-
-        renderData.push({
-          number: counter,
-          image: value.thumbnail,
-          title: "ACCESSORIES: "+key,
-          name: value.name,
-          price: value.price
-        });
-        subtotal += value.price;
-        counter++;
-      });
-    }
-
-    return { renderData: renderData, subtotal: subtotal };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  Object.assign(data, dataStructuring(props.ProductState));
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  
-
-  const subtotalData = [
-    {
-      name: "SUBTOTAL",
-      amount: data.subtotal
-    },
-    {
-      name: "MISC. FEES",
-      amount: misc+
-    },
-    {
-      name: "GST",
-      amount: gst
-    }
-  ];
-
-  
-*/
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 // Transform selected options into CheckoutState after product total update
 useEffect(() => {
   if (!!props.getCheckoutData) {
@@ -162,10 +85,43 @@ useEffect(() => {
   }
 }, [props.ProductState.ProductTotal]);
 
+const theme = createMuiTheme({
+  overrides: {
+      MuiPopover: {
+          paper: {
+              backgroundColor: "#ffffff",
+              padding:15,
+              maxWidth:"120%",
+              maxHeight:"120%",
+              border:"2px solid #f29d30",
+              borderRadius:5
+          },
+      },      
+  }
+});
+
+
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <div className="summaryTableCard">
-        <button className="summaryDownload" onClick={props.printConfigurator}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+        <button className="summaryDownload" onClick={handleClick}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+        <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <p className="popTitle">Send Summary to this email address</p>
+        <input type="text" /> <button>Send</button>
+      </Popover>
         <div className="summaryTable">
           <ol>
             <li>
@@ -362,7 +318,7 @@ useEffect(() => {
         </div>
        
       </div>
-    </React.Fragment>
+      </ThemeProvider>
   );
 };
 

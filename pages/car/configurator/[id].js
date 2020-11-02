@@ -42,7 +42,8 @@ import {
   updateProductTotal,
   updateLoanCalculator,
   printConfigurator,
-  getInterestRate
+  getInterestRate,
+  getAllConfig
 } from "Ducks/product/ProductActions";
 
 import { getCheckoutData } from "Ducks/checkout/CheckoutActions";
@@ -72,6 +73,7 @@ class Product extends Component {
           this.props.selectedGradeId
         )
       : this.props.getProductGrades(this.props.selectedModelId);
+    this.props.getAllConfig();
   }
 
   componentDidUpdate(prevProps) {                     
@@ -223,7 +225,7 @@ class Product extends Component {
                   { this.state.activeStep == 1 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Coe selected={ProductState.CoeSelected} selectedCoePackage={this.props.selectedCoePackage} />
+                            <Coe selected={ProductState.CoeSelected} list={ProductState.CoeList} selectedCoePackage={this.props.selectedCoePackage} />
                             </div>
                           </div>
 
@@ -231,7 +233,7 @@ class Product extends Component {
                   { this.state.activeStep == 2 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Aftersales selected={ProductState.AftersaleSelected} selectedServicingPackage={this.props.selectedServicingPackage} />
+                            <Aftersales selected={ProductState.AftersaleSelected} servicingList={ProductState.ServicingList} warrantyList={ProductState.WarrantyList} selectedServicingPackage={this.props.selectedServicingPackage} />
                             </div>
                           </div>
 
@@ -302,7 +304,8 @@ export default connect(mapStateToProps, {
   updateLoanCalculator,
   printConfigurator,
   getCheckoutData,
-  getInterestRate
+  getInterestRate,
+  getAllConfig
 })(Product);
 /*
 

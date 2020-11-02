@@ -98,13 +98,45 @@ const getInterestRateRequest = async () => {
   return data;
 };
 
-const getAllCarsRequest = async (data) => {
-  const result = await api.get("/products/getall", data);
+const getAllCarsRequest = async ({
+  limit,
+  skip,
+  filter,
+  searchText,
+  orderBy
+}) => {
+  const result = await api.get("/products/getall", {
+    params: {
+      limit: limit,
+      skip: skip,
+      filter: filter,
+      searchText: searchText,
+      orderBy: orderBy
+    }    
+  });
   return result.data;
 }
 
 const getAllMakeRequest = async () => {
-  const result = await api.get("/products/getMake");
+  const result = await api.get("/products/getBrand");
+  return result.data;
+}
+
+const getAllTagsRequest = async () => {
+  const result = await api.get("/tags/getAllTags");
+  return result.data;
+}
+
+const getAllCoeRequest = async () => {
+  const result = await api.get("/coeselects?filter[order]=position%20ASC");
+  return result.data;
+}
+const getAllServicingRequest = async () => {
+  const result = await api.get("/servicingselects?filter[order]=position%20ASC");
+  return result.data;
+}
+const getAllWarrantyRequest = async () => {
+  const result = await api.get("/warrantyselects?filter[order]=position%20ASC");
   return result.data;
 }
 
@@ -169,6 +201,7 @@ function* getInterestRate() {
 
 function* getAllCarsFromDB({ payload }){
   try {
+    console.log(payload);
     const data = yield call(getAllCarsRequest, payload);
     yield put(actions.getAllCarsSuccess(data));
   }
@@ -184,6 +217,28 @@ function* getAllMakesFromDB(){
   }
   catch(error){
     yield put(actions.getMakeFailure(error));
+  }
+}
+
+function* getAllTagsFromDB(){
+  try {
+    const data = yield call(getAllTagsRequest);
+    yield put(actions.getTagsSuccess(data));
+  }
+  catch(error){
+    yield put(actions.getTagsFailure(error));
+  }
+}
+
+function* getAllConfigFromDB(){
+  try {
+    const coeSelected = yield call(getAllCoeRequest);
+    const servicingSelected = yield call(getAllServicingRequest);
+    const warrantySelected = yield call(getAllWarrantyRequest);
+    yield put(actions.getAllConfigSuccess(coeSelected, servicingSelected, warrantySelected));
+  }
+  catch(error){
+    yield put(actions.getAllConfigFailure(error));
   }
 }
 
@@ -216,6 +271,14 @@ export function* getMakesWatcher(){
   yield takeEvery(types.GET_ALL_MAKE, getAllMakesFromDB);
 } 
 
+export function* getTagsWatcher(){
+  yield takeEvery(types.GET_ALL_TAGS, getAllTagsFromDB);
+} 
+
+export function* getAllConfigWatcher(){
+  yield takeEvery(types.GET_ALL_CONFIG, getAllConfigFromDB);
+}
+
 //=======================
 // FORK SAGAS TO STORE
 //=======================
@@ -228,6 +291,8 @@ export default function* productSaga() {
     fork(getFeaturedCarsWatcher),
     fork(getInterestRateWatcher),
     fork(getAllCarsWatcher),
-    fork(getMakesWatcher)
+    fork(getMakesWatcher),
+    fork(getTagsWatcher),
+    fork(getAllConfigWatcher)
   ]);
 }

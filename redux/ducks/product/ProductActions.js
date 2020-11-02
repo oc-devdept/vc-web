@@ -154,6 +154,18 @@ export const getMakeFailure = error => ({
   payload: error
 })
 
+export const getTags = () => ({
+  type: types.GET_ALL_TAGS
+});
+export const getTagsSuccess = data => ({
+  type: types.GET_ALL_TAGS_SUCCESS,
+  payload: data
+});
+export const getTagsFailure = error => ({
+  type: types.GET_ALL_TAGS_FAILURE,
+  payload: error
+})
+
 export const getAllCars = (limit, skip, filter, searchText, orderBy) => ({
   type: types.GET_ALL_CARS,
   payload: { limit, skip, filter, searchText, orderBy}
@@ -164,5 +176,17 @@ export const getAllCarsSuccess = data => ({
 });
 export const getAllCarsFailure = error => ({
   type: types.GET_ALL_CARS_FAILURE,
+  payload: error
+})
+
+export const getAllConfig = () => ({
+  type: types.GET_ALL_CONFIG
+})
+export const getAllConfigSuccess = (coe, servicing, warranty) => ({
+  type: types.GET_ALL_CONFIG_SUCCESS,
+  payload: { coe, servicing, warranty}
+})
+export const getAllConfigFailure = error => ({
+  type: types.GET_ALL_CONFIG_FAILURE,
   payload: error
 })

@@ -80,7 +80,7 @@ function BookCarServicing() {
     const onSubmit = async (event) => {
         event.preventDefault();
         const isValid = formValidation();
-        // Make the booking successful logo appear if there is not any validation errors
+        // Make the booking successful logo appear if there is no validation errors
         if (isValid == true){
             setVisible(true);
         }

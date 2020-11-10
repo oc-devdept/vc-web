@@ -11,6 +11,12 @@ const MegaTab = () => {
     async function fetchData() {
       const result = await api.get(`categories/getMegaMenu`);
       setMegaMenu(() => Object.entries(result.data.fields));
+
+      const testingResult = await api.get(`product/`);
+      console.log(testingResult);
+      console.log("PPP");
+      console.log(result.data.fields);
+
       setLoading(() => false);
     }
     fetchData();

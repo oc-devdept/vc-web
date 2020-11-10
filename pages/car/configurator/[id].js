@@ -17,9 +17,7 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Grade from "./Grade";
-// import Exterior from "./Exterior";
-// import Interior from "./Interior";
-// import Rims from "./Rims";
+import { getEmail } from "../../../utils/auth";
 import Accessories from "./Accessories";
 import Summary from "./Summary";
 import ExtInt from "./ExtInt";
@@ -250,6 +248,7 @@ class Product extends Component {
                         getInterestRate={this.props.getInterestRate}
                         goPrev={this.handlePrev}
                         updateProductTotal={this.props.updateProductTotal}
+                        user_email={this.props.user_email}
                       />
                      </div>
                           </div>
@@ -280,8 +279,11 @@ class Product extends Component {
   }
 }
 
-Product.getInitialProps = async function({ query: { id, grade } }) {
-  return { selectedModelId: id, selectedGradeId: grade };
+Product.getInitialProps = async function(ctx) {
+  const id = ctx.query.id;
+  const grade = ctx.query.grade;
+  const user_email = getEmail(ctx);
+  return { selectedModelId: id, selectedGradeId: grade, user_email: user_email };
 };
 
 const mapStateToProps = state => {

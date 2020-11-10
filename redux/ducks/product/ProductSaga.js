@@ -75,8 +75,14 @@ const getProductGradeDataRequest = async payload => {
   return data;
 };
 
-const printConfiguratorPDF = async state => {
-  const result = await api.post("/create-pdf", state);
+const printConfiguratorPDF = async (userData, pdfData) => {
+  //const result = await api.post("/create-pdf", pdfData);
+  
+  const result = await api.post("/carconfigurators/generatePDF", {
+    userdata: userData,
+    pdfdata: pdfData
+  });
+  
   return result.data;
 };
 
@@ -168,14 +174,14 @@ function* getProductGradeData(e) {
     yield put(actions.getProductGradeDataFailure(data));
   }
 }
-function* generateConfiguratorPDF() {
-  console.log("config print");
+function* generateConfiguratorPDF({payload}) {
   try {
     const getProductState = state => state.ProductState;
     
     var productState = yield select(getProductState);
-    var data = yield call(printConfiguratorPDF, productState, "full");
-    yield call(fetchConfiguratorPDF, data);
+    
+    var data = yield call(printConfiguratorPDF, {email: payload }, productState);
+    //yield call(fetchConfiguratorPDF, data);
     yield put(actions.printConfiguratorSuccess());
   } catch (error) {
     yield put(actions.printConfiguratorFailure(error));

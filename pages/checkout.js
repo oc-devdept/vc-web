@@ -10,6 +10,7 @@ import SummaryTable from "Components/configurator/SummaryTable";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckout } from "Ducks/checkout";
+import { retrieveUserProfile } from "Ducks/user";
 
 import { isLoggedIn } from "../utils/auth";
 
@@ -21,6 +22,9 @@ const Checkout = props => {
       dispatch(getCheckout());
     } else {
       Router.replace("/");
+    }
+    if(props.loggedIn){
+      dispatch(retrieveUserProfile());
     }
   }, []);
   const checkoutState = useSelector(state => state.CheckoutState);

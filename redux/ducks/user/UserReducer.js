@@ -1,4 +1,5 @@
 import * as types from "./UserTypes";
+import cookie from "js-cookie";
 
 import { NotificationManager } from "react-notifications";
 
@@ -18,6 +19,7 @@ export default (state = INIT_STATE, action) => {
 
     case types.LOGIN_ACCOUNT_SUCCESS:
       NotificationManager.success("You've successfully logged in");
+      cookie.set("user-email", action.payload.email, {expires: action.payload.expires});
       return { ...state, loading: false };
 
     case types.LOGIN_ACCOUNT_FAILURE:

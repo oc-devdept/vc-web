@@ -104,9 +104,10 @@ export const updateLoanCalculator = e => ({
 });
 
 // Generate PDF
-export const printConfigurator = () => {
+export const printConfigurator = (email) => {
   return {
-  type: types.PRINT_CONFIGURATOR
+  type: types.PRINT_CONFIGURATOR,
+  payload: email
 }};
 export const printConfiguratorSuccess = () => ({
   type: types.PRINT_CONFIGURATOR_SUCCESS

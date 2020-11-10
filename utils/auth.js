@@ -74,6 +74,11 @@ export const isLoggedIn = ctx => {
   }
 };
 
+export const getEmail = ctx => {
+  const user_email = nextCookie(ctx)['user-email'];
+  return user_email;
+}
+
 export const loginCheckout = ({ token, expires }) => {
   cookie.set("token", token, { expires });
   Router.push("/checkout");

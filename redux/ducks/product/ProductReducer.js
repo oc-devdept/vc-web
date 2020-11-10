@@ -80,6 +80,10 @@ const INIT_STATE = {
   allTags: {
     loading: false,
     data: []
+  },
+  sendConfigurator: {
+    loading: false,
+    message: ""
   }
 };
 
@@ -478,6 +482,30 @@ export default (state = INIT_STATE, action) => {
             data: action.payload.warranty
           }
         }
+    case types.PRINT_CONFIGURATOR:
+        return {
+          ...state,
+          sendConfigurator: {
+            loading: true,
+            message: ""
+          }
+        }
+    case types.PRINT_CONFIGURATOR_SUCCESS:
+        return {
+          ...state,
+          sendConfigurator: {
+            loading: false,
+            message: "Configurator PDF has been sent to your email."
+          }
+        }
+    case types.PRINT_CONFIGURATOR_FAILURE:
+      return {
+        ...state,
+        sendConfigurator: {
+          loading: false,
+          message: "An error occurred."
+        }
+      }
     default:
       return { ...state };
   }

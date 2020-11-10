@@ -156,6 +156,7 @@ const Summary = props => {
             loanCalculator={props.ProductState.LoanCalculator}
             updateProductTotal={props.updateProductTotal}
             printConfigurator={props.printConfigurator}
+            user_email={props.user_email}
           />
         </div>
         <div className="col-lg-6">

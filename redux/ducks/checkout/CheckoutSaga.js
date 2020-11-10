@@ -7,8 +7,9 @@ import api from "Api";
 //=========================
 // REQUESTS
 //=========================
-const doCheckoutRequest = async data => {
-  const result = await api.post(`/ShoppingCarts/checkout`, { data });
+const doCheckoutRequest = async payload => {
+  const { data, userInfo } = payload;
+  const result = await api.post(`/ShoppingCarts/checkout`, { data, userInfo });
   return result.data;
 };
 

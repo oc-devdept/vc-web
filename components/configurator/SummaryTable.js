@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 import { formatPrice } from "Components/Helpers/helpers";
+
+
 import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";
 
 // npm install --save-dev @iconify/react @iconify/icons-ant-design
@@ -78,12 +81,24 @@ const SummaryTable = props => {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+
+  const sendConfigurator = () => {
+    if(userEmail != ""){
+      props.printConfigurator(userEmail);
+      setSendCount(1);
+    }
+  }
+
+  const sendConfig = useSelector(state => state.ProductState.sendConfigurator);
 // Transform selected options into CheckoutState after product total update
 useEffect(() => {
   if (!!props.getCheckoutData) {
     props.getCheckoutData(props.ProductState);
-  }
+  }    
 }, [props.ProductState.ProductTotal]);
+
+const [sendCount, setSendCount] = React.useState(0);
+const [userEmail, setUserEmail ] = React.useState(props.user_email);
 
 const theme = createMuiTheme({
   overrides: {
@@ -119,8 +134,13 @@ const theme = createMuiTheme({
           horizontal: 'left',
         }}
       >
-        <p className="popTitle">Send Summary to this email address</p>
-        <input type="text" /> <button>Send</button>
+        {
+         sendConfig.loading ? <p className="popTitleMsg">Sending email ...</p>
+         : sendConfig.message != "" ? <p className="popTitleMsg">{ sendConfig.message }</p>
+         : ""
+      }
+       {sendConfig.message == "" &&  <p className="popTitle">Send Summary to this email address</p> }
+        <input type="text" value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
       </Popover>
         <div className="summaryTable">
           <ol>

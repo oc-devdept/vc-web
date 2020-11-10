@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Card from "react-bootstrap/Card";
-import { Form } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import Loader from "react-loader-spinner";
@@ -22,12 +22,21 @@ const CreditCardForm = () => {
 
   const PaymentState = useSelector((state) => state.PaymentState);
   const CheckoutState = useSelector((state) => state.CheckoutState);
+  const userProfile = useSelector(state => state.UserState.profile);
 
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(true);
   const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
   const [FeedbackMessage, setFeedbackMessage] = useState("");
   const [name, setName] = useState("");
+  const [firstname, setFirstName] = useState(userProfile ? userProfile.baseContact.firstName : "")
+  const [lastname, setLastName] = useState(userProfile ? userProfile.baseContact.lastName: "")
+  const [contact, setContact] = useState(userProfile ? userProfile.baseContact.mobile : "")
+  const [address1, setAddress1] = useState("")
+  const [address2, setAddress2] = useState("")
+  const [postal, setPostal] = useState("")
+
+  
 
   useEffect(() => {
     const paymentIntentId = localStorage.getItem("stripe-paymentIntentId");
@@ -39,6 +48,8 @@ const CreditCardForm = () => {
     setLoading(false);
   }, []);
 
+ 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements || loading) {
@@ -48,7 +59,10 @@ const CreditCardForm = () => {
       setFeedbackMessage("Your name on card is incomplete.");
       return;
     }
-
+    else if(firstname === "" || lastname === "" || contact === "" || address1 === "" || postal === ""){
+      setFeedbackMessage("Please complete the form with your details.")
+      return;
+    }
     setLoading(true);
     const result = await stripe.confirmCardPayment(PaymentState.client_secret, {
       payment_method: {
@@ -65,8 +79,16 @@ const CreditCardForm = () => {
       // The payment has been processed!
       if (result.paymentIntent.status === "succeeded") {
         const localCart = JSON.parse(localStorage.getItem("vc-shoppingcart"));
-        console.log(localCart);
-        dispatch(doCheckout(localCart));
+        let userInfo = {
+          email: userProfile ? userProfile.baseContact.email : "",
+          firstName: firstname,
+          lastName: lastname,
+          mobile: contact,
+          address1: address1,
+          address2: address2,
+          postal: postal
+        }
+        dispatch(doCheckout(localCart, userInfo));
         setShowFeedbackSuccess(true);
         setFeedbackMessage("");
         setShowForm(false);
@@ -126,13 +148,65 @@ const CreditCardForm = () => {
         {showForm && (
           <Form onSubmit={handleSubmit}>
             <Form.Group>
+              <Form.Label>FIRST NAME</Form.Label>
+              <Form.Control
+                placeholder="Required"
+                value={firstname}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>LAST NAME</Form.Label>
+              <Form.Control
+                placeholder="Required"
+                value={lastname}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>CONTACT NUMBER</Form.Label>
+              <Form.Control
+                placeholder="Required"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>BILLING ADDRESS</Form.Label>
+              <Form.Row>
+                <Col>
+                  <Form.Control
+                placeholder="Address line 1"
+                value={address1}
+                onChange={(e) => setAddress1(e.target.value)}
+              />
+                </Col>  
+              </Form.Row>
+              <Form.Row>
+                <Col sm={7}>
+                <Form.Control                
+                value={address2}
+                placeholder="Address line 2"
+                onChange={(e) => setAddress2(e.target.value)}
+              />
+                </Col>
+                <Col sm={5}>
+                <Form.Control
+                placeholder="Postal Code"
+                value={postal}
+                onChange={(e) => setPostal(e.target.value)}
+              />
+                </Col>
+              </Form.Row>                            
+            </Form.Group>            
+            <Form.Group>
               <Form.Label>NAME ON CARD</Form.Label>
               <Form.Control
                 placeholder="Required"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-            </Form.Group>
+            </Form.Group>            
             <Form.Group>
               <Form.Label>CARD DETAILS</Form.Label>
               <CardElement

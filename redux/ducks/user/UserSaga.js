@@ -15,6 +15,7 @@ import { login, logout, loginCheckout } from "../../../utils/auth";
 
 const userLoginRequest = async e => {
   const data = await api.post(`/basecustomerusers/login`, e.payload);
+  console.log(data.data);
   return data.data;
 };
 const userLogoutRequest = async e => {
@@ -39,7 +40,7 @@ function* userLogin(e) {
   try {
     const data = yield call(userLoginRequest, e);
     login({ token: data.id, expires: ttlToDays(data.ttl) });
-    yield put(actions.handleAccountLogin_success(data));
+    yield put(actions.handleAccountLogin_success({email: e.payload.email, expires: ttlToDays(data.ttl)}));
   } catch (error) {
     yield put(actions.handleAccountLogin_failure(error));
   }

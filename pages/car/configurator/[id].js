@@ -17,9 +17,7 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Grade from "./Grade";
-// import Exterior from "./Exterior";
-// import Interior from "./Interior";
-// import Rims from "./Rims";
+import { getEmail } from "../../../utils/auth";
 import Accessories from "./Accessories";
 import Summary from "./Summary";
 import ExtInt from "./ExtInt";
@@ -42,7 +40,8 @@ import {
   updateProductTotal,
   updateLoanCalculator,
   printConfigurator,
-  getInterestRate
+  getInterestRate,
+  getAllConfig
 } from "Ducks/product/ProductActions";
 
 import { getCheckoutData } from "Ducks/checkout/CheckoutActions";
@@ -72,6 +71,7 @@ class Product extends Component {
           this.props.selectedGradeId
         )
       : this.props.getProductGrades(this.props.selectedModelId);
+    this.props.getAllConfig();
   }
 
   componentDidUpdate(prevProps) {                     
@@ -223,7 +223,7 @@ class Product extends Component {
                   { this.state.activeStep == 1 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Coe selected={ProductState.CoeSelected} selectedCoePackage={this.props.selectedCoePackage} />
+                            <Coe selected={ProductState.CoeSelected} list={ProductState.CoeList} selectedCoePackage={this.props.selectedCoePackage} />
                             </div>
                           </div>
 
@@ -231,7 +231,7 @@ class Product extends Component {
                   { this.state.activeStep == 2 && 
                         <div className="row">
                           <div className="col-md-12">
-                            <Aftersales selected={ProductState.AftersaleSelected} selectedServicingPackage={this.props.selectedServicingPackage} />
+                            <Aftersales selected={ProductState.AftersaleSelected} servicingList={ProductState.ServicingList} warrantyList={ProductState.WarrantyList} selectedServicingPackage={this.props.selectedServicingPackage} />
                             </div>
                           </div>
 
@@ -248,6 +248,7 @@ class Product extends Component {
                         getInterestRate={this.props.getInterestRate}
                         goPrev={this.handlePrev}
                         updateProductTotal={this.props.updateProductTotal}
+                        user_email={this.props.user_email}
                       />
                      </div>
                           </div>
@@ -278,8 +279,11 @@ class Product extends Component {
   }
 }
 
-Product.getInitialProps = async function({ query: { id, grade } }) {
-  return { selectedModelId: id, selectedGradeId: grade };
+Product.getInitialProps = async function(ctx) {
+  const id = ctx.query.id;
+  const grade = ctx.query.grade;
+  const user_email = getEmail(ctx);
+  return { selectedModelId: id, selectedGradeId: grade, user_email: user_email };
 };
 
 const mapStateToProps = state => {
@@ -302,7 +306,8 @@ export default connect(mapStateToProps, {
   updateLoanCalculator,
   printConfigurator,
   getCheckoutData,
-  getInterestRate
+  getInterestRate,
+  getAllConfig
 })(Product);
 /*
 

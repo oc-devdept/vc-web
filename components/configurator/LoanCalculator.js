@@ -7,13 +7,13 @@ const LoanCalculator = props => {
   // reducer to maintain state of inputs
   const initialState = {
     loanTerm: 24,
-    loanAmount: "",
+    loanAmount: props.productTotal ? Math.round(props.productTotal.total * 70/100) : "" ,
     interestRate: 0,
     totalInterest: "",
     downPayment: "",
     deposit: 500,
     monthlyInstallment: "",
-    loanPercent: 0
+    loanPercent: 70
   };
 
   function reducer(state, { field, value }) {

@@ -91,7 +91,6 @@ export const selectedServicingPackage = e => ({
 
 // Update total price
 export const updateProductTotal = e => { 
-  console.log(e);
   return ({
   type: types.UPDATE_PRODUCT_TOTAL,
   payload: e
@@ -105,9 +104,11 @@ export const updateLoanCalculator = e => ({
 });
 
 // Generate PDF
-export const printConfigurator = () => ({
-  type: types.PRINT_CONFIGURATOR
-});
+export const printConfigurator = (email) => {
+  return {
+  type: types.PRINT_CONFIGURATOR,
+  payload: email
+}};
 export const printConfiguratorSuccess = () => ({
   type: types.PRINT_CONFIGURATOR_SUCCESS
 });
@@ -141,3 +142,52 @@ export const getInterestRateFailure = error => ({
   type: types.GET_INTEREST_RATE_FAILURE,
   payload: error
 });
+
+export const getMakes = () => ({
+  type: types.GET_ALL_MAKE
+});
+export const getMakeSuccess = data => ({
+  type: types.GET_ALL_MAKE_SUCCESS,
+  payload: data
+});
+export const getMakeFailure = error => ({
+  type: types.GET_ALL_MAKE_FAILURE,
+  payload: error
+})
+
+export const getTags = () => ({
+  type: types.GET_ALL_TAGS
+});
+export const getTagsSuccess = data => ({
+  type: types.GET_ALL_TAGS_SUCCESS,
+  payload: data
+});
+export const getTagsFailure = error => ({
+  type: types.GET_ALL_TAGS_FAILURE,
+  payload: error
+})
+
+export const getAllCars = (limit, skip, filter, searchText, orderBy) => ({
+  type: types.GET_ALL_CARS,
+  payload: { limit, skip, filter, searchText, orderBy}
+})
+export const getAllCarsSuccess = data => ({
+  type: types.GET_ALL_CARS_SUCCESS,
+  payload: data
+});
+export const getAllCarsFailure = error => ({
+  type: types.GET_ALL_CARS_FAILURE,
+  payload: error
+})
+
+export const getAllConfig = () => ({
+  type: types.GET_ALL_CONFIG
+})
+export const getAllConfigSuccess = (coe, servicing, warranty) => ({
+  type: types.GET_ALL_CONFIG_SUCCESS,
+  payload: { coe, servicing, warranty}
+})
+export const getAllConfigFailure = error => ({
+  type: types.GET_ALL_CONFIG_FAILURE,
+  payload: error
+})

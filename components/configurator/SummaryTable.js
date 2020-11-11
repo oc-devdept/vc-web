@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 import { formatPrice } from "Components/Helpers/helpers";
+
+
 import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";
 
 // npm install --save-dev @iconify/react @iconify/icons-ant-design
@@ -9,7 +12,9 @@ import downloadOutlined from '@iconify/icons-ant-design/download-outlined';
 import moneyCheckAlt from '@iconify/icons-fa-solid/money-check-alt';
 import carRepair15 from '@iconify/icons-maki/car-repair-15';
 
-
+import Popover from '@material-ui/core/Popover';
+import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const SummaryTable = props => {
   let data = {};
@@ -17,17 +22,26 @@ const SummaryTable = props => {
   if(props.ProductState.ProductExterior.selected){
         
     Object.entries(props.ProductState.ProductExterior.selected).map(([variance, data]) => {
-      subtotal += data.price;
+      if(data != null){
+        subtotal += data.price;
+      }
+      
     })
   }
   if(props.ProductState.ProductInterior.selected){
       Object.entries(props.ProductState.ProductInterior.selected).map(([variance, data]) => {
-        subtotal += data.price;
+        if(data != null){
+          subtotal += data.price;
+        }
+        
       })
   }
   if(props.ProductState.ProductRims.selected){
       Object.entries(props.ProductState.ProductRims.selected).map(([variance, data]) => {
-        subtotal += data.price;
+        if(data != null){
+          subtotal += data.price;
+        }
+        
       })
   }
   if(props.ProductState.CoeSelected.price > 0){
@@ -55,108 +69,79 @@ const SummaryTable = props => {
       props.updateProductTotal(allFees);
     }
   }, [allFees]);
-/*
-  const dataStructuring = ProductState => {
-    const {
-      ProductModel,
-      ProductGrade,
-      ProductExterior,
-      ProductInterior,
-      ProductAccessories
-    } = ProductState;
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-    let renderData = [];
-    let counter = 1;
-    let subtotal = 0;
-    renderData.push({
-      number: counter,
-      image: ProductModel.image,
-      title: "CAR MAKE & MODEL",
-      name: ProductModel.name
-    });
-    counter++;
-    renderData.push({
-      number: counter,
-      image: ProductGrade.images[0],
-      title: "GRADE",
-      name: ProductGrade.name,
-      price: ProductGrade.price
-    });
-    subtotal += ProductGrade.price;
-    counter++;
-
-    Object.entries(ProductExterior.selected).map(([key, value]) => {
-      renderData.push({
-        number: counter,
-        image: value.thumbnail,
-        title: key,
-        name: value.name,
-        price: value.price
-      });
-      subtotal += value.price;
-      counter++;
-    });
-    Object.entries(ProductInterior.selected).map(([key, value]) => {
-      renderData.push({
-        number: counter,
-        image: value.thumbnail,
-        title: key,
-        name: value.name,
-        price: value.price
-      });
-      subtotal += value.price;
-      counter++;
-    });
-    if (props.page === "summary" && ProductAccessories.selected != null) {
-      Object.entries(ProductAccessories.selected).map(([key, value]) => {     
-
-        renderData.push({
-          number: counter,
-          image: value.thumbnail,
-          title: "ACCESSORIES: "+key,
-          name: value.name,
-          price: value.price
-        });
-        subtotal += value.price;
-        counter++;
-      });
-    }
-
-    return { renderData: renderData, subtotal: subtotal };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  Object.assign(data, dataStructuring(props.ProductState));
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
-  const subtotalData = [
-    {
-      name: "SUBTOTAL",
-      amount: data.subtotal
-    },
-    {
-      name: "MISC. FEES",
-      amount: misc+
-    },
-    {
-      name: "GST",
-      amount: gst
+  const sendConfigurator = () => {
+    if(userEmail != ""){
+      props.printConfigurator(userEmail);
+      setSendCount(1);
     }
-  ];
+  }
 
-  
-*/
+  const sendConfig = useSelector(state => state.ProductState.sendConfigurator);
 // Transform selected options into CheckoutState after product total update
 useEffect(() => {
   if (!!props.getCheckoutData) {
     props.getCheckoutData(props.ProductState);
-  }
+  }    
 }, [props.ProductState.ProductTotal]);
 
+const [sendCount, setSendCount] = React.useState(0);
+const [userEmail, setUserEmail ] = React.useState(props.user_email);
+
+const theme = createMuiTheme({
+  overrides: {
+      MuiPopover: {
+          paper: {
+              backgroundColor: "#ffffff",
+              padding:15,
+              maxWidth:"120%",
+              maxHeight:"120%",
+              border:"2px solid #f29d30",
+              borderRadius:5
+          },
+      },      
+  }
+});
+
+
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <div className="summaryTableCard">
-        <button className="summaryDownload" onClick={props.printConfigurator}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+        <button className="summaryDownload" onClick={handleClick}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+        <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        {
+         sendConfig.loading ? <p className="popTitleMsg">Sending email ...</p>
+         : sendConfig.message != "" ? <p className="popTitleMsg">{ sendConfig.message }</p>
+         : ""
+      }
+       {sendConfig.message == "" &&  <p className="popTitle">Send Summary to this email address</p> }
+        <input type="text" value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
+      </Popover>
         <div className="summaryTable">
           <ol>
             <li>
@@ -175,6 +160,7 @@ useEffect(() => {
                 <li>
                 Exterior
                 { Object.entries(props.ProductState.ProductExterior.selected).map(([variance, data]) => {            
+                  if(data != null){
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -185,7 +171,12 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
-                  }) 
+                  
+                  }
+                  else {
+                    return (<div></div>)
+                  }
+                })   
             
               }
             </li>
@@ -196,6 +187,7 @@ useEffect(() => {
                 <li>
                 Interior
                 { Object.entries(props.ProductState.ProductInterior.selected).map(([variance, data]) => {            
+                  if(data != null){
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -206,6 +198,10 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                  }
+                  else {
+                    return (<div></div>)
+                  }
                   }) 
             
               }
@@ -217,6 +213,7 @@ useEffect(() => {
                 <li>
                 Rims
                 { Object.entries(props.ProductState.ProductRims.selected).map(([variance, data]) => {            
+                  if(data != null){                  
                     return (
                       <div className="summaryDetail">
                       <img src={data.thumbnail} />
@@ -227,6 +224,10 @@ useEffect(() => {
                         <p className="price">{formatPrice(data.price)}</p>
                       </div>
                     )
+                  }
+                  else {
+                    return (<div></div>)
+                  }
                   }) 
             
               }
@@ -337,7 +338,7 @@ useEffect(() => {
         </div>
        
       </div>
-    </React.Fragment>
+      </ThemeProvider>
   );
 };
 

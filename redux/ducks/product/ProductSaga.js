@@ -75,8 +75,14 @@ const getProductGradeDataRequest = async payload => {
   return data;
 };
 
-const printConfiguratorPDF = async state => {
-  const result = await api.post("/create-pdf", state);
+const printConfiguratorPDF = async (userData, pdfData) => {
+  //const result = await api.post("/create-pdf", pdfData);
+  
+  const result = await api.post("/carconfigurators/generatePDF", {
+    userdata: userData,
+    pdfdata: pdfData
+  });
+  
   return result.data;
 };
 
@@ -97,6 +103,48 @@ const getInterestRateRequest = async () => {
   const data = await api.get(`/WebsiteSettings`);
   return data;
 };
+
+const getAllCarsRequest = async ({
+  limit,
+  skip,
+  filter,
+  searchText,
+  orderBy
+}) => {
+  const result = await api.get("/products/getall", {
+    params: {
+      limit: limit,
+      skip: skip,
+      filter: filter,
+      searchText: searchText,
+      orderBy: orderBy
+    }    
+  });
+  return result.data;
+}
+
+const getAllMakeRequest = async () => {
+  const result = await api.get("/products/getBrand");
+  return result.data;
+}
+
+const getAllTagsRequest = async () => {
+  const result = await api.get("/tags/getAllTags");
+  return result.data;
+}
+
+const getAllCoeRequest = async () => {
+  const result = await api.get("/coeselects?filter[order]=position%20ASC");
+  return result.data;
+}
+const getAllServicingRequest = async () => {
+  const result = await api.get("/servicingselects?filter[order]=position%20ASC");
+  return result.data;
+}
+const getAllWarrantyRequest = async () => {
+  const result = await api.get("/warrantyselects?filter[order]=position%20ASC");
+  return result.data;
+}
 
 //=========================
 // CALL(GENERATOR) ACTIONS
@@ -126,12 +174,14 @@ function* getProductGradeData(e) {
     yield put(actions.getProductGradeDataFailure(data));
   }
 }
-function* generateConfiguratorPDF() {
+function* generateConfiguratorPDF({payload}) {
   try {
     const getProductState = state => state.ProductState;
+    
     var productState = yield select(getProductState);
-    var data = yield call(printConfiguratorPDF, productState, "full");
-    yield call(fetchConfiguratorPDF, data);
+    
+    var data = yield call(printConfiguratorPDF, {email: payload }, productState);
+    //yield call(fetchConfiguratorPDF, data);
     yield put(actions.printConfiguratorSuccess());
   } catch (error) {
     yield put(actions.printConfiguratorFailure(error));
@@ -155,6 +205,50 @@ function* getInterestRate() {
   }
 }
 
+function* getAllCarsFromDB({ payload }){
+  try {
+    console.log(payload);
+    const data = yield call(getAllCarsRequest, payload);
+    yield put(actions.getAllCarsSuccess(data));
+  }
+  catch(error) {
+    yield put(actions.getAllCarsFailure(error));
+  }
+}
+
+function* getAllMakesFromDB(){
+  try {
+    const data = yield call(getAllMakeRequest);
+    yield put(actions.getMakeSuccess(data));
+  }
+  catch(error){
+    yield put(actions.getMakeFailure(error));
+  }
+}
+
+function* getAllTagsFromDB(){
+  try {
+    const data = yield call(getAllTagsRequest);
+    yield put(actions.getTagsSuccess(data));
+  }
+  catch(error){
+    yield put(actions.getTagsFailure(error));
+  }
+}
+
+function* getAllConfigFromDB(){
+  try {
+    const coeSelected = yield call(getAllCoeRequest);
+    const servicingSelected = yield call(getAllServicingRequest);
+    const warrantySelected = yield call(getAllWarrantyRequest);
+    yield put(actions.getAllConfigSuccess(coeSelected, servicingSelected, warrantySelected));
+  }
+  catch(error){
+    yield put(actions.getAllConfigFailure(error));
+  }
+}
+
+
 //=======================
 // WATCHER FUNCTIONS
 //=======================
@@ -176,6 +270,20 @@ export function* getFeaturedCarsWatcher() {
 export function* getInterestRateWatcher() {
   yield takeEvery(types.GET_INTEREST_RATE, getInterestRate);
 }
+export function* getAllCarsWatcher(){
+  yield takeEvery(types.GET_ALL_CARS, getAllCarsFromDB);
+}
+export function* getMakesWatcher(){
+  yield takeEvery(types.GET_ALL_MAKE, getAllMakesFromDB);
+} 
+
+export function* getTagsWatcher(){
+  yield takeEvery(types.GET_ALL_TAGS, getAllTagsFromDB);
+} 
+
+export function* getAllConfigWatcher(){
+  yield takeEvery(types.GET_ALL_CONFIG, getAllConfigFromDB);
+}
 
 //=======================
 // FORK SAGAS TO STORE
@@ -187,6 +295,10 @@ export default function* productSaga() {
     fork(getProductGradeDataWatcher),
     fork(generateConfiguratorPDFWatcher),
     fork(getFeaturedCarsWatcher),
-    fork(getInterestRateWatcher)
+    fork(getInterestRateWatcher),
+    fork(getAllCarsWatcher),
+    fork(getMakesWatcher),
+    fork(getTagsWatcher),
+    fork(getAllConfigWatcher)
   ]);
 }

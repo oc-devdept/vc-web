@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Icon, InlineIcon } from '@iconify/react';
 import plusIcon from '@iconify/icons-bi/plus';
+import minusOutlined from '@iconify/icons-ant-design/minus-outlined';
+
 
 import { formatPrice } from "Components/Helpers/helpers";
 
@@ -16,12 +18,14 @@ const VariantSelection = ({
   category,
   showTab
 }) => {
-  const [isShowing, changeShowing] = useState(showTab);
+  
+  const [isShowing, changeShowing] = useState(true);
 
+  /*
   useEffect(() => {
     changeShowing(showTab);
   }, [showTab]);
-
+*/
   const checkTooltip = stockhistory => {
     const stockChecklist = [
       "VAC READY",
@@ -64,6 +68,7 @@ const VariantSelection = ({
   
 
   const toggleView = () => {
+    console.log("toggle");
     changeShowing(!isShowing);
   }
 
@@ -155,8 +160,10 @@ const VariantSelection = ({
     <React.Fragment>
       <div className="optionTitleRow">
       <h3 className="configure-opt-title">{title}</h3>
+      <div className="configure-icon" onClick={toggleView}>
+  { isShowing ? <Icon height={26} icon={minusOutlined} /> : <Icon height={26} icon={plusIcon} /> }</div>
       </div>
-      <div className="optionDisplay show">    
+      <div className={"optionDisplay"+ (isShowing ? " show" : "")}>    
       <ul className={ "list-unstyled" }>
         {!!objects &&
           objects.map((item, id) => (

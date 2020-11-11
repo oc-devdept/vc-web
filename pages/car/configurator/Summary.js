@@ -9,7 +9,6 @@ import arrowLeft from '@iconify/icons-bi/arrow-left';
 import SummaryTable from "Components/configurator/SummaryTable";
 import Button from "react-bootstrap/Button";
 import LoanCalculator from "Components/configurator/LoanCalculator";
-
 import DialogRoot from "Components/Dialog/DialogRoot";
 import Booking from "Components/booking/booking";
 import UserProfile from "Components/booking/profile";
@@ -157,6 +156,7 @@ const Summary = props => {
             loanCalculator={props.ProductState.LoanCalculator}
             updateProductTotal={props.updateProductTotal}
             printConfigurator={props.printConfigurator}
+            user_email={props.user_email}
           />
         </div>
         <div className="col-lg-6">

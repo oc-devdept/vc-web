@@ -38,6 +38,15 @@ const INIT_STATE = {
     gst: 0,
     total: 0
   },
+  CoeList: {
+    data: []
+  },
+  ServicingList: {
+    data: [],
+  },
+  WarrantyList: {
+    data: []
+  },
   CoeSelected: {
     name: "",
     price:-1
@@ -57,6 +66,24 @@ const INIT_STATE = {
   featuredCars: {
     featured: [],
     loading: false
+  },
+  allCarList: {
+    action: false,
+    loading: false,
+    tableData: [],
+    totalCount: 0
+  },
+  allMakes: {
+    loading: false,
+    data: []
+  },
+  allTags: {
+    loading: false,
+    data: []
+  },
+  sendConfigurator: {
+    loading: false,
+    message: ""
   }
 };
 
@@ -100,36 +127,6 @@ export default (state = INIT_STATE, action) => {
       const ProductGrade = gradesData.data.fields.find(
         element => element.id === gradeId
       );
-      /*
-      specificationData,
-        exteriorData,
-        interiorData,
-        accessoriesData
-      var imageList = [];
-      var thumbsList = [];
-      var populateImageList = ProductGrade => {
-        ProductGrade.files.map(item => {
-          imageList.push(item.path);
-        });
-      };
-      populateImageList(ProductGrade);
-      ProductGrade.images.forEach(element => {
-        thumbsList.push(element.path);
-      });
-      ProductSpecification: {
-          data: specificationData.data.fields.Detail
-        },
-        ProductExterior: {
-          data: exteriorData.data
-        },
-        ProductInterior: {
-          data: interiorData.data
-        },
-        ProductAccessories: {
-          ...state.ProductAccessories,
-          data: accessoriesData.data
-        }
-      */
       let image = ProductGrade.files.length > 0 ? ProductGrade.files[0].path : "";
       let thumb = ProductGrade.images.length > 0 ? ProductGrade.images[0].path : "";
       return {
@@ -394,7 +391,121 @@ export default (state = INIT_STATE, action) => {
           ...state,
           LoanCalculator: action.payload
         }
-
+    case types.GET_ALL_CARS:
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: true
+        }
+      }
+    case types.GET_ALL_CARS_SUCCESS: 
+    console.log(action.payload);
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: false,
+          tableData: action.payload.data,
+          totalCount: action.payload.totalCount
+        }
+      }
+    case types.GET_ALL_CARS_FAILURE:
+      console.log(action.payload);
+      return {
+        ...state,
+        allCarList: {
+          ...state.allCarList,
+          loading: false
+        }
+      }
+    case types.GET_ALL_MAKE:
+      return {
+        ...state,
+        allMakes: {
+          ...state.allMakes,
+          loading: true
+        }
+      }
+    case types.GET_ALL_MAKE_SUCCESS:
+      return {
+        ...state,
+        allMakes: {
+          loading: false,
+          data: action.payload.fields
+        }
+      }
+    case types.GET_ALL_MAKE_FAILURE:
+      console.log(action.payload);
+      return {
+        ...state,
+        allMakes: {
+          ...state.allMakes,
+          loading: false,
+        }
+      }
+    case types.GET_ALL_TAGS:
+        return {
+          ...state,
+          allTags: {
+            ...state.allTags,
+            loading: true
+          }
+        }
+      case types.GET_ALL_TAGS_SUCCESS:
+        return {
+          ...state,
+          allTags: {
+            loading: false,
+            data: action.payload.fields
+          }
+        }
+      case types.GET_ALL_TAGS_FAILURE:
+        console.log(action.payload);
+        return {
+          ...state,
+          allTags: {
+            ...state.allTags,
+            loading: false,
+          }
+        }
+    case types.GET_ALL_CONFIG_SUCCESS: 
+        return {
+          ...state,
+          CoeList: {
+            data: action.payload.coe
+          },
+          ServicingList: {
+            data: action.payload.servicing
+          },
+          WarrantyList: {
+            data: action.payload.warranty
+          }
+        }
+    case types.PRINT_CONFIGURATOR:
+        return {
+          ...state,
+          sendConfigurator: {
+            loading: true,
+            message: ""
+          }
+        }
+    case types.PRINT_CONFIGURATOR_SUCCESS:
+        return {
+          ...state,
+          sendConfigurator: {
+            loading: false,
+            message: "Configurator PDF has been sent to your email."
+          }
+        }
+    case types.PRINT_CONFIGURATOR_FAILURE:
+      return {
+        ...state,
+        sendConfigurator: {
+          loading: false,
+          message: "An error occurred."
+        }
+      }
     default:
       return { ...state };
   }

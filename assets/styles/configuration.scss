@@ -94,6 +94,8 @@
 .configure-opt {
     background: #fcfcfc;
     padding: 15px;
+    overflow: auto;
+    max-height: 1000px;
   }
 
 .optionTitleRow {
@@ -101,18 +103,20 @@
 }
 
 .optionDisplay {
-    -webkit-transition: 0.6s;
-  -moz-transition: 0.6s;
-  -o-transition: 0.6s;
-  transition: 0.6s;
-  max-height:0;
-  overflow:hidden;
+    
+    -webkit-transition: 1s;
+  -moz-transition: 1;
+  -o-transition: 1s;
+  transition: 1s;
+  height:0;  
+  overflow: hidden;
   margin-bottom:2em;
 }
 
 
 .optionDisplay.show {
-    max-height:600px;  
+    height:auto;  
+    overflow:unset;
 }
 
 
@@ -165,6 +169,11 @@
         p {
             margin-left:15px;
             margin-right:15px;
+        }
+
+        input {
+            padding: 10px;
+            font-size:1.1em;
         }
     }
 
@@ -367,6 +376,14 @@ color: #ffffff !important;
 
 .configure-area .nextBtn {
     float:right;
+}
+
+.popTitle {
+    font-weight: 600;
+}
+
+.popTitleMsg {
+    color: rgb(255, 65, 65);
 }
 
 @media only screen and (max-width: 426px) {

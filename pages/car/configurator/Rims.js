@@ -10,6 +10,7 @@ class Rims extends Component {
       rims: {}
     }
 
+    if(this.props.ProductRims.data[this.props.gradeId]){
       const { fields } = this.props.ProductRims.data[this.props.gradeId];
       Object.entries(fields).map(([variance, data]) => {
         // If there is a default option available, pre-select the first one
@@ -32,19 +33,21 @@ class Rims extends Component {
             )
           };         
         } else {
-          updateData = {
-            selectedKey: 0,
-            id: fields[variance].objects[0].id,
-            name: fields[variance].objects[0].name,
-            price: fields[variance].objects[0].price,
-            thumbnail: fields[variance].objects[0].files[0].path,
-            stockId: selectedStockId(fields[variance].objects[0].stockhistory)
-          };
-          
+          if(fields[variance].objects.length > 0){
+            updateData = {
+              selectedKey: 0,
+              id: fields[variance].objects[0].id,
+              name: fields[variance].objects[0].name,
+              price: fields[variance].objects[0].price,
+              thumbnail: fields[variance].objects[0].files[0].path,
+              stockId: selectedStockId(fields[variance].objects[0].stockhistory)
+            };
+          }                    
         }
         this.state['rims'][variance] = updateData;
         this.props.selectedProductRims({[variance]: updateData});
-      });    
+      }); 
+    }         
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
@@ -75,22 +78,27 @@ class Rims extends Component {
   }
 
   render() {
-    const { fields } = this.props.ProductRims.data[this.props.gradeId];
+    let fields = {};
+    if(this.props.ProductRims.data[this.props.gradeId]){
+      fields = this.props.ProductRims.data[this.props.gradeId].fields;
+    }    
     return (
       <div className="configure-sect row">
           <div className="configure-gall col-lg-8 d-flex flex-column">
             { Object.entries(fields).map(([variance, data], key) => (
+              this.state.rims[variance] ? 
               <VariantInfo
                 images={data.objects[
                   this.state.rims[variance].selectedKey
                 ].images.map(item => item.path)}
                 name={data.objects[this.state.rims[variance].selectedKey].name}
-              />
+              /> : <div></div>
               )) }
               
             </div>
             <div className="configure-opt col-lg-4 d-flex flex-column">
             {fields !== undefined && Object.entries(fields).map(([variance, data], key) => (
+              this.state.rims[variance] ? 
               <VariantSelection
                 title={variance}
                 objects={data.objects}
@@ -100,7 +108,7 @@ class Rims extends Component {
                 stockHistory={
                   data.objects[this.state.rims[variance].selectedKey].stockhistory
                 }
-              />
+              /> : <div></div>
               )) }
             </div>
             

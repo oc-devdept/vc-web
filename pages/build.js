@@ -350,8 +350,6 @@ function Build() {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
   }
 
-
-
   return (
     <MuiThemeProvider theme={muiTheme}>
     <DefaultLayout>

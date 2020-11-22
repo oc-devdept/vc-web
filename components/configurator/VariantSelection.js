@@ -36,7 +36,6 @@ const VariantSelection = ({
       "INCOMING",
       "INDENT"
     ];
-
     if(stockhistory === undefined){
       return ("IN STOCK");
     }
@@ -83,28 +82,29 @@ const VariantSelection = ({
       "INDENT"
     ];
     if(stockhistory === undefined){
-      return (<p></p>);
+      return (<p className="text-white">IN STOCK</p>);
     }
     if (stockhistory.length === 0) {
       return (
-        <p className="mt-auto">
+        <p className="mt-auto text-white">
           This option is currently on indent basis. Expected arrival time of{" "}
           <span style={{ color: "red" }}>3-6 months</span>.
         </p>
       );
     }
     for (const status of stockChecklist) {
+      
       const result = stockhistory.find(
         element => element.status === status && element.stock_count !== 0
       );
       if (!!result) {
         if (status === "VAC READY") {
           return (
-            <p className="mt-auto">VAC Ready Stock. Immediate availability.</p>
+            <p className="mt-auto text-white">VAC Ready Stock. Immediate availability.</p>
           );
         } else if (status === "FINAL INSP" || status === "STOCK") {
           return (
-            <p className="mt-auto">
+            <p className="mt-auto text-white">
               Ready Stock. Expected waiting time of{" "}
               <span style={{ color: "red" }}>2-4 weeks</span>.
             </p>
@@ -115,19 +115,27 @@ const VariantSelection = ({
           status === "INCOMING"
         ) {
           return (
-            <p className="mt-auto">
+            <p className="mt-auto text-white">
               Stock is incoming. Expected arrival time of{" "}
               <span style={{ color: "red" }}>1-3 months</span>.
             </p>
           );
         } else {
           return (
-            <p className="mt-auto">
+            <p className="mt-auto text-white">
               This option is currently on indent basis. Expected arrival time of{" "}
               <span style={{ color: "red" }}>3-6 months</span>.
             </p>
           );
         }
+      }
+      else {
+        return (
+          <p className="mt-auto text-white">
+            This option is currently on indent basis. Expected arrival time of{" "}
+            <span style={{ color: "red" }}>3-6 months</span>.
+          </p>
+        );
       }
     }
   };
@@ -170,7 +178,7 @@ const VariantSelection = ({
             <OverlayTrigger
               key={id}
               placement="top"
-              overlay={<Tooltip>{checkTooltip(item.stockhistory)}</Tooltip>}
+              overlay={<Tooltip>{checkWarning(item.stockhistory)}</Tooltip>}
             >
               <li
                 className="configure-list d-inline-block align-top"
@@ -199,7 +207,9 @@ const VariantSelection = ({
             </OverlayTrigger>
           ))}
       </ul>
-      {checkWarning(stockHistory)}
+      {
+      /*checkWarning(stockHistory) */ 
+      }
       </div>  
     </React.Fragment>
   );

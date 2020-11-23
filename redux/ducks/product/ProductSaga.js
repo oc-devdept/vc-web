@@ -77,7 +77,7 @@ const getProductGradeDataRequest = async payload => {
 
 const printConfiguratorPDF = async (userData, pdfData) => {
   //const result = await api.post("/create-pdf", pdfData);
-  
+  console.log(userData);
   const result = await api.post("/carconfigurators/generatePDF", {
     userdata: userData,
     pdfdata: pdfData

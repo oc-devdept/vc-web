@@ -140,7 +140,7 @@ const theme = createMuiTheme({
          : ""
       }
        {sendConfig.message == "" &&  <p className="popTitle">Send Summary to this email address</p> }
-        <input type="text" value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
+        <input type="text" onChange={(evt) => { setUserEmail(evt.target.value)}} value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
       </Popover>
         <div className="summaryTable">
           <ol>

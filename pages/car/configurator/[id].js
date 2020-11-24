@@ -159,7 +159,7 @@ class Product extends Component {
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">
-                      <button type="submit" className="btn prevBtn priceBarPrev" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
+                      <button type="submit" className="btn btn-light prevBtn" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
                         
                         </div>
                         <div class="col-8">
@@ -168,7 +168,7 @@ class Product extends Component {
                         </Typography>
                         </div>
                         <div class="col-2">
-                        <button type="submit" className="btn nextBtn priceBarNext" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
+                        <button type="submit" className="btn btn-primary nextBtn" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
                         </div>
                     </Toolbar>
                 </AppBar>

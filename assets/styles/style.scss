@@ -374,7 +374,7 @@ img {
 
 .nav-btn {
   color: #ffffff !important;
-  background-color: #f29d30;
+  background-color: #000000;
   // padding: 50% 13% !important;
   text-align: center;
   margin-right: 0 !important;
@@ -384,7 +384,8 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
+  color: #999999 !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 .btn-primary {
@@ -1307,7 +1308,7 @@ Navbar Area CSS
 }
 
 .comero-nav {
-  background-color: #4b6674;
+  background-color:black;
   // padding-top: 3px;
   // padding-bottom: 3px;
 }
@@ -1342,7 +1343,8 @@ Navbar Area CSS
 
 .comero-nav .navbar .navbar-nav .nav-item a {
   font-size: 14px;
-  color: #fff;
+  color: #999999;
+  // font-weight: bold;
   text-transform: uppercase;
   padding-left: 0;
   padding-right: 0;
@@ -1355,7 +1357,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item a:hover,
 .comero-nav .navbar .navbar-nav .nav-item a:focus,
 .comero-nav .navbar .navbar-nav .nav-item a.active {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item a i {
@@ -1365,7 +1367,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item:hover a,
 .comero-nav .navbar .navbar-nav .nav-item:focus a,
 .comero-nav .navbar .navbar-nav .nav-item.active a {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu {

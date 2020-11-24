@@ -55,7 +55,7 @@ class Banner extends Component {
         {tableData.map((banner, key) => (
           <Carousel.Item key={key}>
             
-        { banner.images.length > 0 && <img className="d-block w-100" src={banner.images[0].path} /> }
+        { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
             <Carousel.Caption>
               <div className={ "container "+banner.captionPosition }>
                 <div className="row">

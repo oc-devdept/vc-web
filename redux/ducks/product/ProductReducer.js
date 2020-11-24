@@ -49,7 +49,7 @@ const INIT_STATE = {
   },
   CoeSelected: {
     name: "",
-    price:-1
+    price: -1
   },
   AftersaleSelected: {
     warranty: null,
@@ -68,6 +68,12 @@ const INIT_STATE = {
     loading: false
   },
   allCarList: {
+    action: false,
+    loading: false,
+    tableData: [],
+    totalCount: 0
+  },
+  allPreownedCarList: {
     action: false,
     loading: false,
     tableData: [],
@@ -121,8 +127,8 @@ export default (state = INIT_STATE, action) => {
       var {
         gradeId,
         gradesData
-        
-      } = action.payload;      
+
+      } = action.payload;
 
       const ProductGrade = gradesData.data.fields.find(
         element => element.id === gradeId
@@ -140,7 +146,7 @@ export default (state = INIT_STATE, action) => {
           images: image,
           thumbs: thumb,
           data: gradesData.data
-        }        
+        }
       };
 
     case types.GET_PRODUCT_GRADES_FAILURE:
@@ -150,16 +156,16 @@ export default (state = INIT_STATE, action) => {
 
     case types.SELECTED_PRODUCT_GRADE:
       var id = action.payload;
-      var { fields } = state.ProductGrade.data;      
+      var { fields } = state.ProductGrade.data;
       var object = fields.find(element => element.id === id);
-      if(object){
+      if (object) {
         image = object.files.length > 0 ? object.files[0].path : "";
         thumb = object.images.length > 0 ? object.images[0].path : "";
       }
       else {
         object = {}
       }
-      
+
       return {
         ...state,
         ProductGrade: {
@@ -186,10 +192,10 @@ export default (state = INIT_STATE, action) => {
         interiorData,
         accessoriesData
       } = action.payload;
-      let interior = { fields : {}};
-      let rims = { fields: {}};
+      let interior = { fields: {} };
+      let rims = { fields: {} };
       Object.entries(interiorData.data.fields).map(([variance, data]) => {
-        if(variance == "Rims"){
+        if (variance == "Rims") {
           rims.fields[variance] = data;
         }
         else {
@@ -202,19 +208,19 @@ export default (state = INIT_STATE, action) => {
         ProductSpecification: {
           data: {
             ...state.ProductSpecification.data,
-           [id]:  specificationData.data.fields.Detail
+            [id]: specificationData.data.fields.Detail
           }
         },
         ProductExterior: {
           data: {
-           ...state.ProductExterior.data, 
-           [id]: exteriorData.data
+            ...state.ProductExterior.data,
+            [id]: exteriorData.data
           }
         },
         ProductInterior: {
           data: {
             ...state.ProductInterior.data,
-            [id]:interior
+            [id]: interior
           }
         },
         ProductRims: {
@@ -235,7 +241,7 @@ export default (state = INIT_STATE, action) => {
     case types.GET_PRODUCT_GRADE_DATA_FAILURE:
       return { ...state };
 
-    case types.SELECTED_PRODUCT_EXTERIOR:      
+    case types.SELECTED_PRODUCT_EXTERIOR:
       return {
         ...state,
         ProductExterior: {
@@ -272,24 +278,24 @@ export default (state = INIT_STATE, action) => {
 
     case types.SELECTED_PRODUCT_ACCESSORIES:
       //let selectedAccessoriesId = [];
-      let selectedAccessories = { ...state.ProductAccessories.selected };      
+      let selectedAccessories = { ...state.ProductAccessories.selected };
 
       var { fields } = state.ProductAccessories.data[state.ProductGrade.id];
       var options = fields[action.payload.variance].options;
-      selectedAccessories[action.payload.variance] = [];     
+      selectedAccessories[action.payload.variance] = [];
       options.map(item => {
-        
-          let found = action.payload.selectedIds.indexOf(item.id);
-          if (
-            found >= 0
-          ) {
-            selectedAccessories[action.payload.variance].push({              
-              id: item.id,
-              name: item.name,
-              price: item.price,
-              thumbnail: item.files.length > 0 && item.files[0].path
-            });
-          }        
+
+        let found = action.payload.selectedIds.indexOf(item.id);
+        if (
+          found >= 0
+        ) {
+          selectedAccessories[action.payload.variance].push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            thumbnail: item.files.length > 0 && item.files[0].path
+          });
+        }
       });
       return {
         ...state,
@@ -330,7 +336,7 @@ export default (state = INIT_STATE, action) => {
         }
       };
 
-    case types.UPDATE_PRODUCT_TOTAL:   
+    case types.UPDATE_PRODUCT_TOTAL:
       const { subtotal, misc, gst, total } = action.payload.current;
       return {
         ...state,
@@ -385,12 +391,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state
       };
-    
-      case types.UPDATE_LOAN_CALCULATOR:
-        return {
-          ...state,
-          LoanCalculator: action.payload
-        }
+
+    case types.UPDATE_LOAN_CALCULATOR:
+      return {
+        ...state,
+        LoanCalculator: action.payload
+      }
     case types.GET_ALL_CARS:
       return {
         ...state,
@@ -399,8 +405,8 @@ export default (state = INIT_STATE, action) => {
           loading: true
         }
       }
-    case types.GET_ALL_CARS_SUCCESS: 
-    console.log(action.payload);
+    case types.GET_ALL_CARS_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         allCarList: {
@@ -416,6 +422,34 @@ export default (state = INIT_STATE, action) => {
         ...state,
         allCarList: {
           ...state.allCarList,
+          loading: false
+        }
+      }
+    case types.GET_ALL_PREOWNED_CARS:
+      return {
+        ...state,
+        allPreownedCarList: {
+          ...state.allPreownedCarList,
+          loading: true
+        }
+      }
+    case types.GET_ALL_PREOWNED_CARS_SUCCESS:
+      // console.log(action.payload);
+      return {
+        ...state,
+        allPreownedCarList: {
+          ...state.allPreownedCarList,
+          loading: false,
+          tableData: action.payload.data,
+          totalCount: action.payload.totalCount
+        }
+      }
+    case types.GET_ALL_PREOWNED_CARS_FAILURE:
+      // console.log(action.payload);
+      return {
+        ...state,
+        allPreownedCarList: {
+          ...state.allPreownedCarList,
           loading: false
         }
       }
@@ -445,59 +479,59 @@ export default (state = INIT_STATE, action) => {
         }
       }
     case types.GET_ALL_TAGS:
-        return {
-          ...state,
-          allTags: {
-            ...state.allTags,
-            loading: true
-          }
+      return {
+        ...state,
+        allTags: {
+          ...state.allTags,
+          loading: true
         }
-      case types.GET_ALL_TAGS_SUCCESS:
-        return {
-          ...state,
-          allTags: {
-            loading: false,
-            data: action.payload.fields
-          }
+      }
+    case types.GET_ALL_TAGS_SUCCESS:
+      return {
+        ...state,
+        allTags: {
+          loading: false,
+          data: action.payload.fields
         }
-      case types.GET_ALL_TAGS_FAILURE:
-        console.log(action.payload);
-        return {
-          ...state,
-          allTags: {
-            ...state.allTags,
-            loading: false,
-          }
+      }
+    case types.GET_ALL_TAGS_FAILURE:
+      console.log(action.payload);
+      return {
+        ...state,
+        allTags: {
+          ...state.allTags,
+          loading: false,
         }
-    case types.GET_ALL_CONFIG_SUCCESS: 
-        return {
-          ...state,
-          CoeList: {
-            data: action.payload.coe
-          },
-          ServicingList: {
-            data: action.payload.servicing
-          },
-          WarrantyList: {
-            data: action.payload.warranty
-          }
+      }
+    case types.GET_ALL_CONFIG_SUCCESS:
+      return {
+        ...state,
+        CoeList: {
+          data: action.payload.coe
+        },
+        ServicingList: {
+          data: action.payload.servicing
+        },
+        WarrantyList: {
+          data: action.payload.warranty
         }
+      }
     case types.PRINT_CONFIGURATOR:
-        return {
-          ...state,
-          sendConfigurator: {
-            loading: true,
-            message: ""
-          }
+      return {
+        ...state,
+        sendConfigurator: {
+          loading: true,
+          message: ""
         }
+      }
     case types.PRINT_CONFIGURATOR_SUCCESS:
-        return {
-          ...state,
-          sendConfigurator: {
-            loading: false,
-            message: "Configurator PDF has been sent to your email."
-          }
+      return {
+        ...state,
+        sendConfigurator: {
+          loading: false,
+          message: "Configurator PDF has been sent to your email."
         }
+      }
     case types.PRINT_CONFIGURATOR_FAILURE:
       return {
         ...state,

@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import Link from "next/link";
 import { NotificationManager } from "react-notifications";
 import FooterAccordion from './Footer-Accordion';
+import api from 'Api'
+
+const userDetails = {
+    name: '',
+    email: '',
+    source: '',
+}
 
 class Footer extends Component {
     constructor(props) {
         super(props)
         this.state = {
             email: '',
-            name: 'Newsletter User',
-
+            // ...userDetails
         }
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,16 +25,18 @@ class Footer extends Component {
         this.setState({ email: e.target.value });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.email)
-        console.log(this.state.name)
+
         try {
             console.log('Send to server! ', this.state)
-            // await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content, service: 'Maintenance', status: 'Awaiting' } });
+            await api.post(`/customers/newsletterSignup`, { data: this.state });
+            // console.log(test)
             // success
             // setForm(() => Contact);
-            NotificationManager.success('Contact form sent successfully');
+            // this.setState({...userDetails});
+            NotificationManager.success('Signed Up');
 
         } catch (e) {
             // failed

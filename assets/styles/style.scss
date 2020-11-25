@@ -57,6 +57,14 @@ This files table contents are outlined below>>>>>
 /*================================================
 Default CSS
 =================================================*/
+@font-face {
+  font-family: "Merriweather-Regular";
+  src: url("../fonts/Merriweather-Regular.ttf") format("ttf");
+}
+@font-face {
+  font-family: "PlayfairDisplay-Regular";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf") format("ttf");
+}
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap");
 @media (min-width: 1200px) {
   .container {
@@ -72,8 +80,9 @@ Default CSS
 body {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
+  font-family: "PlayfairDisplay-Regular";
+ 
 }
 .megaTab .tab-content {
   padding: 20px 0;
@@ -250,9 +259,9 @@ img {
 }
 
 /*section-title*/
-.section-title {
-  // padding: 10px 0;
-}
+// .section-title {
+  
+// }
 
 .section-title h2 {
   text-transform: uppercase;
@@ -1342,7 +1351,7 @@ Navbar Area CSS
 
 .comero-nav .navbar .navbar-nav .nav-item a {
   font-size: 14px;
-  color: #fff;
+  color: #999999;
   text-transform: uppercase;
   padding-left: 0;
   padding-right: 0;
@@ -9877,7 +9886,7 @@ Footer Area CSS
   color: #ffffff;
   margin-top: 15px;
 }
-.right-section p {
+.right-section p {  
   color: #ffffff;
 }
 

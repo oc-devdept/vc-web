@@ -21,11 +21,11 @@ const VariantSelection = ({
   
   const [isShowing, changeShowing] = useState(true);
 
-  /*
+  
   useEffect(() => {
     changeShowing(showTab);
   }, [showTab]);
-*/
+
   const checkTooltip = stockhistory => {
     const stockChecklist = [
       "VAC READY",

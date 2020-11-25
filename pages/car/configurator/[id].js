@@ -168,7 +168,7 @@ class Product extends Component {
                         </Typography>
                         </div>
                         <div class="col-2">
-                        <button type="submit" className="btn btn-primary nextBtn" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
+                        <button type="submit" className="btn btn-primary nextBtnTop" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
                         </div>
                     </Toolbar>
                 </AppBar>

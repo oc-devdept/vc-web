@@ -4,13 +4,20 @@ import api from "Api";
 import Link from "next/link";
 
 const MegaTab = () => {
-  const [MegaMenu, setMegaMenu] = useState([]);
-  const [Stage, setStage] = useState(0);
+  const [MegaMenu, setMegaMenu] = useState([]); // For new cars
+  const [Stage, setStage] = useState(0); // For new cars
+  const [MegaMenuPreowned, setMegaMenuPreowned] = useState([]); // For preowned cars
+  const [StagePreowned, setStagePreowned] = useState(0); // For preowned cars
   const [Loading, setLoading] = useState(false);
   useEffect(() => {
     async function fetchData() {
       const result = await api.get(`categories/getMegaMenu`);
       setMegaMenu(() => Object.entries(result.data.fields));
+      // console.log("IIIIIIIII");
+      // const testingResult = await api.get(`products//getallPreowned`);
+      // console.log(testingResult.data);
+      // console.log("PPP");
+      // console.log(result.data.fields);
       setLoading(() => false);
     }
     fetchData();
@@ -18,7 +25,7 @@ const MegaTab = () => {
 
   const _RenderModel = () => {
     var modelImage = {
-      objectFit: "cover",
+      objectFit: "cover", 
       borderRadius: "20px",
       height: "100px",
       width: "145px",

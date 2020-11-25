@@ -6,7 +6,7 @@ import Footer from "Components/Layout/Footer";
 import Breadcrumb from "Components/Common/Breadcrumb";
 
 function Default(props) {
-  const { crumbs } = props;
+  const { crumbs } = props; // crumbs is Car Configuration
   return (
     <React.Fragment>
       <Navbar />

@@ -33,11 +33,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Pagination from '@material-ui/lab/Pagination';
 import RctSectionLoader from "Components/RctSectionLoader";
-import {
-  getAllCars, getMakes, getTags
-  
-} from "Ducks/product/ProductActions";
-import { shadows } from '@material-ui/system';
+import { getAllCars, getMakes, getTags, getAllPreownedCars } from "Ducks/product/ProductActions";
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -59,16 +55,6 @@ const muiTheme = createMuiTheme({
         color: "grey",
         height: 5,
         borderRadius: 50,
-      }
-    },
-    MuiFormLabel: {
-      root: {
-        color: "#f29d30",
-      }
-    },
-    MuiSelect: {
-      select: {
-        width:100
       }
     },
     MuiPaper: {
@@ -172,49 +158,60 @@ const CustomCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
+
+//   async function fetchData() {
+//     // Test for getting preowned car data
+//     const testingResult = await api.get(`products/getallPreowned`);
+//     const preownedCars = testingResult.data.data;
+//     // for(var i=0; i<preownedCars.length; i++){
+//     //     array.push(preownedCars[i].name)
+//     // }
+//     //console.log(preownedCars);
+//     return preownedCars;
+// }
+
 function Build() {
+
   const dispatch = useDispatch();
-  const [dataOptions, setDataOptions ] = useState({
+  const [dataOptions, setDataOptions] = useState({
     limit: 20,
     skip: 0,
-    filter: [], 
-    searchText: "", 
+    filter: [],
+    searchText: "",
     orderBy: []
   });
 
-
   useEffect(() => {
-    dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
   }, []);
 
-  const carList = useSelector(state => {
+  const preownedCarList = useSelector(state => {
     //turn carlist into pairs
     //return state.ProductState.allCarList.tableData;
-    
     let list = [];
     let set = [];
-    let tableData = state.ProductState.allCarList.tableData;
-    for(let i=0; i < tableData.length; i++){
+    //console.log(state.ProductState.allPreownedCarList)
+    let tableData = state.ProductState.allPreownedCarList.tableData;
+    for (let i = 0; i < tableData.length; i++) {
       set.push(tableData[i]);
-      if(i % 2 == 1){
+      if (i % 2 == 1) {
         list.push(set);
         set = [];
       }
     }
-    if(tableData.length % 2 == 1){
-      list.push([tableData[tableData.length-1]]);
+    if (tableData.length % 2 == 1) {
+      list.push([tableData[tableData.length - 1]]);
     }
     return list;
-    
   });
 
-  const pageLoading = useSelector(state => state.ProductState.allCarList.loading);
+  const pageLoading = useSelector(state => state.ProductState.allPreownedCarList.loading);
 
   const totalPages = useSelector(state => {
-    let total = state.ProductState.allCarList.totalCount;
-    if(total > 0){
+    let total = state.ProductState.allPreownedCarList.totalCount;
+    if (total > 0) {
       total = Math.ceil(total / 20);
     }
     return total;
@@ -224,7 +221,7 @@ function Build() {
   const allTags = useSelector(state => state.ProductState.allTags.data);
 
   const classes = useStyles();
-  const [anchorEl, setAnchorEl ] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -234,7 +231,7 @@ function Build() {
     setAnchorEl(null);
   };
 
-  const [aEl, setAEl ] = React.useState(null);
+  const [aEl, setAEl] = React.useState(null);
   const onOpen = (e) => {
     setAEl(e.currentTarget);
   }
@@ -246,6 +243,12 @@ function Build() {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
   const [orderBy, setOrderBy] = React.useState({name: "None", value: ""});
 
   const onChangeOrder = (name, val) => {
@@ -254,10 +257,9 @@ function Build() {
       ...dataOptions,
       orderBy: [val]
     })
-    dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, [val]));
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, [val]));
   }
   
-
   const [filters, setFilters] = React.useState({});
 
   const checkMakes = (event) => {
@@ -342,22 +344,21 @@ function Build() {
   }
 
   const applyFilters = () => {
-    dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
   const resetFilters = () => {
     setFilters({});
-    dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip));
   }
 
   return (
     <MuiThemeProvider theme={muiTheme}>
-    <DefaultLayout>
-      { pageLoading && <RctSectionLoader />}
+      <DefaultLayout>
         <section className="build-area">
           <div className="container">
             <div className="section-title without-bg" align="center">
-                <h2>CHOOSE A MODEL TO BUILD</h2>
+              <h2>CHOOSE A MODEL TO BUILD</h2>
             </div>
             <div class="first_row">
               <div class="filter">
@@ -495,174 +496,113 @@ function Build() {
                   <MenuItem onClick={() => onChangeOrder("Price (Highest to Lowest)", "selling_Price DESC")}>Price (Highest to Lowest)</MenuItem>                 
                 </StyledMenu>
               </div>
-              
             </div>
             {
-              carList.map(car => {
-                retusrn (<div class="row">
+              preownedCarList.map(car => {
+                return(<div class="row">
                   <div class="column">
                     <div class="left">
-                      <img src={car[0].image } />
+                      <img src={car[0].image} />
                     </div>
                     <div class="right">
-                      <p className="types">{ car[0].tag ? (car[0].tag).toUpperCase() : "" }</p>
-              <h3 className="car-name">{ (car[0].make +" "+ car[0].model).toUpperCase()  }</h3>
-              <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
-              </div>
-              <div class="build-content">
-                 {
-                   car[0].productDetailValue && car[0].productDetailValue.map(detail => (
-                    <p class="part1"><span class="engCap">
-                      { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
-                          <Icon icon={engineIcon} color="#595959"/>:
-                          detail.detailCategory.name.indexOf("Power") >= 0 ? 
-                          <Icon icon={powerIcon} color="#595959"/> :
-                          detail.detailCategory.name.indexOf("Fuel") >= 0 ?
-                          <Icon icon={fuel15} color="#595959"/> : 
-                          <Icon icon={smallgearIcon} color="#595959"/>
-                         }
-                           &nbsp; { detail.detailCategory.name }: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")} 
-                    </span></p>
-                   ))
-                 }
+                      <p className="types">{car[0].tag ? (car[0].tag).toUpperCase() : ""}</p>
+                      {console.log(car[0].name)}
+                      <h3 className="car-name">{(car[0].make + " " + car[0].model + " " + car[0].name).toUpperCase()}</h3>
+                      <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
+                    </div>
+                    <div class="build-content">
+                      {
+                        car[0].productDetailValue && car[0].productDetailValue.map(detail => (
+                          <p class="part1"><span class="engCap">
+                            {detail.detailCategory.name.indexOf("Engine") >= 0 ?
+                              <Icon icon={engineIcon} color="#595959" /> :
+                              detail.detailCategory.name.indexOf("Power") >= 0 ?
+                                <Icon icon={powerIcon} color="#595959" /> :
+                                detail.detailCategory.name.indexOf("Fuel") >= 0 ?
+                                  <Icon icon={fuel15} color="#595959" /> :
+                                  <Icon icon={smallgearIcon} color="#595959" />
+                            }
+                            &nbsp; {detail.detailCategory.name}: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")}
+                          </span></p>
+                        ))
+                      }
 
-                </div>
-                <div className="button">
-                  {
-                    car[0].page && ( 
-                    <Link href={car[0].page }>
-                    <a className="btn gw-without-bg-btn">
-                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
-                    </a>
-                    </Link>)
-                  }
-                 {car[0].build && (
-                  <Link href={car[0].build}>
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                 )}
-                </div>
-                  </div>
-                 { car.length > 1 && (
-                  <div class="column">
-                  <div class="left">
-                      <img src={car[1].image} />
                     </div>
-                    <div class="right">
-                      <p className="types">{ car[1].tag ? (car[1].tag).toUpperCase() : "" }</p>
-              <h3 className="car-name">{ (car[1].make +" "+ car[1].model).toUpperCase()  }</h3>
-              <h5 className="car-price"> fr {formatPrice(car[1].selling_price)} </h5>
-              </div>
-              <div class="build-content">
-              {
-                   car[1].productDetailValue && car[1].productDetailValue.map(detail => (
-                    <p class="part1"><span class="engCap">
-                      { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
-                          <Icon icon={engineIcon} color="#595959"/>:
-                          detail.detailCategory.name.indexOf("Power") >= 0 ? 
-                          <Icon icon={powerIcon} color="#595959"/> :
-                          detail.detailCategory.name.indexOf("Fuel") >= 0 ?
-                          <Icon icon={fuel15} color="#595959"/> : 
-                          <Icon icon={smallgearIcon} color="#595959"/>
-                         }
-                           &nbsp; { detail.detailCategory.name }: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")} 
-                    </span></p>
-                   ))
-                 }
-                </div>
-                <div className="button">
-                {
-                    car[1].page && ( 
-                    <Link href={car[1].page}>
-                    <a className="btn gw-without-bg-btn">
-                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                    <div className="button">
+                      {
+                        car[0].page && (
+                          <Link href={car[0].page}>
+                            <a className="btn gw-without-bg-btn">
+                              <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; VIEW DETAILS
                     </a>
-                    </Link>)
+                          </Link>)
+                      }
+                      {car[0].build && (
+                        <Link href={car[0].build}>
+                          <a className="btn buildBtn">
+                            BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem" />
+                          </a>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                  {car.length > 1 && (
+                    <div class="column">
+                      <div class="left">
+                        <img src={car[1].image} />
+                      </div>
+                      <div class="right">
+                        <p className="types">{car[1].tag ? (car[1].tag).toUpperCase() : ""}</p>
+                        <h3 className="car-name">{(car[1].make + " " + car[1].model + " " + car[1].name).toUpperCase()}</h3> 
+                        <h5 className="car-price"> fr {formatPrice(car[1].selling_price)} </h5>
+                      </div>
+                      <div class="build-content">
+                        {
+                          car[1].productDetailValue && car[1].productDetailValue.map(detail => (
+                            <p class="part1"><span class="engCap">
+                              {detail.detailCategory.name.indexOf("Engine") >= 0 ?
+                                <Icon icon={engineIcon} color="#595959" /> :
+                                detail.detailCategory.name.indexOf("Power") >= 0 ?
+                                  <Icon icon={powerIcon} color="#595959" /> :
+                                  detail.detailCategory.name.indexOf("Fuel") >= 0 ?
+                                    <Icon icon={fuel15} color="#595959" /> :
+                                    <Icon icon={smallgearIcon} color="#595959" />
+                              }
+                              &nbsp; {detail.detailCategory.name}: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")}
+                            </span></p>
+                          ))
+                        }
+                      </div>
+                      <div className="button">
+                        {
+                          car[1].page && (
+                            <Link href={car[1].page}>
+                              <a className="btn gw-without-bg-btn">
+                                <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; VIEW DETAILS
+                    </a>
+                            </Link>)
+                        }
+                        {car[1].build && (
+                          <Link href={car[1].build}>
+                            <a className="btn buildBtn">
+                              BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem" />
+                            </a>
+                          </Link>
+                        )}
+                      </div>
+                    </div>)
                   }
-                  {car[1].build && (
-                  <Link href={car[1].build}>
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                  )}
-                </div>
-                  </div>)
-               }
                 </div>)
               })
             }
-
             <div className={classes.paginationArea} >
-              <Pagination count={totalPages} />
+              <Pagination count={3} />
             </div>
           </div>
-      </section>
-    </DefaultLayout>
+        </section>
+      </DefaultLayout>
     </MuiThemeProvider>
   );
 }
 
 export default Build;
-/*
-<
-            <div class="row">
-              <div class="column">
-                <div class="left">
-                  <img src="/static/feature-cars/honda-fit.png"/>
-                </div>
-                <div class="right">
-                  <p className="types">MPV / SUV</p>
-                  <h3 className="car-name">TOYOTA ALPHARD</h3>
-                  <h5 className="car-price"> fr $175,888</h5>
-                </div>
-                <div class="build-content">
-                  <p class="part1-left"><span class="engCap"><Icon icon={engineIcon} color="#595959"/> &nbsp; Eng Cap: 2493cc</span></p>
-                  <p class="part1-right"><span class="power"><Icon icon={powerIcon} color="#595959"/> &nbsp; Power: 180bhp</span></p>
-                  <p class="part2-left"><Icon icon={fuel15} color="#595959"/> &nbsp; Fuel Consumption: 11.6 km / litre</p>
-                </div>
-                <div className="button">
-                  <Link href="/">
-                  <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
-                  </a>
-                  </Link>
-                  <Link href="/">
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                </div>
-              </div>
-              <div class="column">
-                <div class="left">
-                  <img src="/static/feature-cars/honda-fit.png"/>
-                </div>
-                <div class="right">
-                  <p className="types">MPV / SUV</p>
-                  <h3 className="car-name">TOYOTA ALPHARD</h3>
-                  <h5 className="car-price"> fr $175,888</h5>
-                </div>
-                <div class="build-content">
-                  <p class="part1-left"><span class="engCap"><Icon icon={engineIcon} color="#595959"/> &nbsp; Eng Cap: 2493cc</span></p>
-                  <p class="part1-right"><span class="power"><Icon icon={powerIcon} color="#595959"/> &nbsp; Power: 180bhp</span></p>
-                  <p class="part2-left"><Icon icon={fuel15} color="#595959"/> &nbsp; Fuel Consumption: 11.6 km / litre</p>
-                </div>
-                <div className="button">
-                  <Link href="/">
-                  <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
-                  </a>
-                  </Link>
-                  <Link href="/">
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-*/

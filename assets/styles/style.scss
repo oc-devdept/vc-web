@@ -372,6 +372,16 @@ img {
   opacity: 1;
 }
 
+.priceBarPrev{
+  color: white;
+  float: left;
+}
+
+.priceBarNext{
+  color: white;
+  float: right;
+}
+
 .nav-btn {
   color: #ffffff !important;
   background-color: #f29d30;
@@ -424,6 +434,10 @@ img {
   background-color: transparent;
   color: #f29d30 !important;
   border: 1px solid #f29d30;
+}
+
+.nextBtnTop {
+  float: right;
 }
 
 .btn-light {

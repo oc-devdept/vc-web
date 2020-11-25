@@ -35,6 +35,7 @@ const Checkout = props => {
     <React.Fragment>
       <Navbar />
       <Breadcrumb title="Checkout" />
+      {/* {console.log("ITS WORKING HEREREEEEE")} */}
       <div className="container" style={{marginBottom: 40}}>
         <div className="row">
           <div className="col-lg-6">

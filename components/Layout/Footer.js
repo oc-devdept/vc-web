@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import Link from "next/link";
+import { getFooterHtml } from "Ducks/homepage";
 
 import FooterAccordion from './Footer-Accordion';
+
 class Footer extends Component {
+    componentDidMount() {
+        // this.props.getFooterHtml();
+        console.log(this.props)
+    }
+
     render() {
         return (
             <footer className="footer-area">
@@ -15,7 +23,7 @@ class Footer extends Component {
                         </a>
                     </Link>
                     <h5>Sign Up For Our Newsletter</h5>
-                    <p>Sign up to keep yourself unpated with our latest car models, promotions &amp; blog posts!</p>
+                    <p>Sign up to keep yourself updated with our latest car models, promotions &amp; blog posts!</p>
                     
                     
                     <form>
@@ -26,7 +34,9 @@ class Footer extends Component {
                         </div>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn custom-btn">SIGN ME UP!</button>
+                            <Link href="/signup">
+                                <button type="submit" class="btn custom-btn">SIGN ME UP!</button>
+                            </Link>
                         </div>
                         </div>
                     </form>
@@ -101,3 +111,12 @@ class Footer extends Component {
 }
 
 export default Footer;
+
+
+// const mapStateToProps = ({ HomeState }) => {
+//     const { FooterState } = HomeState;
+//     const { footerHtml } = FooterState;
+//     return { footerHtml };
+// };
+  
+// export default connect(mapStateToProps, { getFooterHtml })(Footer);

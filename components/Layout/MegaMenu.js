@@ -119,11 +119,16 @@ class MegaMenu extends Component {
                     </li>
 
                     <li className="nav-item megamenu">
-                      <Link href="#">
+                      <Link href="/preowned">
                         <a className="nav-link">
                           Pre-owned <Icon icon={baselineKeyboardArrowDown} />
                         </a>
                       </Link>
+                      {/* <ul className={"dropdown-menu"  + (this.state.itemsToggle[0] ? " open": "")}>
+                        <li className="nav-item">
+                          <MegaTab />
+                        </li>
+                      </ul> */}
                     </li>
 
                     <li className="nav-item p-relative">

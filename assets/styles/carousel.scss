@@ -56,11 +56,41 @@
       left:-30px;
       top:220px;
     }
+    //add
+    .bottom-left {
+      position:absolute;
+      left:-30px;
+      bottom:90px;
+    }
+    //add
+    .top-center {
+      position:absolute;
+      left:250px;
+      top:50px;
+    }
     .center-center {
       position:absolute;
       left:250px;
       top:220px;
     }
+    //add
+    .bottom-center {
+      position:absolute;
+      left:250px;
+      bottom:90px;
+    }
+    //add
+    .top-right {
+      position:absolute;
+      left: 800px;
+      top:50px;
+    }
+    //add
+    .center-right {
+      position:absolute;
+      left: 800px;
+      top:220px;
+    }  
     .bottom-right {
       position:absolute;
       left: 800px;

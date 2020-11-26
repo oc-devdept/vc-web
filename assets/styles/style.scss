@@ -200,7 +200,7 @@ a {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   text-decoration: none;
-  color: #f29d30;
+  color: #262626;
 }
 
 a:hover,
@@ -321,15 +321,15 @@ img {
 // Build Btn
 .buildBtn {
   color: #ffffff!important;
-  background-color: #f29d30 !important;
+  background-color: #262626 !important;
 }
 .buildBtn:hover,
 .buildBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30 !important;
+  color: #262626 !important;
+  border: 1px solid #262626 !important;
 }
 
 // Grey White Bg Btn
@@ -344,8 +344,8 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30 !important;
+  color: #262626 !important;
+  border: 1px solid #262626 !important;
 }
 
 /*btn(primary&light)*/
@@ -445,15 +445,15 @@ img {
 
 .btn-light {
   background-color: #ffffff;
-  color: #f29d30 !important;
-  border-color: #f29d30;
+  color: #262626 !important;
+  border-color: #262626;
 }
 
 .btn-light.disabled,
 .btn-light:disabled {
   background-color: transparent;
-  color: #f29d30;
-  border-color: #f29d30;
+  color: #262626;
+  border-color: #262626;
 }
 
 .btn-light:not(:disabled):not(.disabled).active,
@@ -478,8 +478,8 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   color: #ffffff !important;
-  background-color: #f29d30;
-  border-color: #f29d30;
+  background-color: #262626;
+  border-color: #262626;
 }
 
 /*owl-carousel-btn*/
@@ -569,7 +569,7 @@ Single Car Page Area CSS
 }
 
 .grade-box {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
   margin-bottom: 20px;
 }
 .grade-content {
@@ -584,7 +584,7 @@ Single Car Page Area CSS
   margin-top: 10px;
 }
 .grade-content .bar {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
   text-align: left;
   padding: 10px 0 10px 20px;
   margin-bottom: 10px;
@@ -613,7 +613,7 @@ Single Car Page Area CSS
   margin: 20px 0;
 }
 .grade-content h5 {
-  color: #f29d30;
+  color: #262626;
   font-size: 1.8rem;
 }
 
@@ -658,7 +658,7 @@ About Honda Fit Area CSS
 }
 .two-parts .exterior-view {
   margin: 0 20px 20px 0;
-  border-bottom: 5px solid #f29d30;
+  border-bottom: 5px solid #262626;
   padding-bottom: 10px;
 }
 
@@ -751,7 +751,7 @@ Contact Us Details Area CSS
 }
 
 // .contact-form .form-check input:checked ~ .form-check-input {
-//   background-color: #f29d30 !important;
+//   background-color: #262626 !important;
 // }
 
 .contact-form-area button {
@@ -830,7 +830,7 @@ Build Area CSS
 }
 .build-area .column .car-price {
   margin: 0 20px 0px 0;
-  color: #f29d30;
+  color: #262626;
   font-size: 1.6rem;
   font-weight: normal;
 }
@@ -925,7 +925,7 @@ About Car Servicing Area CSS
   font-weight: 500;
 }
 .available-services .tickIcon {
-  color: #f29d30;
+  color: #262626;
   margin-right: 10px;
 }
 
@@ -1341,6 +1341,11 @@ Navbar Area CSS
   padding-left: 0;
   list-style-type: none;
   margin-bottom: 0;
+  color: #666666 !important;
+}
+.comero-nav .navbar ul div:hover
+{
+  border-bottom:3px solid #000000 !important;
 }
 
 /* .comero-nav .navbar .navbar-nav {
@@ -1426,8 +1431,8 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #f29d30;
-  border-bottom: 2px solid #f29d30;
+  color: #262626;
+  border-bottom: 2px solid #262626;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -2315,7 +2320,7 @@ Modal CSS
 }
 
 .bts-popup .bts-popup-container ul li a.instagram {
-  background-color: #e1306c;
+  background-color: #666666;
   color: #ffffff;
 }
 
@@ -2361,7 +2366,7 @@ Modal CSS
 }
 
 .bts-popup .bts-popup-container form .validation-danger {
-  color: red;
+  color: #666666;
   margin-top: 10px;
 }
 
@@ -3286,7 +3291,7 @@ All Products Area CSS
 
 .single-product-box .product-content h3 a:hover,
 .single-product-box .product-content h3 a:focus {
-  color: #f29d30;
+  color: #262626;
 }
 
 .single-product-box .product-content .product-price {
@@ -3295,7 +3300,7 @@ All Products Area CSS
 }
 
 .single-product-box .product-content .product-price span {
-  color: #f29d30;
+  color: #262626;
   font-size: 18px;
   display: inline-block;
   font-style: italic;
@@ -3428,7 +3433,7 @@ Products QuickView Modal Area CSS
 }
 
 .productQuickView .modal-content button.close:hover {
-  background-color: red;
+  background-color: #999999;
   color: #ffffff;
 }
 
@@ -9896,7 +9901,7 @@ Footer Area CSS
 
 .footer-accordion-info p a:hover,
 .footer-accordion-info p a:focus {
-  color: #f29d30 !important;
+  color: #262626 !important;
 }
 
 .left-section a {
@@ -9909,7 +9914,7 @@ Footer Area CSS
 
 .left-section a:hover,
 .left-section a:focus {
-  color: #f29d30 !important;
+  color: #262626 !important;
 }
 
 .footer-signup button {
@@ -10027,8 +10032,8 @@ h6 {
 .btn-slider:hover,
 .btn-slider:focus {
   background-color: #fff;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30;
+  color: #262626 !important;
+  border: 1px solid #262626;
 }
 
 /* .comero-nav .navbar .navbar-nav {margin:0;} */
@@ -10058,24 +10063,24 @@ li.progtrckr-done {
   width: 24.99%;
 }
 ol.progtrckr li.progtrckr-doing:before {
-  background-color: #f29d30;
+  background-color: #262626;
 }
 ol.progtrckr li.progtrckr-doing {
-  color: #f29d30;
-  border-bottom: 4px solid #f29d30;
+  color: #262626;
+  border-bottom: 4px solid #262626;
 }
 
 .pull-right {
   float: right;
 }
 .pull-left {
-  color: #f29d30 !important;
+  color: #262626 !important;
   background-color: transparent;
 }
 .pull-left:hover,
 .pull-left:focus {
   color: #ffffff !important;
-  background-color: #f29d30;
+  background-color: #262626;
 }
 
 .product-desc dl {
@@ -10098,7 +10103,7 @@ ol.progtrckr li.progtrckr-doing {
 }
 
 .stepArrow {
-  color: #f29d30;
+  color: #262626;
 }
 
 
@@ -10223,7 +10228,7 @@ input[type="number"] {
 }
 
 .DayPickerInput > input:focus {
-  outline: #f29d30 solid 1px;
+  outline: #262626 solid 1px;
 }
 
 .form-control.card-element {

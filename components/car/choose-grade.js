@@ -7,7 +7,7 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 import gitFork from '@iconify/icons-gg/git-fork';
 import manageProtection from '@iconify/icons-carbon/manage-protection';
-import smallgearIcon from '@iconify/icons-raphael/smallgear';
+//import smallgearIcon from '@iconify/icons-raphael/smallgear';
 
 
 class ChooseGrade extends Component {

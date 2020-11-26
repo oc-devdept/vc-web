@@ -122,6 +122,25 @@ const getAllCarsRequest = async ({
   });
   return result.data;
 }
+// New Stuff
+const getAllPreownedCarsRequest = async ({
+  limit,
+  skip,
+  filter,
+  searchText,
+  orderBy
+}) => {
+  const result = await api.get("/products/getallPreowned", {
+    params: {
+      limit: limit,
+      skip: skip,
+      filter: filter,
+      searchText: searchText,
+      orderBy: orderBy
+    }    
+  });
+  return result.data;
+}
 
 const getAllMakeRequest = async () => {
   const result = await api.get("/products/getBrand");
@@ -215,6 +234,17 @@ function* getAllCarsFromDB({ payload }){
     yield put(actions.getAllCarsFailure(error));
   }
 }
+// New Stuff
+function* getAllPreownedCarsFromDB({ payload }){
+  try {
+    // console.log(payload);
+    const data = yield call(getAllPreownedCarsRequest, payload);
+    yield put(actions.getAllPreownedCarsSuccess(data));
+  }
+  catch(error) {
+    yield put(actions.getAllPreownedCarsFailure(error));
+  }
+}
 
 function* getAllMakesFromDB(){
   try {
@@ -273,6 +303,10 @@ export function* getInterestRateWatcher() {
 export function* getAllCarsWatcher(){
   yield takeEvery(types.GET_ALL_CARS, getAllCarsFromDB);
 }
+// New Stuff
+export function* getAllPreownedCarsWatcher(){
+  yield takeEvery(types.GET_ALL_PREOWNED_CARS, getAllPreownedCarsFromDB);
+}
 export function* getMakesWatcher(){
   yield takeEvery(types.GET_ALL_MAKE, getAllMakesFromDB);
 } 
@@ -297,6 +331,7 @@ export default function* productSaga() {
     fork(getFeaturedCarsWatcher),
     fork(getInterestRateWatcher),
     fork(getAllCarsWatcher),
+    fork(getAllPreownedCarsWatcher), // New Stuff
     fork(getMakesWatcher),
     fork(getTagsWatcher),
     fork(getAllConfigWatcher)

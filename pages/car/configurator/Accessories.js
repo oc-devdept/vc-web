@@ -224,9 +224,7 @@ class Accessories extends Component {
                 />
                 )) }                  
                 </div>
-                  {console.log("IN ACCESSSORIES")}
-                  {console.log(fields)}
-
+                  
             </div>
           </React.Fragment>
         );

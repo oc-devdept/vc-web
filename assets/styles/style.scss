@@ -58,6 +58,16 @@ This files table contents are outlined below>>>>>
 Default CSS
 =================================================*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap");
+@font-face {
+  font-family: "PlayfairDisplay-Regular";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf");
+  }
+
+@font-face {
+  font-family: "ReemKufi-Regular";
+  src: url("../fonts/ReemKufi-Regular.ttf");
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 90%;
@@ -74,6 +84,7 @@ body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  // font-family: "PlayfairDisplay-Regular";
 }
 .megaTab .tab-content {
   padding: 20px 0;
@@ -89,6 +100,8 @@ p {
   line-height: 1.8;
   font-size: 14px;
   margin-bottom: 15px;
+  // font-family: "ReemKufi-Regular";
+
 }
 h3 {
   font-size: 20px;
@@ -256,8 +269,9 @@ img {
 
 .section-title h2 {
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 500;
+  font-family: "PlayfairDisplay-Regular";
   margin: 20px 0;
   color: #262626!important;
 }
@@ -1359,6 +1373,7 @@ Navbar Area CSS
 
 .comero-nav .navbar .navbar-nav .nav-item a {
   font-size: 14px;
+  font-family: "PlayfairDisplay-Regular";
   color: #999999;
   // font-weight: bold;
   text-transform: uppercase;
@@ -4124,6 +4139,7 @@ Home Page - Feature Cars Area CSS
   color: #000000;
   text-align: center;
 }
+
 .sub-title {
   display: flex;
   flex-wrap: wrap;
@@ -4142,8 +4158,11 @@ Home Page - Feature Cars Area CSS
 .feature-cars h3 {
   margin-bottom: 20px;
   color: #666666!important;
+  font-family: "PlayfairDisplay-Regular";
+  
 }
 .feature-cars h5 {
+  font-family: "PlayfairDisplay-Regular";
   color: #000000;
   margin-top: 20px;
   font-size: 1.8rem;
@@ -4253,6 +4272,7 @@ Home Page - Step Area CSS
   padding: auto 20px;
 }
 .stepBubble {
+  font-family: "PlayfairDisplay-Regular";
   border: 1px solid #262626;
   background: #262626;
   color: #ffffff;
@@ -9820,6 +9840,7 @@ Footer Area CSS
 }
 .footer-area h5 {
   color: #ffffff !important;
+  font-family: "PlayfairDisplay-Regular";
 }
 .footer-area p {
   color: #999999;
@@ -9827,11 +9848,12 @@ Footer Area CSS
 }
 
 .single-footer-widget h3 {
-  font-size: 17px;
+  font-size: 20px;
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
   color: #ffffff !important;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .single-footer-widget p {
@@ -9900,8 +9922,10 @@ Footer Area CSS
 }
 
 .left-section a {
+  font-family: "PlayfairDisplay-Regular";
+  font-size: 18px;
   color: #ffffff;
-  margin-top: 15px;
+  margin-top: 15px !important;
 }
 .right-section p {
   color: #ffffff;

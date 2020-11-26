@@ -8,12 +8,19 @@
 /* Icons */
 @font-face
 {
+    @font-face {
+        font-family: "PlayfairDisplay-Regular";
+        src: url("../fonts/PlayfairDisplay-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "ReemKufi-Regular";
+        src: url("../fonts/ReemKufi-Regular.ttf");
+    }
     font-family: 'slick';
     font-weight: normal;
     font-style: normal;
 
-    src: url('../../assets/fonts/slick.eot');
-    src: url('../../assets/fonts/slick.eot?#iefix') format('embedded-opentype'), url('../../assets/fonts/slick.woff') format('woff'), url('../../assets/fonts/slick.ttf') format('truetype'), url('../../assets/fonts/slick.svg#slick') format('svg');
 }
 /* Arrows */
 .slick-prev,

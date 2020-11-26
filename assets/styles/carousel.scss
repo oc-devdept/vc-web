@@ -42,15 +42,17 @@
     text-align: left;
     h1 {
       font-size: 16px;
-      color: #ffffff !important;
+      color: #d1cece !important;
       text-align: center;
       text-transform: none !important;
     }
     h2 {
-      font-size: 40px;
+      font-size: 38px;
       color: #ffffff !important;
       text-align: center;
       text-transform: uppercase !important;
+      text-shadow: 0 0 2px #000000;
+      font-family: "PlayfairDisplay-Regular";
     }
     .top-left {
       position: absolute;
@@ -121,6 +123,7 @@
         color: #ffffff !important;
         text-align: center;
         text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
       }
     }
   }
@@ -138,6 +141,7 @@
         color: #ffffff !important;
         text-align: center;
         text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
       }
       .center-left {
         position:absolute;
@@ -162,6 +166,7 @@
         color: #ffffff !important;
         text-align: center;
         text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
         
       }
     }

@@ -259,61 +259,63 @@ img {
   font-size: 24px;
   font-weight: 500;
   margin: 20px 0;
+  color: #262626!important;
 }
 
 // Feature Cars Btn
 .moreBtn {
   color: #ffffff !important;
-  background-color: #D94032;
+  background-color: #000000;
 }
 .moreBtn:hover,
 .moreBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #D94032 !important;
-  border: 1px solid #D94032;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 // Sign Up For Our Newsletter Btn
 .custom-btn {
-  color: #ffffff !important;
-  background-color: #f29d30;
+  color: #666666 !important;
+  background-color: #c0c0c0;
 }
 .custom-btn:hover,
 .custom-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #f29d30!important;
+  background-color: #262626;
+  color: #ffffff!important;
 }
 
 .red-btn {
-  color: #ffffff !important;
-  background-color: #D94032;
+  color: #666666 !important;
+  background-color: #c0c0c0;
 }
 .red-btn:hover,
 .red-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #D94032 !important;
-  border: 1px solid #D94032;
+  background-color: #262626;
+  color: #ffffff !important;
+  border: 1px solid #262626;
 }
 
 // Enquire Btn
 .enquireBtn {
-  color: #f29d30!important;
-  background-color: #ffffff;
-  border: 1px solid #f29d30 !important;
+  color: #ffffff!important;
+  background-color: #262626;
+  border: 1px solid #000000 !important;
   margin-right: 10px;
 }
 .enquireBtn:hover,
 .enquireBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #f29d30 !important;
-  color: #ffffff !important;
+  background-color: #226622 !important;
+  color: #ffffff!important;
 }
 
 // Build Btn
@@ -384,7 +386,7 @@ img {
 
 .nav-btn {
   color: #ffffff !important;
-  background-color: #f29d30;
+  background-color: #000000;
   // padding: 50% 13% !important;
   text-align: center;
   margin-right: 0 !important;
@@ -394,13 +396,14 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
+  color: #999999 !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 .btn-primary {
   color: #ffffff !important;
-  background-color: #f29d30;
-  border: 1px solid #f29d30;
+  background-color: #262626;
+  border: 1px solid #000000;
 }
 
 .btn-primary.disabled,
@@ -431,9 +434,9 @@ img {
 .btn-primary:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: transparent;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30;
+  background-color: #666666 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(103, 103, 103, 0.3);
 }
 
 .nextBtnTop {
@@ -1321,7 +1324,7 @@ Navbar Area CSS
 }
 
 .comero-nav {
-  background-color: #4b6674;
+  background-color:black;
   // padding-top: 3px;
   // padding-bottom: 3px;
 }
@@ -1356,7 +1359,8 @@ Navbar Area CSS
 
 .comero-nav .navbar .navbar-nav .nav-item a {
   font-size: 14px;
-  color: #fff;
+  color: #999999;
+  // font-weight: bold;
   text-transform: uppercase;
   padding-left: 0;
   padding-right: 0;
@@ -1369,7 +1373,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item a:hover,
 .comero-nav .navbar .navbar-nav .nav-item a:focus,
 .comero-nav .navbar .navbar-nav .nav-item a.active {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item a i {
@@ -1379,7 +1383,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item:hover a,
 .comero-nav .navbar .navbar-nav .nav-item:focus a,
 .comero-nav .navbar .navbar-nav .nav-item.active a {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu {
@@ -4117,7 +4121,7 @@ Home Page - Feature Cars Area CSS
 =================================================*/
 .sub-title h5 {
   margin-bottom: 20px;
-  color: #E39D43;
+  color: #000000;
   text-align: center;
 }
 .sub-title {
@@ -4128,7 +4132,7 @@ Home Page - Feature Cars Area CSS
   margin: 0 auto;
 }
 .fc-box {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
 }
 .feature-cars {
   text-align: center;
@@ -4137,14 +4141,18 @@ Home Page - Feature Cars Area CSS
 }
 .feature-cars h3 {
   margin-bottom: 20px;
+  color: #666666!important;
 }
 .feature-cars h5 {
-  color: #E39D43;
+  color: #000000;
   margin-top: 20px;
   font-size: 1.8rem;
 }
 .feature-cars p {
   vertical-align: middle;
+}
+.feature-cars p path{
+  fill: #666666!important;
 }
 .feature-cars .terms {
   margin-top: 20px;
@@ -4245,8 +4253,8 @@ Home Page - Step Area CSS
   padding: auto 20px;
 }
 .stepBubble {
-  border: 1px solid #E39D43;
-  background: #E39D43;
+  border: 1px solid #262626;
+  background: #262626;
   color: #ffffff;
   width: 160px;
   padding: 10px;
@@ -4276,6 +4284,10 @@ Home Page - Question Form Area CSS
   padding-top: 10px;
   height: 200px;
 }
+.question-area a{
+  color: #999999;
+  text-decoration: underline;
+}
 .question-area a:hover,
 .question-area a:focus {
   color: #222222!important;
@@ -4286,7 +4298,7 @@ Enquiry Form Area CSS
 =================================================*/
 .form-check-label a:hover,
 .form-check-label a:focus {
-  color: #222222 !important;
+  color: #000000 !important;
 }
 
 /*================================================
@@ -9801,16 +9813,16 @@ Customer Service Area CSS
 Footer Area CSS
 =================================================*/
 .footer-area {
-  background-color: #212C33;
+  background-color: #000000;
   position: relative;
   z-index: 1;
   padding-bottom: 20px;
 }
 .footer-area h5 {
-  color: #f29d30 !important;
+  color: #ffffff !important;
 }
 .footer-area p {
-  color: #ffffff;
+  color: #999999;
   margin-top: 10px;
 }
 
@@ -9819,7 +9831,7 @@ Footer Area CSS
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
-  color: #f29d30 !important;
+  color: #ffffff !important;
 }
 
 .single-footer-widget p {
@@ -9839,13 +9851,13 @@ Footer Area CSS
 }
 
 .single-footer-widget .quick-links p a {
-  color: #ffffff;
+  color: #999999;
   display: inline-block;
 }
 
 .single-footer-widget .quick-links p a:hover,
 .single-footer-widget .quick-links p a:focus {
-  color: #f29d30 !important;
+  color: #ffffff !important;
 }
 
 .single-footer-widget .information-links p {
@@ -9855,7 +9867,7 @@ Footer Area CSS
 }
 
 .single-footer-widget .footer-contact-info p {
-  color: #ffffff;
+  color: #999999;
   margin-bottom: 20px;
   font-size: 13px;
 }

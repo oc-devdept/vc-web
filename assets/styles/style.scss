@@ -322,32 +322,35 @@ img {
 
 // Enquire Btn
 .enquireBtn {
-  color: #ffffff!important;
-  background-color: #262626;
-  border: 1px solid #000000 !important;
+  color: #ffffff !important;
+  background-color: #000000;
   margin-right: 10px;
 }
 .enquireBtn:hover,
 .enquireBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #226622 !important;
-  color: #ffffff!important;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 // Build Btn
 .buildBtn {
-  color: #ffffff!important;
-  background-color: #262626 !important;
+  color: #ffffff !important;
+  background-color: #000000;
 }
 .buildBtn:hover,
 .buildBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff !important;
-  color: #262626 !important;
-  border: 1px solid #262626 !important;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
+
 
 // Grey White Bg Btn
 .gw-without-bg-btn {
@@ -969,7 +972,7 @@ About Us Area CSS
   height: 400px;
 }
 .about-history {
-  background-color: #212C33;
+  background-color: #000000;
   padding: 40px;
   margin: 0;
 }
@@ -1370,7 +1373,9 @@ Navbar Area CSS
   margin-bottom: 0;
   color: #666666 !important;
 }
-.comero-nav .navbar ul div:hover
+.comero-nav .navbar ul div:hover,
+.comero-nav .navbar ul div:visited,
+.comero-nav .navbar ul div.active
 {
   border-bottom:3px solid #000000 !important;
 }

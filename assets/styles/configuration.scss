@@ -1,10 +1,11 @@
 .orange-circle > .MuiStepLabel-iconContainer >  .MuiStepIcon-active{
-    color: #f29d30        
-  
+    color: #262626;   
+    border-radius: 50%;   
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 .bottomSummary {
-    background-color:#4b6674;
+    background-color:#3f3f3f;
     padding:20px;
     width:95%;
     color: white;
@@ -133,6 +134,9 @@
   .configure-list {
     padding: 1%;
     margin: 2% 0;
+    display: block;
+    border: 2px solid #c0c0c0!important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3)!important;
   }
 
 .configure-sect .configure-gall .custom-control-label::before,

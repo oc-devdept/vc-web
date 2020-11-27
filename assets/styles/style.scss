@@ -271,7 +271,8 @@ img {
   font-weight: 500;
   font-family: "PlayfairDisplay-Regular";
   margin: 20px 0;
-  color: #262626!important;
+  color: #ffffff;
+  // color: #262626!important;
 }
 .gallery-area .section-title h2{
   color: #ffffff !important;
@@ -1381,13 +1382,16 @@ Navbar Area CSS
   color: #666666 !important;
 }
 .comero-nav .navbar ul div{
-  color: #000000 !important;
+  color: #999999!important;
   border-bottom: #000000 !important;
 }
-.comero-nav .navbar ul div:hover,
-.comero-nav .navbar ul div.active
+.comero-nav .navbar .nav-tabs>div:hover,
+.comero-nav .navbar .nav-tabs>div:focus,
+.comero-nav .navbar .nav-tabs>div.active
 {
-  // border-bottom:3px solid #000000 !important;
+  color: #000000!important;
+  border-bottom:3px solid #000000 !important;
+  
 }
 
 /* .comero-nav .navbar .navbar-nav {
@@ -1478,7 +1482,6 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a{
   font-weight: bold;
   color: #999999!important;
-  font-family: "PlayfairDisplay-Regular";
 }
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a:hover,
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a:focus
@@ -4302,7 +4305,7 @@ Home Page - Step Area CSS
   // padding: 20px;
   width: 100%;
 }
-.steps-area h2 {
+.steps-area > .section-title > h2 {
   color: #ffffff;
 }
 .step {

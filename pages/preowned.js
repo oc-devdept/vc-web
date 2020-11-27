@@ -105,6 +105,11 @@ const muiTheme = createMuiTheme({
         }
       },
     },
+    MuiBackdrop: {
+      root:{
+      backgroundColor: "#80 000000 !important"
+      }
+    }
   }
 });
 
@@ -890,7 +895,7 @@ function Build() {
                                     className="form-control"
                                     id="carModel"
                                     required={true}
-                                    value={car[0].make + " " + car[0].model + " " + car[0].name}
+                                    value={car[1].make + " " + car[1].model + " " + car[1].name}
                                     // onChange={(e) => onChangeContent('model', e.target.value)}
                                     placeholder="Enter your car model" />
                                 </div>

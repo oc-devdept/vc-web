@@ -117,9 +117,7 @@ class Product extends Component {
 
   render() {
     const { ProductState, CheckoutState } = this.props;
-    
-
-    // console.log("ProductState= ", ProductState);
+  
     return (
       <DefaultLayout crumbs="Car Configuration">
         <section className="configure-area pb-60">
@@ -159,7 +157,6 @@ class Product extends Component {
                       {this.steps2.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};
-                        
                         
                         return (
                           <Step key={label}  >

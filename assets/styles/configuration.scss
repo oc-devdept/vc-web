@@ -122,21 +122,23 @@
 
 
 .configure-opt-title {
-    color: #4b6674;
+    color: #666666;
     display:block;
     flex:9
   }
 .configure-icon {
     flex:1;    
-    color:#FF8B19;    
+    color:#c0c0c0;    
 }
 
   .configure-list {
     padding: 1%;
     margin: 2% 0;
     display: block;
+    color: #000000!important;
     border: 2px solid #c0c0c0!important;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3)!important;
+    font-family: "PlayfairDisplay-Regular";
   }
 
 .configure-sect .configure-gall .custom-control-label::before,
@@ -372,15 +374,38 @@ color: #ffffff !important;
 .vStep2 {
     display:none;
 }
+.topSummary{ .totalRow {.grandTotal{
+    font-family: "PlayfairDisplay-Regular";
+}}}
 
-.configure-area .prevBtn {
+ #__next .prevBtn {
     margin-left: -40px;
-    float: left;
+    float: left; 
+    color: #ffffff!important;
+    background-color: #262626!important;
+    border: 1px solid #000000
+} 
+#__next .prevBtn:hover,
+#__next .prevBtn:focus,
+#__next .prevBtn.active{
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666 !important;
+  color: #ffffff !important;
+  
+  }
+ .nextBtn {
+    float:right;}
+
+.configHeader > h1{
+    font-family: "PlayfairDisplay-Regular";
+    color: #000000;
+}
+.configure-sect > .configure-gall > h3 {
+    color: #666666;
 }
 
-.configure-area .nextBtn {
-    float:right;
-}
+
 
 .popTitle {
     font-weight: 600;

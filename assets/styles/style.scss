@@ -469,8 +469,24 @@ img {
 
 .nextBtnTop {
   float: right;
+  border: 1px solid #000000!important;
 }
 
+// #__next .MuiToolbar-root >.col-2 >.prevBtn{
+//     color: #ffffff !important;
+//     background-color: #262626;
+//     border: 1px solid #000000
+// }
+
+// #__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
+// #__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
+// #__next .MuiToolbar-root >.col-2 > .prevBtn.active{
+//   -webkit-box-shadow: unset;
+//   box-shadow: unset;
+//   background-color: #666666 !important;
+//   color: #ffffff !important;
+  
+//   }
 .btn-light {
   background-color: #ffffff;
   color: #262626 !important;
@@ -639,10 +655,12 @@ Single Car Page Area CSS
 }
 .grade-content h3 {
   margin: 20px 0;
+  color: #666666;
 }
 .grade-content h5 {
   color: #262626;
   font-size: 1.8rem;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .arrow-icon {
@@ -653,8 +671,12 @@ Single Car Page Area CSS
 About Honda Fit Area CSS
 =================================================*/
 .about-honda-fit-area {
-  background-color: #f3f3f3;
+  background: linear-gradient(180deg, #333333, #000000);
   padding: 20px 0;
+}
+.about-honda-fit-area > .container > .about-table > div > h2{
+  color: #ffffff;
+  font-size: 1.2rem;
 }
 
 /*================================================
@@ -4379,6 +4401,11 @@ Single Car Area CSS
 .single-banner h2 {
   color: #ffffff;
   padding: 10% 0 20% 10%;
+  // text-align: center;
+  text-transform: uppercase !important;
+  text-shadow: 0 0 5px #000000;
+  font-family: "PlayfairDisplay-Regular";
+  font-size: 52px;
 }
 
 
@@ -5386,6 +5413,9 @@ Page Title Area CSS
 
 .page-title-area ul li:last-child {
   margin-right: 0;
+}
+#__next > div > .MuiPaper-root{
+  background-color: #000000 !important;
 }
 
 /*================================================
@@ -10174,6 +10204,7 @@ ol.progtrckr li.progtrckr-doing {
   margin-right:5px;
   max-width: 71px;
 }
+// 
 .configText {
   display:inline-block;
 }

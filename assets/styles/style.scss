@@ -84,7 +84,6 @@ body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  // font-family: "PlayfairDisplay-Regular";
 }
 .megaTab .tab-content {
   padding: 20px 0;
@@ -100,7 +99,6 @@ p {
   line-height: 1.8;
   font-size: 14px;
   margin-bottom: 15px;
-  // font-family: "ReemKufi-Regular";
 
 }
 h3 {
@@ -307,17 +305,24 @@ img {
   color: #ffffff!important;
 }
 
-.red-btn {
-  color: #666666 !important;
-  background-color: #c0c0c0;
+.col-md-8>.red-btn {
+  display: block;
+  width: 20%;
+  padding: 1px;
+  margin: 0 auto;
+  color: #000000 ;
+  background: linear-gradient(180deg, #666666,#262626);
+  border-radius: 5%;
+  font-size: 12px;
+   text-transform: uppercase;
 }
-.red-btn:hover,
-.red-btn:focus {
+.col-md-8>.red-btn:hover,
+.col-md-8>.red-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #262626;
-  color: #ffffff !important;
-  border: 1px solid #262626;
+  background: linear-gradient(180deg, #666666,#999999);
+  color: #ffffff ;
+  
 }
 
 // Enquire Btn
@@ -418,6 +423,7 @@ img {
   background-color: #ffffff !important;
   color: #999999 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  
 }
 
 .btn-primary {
@@ -4308,9 +4314,7 @@ Home Page - Step Area CSS
   padding: auto 20px;
 }
 .stepBubble {
-  font-family: "PlayfairDisplay-Regular";
-  border: 1px solid #262626;
-  background: #262626;
+  background: linear-gradient(180deg,#333333,#000000);
   color: #ffffff;
   width: 160px;
   padding: 10px;
@@ -9869,14 +9873,13 @@ Customer Service Area CSS
 Footer Area CSS
 =================================================*/
 .footer-area {
-  background-color: #000000;
+  background: linear-gradient(180deg,#333333,#000000);
   position: relative;
   z-index: 1;
   padding-bottom: 20px;
 }
 .footer-area h5 {
-  color: #ffffff !important;
-  font-family: "PlayfairDisplay-Regular";
+  color: #ffffff;
 }
 .footer-area p {
   color: #999999;
@@ -9889,8 +9892,7 @@ Footer Area CSS
   margin-bottom: 14px;
   padding-bottom: 5px;
   color: #ffffff !important;
-  font-family: "PlayfairDisplay-Regular";
-}
+ }
 
 .single-footer-widget p {
   font-size: 13px;
@@ -9958,8 +9960,7 @@ Footer Area CSS
 }
 
 .left-section a {
-  font-family: "PlayfairDisplay-Regular";
-  font-size: 18px;
+ font-size: 18px;
   color: #ffffff;
   margin-top: 15px !important;
 }
@@ -9969,7 +9970,7 @@ Footer Area CSS
 
 .left-section a:hover,
 .left-section a:focus {
-  color: #262626 !important;
+  color: #666666 !important;
 }
 
 .footer-signup button {
@@ -10135,7 +10136,8 @@ ol.progtrckr li.progtrckr-doing {
 .pull-left:hover,
 .pull-left:focus {
   color: #ffffff !important;
-  background-color: #262626;
+  
+
 }
 
 .product-desc dl {
@@ -10182,8 +10184,8 @@ ol.progtrckr li.progtrckr-doing {
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #4b6674;
-  background-color: #4b6674;
+  border-color: #666666;
+  background-color: #666666;
 }
 .custom-checkbox .custom-control-label::before {
   border-radius: 0;

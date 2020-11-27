@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   subHeading: {
     fontSize: '12px',
     fontWeight: "500",
-    color: "#212C33",
+    color: "#262626",
     width: '100%',
   },
   expanded: {

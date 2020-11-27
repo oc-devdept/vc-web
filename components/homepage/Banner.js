@@ -65,9 +65,7 @@ class Banner extends Component {
                     </h2>
                     <h1
                       style={{
-                        color: "#F29D30",
                         textTransform: "uppercase",
-                        borderBottom: "1px solid rgb(255, 255, 255, 0.4)",
                         marginBottom: 30,
                         paddingBottom: 10
                       }}
@@ -79,7 +77,7 @@ class Banner extends Component {
                     
                     <Link href={banner.linkURL }>
                       <a className="btn red-btn">
-                        LEARN MORE &nbsp;&nbsp; <Icon icon={arrowRight} width="1.5rem"/>
+                        Learn more &nbsp; <Icon icon={arrowRight} width="1.0rem"/>
                       </a>
                     </Link>
                     }

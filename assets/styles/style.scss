@@ -949,6 +949,7 @@ Book Car Servicing Area CSS
   background-color: #212C33;
   padding: 20px;
   margin: 0;
+  background: linear-gradient(180deg, #333333, #000000); 
 }
 
 .header-bar h6 {
@@ -1028,16 +1029,21 @@ About Us Area CSS
   height: 400px;
 }
 .about-history {
-  background-color: #000000;
+  background: linear-gradient(180deg,#333333,#000000);
   padding: 40px;
   margin: 0;
 }
 .about-history h2 {
   color: #ffffff;
   margin: 0 auto 20px;
+  font-family: "PlayfairDisplay-Regular";
 }
 .about-history p {
   color: #ffffff;
+  
+}
+.about-history p .amount {
+  font-family: "PlayfairDisplay-Regular";
 }
 .about-history .amount {
   font-size: 2.5rem;
@@ -1053,6 +1059,7 @@ About Us Area CSS
 .our-story h2 {
   text-align: center;
   margin: 20px auto;
+  font-family: "PlayfairDisplay-Regular";
 }
 .our-story h5 {
   margin: 20px auto;
@@ -10141,7 +10148,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #4b6674;
+  color: #000000;
 }
 
 

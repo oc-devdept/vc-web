@@ -28,7 +28,7 @@ class BestSeller extends Component {
     };
     
     let html = this.props.featuredHtml.html;
-    
+    /*
     var featured_car_1 = '<hr>{{featured-car-1}}';
     var featured_car_2 = '<hr>{{featured-car-2}}';
     var featured_car_3 = '<hr>{{featured-car-3}}';
@@ -43,7 +43,7 @@ class BestSeller extends Component {
       html = html.replace(featured_car_2, "")
       html = html.replace(featured_car_3, "")
     }
-    
+    */
     return (<div dangerouslySetInnerHTML={{__html: html}} />);
   }
 }

@@ -58,6 +58,16 @@ This files table contents are outlined below>>>>>
 Default CSS
 =================================================*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap");
+@font-face {
+  font-family: "PlayfairDisplay-Regular";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf");
+  }
+
+@font-face {
+  font-family: "ReemKufi-Regular";
+  src: url("../fonts/ReemKufi-Regular.ttf");
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 90%;
@@ -89,6 +99,7 @@ p {
   line-height: 1.8;
   font-size: 14px;
   margin-bottom: 15px;
+
 }
 h3 {
   font-size: 20px;
@@ -200,7 +211,7 @@ a {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   text-decoration: none;
-  color: #f29d30;
+  color: #262626;
 }
 
 a:hover,
@@ -250,85 +261,103 @@ img {
 }
 
 /*section-title*/
-.section-title {
-  // padding: 10px 0;
+.gallery-area .section-title h2 {
+  color: #ffffff;
 }
 
 .section-title h2 {
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 500;
+  font-family: "PlayfairDisplay-Regular";
   margin: 20px 0;
+  color: #000000;
+  // color: #262626!important;
+}
+.gallery-area .section-title h2{
+  color: #ffffff !important;
 }
 
 // Feature Cars Btn
 .moreBtn {
   color: #ffffff !important;
-  background-color: #D94032;
+  background-color: #000000;
 }
 .moreBtn:hover,
 .moreBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #D94032 !important;
-  border: 1px solid #D94032;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 // Sign Up For Our Newsletter Btn
 .custom-btn {
-  color: #ffffff !important;
-  background-color: #f29d30;
+  color: #666666 !important;
+  background-color: #c0c0c0;
 }
 .custom-btn:hover,
 .custom-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #f29d30!important;
+  background-color: #262626;
+  color: #ffffff!important;
 }
 
-.red-btn {
-  color: #ffffff !important;
-  background-color: #D94032;
+.col-md-8>.red-btn {
+  display: block;
+  width: 25%;
+  padding: 10px;
+  margin: 0 auto;
+  color: #ffffff ;
+  background: linear-gradient(130deg, rgba(0,0,0,1)0%,rgba(143,143,143,1) 98%);
+  border-radius: 5%;
+  font-size: 12px;
+   text-transform: uppercase;
+   border: black;
 }
-.red-btn:hover,
-.red-btn:focus {
+.col-md-8>.red-btn:hover,
+.col-md-8>.red-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff;
-  color: #D94032 !important;
-  border: 1px solid #D94032;
+  background: linear-gradient(180deg, #666666,#999999);
+  color: #ffffff ;
+  
 }
 
 // Enquire Btn
 .enquireBtn {
-  color: #f29d30!important;
-  background-color: #ffffff;
-  border: 1px solid #f29d30 !important;
+  color: #ffffff !important;
+  background-color: #000000;
   margin-right: 10px;
 }
 .enquireBtn:hover,
 .enquireBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #f29d30 !important;
+  background-color: #666666;
   color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 // Build Btn
 .buildBtn {
-  color: #ffffff!important;
-  background-color: #f29d30 !important;
+  color: #ffffff !important;
+  background-color: #000000;
 }
 .buildBtn:hover,
 .buildBtn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff !important;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30 !important;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
+
 
 // Grey White Bg Btn
 .gw-without-bg-btn {
@@ -342,8 +371,8 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30 !important;
+  color: #262626 !important;
+  border: 1px solid #262626 !important;
 }
 
 /*btn(primary&light)*/
@@ -384,7 +413,7 @@ img {
 
 .nav-btn {
   color: #ffffff !important;
-  background-color: #f29d30;
+  background-color: #000000;
   // padding: 50% 13% !important;
   text-align: center;
   margin-right: 0 !important;
@@ -394,13 +423,15 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #ffffff !important;
-  color: #f29d30 !important;
+  color: #999999 !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  
 }
 
 .btn-primary {
   color: #ffffff !important;
-  background-color: #f29d30;
-  border: 1px solid #f29d30;
+  background-color: #262626;
+  border: 1px solid #000000;
 }
 
 .btn-primary.disabled,
@@ -431,9 +462,9 @@ img {
 .btn-primary:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: transparent;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30;
+  background-color: #666666 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(103, 103, 103, 0.3);
 }
 
 .nextBtnTop {
@@ -442,15 +473,15 @@ img {
 
 .btn-light {
   background-color: #ffffff;
-  color: #f29d30 !important;
-  border-color: #f29d30;
+  color: #262626 !important;
+  border-color: #262626;
 }
 
 .btn-light.disabled,
 .btn-light:disabled {
   background-color: transparent;
-  color: #f29d30;
-  border-color: #f29d30;
+  color: #262626;
+  border-color: #262626;
 }
 
 .btn-light:not(:disabled):not(.disabled).active,
@@ -475,8 +506,8 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   color: #ffffff !important;
-  background-color: #f29d30;
-  border-color: #f29d30;
+  background-color: #262626;
+  border-color: #262626;
 }
 
 /*owl-carousel-btn*/
@@ -566,7 +597,7 @@ Single Car Page Area CSS
 }
 
 .grade-box {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
   margin-bottom: 20px;
 }
 .grade-content {
@@ -581,7 +612,7 @@ Single Car Page Area CSS
   margin-top: 10px;
 }
 .grade-content .bar {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
   text-align: left;
   padding: 10px 0 10px 20px;
   margin-bottom: 10px;
@@ -610,7 +641,7 @@ Single Car Page Area CSS
   margin: 20px 0;
 }
 .grade-content h5 {
-  color: #f29d30;
+  color: #262626;
   font-size: 1.8rem;
 }
 
@@ -655,7 +686,7 @@ About Honda Fit Area CSS
 }
 .two-parts .exterior-view {
   margin: 0 20px 20px 0;
-  border-bottom: 5px solid #f29d30;
+  border-bottom: 5px solid #262626;
   padding-bottom: 10px;
 }
 
@@ -726,6 +757,8 @@ Contact Us Details Area CSS
 
 .contact-details h6 {
   margin: 20px 0;
+  color: #000000;
+  
 }
 
 .contact-form-area h6 {
@@ -733,6 +766,14 @@ Contact Us Details Area CSS
 }
 .contact-form-area p {
   padding: 20px 0 0px;
+}
+.contact-form-area p a{
+  color: #999999;
+  text-decoration: underline;
+}
+.contact-form-area p a:hover,
+.contact-form-area p a:focus {
+  color: #000000!important;
 }
 .contact-form select {
     width: 100%;
@@ -748,7 +789,7 @@ Contact Us Details Area CSS
 }
 
 // .contact-form .form-check input:checked ~ .form-check-input {
-//   background-color: #f29d30 !important;
+//   background-color: #262626 !important;
 // }
 
 .contact-form-area button {
@@ -827,7 +868,7 @@ Build Area CSS
 }
 .build-area .column .car-price {
   margin: 0 20px 0px 0;
-  color: #f29d30;
+  color: #262626;
   font-size: 1.6rem;
   font-weight: normal;
 }
@@ -922,7 +963,7 @@ About Car Servicing Area CSS
   font-weight: 500;
 }
 .available-services .tickIcon {
-  color: #f29d30;
+  color: #262626;
   margin-right: 10px;
 }
 
@@ -939,7 +980,7 @@ About Us Area CSS
   height: 400px;
 }
 .about-history {
-  background-color: #212C33;
+  background-color: #000000;
   padding: 40px;
   margin: 0;
 }
@@ -1321,7 +1362,7 @@ Navbar Area CSS
 }
 
 .comero-nav {
-  background-color: #4b6674;
+  background-color:black;
   // padding-top: 3px;
   // padding-bottom: 3px;
 }
@@ -1338,6 +1379,19 @@ Navbar Area CSS
   padding-left: 0;
   list-style-type: none;
   margin-bottom: 0;
+  color: #666666 !important;
+}
+.comero-nav .navbar ul div{
+  color: #999999!important;
+  border-bottom: #000000 !important;
+}
+.comero-nav .navbar .nav-tabs>div:hover,
+.comero-nav .navbar .nav-tabs>div:focus,
+.comero-nav .navbar .nav-tabs>div.active
+{
+  color: #000000!important;
+  border-bottom:3px solid #000000 !important;
+  
 }
 
 /* .comero-nav .navbar .navbar-nav {
@@ -1356,7 +1410,8 @@ Navbar Area CSS
 
 .comero-nav .navbar .navbar-nav .nav-item a {
   font-size: 14px;
-  color: #fff;
+  color: #999999;
+  // font-weight: bold;
   text-transform: uppercase;
   padding-left: 0;
   padding-right: 0;
@@ -1369,7 +1424,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item a:hover,
 .comero-nav .navbar .navbar-nav .nav-item a:focus,
 .comero-nav .navbar .navbar-nav .nav-item a.active {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item a i {
@@ -1379,7 +1434,7 @@ Navbar Area CSS
 .comero-nav .navbar .navbar-nav .nav-item:hover a,
 .comero-nav .navbar .navbar-nav .nav-item:focus a,
 .comero-nav .navbar .navbar-nav .nav-item.active a {
-  color: #f29d30;
+  color: #ffffff;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu {
@@ -1419,11 +1474,21 @@ Navbar Area CSS
   font-size: 14px;
 }
 
-.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
-.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
-.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #f29d30;
-  border-bottom: 2px solid #f29d30;
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center div:hover,
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center div:focus,
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center div.active {
+  border-bottom: 2px solid #262626 !important;
+}
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a{
+  font-weight: bold;
+  color: #999999!important;
+}
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a:hover,
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a:focus
+.comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .tab-content .justify-content-center a.active{
+  font-weight: bold;
+  color: #000000!important;
+  // font-family: "PlayfairDisplay-Regular";
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -2311,7 +2376,7 @@ Modal CSS
 }
 
 .bts-popup .bts-popup-container ul li a.instagram {
-  background-color: #e1306c;
+  background-color: #666666;
   color: #ffffff;
 }
 
@@ -2357,7 +2422,7 @@ Modal CSS
 }
 
 .bts-popup .bts-popup-container form .validation-danger {
-  color: red;
+  color: #666666;
   margin-top: 10px;
 }
 
@@ -3282,7 +3347,7 @@ All Products Area CSS
 
 .single-product-box .product-content h3 a:hover,
 .single-product-box .product-content h3 a:focus {
-  color: #f29d30;
+  color: #262626;
 }
 
 .single-product-box .product-content .product-price {
@@ -3291,7 +3356,7 @@ All Products Area CSS
 }
 
 .single-product-box .product-content .product-price span {
-  color: #f29d30;
+  color: #262626;
   font-size: 18px;
   display: inline-block;
   font-style: italic;
@@ -3424,7 +3489,7 @@ Products QuickView Modal Area CSS
 }
 
 .productQuickView .modal-content button.close:hover {
-  background-color: red;
+  background-color: #999999;
   color: #ffffff;
 }
 
@@ -4117,9 +4182,10 @@ Home Page - Feature Cars Area CSS
 =================================================*/
 .sub-title h5 {
   margin-bottom: 20px;
-  color: #E39D43;
+  color: #000000;
   text-align: center;
 }
+
 .sub-title {
   display: flex;
   flex-wrap: wrap;
@@ -4128,7 +4194,7 @@ Home Page - Feature Cars Area CSS
   margin: 0 auto;
 }
 .fc-box {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
 }
 .feature-cars {
   text-align: center;
@@ -4137,14 +4203,21 @@ Home Page - Feature Cars Area CSS
 }
 .feature-cars h3 {
   margin-bottom: 20px;
+  color: #666666!important;
+  font-family: "PlayfairDisplay-Regular";
+  
 }
 .feature-cars h5 {
-  color: #E39D43;
+  font-family: "PlayfairDisplay-Regular";
+  color: #000000;
   margin-top: 20px;
   font-size: 1.8rem;
 }
 .feature-cars p {
   vertical-align: middle;
+}
+.feature-cars p path{
+  fill: #666666!important;
 }
 .feature-cars .terms {
   margin-top: 20px;
@@ -4232,7 +4305,7 @@ Home Page - Step Area CSS
   // padding: 20px;
   width: 100%;
 }
-.steps-area h2 {
+.steps-area > .section-title > h2 {
   color: #ffffff;
 }
 .step {
@@ -4245,8 +4318,7 @@ Home Page - Step Area CSS
   padding: auto 20px;
 }
 .stepBubble {
-  border: 1px solid #E39D43;
-  background: #E39D43;
+  background: linear-gradient(180deg,#333333,#000000);
   color: #ffffff;
   width: 160px;
   padding: 10px;
@@ -4276,9 +4348,13 @@ Home Page - Question Form Area CSS
   padding-top: 10px;
   height: 200px;
 }
+.question-area a{
+  color: #999999;
+  text-decoration: underline;
+}
 .question-area a:hover,
 .question-area a:focus {
-  color: #222222!important;
+  color: #000000!important;
 }
 
 /*================================================
@@ -4286,7 +4362,7 @@ Enquiry Form Area CSS
 =================================================*/
 .form-check-label a:hover,
 .form-check-label a:focus {
-  color: #222222 !important;
+  color: #000000 !important;
 }
 
 /*================================================
@@ -9801,26 +9877,26 @@ Customer Service Area CSS
 Footer Area CSS
 =================================================*/
 .footer-area {
-  background-color: #212C33;
+  background: linear-gradient(180deg,#333333,#000000);
   position: relative;
   z-index: 1;
   padding-bottom: 20px;
 }
 .footer-area h5 {
-  color: #f29d30 !important;
+  color: #ffffff;
 }
 .footer-area p {
-  color: #ffffff;
+  color: #999999;
   margin-top: 10px;
 }
 
 .single-footer-widget h3 {
-  font-size: 17px;
+  font-size: 20px;
   position: relative;
   margin-bottom: 14px;
   padding-bottom: 5px;
-  color: #f29d30 !important;
-}
+  color: #ffffff !important;
+ }
 
 .single-footer-widget p {
   font-size: 13px;
@@ -9839,13 +9915,13 @@ Footer Area CSS
 }
 
 .single-footer-widget .quick-links p a {
-  color: #ffffff;
+  color: #999999;
   display: inline-block;
 }
 
 .single-footer-widget .quick-links p a:hover,
 .single-footer-widget .quick-links p a:focus {
-  color: #f29d30 !important;
+  color: #ffffff !important;
 }
 
 .single-footer-widget .information-links p {
@@ -9855,7 +9931,7 @@ Footer Area CSS
 }
 
 .single-footer-widget .footer-contact-info p {
-  color: #ffffff;
+  color: #999999;
   margin-bottom: 20px;
   font-size: 13px;
 }
@@ -9884,12 +9960,13 @@ Footer Area CSS
 
 .footer-accordion-info p a:hover,
 .footer-accordion-info p a:focus {
-  color: #f29d30 !important;
+  color: #262626 !important;
 }
 
 .left-section a {
+ font-size: 18px;
   color: #ffffff;
-  margin-top: 15px;
+  margin-top: 15px !important;
 }
 .right-section p {
   color: #ffffff;
@@ -9897,7 +9974,7 @@ Footer Area CSS
 
 .left-section a:hover,
 .left-section a:focus {
-  color: #f29d30 !important;
+  color: #666666 !important;
 }
 
 .footer-signup button {
@@ -10015,8 +10092,8 @@ h6 {
 .btn-slider:hover,
 .btn-slider:focus {
   background-color: #fff;
-  color: #f29d30 !important;
-  border: 1px solid #f29d30;
+  color: #262626 !important;
+  border: 1px solid #262626;
 }
 
 /* .comero-nav .navbar .navbar-nav {margin:0;} */
@@ -10046,24 +10123,25 @@ li.progtrckr-done {
   width: 24.99%;
 }
 ol.progtrckr li.progtrckr-doing:before {
-  background-color: #f29d30;
+  background-color: #262626;
 }
 ol.progtrckr li.progtrckr-doing {
-  color: #f29d30;
-  border-bottom: 4px solid #f29d30;
+  color: #262626;
+  border-bottom: 4px solid #262626;
 }
 
 .pull-right {
   float: right;
 }
 .pull-left {
-  color: #f29d30 !important;
+  color: #262626 !important;
   background-color: transparent;
 }
 .pull-left:hover,
 .pull-left:focus {
   color: #ffffff !important;
-  background-color: #f29d30;
+  
+
 }
 
 .product-desc dl {
@@ -10086,7 +10164,7 @@ ol.progtrckr li.progtrckr-doing {
 }
 
 .stepArrow {
-  color: #f29d30;
+  color: #262626;
 }
 
 
@@ -10110,8 +10188,8 @@ ol.progtrckr li.progtrckr-doing {
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #4b6674;
-  background-color: #4b6674;
+  border-color: #666666;
+  background-color: #666666;
 }
 .custom-checkbox .custom-control-label::before {
   border-radius: 0;
@@ -10211,7 +10289,7 @@ input[type="number"] {
 }
 
 .DayPickerInput > input:focus {
-  outline: #f29d30 solid 1px;
+  outline: #262626 solid 1px;
 }
 
 .form-control.card-element {

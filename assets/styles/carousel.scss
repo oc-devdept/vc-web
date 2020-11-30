@@ -40,11 +40,22 @@
     position: absolute;
     top: 20px ;        
     text-align: left;
+    // .col-md-8{
+    //   position: absolute;
+    //   }
     h1 {
-      font-size: 40px;
+      font-size: 16px;
+      color: #d1cece !important;
+      text-align: center;
+      text-transform: none !important;
     }
     h2 {
-      font-size: 34px;
+      font-size: 38px;
+      color: #ffffff !important;
+      text-align: center;
+      text-transform: uppercase !important;
+      text-shadow: 0 0 2px #000000;
+      font-family: "PlayfairDisplay-Regular";
     }
     .top-left {
       position: absolute;
@@ -56,13 +67,11 @@
       left:-30px;
       top:220px;
     }
-    //add
-    .bottom-left {
+      .bottom-left {
       position:absolute;
       left:-30px;
       bottom:90px;
     }
-    //add
     .top-center {
       position:absolute;
       left:250px;
@@ -73,19 +82,16 @@
       left:250px;
       top:220px;
     }
-    //add
-    .bottom-center {
+     .bottom-center {
       position:absolute;
       left:250px;
       bottom:90px;
     }
-    //add
     .top-right {
       position:absolute;
       left: 800px;
       top:50px;
     }
-    //add
     .center-right {
       position:absolute;
       left: 800px;
@@ -96,7 +102,6 @@
       left: 800px;
       bottom:90px;
     }
-    
   }
 
   @media only screen and (max-width: 991px) {
@@ -105,22 +110,38 @@
       top: 20px ;        
       text-align: left;
       h1 {
-        font-size: 30px;
+        font-size: 14px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: none !important;
       }
       h2 {
-        font-size: 24px;
+        font-size: 34px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
       }
+      
     }
   }
 
   @media only screen and (max-width: 768px) {
     .carousel-caption {
       h1 {
-        font-size: 20px;
+        font-size: 14px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: none !important;
       }
       h2 {
-        font-size: 14px;
+        font-size: 25px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
       }
+     
       .center-left {
         position:absolute;
         left:-30px;
@@ -134,11 +155,19 @@
     .carousel-caption {
       top:12px;
       h1 {
-        font-size:16px;
+        font: size 18px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: none !important;
       }
       h2 {
         font-size:12px;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: uppercase !important;
+        font-family: "PlayfairDisplay-Regular";
       }
+     
     }
   }
 

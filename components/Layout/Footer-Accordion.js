@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
   },
   heading: {
-    backgroundColor: "#f29d30",
+    backgroundColor: "#666666",
   },
   subHeading: {
     fontSize: '14px',

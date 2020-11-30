@@ -909,6 +909,27 @@ Build Area CSS
   float:left;
 }
 
+.Component-root-232 {
+  color: #000000;
+}
+
+.makeStyles-heading-129{
+  background-color: #F6F8FC;
+}
+// .build-area >.container div .MuiButton-contained{
+//   // background-color: #000000 !important;
+//   background-color: #000000;
+//   color: #ffffff;
+// }
+// .build-area > .container > div .MuiButton-contained:hover,
+// .build-area > .container > div .MuiButton-contained:focus,
+// .build-area > .container > div .MuiButton-contained.active
+// {
+//   background-color: #666666 ;
+//   // background-color: #666666 !important;
+//   color: #ffffff;
+// }
+
 /*================================================
 Virtual Showroom Area CSS
 =================================================*/
@@ -4400,14 +4421,14 @@ Single Car Area CSS
 
 .single-banner h2 {
   color: #ffffff;
-  padding: 10% 0 20% 10%;
-  // text-align: center;
+  // padding: 10% 0 20% 10%;
+  padding: 20% 0 20% 30%;
   text-transform: uppercase !important;
   text-shadow: 0 0 5px #000000;
   font-family: "PlayfairDisplay-Regular";
   font-size: 52px;
-}
-
+  display: inline-block;
+ }
 
 /*================================================
 Facility Area CSS
@@ -10277,7 +10298,7 @@ input[type="number"] {
 .search-filter-categories .form-check {
   display: inline-block;
   color: #4b6674;
-  border: 1px solid #4b6674;
+  border: 1px solid #5a5a5a;
   border-radius: 20px;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem;

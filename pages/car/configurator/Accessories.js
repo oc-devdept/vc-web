@@ -16,7 +16,7 @@ const StyledTabs = withStyles({
     "& > div": {
       maxWidth: "50%",
       width: "100%",
-      backgroundColor: "#FF8B19",
+      backgroundColor: "#000000",
     },
     padding: "0 6px"
   }
@@ -30,7 +30,7 @@ const StyledTab = withStyles(theme => ({
       opacity: 1
     },
     "&$selected": {
-      color: "#FF8B19",
+      color: "#000000",
       "& .tabIconShape": {
         backgroundColor: "#FCE8D4"
       },

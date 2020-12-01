@@ -84,7 +84,7 @@ class Footer extends Component {
                 <div className="row footer-info-group">
                     <div className="col-lg-4 col-md-6">
                         <div className="single-footer-widget">
-                            <h3>Quick Links</h3>
+                            <h3>Quick Links </h3>
                             <div className="quick-links">
                                 <p><Link href="/"><a>Home</a></Link></p>
                                 <p><Link href="/build"><a>Build Car</a></Link></p>

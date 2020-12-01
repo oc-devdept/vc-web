@@ -45,10 +45,10 @@ const muiTheme = createMuiTheme({
         width: '70%',
       },
       thumb: {
-        color: "#f29d30"
+        color: "#000000"
       },
       track: {
-        color: "#f29d30",
+        color: "#000000",
         height: 5,
       },
       rail: {
@@ -64,26 +64,26 @@ const muiTheme = createMuiTheme({
     },
     MuiCheckbox: {
       root: {
-        color: "#f29d30",
+        color: "#000000",
         '&$checked': {
-          color: "#f29d30",
+          color: "#000000",
         },
         // checked: { color: "#f29d30 !important" }
       },
     },
     MuiPagination: {
       root: {
-        color: "#212C33 !important",
+        color: "#000000 !important",
       },
     },
     MuiPaginationItem: {
       root: {
         "&:hover": {
-          backgroundColor: "#212C33 !important",
+          backgroundColor: "#000000 !important",
           color: "#ffffff !important",
         },
         "&$selected": {
-          "backgroundColor": "#212C33 !important",
+          "backgroundColor": "#000000 !important",
           color: "#ffffff !important",
         }
       },
@@ -98,10 +98,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     backgroundColor: "#ffffff",
-    color: "#f29d30",
+    color: "#000000",
     "&:hover, &:focus": {
       color: "#ffffff",
-      hoverBackgroundColor: "#f29d30",
+      hoverBackgroundColor: "#000000",
       backgroundColor: "#f29d30",
 
     },
@@ -127,10 +127,10 @@ const useStyles = makeStyles((theme) => ({
 const StyledButton = withStyles({
   root: {
     backgroundColor: "#ffffff !important",
-    color: "#f29d30",
+    color: "#000000",
     "&:hover, &:focus": {
       color: "#ffffff",
-      backgroundColor: "#f29d30 !important",
+      backgroundColor: "#000000 !important",
     },
   },
 })(Button);
@@ -150,9 +150,9 @@ const StyledMenu = withStyles({
 
 const CustomCheckbox = withStyles({
   root: {
-    color: "#f29d30",
+    color: "#000000",
     '&$checked': {
-      color: "#f29d30",
+      color: "#000000",
     },
   },
   checked: {},

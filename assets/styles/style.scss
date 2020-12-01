@@ -852,7 +852,7 @@ Build Area CSS
   clear: both;
 }
 .build-area .column {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
 }
 .build-area .row:after {
   content: "";
@@ -873,7 +873,7 @@ Build Area CSS
   text-align: right;
 }
 .build-area .column .types {
-  background-color: #D94032;
+  background: linear-gradient(170deg,#333333,#262626) ;
   float: right;
   width: 50%;
   text-align: center;
@@ -893,6 +893,7 @@ Build Area CSS
   color: #262626;
   font-size: 1.6rem;
   font-weight: normal;
+  font-family: "PlayfairDisplay-Regular"; 
 }
 
 .build-area .build-content {  
@@ -939,7 +940,7 @@ Build Area CSS
 Virtual Showroom Area CSS
 =================================================*/
 .virtual-showroom-area {
-  background-color: #212C33;
+  background-color: #rgba(69, 65, 78, 0.08);
 }
 
 /*================================================

@@ -14,6 +14,7 @@ class ChooseGrade extends Component {
 
     render() {
         const products = this.props.productData;
+
         return (
             <section className="choose-grade-area">
                 <div className="container">
@@ -21,57 +22,57 @@ class ChooseGrade extends Component {
                         <h2>CHOOSE YOUR GRADE</h2>
                     </div>
                 </div>
-                <div className="sub-box">
-                    {
-                        products.map(product => (
-                            <div className="box" key={product.id}>
-                                <div className="grade-box">
-                                    <div className="grade-content">
-                                        <img src={product.files[0].path}/>
-                                        <h3>{product.name}</h3>
-                                        <h5>fr ${product.selling_Price}</h5>
+                { products.length > 1
+                    ? <div className="sub-box">
+                        {
+                            products.map(product => (
+                                <div className="box" key={product.id}>
+                                    <div className="grade-box">
+                                        <div className="grade-content">
+                                            <img src={product.files[0].path} />
+                                            <h3>{product.name}</h3>
+                                            <h5>fr ${product.selling_Price}</h5>
+                                            <div className="button" align="center">
 
-                                        <div className="button" align="center">
-                                            
-                                                <a className="btn enquireBtn" href="#enquireForm" onClick={()=> this.props.enquireModel(product.name)}>
+                                                <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
                                                     ENQUIRE
                                                 </a>
-                                           
-                                            <Link href={"/car/configurator/"+this.props.url}>
-                                                <a className="btn buildBtn">
-                                                    BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
-                                                </a>
-                                            </Link>
-                                        </div>
 
-                                        <p className="sub-header">Features :</p>
-                                        {
-                                            product.productDetailValues.map(detail => (
-                                                
+                                                <Link href={"/car/configurator/" + this.props.url}>
+                                                    <a className="btn buildBtn">
+                                                        BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                                    </a>
+                                                </Link>
+                                            </div>
+
+                                            <p className="sub-header">Features :</p>
+                                            {
+                                                product.productDetailValues.map(detail => (
+
                                                     <div className="bar" key={detail.id}>
-                                                        <p>{detail.detailCategory.name}                                                        
+                                                        <p>{detail.detailCategory.name}
                                                         </p>
                                                         <h6>
-                                            { detail.catname == "Main Equipment" ? <Icon icon={gitFork} width="2.3rem"/> : 
-                                                detail.catname == "Safety Features" ? <Icon icon={manageProtection} width="2.3rem"/> :
-                                                <Icon icon={smallgearIcon} width="1.8rem"/>
-                                            }
+                                                            {detail.catname == "Main Equipment" ? <Icon icon={gitFork} width="2.3rem" /> :
+                                                                detail.catname == "Safety Features" ? <Icon icon={manageProtection} width="2.3rem" /> :
+                                                                    <Icon icon={smallgearIcon} width="1.8rem" />
+                                                            }
                                                             &nbsp;&nbsp;
-                                                            {detail.value} { detail.detailCategory.unit != "." && 
-                                                         detail.detailCategory.unit
-                                                        }  
+                                                            {detail.value} {detail.detailCategory.unit != "." &&
+                                                                detail.detailCategory.unit
+                                                            }
                                                         </h6>
                                                     </div>
-                                                
-                                            ))
-                                        }
+
+                                                ))
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
 
-                    {/*<div className="box">
+                        {/*<div className="box">
                         <div className="grade-box">
                         <div className="grade-content">
                         <img src="/static/feature-cars/honda-fit.png"/>
@@ -187,7 +188,85 @@ class ChooseGrade extends Component {
                         </div>
                     </div>
                     </div>*/}
-                </div>
+                    </div>
+                    : <div className="sub-box">
+                        {
+                            products.map(product => (
+                                <div className="col-md-12" key={product.id}>
+                                    <div className="grade-box">
+                                        <div className="grade-content">
+                                            <div class="grade-content-imgBox"  >
+                                                <img src={product.files[0].path} />
+                                            </div>
+                                            <div class="grade-content-btnBox" >
+                                                <h3>{product.name}</h3>
+                                                <h5>fr ${product.selling_Price}</h5>
+
+                                                <div className="button" align="center">
+
+                                                    <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
+                                                        ENQUIRE
+                                            </a>
+
+                                                    <Link href={"/car/configurator/" + this.props.url}>
+                                                        <a className="btn buildBtn">
+                                                            BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                                        </a>
+                                                    </Link>
+                                                </div>
+
+                                            </div>
+                                            <div class="grade-content-featuresBox" >
+                                                <p className="sub-header">Features :</p>
+                                                {
+                                                    product.productDetailValues.map(detail => (
+
+                                                        <div className="bar" key={detail.id}>
+                                                            <p>{detail.detailCategory.name}
+                                                            </p>
+                                                            <h6>
+                                                                {detail.catname == "Main Equipment" ? <Icon icon={gitFork} width="2.3rem" /> :
+                                                                    detail.catname == "Safety Features" ? <Icon icon={manageProtection} width="2.3rem" /> :
+                                                                        <Icon icon={smallgearIcon} width="1.8rem" />
+                                                                }
+                                                        &nbsp;&nbsp;
+                                                        {detail.value} {detail.detailCategory.unit != "." &&
+                                                                    detail.detailCategory.unit
+                                                                }
+                                                            </h6>
+                                                        </div>
+
+                                                    ))
+                                                }
+
+                                            </div>
+                                            <div class="grade-content-techBox" >
+                                                <p className="sub-header">Technology :</p>
+                                                <div className="bar">
+                                                    <p>Infotainment</p>
+                                                    <h6>
+                                                        <Icon icon={gitFork} width="2.3rem" />
+                                                    &nbsp;&nbsp;
+                                                     Venture Edition
+                                                </h6>
+
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+
+
+                    </div>
+                }
+
             </section>
         );
     }

@@ -144,7 +144,7 @@ const LoanCalculator = props => {
 
   const StyledSlider = withStyles({
     root: {
-      color: "#4B6674",
+      color: "#000000",
       height: 5
     },
     track: {
@@ -161,7 +161,7 @@ const LoanCalculator = props => {
     thumb: {
       width: 14,
       height: 14,
-      backgroundColor: "#f29d30"
+      backgroundColor: "#000000"
     },
     markLabel: {
       fontFamily: "Montserrat",

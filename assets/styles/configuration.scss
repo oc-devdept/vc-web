@@ -1,7 +1,9 @@
-.orange-circle > .MuiStepLabel-iconContainer >  .MuiStepIcon-active{
-    color: #000000        
+.orange-circle > .MuiStepLabel-iconContainer >  .MuiStepIcon-active,
+.orange-circle >.MuiStepLabel-iconContainer >  .MuiStepIcon-completed{
+    color: #000000;        
   
 }
+
 
 .bottomSummary {
     // background: linear-gradient(180deg,#666666,#262626);
@@ -134,13 +136,18 @@
   .configure-list {
     padding: 1%;
     margin: 2% 0;
-  }
-  .configure-list span:first-of-type{
+    img{
+        border:none!important;
+    }
+
+    span:first-of-type{
     color: black;
     font-size: 12px;
     font-weight: lighter !important ;
   }
 
+  }
+//   .configure-list 
 .configure-sect .configure-gall .custom-control-label::before,
 .configure-sect .configure-gall .custom-control-label::after {
   top: 0.25rem;

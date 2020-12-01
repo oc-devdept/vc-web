@@ -4,6 +4,7 @@ import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
 import { formatPrice } from 'Components/Helpers/helpers';
 
+
 import { Icon } from '@iconify/react';
 import fuel15 from '@iconify/icons-maki/fuel-15';
 import engineIcon from '@iconify/icons-mdi/engine';
@@ -39,6 +40,10 @@ import {
 } from "Ducks/product/ProductActions";
 import { shadows } from '@material-ui/system';
 
+import {
+  useParams
+} from "react-router-dom";
+ 
 const muiTheme = createMuiTheme({
   overrides: {
     MuiSlider: {
@@ -187,10 +192,16 @@ function Build() {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
-    console.log("In use effect")
 
-    console.log(window.location.pathname);
+    console.log("USE EFFECT");
+    const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+    // console.log(window.location.pathname)
 
+    if(lastItem != "all"){
+      // myArray.find(x => x. === '45').foo;
+      handleUrl(lastItem);
+    }
+  
   }, []);
 
   const carList = useSelector(state => {
@@ -226,6 +237,10 @@ function Build() {
 
   const allMakes = useSelector(state => state.ProductState.allMakes.data);
   const allTags = useSelector(state => state.ProductState.allTags.data);
+  const handleUrl = (url) => {
+    event
+    //checkmakes()
+  };
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
@@ -265,8 +280,12 @@ function Build() {
   const [filters, setFilters] = React.useState({});
 
   const checkMakes = (event) => {
+    console.log("Check makes")
+    console.log(event.target.checked)
     if(event.target.checked){
+      console.log(filters.brand)
       if(filters.brand){
+        console.log(filters.brand)
         let fil = [...filters.brand];
         fil.push(event.target.value);
         setFilters({
@@ -282,6 +301,7 @@ function Build() {
       }
     }
     else {
+      console.log(filters.brand)
       if(filters.brand){
         let fil = [...filters.brand];
         let index = fil.indexOf(event.target.value);
@@ -346,6 +366,8 @@ function Build() {
   }
 
   const applyFilters = () => {
+    // console.log("APPLKY FILTERS")
+    // console.log(filters)
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
@@ -362,6 +384,7 @@ function Build() {
           <div className="container">
             <div className="section-title without-bg" align="center">
                 <h2>CHOOSE A MODEL TO BUILD</h2>
+     
             </div>
             <div class="first_row">
               <div class="filter">
@@ -598,9 +621,8 @@ function Build() {
                 </div>)
               })
             }
-          {/* {console.log(dataOptions)} */}
-          {console.log(filters)}
-          {console.log(allMakes)}
+            {console.log(dataOptions)}
+            {console.log(filters)}
             <div className={classes.paginationArea} >
               <Pagination count={totalPages} />
             </div>

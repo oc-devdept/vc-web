@@ -183,10 +183,14 @@ function Build() {
   });
 
 
-  useEffect(() => {
+  useEffect((props) => {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
+    console.log("In use effect")
+
+    console.log(window.location.pathname);
+
   }, []);
 
   const carList = useSelector(state => {
@@ -499,7 +503,7 @@ function Build() {
             </div>
             {
               carList.map(car => {
-                retusrn (<div class="row">
+                return (<div class="row">
                   <div class="column">
                     <div class="left">
                       <img src={car[0].image } />
@@ -594,7 +598,9 @@ function Build() {
                 </div>)
               })
             }
-
+          {/* {console.log(dataOptions)} */}
+          {console.log(filters)}
+          {console.log(allMakes)}
             <div className={classes.paginationArea} >
               <Pagination count={totalPages} />
             </div>

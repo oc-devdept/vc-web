@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
   },
   indicator: {
-    backgroundColor : '#f29d30',
+    backgroundColor : '#000000',
     left: "0px",
     width: "3px",
     marginLeft: "20px"

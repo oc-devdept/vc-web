@@ -469,8 +469,24 @@ img {
 
 .nextBtnTop {
   float: right;
+  border: 1px solid #000000!important;
 }
 
+// #__next .MuiToolbar-root >.col-2 >.prevBtn{
+//     color: #ffffff !important;
+//     background-color: #262626;
+//     border: 1px solid #000000
+// }
+
+// #__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
+// #__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
+// #__next .MuiToolbar-root >.col-2 > .prevBtn.active{
+//   -webkit-box-shadow: unset;
+//   box-shadow: unset;
+//   background-color: #666666 !important;
+//   color: #ffffff !important;
+  
+//   }
 .btn-light {
   background-color: #ffffff;
   color: #262626 !important;
@@ -639,10 +655,12 @@ Single Car Page Area CSS
 }
 .grade-content h3 {
   margin: 20px 0;
+  color: #666666;
 }
 .grade-content h5 {
   color: #262626;
   font-size: 1.8rem;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .arrow-icon {
@@ -653,8 +671,12 @@ Single Car Page Area CSS
 About Honda Fit Area CSS
 =================================================*/
 .about-honda-fit-area {
-  background-color: #f3f3f3;
+  background: linear-gradient(180deg, #333333, #000000);
   padding: 20px 0;
+}
+.about-honda-fit-area > .container > .about-table > div > h2{
+  color: #ffffff;
+  font-size: 1.2rem;
 }
 
 /*================================================
@@ -830,7 +852,7 @@ Build Area CSS
   clear: both;
 }
 .build-area .column {
-  border: 2px solid #E39D43;
+  border: 2px solid #c0c0c0;
 }
 .build-area .row:after {
   content: "";
@@ -851,7 +873,7 @@ Build Area CSS
   text-align: right;
 }
 .build-area .column .types {
-  background-color: #D94032;
+  background: linear-gradient(170deg,#333333,#262626) ;
   float: right;
   width: 50%;
   text-align: center;
@@ -871,6 +893,7 @@ Build Area CSS
   color: #262626;
   font-size: 1.6rem;
   font-weight: normal;
+  font-family: "PlayfairDisplay-Regular"; 
 }
 
 .build-area .build-content {  
@@ -887,11 +910,37 @@ Build Area CSS
   float:left;
 }
 
+.Component-root-232 {
+  color: #000000;
+}
+
+.makeStyles-heading-129{
+  background-color: #F6F8FC;
+  background-color: #262626;
+}
+.MuiFormGroup-root > p{
+  color: #000000;
+  font-weight: bold;
+}
+// .build-area >.container div .MuiButton-contained{
+//   // background-color: #000000 !important;
+//   background-color: #000000;
+//   color: #ffffff;
+// }
+// .build-area > .container > div .MuiButton-contained:hover,
+// .build-area > .container > div .MuiButton-contained:focus,
+// .build-area > .container > div .MuiButton-contained.active
+// {
+//   background-color: #666666 ;
+//   // background-color: #666666 !important;
+//   color: #ffffff;
+// }
+
 /*================================================
 Virtual Showroom Area CSS
 =================================================*/
 .virtual-showroom-area {
-  background-color: #212C33;
+  background-color: #rgba(69, 65, 78, 0.08);
 }
 
 /*================================================
@@ -901,6 +950,7 @@ Book Car Servicing Area CSS
   background-color: #212C33;
   padding: 20px;
   margin: 0;
+  background: linear-gradient(180deg, #333333, #000000); 
 }
 
 .header-bar h6 {
@@ -980,16 +1030,21 @@ About Us Area CSS
   height: 400px;
 }
 .about-history {
-  background-color: #000000;
+  background: linear-gradient(180deg,#333333,#000000);
   padding: 40px;
   margin: 0;
 }
 .about-history h2 {
   color: #ffffff;
   margin: 0 auto 20px;
+  font-family: "PlayfairDisplay-Regular";
 }
 .about-history p {
   color: #ffffff;
+  
+}
+.about-history p .amount {
+  font-family: "PlayfairDisplay-Regular";
 }
 .about-history .amount {
   font-size: 2.5rem;
@@ -1005,6 +1060,7 @@ About Us Area CSS
 .our-story h2 {
   text-align: center;
   margin: 20px auto;
+  font-family: "PlayfairDisplay-Regular";
 }
 .our-story h5 {
   margin: 20px auto;
@@ -4378,9 +4434,14 @@ Single Car Area CSS
 
 .single-banner h2 {
   color: #ffffff;
-  padding: 10% 0 20% 10%;
-}
-
+  // padding: 10% 0 20% 10%;
+  padding: 20% 0 20% 30%;
+  text-transform: uppercase !important;
+  text-shadow: 0 0 5px #000000;
+  font-family: "PlayfairDisplay-Regular";
+  font-size: 52px;
+  display: inline-block;
+ }
 
 /*================================================
 Facility Area CSS
@@ -5386,6 +5447,9 @@ Page Title Area CSS
 
 .page-title-area ul li:last-child {
   margin-right: 0;
+}
+#__next > div > .MuiPaper-root{
+  background-color: #000000 !important;
 }
 
 /*================================================
@@ -10085,7 +10149,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #4b6674;
+  color: #000000;
 }
 
 
@@ -10174,8 +10238,11 @@ ol.progtrckr li.progtrckr-doing {
   margin-right:5px;
   max-width: 71px;
 }
+// 
 .configText {
   display:inline-block;
+  color:#000000;
+  font-family:"PlayfairDisplay-Regular";
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -10246,7 +10313,7 @@ input[type="number"] {
 .search-filter-categories .form-check {
   display: inline-block;
   color: #4b6674;
-  border: 1px solid #4b6674;
+  border: 1px solid #5a5a5a;
   border-radius: 20px;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem;

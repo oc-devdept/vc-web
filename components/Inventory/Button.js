@@ -9,7 +9,7 @@ class Button extends PureComponent {
         return (
             <div style={divStyle}>
                 <button style={{
-                    border: 'none', backgroundColor:'rgba(244, 132, 33, 1', 
+                    border: 'none', backgroundColor:'rgba(0, 0, 0, 1', 
                     padding:10,  paddingLeft: 25, paddingRight: 25, 
                     borderRadius: 5, marginBottom: 10, marginTop: 10,
                     color:'white'

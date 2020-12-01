@@ -139,12 +139,12 @@ const Grade = ({
                 style={
                   item.id == ProductGrade.id
                     ? {
-                        border: "2px solid #F29D30",
-                        color: "#F29D30",
-                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                        border: "2px solid #c0c0c0",
+                        color: "#000000",
+                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.3)",
                         fontWeight: "bold"
                       }
-                    : { border: "1px solid #DEE2E6" }
+                    : { border: "1px solid #c0c0c0" }
                 }
                 onClick={()=> handleOptionChange(item.id)}
               >

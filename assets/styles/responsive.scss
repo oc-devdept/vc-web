@@ -1,3 +1,5 @@
+
+
 @media only screen and (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 2;
@@ -32,6 +34,14 @@
     -moz-column-count: 3;
     column-count: 3;
   }
+  .section-title h2 {
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: "PlayfairDisplay-Regular";
+  margin: 20px 0;
+  color: #000000;
+}
 }
 
 @media only screen and (min-width: 992px) {
@@ -1846,3 +1856,21 @@
 }
 
 /*# sourceMappingURL=responsive.css.map */
+@media only screen and (max-width: 426px){
+ 
+  
+  .section-title {
+    margin-bottom: 15px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+    font-family: "PlayfairDisplay-Regular";
+  }
+  .section-title.without-bg {
+    margin-bottom: 16px;
+  }
+
+.sub-title h5{
+  font-size: 16px;
+}
+}

@@ -14,7 +14,6 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 class BestSeller extends Component {
   componentDidMount() {
-    // console.log("NNQND")
     this.props.getFeaturedHtml();
   }
 

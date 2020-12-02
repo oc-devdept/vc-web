@@ -499,7 +499,7 @@ function Build() {
             </div>
             {
               carList.map(car => {
-                retusrn (<div class="row">
+                return (<div class="row">
                   <div class="column">
                     <div class="left">
                       <img src={car[0].image } />

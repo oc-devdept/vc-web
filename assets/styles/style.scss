@@ -940,7 +940,7 @@ Build Area CSS
 Virtual Showroom Area CSS
 =================================================*/
 .virtual-showroom-area {
-  background-color: #rgba(69, 65, 78, 0.08);
+  background-color: rgba(69, 65, 78, 0.08);
 }
 
 /*================================================
@@ -10365,4 +10365,7 @@ input[type="number"] {
 
 .DayPickerInput {
   width:100%;
+}
+.MuiTab-textColorPrimary.Mui-selected {
+  outline: none !important;
 }

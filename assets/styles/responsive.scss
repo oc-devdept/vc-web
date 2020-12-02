@@ -1857,20 +1857,90 @@
 
 /*# sourceMappingURL=responsive.css.map */
 @media only screen and (max-width: 426px){
- 
+  .carousel-inner{
+    position: relative;
+    .carousel-item:last-of-type img{
+        // display: none !important;
+        transform: scale(1.5);
+        text-align:center;
+        vertical-align:middle;
+        overflow:hidden ;
+    }
+     }
+  // best-sellers-area
+  .best-sellers-area{
+    .section-title {
+      margin-bottom: 15px;
+      
+    }
+    .section-title h2 {
+      font-size: 26px;
+      font-family: "PlayfairDisplay-Regular";
+    }
+    .section-title.without-bg {
+      margin-bottom: 16px;
+    }
   
-  .section-title {
-    margin-bottom: 15px;
+  .sub-title h5{
+    font-size: 16px;
   }
-  .section-title h2 {
-    font-size: 26px;
-    font-family: "PlayfairDisplay-Regular";
+  .sub-title .box{
+    margin: 0;
+    padding-bottom: 20px;
+  
   }
-  .section-title.without-bg {
-    margin-bottom: 16px;
+  .fc-box  > .feature-cars{
+    padding: 0;
+    margin: 10px
+  }
+  .fc-box  > .feature-cars h3{
+    margin: 0;
+  }
+  .fc-box  > .feature-cars h5{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .fc-box  > .feature-cars p {
+    text-align: left;
+    font-size: 14px;
+    padding: 0;
+    margin:0;
+  }
+  .fc-box  > .feature-cars .btn{
+    width:100%;
+    font-size: 12px;
+    padding: 6px auto;
+    margin:5px auto;
+  }
+  }
+  .steps-area{
+    .section-title.without-bg{
+      margin-top: 20px
+    }
+    .section-title h2 {
+      font-size: 20px;
+      color: #ffffff;
+      font-family: "PlayfairDisplay-Regular";
+       }
+    // .container{
+    //   margin-left: 10px ;
+    //   margin-right: 10px ;
+    //   padding:10px;
+
+    // }
+    // .steps-row{
+    //   width: 100%;
+    // }
+
+
+    // footer-area
+    .footer-area{
+      .copyright-area{
+
+      }
+    }
   }
 
-.sub-title h5{
-  font-size: 16px;
-}
+   
 }

@@ -33,7 +33,6 @@ class ChooseGrade extends Component {
                                             <h3>{product.name}</h3>
                                             <h5>fr ${product.selling_Price}</h5>
                                             <div className="button" align="center">
-
                                                 <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
                                                     ENQUIRE
                                                 </a>

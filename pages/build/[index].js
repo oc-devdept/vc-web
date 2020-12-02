@@ -194,15 +194,14 @@ function Build() {
     dispatch(getTags());
 
     console.log("USE EFFECT");
-    const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-    // console.log(window.location.pathname)
-
-    if(lastItem != "all"){
-      // myArray.find(x => x. === '45').foo;
-      handleUrl(lastItem);
-    }
-  
+    // const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+    // // console.log(window.location.pathname)
+    // // props.lastItem = lastItem;
+    // console.log(lastItem)
+    console.log(props)
   }, []);
+
+
 
   const carList = useSelector(state => {
     //turn carlist into pairs
@@ -237,11 +236,20 @@ function Build() {
 
   const allMakes = useSelector(state => state.ProductState.allMakes.data);
   const allTags = useSelector(state => state.ProductState.allTags.data);
-  const handleUrl = (url) => {
-    event
-    //checkmakes()
-  };
 
+  useEffect((props) => {
+    console.log("USE")
+    console.log(allMakes)
+    const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
+    var result = allMakes.filter(make => {
+      return make.name == lastItem
+    })
+
+   var event = { };
+  //  event.target.checked = true;
+    // checkMakes(event.target.checked)
+  }, 
+  [allMakes]);
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -281,6 +289,7 @@ function Build() {
 
   const checkMakes = (event) => {
     console.log("Check makes")
+    console.log(filters)
     console.log(event.target.checked)
     if(event.target.checked){
       console.log(filters.brand)
@@ -294,6 +303,7 @@ function Build() {
         })
       }
       else {
+        console.log(filters.brand)
         setFilters({
           ...filters,
           brand: [event.target.value]

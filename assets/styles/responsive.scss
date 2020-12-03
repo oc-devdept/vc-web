@@ -1961,6 +1961,10 @@
     outline: none;
     background-color: #eeebeb;
   }
+  .coebox .coeSelected{
+    outline: none;
+    
+  }
    
   }
   // footer-area
@@ -1968,6 +1972,9 @@
 
     .footer-signup.row{
       flex-direction: column;
+      
+     
+      
     }
     .copyright-area{
       padding-left: 15px;

@@ -69,13 +69,14 @@ class MegaMenu extends Component {
               <nav className="navbar navbar-expand-md navbar-light">
                 <Link href="/">
                   <a className="navbar-brand">
-                    <img src={"/static/logo.png"} alt="logo" />
+                    <img src={"/static/logo-white.png"} alt="logo" />
                   </a>
                 </Link>
                 
                 <Link href="/">
                   <a className="navbar-brand-mobile">
-                    <img src={"/static/logo-mobile.png"} alt="logo" />
+                    {/* <img src={"/static/logo-mobile"} alt="logo" /> */}
+                    <img src={"/static/logo-mobile-white.png"} alt="logo" />
                   </a>
                 </Link>
                 <Link href="/profile">

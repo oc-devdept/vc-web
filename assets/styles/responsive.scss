@@ -1,3 +1,5 @@
+
+
 @media only screen and (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 2;
@@ -32,6 +34,14 @@
     -moz-column-count: 3;
     column-count: 3;
   }
+  .section-title h2 {
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: "PlayfairDisplay-Regular";
+  margin: 20px 0;
+  color: #000000;
+}
 }
 
 @media only screen and (min-width: 992px) {
@@ -1673,7 +1683,7 @@
     padding: 20px 0;
     background-color: transparent;
   }
-
+  
   .navbar .navbar-nav {
     align-items: center;
   }
@@ -1846,3 +1856,119 @@
 }
 
 /*# sourceMappingURL=responsive.css.map */
+@media only screen and (max-width: 426px){
+  .carousel-inner{
+    position: relative;
+    .carousel-item:last-of-type img{
+        // display: none !important;
+        transform: scale(1.5);
+        text-align:center;
+        vertical-align:middle;
+     }
+  // best-sellers-area
+  .best-sellers-area{
+    .section-title {
+      margin-bottom: 15px;
+      
+    }
+    .section-title h2 {
+      font-size: 26px;
+      font-family: "PlayfairDisplay-Regular";
+    }
+    .section-title.without-bg {
+      margin-bottom: 16px;
+    }
+  
+  .sub-title h5{
+    font-size: 16px;
+  }
+  .sub-title .box{
+    margin: 0;
+    padding-bottom: 20px;
+  
+  }
+  .fc-box  > .feature-cars{
+    padding: 0;
+    margin: 10px
+  }
+  .fc-box  > .feature-cars h3{
+    margin: 0;
+  }
+  .fc-box  > .feature-cars h5{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .fc-box  > .feature-cars p {
+    text-align: left;
+    font-size: 14px;
+    padding: 0;
+    margin:0;
+  }
+  .fc-box  > .feature-cars .btn{
+    width:100%;
+    font-size: 12px;
+    padding: 6px auto;
+    margin:5px auto;
+  }
+  }
+  .steps-area{
+    .section-title.without-bg{
+      margin-top: 20px
+    }
+    .section-title h2 {
+      font-size: 20px;
+      color: #ffffff;
+      font-family: "PlayfairDisplay-Regular";
+       }
+   
+    }
+  }
+
+  #__next > .single-banner > h2 {
+    font-size: 1.5rem;
+  }
+  //#__next header
+  #__next header{
+    .MuiToolbar-root{
+      
+      .col-2 {
+        padding: 0;
+        height: 56px;
+      .btn.prevBtn, .btn.nextBtnTop{ 
+        display:inline-block;
+        height: 100% ;
+        // padding:2px auto !important;
+        font-size: 12px;
+        padding-right: 5px;
+        padding-left: 5px;
+       }
+    }
+    .col-8{
+      text-align: center;
+    }
+    }
+
+  }
+  //configure-area 
+  .configure-area{
+    .configure-sect.row{
+      flex-direction: row;
+    }
+
+    .coebox .coeDetails input { 
+    padding: 5px 10px 5px 10px;
+    font-size: 1.0em;
+    display: inline-block;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+  .coebox .coeDetails input:focus{
+    outline: none;
+    background-color: #eeebeb;
+  }
+   
+  }
+
+}

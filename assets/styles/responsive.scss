@@ -1953,6 +1953,9 @@
     .configure-sect.row{
       flex-direction: row;
     }
+    .configure-sect > .col-lg-4 > .coebox > .coeSelected{
+      outline: none;
+    }
 
     .coebox .coeDetails input { 
     padding: 5px 10px 5px 10px;

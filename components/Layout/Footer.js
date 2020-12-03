@@ -54,7 +54,7 @@ class Footer extends Component {
 
                     <Link href="/">
                         <a>
-                            <img src="/static/logo.png" />
+                            <img src="/static/logo-white.png" />
                         </a>
                     </Link>
                     <h5>Sign Up For Our Newsletter</h5>

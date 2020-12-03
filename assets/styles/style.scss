@@ -471,21 +471,21 @@ img {
   border: 1px solid #000000!important;
 }
 
-// #__next .MuiToolbar-root >.col-2 >.prevBtn{
-//     color: #ffffff !important;
-//     background-color: #262626;
-//     border: 1px solid #000000
-// }
+#__next .MuiToolbar-root >.col-2 >.prevBtn{
+    color: #ffffff !important;
+    background-color: #262626;
+    border: 1px solid #000000
+}
 
-// #__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
-// #__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
-// #__next .MuiToolbar-root >.col-2 > .prevBtn.active{
-//   -webkit-box-shadow: unset;
-//   box-shadow: unset;
-//   background-color: #666666 !important;
-//   color: #ffffff !important;
+#__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
+#__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
+#__next .MuiToolbar-root >.col-2 > .prevBtn.active{
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666 !important;
+  color: #ffffff !important;
   
-//   }
+  }
 .btn-light {
   background-color: #ffffff;
   color: #262626 !important;
@@ -676,6 +676,9 @@ About Honda Fit Area CSS
 .about-honda-fit-area > .container > .about-table > div > h2{
   color: #ffffff;
   font-size: 1.2rem;
+}
+.section-title.without-bg h2 {
+  color: #ffffff;
 }
 
 /*================================================
@@ -8491,6 +8494,9 @@ Products Details Area CSS
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
+  // -webkit-box-direction: row;
+  // -ms-flex-direction: row;
+  // flex-direction: row;
   -webkit-box-direction: reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;

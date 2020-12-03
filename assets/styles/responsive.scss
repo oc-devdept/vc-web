@@ -1683,7 +1683,7 @@
     padding: 20px 0;
     background-color: transparent;
   }
-
+  
   .navbar .navbar-nav {
     align-items: center;
   }
@@ -1864,8 +1864,6 @@
         transform: scale(1.5);
         text-align:center;
         vertical-align:middle;
-        overflow:hidden ;
-    }
      }
   // best-sellers-area
   .best-sellers-area{
@@ -1923,24 +1921,54 @@
       color: #ffffff;
       font-family: "PlayfairDisplay-Regular";
        }
-    // .container{
-    //   margin-left: 10px ;
-    //   margin-right: 10px ;
-    //   padding:10px;
-
-    // }
-    // .steps-row{
-    //   width: 100%;
-    // }
-
-
-    // footer-area
-    .footer-area{
-      .copyright-area{
-
-      }
+   
     }
   }
 
+  #__next > .single-banner > h2 {
+    font-size: 1.5rem;
+  }
+  //#__next header
+  #__next header{
+    .MuiToolbar-root{
+      
+      .col-2 {
+        padding: 0;
+        height: 56px;
+      .btn.prevBtn, .btn.nextBtnTop{ 
+        display:inline-block;
+        height: 100% ;
+        // padding:2px auto !important;
+        font-size: 12px;
+        padding-right: 5px;
+        padding-left: 5px;
+       }
+    }
+    .col-8{
+      text-align: center;
+    }
+    }
+
+  }
+  //configure-area 
+  .configure-area{
+    .configure-sect.row{
+      flex-direction: row;
+    }
+
+    .coebox .coeDetails input { 
+    padding: 5px 10px 5px 10px;
+    font-size: 1.0em;
+    display: inline-block;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+  .coebox .coeDetails input:focus{
+    outline: none;
+    background-color: #eeebeb;
+  }
    
+  }
+
 }

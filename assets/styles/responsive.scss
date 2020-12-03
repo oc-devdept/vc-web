@@ -1906,7 +1906,7 @@
     background:linear-gradient(170deg,#333333,#262626);
   }
   } 
-  
+  // .steps-area
   .steps-area{
     .section-title.without-bg{
       margin-top: 20px
@@ -1915,6 +1915,11 @@
       font-size: 20px;
        }
    
+    }
+    // build-area
+    .build-area > .container > .section-title.without-bg > h2{
+      padding-top: 15px;
+
     }
  
 

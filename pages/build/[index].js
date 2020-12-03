@@ -253,7 +253,7 @@ function Build() {
       })
       console.log(result)
    if(result.length < 1 && lastItem!= "all" ){
-    router.push('all', undefined, { shallow: true })
+    router.push('[index]','all', { shallow: true })
     return;
    }
       // router.push('all', undefined, { shallow: true })
@@ -420,6 +420,7 @@ function Build() {
 
   const resetFilters = () => {
     setFilters({});
+    router.push('[index]','all' , { shallow: true })
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
   }
 
@@ -679,6 +680,8 @@ function Build() {
     </MuiThemeProvider>
   );
 }
+
+
 
 export default Build;
 /*

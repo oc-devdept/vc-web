@@ -677,7 +677,11 @@ About Honda Fit Area CSS
   color: #ffffff;
   font-size: 1.2rem;
 }
-.section-title.without-bg h2 {
+.steps-area .section-title.without-bg h2 {
+  color: #ffffff;
+  font-family: "PlayfairDisplay-Regular"
+}
+.about-honda-fit-area .section-title.without-bg h2 {
   color: #ffffff;
 }
 
@@ -942,7 +946,7 @@ Build Area CSS
 Virtual Showroom Area CSS
 =================================================*/
 .virtual-showroom-area {
-  background-color: #rgba(69, 65, 78, 0.08);
+  background-color: rgba(69, 65, 78, 0.08);
 }
 
 /*================================================

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
 import { formatPrice } from 'Components/Helpers/helpers';
-
+import { useRouter } from 'next/router'
 
 import { Icon } from '@iconify/react';
 import fuel15 from '@iconify/icons-maki/fuel-15';
@@ -178,6 +178,7 @@ const CustomCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 function Build() {
+  const router = useRouter()
   const dispatch = useDispatch();
   const [dataOptions, setDataOptions ] = useState({
     limit: 20,
@@ -192,13 +193,11 @@ function Build() {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
-
-    console.log("USE EFFECT");
     // const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
     // // console.log(window.location.pathname)
     // // props.lastItem = lastItem;
     // console.log(lastItem)
-    console.log(props)
+
   }, []);
 
 
@@ -233,21 +232,55 @@ function Build() {
     }
     return total;
   })
-
+  const [filters, setFilters] = React.useState({});
   const allMakes = useSelector(state => state.ProductState.allMakes.data);
   const allTags = useSelector(state => state.ProductState.allTags.data);
 
-  useEffect((props) => {
+  useEffect( (props) => {
     console.log("USE")
     console.log(allMakes)
+    console.log("POPRS")
+    console.log(props)
+    if(allMakes.length < 1) return;
     const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-    var result = allMakes.filter(make => {
-      return make.name == lastItem
-    })
+    console.log(lastItem)
+    if(lastItem == "all"){
+      return;
+    }
+      // if (allMakes && lastItem != "all"){
+      var result = allMakes.filter(make => {
+        return make.name == lastItem
+      })
+      console.log(result)
+   if(result.length < 1 && lastItem!= "all" ){
+    router.push('all', undefined, { shallow: true })
+    return;
+   }
+      // router.push('all', undefined, { shallow: true })
+      
+    var event = { 
 
-   var event = { };
-  //  event.target.checked = true;
-    // checkMakes(event.target.checked)
+      target: {
+        checked: false,
+        value: ""
+      }
+    };
+    var brand = [];
+    if( result.length > 0){
+    brand.push(result[0].id);
+    event.target.value = result[0].id
+    }
+    var losd= {
+      brand: brand
+    }
+    
+    event.target.checked = true;
+
+      checkMakes(event)
+      console.log("FILTERS")
+      console.log(filters)
+      dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
+    // }
   }, 
   [allMakes]);
   const classes = useStyles();
@@ -285,12 +318,12 @@ function Build() {
   }
   
 
-  const [filters, setFilters] = React.useState({});
+
 
   const checkMakes = (event) => {
     console.log("Check makes")
-    console.log(filters)
     console.log(event.target.checked)
+    console.log(event.target.value)
     if(event.target.checked){
       console.log(filters.brand)
       if(filters.brand){
@@ -303,11 +336,13 @@ function Build() {
         })
       }
       else {
-        console.log(filters.brand)
+        console.log("should come here")
+        console.log(event.target.value)
         setFilters({
           ...filters,
           brand: [event.target.value]
         })
+        console.log(filters)
       }
     }
     else {
@@ -324,6 +359,8 @@ function Build() {
         })
       }
     }    
+    console.log("FILTERS IN CHECK MAKES")
+    console.log(filters)
   };
 
   const checkTags = (event) => {

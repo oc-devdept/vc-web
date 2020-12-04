@@ -139,7 +139,6 @@ const getAllPreownedCarsRequest = async ({
       orderBy: orderBy,
     }    
   });
-  // console.log(result.data)
   return result.data;
 }
 

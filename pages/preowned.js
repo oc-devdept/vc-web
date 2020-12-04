@@ -302,17 +302,8 @@ function Build() {
 
   }
 
-  // Renders the first time the page loads
   useEffect(() => {
-    // testing some stuff
-    var x = 2.1;
-    x = Math.ceil(x);
-    console.log(x)
-
-    const result = api.get("/products/getallPreowned")
-    console.log(result)
-
-    dispatch(getAllPreownedCars(10, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
+    dispatch(getAllPreownedCars(20, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
     dispatch(getMakes());
     dispatch(getTags());
   }, []);
@@ -392,10 +383,8 @@ function Build() {
   // Function for pagination, calls redux
   const handlePage = (event, page) => {
     setPage(page);
-    dataOptions.skip = (page-1)*10
-
-
-    dispatch(getAllPreownedCars(10, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
+    dataOptions.skip = (page-1)*20
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
   }
 
   const onChangeOrder = (name, val) => {
@@ -977,9 +966,8 @@ function Build() {
               })
             }
             <div className={classes.paginationArea} >
-              {/* <Typography>Page: {page}</Typography> */}
               <Pagination 
-                count={5} 
+                count={totalPages} 
                 page={page}
                 onChange={handlePage} />
             </div>

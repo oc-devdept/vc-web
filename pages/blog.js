@@ -147,6 +147,8 @@ export default function Blog() {
     let result = await api.post(`/carblogs/getPaginationData`, {data: params});
     setBlogs(result.data.data.blogs);
     setTotalNumber(result.data.data.totalNumber);
+    console.log("in handle page")
+    console.log(result.data.data.totalNumber)
   };
 
   return (
@@ -211,7 +213,10 @@ export default function Blog() {
             )
           }
           <div className={classes.paginationArea}>
-            <Pagination count={totalNumber} page={page} onChange={handlePage} />
+            <Pagination 
+              count={totalNumber} 
+              page={page} 
+              onChange={handlePage} />
           </div>
         </TabPanel>
        {/* <TabPanel className="blogTabPanel" value={value} index={1}>

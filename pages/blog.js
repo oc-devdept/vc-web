@@ -21,17 +21,17 @@ const muiTheme = createMuiTheme({
   overrides: {
       MuiPagination: {
           root: {
-              color: "#212C33 !important",
+              color: "#000000 !important",
           },
       },
       MuiPaginationItem: {
           root: {
               "&:hover": {
-                  backgroundColor: "#212C33 !important",
+                  backgroundColor: "#000000 !important",
                   color: "#ffffff !important",
               },
               "&$selected": {
-                  "backgroundColor": "#212C33 !important",
+                  "backgroundColor": "#000000 !important",
                   color: "#ffffff !important",
               }
           },
@@ -96,8 +96,9 @@ const useStyles = makeStyles((theme) => ({
       padding: '20px',
   },
   post: {
-    border: "1px solid #E2E5E7",
+    border: "1px solid #c0c0c0",
     padding: '20px',
+    align: 'center'
   },
   date: {
     margin: "20px 20px 0",
@@ -155,6 +156,7 @@ export default function Blog() {
       <div className="section-title without-bg" align="center">
         <h2>Blog Posts</h2>
       </div>
+      {/* 增加了 align="center"*/}
       <div className={classes.root}>
         <Tabs
             orientation="vertical"

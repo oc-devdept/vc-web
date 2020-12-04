@@ -1921,6 +1921,46 @@
   #__next > .single-banner > h2 {
     font-size: 1.5rem;
   }
+  #__next {
+    .section-title.without-bg > h2 {
+    font-size: 1.5rem;
+    margin-top:20px;
+    display: block;
+  }
+ 
+    [class^="makeStyles-root-"]{
+      //  display: flex;
+      // flex-direction: column;
+      .MuiTabs-root.MuiTabs-vertical{
+      
+      width: 25%;
+      margin-right: 10px;
+      float: left;
+    }
+    #vertical-tabpanel-undefined{
+      // float: left;
+      margin-left:25%;
+      width: 70%;
+      .MuiBox-root{
+        width: 100%;
+      } 
+  //     .MuiTypography-body1 .text{
+  //       padding: 0;
+  //       .button > .btn{
+  //       display: block;
+  //       margin-left: 0;
+  //       width: 100%;
+
+  //       }
+  //     }
+    }
+  }
+}
+    
+    
+  
+
+
   //#__next header
   #__next header{
     .MuiToolbar-root{
@@ -2028,25 +2068,17 @@
   }
   // book text drive 
   .MuiDialogContent-root.makeStyles-root-78{
-    max-width: 426px;
-    .d-flex.flex-column{
-      .flex-fill{
+    .d-flex.flex-column > .d-flex.flex-column .flex-fill{
         width: 100%;
         flex-direction: row;
         label{
           width: 213px;
-          
         }
         .form-control{
           widows: 213px;;
+       }
+     
         }
-
-
-      }
-      
-    }
-
   }
-
 
 }

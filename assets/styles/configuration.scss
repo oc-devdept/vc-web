@@ -421,6 +421,9 @@ color: #ffffff !important;
     .configure-sect {
         flex-direction: column-reverse;
     }
+    .coebox .coeSelected{
+        outline: none;
+    }
 
     .configure-area .prevBtn {
         margin-left:0px;

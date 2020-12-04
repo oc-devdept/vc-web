@@ -1938,6 +1938,7 @@
         display:block; 
         font-size: 12px;
         text-align: center;
+        border: 2px solid #000000;
        }
     }
     .col-8{
@@ -2025,5 +2026,27 @@
     }
 
   }
+  // book text drive 
+  .MuiDialogContent-root.makeStyles-root-78{
+    max-width: 426px;
+    .d-flex.flex-column{
+      .flex-fill{
+        width: 100%;
+        flex-direction: row;
+        label{
+          width: 213px;
+          
+        }
+        .form-control{
+          widows: 213px;;
+        }
+
+
+      }
+      
+    }
+
+  }
+
 
 }

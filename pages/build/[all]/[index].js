@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
+import { withRouter } from 'next/router';
 import { formatPrice } from 'Components/Helpers/helpers';
 import { useRouter } from 'next/router'
 
@@ -188,7 +189,6 @@ function Build() {
     orderBy: []
   });
 
-
   useEffect((props) => {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
@@ -237,22 +237,27 @@ function Build() {
   const allTags = useSelector(state => state.ProductState.allTags.data);
 
   useEffect( (props) => {
-    console.log("USE")
-    console.log(allMakes)
-    console.log("POPRS")
-    console.log(props)
+
+
     if(allMakes.length < 1) return;
-    const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-    console.log(lastItem)
-    if(lastItem == "all"){
+    // const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1 )
+    var path = window.location.pathname.split('/')
+    const carMake = path[2];
+    const carTag = path[3];
+
+    if(carMake == "all" && carTag == "all"){
       return;
     }
       // if (allMakes && lastItem != "all"){
       var result = allMakes.filter(make => {
-        return make.name == lastItem
+        return make.name == carMake
       })
-      console.log(result)
-   if(result.length < 1 && lastItem!= "all" ){
+      // console.log(result)
+      var tag = allTags.filter(tag => {
+        return tag.name == carTag
+      })
+
+   if(result.length < 1 && carMake!= "all" || tag.length < 1 && carTag!= "all" ){
     router.push('[index]','all', { shallow: true })
     return;
    }
@@ -265,24 +270,40 @@ function Build() {
         value: ""
       }
     };
+          
+    var tagEvent = { 
+
+      target: {
+        checked: false,
+        value: ""
+      }
+    };
     var brand = [];
+    var vtype = [];
     if( result.length > 0){
     brand.push(result[0].id);
     event.target.value = result[0].id
+
+    }
+    if(vtype != "all" && tag.length > 0 ){
+      vtype.push(tag[0].id);
+      tagEvent.target.value = tag[0].id
     }
     var losd= {
-      brand: brand
+      brand: brand,
+      tag: vtype
     }
     
     event.target.checked = true;
 
       checkMakes(event)
-      console.log("FILTERS")
-      console.log(filters)
+
+      
+      // checkTags(tagEvent)
       dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
     // }
   }, 
-  [allMakes]);
+  [allMakes,  allTags]);
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -321,13 +342,11 @@ function Build() {
 
 
   const checkMakes = (event) => {
-    console.log("Check makes")
-    console.log(event.target.checked)
-    console.log(event.target.value)
+  
     if(event.target.checked){
-      console.log(filters.brand)
+    
       if(filters.brand){
-        console.log(filters.brand)
+
         let fil = [...filters.brand];
         fil.push(event.target.value);
         setFilters({
@@ -336,17 +355,16 @@ function Build() {
         })
       }
       else {
-        console.log("should come here")
-        console.log(event.target.value)
+ 
         setFilters({
           ...filters,
           brand: [event.target.value]
         })
-        console.log(filters)
+
       }
     }
     else {
-      console.log(filters.brand)
+
       if(filters.brand){
         let fil = [...filters.brand];
         let index = fil.indexOf(event.target.value);
@@ -359,11 +377,11 @@ function Build() {
         })
       }
     }    
-    console.log("FILTERS IN CHECK MAKES")
-    console.log(filters)
+
   };
 
   const checkTags = (event) => {
+
     if(event.target.checked){
       if(filters.tag){
         let fil = [...filters.tag];
@@ -392,7 +410,10 @@ function Build() {
           tag: fil
         })
       }
+
+      
     }
+ 
   }
 
   const changePrice = (event) => {
@@ -413,14 +434,12 @@ function Build() {
   }
 
   const applyFilters = () => {
-    // console.log("APPLKY FILTERS")
-    // console.log(filters)
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
   const resetFilters = () => {
     setFilters({});
-    router.push('[index]','all' , { shallow: true })
+    router.push('[all]','all' , { shallow: true })
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
   }
 
@@ -669,8 +688,7 @@ function Build() {
                 </div>)
               })
             }
-            {console.log(dataOptions)}
-            {console.log(filters)}
+
             <div className={classes.paginationArea} >
               <Pagination count={totalPages} />
             </div>

@@ -203,7 +203,7 @@ class MegaMenu extends Component {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link href="/build/all">
+                      <Link href="/build/all/all">
                         <a className="btn nav-btn">
                           <span>Build</span>
                         </a>

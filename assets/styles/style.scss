@@ -265,15 +265,14 @@ img {
   color: #ffffff;
 }
 
-.section-title h2 {
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 500;
-  font-family: "PlayfairDisplay-Regular";
-  margin: 20px 0;
-  color: #000000;
-  // color: #262626!important;
-}
+// .section-title h2 {
+//   text-transform: uppercase;
+//   font-size: 30px;
+//   font-weight: 500;
+//   font-family: "PlayfairDisplay-Regular";
+//   margin: 20px 0;
+//   color: #000000;
+// }
 .gallery-area .section-title h2{
   color: #ffffff !important;
 }
@@ -472,21 +471,21 @@ img {
 //   border: 1px solid #000000!important;
 // }
 
-// #__next .MuiToolbar-root >.col-2 >.prevBtn{
-//     color: #ffffff !important;
-//     background-color: #262626;
-//     border: 1px solid #000000
-// }
+#__next .MuiToolbar-root >.col-2 >.prevBtn{
+    color: #ffffff !important;
+    background-color: #262626;
+    border: 1px solid #000000
+}
 
-// #__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
-// #__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
-// #__next .MuiToolbar-root >.col-2 > .prevBtn.active{
-//   -webkit-box-shadow: unset;
-//   box-shadow: unset;
-//   background-color: #666666 !important;
-//   color: #ffffff !important;
+#__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
+#__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
+#__next .MuiToolbar-root >.col-2 > .prevBtn.active{
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666 !important;
+  color: #ffffff !important;
   
-//   }
+  }
 .btn-light {
   background-color: #ffffff;
   color: #262626 !important;
@@ -612,7 +611,6 @@ Single Car Page Area CSS
   height: 100%;
   margin: 0 auto;
 }
-
 // .sub-box .box{
 //   width: 100%;
 //   height: 100%;
@@ -696,9 +694,12 @@ About Honda Fit Area CSS
   color: #ffffff;
   font-size: 1.2rem;
 }
-.about-honda-fit-area > .container > .section-title > h2{
+.steps-area .section-title.without-bg h2 {
   color: #ffffff;
-  font-size: 1.8rem;
+  font-family: "PlayfairDisplay-Regular"
+}
+.about-honda-fit-area .section-title.without-bg h2 {
+  color: #ffffff;
 }
 
 /*================================================
@@ -8514,6 +8515,9 @@ Products Details Area CSS
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
+  // -webkit-box-direction: row;
+  // -ms-flex-direction: row;
+  // flex-direction: row;
   -webkit-box-direction: reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;

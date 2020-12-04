@@ -302,10 +302,17 @@ function Build() {
 
   }
 
-  // Old code all below
-
+  // Renders the first time the page loads
   useEffect(() => {
-    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip));
+    // testing some stuff
+    var x = 2.1;
+    x = Math.ceil(x);
+    console.log(x)
+
+    const result = api.get("/products/getallPreowned")
+    console.log(result)
+
+    dispatch(getAllPreownedCars(10, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
     dispatch(getMakes());
     dispatch(getTags());
   }, []);
@@ -315,7 +322,6 @@ function Build() {
     //return state.ProductState.allCarList.tableData;
     let list = [];
     let set = [];
-    //console.log(state.ProductState.allPreownedCarList)
     let tableData = state.ProductState.allPreownedCarList.tableData;
     for (let i = 0; i < tableData.length; i++) {
       set.push(tableData[i]);
@@ -373,6 +379,24 @@ function Build() {
   };
 
   const [orderBy, setOrderBy] = React.useState({ name: "None", value: "" });
+
+  const [page, setPage] = React.useState(1);
+
+  // // Get all data and calculate pages
+  // const result = api.get("/products/getallPreowned");
+  // let products = Product.find();
+  // console.log("total amount of preowned cars in db here")
+  // console.log(products.length)
+
+
+  // Function for pagination, calls redux
+  const handlePage = (event, page) => {
+    setPage(page);
+    dataOptions.skip = (page-1)*10
+
+
+    dispatch(getAllPreownedCars(10, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
+  }
 
   const onChangeOrder = (name, val) => {
     setOrderBy({ name: name, value: val });
@@ -629,7 +653,6 @@ function Build() {
                     </div>
                     <div class="right">
                       <p className="types">{car[0].tag ? (car[0].tag).toUpperCase() : ""}</p>
-                      {console.log(car[0].name)}
                       <h3 className="car-name">{(car[0].make + " " + car[0].model + " " + car[0].name).toUpperCase()}</h3>
                       <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
                     </div>
@@ -954,7 +977,11 @@ function Build() {
               })
             }
             <div className={classes.paginationArea} >
-              <Pagination count={3} />
+              {/* <Typography>Page: {page}</Typography> */}
+              <Pagination 
+                count={5} 
+                page={page}
+                onChange={handlePage} />
             </div>
           </div>
         </section>

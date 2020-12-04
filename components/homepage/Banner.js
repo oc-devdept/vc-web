@@ -56,6 +56,19 @@ class Banner extends Component {
           <Carousel.Item key={key}>
             
         { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
+        <div className="carousel-mobilecaption"> 
+          <h2 style={{ color: "#000", textTransform: "uppercase" }}>
+            {banner.caption1}
+          </h2>
+          <h1 style={{marginBottom: 10,paddingBottom: 2}} >
+            {banner.caption2}
+          </h1>
+        <Link href={banner.linkURL }>
+                      <a className="btn red-btn">
+                        Learn more &nbsp; <Icon icon={arrowRight} width="1.0rem"/>
+                      </a>
+                    </Link>
+         </div>
             <Carousel.Caption>
               <div className={ "container "+banner.captionPosition }>
                 <div className="row">
@@ -66,7 +79,7 @@ class Banner extends Component {
                     <h1
                       style={{
                         textTransform: "uppercase",
-                        marginBottom: 30,
+                        marginBottom: 5,
                         paddingBottom: 10
                       }}
                     >

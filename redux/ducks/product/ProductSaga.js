@@ -128,7 +128,7 @@ const getAllPreownedCarsRequest = async ({
   skip,
   filter,
   searchText,
-  orderBy
+  orderBy,
 }) => {
   const result = await api.get("/products/getallPreowned", {
     params: {
@@ -136,7 +136,7 @@ const getAllPreownedCarsRequest = async ({
       skip: skip,
       filter: filter,
       searchText: searchText,
-      orderBy: orderBy
+      orderBy: orderBy,
     }    
   });
   return result.data;
@@ -237,7 +237,6 @@ function* getAllCarsFromDB({ payload }){
 // New Stuff
 function* getAllPreownedCarsFromDB({ payload }){
   try {
-    // console.log(payload);
     const data = yield call(getAllPreownedCarsRequest, payload);
     yield put(actions.getAllPreownedCarsSuccess(data));
   }

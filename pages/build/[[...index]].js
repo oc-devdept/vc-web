@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
-import { withRouter } from 'next/router';
+
 import { formatPrice } from 'Components/Helpers/helpers';
 import { useRouter } from 'next/router'
 
@@ -180,6 +180,8 @@ const CustomCheckbox = withStyles({
 
 function Build() {
   const router = useRouter()
+  const {  index } = router.query;
+
   const dispatch = useDispatch();
   const [dataOptions, setDataOptions ] = useState({
     limit: 20,
@@ -193,10 +195,7 @@ function Build() {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
-    // const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-    // // console.log(window.location.pathname)
-    // // props.lastItem = lastItem;
-    // console.log(lastItem)
+
 
   }, []);
 
@@ -240,24 +239,28 @@ function Build() {
 
 
     if(allMakes.length < 1) return;
-    // const lastItem = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1 )
-    var path = window.location.pathname.split('/')
-    const carMake = path[2];
-    const carTag = path[3];
-
+    
+    const carMake = index[0];
+    //Only one  arg
+    if(carMake == "all" && index.length ==1 ) return;
+    var carTag ="";
+    if(index.length == 2 ){
+      carTag = index[1];
+    }
+    // SEARCH FOR ALL CARS
     if(carMake == "all" && carTag == "all"){
-      return;
+      return; 
     }
       // if (allMakes && lastItem != "all"){
       var result = allMakes.filter(make => {
         return make.name == carMake
       })
-      // console.log(result)
+  
       var tag = allTags.filter(tag => {
         return tag.name == carTag
       })
-
-   if(result.length < 1 && carMake!= "all" || tag.length < 1 && carTag!= "all" ){
+      //NO SEARCH RESULTS FOR BOTH CAR MAKE AND CAR TAG AND IT IS NOT ALL 
+   if(result.length < 1 && carMake!= "all" || (index.length > 1 && tag.length < 1 && carTag!= "all") ){
     router.push('[index]','all', { shallow: true })
     return;
    }
@@ -280,12 +283,14 @@ function Build() {
     };
     var brand = [];
     var vtype = [];
+    //There is a hit on car make
     if( result.length > 0){
     brand.push(result[0].id);
     event.target.value = result[0].id
 
     }
-    if(vtype != "all" && tag.length > 0 ){
+    //hit on car tag which isnt all 
+    if(tag.length > 0 ){
       vtype.push(tag[0].id);
       tagEvent.target.value = tag[0].id
     }
@@ -304,6 +309,8 @@ function Build() {
     // }
   }, 
   [allMakes,  allTags]);
+
+ 
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -411,9 +418,9 @@ function Build() {
         })
       }
 
-      
+     
     }
- 
+
   }
 
   const changePrice = (event) => {
@@ -434,6 +441,34 @@ function Build() {
   }
 
   const applyFilters = () => {
+
+    if( (filters.brand && filters.brand.length == 1) &&  (filters.tag && filters.tag.length == 1)){
+
+      var result = allMakes.filter( make => {
+        return make.id == filters.brand[0]
+      })
+      // console.log(result)
+      var tag = allTags.filter(tag => {
+        return tag.id == filters.tag[0]
+      })
+ 
+      // `/images/${path}`
+      // router.push('build/[[...index]]',`/${result[0].name}/${tag[0].name}`, { shallow: true })
+      router.push('index',`${result[0].name}/${tag[0].name}`, { shallow: true })
+    }else if( (filters.brand && filters.brand.length == 1) &&   !filters.tag ){
+      
+      var result = allMakes.filter( make => {
+        return make.id == filters.brand[0]
+      })
+      router.push('index',`${result[0].name}`, { shallow: true })
+    }else if( filters.tag.length == 1 &&   !filters.brand){
+
+          
+      var result = allTags.filter( make => {
+        return make.id == filters.tag[0]
+      })
+      router.push('index',`all/${result[0].name}`, { shallow: true })
+    }
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 

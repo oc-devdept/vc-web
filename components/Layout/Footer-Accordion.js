@@ -97,7 +97,7 @@ export default function CustomAccordion() {
             <AccordionDetails className={classes.details}>
                 <div className="footer-accordion-info">
                     <p><Link href="/"><a>Home</a></Link></p>
-                    <p><Link href="/build"><a>Build Car</a></Link></p>
+                    <p><Link href="/build/all"><a>Build Car</a></Link></p>
                     <p><Link href="/about"><a>About Us</a></Link></p>
                     <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
                 </div>

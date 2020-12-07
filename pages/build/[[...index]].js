@@ -181,7 +181,7 @@ const CustomCheckbox = withStyles({
 function Build() {
   const router = useRouter()
   const {  index } = router.query;
-
+  
   const dispatch = useDispatch();
   const [dataOptions, setDataOptions ] = useState({
     limit: 20,
@@ -259,52 +259,40 @@ function Build() {
       var tag = allTags.filter(tag => {
         return tag.name == carTag
       })
+      // console.log(tag);
       //NO SEARCH RESULTS FOR BOTH CAR MAKE AND CAR TAG AND IT IS NOT ALL 
    if(result.length < 1 && carMake!= "all" || (index.length > 1 && tag.length < 1 && carTag!= "all") ){
     router.push('[index]','all', { shallow: true })
     return;
    }
-      // router.push('all', undefined, { shallow: true })
       
-    var event = { 
 
-      target: {
-        checked: false,
-        value: ""
-      }
-    };
-          
-    var tagEvent = { 
-
-      target: {
-        checked: false,
-        value: ""
-      }
-    };
     var brand = [];
     var vtype = [];
     //There is a hit on car make
     if( result.length > 0){
     brand.push(result[0].id);
-    event.target.value = result[0].id
-
     }
-    //hit on car tag which isnt all 
+
+
+    // //hit on car tag  
     if(tag.length > 0 ){
       vtype.push(tag[0].id);
-      tagEvent.target.value = tag[0].id
+
     }
     var losd= {
       brand: brand,
       tag: vtype
     }
+
+
+  
+    setFilters({
+      ...filters,
+      tag: tag && tag.length ==1  ? tag[0].id : [],
+      brand: result && result.length ==1 ? result[0].id: []
+    })
     
-    event.target.checked = true;
-
-      checkMakes(event)
-
-      
-      // checkTags(tagEvent)
       dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
     // }
   }, 
@@ -349,7 +337,7 @@ function Build() {
 
 
   const checkMakes = (event) => {
-  
+
     if(event.target.checked){
     
       if(filters.brand){
@@ -391,6 +379,7 @@ function Build() {
 
     if(event.target.checked){
       if(filters.tag){
+
         let fil = [...filters.tag];
         fil.push(event.target.value);
         setFilters({
@@ -399,6 +388,7 @@ function Build() {
         })
       }
       else {
+ 
         setFilters({
           ...filters,
           tag: [event.target.value]
@@ -441,7 +431,7 @@ function Build() {
   }
 
   const applyFilters = () => {
-
+    //Have both make and model filters
     if( (filters.brand && filters.brand.length == 1) &&  (filters.tag && filters.tag.length == 1)){
 
       var result = allMakes.filter( make => {
@@ -582,6 +572,7 @@ function Build() {
                           control={<CustomCheckbox onChange={checkTags} name={tag.name} value={tag.id} />}
                           label={tag.name}
                           className={classes.checkbox}
+                          checked={filters.tag && filters.tag.includes(tag.id)}
                         />
                         ))
                       }                      

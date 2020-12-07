@@ -157,7 +157,7 @@ export default function Blog() {
         <h2>Blog Posts</h2>
       </div>
       {/* 增加了 align="center"*/}
-      <div className={classes.root}>
+      <div className={classes.root} title="blogContainer">
         <Tabs
             orientation="vertical"
             variant="scrollable"

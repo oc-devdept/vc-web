@@ -1927,35 +1927,82 @@
     margin-top:20px;
     display: block;
   }
- 
-    [class^="makeStyles-root-"]{
+  [class|="makeStyles-root"]{
       //  display: flex;
-      // flex-direction: column;
-      .MuiTabs-root.MuiTabs-vertical{
-      
-      width: 25%;
-      margin-right: 10px;
-      float: left;
+      //   flex-direction: row;
+      //   // background-color: red;
+        
+//  #vertical-tabpanel-undefined{
+//    .makeStyles-post-6{
+//     padding: 0;
+//     margin: 15px;
+//    }
+ #vertical-tabpanel-undefined > div  {
+   padding: 0;
+   [class|="makeStyles-post"]
+  //  p .makeStyles-post-130
+   {
+    padding: 0;
+    margin: 15px;
+    background-color:#bfa;
+    .text > .button > .btn{
+      display: block;
+      margin-left: 0;
+      width: 100%;
     }
-    #vertical-tabpanel-undefined{
-      // float: left;
-      margin-left:25%;
-      width: 70%;
-      .MuiBox-root{
-        width: 100%;
-      } 
-  //     .MuiTypography-body1 .text{
-  //       padding: 0;
-  //       .button > .btn{
-  //       display: block;
-  //       margin-left: 0;
-  //       width: 100%;
+   }
 
-  //       }
-  //     }
-    }
+
+  // background-color: red;
+  // padding: 0;
+  //       //   width: 65%;
+  //       //   // .MuiTypography-body1 .text{
+  //       //   //         padding: 0;
+  //       //   //         .button > .btn{
+  //       //   //         display: block;
+  //       //   //         margin-left: 0;
+  //       //   //         width: 100%;
+          
+  //       //   //         }
+  //       //   //       }
+
   }
+      }
 }
+ 
+  // #__next > 
+      // #__next > .section-title.without-bg + div{
+      //   color: red;
+      // }
+      // #__next > .makeStyles-root-{
+      //   background-color: red;
+      // }
+
+  //     .MuiTabs-root.MuiTabs-vertical{
+      
+  //     width: 25%;
+  //     margin-right: 10px;
+  //     float: left;
+  //   }
+  //   #vertical-tabpanel-undefined{
+  //     // float: left;
+  //     margin-left:25%;
+  //     width: 70%;
+  //     .MuiBox-root{
+  //       width: 100%;
+  //     } 
+  // //     .MuiTypography-body1 .text{
+  // //       padding: 0;
+  // //       .button > .btn{
+  // //       display: block;
+  // //       margin-left: 0;
+  // //       width: 100%;
+
+  // //       }
+  // //     }
+  //   }
+  // }
+// }
     
     
   

@@ -289,10 +289,11 @@ function Build() {
   
     setFilters({
       ...filters,
-      tag: tag && tag.length ==1  ? tag[0].id : [],
-      brand: result && result.length ==1 ? result[0].id: []
+      tag: tag && tag.length ==1  ? [tag[0].id] : [],
+      brand: result && result.length ==1 ? [result[0].id]: []
     })
-    
+    console.log("DISPATCH FROM HERE")
+    console.log(filters)
       dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
     // }
   }, 
@@ -459,6 +460,8 @@ function Build() {
       })
       router.push('index',`all/${result[0].name}`, { shallow: true })
     }
+    console.log("APPLY FILTERS")
+    console.log(filters)
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 

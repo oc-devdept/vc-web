@@ -189,7 +189,7 @@ const Summary = props => {
               </button>
             </div>
             <div className="d-flex">
-              <button                
+              <button  className="makeEnquiryBtn"               
                 onClick={_RestartToggle}
                 style={{
                   border: "1px solid #4b6674",

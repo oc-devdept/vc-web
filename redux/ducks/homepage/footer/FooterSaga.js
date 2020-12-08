@@ -8,7 +8,7 @@ import {
 import * as actions from './FooterActions';
 
 const getFooterHtml = async() => {
-    const result = await api.get("/templatecomponents/getHtml/FooterContainer");
+    const result = await api.get("/footersections/getFooter");
     return result.data;
 }
 function* getFooterFromDB(){

@@ -77,15 +77,26 @@ const getProductGradeDataRequest = async payload => {
 
 const printConfiguratorPDF = async (userData, pdfData) => {
   //const result = await api.post("/create-pdf", pdfData);
-  console.log(userData);
+
   const result = await api.post("/carconfigurators/generatePDF", {
     userdata: userData,
     pdfdata: pdfData
   });
-  
+
   return result.data;
 };
+// getPDFConfigurationRequest
+const getPDFConfigurationRequest = async (id) => {
+  //const result = await api.post("/create-pdf", pdfData);
+  console.log(id);
+  const result = await api.post("/carconfigurators/retrievePDFConfiguration", {
+    id,
+  });
+  console.log("IN PRODUCT SAGA")
+  console.log(result)
 
+  return result.data;
+};
 const fetchConfiguratorPDF = async dirName => {
   var filedata = await api.get("/fetch-pdf/" + dirName, {
     responseType: "blob"
@@ -201,9 +212,23 @@ function* generateConfiguratorPDF({payload}) {
     
     var data = yield call(printConfiguratorPDF, {email: payload }, productState);
     //yield call(fetchConfiguratorPDF, data);
-    yield put(actions.printConfiguratorSuccess());
+    yield put(actions.printConfiguratorSuccess(data));
   } catch (error) {
     yield put(actions.printConfiguratorFailure(error));
+  }
+}
+
+function* getPDFConfiguration({payload}) {
+  try {
+    // const getProductState = state => state.ProductState;
+    
+    // var productState = yield select(getProductState);
+    
+    var data = yield call(getPDFConfigurationRequest, { id: payload });
+    //yield call(fetchConfiguratorPDF, data);
+    yield put(actions.getConfigurationSuccess(data));
+  } catch (error) {
+    yield put(actions.getConfigurationFailure(error));
   }
 }
 function* getFeaturedCars() {
@@ -294,6 +319,9 @@ export function* getProductGradeDataWatcher() {
 export function* generateConfiguratorPDFWatcher() {
   yield takeEvery(types.PRINT_CONFIGURATOR, generateConfiguratorPDF);
 }
+export function* getConfigurationWatcher() {
+  yield takeEvery(types.GET_CONFIGURATION, getPDFConfiguration);
+}
 export function* getFeaturedCarsWatcher() {
   yield takeEvery(types.GET_FEATURED_CARS, getFeaturedCars);
 }
@@ -328,6 +356,7 @@ export default function* productSaga() {
     fork(getProductGradesWatcher),
     fork(getProductGradeDataWatcher),
     fork(generateConfiguratorPDFWatcher),
+    fork(getConfigurationWatcher),
     fork(getFeaturedCarsWatcher),
     fork(getInterestRateWatcher),
     fork(getAllCarsWatcher),

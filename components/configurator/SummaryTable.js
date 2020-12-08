@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import { formatPrice } from "Components/Helpers/helpers";
-
+import { useRouter } from 'next/router'
 
 import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";
 
@@ -18,6 +18,9 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const SummaryTable = props => {
   let data = {};
+  const router = useRouter()
+  console.log(router.query)
+  console.log(router.asPath)
   let subtotal = parseInt(props.ProductState.ProductGrade.price);
   if(props.ProductState.ProductExterior.selected){
         
@@ -143,9 +146,16 @@ const theme = createMuiTheme({
         <input type="text" onChange={(evt) => { setUserEmail(evt.target.value)}} value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
       </Popover>
         <div className="summaryTable">
+       
+          {props.ProductState.sendConfigurator.id &&  (
+               <ul>
+            <li>
+      <h3>Use This route for these settings:   {"http://localhost:3000/"+ router.asPath + "/" + props.ProductState.sendConfigurator.id}</h3></li></ul>)}
+          
           <ol>
             <li>
-                Car Grade
+              {console.log(props)}
+                Car Grade 
                 <div className="summaryDetail">
                    <img src={props.ProductState.ProductGrade.thumbs } />
                    <p className="details">

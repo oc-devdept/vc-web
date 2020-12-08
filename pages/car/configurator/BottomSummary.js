@@ -157,7 +157,7 @@ const BottomSummary = props => {
                         </li>
                     )
                 }
-
+ 
 
                 
             </ol>
@@ -165,7 +165,7 @@ const BottomSummary = props => {
             <div className="totalRow">
             <div className="grandTotal">Grand Total</div>
             <div className="price">{formatPrice(total)}</div>
-            {console.log(props.productState)}
+
             {/* {console.log(total)} */}
             </div>
         </div>

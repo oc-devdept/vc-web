@@ -52,7 +52,8 @@ import {
   updateLoanCalculator,
   printConfigurator,
   getInterestRate,
-  getAllConfig
+  getAllConfig,
+  getConfiguration
 } from "Ducks/product/ProductActions";
 
 import { getCheckoutData } from "Ducks/checkout/CheckoutActions";
@@ -76,14 +77,27 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    this.props.getProductModelData(this.props.selectedModelId);
+    
+    console.log("CAME GHERE")
+
+    if(this.props.selectedModelId.length ==2 ){
+        this.props.getConfiguration(this.props.selectedModelId[1])
+        // this.setState({
+        //    verticalStep: this.state.verticalStep +2,
+        //   activeStep: this.state.activeStep + 1
+        // })
+        // window.scrollTo(0, 0);
+    }
+
+    this.props.getProductModelData(this.props.selectedModelId[0]);
     !!this.props.selectedGradeId
       ? this.props.getProductGrades(
-        this.props.selectedModelId,
-        this.props.selectedGradeId
+        this.props.selectedModelId[0],
+        this.props.selectedGradeId[0]
       )
-      : this.props.getProductGrades(this.props.selectedModelId);
+      : this.props.getProductGrades(this.props.selectedModelId[0]);
     this.props.getAllConfig();
+    console.log("ALSO HERE")
   }
 
   componentDidUpdate(prevProps) {
@@ -295,6 +309,7 @@ class Product extends Component {
                           CheckoutState={CheckoutState}
                           updateLoanCalculator={this.props.updateLoanCalculator}
                           printConfigurator={this.props.printConfigurator}
+                          getConfiguration={this.props.getConfiguration}
                           getCheckoutData={this.props.getCheckoutData}
                           getInterestRate={this.props.getInterestRate}
                           goPrev={this.handlePrev}
@@ -358,7 +373,8 @@ export default connect(mapStateToProps, {
   printConfigurator,
   getCheckoutData,
   getInterestRate,
-  getAllConfig
+  getAllConfig,
+  getConfiguration
 })(Product);
 /*
 

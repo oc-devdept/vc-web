@@ -109,14 +109,30 @@ export const printConfigurator = (email) => {
   type: types.PRINT_CONFIGURATOR,
   payload: email
 }};
-export const printConfiguratorSuccess = () => ({
-  type: types.PRINT_CONFIGURATOR_SUCCESS
+export const printConfiguratorSuccess = (data) => ({
+  type: types.PRINT_CONFIGURATOR_SUCCESS,
+  payload: data
+
 });
 export const printConfiguratorFailure = e => ({
   type: types.PRINT_CONFIGURATOR_FAILURE,
   payload: e
 });
 
+// GRAB PDF PRODUCT STATE
+export const getConfiguration = (id) => {
+  return {
+  type: types.GET_CONFIGURATION,
+  payload: id
+}};
+export const getConfigurationSuccess = (data) => ({
+  type: types.GET_CONFIGURATION_SUCCESS,
+  payload: data
+});
+export const getConfigurationFailure = e => ({
+  type: types.GET_CONFIGURATION_FAILURE,
+  payload: e
+});
 // Featured Cars
 export const getFeaturedCars = () => ({
   type: types.GET_FEATURED_CARS

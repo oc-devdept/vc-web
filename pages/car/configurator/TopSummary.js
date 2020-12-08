@@ -61,7 +61,7 @@ const TopSummary = props => {
         <div className="topSummary">
             <div className="totalRow">
             <div className="grandTotal">Grand Total: {formatPrice(total)}</div>
-            {console.log(props.productState)}
+        
             {/* {console.log(total)} */}
             </div>
         </div>

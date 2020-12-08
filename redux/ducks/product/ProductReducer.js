@@ -89,12 +89,18 @@ const INIT_STATE = {
   },
   sendConfigurator: {
     loading: false,
+    id: "",
     message: ""
-  }
+  },
+  ConfigurationPDF: {
+    data: [],
+    loading: false
+  },
 };
 
 export default (state = INIT_STATE, action) => {
   // console.log("redux state= ", state)
+
   switch (action.type) {
     case types.GET_PRODUCT_MODEL_DATA:
       return {
@@ -525,11 +531,17 @@ export default (state = INIT_STATE, action) => {
         }
       }
     case types.PRINT_CONFIGURATOR_SUCCESS:
+      console.log("IN REDUCER")
+      console.log(action)
       return {
         ...state,
         sendConfigurator: {
           loading: false,
-          message: "Configurator PDF has been sent to your email."
+          message: `Configurator PDF has been sent to your email.`,
+          id:  action.payload.data.id
+        },
+        ConfigurationPDF:{
+          data: action.payload.data.productState.data
         }
       }
     case types.PRINT_CONFIGURATOR_FAILURE:
@@ -540,6 +552,31 @@ export default (state = INIT_STATE, action) => {
           message: "An error occurred."
         }
       }
+      //GET CONFIGURATION
+      case types.GET_CONFIGURATION:
+        return {
+          ...state,
+          sendConfigurator: {
+            loading: true,
+          }
+        }
+      case types.GET_CONFIGURATION_SUCCESS:
+        return {
+          ...state,
+          ConfigurationPDF: {
+            loading: false,
+            data: action.payload.data
+          }
+        }
+      case types.GET_CONFIGURATION_FAILURE:
+        return {
+          ...state,
+         ConfigurationPDF: {
+            loading: false,
+            ...state.ConfigurationPDF,
+            message: "An error occurred Loading configuration."
+          }
+        }
     default:
       return { ...state };
   }

@@ -78,15 +78,13 @@ class Product extends Component {
 
   componentDidMount() {
     
-    console.log("CAME GHERE")
 
     if(this.props.selectedModelId.length ==2 ){
         this.props.getConfiguration(this.props.selectedModelId[1])
-        // this.setState({
-        //    verticalStep: this.state.verticalStep +2,
-        //   activeStep: this.state.activeStep + 1
-        // })
-        // window.scrollTo(0, 0);
+        this.setState({
+          activeStep: this.state.activeStep + 3
+        })
+      return;
     }
 
     this.props.getProductModelData(this.props.selectedModelId[0]);
@@ -97,10 +95,11 @@ class Product extends Component {
       )
       : this.props.getProductGrades(this.props.selectedModelId[0]);
     this.props.getAllConfig();
-    console.log("ALSO HERE")
+
   }
 
   componentDidUpdate(prevProps) {
+    if(this.props.selectedModelId.length != 2 ){
     if (prevProps.ProductState.ProductGrade.data.fields === undefined && this.props.ProductState.ProductGrade.data.fields != undefined) {
       //get exteriors and interiors
       for (let i = 0; i < this.props.ProductState.ProductGrade.data.fields.length; i++) {
@@ -110,6 +109,7 @@ class Product extends Component {
       //this.props.selectedProductExterior(this.state.exterior);
       //this.props.selectedProductInterior(this.state.interior);
     }
+  }
   }
 
   updatePrice = (price) => {
@@ -163,13 +163,12 @@ class Product extends Component {
   }));
 
 
-    // console.log("ProductState= ", ProductState);
+
     return (
       <DefaultLayout crumbs="Car Configuration">
         <div className={useStyles.root}>
-        {console.log("wfwfqwefew")}
-        {console.log(ProductState)}
-          {console.log(ProductState.ProductGrade.price)}
+        {/* {console.log("[...id] PRODUCT STATE")}
+        {console.log(ProductState)} */}
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">

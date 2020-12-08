@@ -561,12 +561,33 @@ export default (state = INIT_STATE, action) => {
           }
         }
       case types.GET_CONFIGURATION_SUCCESS:
+        console.log(action)
         return {
           ...state,
           ConfigurationPDF: {
             loading: false,
             data: action.payload.data
-          }
+          },
+          ProductModel: action.payload.data.ProductModel
+          ,
+          ProductGrade: action.payload.data.ProductGrade,
+          ProductSpecification: action.payload.data.ProductSpecification,
+          ProductExterior: {
+            data: action.payload.data.ProductExterior.data,
+            selected: action.payload.data.ProductExterior.selected
+          },
+          ProductInterior:action.payload.data.ProductInterior,
+          ProductRims: action.payload.data.ProductRims,
+          ProductAccessories: action.payload.data.ProductAccessories,
+          ProductTotal: action.payload.data.ProductTotal,
+          CoeList: action.payload.data.CoeList,
+          ServicingList: action.payload.data.ServicingList,
+          WarrantyList: action.payload.data.WarrantyList,
+          CoeSelected: action.payload.data.CoeSelected,
+          AftersaleSelected: action.payload.data.AftersaleSelected,
+          LoanCalculator: action.payload.data.LoanCalculator,
+        
+
         }
       case types.GET_CONFIGURATION_FAILURE:
         return {

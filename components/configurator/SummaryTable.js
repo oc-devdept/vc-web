@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { formatPrice } from "Components/Helpers/helpers";
 import { useRouter } from 'next/router'
 
+
+
 import AccessoriesCartItem from "Components/configurator/AccessoriesCartItem";
 
 // npm install --save-dev @iconify/react @iconify/icons-ant-design
@@ -19,8 +21,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const SummaryTable = props => {
   let data = {};
   const router = useRouter()
-  console.log(router.query)
-  console.log(router.asPath)
+
   let subtotal = parseInt(props.ProductState.ProductGrade.price);
   if(props.ProductState.ProductExterior.selected){
         
@@ -148,13 +149,15 @@ const theme = createMuiTheme({
         <div className="summaryTable">
        
           {props.ProductState.sendConfigurator.id &&  (
+               <div>
                <ul>
             <li>
-      <h3>Use This route for these settings:   {"http://localhost:3000/"+ router.asPath + "/" + props.ProductState.sendConfigurator.id}</h3></li></ul>)}
-          
+           
+      <h5> Link to This Page:   {"http://localhost:3000"+ router.asPath + "/" + props.ProductState.sendConfigurator.id}</h5></li></ul></div>)}
+
           <ol>
             <li>
-              {console.log(props)}
+        
                 Car Grade 
                 <div className="summaryDetail">
                    <img src={props.ProductState.ProductGrade.thumbs } />
@@ -346,7 +349,6 @@ const theme = createMuiTheme({
 
           </ol>
         </div>
-       
       </div>
       </ThemeProvider>
   );

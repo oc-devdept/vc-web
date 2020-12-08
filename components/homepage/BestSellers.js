@@ -14,7 +14,6 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 class BestSeller extends Component {
   componentDidMount() {
-    console.log("NNQND")
     this.props.getFeaturedHtml();
   }
 
@@ -27,7 +26,24 @@ class BestSeller extends Component {
       padding: "5px",
     };
     
-    return (<div dangerouslySetInnerHTML={{__html: this.props.featuredHtml.html}} />);
+    let html = this.props.featuredHtml.html;
+    /*
+    var featured_car_1 = '<hr>{{featured-car-1}}';
+    var featured_car_2 = '<hr>{{featured-car-2}}';
+    var featured_car_3 = '<hr>{{featured-car-3}}';
+    var car_info_1 = '<p><svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="transform: rotate(360deg);" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path d="M437.3 30L202.7 339.3L64 200.7l-64 64L213.3 478L512 94z" fill="#48A62E"></path></svg>&nbsp; {{car_info_1}}</p>';
+    var car_info_2 = '<p><svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="transform: rotate(360deg);" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path d="M437.3 30L202.7 339.3L64 200.7l-64 64L213.3 478L512 94z" fill="#48A62E"></path></svg>&nbsp; {{car_info_2}}</p>';
+    var car_info_3 = '<p><svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="transform: rotate(360deg);" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path d="M437.3 30L202.7 339.3L64 200.7l-64 64L213.3 478L512 94z" fill="#48A62E"></path></svg>&nbsp; {{car_info_3}}</p>';
+    for(var i=0; i<html.length ; i++){
+      html = html.replace(car_info_1, "")
+      html = html.replace(car_info_2, "")
+      html = html.replace(car_info_3, "")
+      html = html.replace(featured_car_1, "")
+      html = html.replace(featured_car_2, "")
+      html = html.replace(featured_car_3, "")
+    }
+    */
+    return (<div dangerouslySetInnerHTML={{__html: html}} />);
   }
 }
 const mapStateToProps = ({ HomeState }) => {

@@ -70,7 +70,6 @@ class ContactUsDetails extends Component {
                     message: this.state.message                    
                  };
                  data.carInterest = document.getElementById("coI").value;
-                 data.ownerIdType = document.getElementById("ownerIdType").value;
                  
                  data.vpN = document.getElementById("vpN").value;
                  data.mileage = document.getElementById("mileage").value;
@@ -173,13 +172,6 @@ class ContactUsDetails extends Component {
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="ownerIdType">Owner ID Type</label>
-                                    <select name="ownerType" id="ownerIdType" class="form-control">
-                                        <option selected>SINGAPORE CITIZEN</option>
-                                        <option>SINGAPORE PERMANENT RESIDENT</option>
-                                    </select>
-                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="coI">Car of Interest *</label>
                                     <select name="carInterest" id="coI" class="form-control">

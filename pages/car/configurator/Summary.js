@@ -241,7 +241,7 @@ const Summary = props => {
             phone={phone}
           />
 
-          <Booking
+<Booking
             _HandleDayChange={_HandleDayChange}
             _HandleInputForm={_HandleInputForm}
             _setItemTimeSlot={_setItemTimeSlot}
@@ -271,65 +271,5 @@ const Summary = props => {
 export default connect(null, { saveCheckout })(Summary);
 
 /*
-<button
-                onClick={props.printConfigurator}                
-                style={{
-                  border: "1px solid #4b6674",
-                  minWidth: 65,
-                  maxWidth: 120,
-                  backgroundColor: "transparent"
-                }}
-              >
-                <i
-                  className="fas fa-save"
-                  style={{ color: "#4b6674", fontSize: 24 }}
-                />
-                <p
-                  style={{
-                    fontSize: 12,
-                    color: "#4b6674",
-                    textAlign: "center"
-                  }}
-                >
-                  SAVE
-                </p>
-              </button>
 
-<button
-                className="d-inline-flex flex-column align-items-center justify-content-center mr-3 px-3"
-                onClick={_RestartToggle}
-                style={{
-                  border: "1px solid #4b6674",
-                  minWidth: 65,
-                  maxWidth: 120,
-                  backgroundColor: "transparent"
-                }}
-              >
-
-<div className="p-3">
-      <p
-        style={{
-          color: "#F29D30",
-          textAlign: "center",
-          fontWeight: 600,
-          margin: 0
-        }}
-      >
-        OVERALL SUMMARY
-      </p>
-      {overallSummary.map((item, key) => (
-        <div key={key} className="d-flex justify-content-between">
-          <p style={{ color: "#ffffff", margin: 0, fontWeight: 600 }}>
-            {item.text}
-          </p>
-          {!!item.price ? (
-            <p style={{ color: "#ffffff" }}>
-              {formatPrice(item.price)}
-            </p>
-          ) : (
-            <p style={{ color: "#ffffff" }}>-</p>
-          )}
-        </div>
-      ))}
-    </div>
 */

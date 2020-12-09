@@ -2,9 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import Link from "next/link";
-
 import { formatPrice } from 'Components/Helpers/helpers';
-import { useRouter } from 'next/router'
 
 import { Icon } from '@iconify/react';
 import fuel15 from '@iconify/icons-maki/fuel-15';
@@ -41,10 +39,6 @@ import {
 } from "Ducks/product/ProductActions";
 import { shadows } from '@material-ui/system';
 
-import {
-  useParams
-} from "react-router-dom";
- 
 const muiTheme = createMuiTheme({
   overrides: {
     MuiSlider: {
@@ -179,9 +173,6 @@ const CustomCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 function Build() {
-  const router = useRouter()
-  const {  index } = router.query;
-  
   const dispatch = useDispatch();
   const [dataOptions, setDataOptions ] = useState({
     limit: 20,
@@ -191,15 +182,12 @@ function Build() {
     orderBy: []
   });
 
-  useEffect((props) => {
+
+  useEffect(() => {
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
     dispatch(getMakes());
     dispatch(getTags());
-
-
   }, []);
-
-
 
   const carList = useSelector(state => {
     //turn carlist into pairs
@@ -231,75 +219,10 @@ function Build() {
     }
     return total;
   })
-  const [filters, setFilters] = React.useState({});
+
   const allMakes = useSelector(state => state.ProductState.allMakes.data);
   const allTags = useSelector(state => state.ProductState.allTags.data);
 
-  useEffect( (props) => {
-
-
-    if(allMakes.length < 1) return;
-    
-    const carMake = index[0];
-    //Only one  arg
-    if(carMake == "all" && index.length ==1 ) return;
-    var carTag ="";
-    if(index.length == 2 ){
-      carTag = index[1];
-    }
-    // SEARCH FOR ALL CARS
-    if(carMake == "all" && carTag == "all"){
-      return; 
-    }
-      // if (allMakes && lastItem != "all"){
-      var result = allMakes.filter(make => {
-        return make.name == carMake
-      })
-  
-      var tag = allTags.filter(tag => {
-        return tag.name == carTag
-      })
-      // console.log(tag);
-      //NO SEARCH RESULTS FOR BOTH CAR MAKE AND CAR TAG AND IT IS NOT ALL 
-   if(result.length < 1 && carMake!= "all" || (index.length > 1 && tag.length < 1 && carTag!= "all") ){
-    router.push('[index]','all', { shallow: true })
-    return;
-   }
-      
-
-    var brand = [];
-    var vtype = [];
-    //There is a hit on car make
-    if( result.length > 0){
-    brand.push(result[0].id);
-    }
-
-
-    // //hit on car tag  
-    if(tag.length > 0 ){
-      vtype.push(tag[0].id);
-
-    }
-    var losd= {
-      brand: brand,
-      tag: vtype
-    }
-
-
-  
-    setFilters({
-      ...filters,
-      tag: tag && tag.length ==1  ? [tag[0].id] : [],
-      brand: result && result.length ==1 ? [result[0].id]: []
-    })
-    console.log("DISPATCH FROM HERE")
-    console.log(filters)
-      dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
-    // }
-  }, 
-  [allMakes,  allTags]);
-
- 
   const classes = useStyles();
   const [anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -335,14 +258,11 @@ function Build() {
   }
   
 
-
+  const [filters, setFilters] = React.useState({});
 
   const checkMakes = (event) => {
-
     if(event.target.checked){
-    
       if(filters.brand){
-
         let fil = [...filters.brand];
         fil.push(event.target.value);
         setFilters({
@@ -351,16 +271,13 @@ function Build() {
         })
       }
       else {
- 
         setFilters({
           ...filters,
           brand: [event.target.value]
         })
-
       }
     }
     else {
-
       if(filters.brand){
         let fil = [...filters.brand];
         let index = fil.indexOf(event.target.value);
@@ -373,14 +290,11 @@ function Build() {
         })
       }
     }    
-
   };
 
   const checkTags = (event) => {
-
     if(event.target.checked){
       if(filters.tag){
-
         let fil = [...filters.tag];
         fil.push(event.target.value);
         setFilters({
@@ -389,7 +303,6 @@ function Build() {
         })
       }
       else {
- 
         setFilters({
           ...filters,
           tag: [event.target.value]
@@ -408,10 +321,7 @@ function Build() {
           tag: fil
         })
       }
-
-     
     }
-
   }
 
   const changePrice = (event) => {
@@ -432,42 +342,11 @@ function Build() {
   }
 
   const applyFilters = () => {
-    //Have both make and model filters
-    if( (filters.brand && filters.brand.length == 1) &&  (filters.tag && filters.tag.length == 1)){
-
-      var result = allMakes.filter( make => {
-        return make.id == filters.brand[0]
-      })
-      // console.log(result)
-      var tag = allTags.filter(tag => {
-        return tag.id == filters.tag[0]
-      })
- 
-      // `/images/${path}`
-      // router.push('build/[[...index]]',`/${result[0].name}/${tag[0].name}`, { shallow: true })
-      router.push('index',`${result[0].name}/${tag[0].name}`, { shallow: true })
-    }else if( (filters.brand && filters.brand.length == 1) &&   !filters.tag ){
-      
-      var result = allMakes.filter( make => {
-        return make.id == filters.brand[0]
-      })
-      router.push('index',`${result[0].name}`, { shallow: true })
-    }else if( filters.tag.length == 1 &&   !filters.brand){
-
-          
-      var result = allTags.filter( make => {
-        return make.id == filters.tag[0]
-      })
-      router.push('index',`all/${result[0].name}`, { shallow: true })
-    }
-    console.log("APPLY FILTERS")
-    console.log(filters)
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
   const resetFilters = () => {
     setFilters({});
-    router.push('[all]','all' , { shallow: true })
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
   }
 
@@ -479,7 +358,6 @@ function Build() {
           <div className="container">
             <div className="section-title without-bg" align="center">
                 <h2>CHOOSE A MODEL TO BUILD</h2>
-     
             </div>
             <div class="first_row">
               <div class="filter">
@@ -575,7 +453,6 @@ function Build() {
                           control={<CustomCheckbox onChange={checkTags} name={tag.name} value={tag.id} />}
                           label={tag.name}
                           className={classes.checkbox}
-                          checked={filters.tag && filters.tag.includes(tag.id)}
                         />
                         ))
                       }                      
@@ -727,8 +604,6 @@ function Build() {
     </MuiThemeProvider>
   );
 }
-
-
 
 export default Build;
 /*

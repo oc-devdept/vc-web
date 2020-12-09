@@ -120,7 +120,7 @@ class ContactUsDetails extends Component {
                 </p>
                         <p>
                             <Icon icon={locationIcon} />&nbsp;&nbsp;
-                            33 Ubi Ave , #01-47/48 Vertex Singapore 408868
+                            33 Ubi Ave , #01-01 Vertex Singapore 408868
                 </p>
                     </div>
                     <hr />

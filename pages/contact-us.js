@@ -113,7 +113,7 @@ function ContactUs({ }) {
                 <ul className="contact-list">
                   <li>
                     <i className="fas fa-map-marker-alt"></i> 33 Ubi Ave ,
-                    #01-47/48 Vertex Singapore 408868
+                    #01-01 Vertex Singapore 408868
                   </li>
                   <li>
                     <i className="fas fa-phone"></i>{" "}

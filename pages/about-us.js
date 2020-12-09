@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
+import { urlObjectKeys } from "next/dist/next-server/lib/utils";
 
 // Components
 
@@ -10,7 +11,7 @@ class AboutUs extends Component {
         return (
           <DefaultLayout>
             <section className="about-us-area">
-              <img className="about-us-banner" src="/static/about-us/about-us-banner.jpg" />
+              <div className="about-us-banner" style={{backgroundImage: "url(/static/about-us/about-us-banner.jpg)" }} />
               <div className="about-history" align="center">
                 <h2>Since 2009</h2>
                 <div className="row">

@@ -204,7 +204,7 @@ function Build() {
   const carList = useSelector(state => {
     //turn carlist into pairs
     //return state.ProductState.allCarList.tableData;
-  
+    
     let list = [];
     let set = [];
     let tableData = state.ProductState.allCarList.tableData;
@@ -292,8 +292,7 @@ function Build() {
       tag: tag && tag.length ==1  ? [tag[0].id] : [],
       brand: result && result.length ==1 ? [result[0].id]: []
     })
-    console.log("DISPATCH FROM HERE")
-    console.log(filters)
+
       dispatch(getAllCars(dataOptions.limit, dataOptions.skip, losd, dataOptions.searchText, dataOptions.orderBy));
     // }
   }, 
@@ -460,8 +459,7 @@ function Build() {
       })
       router.push('index',`all/${result[0].name}`, { shallow: true })
     }
-    console.log("APPLY FILTERS")
-    console.log(filters)
+
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
@@ -731,63 +729,3 @@ function Build() {
 
 
 export default Build;
-/*
-<
-            <div class="row">
-              <div class="column">
-                <div class="left">
-                  <img src="/static/feature-cars/honda-fit.png"/>
-                </div>
-                <div class="right">
-                  <p className="types">MPV / SUV</p>
-                  <h3 className="car-name">TOYOTA ALPHARD</h3>
-                  <h5 className="car-price"> fr $175,888</h5>
-                </div>
-                <div class="build-content">
-                  <p class="part1-left"><span class="engCap"><Icon icon={engineIcon} color="#595959"/> &nbsp; Eng Cap: 2493cc</span></p>
-                  <p class="part1-right"><span class="power"><Icon icon={powerIcon} color="#595959"/> &nbsp; Power: 180bhp</span></p>
-                  <p class="part2-left"><Icon icon={fuel15} color="#595959"/> &nbsp; Fuel Consumption: 11.6 km / litre</p>
-                </div>
-                <div className="button">
-                  <Link href="/">
-                  <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
-                  </a>
-                  </Link>
-                  <Link href="/">
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                </div>
-              </div>
-              <div class="column">
-                <div class="left">
-                  <img src="/static/feature-cars/honda-fit.png"/>
-                </div>
-                <div class="right">
-                  <p className="types">MPV / SUV</p>
-                  <h3 className="car-name">TOYOTA ALPHARD</h3>
-                  <h5 className="car-price"> fr $175,888</h5>
-                </div>
-                <div class="build-content">
-                  <p class="part1-left"><span class="engCap"><Icon icon={engineIcon} color="#595959"/> &nbsp; Eng Cap: 2493cc</span></p>
-                  <p class="part1-right"><span class="power"><Icon icon={powerIcon} color="#595959"/> &nbsp; Power: 180bhp</span></p>
-                  <p class="part2-left"><Icon icon={fuel15} color="#595959"/> &nbsp; Fuel Consumption: 11.6 km / litre</p>
-                </div>
-                <div className="button">
-                  <Link href="/">
-                  <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
-                  </a>
-                  </Link>
-                  <Link href="/">
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-*/

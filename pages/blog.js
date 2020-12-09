@@ -73,9 +73,9 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    // display: 'flex',
     justifyContent: "center",
   },
   tab: {
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
       textTransform: 'capitalize',
   },
   tabPanel: {
-    width: '50%',
+    // width: '50%',
   },
   indicator: {
     backgroundColor : '#000000',

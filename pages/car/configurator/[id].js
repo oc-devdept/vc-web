@@ -99,17 +99,18 @@ class Product extends Component {
   }
 
   updatePrice = (price) => {
-
     this.setState({totalPrice : price})
   }
 
   handleNext = () => {
     if (this.state.verticalStep < 3) {
+      console.log("vertical step here")
       this.setState({
         verticalStep: this.state.verticalStep + 1
       })
     }
     else {
+      console.log("active step here")
       this.setState({
         activeStep: this.state.activeStep + 1
       });
@@ -148,14 +149,10 @@ class Product extends Component {
       },
   }));
 
-
-    // console.log("ProductState= ", ProductState);
+  
     return (
       <DefaultLayout crumbs="Car Configuration">
         <div className={useStyles.root}>
-        {console.log("wfwfqwefew")}
-        {console.log(ProductState)}
-          {console.log(ProductState.ProductGrade.price)}
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">

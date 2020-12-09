@@ -76,7 +76,7 @@ class MegaMenu extends Component {
                 <Link href="/">
                   <a className="navbar-brand-mobile">
                     {/* <img src={"/static/logo-mobile"} alt="logo" /> */}
-                    <img src={"/static/VC Car Logotype - White-new.png"} alt="logo" />
+                    <img src={"/static/logo-mobile-white.png"} alt="logo" />
                   </a>
                 </Link>
                 <Link href="/profile">

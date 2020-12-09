@@ -9992,6 +9992,7 @@ Customer Service Area CSS
   color: #222222;
 }
 
+
 /*================================================
 Footer Area CSS
 =================================================*/
@@ -10027,11 +10028,20 @@ Footer Area CSS
   color: #ffffff;
 }
 
+.single-footer-widget .quick-links p {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
 
+.single-footer-widget .quick-links p a {
+  color: #999999;
+  display: inline-block;
+}
 
-.single-footer-widget a:hover,
-.single-footer-widget a:focus {
-  text-decoration: underline;
+.single-footer-widget .quick-links p a:hover,
+.single-footer-widget .quick-links p a:focus {
+  color: #ffffff !important;
 }
 
 .single-footer-widget .information-links p {

@@ -153,9 +153,6 @@ class Product extends Component {
     return (
       <DefaultLayout crumbs="Car Configuration">
         <div className={useStyles.root}>
-        {console.log("wfwfqwefew")}
-        {console.log(ProductState)}
-          {console.log(ProductState.ProductGrade.price)}
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">
@@ -168,7 +165,10 @@ class Product extends Component {
                         </Typography>
                         </div>
                         <div class="col-2">
-                        <button type="submit" className="btn btn-primary nextBtnTop" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
+                          {
+                            this.state.activeStep <= 2 &&  <button type="submit" className="btn btn-primary nextBtnTop" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
+                          }
+                       
                         </div>
                     </Toolbar>
                 </AppBar>

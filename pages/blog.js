@@ -128,6 +128,8 @@ export default function Blog() {
     let result = await api.get(`/carblogs/initialTags`);
     setTags(result.data.data.tags);
     setTotalNumber(result.data.data.totalNumber);
+    console.log("in get tag data")
+    console.log(result.data.data.totalNumber)
     setBlogs(result.data.data.blogs);
   };
 
@@ -136,6 +138,8 @@ export default function Blog() {
       let result = await api.post(`/carblogs/getPageTagData`, {data: tags[newValue]});
       setBlogs(result.data.data.blogs);
       setTotalNumber(result.data.data.totalNumber);
+      console.log("in handle change")
+      console.log(result.data.data.totalNumber)
   };
 
   const handlePage = async (event, number) => {
@@ -144,6 +148,7 @@ export default function Blog() {
         tag: tags[value]
     };
     setPage(number);
+
     let result = await api.post(`/carblogs/getPaginationData`, {data: params});
     setBlogs(result.data.data.blogs);
     setTotalNumber(result.data.data.totalNumber);

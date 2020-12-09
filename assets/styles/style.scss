@@ -328,7 +328,7 @@ img {
 
 // Enquire Btn
 .enquireBtn {
-  color: #ffffff ;
+  color: #ffffff !important;
   background-color: #000000;
   margin-right: 10px;
 }
@@ -337,7 +337,7 @@ img {
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #666666;
-  color: #ffffff ;
+  color: #ffffff !important;
   border: 1px solid #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
@@ -466,10 +466,10 @@ img {
   box-shadow: 0 0 10px rgba(103, 103, 103, 0.3);
 }
 
-// .nextBtnTop {
-//   float: right;
-//   border: 1px solid #000000!important;
-// }
+.nextBtnTop {
+  float: right;
+  border: 1px solid #000000!important;
+}
 
 #__next .MuiToolbar-root >.col-2 >.prevBtn{
     color: #ffffff !important;
@@ -608,13 +608,9 @@ Single Car Page Area CSS
   flex-wrap: wrap;
   justify-content: space-around;
   width: 80%;
-  height: 100%;
   margin: 0 auto;
 }
-// .sub-box .box{
-//   width: 100%;
-//   height: 100%;
-// }
+
 .grade-box {
   border: 2px solid #c0c0c0;
   margin-bottom: 20px;
@@ -624,16 +620,34 @@ Single Car Page Area CSS
 .grade-content {
   // border: 2px solid #c0c0c0;
   text-align: center;
-  padding: 20px 50px;
+  padding:0 25px 0 0;
   margin: 10px;
   width: 100%;
   height: 100%;
+  div .bar{
+    padding:5px;
+    border:1px solid #c0c0c0;
+    // background-color: red;
+    height: 19%;
+    }
+  }
+
+.grade-content > .grade-content-imgBox , 
+.grade-content > .grade-content-btnBox
+{
+  width: 50%  ;
+  height: 45%;
+  float: left ;
+  margin-top: 0;
 }
-.grade-content >div{
+.grade-content > .grade-content-techBox , 
+.grade-content > .grade-content-featuresBox
+{
   width: 50%  ;
   height: 50%;
   float: left ;
-  margin-top: 1%;
+  margin-top: 30px;
+  padding-left: 10px;
 }
 
 .grade-content img {
@@ -647,7 +661,7 @@ Single Car Page Area CSS
 .grade-content .bar {
   border: 2px solid #c0c0c0;
   text-align: left;
-  padding: 10px 0 10px 20px;
+  padding: 0 0 10px 20px;
   margin-bottom: 10px;
 }
 .grade-content .bar p {
@@ -693,6 +707,9 @@ About Honda Fit Area CSS
 .about-honda-fit-area > .container > .about-table > div > h2{
   color: #ffffff;
   font-size: 1.2rem;
+}
+.about-honda-fit-area > .container > .about-table > div > p{
+  color: #c0c0c0; 
 }
 .steps-area .section-title.without-bg h2 {
   color: #ffffff;
@@ -761,7 +778,7 @@ Gallery Area CSS
 
 .slick-slide-image {
   margin: 0 auto;
-  min-height: 400px;
+  // min-height: 400px;
   max-height:600px;
 }
 
@@ -781,8 +798,9 @@ Gallery Area CSS
 
 
 .thumbnail-slider-wrap {
-  margin-top: 40px;
+  // margin-top: 40px;
   margin: 40px auto;
+  
 }
 
 .slick-slide h5 {
@@ -1129,6 +1147,17 @@ PNSP Area CSS
 /*================================================
 Blog Area CSS
 =================================================*/
+
+#__next > [class|="makeStyles-root"]{
+  display: flex;
+  flex-direction: row;
+  //  background-color: red;
+  justify-content: center;
+ }
+#vertical-tabpanel-undefined > .MuiBox-root{
+  padding: 24px;
+}
+
 .blogTabPanel h3 {
   margin-bottom: 20px;
 }
@@ -9992,14 +10021,26 @@ Footer Area CSS
   font-size: 13px;
 }
 
-.single-footer-widget a {
+.single-footer-widget .quick-links {
   padding: 0;
   margin: 0;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
-.single-footer-widget a:hover {
-  text-decoration: underline;
+.single-footer-widget .quick-links p {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.single-footer-widget .quick-links p a {
+  color: #999999;
+  display: inline-block;
+}
+
+.single-footer-widget .quick-links p a:hover,
+.single-footer-widget .quick-links p a:focus {
+  color: #ffffff !important;
 }
 
 .single-footer-widget .information-links p {

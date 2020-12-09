@@ -392,6 +392,9 @@ color: #ffffff !important;
 .configure-area .nextBtn {
     float:right;
 }
+.Mui-selected{
+    outline: none !important;
+}
 
 .popTitle {
     font-weight: 600;
@@ -400,6 +403,7 @@ color: #ffffff !important;
 .popTitleMsg {
     color: rgb(255, 65, 65);
 }
+
 
 @media only screen and (max-width: 426px) {
     .step-process {

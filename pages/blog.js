@@ -73,9 +73,9 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    // display: 'flex',
     justifyContent: "center",
   },
   tab: {
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
       textTransform: 'capitalize',
   },
   tabPanel: {
-    width: '50%',
+    // width: '50%',
   },
   indicator: {
     backgroundColor : '#000000',
@@ -148,8 +148,6 @@ export default function Blog() {
     let result = await api.post(`/carblogs/getPaginationData`, {data: params});
     setBlogs(result.data.data.blogs);
     setTotalNumber(result.data.data.totalNumber);
-    console.log("in handle page")
-    console.log(result.data.data.totalNumber)
   };
 
   return (
@@ -159,7 +157,7 @@ export default function Blog() {
         <h2>Blog Posts</h2>
       </div>
       {/* 增加了 align="center"*/}
-      <div className={classes.root}>
+      <div className={classes.root} title="blogContainer">
         <Tabs
             orientation="vertical"
             variant="scrollable"
@@ -215,10 +213,7 @@ export default function Blog() {
             )
           }
           <div className={classes.paginationArea}>
-            <Pagination 
-              count={totalNumber} 
-              page={page} 
-              onChange={handlePage} />
+            <Pagination count={totalNumber} page={page} onChange={handlePage} />
           </div>
         </TabPanel>
        {/* <TabPanel className="blogTabPanel" value={value} index={1}>

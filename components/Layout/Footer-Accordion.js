@@ -71,7 +71,7 @@ const theme = createMuiTheme({
 });
 
 
-export default function CustomAccordion(props) {
+export default function CustomAccordion() {
   const classes = useStyles();
 
   const [expanded, setExpanded] = React.useState(false);
@@ -79,7 +79,6 @@ export default function CustomAccordion(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  let html = props.data;
 
   return (
     <ThemeProvider theme={theme}>
@@ -92,14 +91,15 @@ export default function CustomAccordion(props) {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                { html.length > 0 && html[0].title }
+                    Quick Links
                 </Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.details}>
                 <div className="footer-accordion-info">
-                {
-                                    html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[0].html}} />)
-                                }  
+                    <p><Link href="/"><a>Home</a></Link></p>
+                    <p><Link href="/build"><a>Build Car</a></Link></p>
+                    <p><Link href="/about"><a>About Us</a></Link></p>
+                    <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
                 </div>
             </AccordionDetails>
         </Accordion>
@@ -111,14 +111,19 @@ export default function CustomAccordion(props) {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                { html.length > 1 && html[1].title }
+                    Showroom Hours
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <div className="footer-accordion-info">
-                {
-                      html.length > 1 && (<div dangerouslySetInnerHTML={{__html: html[1].html}} />)
-                      }   
+                    <p>
+                        <strong>Monday - Saturday :</strong><br/>
+                        09:00AM - 07:00PM
+                    </p>
+                    <p>
+                        <strong>Sunday &amp; Public Holidays :</strong><br/>
+                        09:00AM - 06:00PM
+                    </p>        
                 </div>   
             </AccordionDetails>
         </Accordion>
@@ -130,14 +135,19 @@ export default function CustomAccordion(props) {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                { html.length > 2 && html[2].title }
+                    Locate Us
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <div className="footer-accordion-info">
-                {
-                      html.length > 2 && (<div dangerouslySetInnerHTML={{__html: html[2].html}} />)
-                      }
+                    <p>
+                        Main Showroom<br />
+                        33 Ubi Ave , #01-47/48 Vertex Singapore 408868
+                    </p>
+                    <p>
+                        BWWS Workshop<br />
+                        291-293 Kaki Bukit Ave 1, Shun Li Industrial Park, Singapore 416080
+                    </p>   
                 </div>   
             </AccordionDetails>
         </Accordion>

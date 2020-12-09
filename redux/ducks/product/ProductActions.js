@@ -182,7 +182,7 @@ export const getAllCarsFailure = error => ({
 
 export const getAllPreownedCars = (limit, skip, filter, searchText, orderBy) => ({
   type: types.GET_ALL_PREOWNED_CARS,
-  payload: { limit, skip, filter, searchText, orderBy }
+  payload: { limit, skip, filter, searchText, orderBy}
 })
 export const getAllPreownedCarsSuccess = data => ({
   type: types.GET_ALL_PREOWNED_CARS_SUCCESS,

@@ -9992,26 +9992,14 @@ Footer Area CSS
   font-size: 13px;
 }
 
-.single-footer-widget .quick-links {
+.single-footer-widget a {
   padding: 0;
   margin: 0;
-  color: #ffffff !important;
-}
-
-.single-footer-widget .quick-links p {
   color: #ffffff;
-  margin-bottom: 8px;
-  font-size: 13px;
 }
 
-.single-footer-widget .quick-links p a {
-  color: #999999;
-  display: inline-block;
-}
-
-.single-footer-widget .quick-links p a:hover,
-.single-footer-widget .quick-links p a:focus {
-  color: #ffffff !important;
+.single-footer-widget a:hover {
+  text-decoration: underline;
 }
 
 .single-footer-widget .information-links p {

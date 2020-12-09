@@ -5,6 +5,9 @@ import { NotificationManager } from "react-notifications";
 import FooterAccordion from './Footer-Accordion';
 import api from 'Api'
 
+// Get redux stuff
+import { getFooterHtml } from "Ducks/homepage"
+
 const userDetails = {
     name: '',
     email: '',
@@ -20,6 +23,10 @@ class Footer extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getFooterHtml();
     }
 
     handleChange(e) {
@@ -47,9 +54,10 @@ class Footer extends Component {
     }
 
     render() {
-        return (
-            <footer className="footer-area">
-                {/* <div className="container"> */}
+        let html = this.props.footerHtml.html;
+        //return (<div dangerouslySetInnerHTML={{__html: html}} />);
+           return( <footer className="footer-area">
+              
                 <div className="top">
 
                     <Link href="/">
@@ -84,51 +92,38 @@ class Footer extends Component {
                 <div className="row footer-info-group">
                     <div className="col-lg-4 col-md-6">
                         <div className="single-footer-widget">
-                            <h3>Quick Links </h3>
-                            <div className="quick-links">
-                                <p><Link href="/"><a>Home</a></Link></p>
-                                <p><Link href="/build"><a>Build Car</a></Link></p>
-                                <p><Link href="/about"><a>About Us</a></Link></p>
-                                <p><Link href="/contact-us"><a>Contact Us</a></Link></p>
-                            </div>
+                        <h3>{ html.length > 0 && html[0].title } </h3>
+                           
+                                {
+                                    html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[0].html}} />)
+                                }                               
+                           
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-md-6">
                         <div className="single-footer-widget">
-                            <h3>Showroom Hours</h3>
-                            <p className="information-links">
-                                <strong>Monday - Saturday :</strong><br />
-                                09:00AM - 07:00PM
-                                </p>
-                            <p className="information-links">
-                                <strong>Sunday &amp; Public Holidays :</strong><br />
-                                09:00AM - 06:00PM
-                                </p>
+                        <h3>{ html.length > 1 && html[1].title } </h3>
+                                {
+                                    html.length > 1 && (<div dangerouslySetInnerHTML={{__html: html[1].html}} />)
+                                } 
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-md-6">
                         <div className="single-footer-widget">
-                            <h3>Locate Us</h3>
+                            <h3>{ html.length > 2 && html[2].title }</h3>
 
-                            <div className="footer-contact-info">
-                                <p>
-                                    Main Showroom<br />
-                                    33 Ubi Ave , #01-47/48 Vertex Singapore 408868
-                                    </p>
-                                <p>
-                                    BWWS Workshop<br />
-                                    291-293 Kaki Bukit Ave 1, Shun Li Industrial Park, Singapore 416080
-                                    </p>
-                            </div>
+                            {
+                                    html.length > 2 && (<div dangerouslySetInnerHTML={{__html: html[2].html}} />)
+                                } 
                         </div>
                     </div>
                 </div>
 
 
                 <div className="mobile-footer">
-                    <FooterAccordion />
+                    <FooterAccordion data={html} />
                 </div>
 
 
@@ -144,19 +139,21 @@ class Footer extends Component {
                         </div>
                     </div>
                 </div>
-                {/* </div> */}
+              
             </footer>
-        );
+           )
     }
 }
 
-export default Footer;
+// export default Footer;
+
+// export default connect(mapStateToProps, { getFeaturedHtml })(BestSeller);
 
 
-// const mapStateToProps = ({ HomeState }) => {
-//     const { FooterState } = HomeState;
-//     const { footerHtml } = FooterState;
-//     return { footerHtml };
-// };
-  
-// export default connect(mapStateToProps, { getFooterHtml })(Footer);
+const mapStateToProps = ({ HomeState }) => {
+    const { FooterState } = HomeState;
+    const { footerHtml } = FooterState;
+    return { footerHtml };
+};
+
+export default connect(mapStateToProps, { getFooterHtml })(Footer);

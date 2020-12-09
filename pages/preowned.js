@@ -243,9 +243,16 @@ function Build() {
   // Function for popover
   const [openpopover, setOpenPopOver] = React.useState(false);
 
-  const handleOpenPopOver = () => {
+  const handleOpenPopOver = (carModel) => {
+    console.log("inside the handle pop over function")
+    console.log(carModel);
+    onChangeContent('model', carModel);
     setOpenPopOver(true);
   };
+
+  // const onChangeContent = (element, value) => {
+  //   setContent(content => ({ ...content, [element]: value }));
+  // }
   const handleClosePopOver = () => {
     setOpenPopOver(false);
   };
@@ -664,9 +671,10 @@ function Build() {
 
                     </div>
                     <div className="button">
-                      <Button variant="outlined" color="primary" onClick={handleOpenPopOver}>
+                      <Button variant="outlined" color="primary" onClick={(e) => handleOpenPopOver(car[0].make + " " + car[0].model + " " + car[0].name)}>
                         <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; ENQUIRY
                     </Button>
+                    
                       <Dialog onClose={handleClosePopOver} aria-labelledby="customized-dialog-title" open={openpopover} maxWidth={'md'} fullWidth={'md'}>
                         <DialogTitle id="customized-dialog-title" onClose={handleClosePopOver}>
                           Preowned Car Enquiry Form
@@ -744,7 +752,7 @@ function Build() {
                                   className="form-control"
                                   id="carModel"
                                   required={true}
-                                  value={car[0].make + " " + car[0].model + " " + car[0].name}
+                                  value={model}
                                   // onChange={(e) => onChangeContent('model', e.target.value)}
                                   placeholder="Enter your car model" />
                               </div>
@@ -827,7 +835,7 @@ function Build() {
                         }
                       </div>
                       <div className="button">
-                        <Button variant="outlined" color="primary" onClick={handleOpenPopOver}>
+                        <Button variant="outlined" color="primary" onClick={(e) => handleOpenPopOver(car[1].make + " " + car[1].model + " " + car[1].name)}>
                           <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; ENQUIRY
                         </Button>
                         <Dialog onClose={handleClosePopOver} aria-labelledby="customized-dialog-title" open={openpopover} maxWidth={'md'} fullWidth={'md'}>
@@ -907,7 +915,7 @@ function Build() {
                                     className="form-control"
                                     id="carModel"
                                     required={true}
-                                    value={car[1].make + " " + car[1].model + " " + car[1].name}
+                                    value={model}
                                     // onChange={(e) => onChangeContent('model', e.target.value)}
                                     placeholder="Enter your car model" />
                                 </div>

@@ -4,8 +4,13 @@ import { NotificationManager } from "react-notifications";
 
 import api from 'Api'
 
-
-
+// npm install --save-dev @iconify/react @iconify-icons/entypo-social
+// import { Icon, InlineIcon } from '@iconify/react';
+// import facebookWithCircle from '@iconify-icons/entypo-social/facebook-with-circle';
+// Social Media Icons import
+import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 const InitForm = {
   name: '',
@@ -144,18 +149,23 @@ function ContactUs({ }) {
                 <h3>Follow Us:</h3>
                 <ul className="social d-inline">
                   <li className="mr-3">
-                    <a href="#">
-                      <i className="fab fa-facebook-f"></i>
+                    <a href="https://www.facebook.com/venturecarssg" target="_blank" style={{ backgroundColor: "#000000" }}>
+                      {/* <i className="fab fa-facebook-f"></i> */}
+                      <FacebookIcon />
+                      {/* <Icon icon={facebookIcon} /> */}
+                      {/* <Icon icon={facebookWithCircle} /> */}
                     </a>
                   </li>
                   <li className="mr-3">
-                    <a href="#">
+                    <a href="https://www.instagram.com/venturecarssg/" target="_blank" style={{ backgroundColor: "#000000" }}>
                       <i className="fab fa-instagram"></i>
+                      <InstagramIcon />
                     </a>
                   </li>
                   <li className="mr-3">
-                    <a href="#">
+                    <a href="https://www.youtube.com/watch?v=ahyYj585Kqg&ab_channel=YancongCai" target="_blank" style={{ backgroundColor: "#000000" }}>
                       <i className="fab fa-youtube"></i>
+                      <YouTubeIcon />
                     </a>
                   </li>
                 </ul>
@@ -262,9 +272,7 @@ function ContactUs({ }) {
                         />
                         <div className="help-block with-errors"></div>
                       </div>
-                    </div>
 
-                    <div className="col-lg-12 col-md-12">
                       <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                         <label class="form-check-label" for="exampleCheck1">
@@ -281,9 +289,40 @@ function ContactUs({ }) {
                           return <div style={{ color: "red" }}>{checkboxErr[key]}</div>
                         })}
                       </div>
+
+                      <div className="form-check">
+                      <button onClick={onSubmit} className="btn btn-primary">
+                        Send Message
+                      </button>
+                      <div
+                        id="msgSubmit"
+                        className="h3 text-center hidden"
+                      ></div>
+                      <div className="clearfix"></div>
+                      </div>
+                      
                     </div>
 
-                    <div className="col-lg-12 col-md-12">
+                    {/* <div className="col-lg-12 col-md-12">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                        <label class="form-check-label" for="exampleCheck1">
+                          I agree with Venture Car's{" "}
+                          <a className="d-inline" href="/">
+                            Privacy &amp; Service Policies
+                                    </a>{" "}
+                          and{" "}
+                          <a className="d-inline" href="/terms-n-conditions">
+                            Terms &amp; Conditions
+                                    </a>{" "}
+                        </label>
+                        {Object.keys(checkboxErr).map((key) => {
+                          return <div style={{ color: "red" }}>{checkboxErr[key]}</div>
+                        })}
+                      </div>
+                    </div> */}
+
+                    {/* <div className="col-lg-12 col-md-12">
                       <button onClick={onSubmit} className="btn btn-primary">
                         Send Message
                       </button>
@@ -293,7 +332,8 @@ function ContactUs({ }) {
                       ></div>
                       <div className="clearfix"></div>
 
-                    </div>
+                    </div> */}
+
                   </div>
                 </form>
               </div>

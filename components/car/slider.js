@@ -27,13 +27,23 @@ function ImageSlider(props) {
   };
 
   const settingsThumbs = {
-    slidesToShow: galleryPhoto.length,
-    slidesToScroll: 1,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     asNavFor: '.slider-for',
     dots: false,
     centerMode: true,
     swipeToSlide: true,
     focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      }
+
+    ]
   };
 
   return (
@@ -62,7 +72,7 @@ function ImageSlider(props) {
 
               {galleryPhoto.map((slide) =>
 
-                  <div className="slick-slide" key={slide.file.id}>
+                  <div key={slide.file.id}>
                     <img className="slick-slide-image" src={slide.file.path} />
                   </div>
 

@@ -40,6 +40,12 @@
     margin: 20px 0;
     color: #000000;
   }
+  .comero-nav .navbar .navbar-nav .nav-item:hover  .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+   
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -102,12 +108,7 @@
     left: 15px;
     width: 90%;
   }
-  .comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu {
-    height: auto;
-    overflow-y: auto;
-    width: 100%;
-    margin-top: 0;
-  }
+
   .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     margin-top: 10px;
     padding: 25px 0;

@@ -289,6 +289,18 @@ function ContactUs({ }) {
                           return <div style={{ color: "red" }}>{checkboxErr[key]}</div>
                         })}
                       </div>
+
+                      <div className="form-check">
+                      <button onClick={onSubmit} className="btn btn-primary">
+                        Send Message
+                      </button>
+                      <div
+                        id="msgSubmit"
+                        className="h3 text-center hidden"
+                      ></div>
+                      <div className="clearfix"></div>
+                      </div>
+                      
                     </div>
 
                     {/* <div className="col-lg-12 col-md-12">
@@ -310,7 +322,7 @@ function ContactUs({ }) {
                       </div>
                     </div> */}
 
-                    <div className="col-lg-12 col-md-12">
+                    {/* <div className="col-lg-12 col-md-12">
                       <button onClick={onSubmit} className="btn btn-primary">
                         Send Message
                       </button>
@@ -320,7 +332,8 @@ function ContactUs({ }) {
                       ></div>
                       <div className="clearfix"></div>
 
-                    </div>
+                    </div> */}
+
                   </div>
                 </form>
               </div>

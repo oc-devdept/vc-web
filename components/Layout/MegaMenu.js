@@ -31,7 +31,10 @@ class MegaMenu extends Component {
 
   toggleNavItem = (menuNum) => {
     let toggled = [...this.state.itemsToggle];
+    
+    toggled = toggled.map((item, index) => index !== menuNum ? false : item);
     toggled[menuNum] = !toggled[menuNum];
+    console.log(toggled);
     this.setState({
       itemsToggle: toggled
     })
@@ -122,7 +125,7 @@ class MegaMenu extends Component {
                     <li className="nav-item megamenu">
                       <Link href="/preowned">
                         <a className="nav-link">
-                          Pre-owned <Icon icon={baselineKeyboardArrowDown} />
+                          Pre-owned
                         </a>
                       </Link>
                       {/* <ul className={"dropdown-menu"  + (this.state.itemsToggle[0] ? " open": "")}>

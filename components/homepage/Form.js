@@ -156,7 +156,7 @@ class Form extends Component {
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                 <label class="form-check-label" for="exampleCheck1">
                                     I agree with Venture Car's{" "}
-                                    <a className="d-inline" href="/">
+                                    <a className="d-inline" href="/privacy-n-service-policies">
                                         Privacy &amp; Service Policies
                                     </a>{" "}
                                     and{" "}

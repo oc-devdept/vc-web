@@ -629,6 +629,7 @@ Single Car Page Area CSS
     border:1px solid #c0c0c0;
     // background-color: red;
     height: 19%;
+    min-height: 71px !important;
     }
   }
 
@@ -648,6 +649,7 @@ Single Car Page Area CSS
   float: left ;
   margin-top: 30px;
   padding-left: 10px;
+  // background-color: red;
 }
 
 .grade-content img {
@@ -937,7 +939,8 @@ Build Area CSS
   font-family: "PlayfairDisplay-Regular"; 
 }
 
-.build-area .build-content { 
+.build-area .build-content {  
+  background-color: #F6F8FC;
   padding: 20px;
   float:left;
   width:100%;
@@ -1811,12 +1814,12 @@ Navbar Area CSS
   top: -15px;
 }
 
-.comero-nav .navbar .navbar-nav .nav-item > .open{
+
+.comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu,  .comero-nav .navbar .navbar-nav .nav-item > .open{
   opacity: 1;
   visibility: visible;
   top: 100%;
 }
-
 
 .comero-nav .navbar .navbar-nav .nav-item:last-child .dropdown-menu {
   left: auto;
@@ -7295,7 +7298,7 @@ Contact Area CSS
 
 .contact-info .social li a {
   color: #666666;
-  // border: 1px solid #eeeeee;
+  border: 1px solid #eeeeee;
   width: 35px;
   height: 35px;
   font-size: 13px;
@@ -9831,6 +9834,9 @@ Login Area CSS
   color: #666666;
   position: relative;
   font-size: 15px;
+  outline: none;
+ 
+
 }
 
 .login-form .forgot-password::before {
@@ -10083,7 +10089,7 @@ Footer Area CSS
 }
 
 .left-section a {
- font-size: 14px;
+ font-size: 18px;
   color: #ffffff;
   margin-top: 15px !important;
 }

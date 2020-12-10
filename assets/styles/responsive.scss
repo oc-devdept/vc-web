@@ -1915,6 +1915,9 @@
             .grade-content-imgBox {
               box-sizing: content-box;
             }
+            .grade-content-featuresBox .bar{
+              min-height: 61px !important;
+            }
           }
         }
       }
@@ -2036,4 +2039,8 @@
         }
     }
 }
+.bookCarServicing-area .container .text-white{
+  font-size: 1.3rem;
+}
+
 }

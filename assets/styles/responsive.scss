@@ -1931,23 +1931,23 @@
             }
           }
         }
-        .thumbnail-slider-wrap {
-          overflow-x: scroll;
-          margin-bottom: 10px;
-          .slick-slider.slick-initialized {
-            height: 100%;
+        // .thumbnail-slider-wrap {
+        //   overflow-x: scroll;
+        //   margin-bottom: 10px;
+        //   .slick-slider.slick-initialized {
+        //     height: 100%;
             
-            .slick-list {
-              width: 1500px;
-              .slick-track {
-                margin-left: 0;
-              }
-              .slick-track > div {
-                width: 88px !important;
-              }
-            }
-          }
-        }
+        //     .slick-list {
+        //       width: 1500px;
+        //       .slick-track {
+        //         margin-left: 0;
+        //       }
+        //       .slick-track > div {
+        //         width: 88px !important;
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }

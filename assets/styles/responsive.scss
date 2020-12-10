@@ -1994,4 +1994,46 @@
       }
     }
   }
+
+  .build-area .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    .column {
+      img {
+        height:auto;
+        width:100%;
+      }
+        .left {
+            margin:10px 0;
+            width: 100%;
+        }
+        .right { 
+          .types {
+            float: none;
+            margin: 0 auto;
+          }
+          width:100%;
+          text-align: center;
+        }
+        
+
+        .button {
+            .btn {
+              width:80%;
+              flex-wrap: wrap;
+              margin: 10px auto;
+            }
+            margin: 20px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+        .build-content {
+            padding: 20px;
+            
+            width: 100%;
+        }
+    }
+}
 }

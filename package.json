@@ -62,6 +62,7 @@
     "react-cookie": "^4.0.3",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.1.0",
     "react-image-gallery": "^1.0.8",
     "react-image-lightbox": "^5.1.0",
     "react-image-magnify": "^2.7.4",
@@ -89,6 +90,8 @@
     "stripe": "^7.15.0"
   },
   "devDependencies": {
+    "@iconify-icons/cib": "^1.1.0",
+    "@iconify-icons/entypo-social": "^1.1.0",
     "@iconify/icons-bi": "^1.0.6",
     "@iconify/icons-bx": "^1.0.3",
     "@iconify/icons-carbon": "^1.0.6",

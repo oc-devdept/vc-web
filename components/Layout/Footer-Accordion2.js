@@ -20,26 +20,26 @@ export default function CustomAccordion(props) {
   //onClick={(props)=>{toggleView} }
   return (
     <React.Fragment>
-      <div class="mobileFooterHeader">
+      <div class="mobileFooterHeader" onClick={() => toggleView(0)}>
       { html.length > 0 && html[0].title }
-         <span onClick={() => toggleView(0)} ><ExpandMoreIcon /></span></div>
+         <span  ><ExpandMoreIcon /></span></div>
       <div className={"mobileFooterDetails optionDisplay"+ (isShowing[0] ? " show" : "")}>
       {
          html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[0].html}} />)
                                 }  
         </div>
-      <div class="mobileFooterHeader ">
+      <div class="mobileFooterHeader " onClick={()=> toggleView(1)}> 
       { html.length > 0 && html[1].title }
-         <span onClick={()=> toggleView(1)} ><ExpandMoreIcon /></span></div>
+         <span  ><ExpandMoreIcon /></span></div>
 
          <div className={"mobileFooterDetails optionDisplay"+ (isShowing[1] ? " show" : "")}>
          {
           html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[1].html}} />)
                                 }  
 </div >
-      <div class="mobileFooterHeader" >
+      <div class="mobileFooterHeader" onClick={() => toggleView(2)}>
       { html.length > 0 && html[2].title }
-         <span onClick={() => toggleView(2)} ><ExpandMoreIcon /></span></div>
+         <span  ><ExpandMoreIcon /></span></div>
 
          <div className={"mobileFooterDetails optionDisplay"+ (isShowing[2] ? " show" : "")} >
          {

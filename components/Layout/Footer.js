@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Link from "next/link";
 import { NotificationManager } from "react-notifications";
-import FooterAccordion from './Footer-Accordion';
+import FooterAccordion from './Footer-Accordion2';
 import api from 'Api'
 
 // Get redux stuff

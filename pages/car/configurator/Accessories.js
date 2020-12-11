@@ -206,7 +206,7 @@ class Accessories extends Component {
               <VariantInfo
                 images={data.options[
                   this.state.accessories[variance].selectedKey
-                ].files.map(item => item.path)}
+                ].images.map(item => item.path)}
                 name={data.options[this.state.accessories[variance].selectedKey].name}
               /> : (<div></div>)
               )) }

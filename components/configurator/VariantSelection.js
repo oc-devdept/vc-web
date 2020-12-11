@@ -187,7 +187,7 @@ const VariantSelection = ({
                 style={{ maxWidth: 120 }}
               >
                 <img
-                  src={ item.images.length > 0 ? item.images[0].path : item.files[0].path }
+                  src={ item.files.length > 0 ? item.files[0].path : "" }
                   alt={item.name}
                   id={item.id}
                   style={isSelected(item.id, selectedId)}

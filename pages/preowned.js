@@ -501,7 +501,7 @@ function Build() {
         <section className="build-area">
           <div className="container">
             <div className="section-title without-bg" align="center">
-              <h2>CHOOSE A MODEL TO BUILD</h2>
+              <h2>CHOOSE A PREOWNED CAR</h2>
             </div>
             <div class="first_row">
               <div class="filter">

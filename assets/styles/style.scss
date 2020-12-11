@@ -772,10 +772,15 @@ Gallery Area CSS
 
 .thumbnail-slider-wrap {
   margin-top: 15px;
-  height: 85px;
+  height: 90px;
+  overflow: hidden;
 }
 .thumbnail-slider-wrap .slick-track .slick-slide {
   text-align: center;
+}
+
+.thumbnail-slider-wrap .slick-slide > div {
+  margin-right:10px;
 }
 
 .slick-slide-image {
@@ -786,6 +791,7 @@ Gallery Area CSS
 
 .thumbnail-slider-wrap .slick-track .slick-slide img {
   max-height:160px;
+  width:auto;  
   min-height: auto;
 }
 .image-slider {

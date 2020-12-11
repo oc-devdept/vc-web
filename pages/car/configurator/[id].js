@@ -153,9 +153,6 @@ class Product extends Component {
     return (
       <DefaultLayout crumbs="Car Configuration">
         <div className={useStyles.root}>
-        {console.log("wfwfqwefew")}
-        {console.log(ProductState)}
-          {console.log(ProductState.ProductGrade.price)}
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">

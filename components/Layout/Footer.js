@@ -48,7 +48,7 @@ class Footer extends Component {
 
         } catch (e) {
             // failed
-            NotificationManager.error('Network error, please try again');
+            NotificationManager.error('Please try again');
         }
 
     }

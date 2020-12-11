@@ -267,6 +267,22 @@ function Build() {
     orderBy: []
   });
 
+  const [page, setPage] = React.useState(1);
+
+  // // Get all data and calculate pages
+  // const result = api.get("/products/getallPreowned");
+  // let products = Product.find();
+  // console.log("total amount of preowned cars in db here")
+  // console.log(products.length)
+
+
+  // Function for pagination, calls redux
+  const handlePage = (event, page) => {
+    setPage(page);
+    dataOptions.skip = (page-1)*20
+    dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, ["selling_Price ASC"]));
+  }
+
   // For React day picker input
   const [day, setDay] = useState();
   const currentYear = new Date().getFullYear();
@@ -338,6 +354,7 @@ function Build() {
     }
     return total;
   })
+  
 
   const allMakes = useSelector(state => state.ProductState.allMakes.data);
   const allTags = useSelector(state => state.ProductState.allTags.data);
@@ -953,7 +970,10 @@ function Build() {
               })
             }
             <div className={classes.paginationArea} >
-              <Pagination count={3} />
+            <Pagination 
+                count={totalPages} 
+                page={page}
+                onChange={handlePage} />
             </div>
           </div>
         </section>

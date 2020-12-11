@@ -22,12 +22,11 @@ export default function BlogPost(props)  {
     });
 
     useEffect(() => {
-        getSingleBlogData(props.selectedBlog.id);
+        getSingleBlogData(props.selectedBlog); // props.selectedBlog.id
     }, []);
 
     const getSingleBlogData = async (id) => {
         let result = await api.get(`/carblogs/getSingleBlog/?id=${id}`);
-        console.log('-----------------', result.data.data);
         setSingleData(result.data.data);
     };
 
@@ -48,7 +47,7 @@ export default function BlogPost(props)  {
                         <div className="left">
                             {
                                 singleData.file.length !== 0 && (
-                                    <img src={singleData.file[0].path} />
+                                    <img src={singleData.file[0].path} width="300" height="250"/>
                                 )
                             }
                         </div>

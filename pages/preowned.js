@@ -35,6 +35,23 @@ import Pagination from '@material-ui/lab/Pagination';
 import RctSectionLoader from "Components/RctSectionLoader";
 import { getAllCars, getMakes, getTags, getAllPreownedCars } from "Ducks/product/ProductActions";
 
+// Material UI Popover
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
+// React Day Picker Input
+import DayPicker from "react-day-picker";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import { DateUtils } from 'react-day-picker';
+import MomentLocaleUtils, { formatDate, parseDate } from 'react-day-picker/moment';
+import 'moment/locale/it';
+import { NotificationManager } from "react-notifications";
+import api from 'Api'
+
 const muiTheme = createMuiTheme({
   overrides: {
     MuiSlider: {
@@ -158,19 +175,88 @@ const CustomCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
+// Styles for popover
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
 
-//   async function fetchData() {
-//     // Test for getting preowned car data
-//     const testingResult = await api.get(`products/getallPreowned`);
-//     const preownedCars = testingResult.data.data;
-//     // for(var i=0; i<preownedCars.length; i++){
-//     //     array.push(preownedCars[i].name)
-//     // }
-//     //console.log(preownedCars);
-//     return preownedCars;
-// }
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
+
+// Form Stuff
+const Contact = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+}
+
+const Content = {
+  model: '',
+  date: '',
+  timeslot: 'AM',
+  description: '',
+}
+
 
 function Build() {
+
+  // Function for popover
+  const [openpopover, setOpenPopOver] = React.useState(false);
+
+  const handleOpenPopOver = (carModel) => {
+    console.log("inside the handle pop over function")
+    console.log(carModel);
+    onChangeContent('model', carModel);
+    setOpenPopOver(true);
+  };
+
+  // const onChangeContent = (element, value) => {
+  //   setContent(content => ({ ...content, [element]: value }));
+  // }
+  const handleClosePopOver = () => {
+    setOpenPopOver(false);
+  };
+
+  // Form Stuff Contact
+  const [Form, setForm] = useState(Contact);
+  const { firstName, lastName, email, phone } = Form
+  // Content
+  const [content, setContent] = useState(Content);
+  const { model, date, timeslot } = content
 
   const dispatch = useDispatch();
   const [dataOptions, setDataOptions] = useState({
@@ -180,6 +266,42 @@ function Build() {
     searchText: "",
     orderBy: []
   });
+
+  // For React day picker input
+  const [day, setDay] = useState();
+  const currentYear = new Date().getFullYear();
+  const currentMonth = (new Date().getMonth()) + 1;
+  const currentDay = new Date().getUTCDate();
+
+  const onChangeForm = (element, value) => {
+    setForm(Form => ({ ...Form, [element]: value }));
+  }
+
+  const onChangeContent = (element, value) => {
+    setContent(content => ({ ...content, [element]: value }));
+  }
+
+  // Set State for DayPickerInput
+  const handleDayChange = (selectedDay, modifiers, dayPickerInput) => {
+    content.date = selectedDay;
+  }
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      console.log('Send to server! ', Form)
+      await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content, service: 'Maintenance', status: 'Awaiting' } });
+      // success
+      setForm(() => Contact);
+      NotificationManager.success('Contact form sent successfully');
+
+    } catch (e) {
+      // failed
+      NotificationManager.error('Network error, please try again');
+
+    }
+
+  }
 
   useEffect(() => {
     dispatch(getAllPreownedCars(dataOptions.limit, dataOptions.skip));
@@ -358,7 +480,7 @@ function Build() {
         <section className="build-area">
           <div className="container">
             <div className="section-title without-bg" align="center">
-              <h2>CHOOSE A MODEL TO BUILD</h2>
+              <h2>CHOOSE A PREOWNED CAR</h2>
             </div>
             <div class="first_row">
               <div class="filter">
@@ -529,21 +651,139 @@ function Build() {
 
                     </div>
                     <div className="button">
-                      {
-                        car[0].page && (
-                          <Link href={car[0].page}>
-                            <a className="btn gw-without-bg-btn">
-                              <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; VIEW DETAILS
-                    </a>
-                          </Link>)
-                      }
-                      {car[0].build && (
-                        <Link href={car[0].build}>
-                          <a className="btn buildBtn">
-                            BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem" />
-                          </a>
-                        </Link>
-                      )}
+                      <Button variant="outlined" color="primary" onClick={(e) => handleOpenPopOver(car[0].make + " " + car[0].model + " " + car[0].name)}>
+                        <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; ENQUIRY
+                    </Button>
+                    
+                      <Dialog onClose={handleClosePopOver} aria-labelledby="customized-dialog-title" open={openpopover} maxWidth={'md'} fullWidth={'md'}>
+                        <DialogTitle id="customized-dialog-title" onClose={handleClosePopOver}>
+                          Preowned Car Enquiry Form
+                      </DialogTitle>
+                        <DialogContent dividers>
+                          <h6>PERSONAL DETAILS</h6>
+                          <Typography gutterBottom>
+                            <div class="form-row">
+                              <div class="form-group col-md-2">
+                                <label for="inputTitle">Title</label>
+                                <select id="inputTitle" class="form-control">
+                                  <option>Mr.</option>
+                                  <option>Mrs.</option>
+                                  <option>Ms.</option>
+                                  <option>Dr.</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-5">
+                                <label for="inputFirstName">First Name</label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="firstName"
+                                  required={true}
+                                  value={firstName}
+                                  onChange={(e) => onChangeForm('firstName', e.target.value)}
+                                  placeholder="Enter your first name" />
+                              </div>
+                              <div class="form-group col-md-5">
+                                <label for="inputLastName">Last Name</label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="lastName"
+                                  required={true}
+                                  value={lastName}
+                                  onChange={(e) => onChangeForm('lastName', e.target.value)}
+                                  placeholder="Enter your last name" />
+                              </div>
+                            </div>
+                          </Typography>
+                          <Typography gutterBottom>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputPhoneNumber">Phone Number</label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="phoneNumber"
+                                  required={true}
+                                  value={phone}
+                                  onChange={(e) => onChangeForm('phone', e.target.value)}
+                                  placeholder="Enter your phone number" />
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputEmailAddess">Email Address</label>
+                                <input
+                                  type="email"
+                                  className="form-control"
+                                  id="emailAddress"
+                                  required={true}
+                                  value={email}
+                                  onChange={(e) => onChangeForm('email', e.target.value)}
+                                  placeholder="Enter your email address" />
+                              </div>
+                            </div>
+                          </Typography>
+                          <h6>BOOK CAR DETAILS</h6>
+                          <Typography gutterBottom>
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="inputCarModel">Your Car Model</label>
+                                <input
+                                  type="email"
+                                  className="form-control"
+                                  id="carModel"
+                                  required={true}
+                                  value={model}
+                                  // onChange={(e) => onChangeContent('model', e.target.value)}
+                                  placeholder="Enter your car model" />
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="inputDate"> View Dates</label>
+                                <DayPickerInput
+                                  formatDate={formatDate}
+                                  parseDate={parseDate}
+                                  //classNames={ {container: "form-control"} }
+                                  inputProps={{
+                                    type: "email",
+                                    class: "form-control",
+                                    id: "date",
+                                  }}
+                                  //onChange={(e) => onChangeContent('date', e.target.value)}
+                                  value={date}
+                                  onDayChange={(e) => handleDayChange(e)}
+                                  selectedDay={day}
+                                  dayPickerProps={{
+                                    modifiers: {
+                                      disabled: [
+                                        {
+                                          before: new Date(),
+                                          after: new Date(currentYear, currentMonth, currentDay)
+                                        }
+                                      ]
+                                    }
+                                  }}
+                                  placeholder={`${formatDate(new Date())}`}
+                                />
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="inputTimesort">View Timeslots</label>
+                                <select
+                                  id="inputTimesort"
+                                  value={timeslot}
+                                  onChange={(e) => onChangeContent('timeslot', e.target.value)}
+                                  class="form-control">
+                                  <option>AM</option>
+                                  <option>PM</option>
+                                </select>
+                              </div>
+                            </div>
+                          </Typography>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button autoFocus onClick={handleClosePopOver} color="primary">
+                            Book Appointment
+                        </Button>
+                        </DialogActions>
+                      </Dialog>
                     </div>
                   </div>
                   {car.length > 1 && (
@@ -574,21 +814,138 @@ function Build() {
                         }
                       </div>
                       <div className="button">
-                        {
-                          car[1].page && (
-                            <Link href={car[1].page}>
-                              <a className="btn gw-without-bg-btn">
-                                <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; VIEW DETAILS
-                    </a>
-                            </Link>)
-                        }
-                        {car[1].build && (
-                          <Link href={car[1].build}>
-                            <a className="btn buildBtn">
-                              BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem" />
-                            </a>
-                          </Link>
-                        )}
+                        <Button variant="outlined" color="primary" onClick={(e) => handleOpenPopOver(car[1].make + " " + car[1].model + " " + car[1].name)}>
+                          <Icon icon={searchIcon} width="1.5rem" /> &nbsp;&nbsp; ENQUIRY
+                        </Button>
+                        <Dialog onClose={handleClosePopOver} aria-labelledby="customized-dialog-title" open={openpopover} maxWidth={'md'} fullWidth={'md'}>
+                          <DialogTitle id="customized-dialog-title" onClose={handleClosePopOver}>
+                            Preowned Car Enquiry Form
+                        </DialogTitle>
+                          <DialogContent dividers>
+                            <h6>PERSONAL DETAILS</h6>
+                            <Typography gutterBottom>
+                              <div class="form-row">
+                                <div class="form-group col-md-2">
+                                  <label for="inputTitle">Title</label>
+                                  <select id="inputTitle" class="form-control">
+                                    <option>Mr.</option>
+                                    <option>Mrs.</option>
+                                    <option>Ms.</option>
+                                    <option>Dr.</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label for="inputFirstName">First Name</label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="firstName"
+                                    required={true}
+                                    value={firstName}
+                                    onChange={(e) => onChangeForm('firstName', e.target.value)}
+                                    placeholder="Enter your first name" />
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label for="inputLastName">Last Name</label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="lastName"
+                                    required={true}
+                                    value={lastName}
+                                    onChange={(e) => onChangeForm('lastName', e.target.value)}
+                                    placeholder="Enter your last name" />
+                                </div>
+                              </div>
+                            </Typography>
+                            <Typography gutterBottom>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputPhoneNumber">Phone Number</label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="phoneNumber"
+                                    required={true}
+                                    value={phone}
+                                    onChange={(e) => onChangeForm('phone', e.target.value)}
+                                    placeholder="Enter your phone number" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputEmailAddess">Email Address</label>
+                                  <input
+                                    type="email"
+                                    className="form-control"
+                                    id="emailAddress"
+                                    required={true}
+                                    value={email}
+                                    onChange={(e) => onChangeForm('email', e.target.value)}
+                                    placeholder="Enter your email address" />
+                                </div>
+                              </div>
+                            </Typography>
+                            <h6>BOOK CAR DETAILS</h6>
+                            <Typography gutterBottom>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="inputCarModel">Your Car Model</label>
+                                  <input
+                                    type="email"
+                                    className="form-control"
+                                    id="carModel"
+                                    required={true}
+                                    value={model}
+                                    // onChange={(e) => onChangeContent('model', e.target.value)}
+                                    placeholder="Enter your car model" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputDate"> View Dates</label>
+                                  <DayPickerInput
+                                    formatDate={formatDate}
+                                    parseDate={parseDate}
+                                    //classNames={ {container: "form-control"} }
+                                    inputProps={{
+                                      type: "email",
+                                      class: "form-control",
+                                      id: "date",
+                                    }}
+                                    //onChange={(e) => onChangeContent('date', e.target.value)}
+                                    value={date}
+                                    onDayChange={(e) => handleDayChange(e)}
+                                    selectedDay={day}
+                                    dayPickerProps={{
+                                      modifiers: {
+                                        disabled: [
+                                          {
+                                            before: new Date(),
+                                            after: new Date(currentYear, currentMonth, currentDay)
+                                          }
+                                        ]
+                                      }
+                                    }}
+                                    placeholder={`${formatDate(new Date())}`}
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputTimesort">View Timeslots</label>
+                                  <select
+                                    id="inputTimesort"
+                                    value={timeslot}
+                                    onChange={(e) => onChangeContent('timeslot', e.target.value)}
+                                    class="form-control">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </Typography>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button autoFocus onClick={onSubmit} color="primary">
+                              Book Appointment
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
                       </div>
                     </div>)
                   }

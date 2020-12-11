@@ -74,11 +74,11 @@ class Form extends Component {
                     message: this.state.message } });
                 // success
                 this.setState({...INIT_STATE});
-                NotificationManager.success('Contact form sent successfully');
+                NotificationManager.success('Your enquiry has been sent');
 
             } catch (e) {
                 // failed
-                NotificationManager.error('Network error, please try again');
+                NotificationManager.error('Please try again');
 
             }
 

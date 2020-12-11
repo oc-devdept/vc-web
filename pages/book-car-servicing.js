@@ -93,11 +93,11 @@ function BookCarServicing() {
               await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content, service: 'Maintenance', status: 'Awaiting' } });
               // success
               setForm(() => Contact);
-              NotificationManager.success('Contact form sent successfully');
+              NotificationManager.success('Your booking is successful!');
       
             } catch (e) {
               // failed
-              NotificationManager.error('Network error, please try again');
+              NotificationManager.error('Please try again');
       
             }
       

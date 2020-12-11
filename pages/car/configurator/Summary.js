@@ -81,10 +81,9 @@ const Summary = props => {
   };
 
   const _setItemTimeSlot = e => {
-    setBookService(BookService => ({
-      ...BookService,
-      timeslot: e.target.value
-    }));
+    // Synthetic event
+    e.persist();
+    setBookService(BookService => ({ ...BookService, timeslot: e.target.value}));
   };
 
   // const handleOptionChange = async event => {
@@ -102,32 +101,27 @@ const Summary = props => {
   };
 
   function checkout() {
-        
+
     //const { ProductGrade, ProductExterior, ProductInterior, ProductRims, ProductAccessories, CoeSelected, AftersaleSelected, ProductTotal } = props.ProductState;
     props.saveCheckout(props.ProductState);
-    
+
   }
 
   const onSubmitForm = async () => {
     const newBooking = {
-      service: "Test Drive",
-      status: "Awaiting",
+      service: 'Test Drive',
+      status: 'Awaiting',
       contact: Profile,
       content: BookService
     };
 
-    const result = await api.post(`/bookings/createBooking`, {
-      data: newBooking
-    });
-    
-    if(result.data.data && result.data.data.success ==1) {
-      
-        
-        
-        NotificationManager.success("Your booking has submitted successfully");
-        setBookService(() => ({ ...InitBookService }));
-        setUserProfile(() => ({ ...InitUserProfile }));
-        _RestartToggle();        
+    const result = await api.post(`/bookings/createBooking`, { data: newBooking });
+
+    if (result.data.data && result.data.data.success == 1) {
+      NotificationManager.success("Your booking is successful");
+      setBookService(() => ({ ...InitBookService }));
+      setUserProfile(() => ({ ...InitUserProfile }));
+      _RestartToggle();
     }
     else {
       NotificationManager.error(
@@ -144,14 +138,14 @@ const Summary = props => {
       <div className="row">
         <div className="col-lg-6">
           <div className="py-3 px-0 text-center">
-              
-              <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span>
-            
+
+            <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span>
+
           </div>
           <SummaryTable
             page="summary"
             ProductState={props.ProductState}
-            CheckoutState={props.CheckoutState}            
+            CheckoutState={props.CheckoutState}
             getCheckoutData={props.getCheckoutData}
             loanCalculator={props.ProductState.LoanCalculator}
             updateProductTotal={props.updateProductTotal}
@@ -161,9 +155,9 @@ const Summary = props => {
         </div>
         <div className="col-lg-6">
           <div className="py-3 px-0 text-center">
-            
-              <span className="summarySubtitle">CAR LOAN CALCULATOR</span>
-            
+
+            <span className="summarySubtitle">CAR LOAN CALCULATOR</span>
+
           </div>
           <div>
             <LoanCalculator
@@ -173,39 +167,39 @@ const Summary = props => {
               getInterestRate={props.getInterestRate}
             />
           </div>
-          
+
           <div className="d-flex justify-content-between">
             <div className="d-flex">
               <button
-              style={{ padding: 10, margin: 20 }}
-              className="btn-primary"
-                onClick={props.goPrev}                
-                
+                style={{ padding: 10, margin: 20 }}
+                className="btn-primary"
+                onClick={props.goPrev}
+
               >
-                <p style={{color: "white"}}
+                <p style={{ color: "white" }}
                 >
-                  <InlineIcon icon={arrowLeft}  /> PREV
+                  <InlineIcon icon={arrowLeft} /> PREV
                 </p>
               </button>
             </div>
             <div className="d-flex">
-              <button  className="makeEnquiryBtn"               
+              <button className="makeEnquiryBtn"
                 onClick={_RestartToggle}
                 style={{
                   border: "1px solid #4b6674",
                   minWidth: 65,
                   maxWidth: 120,
                   backgroundColor: "transparent",
-                  margin:20,
-                  padding:10
+                  margin: 20,
+                  padding: 10
                 }}
-               >
+              >
                 <p
                   style={{
                     fontSize: 12,
                     color: "#4b6674",
                     textAlign: "center",
-                    
+
                   }}
                 >
                   MAKE ENQUIRY
@@ -241,10 +235,11 @@ const Summary = props => {
             phone={phone}
           />
 
-<Booking
+          <Booking
             _HandleDayChange={_HandleDayChange}
             _HandleInputForm={_HandleInputForm}
             _setItemTimeSlot={_setItemTimeSlot}
+            value='timeslot'
             Timeslot={Timeslot}
             currentDate={currentDate}
             model={model}

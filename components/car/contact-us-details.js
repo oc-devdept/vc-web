@@ -82,11 +82,11 @@ class ContactUsDetails extends Component {
                 document.getElementById("vpN").value = "";
                 document.getElementById("mileage").value = "";
                 document.getElementById("ownerNRIC").value = "";
-                NotificationManager.success('Contact form sent successfully');
+                NotificationManager.success('Your enquiry has been sent');
 
             } catch (e) {
                 // failed
-                NotificationManager.error('Network error, please try again');
+                NotificationManager.error('Please try again');
 
             }
 

@@ -295,15 +295,15 @@ function Build() {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log('Send to server! ', Form)
+      console.log('Send to server! ', Form)
       await api.post(`/bookings/createBooking`, { data: { contact: Form, content: content, service: 'Maintenance', status: 'Awaiting' } });
-      // success
+      // success
       setForm(() => Contact);
-      NotificationManager.success('Contact form sent successfully');
+      NotificationManager.success('Contact form sent successfully');
 
     } catch (e) {
-      // failed
-      NotificationManager.error('Network error, please try again');
+      // failed
+      NotificationManager.error('Network error, please try again');
 
     }
 

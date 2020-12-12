@@ -1821,7 +1821,7 @@ Navbar Area CSS
 }
 
 
-.comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu,  .comero-nav .navbar .navbar-nav .nav-item > .open{
+.comero-nav .navbar .navbar-nav .nav-item > .open{
   opacity: 1;
   visibility: visible;
   top: 100%;
@@ -10095,7 +10095,7 @@ Footer Area CSS
 }
 
 .left-section a {
- font-size: 18px;
+ font-size: 14px;
   color: #ffffff;
   margin-top: 15px !important;
 }

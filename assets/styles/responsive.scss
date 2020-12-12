@@ -73,6 +73,12 @@
     top: 76px;
   }
 
+  .comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu {
+    opacity: 1;
+  visibility: visible;
+  top: 100%;
+  }
+
   .nav-btn {
     padding: 50% 13% !important;
   }

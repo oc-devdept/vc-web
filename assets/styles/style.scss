@@ -633,27 +633,27 @@ Single Car Page Area CSS
     }
   }
 
-.grade-content > .grade-content-imgBox , 
-.grade-content > .grade-content-btnBox
-{
-  width: 50%  ;
-  height: 45%;
-  float: left ;
-  margin-top: 0;
-}
-.grade-content > .grade-content-techBox , 
-.grade-content > .grade-content-featuresBox
-{
-  width: 50%  ;
-  height: 50%;
-  float: left ;
-  margin-top: 30px;
-  padding-left: 10px;
-  // background-color: red;
-}
+// .grade-content > .grade-content-imgBox , 
+// .grade-content > .grade-content-btnBox
+// {
+//   width: 50%  ;
+//   height: 45%;
+//   float: left ;
+//   margin-top: 0;
+// }
+// .grade-content > .grade-content-techBox , 
+// .grade-content > .grade-content-featuresBox
+// {
+//   width: 50%  ;
+//   height: 50%;
+//   float: left ;
+//   margin-top: 30px;
+//   padding-left: 10px;
+//   // background-color: red;
+// }
 
 .grade-content img {
-  margin-bottom: 50%;
+  // margin-bottom: 50%;
   width: 100%;
   
 }
@@ -946,7 +946,7 @@ Build Area CSS
 }
 
 .build-area .build-content {  
-  background-color: #F6F8FC;
+  // background-color: #F6F8FC;
   padding: 20px;
   float:left;
   width:100%;

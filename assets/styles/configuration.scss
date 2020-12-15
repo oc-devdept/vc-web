@@ -1,18 +1,15 @@
-.orange-circle > .MuiStepLabel-iconContainer >  .MuiStepIcon-active,
-.orange-circle >.MuiStepLabel-iconContainer >  .MuiStepIcon-completed{
-    color: #000000;        
-  
+.orange-circle > .MuiStepLabel-iconContainer > .MuiStepIcon-active,
+.orange-circle > .MuiStepLabel-iconContainer > .MuiStepIcon-completed {
+    color: #000000;
 }
-
 
 .bottomSummary {
     // background: linear-gradient(180deg,#666666,#262626);
     background-color: #666666;
-    padding:20px;
-    width:95%;
+    padding: 20px;
+    width: 95%;
     color: white;
-    margin-left:20px;
-
+    margin-left: 20px;
 }
 
 .bottomSummary > h5 {
@@ -22,49 +19,48 @@
 }
 
 .bottomSummary ol {
-    margin:10px;
-    padding:0;
-    font-size:15px;
+    margin: 10px;
+    padding: 0;
+    font-size: 15px;
 }
 
 .bottomSummary ul {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
-    font-size:13px;
+    font-size: 13px;
 }
 .bottomSummary ul > li {
-    float:left;
-    width:100%;
+    float: left;
+    width: 100%;
     margin-bottom: 6px;
 }
 
 .bottomSummary .info {
-    float:left;
+    float: left;
 }
 .bottomSummary .price {
-    float:right;
+    float: right;
     text-align: right;
-    
 }
 .bottomSummary hr {
-    clear:both;
-    width:100%;
-   border-color: #dadada;
+    clear: both;
+    width: 100%;
+    border-color: #dadada;
 }
 
 .bottomSummary .totalRow {
-    height:30px;
-    width:100%;
+    height: 30px;
+    width: 100%;
     margin-bottom: 10px;
 }
 
 .bottomSummary .grandTotal {
-    float:left;    
+    float: left;
 }
 
 .configHeader {
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .configCoverImg {
@@ -74,7 +70,7 @@
     width: 100%;
     height: auto;
     margin-bottom: 20px;
-  }
+}
 
 .configure-total {
     text-transform: uppercase;
@@ -99,71 +95,67 @@
     padding: 15px;
     overflow: auto;
     max-height: 1000px;
-  }
+}
 
 .optionTitleRow {
-    display:flex;
+    display: flex;
 }
 
 .optionDisplay {
-    
     -webkit-transition: 1s;
-  -moz-transition: 1;
-  -o-transition: 1s;
-  transition: 1s;
-  height:0;  
-  overflow: hidden;
-  margin-bottom:2em;
+    -moz-transition: 1;
+    -o-transition: 1s;
+    transition: 1s;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 2em;
 }
-
 
 .optionDisplay.show {
-    height:auto;  
-    overflow:unset;
+    height: auto;
+    overflow: unset;
 }
-
 
 .configure-opt-title {
     color: #666666;
-    display:block;
-    flex:9
-  }
+    display: block;
+    flex: 9;
+}
 .configure-icon {
-    flex:1;    
-    color:#c0c0c0;    
+    flex: 1;
+    color: #c0c0c0;
 }
 
-  .configure-list {
+.configure-list {
     padding: 1%;
     margin: 2% 0;
-    img{
-        border:none!important;
+    img {
+        border: none !important;
     }
 
-    span:first-of-type{
-    color: black;
-    font-size: 12px;
-    font-weight: lighter !important ;
-  }
-
-  }
-//   .configure-list 
+    span:first-of-type {
+        color: black;
+        font-size: 12px;
+        font-weight: lighter !important ;
+    }
+}
+//   .configure-list
 .configure-sect .configure-gall .custom-control-label::before,
 .configure-sect .configure-gall .custom-control-label::after {
-  top: 0.25rem;
+    top: 0.25rem;
 }
 
 .coebox {
-    border:1px solid #666666;
-    width:90%;
-    margin-left:5%;
-    margin-bottom:2em;
+    border: 1px solid #666666;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 2em;
     text-align: center;
 
     .coeTitle {
-        background:linear-gradient(170deg,#333333,#262626);
-        width:100%;
-        color:white;
+        background: linear-gradient(170deg, #333333, #262626);
+        width: 100%;
+        color: white;
         font-size: 1.8em;
         padding: 12px 0;
         line-height: 2.4em;
@@ -171,90 +163,85 @@
     }
 
     .coeDetails {
-        margin-top:20px;
-        margin-bottom:20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
 
         h3 {
-            font-size:2em;
-            font-family: "PlayfairDisplay-Regular";     
-            border:none ;    
+            font-size: 2em;
+            font-family: "PlayfairDisplay-Regular";
+            border: none;
         }
 
         p {
-            margin-left:15px;
-            margin-right:15px;
+            margin-left: 15px;
+            margin-right: 15px;
         }
 
         input {
             padding: 10px;
-            font-size:1.1em;
+            font-size: 1.1em;
         }
     }
 
     button {
-        display:block;
-        width:70%;
-        margin-left:15%;
+        display: block;
+        width: 70%;
+        margin-left: 15%;
         padding: 12px 0;
-        margin-bottom:20px; 
-        font-size:1.5em;
+        margin-bottom: 20px;
+        font-size: 1.5em;
     }
 
     .coeSelect {
-        border:2px solid #666666;
-        color: #ffffff ;
-        background-color:#666666; 
-            
+        border: 2px solid #666666;
+        color: #ffffff;
+        background-color: #666666;
     }
 
     .coeSelected {
-        border:2px solid #262626;
-        color: #ffffff ;
-        background:linear-gradient(170deg,#333333,#262626); 
+        border: 2px solid #262626;
+        color: #ffffff;
+        background: linear-gradient(170deg, #333333, #262626);
     }
 
     .readmore {
-        background-color:white;
-        border:2px solid #262626;
+        background-color: white;
+        border: 2px solid #262626;
         color: #262626;
-
-        
     }
-
-    
 }
 
 .calculator {
     background-color: #f5f5f5;
-    padding:2.5em;
-    margin-bottom:1.5em;
+    padding: 2.5em;
+    margin-bottom: 1.5em;
 }
 
 .calculator-field {
     margin-bottom: 0.75rem;
 }
 .field-name p {
-color: #000000;
-font-weight: 600;
+    color: #000000;
+    font-weight: 600;
 }
 .calculator-submit button {
-padding: 6px 30px;
-margin-top: 10px;
-box-shadow: 0px 5px 8px #888888;
+    padding: 6px 30px;
+    margin-top: 10px;
+    box-shadow: 0px 5px 8px #888888;
 }
 .calculator-submit button:disabled,
 .checkout-form button:disabled {
-background-color: #cccccc;
-border: #cccccc;
+    background-color: #cccccc;
+    border: #cccccc;
 }
 .calculator-submit button:disabled:hover,
 .checkout-form button:disabled:hover {
-box-shadow: 0px 5px 8px #888888;
-color: #ffffff !important;
+    box-shadow: 0px 5px 8px #888888;
+    color: #ffffff !important;
 }
 
 .summarySubtitle {
-    font-size:1.8em;
+    font-size: 1.8em;
     font-weight: 600;
     color: #000000;
 }
@@ -262,126 +249,125 @@ color: #ffffff !important;
 .summaryTableCard {
     background-color: #262626;
     color: #ffffff;
-    padding:26px;    
+    padding: 26px;
 }
 
 .summaryDownload {
     box-sizing: border-box;
-    width:50%;
-    margin-left:25%;
+    width: 50%;
+    margin-left: 25%;
     background-color: transparent;
-    border:1px solid #ffffff;
-    padding:15px;
-    font-size:1.2em;
+    border: 1px solid #ffffff;
+    padding: 15px;
+    font-size: 1.2em;
     color: #ffffff;
 }
 
 .summaryTable {
-    background-color:#ffffff;
+    background-color: #ffffff;
     color: #000000;
-    margin-top:20px;
-    padding:10px 15px;
+    margin-top: 20px;
+    padding: 10px 15px;
 
     ol {
-        margin:0;
-        padding:0 10px 0 20px;
+        margin: 0;
+        padding: 0 10px 0 20px;
 
         li {
-            padding:15px 0 10px 12px;
-            font-weight:600;
-            font-size:1.2em;
+            padding: 15px 0 10px 12px;
+            font-weight: 600;
+            font-size: 1.2em;
             border-bottom: 1px solid #cccccc;
         }
 
         li:last-child {
-            border:none;
+            border: none;
         }
-    }    
+    }
 }
 
 .summaryDetail {
-    margin-top:10px;
-    margin-bottom:10px;
-    display:flex;
-    flex-direction: row;    
-    font-size:1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1em;
     p {
         color: #666666;
     }
 
     img {
-        display:block;
-        width:71px;
-        max-height:71px;
+        display: block;
+        width: 71px;
+        max-height: 71px;
     }
 
     .details {
-        flex:2;
-        padding: 5px 0 5px 10px;        
+        flex: 2;
+        padding: 5px 0 5px 10px;
     }
 
     .detailDescription {
-        font-size:0.9em;
+        font-size: 0.9em;
         font-weight: normal;
     }
 
     .price {
         flex: 1;
-        font-size:1.1em;
-        padding-top:10px;
-        padding-right:20px;
+        font-size: 1.1em;
+        padding-top: 10px;
+        padding-right: 20px;
         text-align: right;
         font-family: "PlayfairDisplay-Regular";
     }
 }
 
 .financingTable {
-    margin-top:30px;
+    margin-top: 30px;
 
     h3 {
-        font-size:1.4em;
+        font-size: 1.4em;
         color: #ffffff;
     }
 
     .financeDetails {
-        background-color:white;
-        margin-top:15px;
-        padding:20px;
+        background-color: white;
+        margin-top: 15px;
+        padding: 20px;
         color: #000000;
         font-weight: 600;
     }
 
     .financeRow {
-        display:flex;
+        display: flex;
         flex-direction: row;
-        margin-bottom:8px;
+        margin-bottom: 8px;
 
         .fItem {
-            flex: 3
+            flex: 3;
         }
         .fPrice {
-            flex:2;
+            flex: 2;
             text-align: right;
-        }        
+        }
     }
 
     .totalPrice {
-        font-size:1.2em;
+        font-size: 1.2em;
         font-weight: 800;
         color: #000000;
         padding-bottom: 15px;
         border-bottom: 1px solid #cccccc;
         font-family: "PlayfairDisplay-Regular";
     }
-
 }
 
 .mobile-step {
-    display:none;
+    display: none;
 }
 
 .vStep2 {
-    display:none;
+    display: none;
 }
 
 .configure-area .prevBtn {
@@ -390,9 +376,9 @@ color: #ffffff !important;
 }
 
 .configure-area .nextBtn {
-    float:right;
+    float: right;
 }
-.Mui-selected{
+.Mui-selected {
     outline: none !important;
 }
 
@@ -404,14 +390,39 @@ color: #ffffff !important;
     color: rgb(255, 65, 65);
 }
 
+@media only screen and(min-width: 427px) and (max-width: 768px) {
+    .configure-area .justify-content-center { 
+        
+        .col-md-12 > .row {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .col-md-9 {
+            max-width: none;
+            // width: 120%;
+            .bottomSummary {
+                margin:10px auto;
+            }
+        }
+        .col-md-3{
+            max-width: none;
+            width: 95%;
+            margin:15px auto;
+            .prevBtn {
+                margin-left:0;
+            }
+        }
+    }}
+}
 
 @media only screen and (max-width: 426px) {
     .step-process {
-        display:none;
+        display: none;
     }
 
     .configHeader {
-        display:none;
+        display: none;
     }
 
     .vStep {
@@ -419,83 +430,78 @@ color: #ffffff !important;
     }
 
     .vStep2 {
-        display:block;
+        display: block;
     }
 
     .configure-sect {
         flex-direction: column-reverse;
     }
-    .coebox .coeSelected{
+    .coebox .coeSelected {
         outline: none;
     }
 
     .configure-area .prevBtn {
-        margin-left:0px;
+        margin-left: 0px;
     }
 
     .mobile-step {
-        display:block;
+        display: block;
         background-color: #f5f5f5;
         // padding:15px;
         color: #262626;
-        width:100%;
+        width: 100%;
         box-sizing: border-box;
         // height:110px;
         .stepNum {
             font-size: 24px;
-            line-height:60px;
+            line-height: 60px;
             text-align: center;
             font-weight: bold;
-            float:left;
-            width:60px;
-            height:60px;
+            float: left;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background-color:#c0c0c0; 
-            margin-left: 15px;    
-
+            background-color: #c0c0c0;
+            margin-left: 15px;
         }
         .stepTitle {
-            float:right;
+            float: right;
             text-align: left;
-            margin-top:15px;
-            margin-right:15px;
-            font-size:1.5em;
+            margin-top: 15px;
+            margin-right: 15px;
+            font-size: 1.5em;
             font-weight: bold;
             line-height: 1em;
-            max-width:250px;
-            overflow:hidden;            
+            max-width: 250px;
+            overflow: hidden;
         }
         .stepSubtitle {
-            font-size:0.7em;
+            font-size: 0.7em;
             font-weight: 600;
         }
     }
-    
+
     .bottomSummary {
-        width:100%;
-        margin-left:0;
-        margin-bottom:20px;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
     }
 
     .summaryDetail {
-        width:120%;
-        margin-left:-15%;
+        width: 120%;
+        margin-left: -15%;
 
         .price {
-            font-size:0.9em;
+            font-size: 0.9em;
         }
     }
 
     .financingTable {
-        margin-left:-10%;
-        width:113%;
+        margin-left: -10%;
+        width: 113%;
 
         .financeDetails {
-            padding:12px 0;
+            padding: 12px 0;
         }
     }
-    
 }
-
-
-

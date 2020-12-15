@@ -311,10 +311,10 @@ class Product extends Component {
               (<div className="row justify-content-center">
                 <div className="col-md-12">
                   <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-md-9  ">
                       <BottomSummary productState={ProductState}/>
                     </div>
-                     <div className="col-md-3">
+                     <div className="col-md-3 ">
                       <button type="submit" className="btn btn-light prevBtn" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
                       <button type="submit" className="btn btn-primary nextBtn" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
                     </div> 

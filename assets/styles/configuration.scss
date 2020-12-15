@@ -391,9 +391,26 @@
 }
 
 @media only screen and(min-width: 427px) and (max-width: 768px) {
-    .configure-area .justify-content-center { 
+    .configure-area .justify-content-center .step-body .configure-sect .col-sm-6 .coebox{
+        .coeDetails .coeSelected{
+                outline:none;
+                border:none;
+            }
+
+     
+
+      input{
+        width: 100%;
+        border-left:none;
+        border-right:none;
+        outline:none;
+       
+
+
+        }  
+    }  
         
-        .col-md-12 > .row {
+        .configure-area >  .container .justify-content-center > .col-md-12 > .row {
         margin: 0;
         width: 100%;
         display: flex;
@@ -413,8 +430,10 @@
                 margin-left:0;
             }
         }
-    }}
+    }
+
 }
+
 
 @media only screen and (max-width: 426px) {
     .step-process {

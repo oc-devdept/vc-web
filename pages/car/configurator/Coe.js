@@ -55,7 +55,7 @@ class Coe extends Component {
             <div className="configure-sect row">
                 {
                     this.state.coeData.map((item, index) => (
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 col-sm-6">
                             <div className="coebox">
                                 <div className="coeTitle">{item.name }</div>
                                 <div className="coeDetails">

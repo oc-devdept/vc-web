@@ -66,7 +66,7 @@ class Aftersales extends Component {
                 
                 {
                     this.state.warrantyData.map((item, index)=> (
-                        <div className="col-lg-4">
+                        <div className="col-lg-4 col-sm-6">
                             <div className="coebox">
                                 <div className="coeTitle">{item.name }</div>
                                 <div className="coeDetails">
@@ -89,7 +89,7 @@ class Aftersales extends Component {
                 </div>
                 {
                     this.state.servicingData.map((item, index)=> (
-                        <div className="col-lg-4">
+                        <div className="col-lg-4 col-sm-6">
                             <div className="coebox">
                                 <div className="coeTitle">{item.name }</div>
                                 <div className="coeDetails">

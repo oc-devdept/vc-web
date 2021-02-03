@@ -1023,9 +1023,6 @@ Book Car Servicing Area CSS
 .driver-details-form a:focus {
   color: #222222!important;
 }
-.DayPicker-wrapper {
-  border: 1px solid #212C33;
-}
 .jumbotron {
   margin-bottom: 0 !important;
 }
@@ -10423,7 +10420,7 @@ input[type="number"] {
 }
 
 .DayPickerInput > input:focus {
-  outline: #262626 solid 1px;
+ outline: none;
 }
 
 .form-control.card-element {
@@ -10432,4 +10429,25 @@ input[type="number"] {
 
 .DayPickerInput {
   width:100%;
+}
+
+.DayPickerInput .DayPickerInput-Overlay{
+  width: 100%;
+  max-width: 100%;
+}
+.DayPicker-Months{
+  width: 100%;
+  max-width: 100%;
+  // background-color: red;
+  outline: none !important ;
+  border: none !important;
+}
+.DayPicker-wrapper{
+  border: none !important;
+  justify-content:space-around
+}
+.DayPicker-wrapper{
+  position: static !important;
+  border: none !important;
+  margin: 0 auto;
 }

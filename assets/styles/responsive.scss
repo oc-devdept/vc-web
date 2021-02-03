@@ -1751,7 +1751,7 @@
     height: 800px;
   }
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
   .MuiTabs-root > .MuiTabs-fixed > div,
     .MuiTabs-root > .MuiTabs-fixed > span{
       // background-color: red;
@@ -1761,7 +1761,7 @@
       justify-content:space-around;
       .MuiButtonBase-root{
         // background-color: red;
-        width:40%;
+        // width:45%;
         padding: 0;
         &:hover,
         &:focus,

@@ -186,7 +186,7 @@ class Accessories extends Component {
         return (
           <React.Fragment>
           <div className="row">
-            <div className="col-lg-8"><StyledTabs
+            <div className="col-lg-10"><StyledTabs
             value={this.state.tabVal}
             indicatorColor="primary"
             textColor="primary"                      
@@ -196,7 +196,7 @@ class Accessories extends Component {
         >
           {fields !== undefined && Object.keys(fields).map( key  => (
             <StyledTab label={key} id={key} />                      
-          ))}
+          ))} 
         </StyledTabs></div>
           </div>
             <div className="configure-sect row">

@@ -1752,6 +1752,27 @@
   }
 }
 @media only screen and (max-width: 1024px) {
+  .MuiTabs-root > .MuiTabs-fixed > div,
+    .MuiTabs-root > .MuiTabs-fixed > span{
+      // background-color: red;
+      overflow:visible !important;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content:space-around;
+      .MuiButtonBase-root{
+        // background-color: red;
+        width:40%;
+        padding: 0;
+        &:hover,
+        &:focus,
+        &:active{
+        border-bottom: 2px solid black;
+      }
+      }
+ }
+ .MuiTabs-root > .MuiTabs-fixed >.MuiTabs-indicator{
+  display: none;
+}
 
   .mobile-footer{
     .mobileFooterHeader{
@@ -1943,6 +1964,28 @@
     .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > .Mui-selected {
       outline: none;
     }
+    .MuiTabs-root > .MuiTabs-fixed > div,
+    .MuiTabs-root > .MuiTabs-fixed > span{
+      // background-color: red;
+      overflow:visible !important;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content:space-around;
+      .MuiButtonBase-root{
+        // background-color: red;
+        width:45%;
+        padding: 0;
+        &:hover,
+        &:focus,
+        &:active{
+        border-bottom: 2px solid black;
+      }
+      }
+ }
+    .MuiTabs-root > .MuiTabs-fixed >.MuiTabs-indicator{
+      display: none;
+    }
+
 
     // .step-body .justify-content-between > .d-flex > button:visited,
     // .step-body .justify-content-between > .d-flex > button:active{

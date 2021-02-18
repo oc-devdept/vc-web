@@ -673,10 +673,10 @@ function Build() {
                     </Button>
                     
                       <Dialog onClose={handleClosePopOver} aria-labelledby="customized-dialog-title" open={openpopover} maxWidth={'md'} fullWidth={'md'}>
-                        <DialogTitle id="customized-dialog-title" onClose={handleClosePopOver}>
+                        <DialogTitle id="customized-dialog-title" onClose={handleClosePopOver} >
                           Preowned Car Enquiry Form
                       </DialogTitle>
-                        <DialogContent dividers>
+                        <DialogContent dividers id="customized-dialog-content" style={{padding:"16px 1px"}}>
                           <h6>PERSONAL DETAILS</h6>
                           <Typography gutterBottom>
                             <div class="form-row">
@@ -753,7 +753,7 @@ function Build() {
                                   // onChange={(e) => onChangeContent('model', e.target.value)}
                                   placeholder="Enter your car model" />
                               </div>
-                              <div class="form-group col-md-4">
+                              <div class="form-group col-md-4 ">
                                 <label for="inputDate"> View Dates</label>
                                 <DayPickerInput
                                   formatDate={formatDate}
@@ -915,7 +915,7 @@ function Build() {
                                     // onChange={(e) => onChangeContent('model', e.target.value)}
                                     placeholder="Enter your car model" />
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4 ">
                                   <label for="inputDate"> View Dates</label>
                                   <DayPickerInput
                                     formatDate={formatDate}

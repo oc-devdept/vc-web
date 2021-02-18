@@ -1751,7 +1751,80 @@
     height: 800px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .MuiTabs-root > .MuiTabs-fixed > div,
+    .MuiTabs-root > .MuiTabs-fixed > span{
+      // background-color: red;
+      overflow:visible !important;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content:space-around;
+      .MuiButtonBase-root{
+        // background-color: red;
+        // width:45%;
+        padding: 0;
+        &:hover,
+        &:focus,
+        &:active{
+        border-bottom: 2px solid black;
+      }
+      }
+ }
+ .MuiTabs-root > .MuiTabs-fixed >.MuiTabs-indicator{
+  display: none;
+}
 
+  .mobile-footer{
+    .mobileFooterHeader{
+      color: #c0c0c0;
+      background-color: #666666;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      span{
+        float: right;
+      }
+      border-bottom: 1px solid #000000;
+      
+    }
+    .mobileFooterDetails{
+   margin-bottom:1rem;
+      p{
+        color: #ffffff;
+      //  line-height: 1.5;
+       padding-left: 20px;
+       font-size: 0.8rem;
+              
+      }
+      a {
+        color: #ffffff;        
+      }
+      
+    }
+    .optionDisplay {
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      height:0;  
+      overflow: hidden;
+      margin-bottom:0em;
+    }
+    
+    
+    .optionDisplay.show {
+        height:auto;  
+        overflow:unset;
+        // margin-bottom:1em;
+        div{
+          color: white;
+          margin: 5px 5px 0 20px ;
+        }
+      }
+   
+
+  }
+
+}
 /*# sourceMappingURL=responsive.css.map */
 @media only screen and (max-width: 426px) {
   .carousel-inner {
@@ -1891,6 +1964,28 @@
     .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > .Mui-selected {
       outline: none;
     }
+    .MuiTabs-root > .MuiTabs-fixed > div,
+    .MuiTabs-root > .MuiTabs-fixed > span{
+      // background-color: red;
+      overflow:visible !important;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content:space-around;
+      .MuiButtonBase-root{
+        // background-color: red;
+        width:45%;
+        padding: 0;
+        &:hover,
+        &:focus,
+        &:active{
+        border-bottom: 2px solid black;
+      }
+      }
+ }
+    .MuiTabs-root > .MuiTabs-fixed >.MuiTabs-indicator{
+      display: none;
+    }
+
 
     // .step-body .justify-content-between > .d-flex > button:visited,
     // .step-body .justify-content-between > .d-flex > button:active{
@@ -1982,52 +2077,6 @@
       }
     }
   }
-  .mobile-footer{
-    .mobileFooterHeader{
-      color: #c0c0c0;
-      background-color: #666666;
-      padding: 10px 20px;
-      font-size: 0.9rem;
-      span{
-        float: right;
-      }
-      border-bottom: 1px solid #000000;
-      
-    }
-    .mobileFooterDetails{
-   margin-bottom:1rem;
-      p{
-        color: #ffffff;
-      //  line-height: 1.5;
-       padding-left: 20px;
-       font-size: 0.8rem;
-              
-      }
-      a {
-        color: #ffffff;        
-      }
-      
-    }
-    .optionDisplay {
-      -webkit-transition: 0.5s;
-      -moz-transition: 0.5;
-      -o-transition: 0.5s;
-      transition: 0.5s;
-      height:0;  
-      overflow: hidden;
-      margin-bottom:0em;
-    }
-    
-    
-    .optionDisplay.show {
-        height:auto;  
-        overflow:unset;
-        margin-bottom:1em;
-      }
-   
-
-  }
-
   // book text drive
   .MuiDialog-container .MuiDialogContent-root {
     .d-flex.flex-column > .d-flex.flex-column .flex-fill {

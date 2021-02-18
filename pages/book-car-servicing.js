@@ -4,6 +4,9 @@ import DefaultLayout from "Components/Layout/PageTemplates/Default";
 import PageBanner from "Components/Shared/PageBanner";
 import DayPicker from "react-day-picker";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import PropTypes from 'prop-types';
+
+
 import { DateUtils } from 'react-day-picker';
 
 import MomentLocaleUtils, {
@@ -18,6 +21,25 @@ import SuccessfulBooking from "./book-successful";
 
 import api from 'Api'
 
+function CustomOverlay({ classNames, selectedDay, children, ...props }) {
+    return (
+      <div
+        className={classNames.overlayWrapper}
+        style={{ marginLeft: 100, width: 2000, backgroundColor: '#ffc107' }}
+        {...props}
+      >
+        <div className={classNames.overlay}>
+          {children}
+        </div>
+      </div>
+    );
+  }
+  
+  CustomOverlay.propTypes = {
+    classNames: PropTypes.object.isRequired,
+    selectedDay: PropTypes.instanceOf(Date),
+    children: PropTypes.node.isRequired,
+  };
 
 const Contact = {
     firstName: '',
@@ -254,31 +276,40 @@ function BookCarServicing() {
                                 id="date" 
                                 placeholder="Enter your preferred date" />*/}
                             <br></br>
-                            <DayPickerInput
-                                formatDate={formatDate}
-                                parseDate={parseDate}
-                                //classNames={ {container: "form-control"} }
-                                inputProps={{ 
-                                    type: "email", 
-                                    class: "form-control", 
-                                    id: "date", 
-                                     }}
-                                //onChange={(e) => onChangeContent('date', e.target.value)}
-                                value={date}
-                                onDayChange={(e) => handleDayChange(e)}
-                                selectedDay={day}
-                                dayPickerProps={{
-                                    modifiers: {
-                                        disabled: [
-                                            {
-                                                before: new Date(),
-                                                after: new Date(currentYear, currentMonth, currentDay)
-                                            }
-                                        ]
-                                    }
-                                }}
-                                placeholder={`${formatDate(new Date())}`}
-                            />
+                            <div className="DayPickerInput">
+                                <DayPickerInput
+                                    // overlayComponent={CustomOverlay}
+                                    parseDate={parseDate}
+                                    formatDate={formatDate}
+                                    //classNames={ {container: "form-control"} }
+                                    inputProps={{ 
+                                        type: "email", 
+                                        class: "form-control", 
+                                        id: "date", 
+                                        // style: { width: 200 }
+                                        }}
+                                    //onChange={(e) => onChangeContent('date', e.target.value)}
+                                    value={date}
+                                    onDayChange={(e) => handleDayChange(e)}
+                                    selectedDay={day}
+                                    dayPickerProps={{
+                                        modifiers: {
+                                            disabled: [
+                                                {
+                                                    before: new Date(),
+                                                    after: new Date(currentYear, currentMonth, currentDay)
+                                                }
+                                            ]
+                                        },
+                                    }}
+                                    placeholder={`${formatDate(new Date())}`}
+                                />
+                            
+                        
+                               
+                            </div>
+                            
+                            
                         </div>
                         
                         <div class="form-group col-md-6">

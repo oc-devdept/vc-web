@@ -29,7 +29,7 @@ let InitUserProfile = {
 
 function BookNow(props) {
   const [Toggle, setToggle] = useState(false);
-  const [Timeslot] = useState(["AM","PM"]);
+  const [Timeslot] = useState(["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]);
   const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
   const [BookService, setBookService] = useState(InitBookService);
   const [Profile, setUserProfile] = useState({...InitUserProfile});

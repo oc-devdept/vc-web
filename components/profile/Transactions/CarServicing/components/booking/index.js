@@ -30,7 +30,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     const reduxProfile = useSelector(state => state.UserState.profile);
 
     // const {lastName, firstName, email, phone} = reduxProfile.customer.baseContact
-    const [Timeslot, setTimeSlot] = useState(["AM","PM"]);
+    const [Timeslot, setTimeSlot] = useState(["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]);
     const [Profile, setUserProfile] = useState({...InitUserProfile, ...reduxProfile.baseContact});
     const [currentDate, setDate] = useState(Moment(new Date).format('LL'));
     const [BookService, setBookService] = useState(InitBookService);

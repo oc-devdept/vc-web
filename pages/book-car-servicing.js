@@ -288,8 +288,15 @@ function BookCarServicing() {
                                 value={timeslot}
                                 onChange={(e) => onChangeContent('timeslot', e.target.value)}
                                 class="form-control">
-                                <option>AM</option>
-                                <option>PM</option>
+                                <option>9am</option>
+                                <option>10am</option>
+                                <option>11am</option>
+                                <option>12pm</option>
+                                <option>1pm</option>
+                                <option>2pm</option>
+                                <option>3pm</option>
+                                <option>4pm</option>
+                                <option>5pm</option>
                             </select>
                         </div>
                     </div>

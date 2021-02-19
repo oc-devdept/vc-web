@@ -1,8 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from "Api";
+import moment from 'moment';
 
 import Booking from './components/booking'
 import SingleBooking from './components/singleBooking'
+import ConfirmDeleteModal from '../../../components/confirmDeleteModal';
+import ChangeTimeModal from '../../../components/changeTimeModal';
 
 const Index = ({customerId, toggleBookService}) => {
 
@@ -11,7 +14,12 @@ const Index = ({customerId, toggleBookService}) => {
     const [Bookings, setBookings] = useState([]);
     const [Loading, setLoading] = useState(true);
     const [BookingId, setBookingId] = useState(null);
-
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [showChangeTime, setChangeTime] = useState(false);
+    const [Timeslot] = useState(["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]);
+    const [selectedTime, setTime] = useState("");
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [currentDate, setCurrentDate] = useState("");
     // all bookings under service?
     // const dispatch = useDispatch();
     // useEffect(() => {dispatch(retrieveUserProfile(userId))}, []);
@@ -23,7 +31,7 @@ const Index = ({customerId, toggleBookService}) => {
     useEffect(() => {
         async function fetchData() {
             const result = await api.get(`/bookings/FetchService`);
-            setBookings(Bookings => [...Bookings, ...result.data.fields])
+            setBookings(result.data.fields)
             setLoading(() => false)
         }
         fetchData();
@@ -37,6 +45,42 @@ const Index = ({customerId, toggleBookService}) => {
     const SetBookingId = (id) =>{
         setBookingId(()=> id)
     }
+
+    const cancelBooking = (id) => {
+        setShowConfirm(true);
+    }
+
+    const changeBook = (id) => {
+        let bookingInfo = Bookings.filter(item => item.id == id);        
+        let dateObj = new Date(bookingInfo[0].content.date);
+        let currentDate = moment(bookingInfo[0].content.date).format('LL');
+        let timeStr = dateObj.getHours();
+        if(timeStr > 12){
+            timeStr = timeStr - 12;
+            timeStr = timeStr+"pm";
+        }
+        else {
+            timeStr = timeStr+"am";
+        }
+        setTime(timeStr);
+        setSelectedDate(dateObj);
+        setCurrentDate(currentDate);
+        setChangeTime(true);
+    }
+
+    const confirmChangeBook = () => {
+
+    }
+
+    const handleTimeChange = (val) => {
+        setTime(val);
+    }
+
+    const handleDayChange = (date) => {
+        setSelectedDate(date);
+        setCurrentDate(moment(date).format('LL'));
+    }
+
 
 
     return (
@@ -54,6 +98,8 @@ const Index = ({customerId, toggleBookService}) => {
                             tableData={Bookings}
                             loading={Loading}
                             SetSingleBooking={SetBookingId}
+                            cancelBooking={cancelBooking}
+                            changeBook={changeBook}
                         />
                     </div>
                 }  
@@ -66,7 +112,16 @@ const Index = ({customerId, toggleBookService}) => {
                     />
                     </div>
                 }   
-            </div>      
+            </div>
+            <ConfirmDeleteModal show={showConfirm} onHide={()=> setShowConfirm(false)} />
+            <ChangeTimeModal show={showChangeTime} onHide={()=> setChangeTime(false)} 
+                Timeslot={Timeslot} 
+                selectedDate={selectedDate} 
+                selectedTime={selectedTime}
+                currentDate={currentDate}
+                handleDayChange={handleDayChange}
+                handleTimeChange={handleTimeChange}
+                />
         </div>
 
     )

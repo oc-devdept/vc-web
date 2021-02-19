@@ -6,7 +6,7 @@ import RctSectionLoader from "Components/RctSectionLoader";
 
 import Moment from 'moment'
 
-const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) => {
+const CustomerList = ({ tableData, loading, title, action, SetSingleBooking, cancelBooking, changeBook }) => {
 
   const columns = [
     {
@@ -21,23 +21,12 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) =
             const {firstName, lastName} = value
             const id = tableMeta.rowData[0]
             return (
-                <div onClick={() => SetSingleBooking(id)}>
+                <div >
                     <span style={{color:"rgba(0,0,0,0.7)"}}>{firstName + ' ' + lastName}</span>
                 </div>
             );
         }
       }
-    },
-    { 
-        label: "Created",
-        name: "created_at",
-        options: {
-            customBodyRender: (value, tableMeta) => {
-                return (
-                    <span style={{color:"rgba(0,0,0,0.7)"}}>{Moment(value).format('LL')}</span>
-                );
-            }
-        }
     },
     {
       label: "Email",
@@ -93,7 +82,7 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) =
           customBodyRender: value => {
             const {model, date, timeslot, description} = value
             return (
-                <span style={{color:"rgba(0,0,0,0.7)"}}>{Moment(date).format('LL')}</span>
+                <span style={{color:"rgba(0,0,0,0.7)"}}>{Moment(date).format('lll')}</span>
             )
           }
         }
@@ -108,11 +97,20 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) =
             )
           }
         }
+    },
+    {
+      label: "Action",
+      name: "action",
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          return (<div><a href="#" class="badge badge-warning" onClick={()=> changeBook(tableMeta.rowData[0])}>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={()=> cancelBooking(tableMeta.rowData[0])} class="badge badge-danger">Cancel</a></div>)
+        }
+      }
     }
   ];
   
   // if (action == true) {
-  //   columns.push({
+  //   columns.npush({
   //     name: "Actions",
   //     options: {
   //       filter: false,
@@ -165,4 +163,10 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking }) =
 };
 
 export default CustomerList;
+
+/*
+ <div onClick={() => SetSingleBooking(id)}>
+                    <span style={{color:"rgba(0,0,0,0.7)"}}>{firstName + ' ' + lastName}</span>
+                </div>
+*/
 

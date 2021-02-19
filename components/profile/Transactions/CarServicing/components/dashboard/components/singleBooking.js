@@ -72,9 +72,7 @@ const BookingDetail = ({Booking}) => {
                 <div style={{margin:25}}>
                     <Forms
                         Style={"row"}
-                        Details={{
-                            id : id,
-                            Created: created_at,
+                        Details={{                            
                             Scheduled: date,
                             Timeslot: timeslot,
                             Service: service,

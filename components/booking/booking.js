@@ -66,10 +66,10 @@ const Index = memo(
           <div class="col-12 col-md-3 mb-3">          
           <label>Timeslot</label>
                     <select value={timeslot ? timeslot : ""} onChange={_setItemTimeSlot} className="form-control">
-                    {Timeslot.map((e, index) => {
+                    {Timeslot.map((item, index) => {
                         return (
-                          <option key={index} value={e}>
-                            {e}
+                          <option key={index} value={item}>
+                            {item}
                           </option>
                         );
                       })}

@@ -6,6 +6,7 @@ import Booking from './components/booking'
 import SingleBooking from './components/singleBooking'
 import ConfirmDeleteModal from '../../../components/confirmDeleteModal';
 import ChangeTimeModal from '../../../components/changeTimeModal';
+import ScheduleChangeModal from '../../../components/scheduleChangeModal';
 
 const Index = ({customerId, toggleBookService}) => {
 
@@ -17,9 +18,10 @@ const Index = ({customerId, toggleBookService}) => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [showChangeTime, setChangeTime] = useState(false);
     const [Timeslot] = useState(["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]);
-    const [selectedTime, setTime] = useState("");
+    const [selectedTime, setTime] = useState();
     const [selectedDate, setSelectedDate] = useState(null);
     const [currentDate, setCurrentDate] = useState("");
+    const [showChangedConfirm, setShowChangeConfirm] = useState(false);
     // all bookings under service?
     // const dispatch = useDispatch();
     // useEffect(() => {dispatch(retrieveUserProfile(userId))}, []);
@@ -47,13 +49,34 @@ const Index = ({customerId, toggleBookService}) => {
     }
 
     const cancelBooking = (id) => {
+        setBookingId(id);
         setShowConfirm(true);
+    }
+
+    const confirmCancel = async () => {
+        setShowConfirm(false);
+        const result = await api.post('/bookings/changeBookingStatus', { data: {
+            id: BookingId,
+            status: "Cancelled"}
+        });
+
+        let allbookings = Bookings.map(book => {
+            if(result.data.fields && result.data.fields.id == book.id){                
+                return result.data.fields;
+            }
+            else {
+                return book;
+            }
+        })       
+        setBookings(allbookings);
+        
+
     }
 
     const changeBook = (id) => {
         let bookingInfo = Bookings.filter(item => item.id == id);        
         let dateObj = new Date(bookingInfo[0].content.date);
-        let currentDate = moment(bookingInfo[0].content.date).format('LL');
+        let cDate = moment(bookingInfo[0].content.date).format('LL');
         let timeStr = dateObj.getHours();
         if(timeStr > 12){
             timeStr = timeStr - 12;
@@ -62,14 +85,36 @@ const Index = ({customerId, toggleBookService}) => {
         else {
             timeStr = timeStr+"am";
         }
+        setBookingId(id);
         setTime(timeStr);
         setSelectedDate(dateObj);
-        setCurrentDate(currentDate);
+        setCurrentDate(cDate);
         setChangeTime(true);
     }
 
-    const confirmChangeBook = () => {
+    const confirmChangeBook = async (remarks) => {        
+        
+        const result = await api.post(`/bookings/changeRequest`, {
+            bookingId: BookingId,
+            newDate: selectedDate.toISOString(),
+            newTime: selectedTime,
+            remarks: remarks
+        }); 
+        
+        let allbookings = Bookings.map(book => {
+            if(result.data.data && result.data.data.id == book.id){                
+                return result.data.data;
+            }
+            else {
+                return book;
+            }
+        })       
+        setBookings(allbookings);
+        
+        setChangeTime(false);
+        setShowChangeConfirm(true);
 
+        //show change popup
     }
 
     const handleTimeChange = (val) => {
@@ -80,6 +125,11 @@ const Index = ({customerId, toggleBookService}) => {
         setSelectedDate(date);
         setCurrentDate(moment(date).format('LL'));
     }
+    /*
+    const handleChangeReason = (val) => {
+        setChangeReason(val);
+    }
+    */
 
 
 
@@ -92,7 +142,7 @@ const Index = ({customerId, toggleBookService}) => {
             </div>
 
             <div className="rct-block" style={{}}>
-                {!BookingId && 
+             
                     <div className="d-flex flex-fill flex-column">
                         <Booking
                             tableData={Bookings}
@@ -102,18 +152,12 @@ const Index = ({customerId, toggleBookService}) => {
                             changeBook={changeBook}
                         />
                     </div>
-                }  
+                
 
-                {BookingId && 
-                    <div className="d-flex flex-fill flex-column">
-                    <SingleBooking
-                            id={BookingId}
-                            RestartBookingId={RestartBookingId}
-                    />
-                    </div>
-                }   
+               
             </div>
-            <ConfirmDeleteModal show={showConfirm} onHide={()=> setShowConfirm(false)} />
+            <ConfirmDeleteModal show={showConfirm} onHide={()=> setShowConfirm(false)} onConfirm={confirmCancel} />
+            <ScheduleChangeModal show={showChangedConfirm} onHide={()=> setShowChangeConfirm(false)}  />
             <ChangeTimeModal show={showChangeTime} onHide={()=> setChangeTime(false)} 
                 Timeslot={Timeslot} 
                 selectedDate={selectedDate} 
@@ -121,6 +165,7 @@ const Index = ({customerId, toggleBookService}) => {
                 currentDate={currentDate}
                 handleDayChange={handleDayChange}
                 handleTimeChange={handleTimeChange}
+                onConfirm={confirmChangeBook}
                 />
         </div>
 
@@ -131,7 +176,14 @@ const Index = ({customerId, toggleBookService}) => {
 export default Index
 
 
-
+// {BookingId && 
+//     <div className="d-flex flex-fill flex-column">
+//     <SingleBooking
+//             id={BookingId}
+//             RestartBookingId={RestartBookingId}
+//     />
+//     </div>
+// }   
 
 
 // const [cookies, setCookie] = useCookies(['name']);

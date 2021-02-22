@@ -14,7 +14,7 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 
 // Plugins
 import "react-multi-carousel/lib/styles.css";
-import "react-notifications/lib/notifications.css";
+import "../assets/styles/notifications.css";
 import "react-day-picker/lib/style.css";
 import "../assets/styles/react-spinner-loader.css";
 import "react-toastify/dist/ReactToastify.css";

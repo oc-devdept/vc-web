@@ -6,7 +6,7 @@ import { formatPrice } from "Components/Helpers/helpers";
 
 // Carousel
 import Carousel from "react-multi-carousel";
-import { getFeaturedHtml } from "Ducks/homepage";
+import { getFeaturedCars } from "Ducks/homepage";
 
 import { Icon } from '@iconify/react';
 import tickIcon from '@iconify/icons-subway/tick';
@@ -14,29 +14,45 @@ import arrowRight from '@iconify/icons-bi/arrow-right';
 
 class BestSeller extends Component {
   componentDidMount() {
-    console.log("NNQND")
-    this.props.getFeaturedHtml();
+  
+    this.props.getFeaturedCars();
   }
 
-  render() {
-    const { featured, loading } = this.props;
-    var modelImage = {
-      objectFit: "cover",
-      borderRadius: "20px",
-      height: "180px",
-      padding: "5px",
-    };
-    
-    return (<div dangerouslySetInnerHTML={{__html: this.props.featuredHtml.html}} />);
+  render() {    
+    console.log(this.props.featuredCars);
+    return (
+      <div className="featured-cars-area container">
+        <div className="row">
+        <h2>Featured Cars</h2>
+        </div>
+        <div className="row">
+          {
+          this.props.featuredCars.data.map(car => {
+            return (
+              <Link href={car.url}>
+              <div className="featured-car col-xs-12 col-sm-6 col-lg-3" style={{cursor:"pointer"}}>
+              <h3>{ car.name }</h3>
+               <div class="imgBox"> <img src={car.thumbnail }/></div>
+                <h5>fr {car.price }</h5>
+              </div>
+              </Link>
+            )
+          })
+          }
+                
+      </div>
+      </div>
+     
+    );
   }
 }
 const mapStateToProps = ({ HomeState }) => {
   const { FeaturedState } = HomeState;
-  const { featuredHtml } = FeaturedState;
-  return { featuredHtml };
+  const { featuredCars } = FeaturedState;
+  return { featuredCars };
 };
 
-export default connect(mapStateToProps, { getFeaturedHtml })(BestSeller);
+export default connect(mapStateToProps, { getFeaturedCars })(BestSeller);
 /*
 <section className="best-sellers-area">
         <div className="container">

@@ -1,35 +1,35 @@
 import * as types from "./FeaturedTypes";
 
 const INIT_STATE = {
-    featuredHtml: {
+    featuredCars: {
         loading: false,
-        html: ""        
+        data: []        
     },    
 }
 
 export default(state = INIT_STATE, action) => {
     switch(action.type){
-        case types.GET_FEATURED_HTML:
+        case types.GET_FEATURED_CARS:
             return {
                 ...state,
-                featuredHtml: {
-                    ...state.featuredHtml,
+                featuredCars: {
+                    ...state.featuredCars,
                     loading: true
                 }
             }
-        case types.GET_FEATURED_HTML_SUCCESS:
+        case types.GET_FEATURED_CARS_SUCCESS:
             return {
                 ...state,
-                featuredHtml: {
-                    html: action.payload,
+                featuredCars: {
+                    data: action.payload,
                     loading: false
                 }
             }
-        case types.GET_FEATURED_HTML_FAILURE:
+        case types.GET_FEATURED_CARS_FAILURE:
             return {
                 ...state,
-                featuredHtml: {
-                    ...state.featuredHtml,
+                featuredCars: {
+                    ...state.featuredCars,
                     loading: false
                 }
             }

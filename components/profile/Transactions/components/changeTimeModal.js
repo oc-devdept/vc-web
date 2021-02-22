@@ -5,7 +5,7 @@ import DayPicker from "react-day-picker";
 const ChangeTime = (props) => {
     return (
         <Modal show={props.show} onHide={props.onHide}
-        centered dialogClassName="profileDialog">
+        centered dialogClassName="profileDialog" size="lg">
             <Modal.Title>
                 Change Appointment Time Request
             </Modal.Title>
@@ -25,7 +25,7 @@ const ChangeTime = (props) => {
           </div>
           <div class="col-12 col-md-6 mb-6">          
           <label>Timeslot</label>
-                    <select className="form-control" value={props.selectedTime} onChange={(evt) => props.handleTimeChange(evt.value)}>
+                    <select className="form-control" value={props.selectedTime} onChange={(evt) => props.handleTimeChange(evt.target.value)}>
                     {props.Timeslot.map((e, index) => {
                         return (
                           <option key={index} value={e}>
@@ -56,19 +56,20 @@ const ChangeTime = (props) => {
           </div>
           <div class="col-12 col-md-6">
           <label>Reason</label>
-          <input
-                    type="text"
-                    value=""                    
+          <textarea  rows="4"
+            id="reasonText"                               
                     className="form-control"
                     placeholder="Please state a reason for the change"                    
-                  />
+                  >
+                    
+                  </textarea>
           </div>
           
           </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="light" onClick={props.onHide}>Cancel</Button>
-                <Button variant="primary" onClick={props.onConfirm}>Confirm</Button>
+                <Button variant="primary" onClick={()=> props.onConfirm(document.getElementById('reasonText').value)}>Confirm</Button>
             </Modal.Footer>
         </Modal>
     )

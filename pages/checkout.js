@@ -10,9 +10,10 @@ import SummaryTable from "Components/configurator/SummaryTable";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckout } from "Ducks/checkout";
+
 import { retrieveUserProfile } from "Ducks/user";
 
-import { isLoggedIn } from "../utils/auth";
+import { isLoggedIn, getEmail } from "../utils/auth";
 
 const Checkout = props => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const Checkout = props => {
       <div className="container" style={{marginBottom: 40}}>
         <div className="row">
           <div className="col-lg-6">
-          <OrderList checkoutState={checkoutState}  />
+          <OrderList checkoutState={checkoutState} user_email={props.user_email}   />
           </div>
           <div className="col-lg-6">
             {props.loggedIn ? <CreditCardForm /> : <LoginOverlay />}
@@ -53,8 +54,9 @@ const Checkout = props => {
 
 Checkout.getInitialProps = ctx => {
   const loggedIn = isLoggedIn(ctx);
+  const user_email = getEmail(ctx);
   // props that returned if user is logged in
-  return { loggedIn };
+  return { loggedIn, user_email };
 };
 
 export default Checkout;

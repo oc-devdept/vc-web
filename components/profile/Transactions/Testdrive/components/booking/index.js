@@ -48,7 +48,8 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     };
 
     const _setItemTimeSlot = (e) => {
-        setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
+        let item = e.target.value;
+        setBookService(({ ...BookService, timeslot: item }));
     }
     
     const validateService = async () => {
@@ -63,7 +64,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
         const result = await api.post(`/bookings/createBooking`, {data: newBooking});
 
-        switch(result.data.success){
+        switch(result.data.data.success){
             case 0:
                 // this.setState({error: true})
                 NotificationManager.error('Unable to make booking request');

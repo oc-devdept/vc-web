@@ -60,16 +60,18 @@ class Accessories extends Component {
                 element => element.isDefault
               );
               var selectedIds = [];
+              console.log(this.props.ProductAccessories.selected);
               if(this.props.ProductAccessories.selected != null && this.props.ProductAccessories.selected[variance] != undefined ){
                   for(let i=0; i < data.options.length; i++){
                       for(let j=0; j < this.props.ProductAccessories.selected[variance].length; j++){
-                          if(data.options[i].id === this.props.ProductAccessories.selected[variance][j]){
+                          if(data.options[i].id === this.props.ProductAccessories.selected[variance][j].id){
                               selectedIndex = i;
-                              selectedIds.push(data.options[i].id);
+                              selectedIds.push(j);
                           }
                       }    
                   }                
                 }
+              console.log(selectedIds);
                                       
               if (selectedIds.length > 0) {
                 let data = {

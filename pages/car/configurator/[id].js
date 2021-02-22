@@ -76,7 +76,16 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    this.props.getProductModelData(this.props.selectedModelId);
+    
+    if(this.props.skip == "end"){
+      this.setState(
+        {
+          activeStep:3
+        }
+      )
+    }
+    else {
+      this.props.getProductModelData(this.props.selectedModelId);
     !!this.props.selectedGradeId
       ? this.props.getProductGrades(
         this.props.selectedModelId,
@@ -84,6 +93,7 @@ class Product extends Component {
       )
       : this.props.getProductGrades(this.props.selectedModelId);
     this.props.getAllConfig();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -333,8 +343,9 @@ class Product extends Component {
 Product.getInitialProps = async function (ctx) {
   const id = ctx.query.id;
   const grade = ctx.query.grade;
+  const skip = ctx.query.skip;
   const user_email = getEmail(ctx);
-  return { selectedModelId: id, selectedGradeId: grade, user_email: user_email };
+  return { selectedModelId: id, selectedGradeId: grade, user_email: user_email, skip: skip };
 };
 
 const mapStateToProps = state => {

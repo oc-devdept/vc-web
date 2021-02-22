@@ -2,26 +2,26 @@ import { all, call, fork, put, takeEvery, delay } from "redux-saga/effects";
 import api from "Api";
 
 import {
-    GET_FEATURED_HTML
+    GET_FEATURED_CARS
 } from './FeaturedTypes';
 
 import * as actions from './FeaturedActions';
 
-const getFeaturedHtml = async() => {
-    const result = await api.get("/templatecomponents/getHtml/FeaturedContainer");
+const getFeaturedCars = async() => {
+    const result = await api.get("/featuredcars/getall");
     return result.data;
 }
 function* getFeaturedFromDB(){
     try{
-        const data = yield call(getFeaturedHtml);
-        yield put(actions.getFeaturedHtmlSuccess(data.data));
+        const data = yield call(getFeaturedCars);
+        yield put(actions.getFeaturedCarsSuccess(data.data));
     }
     catch(error){
-        yield put(actions.getFeaturedHtmlFailure(error));
+        yield put(actions.getFeaturedCarsFailure(error));
     }
 }
 export function* getFeaturedWatcher(){
-    yield takeEvery(GET_FEATURED_HTML, getFeaturedFromDB);    
+    yield takeEvery(GET_FEATURED_CARS, getFeaturedFromDB);    
 }
 
 export default function* rootSaga(){

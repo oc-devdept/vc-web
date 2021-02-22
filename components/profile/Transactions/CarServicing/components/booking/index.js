@@ -12,7 +12,7 @@ import api from "Api";
 let InitBookService = {
     model: '',
     date: '', // schedule date
-    timeslot: '', // AM/PM
+    timeslot: '9am', // AM/PM
     description: '',
 }
 
@@ -49,7 +49,9 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
     };
 
     const _setItemTimeSlot = (e) => {
-        setBookService(BookService => ({ ...BookService, timeslot: e.target.value }));
+        let item = e.target.value;
+        setBookService({ ...BookService, timeslot: item});
+               
     }
 
 
@@ -63,8 +65,9 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
         }
 
         const result = await api.post(`/bookings/createBooking`, {data: newBooking});
+        console.log(result);
 
-        switch(result.data.success){
+        switch(result.data.data.success){
             case 0:
                 // this.setState({error: true})
                 NotificationManager.error('Unable to make booking request');

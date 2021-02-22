@@ -108,6 +108,7 @@ class Rims extends Component {
                 stockHistory={
                   data.objects[this.state.rims[variance].selectedKey].stockhistory
                 }
+                showTab={true}
               /> : <div></div>
               )) }
             </div>

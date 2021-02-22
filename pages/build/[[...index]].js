@@ -430,7 +430,7 @@ function Build() {
   }
 
   const applyFilters = () => {
-    //Have both make and model filters
+    //Have both make and model filters;
     if( (filters.brand && filters.brand.length == 1) &&  (filters.tag && filters.tag.length == 1)){
 
       var result = allMakes.filter( make => {
@@ -444,13 +444,13 @@ function Build() {
       // `/images/${path}`
       // router.push('build/[[...index]]',`/${result[0].name}/${tag[0].name}`, { shallow: true })
       router.push('index',`${result[0].name}/${tag[0].name}`, { shallow: true })
-    }else if( (filters.brand && filters.brand.length == 1) &&   !filters.tag ){
+    }else if( (filters.brand && filters.brand.length == 1) &&  (!filters.tag || filters.tag.length == 0) ){
       
       var result = allMakes.filter( make => {
         return make.id == filters.brand[0]
       })
       router.push('index',`${result[0].name}`, { shallow: true })
-    }else if( filters.tag.length == 1 &&   !filters.brand){
+    }else if( filters.tag.length == 1 &&   (!filters.brand || filters.tag.length == 0)){
 
           
       var result = allTags.filter( make => {
@@ -458,8 +458,6 @@ function Build() {
       })
       router.push('index',`all/${result[0].name}`, { shallow: true })
     }
-    console.log("APPLY FILTERS")
-    console.log(filters)
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
@@ -628,10 +626,12 @@ function Build() {
                     <div class="right">
                       <p className="types">{ car[0].tag ? (car[0].tag).toUpperCase() : "" }</p>
               <h3 className="car-name">{ (car[0].make +" "+ car[0].model).toUpperCase()  }</h3>
+              <h4 className="car-gradename">{ car[0].name} </h4>
               <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
               </div>
               <div class="build-content">
-                 {
+                <p>{ car[0].description }</p>
+                {
                    car[0].productDetailValue && car[0].productDetailValue.map(detail => (
                     <p class="part1"><span class="engCap">
                       { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
@@ -646,7 +646,6 @@ function Build() {
                     </span></p>
                    ))
                  }
-
                 </div>
                 <div className="button">
                   {
@@ -674,6 +673,7 @@ function Build() {
                     <div class="right">
                       <p className="types">{ car[1].tag ? (car[1].tag).toUpperCase() : "" }</p>
               <h3 className="car-name">{ (car[1].make +" "+ car[1].model).toUpperCase()  }</h3>
+              <h4 className="car-gradename">{ car[1].name} </h4>
               <h5 className="car-price"> fr {formatPrice(car[1].selling_price)} </h5>
               </div>
               <div class="build-content">

@@ -11,7 +11,8 @@ const CustomerList = ({
   loading,
   title,
   action,
-  SetSingleBooking
+  SetSingleBooking,
+  cancelBooking, changeBook
 }) => {
   const columns = [
     {
@@ -26,7 +27,7 @@ const CustomerList = ({
           const { firstName, lastName } = value;
           const id = tableMeta.rowData[0];
           return (
-            <div onClick={() => SetSingleBooking(id)}>
+            <div>
               <span style={{ color: "rgba(0,0,0,0.7)" }}>
                 {firstName + " " + lastName}
               </span>
@@ -42,16 +43,6 @@ const CustomerList = ({
         customBodyRender: value => {
           const { email } = value;
           return <span style={{ color: "rgba(0,0,0,0.7)" }}>{email}</span>;
-        }
-      }
-    },
-    {
-      label: "Contact",
-      name: "contact",
-      options: {
-        customBodyRender: (value, tableMeta) => {
-          const { phone } = value;
-          return <span style={{ color: "rgba(0,0,0,0.7)" }}>{phone}</span>;
         }
       }
     },
@@ -94,6 +85,27 @@ const CustomerList = ({
       options: {
         customBodyRender: value => {
           return <span style={{ color: "rgba(0,0,0,0.7)" }}>{value}</span>;
+        }
+      }
+    },
+    {
+      label: "Remarks",
+      name: "remarks"      
+    },
+    {
+      label: "Action",
+      name: "action",
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          if(tableMeta.rowData[6] == "Cancelled" || tableMeta.rowData[5] == "Complete"){
+            return (<div></div>)
+          }
+          else if(tableMeta.rowData[6] == "Change Request"){
+            return (<div><a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
+          }
+          else {
+          return (<div><a href="#" class="badge badge-warning" onClick={()=> {changeBook(tableMeta.rowData[0])} }>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
+          }
         }
       }
     }

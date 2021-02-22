@@ -9,11 +9,13 @@ import { Icon, InlineIcon } from '@iconify/react';
 import downloadOutlined from '@iconify/icons-ant-design/download-outlined';
 import moneyCheckAlt from '@iconify/icons-fa-solid/money-check-alt';
 import carRepair15 from '@iconify/icons-maki/car-repair-15';
+import Popover from '@material-ui/core/Popover';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import { printConfigurator } from "Ducks/product/ProductActions";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function OrderList({ checkoutState }) {
+export default function OrderList(props) {
   const dispatch = useDispatch();
  
   const {    
@@ -24,73 +26,78 @@ export default function OrderList({ checkoutState }) {
     ProductAccessories,
     CoeSelected,
     AftersaleSelected    
-  } = checkoutState;
+  } = props.checkoutState;
 
 
-  /*
-  const dataStructuring = checkoutState => {
-    const {
-      ProductModel,
-      ProductGrade,
-      productVariance,
-      productAccessories
-    } = checkoutState;
-    let data = [];
-    let counter = 1;
-    data.push({
-      number: counter,
-      image: ProductModel.image,
-      title: "CAR MAKE & MODEL",
-      name: ProductModel.name
-    });
-    counter++;
-    data.push({
-      number: counter,
-      image: ProductGrade.images[0],
-      title: "GRADE",
-      name: ProductGrade.name,
-      price: ProductGrade.price
-    });
-    counter++;
-    productVariance.forEach(element => {
-      data.push({
-        number: counter,
-        image: element.thumbnail,
-        title: "VARIANCE",
-        name: element.name,
-        price: element.price
-      });
-      counter++;
-    });
-    productAccessories.forEach(element => {
-      data.push({
-        number: counter,
-        image: element.thumbnail,
-        title: "ACCESSORY",
-        name: element.name,
-        price: element.price
-      });
-      counter++;
-    });
-    return data;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  const sendConfigurator = () => {
+    if(userEmail != ""){
+      dispatch(printConfigurator(userEmail));
+      setSendCount(1);
+    }
+  }
+
+  const sendConfig = useSelector(state => state.ProductState.sendConfigurator);
+
+  const [sendCount, setSendCount] = React.useState(0);
+  const [userEmail, setUserEmail ] = React.useState(props.user_email);
+
+  const theme = createMuiTheme({
+    overrides: {
+        MuiPopover: {
+            paper: {
+                backgroundColor: "#ffffff",
+                padding:15,
+                maxWidth:"120%",
+                maxHeight:"120%",
+                border:"2px solid #f29d30",
+                borderRadius:5
+            },
+        },      
+    }
+  });
   
-  const costStructuring = checkoutState => {
-    const { subtotal, misc, gst } = checkoutState;
-    let data = [
-      { name: "SUBTOTAL", amount: subtotal },
-      { name: "MISC. FEES", amount: misc },
-      { name: "GST", amount: gst }
-    ];
-    return data;
-  };
-*/
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       
         { ProductGrade ? (
           <div className="summaryTableCard">
-        <button className="summaryDownload" onClick={()=> {dispatch(printConfigurator())}}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+       <button className="summaryDownload" onClick={handleClick}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
+        <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        {
+         sendConfig.loading ? <p className="popTitleMsg">Sending email ...</p>
+         : sendConfig.message != "" ? <p className="popTitleMsg">{ sendConfig.message }</p>
+         : ""
+      }
+       {sendConfig.message == "" &&  <p className="popTitle">Send Summary to this email address</p> }
+        <input type="text" onChange={(evt) => { setUserEmail(evt.target.value)}} value={userEmail} disabled={(sendCount > 0)} /> <button onClick={sendConfigurator} disabled={(sendCount > 0)}>Send</button>
+      </Popover>
         <div className="summaryTable">
           <ol>
             <li>
@@ -265,23 +272,23 @@ export default function OrderList({ checkoutState }) {
           <div className="financeDetails">
             <div className="totalPrice financeRow">
               <div className="fItem">Total Car Price</div>
-              <div className="fPrice">{checkoutState.total ? formatPrice(checkoutState.total) : "-"}</div>
+              <div className="fPrice">{props.checkoutState.total ? formatPrice(props.checkoutState.total) : "-"}</div>
             </div>
             <div className="financeRow">
               <div className="fItem">Downpayment</div>
-              <div className="fPrice">{ checkoutState.downPayment ? formatPrice(checkoutState.downPayment) : "-" }</div>
+              <div className="fPrice">{ props.checkoutState.downPayment ? formatPrice(props.checkoutState.downPayment) : "-" }</div>
             </div>
             <div className="financeRow">
               <div className="fItem">Monthly Installments</div>
-              <div className="fPrice">{checkoutState.monthlyInstallment ? formatPrice(checkoutState.monthlyInstallment): "-"}</div>
+              <div className="fPrice">{props.checkoutState.monthlyInstallment ? formatPrice(props.checkoutState.monthlyInstallment): "-"}</div>
             </div>
             <div className=" financeRow">
               <div className="fItem">Loan Amount</div>
-              <div className="fPrice">{checkoutState.loanAmount ? formatPrice(checkoutState.loanAmount) : "-" }</div>
+              <div className="fPrice">{props.checkoutState.loanAmount ? formatPrice(props.checkoutState.loanAmount) : "-" }</div>
             </div>
             <div className="financeRow">
               <div className="fItem">Online Payable Deposit</div>
-              <div className="fPrice">{ checkoutState.deposit ? formatPrice(checkoutState.deposit): "-" }</div>
+              <div className="fPrice">{ props.checkoutState.deposit ? formatPrice(props.checkoutState.deposit): "-" }</div>
             </div>
           </div>
         </div>
@@ -289,7 +296,7 @@ export default function OrderList({ checkoutState }) {
         ) : ( <div className="summaryTableCard"><h2 style={{color: "white"}}>Your cart is empty</h2></div>)}
         
       
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 /*

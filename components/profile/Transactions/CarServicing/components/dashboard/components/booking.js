@@ -39,19 +39,7 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking, can
             );
         }
       }
-    },
-    {
-        label: "Contact",
-        name: "contact",
-        options: {
-            customBodyRender: (value, tableMeta) => {
-                const {phone} = value
-                return (
-                    <span style={{color:"rgba(0,0,0,0.7)"}}>{phone}</span>
-                );
-            }
-        }
-    },
+    },    
     {
       label: "Service",
       name: "service",
@@ -99,14 +87,26 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking, can
         }
     },
     {
+      label: "Remarks",
+      name: "remarks"      
+    },
+    {
       label: "Action",
       name: "action",
       options: {
         customBodyRender: (value, tableMeta) => {
-          return (<div><a href="#" class="badge badge-warning" onClick={()=> changeBook(tableMeta.rowData[0])}>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={()=> cancelBooking(tableMeta.rowData[0])} class="badge badge-danger">Cancel</a></div>)
+          if(tableMeta.rowData[6] == "Cancelled" || tableMeta.rowData[5] == "Complete"){
+            return (<div></div>)
+          }
+          else if(tableMeta.rowData[6] == "Change Request"){
+            return (<div><a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
+          }
+          else {
+          return (<div><a href="#" class="badge badge-warning" onClick={()=> {changeBook(tableMeta.rowData[0])} }>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
+          }
         }
       }
-    }
+    }    
   ];
   
   // if (action == true) {

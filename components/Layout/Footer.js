@@ -44,7 +44,7 @@ class Footer extends Component {
             // success
             // setForm(() => Contact);
             // this.setState({...userDetails});
-            NotificationManager.success('Signed Up');
+            NotificationManager.success('Newsletter signup successful!');
 
         } catch (e) {
             // failed

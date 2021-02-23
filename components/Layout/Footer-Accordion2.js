@@ -20,30 +20,65 @@ export default function CustomAccordion(props) {
   //onClick={(props)=>{toggleView} }
   return (
     <React.Fragment>
-      <div class="mobileFooterHeader" onClick={() => toggleView(0)}>
+      <div class="mobileFooterHeader" onClick={() => toggleView(0)}
+      style={{
+        color:"#c0c0c0",
+        backgroundColor: "#666666",
+        padding: "10px 20px",
+        marginLeft:"20px ",
+        marginRight:"20px ",
+        fontSize:" 0.9rem", 
+        borderBottom:"1px solid #000000",
+      }}>
       { html.length > 0 && html[0].title }
-         <span  ><ExpandMoreIcon /></span></div>
-      <div className={"mobileFooterDetails optionDisplay"+ (isShowing[0] ? " show" : "")}>
+         <span  ><ExpandMoreIcon  style={{float:"right"}}/></span></div>
+      <div className={"mobileFooterDetails optionDisplay"+ (isShowing[0] ? " show" : "")} style={{paddingRight:"25px" ,paddingLeft:"20px" , margin:0}} 
+      >
       {
          html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[0].html}} />)
                                 }  
         </div>
-      <div class="mobileFooterHeader " onClick={()=> toggleView(1)}> 
+      <div class="mobileFooterHeader " onClick={()=> toggleView(1)} 
+      style={{
+        color:"#c0c0c0",
+        backgroundColor: "#666666",
+        padding: "10px 20px",
+        marginLeft:"20px ",
+        marginRight:"20px ",
+        fontSize:" 0.9rem", 
+        borderBottom:"1px solid #000000",
+      }}>
       { html.length > 0 && html[1].title }
-         <span  ><ExpandMoreIcon /></span></div>
+         <span  ><ExpandMoreIcon style={{float:"right"}} /></span></div>
 
-         <div className={"mobileFooterDetails optionDisplay"+ (isShowing[1] ? " show" : "")}>
+         <div className={"mobileFooterDetails optionDisplay"+ (isShowing[1] ? " show" : "")}
+         style={{paddingRight:"25px" ,paddingLeft:"20px" , margin:0}}
+         >
          {
-          html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[1].html}} />)
+          html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[1].html}} 
+           
+          />)
                                 }  
 </div >
-      <div class="mobileFooterHeader" onClick={() => toggleView(2)}>
+      <div class="mobileFooterHeader" onClick={() => toggleView(2)}
+       style={{
+        color:"#c0c0c0",
+        backgroundColor: "#666666",
+        padding: "10px 20px",
+        marginLeft:"20px ",
+        marginRight:"20px ",
+        fontSize:" 0.9rem", 
+        borderBottom:"1px solid #000000",
+      }}>
       { html.length > 0 && html[2].title }
-         <span  ><ExpandMoreIcon /></span></div>
+         <span  ><ExpandMoreIcon style={{float:"right"}} /></span></div>
 
-         <div className={"mobileFooterDetails optionDisplay"+ (isShowing[2] ? " show" : "")} >
+         <div className={"mobileFooterDetails optionDisplay"+ (isShowing[2] ? " show" : "")} 
+         style={{paddingRight:"25px" ,paddingLeft:"20px" , margin:0}}>
          {
-           html.length > 0 && (<div className="optionDisplay-text" dangerouslySetInnerHTML={{__html: html[2].html}} />)
+           html.length > 0 && (<div className="optionDisplay-text " dangerouslySetInnerHTML={{__html: html[2].html}} 
+           
+           />)
                                 }  
 </div>
     </React.Fragment>

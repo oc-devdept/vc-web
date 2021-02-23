@@ -122,7 +122,7 @@ class Footer extends Component {
                 </div>
 
 
-                <div className="mobile-footer">
+                <div className="mobile-footer" >
                     <FooterAccordion data={html} />
                 </div>
 

@@ -1182,6 +1182,9 @@
   .main-banner-two .opacityZero {
     opacity: 1;
   }
+  // .mobile-footer {
+  //   display: none;
+  // }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1779,6 +1782,8 @@
       color: #c0c0c0;
       background-color: #666666;
       padding: 10px 20px;
+      margin-left:20px ;
+      margin-right:20px ;
       font-size: 0.9rem;
       span{
         float: right;
@@ -1817,7 +1822,7 @@
         // margin-bottom:1em;
         div{
           color: white;
-          margin: 5px 5px 0 20px ;
+          margin: 5px 5px 0 0 ;
         }
       }
    

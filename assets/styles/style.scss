@@ -653,7 +653,7 @@ Single Car Page Area CSS
 }
 
 .grade-content img {
-  margin-bottom: 50%;
+  // margin-bottom: 50%;
   width: 100%;
   
 }
@@ -10057,6 +10057,11 @@ Footer Area CSS
 .footer-area p {
   color: #999999;
   margin-top: 10px;
+}
+.footer-area a {
+  color: #999999;
+  margin-top: 10px;
+  // font-weight: bolder;
 }
 
 .single-footer-widget h3 {

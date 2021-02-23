@@ -23,15 +23,25 @@ class ChooseGrade extends Component {
                     </div>
                 </div>
                 { products.length > 1
-                    ? <div className="sub-box">
+                    ? <div className="sub-box" style={{
+                        display:"flex",justifyContent:"between"
+                    }}>
                         {
                             products.map(product => (
                                 <div className="box" key={product.id}>
                                     <div className="grade-box">
-                                        <div className="grade-content">
-                                            <img src={product.files[0].path} />
+                                        <div className="grade-content" style={{
+                                            display:"flex" ,flexDirection:"column"
+                                        }}>
+                                            <div  className="grade-content-image-header">
+                                                 <img src={product.files[0].path} />
+                                            </div>
+                                            <div className="grade-content-text-container">
                                             <h3>{product.name}</h3>
                                             <h5>fr ${product.selling_Price}</h5>
+                                            </div>
+                                           
+                                            
                                             <div className="button" align="center">
                                                 <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
                                                     ENQUIRE

@@ -82,6 +82,15 @@
   .nav-btn {
     padding: 50% 13% !important;
   }
+  .grade-content-image-header {
+    height: 30%;
+    overflow: hidden;
+    min-height: 250px;
+    img {
+    width: 100%;   
+    }
+  }
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -1648,7 +1657,7 @@
   .sub-box {
     display: block;
     .box {
-      width: 30%;
+      width: 42%;
     }
   }
   .about-honda-fit-area .container {

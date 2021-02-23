@@ -474,9 +474,9 @@ function Build() {
         <section className="build-area">
           <div className="container">
             <div className="section-title without-bg" align="center">
-                <h2>CHOOSE A MODEL TO BUILD</h2>
-     
-            </div>
+                {/* <h2>CHOOSE A MODEL TO BUILD</h2> */}
+                <h2>Choose A Model To Build</h2>
+                 </div>
             <div class="first_row">
               <div class="filter">
                 <StyledButton aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -619,51 +619,51 @@ function Build() {
             {
               carList.map(car => {
                 return (<div class="row">
-                  <div class="column">
-                    <div class="left">
+                  <div class="column" >
+                    <div class="left" >        
                       <img src={car[0].image } />
                     </div>
-                    <div class="right">
+                    <div class="right" >
                       <p className="types">{ car[0].tag ? (car[0].tag) : "" }</p>
-              <h3 className="car-name">{ (car[0].make +" "+ car[0].model)  }</h3>
-              <h4 className="car-gradename">{ car[0].name} </h4>
-              <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
-              </div>
-              <div class="build-content">
-                <p>{ car[0].description }</p>
-                {
-                   car[0].productDetailValue && car[0].productDetailValue.map(detail => (
-                    <p class="part1"><span class="engCap">
-                      { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
-                          <Icon icon={engineIcon} color="#595959"/>:
-                          detail.detailCategory.name.indexOf("Power") >= 0 ? 
-                          <Icon icon={powerIcon} color="#595959"/> :
-                          detail.detailCategory.name.indexOf("Fuel") >= 0 ?
-                          <Icon icon={fuel15} color="#595959"/> : 
-                          <Icon icon={smallgearIcon} color="#595959"/>
-                         }
+                      <h3 className="car-name">{ (car[0].make +" "+ car[0].model)  }</h3>
+                      <h4 className="car-gradename">{ car[0].name} </h4>
+                      <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
+                    </div>
+                    <div class="build-content">
+                       <p>{ car[0].description }</p>
+                       {
+                          car[0].productDetailValue && car[0].productDetailValue.map(detail => (
+                            <p class="part1"><span class="engCap">
+                              { detail.detailCategory.name.indexOf("Engine") >= 0 ? 
+                                  <Icon icon={engineIcon} color="#595959"/>:
+                                  detail.detailCategory.name.indexOf("Power") >= 0 ? 
+                                  <Icon icon={powerIcon} color="#595959"/> :
+                                  detail.detailCategory.name.indexOf("Fuel") >= 0 ?
+                                  <Icon icon={fuel15} color="#595959"/> : 
+                                  <Icon icon={smallgearIcon} color="#595959"/>
+                                 }
                            &nbsp; { detail.detailCategory.name }: {detail.value + (detail.detailCategory.unit != "." ? detail.detailCategory.unit : "")} 
-                    </span></p>
-                   ))
-                 }
-                </div>
-                <div className="button">
-                  {
+                            </span></p>
+                         ))
+                      }
+                    </div>
+                    <div className="button">
+                     {
                     car[0].page && ( 
                     <Link href={car[0].page }>
                     <a className="btn gw-without-bg-btn">
-                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                     </a>
                     </Link>)
-                  }
-                 {car[0].build && (
-                  <Link href={car[0].build}>
-                  <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
-                  </a>
-                  </Link>
-                 )}
-                </div>
+                      }
+                     {car[0].build && (
+                      <Link href={car[0].build}>
+                     <a className="btn buildBtn">
+                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      </a>
+                      </Link>
+                    )}
+                    </div>
                   </div>
                  { car.length > 1 && (
                   <div class="column">
@@ -698,14 +698,14 @@ function Build() {
                     car[1].page && ( 
                     <Link href={car[1].page}>
                     <a className="btn gw-without-bg-btn">
-                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                      <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                     </a>
                     </Link>)
                   }
                   {car[1].build && (
                   <Link href={car[1].build}>
                   <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                   </a>
                   </Link>
                   )}
@@ -749,12 +749,12 @@ export default Build;
                 <div className="button">
                   <Link href="/">
                   <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                   </a>
                   </Link>
                   <Link href="/">
                   <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                   </a>
                   </Link>
                 </div>
@@ -776,12 +776,12 @@ export default Build;
                 <div className="button">
                   <Link href="/">
                   <a className="btn gw-without-bg-btn">
-                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; VIEW DETAILS
+                    <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                   </a>
                   </Link>
                   <Link href="/">
                   <a className="btn buildBtn">
-                      BUILD NOW &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
                   </a>
                   </Link>
                 </div>

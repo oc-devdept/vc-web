@@ -104,7 +104,7 @@ function ContactUs({ }) {
 
 
   return (
-    <DefaultLayout crumbs="Contact Us">
+    <DefaultLayout crumbs="CONTACT US">
       <section className="contact-area pb-60">
         <div className="container">
           <div className="section-title">

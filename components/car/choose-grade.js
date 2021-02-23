@@ -19,7 +19,8 @@ class ChooseGrade extends Component {
             <section className="choose-grade-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                        <h2>CHOOSE YOUR GRADE</h2>
+                        {/* <h2>CHOOSE YOUR GRADE</h2> */}
+                        <h2>Choose Your Garde</h2>
                     </div>
                 </div>
                 { products.length > 1
@@ -44,7 +45,7 @@ class ChooseGrade extends Component {
                                             
                                             <div className="button" align="center">
                                                 <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
-                                                    ENQUIRE
+                                                    Enquire
                                                 </a>
 
                                                 <Link href={"/car/configurator/" + this.props.url}>
@@ -214,7 +215,7 @@ class ChooseGrade extends Component {
                                                 <div className="button" align="center">
 
                                                     <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
-                                                        ENQUIRE
+                                                    Enquire
                                             </a>
 
                                                     <Link href={"/car/configurator/" + this.props.url}>

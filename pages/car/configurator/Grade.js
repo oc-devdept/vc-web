@@ -116,7 +116,7 @@ const Grade = ({
           className="configCoverImg align-self-center"
           style={{ maxWidth: "100%" }}
         />
-        <h3 className="text-uppercase text-center my-3">{ProductGrade.name}</h3>
+        <h3 className=" text-center my-3">{ProductGrade.name}</h3>
         <p className="mb-4">{ProductGrade.description}</p>
         <ul>
           {

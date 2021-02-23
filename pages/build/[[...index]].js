@@ -624,8 +624,8 @@ function Build() {
                       <img src={car[0].image } />
                     </div>
                     <div class="right">
-                      <p className="types">{ car[0].tag ? (car[0].tag).toUpperCase() : "" }</p>
-              <h3 className="car-name">{ (car[0].make +" "+ car[0].model).toUpperCase()  }</h3>
+                      <p className="types">{ car[0].tag ? (car[0].tag) : "" }</p>
+              <h3 className="car-name">{ (car[0].make +" "+ car[0].model)  }</h3>
               <h4 className="car-gradename">{ car[0].name} </h4>
               <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
               </div>
@@ -671,8 +671,8 @@ function Build() {
                       <img src={car[1].image} />
                     </div>
                     <div class="right">
-                      <p className="types">{ car[1].tag ? (car[1].tag).toUpperCase() : "" }</p>
-              <h3 className="car-name">{ (car[1].make +" "+ car[1].model).toUpperCase()  }</h3>
+                      <p className="types">{ car[1].tag ? (car[1].tag): "" }</p>
+              <h3 className="car-name">{ (car[1].make +" "+ car[1].model)}</h3>
               <h4 className="car-gradename">{ car[1].name} </h4>
               <h5 className="car-price"> fr {formatPrice(car[1].selling_price)} </h5>
               </div>

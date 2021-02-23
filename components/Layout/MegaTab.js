@@ -83,7 +83,7 @@ const MegaTab = () => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-11">
-          <div className="text-uppercase">
+          <div >
             {Loading && <div>Loading ....</div>}
             <React.Fragment>
               <ul className="nav nav-tabs justify-content-center">

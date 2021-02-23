@@ -7,7 +7,7 @@ class AboutHondaFit extends Component {
             <section className="about-honda-fit-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                        <h2>ABOUT {carName}</h2>
+                        <h2>About {carName}</h2>
                     </div>
                     <div className="about-table">
                         <div  dangerouslySetInnerHTML={{__html: about}} />

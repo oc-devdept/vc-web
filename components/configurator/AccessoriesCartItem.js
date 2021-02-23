@@ -21,7 +21,7 @@ const AccessoriesCartItem = props => {
           }}
         />
       </div>
-      <div className="col-5 p-0 mr-1 text-uppercase">
+      <div className="col-5 p-0 mr-1 ">
         <p style={{ fontWeight: 600, lineHeight: 1 }} className="mb-1">
           {props.title}
         </p>

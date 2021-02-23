@@ -202,7 +202,7 @@ const Summary = props => {
 
                   }}
                 >
-                  MAKE ENQUIRY
+                  Make Enquiry
                 </p>
               </button>
             </div>

@@ -10,7 +10,7 @@ const VariantInfo = ({ images, name }) => {
           </div>
 
      
-      <h3 className="text-uppercase text-center my-3">{name}</h3>
+      <h3 className=" text-center my-3">{name}</h3>
     </React.Fragment>
   );
 };

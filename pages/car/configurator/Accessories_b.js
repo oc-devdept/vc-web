@@ -148,7 +148,7 @@ class Accessories extends Component {
                         )}
                       </p>
                       <p
-                        className="col-9 m-0 text-center text-uppercase"
+                        className="col-9 m-0 text-center"
                         style={{ fontWeight: 600, color: "#ffffff" }}
                       >
                         {key}
@@ -200,7 +200,7 @@ class Accessories extends Component {
                                   <p
                                     style={{
                                       color: "#4B6674",
-                                      textTransform: "uppercase"
+                                     
                                     }}
                                   >
                                     {item.productOption.name}{" "}

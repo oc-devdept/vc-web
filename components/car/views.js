@@ -8,11 +8,11 @@ class Views extends Component {
             <section className="views-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                        <h2>360&deg; VIEWING</h2>
+                        <h2>360&deg; Viewing</h2>
                     </div>
                     <div className="two-parts">
                         <div className="exterior-view">
-                            <h6>360&deg; EXTERIOR VIEWING</h6>
+                            <h6>360&deg; Exterior Viewing</h6>
                         </div>
                         {/*<div className="interior-view">*/}
                         {/*    <h6>360&deg; INTERIOR VIEWING</h6>*/}

@@ -195,7 +195,7 @@ const VariantSelection = ({
                 <br />
                 <span
                   id={item.id}
-                  style={{ textTransform: "uppercase", fontWeight: 500 }}
+                  style={{  fontWeight: 500 }}
                 >
                   {item.name}
                 </span>

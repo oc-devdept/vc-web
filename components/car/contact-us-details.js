@@ -100,11 +100,11 @@ class ContactUsDetails extends Component {
             <section className="contact-us-area" >
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                        <h2>CONTACT US</h2>
+                        <h2>Contact Us</h2>
                     </div>
 
                     <div className="contact-details">
-                        <h6>CONTACT DETAILS</h6>
+                        <h6>Contact Details</h6>
                         <p> We are here to help!</p>
                         <p>
                             <Icon icon={bxsPhone} />&nbsp;&nbsp;
@@ -125,7 +125,7 @@ class ContactUsDetails extends Component {
                     </div>
                     <hr />
                     <div className="contact-form-area">
-                        <h6>HAVE A QUESTION?</h6>
+                        <h6>Have a question ?</h6>
                         <p>
                             Find your answers in our FAQ{" "}
                             <a className="d-inline" href="/faq">
@@ -234,7 +234,7 @@ class ContactUsDetails extends Component {
                                 })}
                             </div>
                             <div class="d-flex justify-content-center">
-                                <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">SEND ENQUIRY</button>
+                                <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">Send Enquiry</button>
                             </div>
                         </form>
                     </div>

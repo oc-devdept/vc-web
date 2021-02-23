@@ -211,7 +211,7 @@ class Product extends Component {
                 </div>
                 <div className="step-body">
                   <div className="row">
-                    <div className="col-md-12 text-center configHeader"><h1>{this.steps[this.state.activeStep].toUpperCase()}</h1></div>
+                    <div className="col-md-12 text-center configHeader"><h1>{this.steps[this.state.activeStep]}</h1></div>
                   </div>
                   {this.state.activeStep == 0 && (
                     <div className="row">

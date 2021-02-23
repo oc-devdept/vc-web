@@ -45,7 +45,7 @@ class EnquiryForm extends Component {
                                     </a>{" "}
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary">SEND ENQUIRY</button>
+                            <button type="submit" class="btn btn-primary">Send Enquiry</button>
                         </form>
                     </div>
                 </div>

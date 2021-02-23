@@ -168,7 +168,7 @@ class Form extends Component {
                                     return <div style={{ color: "red" }} key={key}>{checkboxError[key]}</div>
                                 })}
                             </div>
-                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">SEND ENQUIRY</button>
+                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">Send Enquiry</button>
                         </form>
                     </div>
                 </div>

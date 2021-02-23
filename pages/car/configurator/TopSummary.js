@@ -58,9 +58,9 @@ const TopSummary = props => {
 
     }
     return (
-        <div className="topSummary">
+        <div className="topSummary" >
             <div className="totalRow">
-            <div className="grandTotal">Grand Total: {formatPrice(total)}</div>
+            <div className="grandTotal"  style={{ margin:"0 auto" ,textAlign:"center"}}>Grand Total: {formatPrice(total)}</div>
             </div>
         </div>
     )

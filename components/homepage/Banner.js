@@ -57,7 +57,7 @@ class Banner extends Component {
             
         { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
         <div className="carousel-mobilecaption"> 
-          <h2 style={{ color: "#000", textTransform: "uppercase" }}>
+          <h2 style={{ color: "#000",}}>
             {banner.caption1}
           </h2>
           <h1 style={{marginBottom: 10,paddingBottom: 2}} >
@@ -73,12 +73,11 @@ class Banner extends Component {
               <div className={ "container "+banner.captionPosition }>
                 <div className="row">
                   <div className="col-md-8">
-                    <h2 style={{ color: "#fff", textTransform: "uppercase" }}>
+                    <h2 style={{ color: "#fff" }}>
                       {banner.caption1}
                     </h2>
                     <h1
                       style={{
-                        textTransform: "uppercase",
                         marginBottom: 5,
                         paddingBottom: 10
                       }}

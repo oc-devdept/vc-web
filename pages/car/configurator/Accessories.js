@@ -36,7 +36,8 @@ const StyledTab = withStyles(theme => ({
       },
     },
     minWidth: "80px",
-    fontSize: "1em"
+    fontSize: "1em",
+    textTransform: "capitalize",
   },
   wrapper: {
     fontWeight: "700",
@@ -188,7 +189,8 @@ class Accessories extends Component {
         return (
           <React.Fragment>
           <div className="row">
-            <div className="col-lg-10"><StyledTabs
+            <div className="col-lg-10">
+              <StyledTabs
             value={this.state.tabVal}
             indicatorColor="primary"
             textColor="primary"                      
@@ -199,7 +201,9 @@ class Accessories extends Component {
           {fields !== undefined && Object.keys(fields).map( key  => (
             <StyledTab label={key} id={key} />                      
           ))} 
-        </StyledTabs></div>
+        </StyledTabs>
+        </div>
+        
           </div>
             <div className="configure-sect row">
                 <div className="configure-gall col-lg-8 d-flex flex-column">
@@ -213,7 +217,7 @@ class Accessories extends Component {
               /> : (<div></div>)
               )) }
                     
-                  </div>
+                </div>
                   <div className="configure-opt col-lg-4 d-flex flex-column">
                   {fields !== undefined && Object.entries(fields).map(([variance, data], key) => (
                 <VariantSelection

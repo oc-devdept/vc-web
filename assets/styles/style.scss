@@ -83,6 +83,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
 }
 .megaTab .tab-content {
@@ -690,7 +691,8 @@ Single Car Page Area CSS
 .grade-content h5 {
   color: #262626;
   font-size: 1.8rem;
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
 }
 .arrow-icon {
   vertical-align: middle;
@@ -712,7 +714,8 @@ About Honda Fit Area CSS
 }
 .steps-area .section-title.without-bg h2 {
   color: #ffffff;
-  font-family: "PlayfairDisplay-Regular"
+  // font-family: "PlayfairDisplay-Regular"
+  font-family: "Montserrat", sans-serif;
 }
 .about-honda-fit-area .section-title.without-bg h2 {
   color: #ffffff;
@@ -945,7 +948,8 @@ Build Area CSS
   color: #262626;
   font-size: 1.6rem;
   font-weight: normal;
-  font-family: "PlayfairDisplay-Regular"; 
+  // font-family: "PlayfairDisplay-Regular"; 
+  font-family: "Montserrat", sans-serif;
 }
 
 .build-area .build-content {  
@@ -1086,14 +1090,16 @@ About Us Area CSS
 .about-history h2 {
   color: #ffffff;
   margin: 0 auto 20px;
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
 }
 .about-history p {
   color: #ffffff;
   
 }
 .about-history p .amount {
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
 }
 .about-history .amount {
   font-size: 2.5rem;
@@ -1109,7 +1115,8 @@ About Us Area CSS
 .our-story h2 {
   text-align: center;
   margin: 20px auto;
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
 }
 .our-story h5 {
   margin: 20px auto;
@@ -2750,6 +2757,7 @@ Main Banner Area CSS
    // text-transform: uppercase;
   margin-top: 8px;
   margin-bottom: 15px;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .main-banner-content p {
@@ -2769,6 +2777,7 @@ Main Banner Area CSS
 
 .main-banner-content.white-color h1 {
   color: #ffffff;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .main-banner-content.white-color p {
@@ -4314,7 +4323,8 @@ Home Page - Feature Cars Area CSS
   text-align: center;
   
   h2 {
-    font-family: "PlayfairDisplay-Regular";
+    // font-family: "PlayfairDisplay-Regular";
+    font-family: "Montserrat", sans-serif;
     font-size:36px;
     margin: 0 auto 40px auto;
      // text-transform: uppercase;
@@ -4342,7 +4352,8 @@ Home Page - Feature Cars Area CSS
   h5 {
     margin-top: 20px;    
     color: #7a7a7a;
-    font-family: "PlayfairDisplay-Regular";
+    // font-family: "PlayfairDisplay-Regular";
+    font-family: "Montserrat", sans-serif;
     font-size: 22px;
   }
 }
@@ -4352,11 +4363,13 @@ Home Page - Feature Cars Area CSS
 .feature-cars h3 {
   margin-bottom: 20px;
   color: #666666!important;
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
   
 }
 .feature-cars h5 {
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
   color: #000000;
   margin-top: 20px;
   font-size: 1.8rem;
@@ -4530,7 +4543,8 @@ Single Car Area CSS
   padding: 20% 0 20% 30%;
    // text-transform: uppercase !important;
   text-shadow: 0 0 5px #000000;
-  font-family: "PlayfairDisplay-Regular";
+  // font-family: "PlayfairDisplay-Regular";
+  font-family: "Montserrat", sans-serif;
   font-size: 52px;
   display: inline-block;
  }
@@ -4714,6 +4728,7 @@ Products Offer Area CSS
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 5px;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .products-offer-content p {
@@ -10222,6 +10237,7 @@ Go Top CSS
 
 .thank-you-area h1 {
   margin-bottom: 15px;
+  font-family: "PlayfairDisplay-Regular";
 }
 
 .main-banner-three.item-bg4 {

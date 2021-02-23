@@ -221,7 +221,7 @@ export default Grade;
               {ProductSpecification.data.map(detail =>
                 Object.entries(detail).map(([key, value], id) => (
                   <div key={id} className="specification-group mb-4 mr-4">
-                    <h6 className="text-uppercase">{key}</h6>
+                    <h6 ">{key}</h6>
                     {value.map((item, idd) => (
                       <React.Fragment key={idd}>
                         <div className="d-flex justify-content-between mb-1">

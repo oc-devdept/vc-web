@@ -36,7 +36,8 @@ const StyledTab = withStyles(theme => ({
       "& .tabIconShape": {
         backgroundColor: "#666666"
       },
-    }
+    },
+    textTransform: "capitalize",
   },
   wrapper: {
     fontWeight: "700",
@@ -226,7 +227,8 @@ class ExtInt extends Component {
     return (
       <React.Fragment>
           <div className="row">
-            <div className="col-lg-8"><StyledTabs
+            <div className="col-lg-8">
+            <StyledTabs
             value={this.state.tabVal}
             indicatorColor="primary"
             textColor="primary"                      

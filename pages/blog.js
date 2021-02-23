@@ -201,7 +201,7 @@ export default function Blog() {
                                             }}
                                             as={`/blog-post/${blog.id.replace(/ /g, "-")}`}
                                         >
-                                            <a className="btn enquireBtn">
+                                            <a className="btn enquireBtn buildBtn">
                                                 READ MORE
                                             </a>
                                         </Link>

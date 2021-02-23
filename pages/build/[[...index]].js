@@ -579,7 +579,7 @@ function Build() {
                   </FormGroup>
                   <div className="filter-button" align="right">
                     
-                    <a className="btn gw-without-bg-btn" onClick={resetFilters}>
+                    <a className="btn gw-without-bg-btn buildBtn" onClick={resetFilters}>
                       <Icon icon={resetIcon} /> &nbsp;&nbsp; Reset
                     </a>
                    
@@ -647,11 +647,11 @@ function Build() {
                          ))
                       }
                     </div>
-                    <div className="button">
+                    <div className="button  responsive-buildBtn">
                      {
                     car[0].page && ( 
                     <Link href={car[0].page }>
-                    <a className="btn gw-without-bg-btn">
+                    <a className="btn buildBtn">
                       <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                     </a>
                     </Link>)
@@ -659,7 +659,8 @@ function Build() {
                      {car[0].build && (
                       <Link href={car[0].build}>
                      <a className="btn buildBtn">
-                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      Build Now &nbsp;&nbsp;
+                       {/* <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/> */}
                       </a>
                       </Link>
                     )}
@@ -693,11 +694,11 @@ function Build() {
                    ))
                  }
                 </div>
-                <div className="button">
+                <div className="button responsive-buildBtn" >
                 {
                     car[1].page && ( 
                     <Link href={car[1].page}>
-                    <a className="btn gw-without-bg-btn">
+                    <a className="btn buildBtn">
                       <Icon icon={searchIcon} width="1.5rem"/> &nbsp;&nbsp; View Details
                     </a>
                     </Link>)
@@ -705,7 +706,8 @@ function Build() {
                   {car[1].build && (
                   <Link href={car[1].build}>
                   <a className="btn buildBtn">
-                      Build Now &nbsp;&nbsp; <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/>
+                      Build Now &nbsp;&nbsp;
+                       {/* <Icon className="arrow-icon" icon={arrowRight} width="1.5rem"/> */}
                   </a>
                   </Link>
                   )}

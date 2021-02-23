@@ -600,7 +600,7 @@ function Build() {
                   </FormGroup>
                   <div className="filter-button" align="right">
                     
-                    <a className="btn gw-without-bg-btn" onClick={resetFilters}>
+                    <a className=" btn gw-without-bg-btn buildBtn" onClick={resetFilters}>
                       <Icon icon={resetIcon} /> &nbsp;&nbsp; Reset
                     </a>
                    

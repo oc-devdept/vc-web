@@ -65,7 +65,8 @@ class Banner extends Component {
           </h1>
         <Link href={banner.linkURL }>
                       <a className="btn red-btn">
-                        Learn more &nbsp; <Icon icon={arrowRight} width="1.0rem"/>
+                        Learn more &nbsp; 
+                        {/* <Icon icon={arrowRight} width="1.0rem"/> */}
                       </a>
                     </Link>
          </div>
@@ -89,7 +90,8 @@ class Banner extends Component {
                     
                     <Link href={banner.linkURL }>
                       <a className="btn red-btn">
-                        Learn more &nbsp; <Icon icon={arrowRight} width="1.0rem"/>
+                        Learn more &nbsp; 
+                        {/* <Icon icon={arrowRight} width="1.0rem"/> */}
                       </a>
                     </Link>
                     }

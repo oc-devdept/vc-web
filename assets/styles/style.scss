@@ -295,14 +295,15 @@ img {
 
 // Sign Up For Our Newsletter Btn
 .custom-btn {
-  color: #666666 !important;
-  background-color: #c0c0c0;
+  color: #ffffff !important;
+  background-color: #000000;
+  // border:1px solid #ffffff ;
 }
 .custom-btn:hover,
 .custom-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #262626;
+  background-color: #666666;
   color: #ffffff!important;
 }
 
@@ -361,8 +362,8 @@ img {
 
 // Grey White Bg Btn
 .gw-without-bg-btn {
-  color: #222222 !important;
-  background-color: #ffffff;
+  color: #ffffff !important;
+  background-color: #000000;
   border: 1px solid #CED0D2 !important;
   margin-right: 10px;
 }
@@ -474,18 +475,24 @@ img {
 
 .nextBtnTop {
   float: right;
-  border: 1px solid #000000!important;
+  border: 1px solid #ffffff!important;
+  background-color: #000000;
+  color: #ffffff !important;
 }
 
 #__next .MuiToolbar-root >.col-2 >.prevBtn{
     color: #ffffff !important;
-    background-color: #262626;
-    border: 1px solid #000000
+    background-color: #000000;
+    border: 1px solid #ffffff
 }
 
+#__next .MuiToolbar-root >.col-2 > .nextBtnTop:hover,
+#__next .MuiToolbar-root >.col-2 > .nextBtnTop:focus,
+#__next .MuiToolbar-root >.col-2 > .nextBtnTop.active,
 #__next .MuiToolbar-root >.col-2 > .prevBtn:hover,
 #__next .MuiToolbar-root >.col-2 > .prevBtn:focus,
-#__next .MuiToolbar-root >.col-2 > .prevBtn.active{
+#__next .MuiToolbar-root >.col-2 > .prevBtn.active
+{
   -webkit-box-shadow: unset;
   box-shadow: unset;
   background-color: #666666 !important;
@@ -679,16 +686,36 @@ Single Car Page Area CSS
   margin-top: 10px;
 }
 .grade-content .button {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  >a {
+    width: 45%;
+    line-height: 1;
+    // text-align: center;
+    // vertical-align:middle;
+    margin: 10px 0;
+  }
 }
-.grade-content .button a {
-  margin: 10px 0;
+.responsive-buildBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  >a {
+    width: 45%;
+    height: 45px;
+    line-height: 1;
+    // text-align: center;
+    // vertical-align:middle;
+    margin: 10px 0;
+  }
 }
-.grade-content .button a:first-child {
-  margin-right: 10px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
+
+// .grade-content .button a:first-child {
+//   margin-right: 10px;
+//   padding-top: 14px;
+//   padding-bottom: 14px;
+// }
 .grade-content h3 {
   margin: 20px 0;
   color: #666666;

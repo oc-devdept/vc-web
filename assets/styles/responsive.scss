@@ -1481,13 +1481,19 @@
       margin: 0 0 10px 0;
     }
   }
-  .grade-content .button a {
-    display: block;
-    margin: 10px 0;
+  .grade-content .button {
+    flex-direction: column !important;
+    justify-content: space-around;
+    a{
+      display: block;
+    margin: 10px auto;
+    width: 100% !important;
   }
-  .grade-content .button a:first-child {
-    width: 100%;
+    
   }
+  // .grade-content .button a:first-child {
+  //   width: 100%;
+  // }
   .about-table {
     margin-bottom: 20px;
   }
@@ -1836,6 +1842,16 @@
       }
    
 
+  }
+  .grade-content .button {
+    flex-direction: column !important;
+    justify-content: space-around;
+    a{
+      display: block;
+    margin: 10px auto;
+    width: 100% !important;
+  }
+    
   }
 
 }

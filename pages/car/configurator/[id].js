@@ -166,7 +166,7 @@ class Product extends Component {
                 <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
                     <Toolbar>
                       <div class="col-2">
-                      <button type="submit" className="btn btn-light prevBtn" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
+                      <button type="submit" className="btn prevBtn " disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV</button>
                         
                         </div>
                         <div class="col-8">
@@ -176,7 +176,7 @@ class Product extends Component {
                         </div>
                         <div class="col-2">
                           {
-                            this.state.activeStep <= 2 && ( <button type="submit" className="btn btn-primary nextBtnTop" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>)
+                            this.state.activeStep <= 2 && ( <button type="submit" className="btn  nextBtnTop" onClick={this.handleNext}  >NEXT <InlineIcon icon={arrowRight} /></button>)
                           }
                        
                         </div>

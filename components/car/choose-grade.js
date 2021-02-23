@@ -44,13 +44,14 @@ class ChooseGrade extends Component {
                                            
                                             
                                             <div className="button" align="center">
-                                                <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
+                                                <a className="btn enquireBtn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
                                                     Enquire
                                                 </a>
 
                                                 <Link href={"/car/configurator/" + this.props.url}>
                                                     <a className="btn buildBtn">
-                                                        BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                                        Build Car &nbsp;&nbsp; 
+                                                        {/* <Icon icon={arrowRight} /> */}
                                                     </a>
                                                 </Link>
                                             </div>
@@ -97,7 +98,7 @@ class ChooseGrade extends Component {
                             </Link>
                             <Link href="/">
                             <a className="btn buildBtn">
-                                BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
                             </a>
                             </Link>
                         </div>
@@ -155,7 +156,7 @@ class ChooseGrade extends Component {
                             </Link>
                             <Link href="/">
                             <a className="btn buildBtn">
-                                BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
                             </a>
                             </Link>
                         </div>
@@ -214,13 +215,13 @@ class ChooseGrade extends Component {
 
                                                 <div className="button" align="center">
 
-                                                    <a className="btn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
+                                                    <a className="btn enquireBtn enquireBtn" href="#enquireForm" onClick={() => this.props.enquireModel(product.name)}>
                                                     Enquire
                                             </a>
 
                                                     <Link href={"/car/configurator/" + this.props.url}>
                                                         <a className="btn buildBtn">
-                                                            BUILD CAR &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                                            Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
                                                         </a>
                                                     </Link>
                                                 </div>

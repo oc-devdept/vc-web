@@ -43,7 +43,7 @@ export default function CustomAccordion(props) {
 
          <div className={"mobileFooterDetails optionDisplay"+ (isShowing[2] ? " show" : "")} >
          {
-           html.length > 0 && (<div dangerouslySetInnerHTML={{__html: html[2].html}} />)
+           html.length > 0 && (<div className="optionDisplay-text" dangerouslySetInnerHTML={{__html: html[2].html}} />)
                                 }  
 </div>
     </React.Fragment>

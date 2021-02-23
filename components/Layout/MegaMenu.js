@@ -207,7 +207,9 @@ class MegaMenu extends Component {
                     <li className="nav-item">
                       <Link href="/build/all">
                         <a className="btn nav-btn">
-                          <span>Build</span>
+                        <span style={{color: "black", backgroundColor: "white", padding: "4px 8px", fontWeight: "bold", marginRight: "4px"}} >Build</span>
+                          {/* <span style={{fontWeight: "bold", border: "1px solid white", padding: "4px 8px", marginRight: "4px"}} >Build</span> */}
+                          {/* <span>Build</span> */}
                         </a>
                       </Link>
                     </li>

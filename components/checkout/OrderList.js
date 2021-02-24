@@ -268,7 +268,8 @@ export default function OrderList(props) {
           </ol>
         </div>
         <div className="financingTable">
-          <h3>FINANCING DETAILS</h3>          
+          {/* <h3>FINANCING DETAILS</h3>           */}
+          <h3>Financing Details</h3>          
           <div className="financeDetails">
             <div className="totalPrice financeRow">
               <div className="fItem">Total Car Price</div>

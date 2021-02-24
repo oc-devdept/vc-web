@@ -162,7 +162,7 @@ class Product extends Component {
     // console.log("ProductState= ", ProductState);
     return (
       <DefaultLayout crumbs="Car Configuration">
-        <div className={useStyles.root } style={{  position:"fixed " ,top:"120px" ,right:0,left:0, zIndex:9999}}>
+        <div className={useStyles.root } style={{  position:"fixed " ,top:"120px" ,right:0,left:0, zIndex:999}}>
                 <AppBar position="flex" >
                     <Toolbar>
                       <div class="col-2">

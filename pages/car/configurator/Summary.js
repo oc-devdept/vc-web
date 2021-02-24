@@ -139,7 +139,8 @@ const Summary = props => {
         <div className="col-lg-6">
           <div className="py-3 px-0 text-center">
 
-            <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span>
+            <span className="summarySubtitle">Customization Overiew</span>
+            {/* <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span> */}
 
           </div>
           <SummaryTable
@@ -156,7 +157,7 @@ const Summary = props => {
         <div className="col-lg-6">
           <div className="py-3 px-0 text-center">
 
-            <span className="summarySubtitle">CAR LOAN CALCULATOR</span>
+            <span className="summarySubtitle">Car Loan Calculator</span>
 
           </div>
           <div>

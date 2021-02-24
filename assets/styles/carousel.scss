@@ -80,8 +80,7 @@
     }
     .center-center {
       position:absolute;
-      left:250px;
-      top:220px;
+      top:30%;
     }
      .bottom-center {
       position:absolute;
@@ -107,7 +106,50 @@
   .carousel-mobilecaption {
     display:none;
   }
+  .caption-container{
+    width: 100%;
+  }
 
+
+  @media only screen and (max-width: 1920px) {
+    .carousel-caption {
+      h1 {
+        font-size: 1.5rem;
+        color: #ffffff !important;
+        text-align: center;
+        text-transform: none !important;
+        font-family: "PlayfairDisplay-Regular";
+      }
+      h2 {
+        font-size:2rem;
+        color: #ffffff !important;
+        text-align: center;
+        // font-family: "PlayfairDisplay-Regular";
+        font-family: "Montserrat", sans-serif;
+      }
+     
+      .center-left {
+        position:absolute;
+        left:-30px;
+      }
+      .center-center {
+        position:absolute;
+        left:5%;
+        top:30%;
+      }
+    }
+    .btn.red-btn{
+      display: block;
+      width:100px;
+      font-size: 0.6rem;
+      background-color: #000;
+      color: #fff;
+      margin: 5px auto; 
+      padding: 10px 5px;
+      border-radius: 8px;
+    }
+  }
+  @media only screen and (max-width: 1440px) {}
   @media only screen and (max-width: 991px) {
     .carousel-caption {
       position: absolute;
@@ -133,14 +175,14 @@
   @media only screen and (max-width: 768px) {
     .carousel-caption {
       h1 {
-        font-size: 14px;
+        font-size: 1rem;
         color: #ffffff !important;
         text-align: center;
         text-transform: none !important;
         font-family: "PlayfairDisplay-Regular";
       }
       h2 {
-        font-size: 25px;
+        font-size: 1.2rem;
         color: #ffffff !important;
         text-align: center;
         // font-family: "PlayfairDisplay-Regular";
@@ -150,8 +192,36 @@
       .center-left {
         position:absolute;
         left:-30px;
-        top: 0px;
       }
+      .center-center {
+        position:absolute;
+        // left:25%;
+        top:30%;
+      }
+    }
+    .btn.red-btn{
+      display: block;
+      width:100px;
+      font-size: 0.6rem;
+      background-color: #000;
+      color: #fff;
+      margin: 5px auto; 
+      padding: 10px 5px;
+      border-radius: 8px;
+    }
+
+  }
+  @media only screen and (max-width: 540px) {
+    .carousel-caption {
+      h1 {
+        font-size: 0.8rem;  
+      }
+      h2 {
+        font-size: 1rem;
+      }
+    }
+    .btn.red-btn{
+      font-size: 0.5rem;
     }
 
   }
@@ -189,9 +259,7 @@
         width:80%;
         background-color: #000;
         color: #fff;
-        margin: 20px auto;
-        
-
+        margin: 20px auto;  
       }
       
 

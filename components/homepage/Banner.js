@@ -71,9 +71,10 @@ class Banner extends Component {
                     </Link>
          </div>
             <Carousel.Caption>
-              <div className={ "container "+banner.captionPosition }>
+              <div className={ "container "+banner.captionPosition } style={{margin:"10px auto"}}>
                 <div className="row">
-                  <div className="col-md-8">
+                  {/* <div className="col-md-8"> */}
+                  <div className="caption-container">
                     <h2 style={{ color: "#fff" }}>
                       {banner.caption1}
                     </h2>

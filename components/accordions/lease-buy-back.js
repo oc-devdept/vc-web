@@ -110,7 +110,7 @@ export default function CustomAccordionLease() {
             className={classes.heading}
             >
                 <Typography className={classes.subHeading}>
-                    <p>2.WHAT ARE YOUR TERMS & CONDITIONS FOR INSURANCE?</p>
+                    <p>2.What Are Your Terms & Conditions for Insurance?</p>
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>

@@ -169,10 +169,12 @@ const Summary = props => {
             />
           </div>
 
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between" 
+          // style={{display:"flex" , flexDirection:"row"}}
+          >
             <div className="d-flex">
               <button
-                style={{ padding: 10, margin: 20 }}
+                style={{ padding: 10 , margin: 20 , width:"100px" ,marginRight:20}}
                 className="btn-primary"
                 onClick={props.goPrev}
 
@@ -186,19 +188,9 @@ const Summary = props => {
             <div className="d-flex">
               <button className="makeEnquiryBtn"
                 onClick={_RestartToggle}
-                style={{
-                  border: "1px solid #4b6674",
-                  minWidth: 65,
-                  maxWidth: 120,
-                  backgroundColor: "transparent",
-                  margin: 20,
-                  padding: 10
-                }}
               >
                 <p
                   style={{
-                    fontSize: 12,
-                    color: "#4b6674",
                     textAlign: "center",
 
                   }}
@@ -210,7 +202,7 @@ const Summary = props => {
             <div className="d-flex">
               <Button onClick={checkout} style={{ padding: 10, margin: 20 }}>
                 <Link href="/checkout">
-                  <a style={{ color: "inherit" }}>Reserve Car Now</a>
+                  <p>Reserve Car Now</p>
                 </Link>
               </Button>
             </div>
@@ -255,7 +247,7 @@ const Summary = props => {
               style={{ width: 250, padding: 10, margin: 20, borderRadius: 10 }}
               className="btn-primary"
             >
-              BOOK APPOINTMENT
+              Book Appointment
             </button>
           </div>
         </DialogRoot>

@@ -188,7 +188,7 @@ const LoanCalculator = props => {
     <div className="calculator">
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
-          <p>TOTAL CAR PRICE</p>
+          <p>Total Car Price</p>
         </div>
         <div className="field-input col-7">
         <p>{formatPrice(props.productTotal.total)}</p>
@@ -197,9 +197,9 @@ const LoanCalculator = props => {
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
           <p style={{ lineHeight: 1.2 }}>
-            LOAN TERM
+          Loan Term
             <br />
-            <span style={{ fontSize: 10 }}>(MONTHS)</span>
+            <span style={{ fontSize: 10 }}>(Months)</span>
           </p>
         </div>
         <div className="field-input col-7">
@@ -227,7 +227,7 @@ const LoanCalculator = props => {
       </div>
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
-          <p>LOAN AMOUNT</p>
+          <p>Loan Amount</p>
         </div>
         <div className="field-input col-7">
           <InputGroup>
@@ -274,7 +274,7 @@ const LoanCalculator = props => {
       </div>
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
-          <p>LOAN PERCENTAGE</p>
+          <p>Loan Percentage</p>
         </div>
         <div className="field-input col-7">
         <StyledSlider
@@ -291,9 +291,9 @@ const LoanCalculator = props => {
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
           <p style={{ lineHeight: 1.2 }}>
-            INTEREST RATE
+          Interest Rate
             <br />
-            <span style={{ fontSize: 10 }}>(PER ANNUM)</span>
+            <span style={{ fontSize: 10 }}>(Per Annum)</span>
           </p>
         </div>
         <div className="field-input col-7">
@@ -330,7 +330,7 @@ const LoanCalculator = props => {
       </div>
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
-          <p>DOWN PAYMENT</p>
+          <p>Down Payment</p>
         </div>
         <div className="field-input col-7">
           <InputGroup>
@@ -368,7 +368,7 @@ const LoanCalculator = props => {
       </div>
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center col-5">
-          <p>TOTAL INTEREST</p>
+          <p>Total Interest</p>
         </div>
         <div className="field-input col-7">
           <InputGroup>
@@ -406,7 +406,7 @@ const LoanCalculator = props => {
       </div>
       <div className="calculator-field row">
         <div className="field-name d-flex align-items-center  col-5">
-          <p>DEPOSIT</p>
+          <p>Deposit</p>
         </div>
         <div className="field-input col-7">
           <InputGroup>

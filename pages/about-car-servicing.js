@@ -12,26 +12,26 @@ export default function AboutCarServicing() {
         <div className="aboutCarServicing-area">
             <PageBanner
                 overlay
-                title="SERVICING DETAILS AND PRICING"
+                title="Servicing Details and Pricing"
                 bgImgUrl={"/static/service/serviceBanner.png"}
             />
              <div className="header-bar">
-                <h6>CAR SERVICING DETAILS</h6>
+                <h6>Car Servicing Details</h6>
             </div>
             <div className="section-title without-bg" align="center">
-                <h2>CAR SERVICE PACKAGING TYPES</h2>
+                <h2>Car Service Packaging Types</h2>
             </div>
             <div class="row packing-types">
                 <div class="column" align="center">
                     <img src="/static/service/car_green.png" />
-                    <h6>ASIAN CARS</h6>
+                    <h6>Asian Cars</h6>
                     <p>
                         from $85.00*<br />1.5hrs
                     </p>
                 </div>
                 <div class="column" align="center">
                     <img src="/static/service/car_purple.png" />
-                    <h6>CONTINENTAL CARS</h6>
+                    <h6>Continental Cars</h6>
                     <p>
                         from $135.00*<br />1.5hrs
                     </p>
@@ -40,7 +40,7 @@ export default function AboutCarServicing() {
             <hr />
             <div>
                 <div className="section-title without-bg" align="center">
-                    <h2 className="section-two-header">TYPES OF AVAILABLE CAR SERVICING</h2>
+                    <h2 className="section-two-header">Types of Available Car Servicing</h2>
                 </div>
                 <div class="row available-services">
                     <div class="column box1">

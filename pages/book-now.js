@@ -117,7 +117,7 @@ const _RestartToggle = () =>{
                   date={date}
               />
           <div className="d-flex justify-content-end">
-                  <button onClick={onSubmitForm} style={{width: 250, padding: 10, margin:20, borderRadius: 10,}} className="btn-primary">BOOK APPOINTMENT</button>
+                  <button onClick={onSubmitForm} style={{width: 250, padding: 10, margin:20, borderRadius: 10,}} className="btn-primary">Book Appointment</button>
               </div>    
         </div>
       </section>

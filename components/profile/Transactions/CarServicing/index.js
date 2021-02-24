@@ -4,8 +4,8 @@ import Booking from "./components/booking/index";
 import Dashboard from "./components/dashboard/index";
 
 const Title = {
-  0: "BOOK APPOINTMENT",
-  1: "RETURN"
+  0: "Book Appointment",
+  1: "Return"
 };
 
 const Index = () => {

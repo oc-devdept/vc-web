@@ -364,6 +364,12 @@ img {
   // }
   
 }
+.btn-primary {
+  color: #ffffff !important;
+  background-color: #000000;
+  padding: 11px 23px;
+  border-radius: 10px !important;
+}
 
 // Build Btn
 .buildBtn , .viewBtn {
@@ -460,11 +466,7 @@ img {
   
 }
 
-.btn-primary {
-  color: #ffffff !important;
-  background-color: #262626;
-  border: 1px solid #000000;
-}
+
 
 .btn-primary.disabled,
 .btn-primary:disabled {
@@ -9940,13 +9942,15 @@ Login Area CSS
 }
 
 .login-form .forgot-password {
-  display: inline-block;
+  font-size: 14px;
+  color: #ffffff ;
+  background-color: #000000;
+  padding:0;
+  height: 42px;
+  border-radius: 10px ;
   margin-top: 15px;
-  color: #666666;
-  position: relative;
-  font-size: 15px;
-  outline: none;
- 
+  width: 180px;
+  border: 1px solid white;
 
 }
 
@@ -9963,11 +9967,37 @@ Login Area CSS
 }
 
 .login-form .forgot-password:hover {
-  color: #222222;
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 .login-form .forgot-password:hover::before {
   width: 0;
+}
+.create-acc-overlay >.btn,
+.login-overlay .forgot-password{
+  font-size: 14px;
+  color: #ffffff !important ;
+  background-color: #000000;
+  padding:11px 0;
+  height: 42px;
+  border-radius: 10px ;
+  margin-top: 15px;
+  width: 180px;
+  border: 1px solid white;
+  &:hover,
+  &:focus {
+            -webkit-box-shadow: unset;
+            box-shadow: unset;
+            background-color: #666666;
+            color: #ffffff !important;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+          }
 }
 
 .new-customer-content {

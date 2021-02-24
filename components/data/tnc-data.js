@@ -1,9 +1,9 @@
 export const TNCData = [
     {
-        title: "LEASE-TO-OWN SCHEME",
+        title: "Lease-to-own Scheme",
         sections: [
             {
-                subtitle: "1.1 LEASE-TO-OWN SCHEME",
+                subtitle: "1.1 Lease-to-own Scheme",
                 description: 
                     "If you need a car for an extended period of time but do not wish to commit yourself to buy one then Venture Cars Lease-to-own Scheme is for you! Due to different needs, leasing might be a viable option for you to consider. Get the added advantage driving the car of your choice with peace of mind as we take care of your maintenance and servicing needs too. All you need to do is simply enjoy the freedom of the road!",
             },
@@ -22,7 +22,7 @@ export const TNCData = [
             
     },
     {
-        title: "2. TERMS & CONDITIONS",
+        title: "2. Terms & Conditions",
         sections: [
             {
                 subtitle: "2.1 Road Tax",

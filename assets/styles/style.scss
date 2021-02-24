@@ -262,9 +262,6 @@ img {
 }
 
 /*section-title*/
-.gallery-area .section-title h2 {
-  color: #ffffff;
-}
 
 // .section-title h2 {
 //    // text-transform: uppercase;
@@ -808,7 +805,7 @@ Gallery Area CSS
 =================================================*/
 .gallery-area {
   background-color: #000000;
-  padding: 20px 0 60px;
+  padding: 20px 0 20px;
 }
 
 .gallery-area h2, .gallery-area h5 {
@@ -821,7 +818,7 @@ Gallery Area CSS
 
 .thumbnail-slider-wrap {
   margin-top: 15px;
-  height: 90px;
+  height: 130px;
   overflow: hidden;
 }
 .thumbnail-slider-wrap .slick-track .slick-slide {
@@ -856,7 +853,7 @@ Gallery Area CSS
 
 .thumbnail-slider-wrap {
   // margin-top: 40px;
-  margin: 40px auto;
+  margin: 40px auto 10px;
   
 }
 

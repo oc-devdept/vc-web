@@ -27,8 +27,8 @@ function ImageSlider(props) {
   };
 
   const settingsThumbs = {
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     asNavFor: '.slider-for',
     dots: false,
     centerMode: true,
@@ -38,8 +38,8 @@ function ImageSlider(props) {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 2,
+          slidesToScroll: 1
         }
       }
 

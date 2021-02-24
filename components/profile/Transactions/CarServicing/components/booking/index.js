@@ -96,7 +96,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
             </div>
 
             <div className="d-flex justify-content-center">
-                <span style={{textAlign:'center'}}>APPOINTMENT DETAIL</span>
+                <span style={{textAlign:'center'}}>Appointment Detail</span>
             </div>
 
             <div className="d-flex flex-column"  style={{margin: 20, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>

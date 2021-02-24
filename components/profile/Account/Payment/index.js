@@ -29,7 +29,7 @@ const Index = () => {
       <div className="row justify-content-center">
         <div className="col-md-12">
           <div className="d-flex flex-fill justify-content-center mt-5">
-            <span>PAYMENT LOGS</span>
+            <span>Payment Logs</span>
           </div>
           <div
             className="rct-block"

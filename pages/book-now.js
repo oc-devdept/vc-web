@@ -92,7 +92,7 @@ const _RestartToggle = () =>{
       <section className="contact-area pb-60">
         <PageBanner
           overlay
-          title="BOOK A CAR SERVICING WITH US TODAY"
+          title="Book a Car Servicing with Us Today"
           bgImgUrl={bookNowBanner}
         />
 

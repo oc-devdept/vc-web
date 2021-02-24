@@ -8,17 +8,17 @@ import ViewComponent from "./View";
 
 const menuTabs = [
   {
-    title: "BOOKINGS",
+    title: "Bookings",
     routes: [
-      { name: "TEST DRIVE", state: "testDrive" },
-      { name: "CAR SERVICING", state: "carServicing" }
+      { name: "Test Drive ", state: "testDrive" },
+      { name: "Car Servicing", state: "carServicing" }
     ]
   },
   {
-    title: "ACCOUNT",
+    title: "Account",
     routes: [
-      { name: "PAYMENT LOGS", state: "payment" },
-      { name: "PROFILE", state: "user" }
+      { name: "Payment Logs", state: "payment" },
+      { name: "Profile", state: "user" }
     ]
   }
 ];
@@ -31,7 +31,7 @@ const Profile = () => {
 
   const [state, setState] = useState({
     activeView: "carServicing",
-    title: "CAR SERVICING"
+    title: "Car Servicing"
   });
 
   const setCurrentTab = (activeView, title) => {

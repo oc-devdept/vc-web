@@ -479,6 +479,8 @@ img {
   text-align: center;
   border-bottom:1px solid #c0c0c0;
   // border-right: solid 10px  ;
+  margin-right: 15px !important;
+  // padding-right: 10px !important;
 }
 .nav-btn:hover,
 .nav-btn:focus {
@@ -10450,6 +10452,7 @@ ol.progtrckr li.progtrckr-doing {
 
 #navbar .container {
   max-width: 100% !important;
+  padding-right: 0;
 }
 
 .reverseStepRow {

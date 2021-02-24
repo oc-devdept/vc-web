@@ -145,7 +145,7 @@ const CustomerList = ({ tableData, loading, title, action, SetSingleBooking, can
     <div>
        
       <div className="d-flex flex-fill justify-content-center">
-          <span style={{textAlign:'center'}}>CAR SERVICING BOOKING DETAILS</span>
+          <span style={{textAlign:'center'}}>Car Servicing Booking Details</span>
       </div>
 
       <div className="rct-block" style={{margin: 20, borderRadius:10, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>

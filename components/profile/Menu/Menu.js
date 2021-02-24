@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { handleAccountLogout } from "Ducks/user/UserActions";
 
-export const Transactions = ["PURCHASES", "TEST DRIVE", "CAR SERVICING"];
-export const Account = ["USER", "REWARDS", "PAYMENT LOGS", "SETTINGS"];
+export const Transactions = ["Purchases", "Test Drive", "Car Servicing"];
+export const Account = ["User", "Rewards", "Payment Logs", "Settings"];
 
 const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,9 @@ const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
       className="d-flex flex-column justify-content-between"
       style={{ backgroundColor: "rgba(33,42,49,1)", position: "relative" }}
     >
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column" 
+      // style={{backgroundColor:"#000000"}}
+      >
         {menuTabs.map((tab, key) => (
           <div
             key={key}
@@ -60,10 +62,10 @@ const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
 
       <button
         onClick={() => dispatch(handleAccountLogout())}
-        style={{ fontSize: 16, fontWeight: "500" }}
+        style={{ fontSize: 16, fontWeight: "500" ,marginBottom:30 ,border:"1px solid #ffffff" }}
         className="btn-primary"
       >
-        LOGOUT
+        Logout
       </button>
     </div>
   );

@@ -132,13 +132,12 @@ const Index = ({customerId, toggleBookService}) => {
     */
 
 
-
     return (
 
         <div className="d-flex flex-fill flex-column">
             
             <div className="d-flex justify-content-start">
-                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,}} className="btn-primary">Make Service Appointment</button>
+                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,border:"1px solid #ffffff" }} className="btn-primary">Make Service Appointment</button>
             </div>
 
             <div className="rct-block" style={{}}>

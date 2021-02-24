@@ -120,7 +120,7 @@ const CustomerList = ({
   return (
     <div>
       <div className="d-flex flex-fill justify-content-center">
-        <span style={{ textAlign: "center" }}>TEST DRIVE BOOKING DETAILS</span>
+        <span style={{ textAlign: "center" }}>Test Drive Booking Details</span>
       </div>
 
       <div

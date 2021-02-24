@@ -599,8 +599,8 @@ function Build() {
                     </div>
                   </FormGroup>
                   <div className="filter-button" align="right">
-                    
-                    <a className=" btn gw-without-bg-btn buildBtn" onClick={resetFilters}>
+                  <a className="btn gw-without-bg-btn" onClick={resetFilters}>
+                    {/* <a className=" btn gw-without-bg-btn buildBtn" onClick={resetFilters}> */}
                       <Icon icon={resetIcon} /> &nbsp;&nbsp; Reset
                     </a>
                    
@@ -646,7 +646,7 @@ function Build() {
                     <div class="right">
                       <p className="types">{car[0].tag ? (car[0].tag) : ""}</p>
                       {console.log(car[0].name)}
-                      <h3 className="car-name">{(car[0].make + " " + car[0].model + " " + car[0].name).}</h3>
+                      <h3 className="car-name">{(car[0].make + " " + car[0].model + " " + car[0].name)}</h3>
                       <h5 className="car-price"> fr {formatPrice(car[0].selling_price)} </h5>
                     </div>
                     <div class="build-content">

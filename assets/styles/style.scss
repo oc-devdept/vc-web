@@ -389,7 +389,30 @@ img {
   border: 1px solid #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
-
+.filter-button .gw-without-bg-btn{
+  background-color: #000000;
+        padding:0;
+        height: 42px;
+        border-radius: 10px ;
+        margin-top:0;
+        margin-right: 15px;
+        padding: 11px 40px;
+        border: 1px solid white;
+        svg{
+            font-size: 14px;
+            color: #ffffff ;
+        }
+        &:hover,
+        &:focus {
+            -webkit-box-shadow: unset;
+            box-shadow: unset;
+            background-color: #666666;
+            color: #ffffff !important;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+          }
+  
+}
 
 // Grey White Bg Btn
 .gw-without-bg-btn {
@@ -402,9 +425,10 @@ img {
 .gw-without-bg-btn:focus {
   -webkit-box-shadow: unset;
   box-shadow: unset;
-  background-color: #ffffff !important;
-  color: #262626 !important;
-  border: 1px solid #262626 !important;
+  background-color: #666666;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 /*btn(primary&light)*/

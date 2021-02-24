@@ -333,6 +333,8 @@ img {
   color: #ffffff !important;
   background-color: #000000;
   margin-right: 10px;
+  padding: 11px 23px;
+  border-radius: 10px !important;
 }
 .enquireBtn:hover,
 .enquireBtn:focus {
@@ -343,12 +345,38 @@ img {
   border: 1px solid #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
+.responsive-buildBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  >a {
+    display: inline-block;
+    width: 45%;
+    height: 45px;
+    // line-height: 30px;
+    text-align: center;
+    vertical-align:middle;
+    margin: 10px 0;
+  }
+  // .buildBtn{
+  //   float: left;
+  // }
+  
+  // .viewBtn{
+  //   float: right;
+  // }
+  
+}
 
 // Build Btn
-.buildBtn {
+.buildBtn , .viewBtn {
   color: #ffffff !important;
   background-color: #000000;
+  padding: 11px 23px;
+  border-radius: 10px !important;
 }
+.viewBtn:hover,
+.viewBtn:hover,
 .buildBtn:hover,
 .buildBtn:focus {
   -webkit-box-shadow: unset;
@@ -379,7 +407,8 @@ img {
 /*btn(primary&light)*/
 .btn {
   border: 1px solid transparent;
-  padding: 11px 30px;
+  padding: 11px auto;
+  margin: 0 auto;
   line-height: initial;
   border-radius: 0;
   -webkit-transition: 0.5s;
@@ -697,19 +726,7 @@ Single Car Page Area CSS
     margin: 10px 0;
   }
 }
-.responsive-buildBtn{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  >a {
-    width: 45%;
-    height: 45px;
-    line-height: 1;
-    // text-align: center;
-    // vertical-align:middle;
-    margin: 10px 0;
-  }
-}
+
 
 // .grade-content .button a:first-child {
 //   margin-right: 10px;
@@ -1517,8 +1534,8 @@ Navbar Area CSS
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   /* background-color: #ffffff !important; */
-  -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  // -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  // animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
 
 .navbar-brand {
@@ -4587,8 +4604,7 @@ Single Car Area CSS
   padding: 20% 0 20% 30%;
    // text-transform: uppercase !important;
   text-shadow: 0 0 5px #000000;
-  // font-family: "PlayfairDisplay-Regular";
-  font-family: "Montserrat", sans-serif;
+  font-family: "PlayfairDisplay-Regular";
   font-size: 52px;
   display: inline-block;
  }
@@ -5599,6 +5615,7 @@ Page Title Area CSS
 .page-title-area ul li:last-child {
   margin-right: 0;
 }
+
 #__next > div > .MuiPaper-root{
   background-color: #000000 !important;
 }

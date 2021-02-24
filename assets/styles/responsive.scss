@@ -1703,9 +1703,12 @@
   }
 
   .build-area .column {
-    float: left;
+    // float: left;
     width: 46%;
     margin: 10px 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .build-area .build-content .part1 {
     margin-left: 10%;
@@ -1853,6 +1856,19 @@
   }
     
   }
+  // configure-area
+  .configure-area{
+    .justify-content-center{
+      .bottomSummary{
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+      .Bottom-button-container{
+        display: none;
+      }
+    }
+  }
 
 }
 /*# sourceMappingURL=responsive.css.map */
@@ -1982,6 +1998,7 @@
   }
   //configure-area
   .configure-area {
+    margin-top: 120px;
     .configure-sect.row {
       flex-direction: row;
     }

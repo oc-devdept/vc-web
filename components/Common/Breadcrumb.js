@@ -4,7 +4,7 @@ import Link from 'next/link';
 class Breadcrumb extends Component {
     render() {
         return (
-            <div className="page-title-area">
+            <div className="page-title-area" style={{  position:"fixed " ,top:"75px" ,right:0,left:0, zIndex:999, }}>
                 <div className="container">
                     <ul>
                         <li>

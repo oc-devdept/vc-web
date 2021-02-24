@@ -43,7 +43,8 @@ class MegaMenu extends Component {
     let elementId = document.getElementById("navbar");
     if(document.body.scrollWidth > 425){
       document.addEventListener("scroll", () => {
-        if (window.scrollY > 170) {
+        // if (window.scrollY > 170) {
+        if (window.scrollY > 0) {
           elementId.classList.add("is-sticky");
         } else {
           elementId.classList.remove("is-sticky");
@@ -65,7 +66,7 @@ class MegaMenu extends Component {
 
     return (
       <React.Fragment>
-        <div className="navbar-area fixed-top">
+        <div className="navbar-area fixed-top" >
           <div id="navbar" className="comero-nav">
             <div className="container">
               <nav className="navbar navbar-expand-md navbar-light" >

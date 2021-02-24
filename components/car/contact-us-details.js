@@ -234,7 +234,7 @@ class ContactUsDetails extends Component {
                                 })}
                             </div>
                             <div class="d-flex justify-content-center">
-                                <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">Send Enquiry</button>
+                                <button onClick={this.handleSubmit} type="submit" class="btn btn-primary " style={{ borderRadius: 10 ,padding: "11px 23px"}}>Send Enquiry</button>
                             </div>
                         </form>
                     </div>

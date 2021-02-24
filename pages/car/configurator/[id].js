@@ -162,11 +162,11 @@ class Product extends Component {
     // console.log("ProductState= ", ProductState);
     return (
       <DefaultLayout crumbs="Car Configuration">
-        <div className={useStyles.root}>
-                <AppBar position="static" style={{ backgroundColor: "#4b6674"}}>
+        <div className={useStyles.root } style={{  position:"fixed " ,top:"120px" ,right:0,left:0, zIndex:9999}}>
+                <AppBar position="flex" >
                     <Toolbar>
                       <div class="col-2">
-                      <button type="submit" className="btn prevBtn " disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV</button>
+                      <button type="submit" className="btn prevBtn " disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft}  /> PREV </button>
                         
                         </div>
                         <div class="col-8">
@@ -210,7 +210,7 @@ class Product extends Component {
                   </Stepper>
                 </div>
                 <div className="step-body">
-                  <div className="row">
+                  <div className="row" style={{marginTop:20}}>
                     <div className="col-md-12 text-center configHeader"><h1>{this.steps[this.state.activeStep]}</h1></div>
                   </div>
                   {this.state.activeStep == 0 && (
@@ -324,8 +324,8 @@ class Product extends Component {
                     <div className="col-md-9">
                       <BottomSummary productState={ProductState}/>
                     </div>
-                     <div className="col-md-3">
-                      <button type="submit" className="btn btn-light prevBtn" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
+                     <div className="col-md-3 Bottom-button-container" style={{paddingLeft:"5%"}}>
+                      <button type="submit" className="btn btn-primary prevBtn" disabled={this.state.verticalStep == 0 ? true : false} onClick={this.handlePrev}><InlineIcon icon={arrowLeft} /> PREV</button>
                       <button type="submit" className="btn btn-primary nextBtn" onClick={this.handleNext}>NEXT <InlineIcon icon={arrowRight} /></button>
                     </div> 
                   </div>

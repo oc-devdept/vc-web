@@ -14,7 +14,6 @@ const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
       style={{ backgroundColor: "rgba(33,42,49,1)", position: "relative" }}
     >
       <div className="d-flex flex-column" 
-      // style={{backgroundColor:"#000000"}}
       >
         {menuTabs.map((tab, key) => (
           <div

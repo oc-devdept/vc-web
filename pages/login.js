@@ -343,7 +343,7 @@ class Index extends Component {
                       shop. To start shopping click register.
                     </p>
                     <Link href="/signup">
-                      <a className="btn btn-light Create_Account ">Create A Account</a>
+                      <a className="btn btn-light">Create A Account</a>
                     </Link>
                   </div>
                 </div>

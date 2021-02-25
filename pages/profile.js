@@ -6,8 +6,7 @@ import { withAuthSync } from "../utils/auth";
 
 const Index = () => {
   return (
-    
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column" >
       <Navbar />
       <div className="d-flex flex-fill">
         <Profile />

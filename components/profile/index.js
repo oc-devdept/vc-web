@@ -5,6 +5,7 @@ import { retrieveUserProfile } from "Ducks/user/UserActions";
 import Breadcrumb from "Components/Common/Breadcrumb";
 import Menu from "./Menu/Menu";
 import ViewComponent from "./View";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const menuTabs = [
   {
@@ -38,18 +39,44 @@ const Profile = () => {
     setState({ activeView, title });
   };
 
+  const matches = useMediaQuery('(max-width:768px)');
+
   return (
-    <div className="d-flex flex-fill flex-column">
+    <React.Fragment>
+    {!matches &&
+        <div className="d-flex flex-fill flex-column">
+        <Breadcrumb title={state.title} />
+        <div className="d-flex flex-row flex-fill" style={{}}>
+          <Menu
+            menuTabs={menuTabs}
+            setCurrentTab={setCurrentTab}
+            activeView={state.activeView}
+          />
+          <ViewComponent activeView={state.activeView} />
+        </div>
+      </div>
+    }
+
+    {matches && 
+      <div>
+      <div className="">
       <Breadcrumb title={state.title} />
-      <div className="d-flex flex-row flex-fill" style={{}}>
+      <div className="" style={{}}>
         <Menu
           menuTabs={menuTabs}
           setCurrentTab={setCurrentTab}
           activeView={state.activeView}
         />
+        <div style={{display: 'table', tableLayout:'fixed', width:'100%'}}>
+       
         <ViewComponent activeView={state.activeView} />
+        </div>
       </div>
     </div>
+      </div>
+    }
+
+    </React.Fragment>
   );
 };
 

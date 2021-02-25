@@ -1,3 +1,4 @@
+
 @media only screen and (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 2;
@@ -47,6 +48,9 @@
     top: 100%;
    
   }
+  .single-banner h2 {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -92,6 +96,10 @@
     }
   }
 
+  .single-banner h2 {
+    font-size: 3rem;
+  }
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -100,9 +108,15 @@
     -moz-column-count: 4;
     column-count: 4;
   }
+  .single-banner h2 {
+    font-size: 4rem;
+  }
 }
 
 @media only screen and (max-width: 767px) {
+  .single-banner h2 {
+    font-size: 1.5rem;
+  }
   .search-item-name * {
     font-size: 18px;
   }
@@ -1197,6 +1211,7 @@
   // .mobile-footer {
   //   display: none;
   // }
+  
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1591,9 +1606,6 @@
   .red-btn {
     padding: 8px 16px !important;
   }
-  .single-banner h2 {
-    font-size: 2.5rem;
-  }
 }
 
 // Changing hamburger menu breakpoint to width:992px
@@ -1760,9 +1772,9 @@
   .filter-type-title {
     margin: 20px;
   }
-  .single-banner h2 {
-    font-size: 5rem;
-  }
+  // .single-banner h2 {
+  //   font-size: 5rem;
+  // }
 }
 
 @media only screen and (max-width: 1920px) {
@@ -1773,6 +1785,9 @@
     width: 100%;
     height: 530px;
   }
+  // .single-banner h2{
+  //   font-size: 4rem;
+  // }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -2200,6 +2215,9 @@
     padding: none !important;
   }
 
+}
+.single-banner h2 {
+  font-size: 1rem;
 }
 
 

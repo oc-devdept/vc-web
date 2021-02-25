@@ -564,20 +564,20 @@ img {
     background-color: #000000;
     padding: 11px 23px;
     border-radius: 10px !important;
-    &:hover,
-    &:focus {
-        -webkit-box-shadow: unset;
-        box-shadow: unset;
-        background-color: #666666;
-        color: #ffffff !important;
-        border: 1px solid #ffffff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-      }
+     &:hover,
+        &:focus {
+            -webkit-box-shadow: unset;
+            box-shadow: unset;
+            background-color: #666666;
+            color: #ffffff !important;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+          }
   }
 }
 
 
-.btn-light.disabled,
+// .btn-light.disabled,
 .btn-light:disabled {
   background-color: transparent;
   color: #262626;
@@ -4641,14 +4641,15 @@ Single Car Area CSS
   background-size: cover;
 }
 
+.single-banner .banner_text{
+  padding: 22% 0 22% 0;
+}
 .single-banner h2 {
   color: #ffffff;
-  // padding: 10% 0 20% 10%;
-  padding: 20% 0 20% 30%;
-   // text-transform: uppercase !important;
+  // padding: 20% 0 20% 30%;
   text-shadow: 0 0 5px #000000;
   font-family: "PlayfairDisplay-Regular";
-  font-size: 52px;
+  // font-size: 52px;
   display: inline-block;
  }
 

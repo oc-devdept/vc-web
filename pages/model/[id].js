@@ -14,6 +14,7 @@ import Views from "../../components/car/views";
 import Gallery from "../../components/car/gallery";
 import ContactUsDetails from "Components/car/contact-us-details";
 
+import Carousel from "react-bootstrap/Carousel";
 class Model extends Component {
     constructor(props) {
         super(props);
@@ -58,11 +59,23 @@ class Model extends Component {
                 {
                     name && (
                         <>
-                            <div className="single-banner" style={{backgroundImage: "url(" + coverPhoto.path + ")"}}>
-                                <h2>{name}</h2>
-                            </div>
+                        <div className="single-banner" style={{
+                              backgroundImage: "url(" + coverPhoto.path + ")",
+                              width:"100%",height:"100%"}}>  
+                        
+                        <div className="row banner_text" >
+                          <div className="col-sm-3"/>  
+                          <div className="col-sm-6">
+                           <h2 
+                                style={{display:"block",margin:"0 auto" ,textAlign:"center"}}>{name}  
+                          </h2>
+                        </div>   
+                          <div className="col-sm-3"/> 
+                        </div> 
 
-                            {
+
+                        </div>
+                       {
                                 ProductGradeData !== 0 && (
                                     <ChooseGrade productData={ProductGradeData} url={this.props.selectedModelId} enquireModel={this.enquireModel} />
                                 )

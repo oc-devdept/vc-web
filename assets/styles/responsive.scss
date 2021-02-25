@@ -5,6 +5,7 @@
     -moz-column-count: 2;
     column-count: 2;
   }
+  
 }
 
 @media only screen and (min-width: 768px) {
@@ -88,8 +89,8 @@
     padding: 50% 13% !important;
   }
   .grade-content-image-header {
-    height: 30%;
-    overflow: hidden;
+    // height: 30%;
+    overflow: hidden ;
     min-height: 250px;
     img {
     width: 100%;   
@@ -1227,6 +1228,10 @@
   .home-slides.owl-theme .owl-nav [class*="owl-"] {
     display: none;
   }
+  .grade-content-image-header {
+    height: 320px; 
+  }
+
 }
 
 @media only screen and (max-width: 991px) {
@@ -1788,6 +1793,10 @@
   // .single-banner h2{
   //   font-size: 4rem;
   // }
+  .grade-content-image-header {
+    height: 320px; 
+  }
+
 }
 
 @media only screen and (min-width: 1920px) {
@@ -1795,8 +1804,16 @@
     width: 100%;
     height: 800px;
   }
+  .grade-content-image-header {
+    height: 350px;
+    
+  }
 }
 @media only screen and (max-width: 768px) {
+  .grade-content-image-header {
+    height: 300px;
+    
+  }
   .MuiTabs-root > .MuiTabs-fixed > div,
     .MuiTabs-root > .MuiTabs-fixed > span{
       // background-color: red;
@@ -1893,7 +1910,14 @@
       }
     }
   }
+ 
 
+}
+@media only screen and (max-width: 576px) {
+  .grade-content-image-header {
+    height: 230px;
+    
+  }
 }
 /*# sourceMappingURL=responsive.css.map */
 @media only screen and (max-width: 426px) {
@@ -2219,7 +2243,11 @@
 .single-banner h2 {
   font-size: 1rem;
 }
-
+.grade-content-image-header {
+  overflow: hidden ;
+  height: 200px;
+  
+}
 
 
 }

@@ -75,17 +75,17 @@ class Banner extends Component {
                 <div className="row" >
                   {/* <div className="col-md-8"> */}
                   <div className="caption-container">
-                    <h2 style={{ color: "#fff" }}>
+                    <h1 style={{ color: "#fff" }}>
                       {banner.caption1}
-                    </h2>
-                    <h1
+                    </h1>
+                    <h2
                       style={{
                         marginBottom: 5,
                         paddingBottom: 10
                       }}
                     >
                       {banner.caption2}
-                    </h1>
+                    </h2>
                     {
                       banner.linkURL != "" && 
                     

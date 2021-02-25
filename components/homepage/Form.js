@@ -92,7 +92,7 @@ class Form extends Component {
             <section className="question-area">
                 <div className="container">
                     <div className="section-title without-bg" align="center">
-                        <h2>HAVE A QUESTION?</h2>
+                        <h2>Have a question?</h2>
                         <p>
                             Find your answers in our FAQ{" "}
                             <a className="d-inline" href="/faq">

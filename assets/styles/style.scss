@@ -717,6 +717,14 @@ Single Car Page Area CSS
     height: 19%;
     min-height: 71px !important;
     }
+    .grade-content-image-header {
+      // height: 30%;
+      overflow: hidden ;
+      // height: 250px;
+      img {
+      width: 100%;   
+      }
+    }
   }
 
 .grade-content > .grade-content-imgBox , 

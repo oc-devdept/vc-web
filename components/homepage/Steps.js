@@ -62,7 +62,7 @@ class Steps extends Component {
       <section className="steps-area">
         <div className="container">
           <div className="section-title without-bg" align="center">
-            <h2>CUSTOMISE AND DRIVE HOME YOUR DREAM CAR</h2>
+            <h2>Customise and Drive Home Your Dream Car</h2>
           </div>
           <div className="steps-row">
             {this.state.list.slice(0, 3).map((l, key) => (

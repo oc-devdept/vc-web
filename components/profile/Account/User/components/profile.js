@@ -20,7 +20,6 @@ const Index = ({Profile, _SaveUserDetails}) => {
     const _HandleInput = (element, e) => {
         setUserProfile(UserProfile => ({ ...UserProfile, [element]: e }));
     };
-
     return (
         <div className="d-flex flex-column" style={{flex:1, padding: 25}}>
             

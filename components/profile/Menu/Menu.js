@@ -11,8 +11,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
 const dispatch = useDispatch();
-const matches = useMediaQuery('(max-width:600px)');
-
+const mobileScreen = useMediaQuery('(max-width:600px)');
+const aboveMobileScreen = useMediaQuery('(min-width:600px');
 
 //TODO refactor into maps!
 
@@ -21,7 +21,7 @@ const matches = useMediaQuery('(max-width:600px)');
       <div className="container-fluid" style={{backgroundColor: "rgba(33,42,49,1)", padding: "1rem", color:"white"}}>
         <div className="row">
           {/* bookings section */}
-          <div className="col-md-2">
+          <div className="col-md-3">
             <h5 style={{color: "white"}}> {menuTabs[0].title}</h5>
             <div style={{paddingLeft: "1rem"}}>
                 <span 
@@ -48,7 +48,7 @@ const matches = useMediaQuery('(max-width:600px)');
           </div>
 
           {/* Account Section */}
-          <div className="col-md-2">
+          <div className="col-md-3">
             <h5 style={{color: "white"}}> {menuTabs[1].title} </h5>
               <div style={{paddingLeft: "1rem"}}>
                 <span style={{
@@ -72,14 +72,14 @@ const matches = useMediaQuery('(max-width:600px)');
               </div>
           </div>
 
-        <div className="col-md-2 d-flex justify-content-center">
+        <div className={ aboveMobileScreen? "col-md-6 d-flex justify-content-end" : "col-md-8 d-flex justify-content-center"}>
           <button
             onClick={() => dispatch(handleAccountLogout())}
             style={{ 
               fontSize: 16, 
               fontWeight: 
               "500",border:"1px solid #ffffff", 
-              marginTop: matches ? "1rem" : "" 
+              marginTop: mobileScreen ? "1rem" : "" 
             }}
             className="btn-primary"
           >

@@ -7,6 +7,7 @@ import { ExpandMore } from "@material-ui/icons";
 import accountCircleOutline from "@iconify/icons-mdi/account-circle-outline";
 import baselineKeyboardArrowDown from '@iconify/icons-ic/baseline-keyboard-arrow-down';
 import hamburgerMenu from '@iconify/icons-cil/hamburger-menu';
+import roundBuild from '@iconify/icons-ic/round-build';
 
 class MegaMenu extends Component {
   state = {
@@ -207,10 +208,13 @@ class MegaMenu extends Component {
                     </li>
                     <li className="nav-item">
                       <Link href="/build/all">
-                        <a className="btn nav-btn">
+                        <a className="btn nav-build-btn">
                         {/* <span style={{color: "black", backgroundColor: "white", padding: "4px 8px", fontWeight: "bold", marginRight: "4px"}} >Build</span> */}
-                          {/* <span style={{fontWeight: "bold", border: "1px solid white", padding: "4px 8px", marginRight: "4px"}} >Build</span> */}
-                          <span>Build</span>
+                          <span style={{fontWeight: "bold", border: "1px solid white", padding: "4px 8px", marginRight: "4px"}} >                           
+                          <Icon icon={roundBuild} color="Orange" />
+                            Build
+                          </span>
+                          {/* <span>Build</span> */}
                         </a>
                       </Link>
                     </li>

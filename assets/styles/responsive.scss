@@ -88,6 +88,26 @@
   .nav-btn {
     padding: 50% 13% !important;
   }
+
+
+
+  .nav-build-btn:hover {
+    background-color: #ffffff;
+  }
+
+  .nav-build-btn span {
+    color: white;
+    font-weight: "bold";
+    border: "1px solid white";
+    padding: "4px 8px";
+    margin-right: "4px";
+  }
+
+  .nav-build-btn span:hover {
+    color: black
+  }
+
+
   .grade-content-image-header {
     // height: 30%;
     overflow: hidden ;

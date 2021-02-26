@@ -6,6 +6,7 @@ import phoneFax from '@iconify/icons-si-glyph/phone-fax';
 import mailIcon from '@iconify/icons-foundation/mail';
 import locationIcon from '@iconify/icons-gridicons/location';
 import { NotificationManager } from "react-notifications";
+import Router from "next/router";
 
 import api from 'Api'
 import { red } from "color-name";
@@ -83,6 +84,8 @@ class ContactUsDetails extends Component {
                 document.getElementById("mileage").value = "";
                 document.getElementById("ownerNRIC").value = "";
                 NotificationManager.success('Your enquiry has been sent');
+
+                Router.push('/thankyou-car-model')
 
             } catch (e) {
                 // failed

@@ -29,7 +29,8 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
                     paddingLeft: "1rem",
                     color: activeView == menuTabs[0].routes[0].state ? "rgba(236,139,38,1)" : "white"
                     }}
-                  onClick={() => setCurrentTab(menuTabs[0].routes[0].state, menuTabs[0].routes[0].name)}  
+                  onClick={() => setCurrentTab(menuTabs[0].routes[0].state, menuTabs[0].routes[0].name)} 
+                  className="profile-page-link-route" 
                   > 
                   {menuTabs[0].routes[0].name}
                 </span>
@@ -40,6 +41,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
                       color: activeView == menuTabs[0].routes[1].state ? "rgba(236,139,38,1)" : "white"
                     }}
                   onClick={() => setCurrentTab(menuTabs[0].routes[1].state, menuTabs[0].routes[1].name)}  
+                  className="profile-page-link-route" 
                 > 
                   {menuTabs[0].routes[1].name}
                 </span>
@@ -56,6 +58,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
                   color: activeView == menuTabs[1].routes[0].state ? "rgba(236,139,38,1)" : "white"
                 }}
                 onClick={() => setCurrentTab(menuTabs[1].routes[0].state, menuTabs[1].routes[0].name)}  
+                className="profile-page-link-route" 
                 > 
                   {menuTabs[1].routes[0].name}  
                 </span>
@@ -66,6 +69,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
                     color: activeView == menuTabs[1].routes[1].state ? "rgba(236,139,38,1)" : "white"
                   }}  
                   onClick={() => setCurrentTab(menuTabs[1].routes[1].state, menuTabs[1].routes[1].name)}  
+                  className="profile-page-link-route" 
                 > 
                   {menuTabs[1].routes[1].name}
                 </span>

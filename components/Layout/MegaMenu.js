@@ -202,14 +202,14 @@ class MegaMenu extends Component {
                         <a className="btn nav-build-btn">
                         {/* <span style={{color: "black", backgroundColor: "white", padding: "4px 8px", fontWeight: "bold", marginRight: "4px"}} >Build</span> */}
                           <span style={{fontWeight: "bold", border: "1px solid white", padding: "4px 8px", marginRight: "4px"}} >                           
-                          <Icon icon={roundBuild} color="Orange" />
+                          {/* <Icon icon={roundBuild} color="Orange" /> */}
                             Build
                           </span>
                           {/* <span>Build</span> */}
                         </a>
                       </Link>
                     </li>
-                    
+
                     <li className="nav-item profile-icon p-relative">
                       <Link href="/profile">
                         <a>

@@ -196,16 +196,7 @@ class MegaMenu extends Component {
                       </Link>
                     </li>
                     
-                    <li className="nav-item profile-icon p-relative">
-                      <Link href="/profile">
-                        <a>
-                          <Icon
-                            className="medIcon"
-                            icon={accountCircleOutline}
-                          />
-                        </a>
-                      </Link>
-                    </li>
+
                     <li className="nav-item">
                       <Link href="/build/all">
                         <a className="btn nav-build-btn">
@@ -218,6 +209,18 @@ class MegaMenu extends Component {
                         </a>
                       </Link>
                     </li>
+                    
+                    <li className="nav-item profile-icon p-relative">
+                      <Link href="/profile">
+                        <a>
+                          <Icon
+                            className="medIcon"
+                            icon={accountCircleOutline}
+                          />
+                        </a>
+                      </Link>
+                    </li>
+
                   </ul>
                 </div>
               </nav>

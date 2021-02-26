@@ -176,12 +176,14 @@ class Product extends Component {
                         <TopSummary productState={ProductState}/>
                         </Typography>
                         </div>
-                        <div class="col-2">
+                       
                           {
-                            this.state.activeStep <= 2 && ( <button type="submit" className="btn  nextBtnTop" onClick={this.handleNext}  >NEXT <InlineIcon icon={arrowRight} /></button>)
+                            this.state.activeStep <= 2 && ( <div class="col-2">
+                               <button type="submit" className="btn  nextBtnTop" onClick={this.handleNext}  >NEXT <InlineIcon icon={arrowRight} /></button> </div>
+                               )
                           }
                        
-                        </div>
+                       
                     </Toolbar>
                 </AppBar>
         </div>

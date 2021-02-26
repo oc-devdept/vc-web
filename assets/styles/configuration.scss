@@ -521,18 +521,20 @@ color: #ffffff !important;
         margin-left:-15%;
 
         .price {
-            font-size:0.9em;
+            font-size:1em;
         }
     }
-
-    .financingTable {
-        margin-left:-10%;
-        width:113%;
+    .summaryTableCard{
+      .financingTable {
+        // margin-left:-10%;
+        // width:113%;
 
         .financeDetails {
-            padding:12px 0;
+            padding:12px 10px;
         }
+    }  
     }
+    
     
 }
 

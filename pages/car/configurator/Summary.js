@@ -175,7 +175,7 @@ const Summary = props => {
             <div className="d-flex">
               <button
                 style={{ padding: 10 , margin: 20 , width:"100px" ,marginRight:20}}
-                className="btn-primary"
+                className="btn-primary  prevBtn"
                 onClick={props.goPrev}
 
               >

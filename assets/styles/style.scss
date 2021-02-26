@@ -1031,18 +1031,19 @@ Build Area CSS
 }
 .build-area .column .car-name {
   clear: both;
-  margin: 20px 20px 10px;
+  margin: 20px 20px 10px 0;
+  font-size: 1.3rem;
 }
 .build-area .column .car-gradename {  
-  margin: 10px 20px 20px;
+  margin: 0 20px 0 0;
   font-size: 1rem;
 }
 
 
 .build-area .column .car-price {
-  margin: 0 20px 0px 0;
-  color: #262626;
-  font-size: 1.6rem;
+  margin: 10px 20px 10px 0;
+  color: #666666;
+  font-size: 1rem;
   font-weight: normal;
   // font-family: "PlayfairDisplay-Regular"; 
   font-family: "Montserrat", sans-serif;

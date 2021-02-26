@@ -136,11 +136,11 @@ const CreditCardForm = () => {
           className="d-flex align-items-center justify-content-center"
           style={{ color: "#4b6674" }}
         >
-          PAY WITH&nbsp;
+         Pay With&nbsp;
           <i className="fab fa-stripe" style={{ fontSize: 36 }} />
         </h3>
         <p style={{ textAlign: "center", color: "#4b6674" }}>
-          DEPOSIT PAYABLE:{" "}
+        Deposit Payable :{" "}
           <span style={{ fontSize: 18, fontWeight: 500 }}>$500</span>
         </p>
       </Card.Header>
@@ -148,7 +148,7 @@ const CreditCardForm = () => {
         {showForm && (
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>FIRST NAME</Form.Label>
+              <Form.Label>First Name</Form.Label>
               <Form.Control
                 placeholder="Required"
                 value={firstname}
@@ -156,7 +156,7 @@ const CreditCardForm = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>LAST NAME</Form.Label>
+              <Form.Label>Last Name</Form.Label>
               <Form.Control
                 placeholder="Required"
                 value={lastname}
@@ -164,7 +164,7 @@ const CreditCardForm = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>CONTACT NUMBER</Form.Label>
+              <Form.Label>Contact Number</Form.Label>
               <Form.Control
                 placeholder="Required"
                 value={contact}
@@ -172,9 +172,9 @@ const CreditCardForm = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>BILLING ADDRESS</Form.Label>
+              <Form.Label>Billing Address</Form.Label>
               <Form.Row>
-                <Col>
+                <Col  style={{marginBottom:16}}>
                   <Form.Control
                 placeholder="Address line 1"
                 value={address1}
@@ -182,7 +182,7 @@ const CreditCardForm = () => {
               />
                 </Col>  
               </Form.Row>
-              <Form.Row>
+              <Form.Row >
                 <Col sm={7}>
                 <Form.Control                
                 value={address2}
@@ -200,7 +200,7 @@ const CreditCardForm = () => {
               </Form.Row>                            
             </Form.Group>            
             <Form.Group>
-              <Form.Label>NAME ON CARD</Form.Label>
+              <Form.Label>Name On Card</Form.Label>
               <Form.Control
                 placeholder="Required"
                 value={name}
@@ -208,7 +208,7 @@ const CreditCardForm = () => {
               />
             </Form.Group>            
             <Form.Group>
-              <Form.Label>CARD DETAILS</Form.Label>
+              <Form.Label>Card Details</Form.Label>
               <CardElement
                 options={CARD_ELEMENT_OPTIONS}
                 className="form-control card-element"
@@ -234,7 +234,7 @@ const CreditCardForm = () => {
                 className="far fa-check-circle"
                 style={{ fontSize: 48, color: "green", marginBottom: "0.5rem" }}
               />
-              <h3 className="mb-2">PAYMENT SUCCESS!</h3>
+              <h3 className="mb-2">Payment Success!</h3>
             </div>
             <p>
               Thank you for your interest. Our staff will get in touch with you

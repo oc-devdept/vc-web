@@ -1553,10 +1553,13 @@
     margin: 0 auto;
   }
   .available-services .box1 {
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
   .available-services .box2 {
+    padding-top: 10px;
+    padding-left: 10px;
     padding-right: 10px;
   }
 
@@ -2095,13 +2098,15 @@
     }
 
 
-    // .step-body .justify-content-between > .d-flex > button:visited,
-    // .step-body .justify-content-between > .d-flex > button:active{
-    //   border: 1px solid #000000; background-color: red;
-    // }
-    .step-body .justify-content-between > .d-flex > .makeEnquiryBtn:focus {
+    .step-body .justify-content-between > .d-flex{
+      >.prevBtn{
+        display: none;
+      }
+       > .makeEnquiryBtn:focus {
       outline: none;
     }
+    }
+    
   }
   // choose-grade-area
   .choose-grade-area {
@@ -2158,7 +2163,7 @@
       flex-direction: column;
     }
     .copyright-area {
-      padding-left: 15px;
+      // padding-left: 15px;
       .left-section {
         a {
           font-size: 14px;
@@ -2241,14 +2246,26 @@
   }
 
 }
-.single-banner h2 {
+.single-banner{ 
+  margin-top: 75px;
+  h2 {
   font-size: 1rem;
-}
+}}
 .grade-content-image-header {
   overflow: hidden ;
   height: 200px;
   
 }
+
+// car servicing details
+.available-services{
+  .box1 , .box2{
+    margin-left:20%;
+  }
+}
+
+
+
 
 
 }

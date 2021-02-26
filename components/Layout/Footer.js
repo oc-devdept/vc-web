@@ -8,6 +8,8 @@ import api from 'Api'
 // Get redux stuff
 import { getFooterHtml } from "Ducks/homepage"
 
+import Router from "next/router";
+
 const userDetails = {
     name: '',
     email: '',
@@ -45,6 +47,8 @@ class Footer extends Component {
             // setForm(() => Contact);
             // this.setState({...userDetails});
             NotificationManager.success('Newsletter signup successful!');
+
+            Router.push("/thankyou")
 
         } catch (e) {
             // failed
@@ -86,7 +90,7 @@ class Footer extends Component {
                             <div class="col">
                                 <button type="submit" class="btn custom-btn" onClick={this.handleSubmit}
                                 style={{border:"1px solid #ffffff"}}
-                                 >Sing Me Up!</button>
+                                 >Sign Me Up!</button>
                             </div>
                         </div>
                     </form>

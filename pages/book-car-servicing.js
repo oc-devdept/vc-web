@@ -205,7 +205,7 @@ function BookCarServicing() {
                                 })}
                         </div>
                         <div class="form-group col-md-5">
-                            <label for="inputLastName">Last Name</label>
+                            <label for="inputLastName">Last Name (Surname)</label>
                             <input 
                                 type="text" 
                                 className="form-control" 

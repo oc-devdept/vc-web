@@ -75,7 +75,7 @@ TabPanel.propTypes = {
     },
     headerBar: {
         padding: '20px'
-    }
+    },
 }));
 
 export default function Faq() {

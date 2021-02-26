@@ -22,7 +22,7 @@ export const PNSPData = [
             
     },
     {
-        title: "2. TERMS & CONDITIONS",
+        title: "2. Terms & Conditions",
         sections: [
             {
                 subtitle: "2.1 Road Tax",

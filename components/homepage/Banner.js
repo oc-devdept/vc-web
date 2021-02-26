@@ -57,12 +57,12 @@ class Banner extends Component {
             
         { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
         <div className="carousel-mobilecaption"> 
-          <h2 style={{ color: "#000",}}>
+          <h1 style={{ color: "#000",}}>
             {banner.caption1}
-          </h2>
-          <h1 style={{marginBottom: 10,paddingBottom: 2}} >
-            {banner.caption2}
           </h1>
+          <h2 style={{marginBottom: 10,paddingBottom: 2}} >
+            {banner.caption2}
+          </h2>
         <Link href={banner.linkURL }>
                       <a className="btn red-btn">
                         Learn more &nbsp; 
@@ -76,7 +76,7 @@ class Banner extends Component {
                   {/* <div className="col-md-8"> */}
                   <div className="caption-container">
                     <h1 style={{ color: "#fff" }}>
-                      {banner.caption1}
+                     {banner.caption1}
                     </h1>
                     <h2
                       style={{

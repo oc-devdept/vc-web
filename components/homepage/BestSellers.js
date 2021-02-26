@@ -31,9 +31,10 @@ class BestSeller extends Component {
             return (
               <Link href={car.url}>
               <div className="featured-car col-xs-12 col-sm-6 col-lg-3" style={{cursor:"pointer"}}>
-              <h3>{ car.name }</h3>
+              
                <div class="imgBox"> <img src={car.thumbnail }/></div>
-                <h5>fr {car.price }</h5>
+               <h3  style={{marginBottom:0}}>{ car.name }</h3>
+                <h5 style={{marginTop:5}}>fr {car.price }</h5>
               </div>
               </Link>
             )

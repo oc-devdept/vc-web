@@ -86,7 +86,7 @@
   }
 
   .nav-btn {
-    padding: 50% 13% !important;
+    padding: 75% 13% !important;
   }
   .grade-content-image-header {
     // height: 30%;
@@ -1643,7 +1643,7 @@
     justify-content: flex-start;
   }
   .configuration_navbar{
-    position: fixed; top: 84px; right: 0px; left: 0px; z-index: 1031;
+    position: fixed; top: 80px; right: 0px; left: 0px; z-index: 1031;
     border-top: 1px solid #ffffff;
   }
 
@@ -2052,7 +2052,7 @@
   }
   //configure-area
   .configure-area {
-    margin-top: 120px;
+    margin-top:20px;
     .configure-sect.row {
       flex-direction: row;
     }
@@ -2105,6 +2105,7 @@
   }
   // choose-grade-area
   .choose-grade-area {
+    padding:0 10px;
     .sub-box {
       margin: 0;
       width: 100%;

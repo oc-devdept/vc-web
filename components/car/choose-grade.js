@@ -38,8 +38,8 @@ class ChooseGrade extends Component {
                                                  <img src={product.files[0].path} />
                                             </div>
                                             <div className="grade-content-text-container">
-                                            <h3>{product.name}</h3>
-                                            <h5>fr ${product.selling_Price}</h5>
+                                            <h3 style={{ fontSize:"1.8rem" ,color:"#000000"}}>{product.name}</h3>
+                                            <h5  style={{ fontSize:"1rem" , color:"#666666"}}>fr ${product.selling_Price}</h5>
                                             </div>
                                            
                                             

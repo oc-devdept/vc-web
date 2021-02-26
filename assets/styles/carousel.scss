@@ -37,12 +37,10 @@
 .carousel-item img{filter: brightness(60%);}
 .carousel:hover .slide .legend{opacity:1}
 .carousel-caption {
-    position: absolute;
-    top: 20px ;        
-    text-align: left;
-    // .col-md-8{
-    //   position: absolute;
-    //   }
+    // position: absolute;
+    top: 30px ;    
+    left: 0;    
+    width: 100%;
     h1 {
       font-size: 40px;
       color: #ffffff !important;
@@ -62,7 +60,7 @@
     .top-left {
       position: absolute;
       top:50px;      
-      left:-30px;
+      left:0px;
     }
       .bottom-left {
       position:absolute;
@@ -90,13 +88,30 @@
       right: -30px;
       bottom:50px;
     }
+     .center-left {
+      position:absolute;
+      // left: -20%;
+      top:40%;
+    }
+    .center-right {
+      position:absolute;
+      // right: -30%;
+      top:40%;
+    }
+    .center-center {
+      // margin-top: 30% !important;
+      // position:absolute;
+      // left:15%;
+      // top:400%;
+    }
   }
   .carousel-mobilecaption {
     display:none;
   }
-  .caption-container{
-    width: 100%;
-  }
+  // .caption-container{
+  //   width: 100%;
+  // }
+  
   // .carousel-caption {
   //   h2 {
   //     color: #ffffff !important;
@@ -139,42 +154,14 @@
       width:200px;
       font-size: 1.2rem;
     }
-    .center-left {
-      position:absolute;
-      left: -20%;
-      top:40%;
-    }
-    .center-right {
-      position:absolute;
-      right: -30%;
-      top:40%;
-    }
-    .center-center {
-      position:absolute;
-      left:15%;
-      top:40%;
-    }
+   
   }
   @media only screen  and (min-width: 1440px)and (max-width: 1919px) {
     .carousel-caption {
       h2 {font-size: 1.8rem;}
       h1 {font-size:2.8rem;}
       
-      .center-left {
-        position:absolute;
-        left:-20%;
-        top:40%;
-      }
-      .center-right {
-        position:absolute;
-        right: -30%;
-        top:40%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:40%;
-      }
+     
     }
     .btn.red-btn{
       width:200px;
@@ -185,21 +172,7 @@
     .carousel-caption {
       h2 {font-size: 1.5rem;}
       h1 {font-size:2.5rem;}
-      .center-left {
-        position:absolute;
-        left: -20%;
-        top:37%;
-      }
-      .center-right {
-        position:absolute;
-        right: -30%;
-        top:37%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:37%;
-      }
+     
     }
     .btn.red-btn{
       width:180px;
@@ -209,22 +182,8 @@
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .carousel-caption {
       h2 {font-size: 1.3rem;}
-      h1 {font-size:2.3rem;}
-      .center-left {
-        position:absolute;
-        left: -20%;
-        top:35%;
-      }
-      .center-right {
-        position:absolute;
-        right: -20%;
-        top:35%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:35%;
-      }
+      h1 {font-size:2.1rem;}
+     
     }
     .btn.red-btn{
       width:150px;
@@ -237,23 +196,9 @@
         font-size: 1rem;
       }
       h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
-      .center-left {
-        position:absolute;
-        left: -20%;
-        top:35%;
-      }
-      .center-right {
-        position:absolute;
-        right: -20%;
-        top:35%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:35%;
-      }
+   
 
     }
     .btn.red-btn{
@@ -272,28 +217,13 @@
         font-family: "PlayfairDisplay-Regular";
       }
       h1{
-        font-size: 1.9rem;
+        font-size: 1.5rem;
         color: #ffffff !important;
         text-align: center;
         // font-family: "PlayfairDisplay-Regular";
         font-family: "Montserrat", sans-serif;
       }
-     
-      .center-left {
-        position:absolute;
-        left: -20%;
-        top:35%;
-      }
-      .center-right {
-        position:absolute;
-        right: -20%;
-        top:35%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:35%;
-      }
+    
     }
     .btn.red-btn{
       display: block;
@@ -313,23 +243,9 @@
         font-size: 0.8rem;  
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.2rem;
       }
-      .center-left {
-        position:absolute;
-        left: -20%;
-        top:30%;
-      }
-      .center-right {
-        position:absolute;
-        right: -20%;
-        top:30%;
-      }
-      .center-center {
-        position:absolute;
-        left:6%;
-        top:30%;
-      }
+      
     }
     .btn.red-btn{
       font-size: 0.5rem;
@@ -383,8 +299,7 @@
       top:12px;
       
       .top-left, .center-left, .bottom-left, .top-center, .center-center, .bottom-center, .top-right, .center-right, .bottom-right {
-        position: absolute;
-        top:10px;      
+        position: absolute;  
         left:0;
       }
       .col-md-8 > .red-btn{

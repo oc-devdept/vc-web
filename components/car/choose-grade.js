@@ -83,122 +83,7 @@ class ChooseGrade extends Component {
                             ))
                         }
 
-                        {/*<div className="box">
-                        <div className="grade-box">
-                        <div className="grade-content">
-                        <img src="/static/feature-cars/honda-fit.png"/>
-                        <h3>HONDA FIT GRADE 1</h3>
-                        <h5>fr $74, 000</h5>
-
-                        <div className="button" align="center">
-                            <Link href="/">
-                            <a className="btn enquireBtn">
-                                ENQUIRE
-                            </a>
-                            </Link>
-                            <Link href="/">
-                            <a className="btn buildBtn">
-                                Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
-                            </a>
-                            </Link>
-                        </div>
-
-                        <p className="sub-header">Features :</p>
-                        <div className="bar">
-                            <p>Vehicle Stability Assist (VSA)</p>
-                            <h6>
-                            <Icon icon={smartphoneShake} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Lorem ipsum dolor sit
-                            </h6>
-                        </div>
-                        <div className="bar">
-                            <p>Anti-Lock Braking System (ABS)</p>
-                            <h6>
-                            <Icon icon={carBrakeAbs} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Lorem ipsum dolor sit
-                            </h6>
-                        </div>
-                        <div className="bar">
-                            <p>Parking Sensors</p>
-                            <h6>
-                            <Icon icon={parkingGarage11} width="2.1rem"/>
-                            &nbsp;&nbsp;
-                            Venture Edition
-                            </h6>
-                        </div>
-
-                        <p className="sub-header">Technology :</p>
-                        <div className="bar">
-                            <p>Infotainment</p>
-                            <h6>
-                            <Icon icon={gitFork} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Venture Edition
-                            </h6>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="box">
-                        <div className="grade-box">
-                        <div className="grade-content">
-                        <img src="/static/feature-cars/honda-fit.png"/>
-                        <h3>HONDA FIT GRADE 1</h3>
-                        <h5>fr $74, 000</h5>
-
-                        <div className="button">
-                            <Link href="/">
-                            <a className="btn enquireBtn">
-                                ENQUIRE
-                            </a>
-                            </Link>
-                            <Link href="/">
-                            <a className="btn buildBtn">
-                                Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
-                            </a>
-                            </Link>
-                        </div>
-
-                        <p className="sub-header">Features :</p>
-                        <div className="bar">
-                            <p>Vehicle Stability Assist (VSA)</p>
-                            <h6>
-                            <Icon icon={smartphoneShake} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Lorem ipsum dolor sit
-                            </h6>
-                        </div>
-                        <div className="bar">
-                            <p>Anti-Lock Braking System (ABS)</p>
-                            <h6>
-                            <Icon icon={carBrakeAbs} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Lorem ipsum dolor sit
-                            </h6>
-                        </div>
-                        <div className="bar">
-                            <p>Parking Sensors</p>
-                            <h6>
-                            <Icon icon={parkingGarage11} width="2.1rem"/>
-                            &nbsp;&nbsp;
-                            Venture Edition
-                            </h6>
-                        </div>
-
-                        <p className="sub-header">Technology :</p>
-                        <div className="bar">
-                            <p>Infotainment</p>
-                            <h6>
-                            <Icon icon={gitFork} width="2.3rem"/>
-                            &nbsp;&nbsp;
-                            Venture Edition
-                            </h6>
-                        </div>
-                        </div>
-                    </div>
-                    </div>*/}
+                       
                     </div>
                     : <div className="sub-box">
                         {
@@ -210,8 +95,8 @@ class ChooseGrade extends Component {
                                                 <img src={product.files[0].path} />
                                             </div>
                                             <div class="grade-content-btnBox" >
-                                                <h3>{product.name}</h3>
-                                                <h5>fr ${product.selling_Price}</h5>
+                                                <h3  style={{ fontSize:"1.8rem" ,color:"#000000"}}>{product.name}</h3>
+                                                <h5 style={{ fontSize:"1rem" , color:"#666666"}}>fr ${product.selling_Price}</h5>
 
                                                 <div className="button" align="center">
 
@@ -221,7 +106,8 @@ class ChooseGrade extends Component {
 
                                                     <Link href={"/car/configurator/" + this.props.url}>
                                                         <a className="btn buildBtn">
-                                                            Build Car &nbsp;&nbsp; <Icon icon={arrowRight} />
+                                                            Build Car &nbsp;&nbsp; 
+                                                            {/* <Icon icon={arrowRight} /> */}
                                                         </a>
                                                     </Link>
                                                 </div>

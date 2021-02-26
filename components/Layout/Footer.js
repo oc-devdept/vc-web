@@ -139,7 +139,7 @@ class Footer extends Component {
                             <Link href="/faq"><a>FAQs</a></Link>
                         </div>
                         <div className="right-section col-lg- col-md-6">
-                            <p>Copyright @ 2020 Venture Cars</p>
+                            <p>Copyright @ {new Date().getFullYear()} Venture Cars</p>
                         </div>
                     </div>
                 </div>

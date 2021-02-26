@@ -7,8 +7,6 @@ import BestSellers from "Components/homepage/BestSellers";
 import Steps from "Components/homepage/Steps";
 import Form from "Components/homepage/Form";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 
 class Index extends Component {
   render() {

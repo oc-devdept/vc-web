@@ -38,9 +38,9 @@
 .carousel:hover .slide .legend{opacity:1}
 .carousel-caption {
     // position: absolute;
-    top: 30px ;    
-    left: 0;    
-    width: 100%;
+    // top: 30px ;    
+    // left: 0;    
+    // width: 100%;
     h1 {
       font-size: 40px;
       color: #ffffff !important;
@@ -58,45 +58,45 @@
     }
     
     .top-left {
-      position: absolute;
-      top:50px;      
-      left:0px;
+      // position: absolute;
+      // top:50px;      
+      // left:0px;
     }
       .bottom-left {
-      position:absolute;
-      left:-30px;
-      bottom:90px;
+      // position:absolute;
+      // left:-30px;
+      // bottom:90px;
     }
     .top-center {
-      position:absolute;
-      left:250px;
-      top:50px;
+      // position:absolute;
+      // left:250px;
+      // top:50px;
     }
    
      .bottom-center {
-      position:absolute;
-      left:250px;
-      bottom:90px;
+      // position:absolute;
+      // left:250px;
+      // bottom:90px;
     }
     .top-right {
-      position:absolute;
-      right: -30px;
-      top:50px;
+      // position:absolute;
+      // right: -30px;
+      // top:50px;
     }
     .bottom-right {
-      position:absolute;
-      right: -30px;
-      bottom:50px;
+      // position:absolute;
+      // right: -30px;
+      // bottom:50px;
     }
      .center-left {
-      position:absolute;
+      // position:absolute;
       // left: -20%;
-      top:40%;
+      // top:40%;
     }
     .center-right {
-      position:absolute;
+      // position:absolute;
       // right: -30%;
-      top:40%;
+      // top:40%;
     }
     .center-center {
       // margin-top: 30% !important;
@@ -275,7 +275,7 @@
        font-family: "Montserrat", sans-serif;
       }
       h1 {
-        font-size:1.6rem;
+        font-size:1.5rem;
         text-align: left;
         // transform: uppercase;
         margin:20px 15px 10px 15px;
@@ -296,15 +296,16 @@
       background-color: #000000;
     }
     .carousel-caption {
-      top:12px;
-      
-      .top-left, .center-left, .bottom-left, .top-center, .center-center, .bottom-center, .top-right, .center-right, .bottom-right {
+      top:12px; 
+      .top-left, .center-left, .bottom-left, 
+      .top-center, .center-center, .bottom-center, 
+      .top-right, .center-right, .bottom-right {
         position: absolute;  
         left:0;
       }
       .col-md-8 > .red-btn{
         padding: 1px 2px !important;
-        transform: scale(0.40);
+        transform: scale(0.50);
         width: 80%;
       }
      

@@ -45,7 +45,6 @@ const carouselOptions = {
 class Banner extends Component {
   componentDidMount(){
     this.props.getAllBanner();
-    console.log("marker")
   }
 
   render() {
@@ -71,44 +70,21 @@ class Banner extends Component {
                       </a>
                     </Link>
          </div>
-         <Carousel.Caption  style={{backgroundColor:"red" ,marginTop:"30px" , heigh:"100%"}}>
-                <div className="row" style={{width:"100%" , height:"100%",padding:0 ,display:"flex",alignItems:"center",justifyContent:"center" , backgroundColor:"blue"}} >
-                  <div className="col-sm-2"  style={{backgroundColor:"#region" }} />
-                  
-                  <div className="col-sm-8"  style={{height:"100% ", width:"100%" ,backgroundColor:"yellow" ,textAlign:"center" ,verticalAlign:"middle"}}>
-                 
-                  <div className={ "container "+banner.captionPosition } style={{backgroundColor:"#bfa" ,height:"100%" , width:"100%" , textAlign:"center" ,verticalAlign:"middle"}} >
-                   {/* <div className="col-md-8"> */}
-                  <div className="caption-container" style={{backgroundColor:"#baf" , margin:"auto 10px"}} >
-                    <h1 style={{ color: "#fff" }}>
-                     {banner.caption1}
-                    </h1>
-                    <h2
-                      style={{
-                        marginBottom: 5,
-                        paddingBottom: 10
-                      }}
-                    >
-                      {banner.caption2}
-                    </h2>
-                    {
-                      banner.linkURL != "" && 
-                    
-                    <Link href={banner.linkURL }>
-                      <a className="btn red-btn">
-                        Learn more &nbsp; 
-                        {/* <Icon icon={arrowRight} width="1.0rem"/> */}
-                      </a>
+        <Carousel.Caption >
+          <div className="row" >
+            <div className="col-md-8">
+              <div className={ "container "+banner.captionPosition } style={{margin:"10px auto" ,}}>
+                <h1 style={{ color: "#fff" }}>{banner.caption1}</h1>
+                <h2 style={{ marginBottom: 5,  paddingBottom: 10 }} > {banner.caption2} </h2>
+                { banner.linkURL != "" &&  <Link href={banner.linkURL }>
+                  <a className="btn red-btn">
+                    Learn more &nbsp; {/* <Icon icon={arrowRight} width="1.0rem"/> */}
+                  </a>
                     </Link>
                     }
                   </div>
-                  
-                  </div>
-
-                  </div>
-                  <div className="col-sm-2"/>
-                 </div>
-            
+                </div>
+              </div>
         </Carousel.Caption>
             
           </Carousel.Item>

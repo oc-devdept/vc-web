@@ -170,11 +170,10 @@ const Summary = props => {
           </div>
 
           <div className="d-flex justify-content-between" 
-          // style={{display:"flex" , flexDirection:"row"}}
           >
-            <div className="d-flex">
+            {/* <div className="d-flex">
               <button
-                style={{ padding: 10 , margin: 20 , width:"100px" ,marginRight:20}}
+                style={{ padding: 10 ,  width:"100px" }}
                 className="btn-primary  prevBtn"
                 onClick={props.goPrev}
 
@@ -184,23 +183,18 @@ const Summary = props => {
                   <InlineIcon icon={arrowLeft} /> PREV
                 </p>
               </button>
-            </div>
+            </div> */}
             <div className="d-flex">
               <button className="makeEnquiryBtn"
                 onClick={_RestartToggle}
               >
-                <p
-                  style={{
-                    textAlign: "center",
-
-                  }}
-                >
+                <p>
                   Make Enquiry
                 </p>
               </button>
             </div>
             <div className="d-flex">
-              <Button onClick={checkout} style={{ padding: 10, margin: 20 }}>
+              <Button onClick={checkout}>
                 <Link href="/checkout">
                   <p>Reserve Car Now</p>
                 </Link>

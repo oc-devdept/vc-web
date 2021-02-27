@@ -86,7 +86,7 @@
   }
 
   .nav-btn {
-    padding: 75% 13% !important;
+    padding: 70% 13% !important;
   }
   .grade-content-image-header {
     // height: 30%;
@@ -1646,8 +1646,8 @@
     justify-content: flex-start;
   }
   .configuration_navbar{
-    position: fixed; top: 80px; right: 0px; left: 0px; z-index: 1031;
-    border-top: 1px solid #ffffff;
+    position: fixed; top: 75px; right: 0px; left: 0px; z-index: 1031;
+    border-top: 2px solid #ffffff;
   }
 
   .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
@@ -1903,6 +1903,10 @@
   // configure-area
   .configure-area{
     .justify-content-center{
+      .col-md-9{
+        flex: none !important;
+        max-width: none !important;
+      }
       .bottomSummary{
         margin-left: 0;
         margin-right: 0;

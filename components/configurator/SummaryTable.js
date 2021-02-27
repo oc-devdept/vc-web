@@ -118,7 +118,7 @@ const theme = createMuiTheme({
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="summaryTableCard">
+      <div className="summaryTableCard" style={{marginTop:0}}>
         <button className="summaryDownload" onClick={handleClick}><Icon icon={downloadOutlined} height="1.2em" /> Download Summary in PDF</button>
         <Popover
         id={id}

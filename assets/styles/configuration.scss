@@ -248,20 +248,23 @@ font-weight: 600;
     width: 180px;
 }
 .justify-content-between {
-    .d-flex >.makeEnquiryBtn,
-    .d-flex >.btn-primary
+   .makeEnquiryBtn ,
+  .btn-primary
     {
-       
         background-color: #000000;
-        padding:0;
+        // padding: 10px;
         height: 42px;
+        line-height: 42px;
         border-radius: 10px ;
-        margin-top: 15px;
-        width: 180px;
         border: 1px solid white;
+        width: 150px;
+        
         p{
-            font-size: 14px;
+            font-size: 12px;
             color: #ffffff ;
+        //     height :22px ; 
+        //     text-align: center;
+        //    vertical-align: middle;
         }
         &:hover,
         &:focus {
@@ -273,9 +276,10 @@ font-weight: 600;
             box-shadow: 0 0 10px rgba(0, 0, 0, .3);
           }
     }
-    .d-flex >.makeEnquiryBtn{
-        margin-top: 20px;
+    .d-flex > .prevBtn{
+        margin-left: 0;
     }
+
 
 }
 

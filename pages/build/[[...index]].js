@@ -262,7 +262,8 @@ function Build() {
       // console.log(tag);
       //NO SEARCH RESULTS FOR BOTH CAR MAKE AND CAR TAG AND IT IS NOT ALL 
    if(result.length < 1 && carMake!= "all" || (index.length > 1 && tag.length < 1 && carTag!= "all") ){
-    router.push('[index]','all', { shallow: true })
+    //router.push('[index]','all', { shallow: true })
+
     return;
    }
       
@@ -441,29 +442,29 @@ function Build() {
         return tag.id == filters.tag[0]
       })
  
-      // `/images/${path}`
-      // router.push('build/[[...index]]',`/${result[0].name}/${tag[0].name}`, { shallow: true })
-      router.push('index',`${result[0].name}/${tag[0].name}`, { shallow: true })
+      router.push(`/build/[[...index]]`, `/build/${result[0].name}/${tag[0].name}` , { shallow: true})            
     }else if( (filters.brand && filters.brand.length == 1) &&  (!filters.tag || filters.tag.length == 0) ){
       
       var result = allMakes.filter( make => {
         return make.id == filters.brand[0]
       })
-      router.push('index',`${result[0].name}`, { shallow: true })
+      router.push(`/build/[[...index]]`, `/build/${result[0].name}` , { shallow: true})
     }else if( filters.tag.length == 1 &&   (!filters.brand || filters.tag.length == 0)){
 
           
       var result = allTags.filter( make => {
         return make.id == filters.tag[0]
       })
-      router.push('index',`all/${result[0].name}`, { shallow: true })
+      router.push('/build/[[...index]]', '/build/all', { shallow: true});      
     }
+    handleClose();
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip, filters, dataOptions.searchText, dataOptions.orderBy));
   }
 
   const resetFilters = () => {
     setFilters({});
-    router.push('[all]','all' , { shallow: true })
+    router.push('/build/[[...index]]','/build/all' , { shallow: true })
+    handleClose();
     dispatch(getAllCars(dataOptions.limit, dataOptions.skip));
   }
 

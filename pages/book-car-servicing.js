@@ -5,6 +5,7 @@ import PageBanner from "Components/Shared/PageBanner";
 import DayPicker from "react-day-picker";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import PropTypes from 'prop-types';
+import Router from "next/router";
 
 
 import { DateUtils } from 'react-day-picker';
@@ -106,7 +107,8 @@ function BookCarServicing() {
         const isValid = formValidation();
         // Make the booking successful logo appear if there is no validation errors
         if (isValid == true){
-            setVisible(true);
+            // removed as page now redirects to a thank you page 
+            // setVisible(true);
         }
 
         if (isValid) {
@@ -116,7 +118,8 @@ function BookCarServicing() {
               // success
               setForm(() => Contact);
               NotificationManager.success('Your booking is successful!');
-      
+              Router.push('/thankyou-car-servicing');
+
             } catch (e) {
               // failed
               NotificationManager.error('Please try again');
@@ -202,7 +205,7 @@ function BookCarServicing() {
                                 })}
                         </div>
                         <div class="form-group col-md-5">
-                            <label for="inputLastName">Last Name</label>
+                            <label for="inputLastName">Last Name (Surname)</label>
                             <input 
                                 type="text" 
                                 className="form-control" 

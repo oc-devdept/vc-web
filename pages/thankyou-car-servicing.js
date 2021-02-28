@@ -14,7 +14,7 @@ class Index extends Component {
         <div className="thank-you-area">
           <div className="container">
             <img src="./static/thank_you.png" />
-            <h1> Thank You For Signing up for our News Letter!</h1>
+            <h1> Your appointment has been successfully registered.</h1>
             <Link href="/">
               <a className="btn btn-primary">Go Home</a>
             </Link>

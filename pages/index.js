@@ -7,6 +7,7 @@ import BestSellers from "Components/homepage/BestSellers";
 import Steps from "Components/homepage/Steps";
 import Form from "Components/homepage/Form";
 
+
 class Index extends Component {
   render() {
     return (

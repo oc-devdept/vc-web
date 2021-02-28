@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
+import { makeStyles } from '@material-ui/core/styles';
+
 
 // T&C Data
 import { TNCData } from "Components/data/tnc-data";
@@ -8,6 +10,7 @@ class TermsAndConditions extends Component {
   render() {
     return (
       <DefaultLayout>
+        <div className="a4-page-max-width">
         {TNCData.map((tnc, index) => (
           <div className="tnc-area" eventKey={index} key={index}>
             <h3>{tnc.title}</h3>
@@ -24,6 +27,7 @@ class TermsAndConditions extends Component {
             ))}
           </div>
         ))}
+        </div>
       </DefaultLayout>
     );
   }

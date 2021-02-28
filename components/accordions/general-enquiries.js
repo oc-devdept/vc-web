@@ -82,6 +82,7 @@ export default function CustomAccordionGeneral() {
 
   return (
     <ThemeProvider theme={theme}>
+        
         <div className={classes.root}>
         <Accordion className={classes.expanded}>
             <AccordionSummary

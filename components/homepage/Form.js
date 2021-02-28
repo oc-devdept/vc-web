@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import api from 'Api'
 import { NotificationManager } from "react-notifications";
 import { red } from "color-name";
+import Router from "next/router";
+
 
 const INIT_STATE = {
     name: '',
@@ -75,6 +77,7 @@ class Form extends Component {
                 // success
                 this.setState({...INIT_STATE});
                 NotificationManager.success('Your enquiry has been sent');
+                Router.push('/thankyou-enquiry')
 
             } catch (e) {
                 // failed

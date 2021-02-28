@@ -176,7 +176,7 @@ function BookCarServicing() {
                 bgImgUrl={"/static/service/booknowBanner.png"}
             />
             <div className="header-bar">
-                <h6>DRIVER'S DETAILS</h6>
+                <h6>Driver's Details</h6>
             </div>
             <div className="driver-details">
                 <form className="driver-details-form">
@@ -252,7 +252,7 @@ function BookCarServicing() {
                 </form>
             </div>
             <div className="header-bar">
-                <h6>CAR SERVICING DETAILS</h6>
+                <h6>Car Servicing Details</h6>
             </div>
             <div className="driver-details">
                 <form className="driver-details-form">

@@ -86,7 +86,7 @@
   }
 
   .nav-btn {
-    padding: 50% 13% !important;
+    padding: 70% 13% !important;
   }
 
 
@@ -1573,10 +1573,13 @@
     margin: 0 auto;
   }
   .available-services .box1 {
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
   .available-services .box2 {
+    padding-top: 10px;
+    padding-left: 10px;
     padding-right: 10px;
   }
 
@@ -1663,8 +1666,8 @@
     justify-content: flex-start;
   }
   .configuration_navbar{
-    position: fixed; top: 84px; right: 0px; left: 0px; z-index: 1031;
-    border-top: 1px solid #ffffff;
+    position: fixed; top: 75px; right: 0px; left: 0px; z-index: 1031;
+    border-top: 2px solid #ffffff;
   }
 
   .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu li {
@@ -1920,6 +1923,10 @@
   // configure-area
   .configure-area{
     .justify-content-center{
+      .col-md-9{
+        flex: none !important;
+        max-width: none !important;
+      }
       .bottomSummary{
         margin-left: 0;
         margin-right: 0;
@@ -2072,7 +2079,6 @@
   }
   //configure-area
   .configure-area {
-    margin-top: 120px;
     .configure-sect.row {
       flex-direction: row;
     }
@@ -2115,16 +2121,19 @@
     }
 
 
-    // .step-body .justify-content-between > .d-flex > button:visited,
-    // .step-body .justify-content-between > .d-flex > button:active{
-    //   border: 1px solid #000000; background-color: red;
-    // }
-    .step-body .justify-content-between > .d-flex > .makeEnquiryBtn:focus {
+    .step-body .justify-content-between > .d-flex{
+      >.prevBtn{
+        display: none;
+      }
+       > .makeEnquiryBtn:focus {
       outline: none;
     }
+    }
+    
   }
   // choose-grade-area
   .choose-grade-area {
+    padding:0 10px;
     .sub-box {
       margin: 0;
       width: 100%;
@@ -2177,7 +2186,7 @@
       flex-direction: column;
     }
     .copyright-area {
-      padding-left: 15px;
+      // padding-left: 15px;
       .left-section {
         a {
           font-size: 14px;
@@ -2260,14 +2269,26 @@
   }
 
 }
-.single-banner h2 {
+.single-banner{ 
+  margin-top: 75px;
+  h2 {
   font-size: 1rem;
-}
+}}
 .grade-content-image-header {
   overflow: hidden ;
   height: 200px;
   
 }
+
+// car servicing details
+.available-services{
+  .box1 , .box2{
+    margin-left:20%;
+  }
+}
+
+
+
 
 
 }

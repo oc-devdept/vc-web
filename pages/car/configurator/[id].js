@@ -176,16 +176,18 @@ class Product extends Component {
                         <TopSummary productState={ProductState}/>
                         </Typography>
                         </div>
-                        <div class="col-2">
+                       
                           {
-                            this.state.activeStep <= 2 && ( <button type="submit" className="btn  nextBtnTop" onClick={this.handleNext}  >NEXT <InlineIcon icon={arrowRight} /></button>)
+                            this.state.activeStep <= 2 && ( <div class="col-2">
+                               <button type="submit" className="btn  nextBtnTop" onClick={this.handleNext}  >NEXT <InlineIcon icon={arrowRight} /></button> </div>
+                               )
                           }
                        
-                        </div>
+                       
                     </Toolbar>
                 </AppBar>
         </div>
-        <section className="configure-area pb-60">
+        <section className="configure-area pb-60" style={{marginTop:110}}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="mobile-step">
@@ -234,7 +236,7 @@ class Product extends Component {
                       </div>
                       <div className="col-md-2 vStep">
                         <div style={{ marginTop: "60px" }}></div>
-                        <Stepper activeStep={this.state.verticalStep} orientation="vertical">
+                        <Stepper activeStep={this.state.verticalStep} orientation="vertical" className="left_vStep">
                           {this.steps2.map((label, index) => {
                             const stepProps = {};
                             const labelProps = {};

@@ -88,7 +88,7 @@ class Footer extends Component {
                             <div class="col">
                                 <button type="submit" class="btn custom-btn" onClick={this.handleSubmit}
                                 style={{border:"1px solid #ffffff"}}
-                                 >Sign Me Up!</button>
+                                 >Sign Me Up !</button>
                             </div>
                         </div>
                     </form>

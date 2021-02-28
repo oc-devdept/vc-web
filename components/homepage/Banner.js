@@ -57,12 +57,12 @@ class Banner extends Component {
             
         { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
         <div className="carousel-mobilecaption"> 
-          <h2 style={{ color: "#000",}}>
+          <h1 style={{ color: "#000",}}>
             {banner.caption1}
-          </h2>
-          <h1 style={{marginBottom: 10,paddingBottom: 2}} >
-            {banner.caption2}
           </h1>
+          <h2 style={{marginBottom: 10,paddingBottom: 2}} >
+            {banner.caption2}
+          </h2>
         <Link href={banner.linkURL }>
                       <a className="btn red-btn">
                         Learn more &nbsp; 
@@ -70,30 +70,16 @@ class Banner extends Component {
                       </a>
                     </Link>
          </div>
-            <Carousel.Caption >
-        <div className={ "container "+banner.captionPosition } style={{margin:"10px auto" ,}}>
-                <div className="row" >
-                  {/* <div className="col-md-8"> */}
-                  <div className="caption-container">
-                    <h1 style={{ color: "#fff" }}>
-                      {banner.caption1}
-                    </h1>
-                    <h2
-                      style={{
-                        marginBottom: 5,
-                        paddingBottom: 10
-                      }}
-                    >
-                      {banner.caption2}
-                    </h2>
-                    {
-                      banner.linkURL != "" && 
-                    
-                    <Link href={banner.linkURL }>
-                      <a className="btn red-btn">
-                        Learn more &nbsp; 
-                        {/* <Icon icon={arrowRight} width="1.0rem"/> */}
-                      </a>
+        <Carousel.Caption >
+          <div className="row" >
+            <div className="col-md-8">
+              <div className={ "container "+banner.captionPosition } style={{margin:"10px auto" ,}}>
+                <h1 style={{ color: "#fff" }}>{banner.caption1}</h1>
+                <h2 style={{ marginBottom: 5,  paddingBottom: 10 }} > {banner.caption2} </h2>
+                { banner.linkURL != "" &&  <Link href={banner.linkURL }>
+                  <a className="btn red-btn">
+                    Learn more &nbsp; {/* <Icon icon={arrowRight} width="1.0rem"/> */}
+                  </a>
                     </Link>
                     }
                   </div>

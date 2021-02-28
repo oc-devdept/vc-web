@@ -63,7 +63,7 @@ class Model extends Component {
                               backgroundImage: "url(" + coverPhoto.path + ")",
                               width:"100%",height:"100%"}}>  
                         
-                        <div className="row banner_text" >
+                        <div className="row banner_text"  style={{marginRight:0}}>
                           <div className="col-sm-3"/>  
                           <div className="col-sm-6">
                            <h2 

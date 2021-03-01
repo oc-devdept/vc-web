@@ -74,7 +74,7 @@ class Banner extends Component {
 
            <div className={ "container "+banner.captionPosition }      
            
-           style={{ width:"100%", backgroundColor:"red",heigth:"30%"}}>
+           style={{ width:"100%",heigth:"30%"}}>
                   {/* <div className="col-md-8"> */}
                   <div className="caption-container" >
                     <h1 style={{ color: "#fff" }}>

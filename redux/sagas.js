@@ -12,6 +12,7 @@ import { CheckoutSaga } from "Ducks/checkout";
 import { RentSaga } from "Ducks/rent";
 import { PaymentSaga } from "Ducks/payment";
 import { BannerSaga, FeaturedSaga, FooterSaga } from "Ducks/homepage";
+import { CmspageSaga } from 'Ducks/cmspage';
 
 export default function* rootSaga() {
   yield all([
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     PaymentSaga(),
     BannerSaga(),
     FeaturedSaga(),
-    FooterSaga()
+    FooterSaga(),
+    CmspageSaga()
   ]);
 }

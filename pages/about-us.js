@@ -1,16 +1,33 @@
 import React, { Component } from "react";
 import DefaultLayout from "Components/Layout/PageTemplates/Default";
-import { urlObjectKeys } from "next/dist/next-server/lib/utils";
-
-// Components
+import { connect } from "react-redux";
+import { getCmspage } from "Ducks/cmspage";
 
 
 class AboutUs extends Component {
 
+  componentDidMount(){
+    this.props.getCmspage("about-us");
+  }
+
     render() {
+      console.log(this.props.pages["about-us"])
         return (
           <DefaultLayout>
-            <section className="about-us-area">
+           { this.props.pages["about-us"] ? (<div dangerouslySetInnerHTML={{ __html: this.props.pages["about-us"]}} />) : (<div></div>) }
+            </DefaultLayout>
+        )
+    };
+}
+const mapStateToProps = ({ CmspageState }) => {
+  const { pages } = CmspageState;
+  return { pages };
+}
+export default connect(mapStateToProps, {
+  getCmspage
+})(AboutUs);
+/*
+<section className="about-us-area">
               <div className="about-us-banner" style={{backgroundImage: "url(/static/about-us/about-us-banner.jpg)" }} />
               <div className="about-history" align="center">
                 <h2>Since 2009</h2>
@@ -55,9 +72,4 @@ class AboutUs extends Component {
                 </div>
               </div>
             </section>
-            </DefaultLayout>
-        )
-    };
-}
-
-export default AboutUs;
+*/

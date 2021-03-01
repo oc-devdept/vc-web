@@ -9,6 +9,7 @@ export const Account = ["User", "Rewards", "Payment Logs", "Settings"];
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import zIndex from "@material-ui/core/styles/zIndex";
 import { Row } from "react-bootstrap";
+import { VerticalAlignBottom } from "@material-ui/icons";
 
 
 const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
@@ -82,16 +83,19 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
               </div>
           </div>
 
-        <div className={ aboveMobileScreen? "logout justify-content-end" : "col-md-8 d-flex justify-content-center"} style={{paddingRight:"20px"}}>
+        <div className={ aboveMobileScreen? "logout justify-content-end" : "col-md-8 d-flex justify-content-center"} style={{paddingRight:"20px" }}>
           <button
             onClick={() => dispatch(handleAccountLogout())}
             style={{ 
               fontSize: 16, 
-              fontWeight: 
-              "500",border:"1px solid #ffffff", 
-              marginTop: mobileScreen ? "1rem" : "" 
+              fontWeight: "500",
+              border:"1px solid #ffffff", 
+              marginTop: mobileScreen ? "1rem" : "" ,
+              borderRadius:0 ,
+              padding :"15px 20px",
+              // verticalAlign:"middle",
             }}
-            className="btn-primary"
+            className="btn custom-btn"
           >
             Logout
           </button> 

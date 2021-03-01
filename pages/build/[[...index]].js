@@ -685,6 +685,8 @@ function Build() {
               
                      </div>
                  <div class="build-content">
+                 <p>{ car[1].description }</p>
+
               {
                    car[1].productDetailValue && car[1].productDetailValue.map(detail => (
                     <p class="part1"><span class="engCap">

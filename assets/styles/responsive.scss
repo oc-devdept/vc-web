@@ -1948,6 +1948,9 @@
 }
 /*# sourceMappingURL=responsive.css.map */
 @media only screen and (max-width: 426px) {
+  .DayPicker {
+    max-width: 240px;
+  }
   .carousel-inner {
     position: relative;
     // .carousel-item{
@@ -2107,7 +2110,7 @@
       justify-content:space-around;
       .MuiButtonBase-root{
         // background-color: red;
-        width:45%;
+        width:30%;
         padding: 0;
         &:hover,
         &:focus,

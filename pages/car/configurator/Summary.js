@@ -139,7 +139,7 @@ const Summary = props => {
         <div className="col-lg-6">
           <div className="py-3 px-0 text-center">
 
-            <span className="summarySubtitle">Customization Overiew</span>
+            <span className="summarySubtitle">Customization Overview</span>
             {/* <span className="summarySubtitle">CUSTOMIZATION OVERVIEW</span> */}
 
           </div>

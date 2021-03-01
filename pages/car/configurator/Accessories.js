@@ -25,7 +25,7 @@ const StyledTabs = withStyles({
 const StyledTab = withStyles(theme => ({
   root: {
     color: "#a7a7a7",
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(11),
     "&:focus": {
       opacity: 1
     },
@@ -36,12 +36,12 @@ const StyledTab = withStyles(theme => ({
       },
     },
     minWidth: "80px",
-    fontSize: "1em",
+    fontSize: "0.8em",
     textTransform: "capitalize",
   },
   wrapper: {
     fontWeight: "700",
-    padding: "0 5px"
+    padding: "0 3px"
   },
   selected: {}
 }))(props => <Tab disableFocusRipple disableTouchRipple {...props} />);

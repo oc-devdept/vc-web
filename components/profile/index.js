@@ -44,7 +44,7 @@ const Profile = () => {
   return (
     <React.Fragment>
 
-      <div className="container-fluid">
+      <div className="container-fluid" style={{marginTop:30 }}>
         <div className="row">
           <Breadcrumb title={state.title} />
         </div>

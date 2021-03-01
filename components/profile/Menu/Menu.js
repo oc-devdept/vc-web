@@ -7,6 +7,8 @@ export const Transactions = ["Purchases", "Test Drive", "Car Servicing"];
 export const Account = ["User", "Rewards", "Payment Logs", "Settings"];
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import zIndex from "@material-ui/core/styles/zIndex";
+import { Row } from "react-bootstrap";
 
 
 const ProfileMenu = ({ menuTabs, setCurrentTab, activeView }) => {
@@ -18,11 +20,14 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
 
   return (
     <React.Fragment>
-      <div className="container-fluid" style={{backgroundColor: "rgba(33,42,49,1)", padding: "1rem", color:"white"}}>
-        <div className="row">
+      <div className="container-fluid" style={{backgroundColor: "#000000", padding: "1rem", color:"white" ,borderTop:"2px  solid #ffffff" ,zIndex:1033 }}>
+        <div className="row"
+         style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}
+         >
           {/* bookings section */}
-          <div className="col-md-3">
-            <h5 style={{color: "white"}}> {menuTabs[0].title}</h5>
+          <div className="booking" style={{paddingLeft:"20px"}}>
+           <h5 style={{color: "white"}}> {menuTabs[0].title}</h5>
+            
             <div style={{paddingLeft: "1rem"}}>
                 <span 
                   style={{
@@ -34,7 +39,6 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
                   > 
                   {menuTabs[0].routes[0].name}
                 </span>
-
                 <span 
                   style={{
                       paddingLeft: "1rem",
@@ -50,7 +54,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
           </div>
 
           {/* Account Section */}
-          <div className="col-md-3">
+          <div className="account" style={{paddingLeft:"20px",paddingRight:"20px"}}>
             <h5 style={{color: "white"}}> {menuTabs[1].title} </h5>
               <div style={{paddingLeft: "1rem"}}>
                 <span style={{
@@ -76,7 +80,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
               </div>
           </div>
 
-        <div className={ aboveMobileScreen? "col-md-6 d-flex justify-content-end" : "col-md-8 d-flex justify-content-center"}>
+        <div className={ aboveMobileScreen? "logout justify-content-end" : "col-md-8 d-flex justify-content-center"} style={{paddingRight:"20px"}}>
           <button
             onClick={() => dispatch(handleAccountLogout())}
             style={{ 

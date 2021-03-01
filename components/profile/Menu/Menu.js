@@ -20,7 +20,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
 
   return (
     <React.Fragment>
-      <div className="container-fluid" style={{backgroundColor: "#000000", padding: "1rem", color:"white" ,borderTop:"2px  solid #ffffff" ,zIndex:1033 }}>
+      <div className="container-fluid" style={{backgroundColor: "#000000", padding: "1rem", color:"white" ,borderTop:"2px  solid #ffffff" }}>
         <div className="row"
          style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}
          >

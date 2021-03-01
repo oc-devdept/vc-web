@@ -42,7 +42,7 @@ const LoginOverlay = ({ handleCheckoutLogin }) => {
 
   return (
     <React.Fragment>
-      <section className="login-area pb-60">
+      <section className="login-area pb-60" style={{marginTop:80}}>
         <div className="container">
           <div className="row">
             <div className="col-12">

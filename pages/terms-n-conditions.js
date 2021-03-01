@@ -10,7 +10,7 @@ class TermsAndConditions extends Component {
   render() {
     return (
       <DefaultLayout>
-        <div className="a4-page-max-width">
+        <div className="a4-page-max-width"  style={{marginTop:80}}>
         {TNCData.map((tnc, index) => (
           <div className="tnc-area" eventKey={index} key={index}>
             <h3>{tnc.title}</h3>

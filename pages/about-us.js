@@ -10,7 +10,7 @@ class AboutUs extends Component {
     render() {
         return (
           <DefaultLayout>
-            <section className="about-us-area">
+            <section className="about-us-area"  style={{marginTop:80}}>
               <div className="about-us-banner" style={{backgroundImage: "url(/static/about-us/about-us-banner.jpg)" }} />
               <div className="about-history" align="center">
                 <h2>Since 2009</h2>

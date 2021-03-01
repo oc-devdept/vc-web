@@ -196,19 +196,16 @@ class MegaMenu extends Component {
                       </Link>
                     </li>
                     
-
+{/* 
                     <li className="nav-item">
                       <Link href="/build/all">
                         <a className="btn nav-build-btn">
-                        {/* <span style={{color: "black", backgroundColor: "white", padding: "4px 8px", fontWeight: "bold", marginRight: "4px"}} >Build</span> */}
-                          <span>                           
-                          {/* <Icon icon={roundBuild} color="Orange" /> */}
+                          <span>
                             Build
                           </span>
-                          {/* <span>Build</span> */}
                         </a>
                       </Link>
-                    </li>
+                    </li> */}
 
                     <li className="nav-item profile-icon p-relative">
                       <Link href="/profile">

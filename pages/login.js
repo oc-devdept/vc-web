@@ -103,7 +103,7 @@ class Index extends Component {
       <React.Fragment>
         <Navbar />
         <Breadcrumb title="Login" />
-        <section className="login-area pb-60">
+        <section className="login-area pb-60" style={{marginTop:80}}>
           <div className="container">
             {!this.props.loading ? (
               <div className="row">

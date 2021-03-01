@@ -53,7 +53,7 @@ class Banner extends Component {
      <React.Fragment>
       <Carousel {...carouselOptions}>
         {tableData.map((banner, key) => (
-          <Carousel.Item key={key}>
+          <Carousel.Item key={key} >
             
         { banner.images.length > 0 && <img className="blockd- w-100" src={banner.images[0].path} /> }
         <div className="carousel-mobilecaption"> 
@@ -70,21 +70,37 @@ class Banner extends Component {
                       </a>
                     </Link>
          </div>
-        <Carousel.Caption >
-          <div className="row" >
-            <div className="col-md-8">
-              <div className={ "container "+banner.captionPosition } style={{margin:"10px auto" ,}}>
-                <h1 style={{ color: "#fff" }}>{banner.caption1}</h1>
-                <h2 style={{ marginBottom: 5,  paddingBottom: 10 }} > {banner.caption2} </h2>
-                { banner.linkURL != "" &&  <Link href={banner.linkURL }>
-                  <a className="btn red-btn">
-                    Learn more &nbsp; {/* <Icon icon={arrowRight} width="1.0rem"/> */}
-                  </a>
+        <Carousel.Caption  style={{ top:0}}>
+
+           <div className={ "container "+banner.captionPosition }      
+           
+           style={{ width:"100%", backgroundColor:"red",heigth:"30%"}}>
+                  {/* <div className="col-md-8"> */}
+                  <div className="caption-container" >
+                    <h1 style={{ color: "#fff" }}>
+                      {banner.caption1}
+                    </h1>
+                    <h2
+                      style={{
+                        marginBottom: 5,
+                        paddingBottom: 10
+                      }}
+                    >
+                      {banner.caption2}
+                    </h2>
+                    {
+                      banner.linkURL != "" && 
+                    
+                    <Link href={banner.linkURL }>
+                      <a className="btn red-btn">
+                        Learn more &nbsp; 
+                        {/* <Icon icon={arrowRight} width="1.0rem"/> */}
+                      </a>
                     </Link>
                     }
                   </div>
                 </div>
-              </div>
+            
         </Carousel.Caption>
             
           </Carousel.Item>

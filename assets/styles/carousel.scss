@@ -56,54 +56,35 @@
       text-transform: none !important;
       font-family: "Montserrat", sans-serif;
     }
-    
     .top-left {
-      // position: absolute;
-      // top:50px;      
-      // left:0px;
-    }
-      .bottom-left {
-      // position:absolute;
-      // left:-30px;
-      // bottom:90px;
-    }
-    .top-center {
-      // position:absolute;
-      // left:250px;
-      // top:50px;
-    }
-   
-     .bottom-center {
-      // position:absolute;
-      // left:250px;
-      // bottom:90px;
+      position: absolute; 
+      left: -25%;
+      top:80px
     }
     .top-right {
-      // position:absolute;
-      // right: -30px;
-      // top:50px;
+      position:absolute;
+      right: -25%;
+      top:80px
+    }
+   
+    .top-center {
+      margin-top:80px;
+    }
+    .bottom-center {
+      margin-top:55%;
+      transform:translate(0,-60%);
     }
     .bottom-right {
-      // position:absolute;
-      // right: -30px;
-      // bottom:50px;
+      position:absolute;
+      right: -25%;
+      bottom: 5%;
     }
-     .center-left {
-      // position:absolute;
-      // left: -20%;
-      // top:40%;
+    .bottom-left {
+      position:absolute;
+      left: -25%;
+      bottom: 5%;
     }
-    .center-right {
-      // position:absolute;
-      // right: -30%;
-      // top:40%;
-    }
-    .center-center {
-      // margin-top: 30% !important;
-      // position:absolute;
-      // left:15%;
-      // top:400%;
-    }
+    
   }
   .carousel-mobilecaption {
     display:none;
@@ -147,21 +128,47 @@
   @media only screen and (min-width: 1920px){
     .carousel-caption {
       h2 {font-size: 2rem;}
-      h1 {font-size:3rem;}
+      h1 {font-size:4.2rem;}
      
     }
     .btn.red-btn{
       width:200px;
       font-size: 1.2rem;
     }
+    .center-left {
+      margin-top:30%;
+      position:absolute;
+      left: -20%;
+    }
+    .center-right {
+      position:absolute;
+      right: -30%;
+      margin-top:30%;
+    }
+    .center-center {
+      margin-top:38%;
+    }
+   
    
   }
   @media only screen  and (min-width: 1440px)and (max-width: 1919px) {
     .carousel-caption {
       h2 {font-size: 1.8rem;}
-      h1 {font-size:2.8rem;}
+      h1 {font-size:3.8rem;}
       
-     
+      .center-left {
+        margin-top:30%;
+        position:absolute;
+        left: -20%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:30%;
+      }
+      .center-center {
+        margin-top:32%;
+      }
     }
     .btn.red-btn{
       width:200px;
@@ -171,8 +178,20 @@
   @media only screen  and (min-width: 1200px)and (max-width: 1439px) {
     .carousel-caption {
       h2 {font-size: 1.5rem;}
-      h1 {font-size:2.5rem;}
-     
+      h1 {font-size:3.2rem;}
+      .center-left {
+        margin-top:28%;
+        position:absolute;
+        left: -20%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:28%;
+      }
+      .center-center {
+        margin-top:32%;
+      }
     }
     .btn.red-btn{
       width:180px;
@@ -182,8 +201,21 @@
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .carousel-caption {
       h2 {font-size: 1.3rem;}
-      h1 {font-size:2.1rem;}
-     
+      h1 {font-size:2.5rem;}
+      .center-left {
+       
+        position:absolute;
+        left: -20%;
+        margin-top:28%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:28%;
+      }
+      .center-center {
+        margin-top:30%;
+      }
     }
     .btn.red-btn{
       width:150px;
@@ -196,14 +228,27 @@
         font-size: 1rem;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.0rem;
       }
-   
+      .center-left {
+       
+        position:absolute;
+        left: -20%;
+        margin-top:28%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:28%;
+      }
+      .center-center {
+        margin-top:30%;
+      }
 
     }
     .btn.red-btn{
         width:120px;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
       }
   }
 
@@ -214,21 +259,35 @@
         color: #ffffff !important;
         text-align: center;
         text-transform: none !important;
-        font-family: "PlayfairDisplay-Regular";
-      }
-      h1{
-        font-size: 1.5rem;
-        color: #ffffff !important;
-        text-align: center;
-        // font-family: "PlayfairDisplay-Regular";
         font-family: "Montserrat", sans-serif;
       }
+      h1{
+        font-size: 1.9rem;
+        color: #ffffff !important;
+        text-align: center;
+        font-family: "PlayfairDisplay-Regular";
+        
+      }
+      .center-left {
+        position:absolute;
+        left: -20%;
+        margin-top:30%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:30%;
+      }
+      .center-center {
+        margin-top:28%;
+      }
+      
     
     }
     .btn.red-btn{
       display: block;
       width:100px;
-      font-size: 0.6rem;
+      font-size: 0.5rem;
       background-color: #000;
       color: #fff;
       margin: 5px auto; 
@@ -240,12 +299,27 @@
   @media only screen and (max-width: 540px) {
     .carousel-caption {
       h2 {
-        font-size: 0.8rem;  
+        font-size: 0.6rem;  
       }
       h1 {
         font-size: 1.2rem;
       }
-      
+      .center-left {
+        position:absolute;
+        left: -20%;
+        margin-top:28%;
+      }
+      .center-right {
+        position:absolute;
+        right: -30%;
+        margin-top:28%;
+      }
+      .center-center {
+        margin-top:25%;
+      }
+      .top-center {
+        margin-top:60px;
+      }
     }
     .btn.red-btn{
       font-size: 0.5rem;

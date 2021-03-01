@@ -104,7 +104,7 @@ const CustomerList = ({
             return (<div><a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
           }
           else {
-          return (<div><a href="#" class="badge badge-warning" onClick={()=> {changeBook(tableMeta.rowData[0])} }>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger">Cancel</a></div>)
+          return (<div><a href="#" class="badge badge-warning" onClick={()=> {changeBook(tableMeta.rowData[0])} } style={{fontFamily:" sans-serif"}}>Reschedule</a> &nbsp;&nbsp; <a href="#" onClick={(e)=> {cancelBooking(tableMeta.rowData[0])}} class="badge badge-danger" style={{fontFamily:" sans-serif"}}>Cancel</a></div>)
           }
         }
       }

@@ -48,7 +48,7 @@ const Profile = () => {
         <div className="row">
           <Breadcrumb title={state.title} />
         </div>
-        <div className="row">
+        <div className="row" style={{borderTop:"2px  solid #ffffff" }}>
           <Menu
             menuTabs={menuTabs}
             setCurrentTab={setCurrentTab}

@@ -67,7 +67,7 @@ class MegaMenu extends Component {
 
     return (
       <React.Fragment>
-        <div className="navbar-area fixed-top" >
+        <div className="navbar-area fixed-top"  style={{borderBottom:"2px  solid #ffffff" }}  >
           <div id="navbar" className="comero-nav">
             <div className="container">
               <nav className="navbar navbar-expand-md navbar-light" >
@@ -107,7 +107,7 @@ class MegaMenu extends Component {
                   {/* </span> */}
                 </button>
 
-                <div className={classOne} id="navbarSupportedContent">
+                <div className={classOne} id="navbarSupportedContent"style={{zIndex:9999}}>
                   <hr className="navbar-hr" />
                   <ul className="navbar-nav">
                     <li className="nav-item megamenu">

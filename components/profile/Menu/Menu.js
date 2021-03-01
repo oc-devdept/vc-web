@@ -20,7 +20,7 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
 
   return (
     <React.Fragment>
-      <div className="container-fluid" style={{backgroundColor: "#000000", padding: "1rem", color:"white" ,borderTop:"2px  solid #ffffff" }}>
+      <div className="container-fluid" style={{backgroundColor: "#000000", padding: "1rem", color:"white" }}>
         <div className="row"
          style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}
          >
@@ -28,7 +28,9 @@ const aboveMobileScreen = useMediaQuery('(min-width:600px');
           <div className="booking" style={{paddingLeft:"20px"}}>
            <h5 style={{color: "white"}}> {menuTabs[0].title}</h5>
             
-            <div style={{paddingLeft: "1rem"}}>
+            <div 
+            style={{paddingLeft: "1rem"}}
+            >
                 <span 
                   style={{
                     paddingLeft: "1rem",

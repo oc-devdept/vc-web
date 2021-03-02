@@ -90,7 +90,7 @@ export default function Faq() {
 
     return (
         <DefaultLayout>
-            <div className={classes.root}>
+            <div className={classes.root}  style={{marginTop:80}}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"

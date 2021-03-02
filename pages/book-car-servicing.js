@@ -353,7 +353,7 @@ function BookCarServicing() {
                         <button 
                             onClick={onSubmit} 
                             type="submit" 
-                            class="btn btn-primary bookAppBtn">Book Appointment
+                            class="btn bookAppBtn">Book Appointment
                         </button>
                         {/*{console.log(visible)}
                         <SuccessfulBooking visible={visible}/>*/}

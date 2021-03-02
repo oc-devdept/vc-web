@@ -573,6 +573,8 @@ img {
 }
 
 
+
+
 // .btn-light.disabled,
 .btn-light:disabled {
   background-color: transparent;
@@ -667,6 +669,11 @@ img {
 
 .form-control::placeholder {
   color: #999999;
+}
+
+.configuration_navbar{
+  // position: fixed; top: 75px; right: 0px; left: 0px; z-index: 999;
+  border-top: 2px solid #ffffff;
 }
 
 /*================================================
@@ -1181,6 +1188,23 @@ About Car Servicing Area CSS
   color: #262626;
   margin-right: 10px;
 }
+.driver-details .bookAppBtn {
+  color: #ffffff;
+  background-color: #000000 ;
+  padding: 11px 23px ;
+  border-radius: 10px;
+
+}
+
+.driver-details  .bookAppBtn:hover,
+.driver-details  .bookAppBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666;
+  color: #ffffff ;
+  box-shadow: 0 0 10px rgba(103, 103, 103, 0.3);
+}
+
 
 /*================================================
 About Us Area CSS
@@ -4456,7 +4480,7 @@ Home Page - Feature Cars Area CSS
   .imgBox {
     width:80%;
     margin-left:10%;
-    height: 190px;
+    // height: 190px;
     overflow: hidden;
   }
 

@@ -8,7 +8,7 @@ class PrivacyNServicePolices extends Component {
   render() {
     return (
       <DefaultLayout>
-        <div className="a4-page-max-width">
+        <div className="a4-page-max-width"  style={{marginTop:80}}>
         {PNSPData.map((pnsp, index) => (
           <div className="pnsp-area" eventKey={index} key={index}>
             <h3>{pnsp.title}</h3>

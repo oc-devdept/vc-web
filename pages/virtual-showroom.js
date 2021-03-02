@@ -7,7 +7,7 @@ class VirtualShowroom extends Component {
     return (
       <React.Fragment>
         <Navbar />
-          <section className="virtual-showroom-area">
+          <section className="virtual-showroom-area" style={{marginTop:80}}>
               <iframe 
                 className="frame"
                 // width="100%" height="530" 

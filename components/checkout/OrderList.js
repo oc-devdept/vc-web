@@ -277,19 +277,19 @@ export default function OrderList(props) {
             </div>
             <div className="financeRow">
               <div className="fItem">Downpayment</div>
-              <div className="fPrice">{ props.checkoutState.downPayment ? formatPrice(props.checkoutState.downPayment) : "-" }</div>
+              <div className="fPrice">{ props.checkoutState.loanCalculator ? formatPrice(props.checkoutState.loanCalculator.downPayment) : "-" }</div>
             </div>
             <div className="financeRow">
               <div className="fItem">Monthly Installments</div>
-              <div className="fPrice">{props.checkoutState.monthlyInstallment ? formatPrice(props.checkoutState.monthlyInstallment): "-"}</div>
+              <div className="fPrice">{props.checkoutState.loanCalculator ? formatPrice(props.checkoutState.loanCalculator.monthlyInstallment): "-"}</div>
             </div>
             <div className=" financeRow">
               <div className="fItem">Loan Amount</div>
-              <div className="fPrice">{props.checkoutState.loanAmount ? formatPrice(props.checkoutState.loanAmount) : "-" }</div>
+              <div className="fPrice">{props.checkoutState.loanCalculator ? formatPrice(props.checkoutState.loanCalculator.loanAmount) : "-" }</div>
             </div>
             <div className="financeRow">
               <div className="fItem">Online Payable Deposit</div>
-              <div className="fPrice">{ props.checkoutState.deposit ? formatPrice(props.checkoutState.deposit): "-" }</div>
+              <div className="fPrice">{ props.checkoutState.loanCalculator ? formatPrice(props.checkoutState.loanCalculator.deposit): "-" }</div>
             </div>
           </div>
         </div>

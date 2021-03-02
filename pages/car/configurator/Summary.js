@@ -101,7 +101,6 @@ const Summary = props => {
   };
 
   function checkout() {
-
     //const { ProductGrade, ProductExterior, ProductInterior, ProductRims, ProductAccessories, CoeSelected, AftersaleSelected, ProductTotal } = props.ProductState;
     props.saveCheckout(props.ProductState);
 

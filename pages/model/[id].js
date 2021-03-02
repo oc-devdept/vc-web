@@ -33,7 +33,7 @@ class Model extends Component {
 
         if(this.props.noData){
           //console.log("test");
-          this.props.router.push("/car/configurator/"+this.props.selectedModelId);
+          this.props.router.push("/car/configurator/[id]", "/car/configurator/"+this.props.selectedModelId);
         }
         if (snapshot) {
             this.props.getModelData(snapshot);

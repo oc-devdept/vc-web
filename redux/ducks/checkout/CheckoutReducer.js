@@ -27,9 +27,10 @@ export default (state = INIT_STATE, action) => {
         ProductAccessories,
         CoeSelected,
         AftersaleSelected,
-        ProductTotal
+        ProductTotal,
+        LoanCalculator,
+        selectedModelId
       } = action.payload;
-
       // Mapping of selected exterior/interior into productVariance[]
      //var productVariance = [];
      let returnData = {
@@ -43,7 +44,9 @@ export default (state = INIT_STATE, action) => {
       subtotal: ProductTotal.subtotal,
       misc: ProductTotal.misc,
       gst: ProductTotal.gst,
-      total: ProductTotal.total
+      total: ProductTotal.total,
+      loanCalculator: LoanCalculator,
+      selectedModelId: selectedModelId
      }
      if(action.type == types.SAVE_CHECKOUT){
       localStorage.setItem("vc-shoppingcart", JSON.stringify(returnData));

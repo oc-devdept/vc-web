@@ -11,10 +11,9 @@ class AboutUs extends Component {
   }
 
     render() {
-      console.log(this.props.pages["about-us"])
         return (
           <DefaultLayout>
-           { this.props.pages["about-us"] ? (<div dangerouslySetInnerHTML={{ __html: this.props.pages["about-us"]}} />) : (<div></div>) }
+           { this.props.pages["about-us"] ? (<div style={{marginTop:80}} dangerouslySetInnerHTML={{ __html: this.props.pages["about-us"]}} />) : (<div></div>) }
             </DefaultLayout>
         )
     };

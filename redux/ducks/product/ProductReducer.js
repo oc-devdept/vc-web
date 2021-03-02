@@ -90,7 +90,8 @@ const INIT_STATE = {
   sendConfigurator: {
     loading: false,
     message: ""
-  }
+  },
+  selectedModelId: null
 };
 
 export default (state = INIT_STATE, action) => {
@@ -98,7 +99,8 @@ export default (state = INIT_STATE, action) => {
   switch (action.type) {
     case types.GET_PRODUCT_MODEL_DATA:
       return {
-        ...state
+        ...state,
+        selectedModelId: action.payload
       };
 
     case types.GET_PRODUCT_MODEL_DATA_SUCCESS:
@@ -119,8 +121,10 @@ export default (state = INIT_STATE, action) => {
       };
 
     case types.GET_PRODUCT_GRADES:
+      console.log(action.payload);
       return {
-        ...state
+        ...state,
+        selectedModelId: action.payload.modelId
       };
 
     case types.GET_PRODUCT_GRADES_SUCCESS:

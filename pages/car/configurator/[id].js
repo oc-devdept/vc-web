@@ -80,6 +80,7 @@ class Product extends Component {
     if(this.props.skip == "end"){
       this.setState(
         {
+          verticalStep: 3,
           activeStep:3
         }
       )
@@ -128,7 +129,7 @@ class Product extends Component {
 
   };
 
-  handlePrev = () => {
+  handlePrev = () => {    
     if (this.state.activeStep == 0) {
       this.setState({
         verticalStep: this.state.verticalStep - 1

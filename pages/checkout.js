@@ -49,6 +49,10 @@ const Checkout = props => {
     },
 }));
 
+const goBack = () => {
+  Router.push("/car/configurator/[id]?skip=end", "/car/configurator/"+checkoutState.selectedModelId+"?skip=end");
+}
+
   // console.log("checkout props= ", props);
   // console.log("checkoutState= ", checkoutState);
   return (
@@ -61,7 +65,10 @@ const Checkout = props => {
                 <AppBar position="flex" >
                     <Toolbar>
                       <div class="col-2">
-                      <button type="submit" className="btn prevBtn " ><InlineIcon icon={arrowLeft}  /> PREV </button>
+                        {
+                          checkoutState.selectedModelId && (<button type="submit" className="btn prevBtn " onClick={goBack} ><InlineIcon icon={arrowLeft}  /> PREV </button>)
+                        }
+                      
                         
                         </div>
                         <div class="col-8 text-center">

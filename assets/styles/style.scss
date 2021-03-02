@@ -573,6 +573,8 @@ img {
 }
 
 
+
+
 // .btn-light.disabled,
 .btn-light:disabled {
   background-color: transparent;
@@ -1186,6 +1188,23 @@ About Car Servicing Area CSS
   color: #262626;
   margin-right: 10px;
 }
+.driver-details .bookAppBtn {
+  color: #ffffff;
+  background-color: #000000 ;
+  padding: 11px 23px ;
+  border-radius: 10px;
+
+}
+
+.driver-details  .bookAppBtn:hover,
+.driver-details  .bookAppBtn:focus {
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  background-color: #666666;
+  color: #ffffff ;
+  box-shadow: 0 0 10px rgba(103, 103, 103, 0.3);
+}
+
 
 /*================================================
 About Us Area CSS

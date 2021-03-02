@@ -1660,7 +1660,8 @@
     justify-content: flex-start;
   }
   .configuration_navbar{
-    position: fixed; top: 75px; right: 0px; left: 0px; z-index: 1031;
+    position: fixed; top: 77px; right: 0px; left: 0px;
+     z-index: 999;
     // border-top: 2px solid #ffffff;
   }
 

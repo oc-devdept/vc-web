@@ -98,7 +98,8 @@ const useStyles = makeStyles((theme) => ({
   post: {
     border: "1px solid #c0c0c0",
     padding: '20px',
-    align: 'center'
+    align: 'center',
+    maxWidth: "900px"
   },
   date: {
     margin: "20px 20px 0",
@@ -162,7 +163,7 @@ export default function Blog() {
         <h2>Blog Posts</h2>
       </div>
       {/* 增加了 align="center"*/}
-      <div className={classes.root} title="blogContainer">
+      <div className={classes.root} title="blogContainer" >
         <Tabs
             orientation="vertical"
             variant="scrollable"
@@ -188,7 +189,7 @@ export default function Blog() {
                         <div className={classes.headerBar}>
                             <div className="row">
                                 <div className="image col-md-4">
-                                    <img src={blog.file[0].path} />
+                                    <img src={blog.file[0].path} style={{border: "1px solid red"}}/>
                                 </div>
                                 <div className="text col-md-7">
                                     <h3>{blog.title}</h3>

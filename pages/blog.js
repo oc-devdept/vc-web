@@ -189,7 +189,7 @@ export default function Blog() {
                         <div className={classes.headerBar}>
                             <div className="row">
                                 <div className="image col-md-4">
-                                    <img src={blog.file[0].path} style={{border: "1px solid red"}}/>
+                                    <img src={blog.file[0].path}/>
                                 </div>
                                 <div className="text col-md-7">
                                     <h3>{blog.title}</h3>

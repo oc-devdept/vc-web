@@ -73,7 +73,7 @@
     max-width: 900px;
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
 .configure-total {
@@ -137,6 +137,8 @@
     margin: 2% 0;
     img{
         border:none!important;
+        width:100px;
+        height:100px;
     }
 
     span:first-of-type{

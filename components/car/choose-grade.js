@@ -90,11 +90,12 @@ class ChooseGrade extends Component {
                             products.map(product => (
                                 <div className="col-md-12" key={product.id}>
                                     <div className="grade-box">
-                                        <div className="grade-content">
+                                        <div className="grade-content" style={{flexDirection:'row'}}>
                                             <div class="grade-content-imgBox"  >
                                                 <img src={product.files[0].path} />
                                             </div>
-                                            <div class="grade-content-btnBox" >
+                                            <div class="grade-content-infoBox">
+                                               <div class="grade-content-btnBox" >
                                                 <h3  style={{ fontSize:"1.8rem" ,color:"#000000"}}>{product.name}</h3>
                                                 <h5 style={{ fontSize:"1rem" , color:"#666666"}}>fr ${product.selling_Price}</h5>
 
@@ -137,18 +138,9 @@ class ChooseGrade extends Component {
                                                 }
 
                                             </div>
-                                            {/* <div class="grade-content-techBox" >
-                                                <p className="sub-header">Technology :</p>
-                                                <div className="bar">
-                                                    <p>Infotainment</p>
-                                                    <h6>
-                                                        <Icon icon={gitFork} width="2.3rem" />
-                                                    &nbsp;&nbsp;
-                                                     Venture Edition
-                                                </h6>
-
-                                                </div>
-                                            </div> */}
+                                           
+                                            </div>
+                                          
                                         </div>
                                     </div>
                                 </div>

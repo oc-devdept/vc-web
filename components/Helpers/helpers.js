@@ -196,7 +196,10 @@ export const listOptions = {
   elevation: 0,
   rowsPerPage: 15,
   rowsPerPageOptions: [15, 30, 60, 100],
-  textLabels: { body: { noMatch: "No data to display" } }
+  textLabels: { body: { noMatch: "No data to display" } },
+  viewColumns: false,
+  filter: false,
+  search: false
 };
 
 /**

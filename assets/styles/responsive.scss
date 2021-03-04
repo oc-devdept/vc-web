@@ -1249,6 +1249,37 @@
 }
 
 @media only screen and (max-width: 991px) {
+   // choose-grade-area
+   .choose-grade-area {
+    padding:0 10px;
+    .sub-box {
+      margin: 0;
+      width: 100%;
+      .col-md-12 {
+        .grade-box {
+          .grade-content {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            div {
+              width: 100%;
+              img {
+                margin: 0;
+              }
+            }
+            .grade-content-imgBox {
+              box-sizing: border-box;
+              
+
+            }
+            .grade-content-featuresBox {
+              
+            margin-top:20px;}
+          }
+        }
+      }
+    }
+  }
   .search-mobile-details {
     display: flex;
   }
@@ -2113,36 +2144,7 @@
     }
     
   }
-  // choose-grade-area
-  .choose-grade-area {
-    padding:0 10px;
-    .sub-box {
-      margin: 0;
-      width: 100%;
-      .col-md-12 {
-        .grade-box {
-          .grade-content {
-            padding: 10px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            div {
-              width: 100%;
-              img {
-                margin: 0;
-              }
-            }
-            .grade-content-imgBox {
-              box-sizing: content-box;
-            }
-            .grade-content-featuresBox .bar{
-              min-height: 61px !important;
-            }
-          }
-        }
-      }
-    }
-  }
+ 
 
   // gallery-area
   .gallery-area {

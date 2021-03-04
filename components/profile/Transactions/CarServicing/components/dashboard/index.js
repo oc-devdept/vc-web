@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from "Api";
 import moment from 'moment';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Booking from './components/booking'
 import SingleBooking from './components/singleBooking'
@@ -130,13 +131,19 @@ const Index = ({customerId, toggleBookService}) => {
         setChangeReason(val);
     }
     */
+   const matches =useMediaQuery('(max-width:425px)')
 
 
     return (
 
-        <div className="d-flex flex-fill flex-column" style={{marginTop:15}}>
+        <div className="d-flex flex-fill flex-column" >
+            {matches ? ( <div className="d-flex justify-content-center">
+                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,border:"1px solid #ffffff" }} className="btn-primary">Make Service Appointment</button>
+            </div> ):( <div className="d-flex justify-content-start">
+                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,border:"1px solid #ffffff" }} className="btn-primary">Make Service Appointment</button>
+            </div> )}
             
-            
+           
 
             <div className="rct-block" style={{}}>
              
@@ -149,9 +156,8 @@ const Index = ({customerId, toggleBookService}) => {
                             changeBook={changeBook}
                         />
                     </div>
-                    <div className="d-flex justify-content-center">
-                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,border:"1px solid #ffffff" }} className="btn-primary">Make Service Appointment</button>
-            </div>
+
+               
                 
 
                

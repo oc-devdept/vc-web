@@ -148,11 +148,6 @@ class ChooseGrade extends Component {
                                                 </h6>
 
                                                 </div>
-
-
-
-
-
                                             </div>
                                         </div>
                                     </div>

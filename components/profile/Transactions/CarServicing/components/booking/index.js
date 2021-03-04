@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Booking from 'Components/booking/booking'
 import UserProfile from 'Components/booking/profile'
 import Moment from 'moment'
@@ -86,20 +86,25 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
 
     const {lastName, firstName, email, phone} = Profile
     const {model, date, timeslot, description} = BookService
+    const matches = useMediaQuery('(max-width:425px)')
 
     return (
 
-        <div className="d-flex flex-fill flex-column">   
-
-            <div className="d-flex justify-content-start">
+        <div className="d-flex flex-fill flex-column"> 
+        
+         {matches ? (<div className="d-flex justify-content-center">
                 <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,}} className="btn-primary">Dashboard</button>
-            </div>
+            </div>): (<div className="d-flex justify-content-start">
+                <button onClick={toggleBookService} style={{width: 250, padding: 8, margin:20, borderRadius: 10,}} className="btn-primary">Dashboard</button>
+            </div>)}  
+
+            
 
             <div className="d-flex justify-content-center">
                 <span style={{textAlign:'center'}}>Appointment Detail</span>
             </div>
 
-            <div className="d-flex flex-column"  style={{margin: 20, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
+            <div className="d-flex flex-column"  style={{margin: 32, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
                 <UserProfile
                     _HandleInputProfile={_HandleInputProfile}
                     lastName={lastName}

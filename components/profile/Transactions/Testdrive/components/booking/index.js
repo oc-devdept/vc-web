@@ -96,7 +96,7 @@ const Index = ({_ReturnDashBoard, toggleBookService}) => {
                 <span style={{textAlign:'center'}}>Appointment Detail</span>
             </div>
 
-            <div className="d-flex flex-column"  style={{margin: 20, padding:20, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
+            <div className="d-flex flex-column"  style={{margin: 20, padding:32, borderRadius:5, boxShadow: '0 5px 9px 0 rgba(0,0,0,0.15), 0 8px 25px 0 rgba(0,0,0,0.15)'}}>
               
 
                 <UserProfile

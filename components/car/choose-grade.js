@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Link from "next/link";
 
 import { Icon } from '@iconify/react';
@@ -10,8 +10,8 @@ import manageProtection from '@iconify/icons-carbon/manage-protection';
 import smallgearIcon from '@iconify/icons-raphael/smallgear';
 
 
-class ChooseGrade extends Component {
 
+class ChooseGrade extends Component {
     render() {
         const products = this.props.productData;
 
@@ -50,7 +50,7 @@ class ChooseGrade extends Component {
 
                                                 <Link href={"/car/configurator/" + this.props.url}>
                                                     <a className="btn buildBtn">
-                                                        Build Car &nbsp;&nbsp; 
+                                                        Build Car
                                                         {/* <Icon icon={arrowRight} /> */}
                                                     </a>
                                                 </Link>
@@ -90,7 +90,8 @@ class ChooseGrade extends Component {
                             products.map(product => (
                                 <div className="col-md-12" key={product.id}>
                                     <div className="grade-box">
-                                        <div className="grade-content" style={{flexDirection:'row'}}>
+                                        {}
+                                        <div className="grade-content" >
                                             <div class="grade-content-imgBox"  >
                                                 <img src={product.files[0].path} />
                                             </div>
@@ -107,7 +108,7 @@ class ChooseGrade extends Component {
 
                                                     <Link href={"/car/configurator/" + this.props.url}>
                                                         <a className="btn buildBtn">
-                                                            Build Car &nbsp;&nbsp; 
+                                                            Build Car
                                                             {/* <Icon icon={arrowRight} /> */}
                                                         </a>
                                                     </Link>

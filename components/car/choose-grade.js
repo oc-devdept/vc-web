@@ -137,7 +137,7 @@ class ChooseGrade extends Component {
                                                 }
 
                                             </div>
-                                            <div class="grade-content-techBox" >
+                                            {/* <div class="grade-content-techBox" >
                                                 <p className="sub-header">Technology :</p>
                                                 <div className="bar">
                                                     <p>Infotainment</p>
@@ -148,7 +148,7 @@ class ChooseGrade extends Component {
                                                 </h6>
 
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>

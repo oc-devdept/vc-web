@@ -6,7 +6,8 @@ import { NotificationManager } from "react-notifications";
 const INIT_STATE = {
   profile: null,
   customerId: null,
-  loading: false
+  loading: false,
+  errormsg: ""
 };
 
 export default (state = INIT_STATE, action) => {
@@ -14,7 +15,8 @@ export default (state = INIT_STATE, action) => {
     case types.LOGIN_ACCOUNT:
       return {
         ...state,
-        loading: true
+        loading: true,
+        errormsg: ""
       };
 
     case types.LOGIN_ACCOUNT_SUCCESS:
@@ -23,11 +25,18 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loading: false };
 
     case types.LOGIN_ACCOUNT_FAILURE:
-      console.log(action.payload);
-      NotificationManager.error("Error in logging in");
+      let errormsg = "An error occured. Please try again.";
+      if(action.payload.response){
+        errormsg = action.payload.response.data.error.message;
+        if(errormsg == "login failed"){
+          errormsg = "Your email or password is incorrect. Please try again.";
+        }
+      }
+      //NotificationManager.error("Error in logging in");
       return {
         ...state,
-        loading: false
+        loading: false,
+        errormsg: errormsg
       };
 
     case types.LOGOUT_ACCOUNT_SUCCESS:

@@ -14,9 +14,11 @@ import { login, logout, loginCheckout } from "../../../utils/auth";
 //=========================
 
 const userLoginRequest = async e => {
+
   const data = await api.post(`/basecustomerusers/login`, e.payload);
-  console.log(data.data);
   return data.data;
+  
+  
 };
 const userLogoutRequest = async e => {
   const data = await api.post(`/basecustomerusers/logout`);

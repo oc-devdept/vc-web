@@ -49,15 +49,9 @@ class Index extends Component {
 
   _handleSubmitForm = async e => {
     e.preventDefault();
-    try {
+
       this.props.handleAccountLogin(this.state.form);
-    } catch (e) {
-      if (e.response) {
-        NotificationManager.error(e.response.data.error.message);
-      } else {
-        NotificationManager.error("Network error");
-      }
-    }
+    
   };
 
   _handlePasswordForm = async e => {
@@ -117,6 +111,7 @@ class Index extends Component {
 
                     <div className="login-form">
                       <form onSubmit={this._handleSubmitForm}>
+                        <div className="text-danger">{ this.props.errormsg }</div>
                         <div className="form-group">
                           <label>Email</label>
                           <input
@@ -361,8 +356,8 @@ class Index extends Component {
 
 const mapStateToProps = state => {
   const { UserState } = state;
-  const { accessToken, loading } = UserState;
-  return { accessToken, loading };
+  const { accessToken, loading, errormsg } = UserState;
+  return { accessToken, loading, errormsg };
 };
 
 export default connect(mapStateToProps, {
